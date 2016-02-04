@@ -1,0 +1,44 @@
+---
+name: photos
+url: /photos
+animationIn: slideInRight
+animationOut:  slideOutRight
+---
+<div class=" grid-block small-12">
+  <!-- Add search bar -->
+	<h3 class="text-center">Photos</h3>
+</div>
+<div class=" grid-block small-12 small-up-1 medium-up-2 large-up-3" 
+    ng-init="photos = [
+      {class: 'alert', location:'Cortona, Italy'} ,
+      {class: 'primary', location:'Sabi Sands, South Africa'},
+      {class: 'dark', location:'Munich, Germany'},
+      {class: 'success', location:'Hawaii'},
+      {class: 'warning', location:'Agra, India'},
+      {class: 'alert', location:'The Oriental, Bangkok'},
+      {class: 'none', location:'Reims, France'},
+      {class: 'success', location:'Antigua'},
+      {class: 'warning', location:'Budapest'},
+      {class: 'alert', location:'Cape Town, South Africa'},
+      {class: 'none', location:'Chiang Mai, Thailand'},
+      {class: 'success', location:'Moremi Game Reserve, Botswana'},
+      {class: 'warning', location:'Tanzania'},
+      {class: 'alert', location:'Soufriere, St Lucia'},
+      {class: 'none', location:'Zihuatanejo, Mexico'},
+      {class: 'success', location:'Masai Mara, Kenya'},
+      {class: 'warning', location:'Amman, Jordan'},
+      {class: 'alert', location:'Cortona, Italy'}
+      ]"
+  >
+
+  <div ng-repeat="photo in photos" class="grid-content">
+    <div class="{{photo.class}} card">
+      <!-- if you want custom photos {{photo.image}} -->
+      <img src="http://lorempixel.com/output/city-q-c-640-480-7.jpg">
+      <div class="card-section">
+        <h4>{{photo.location}}</h4>
+      </div>
+    </div>
+  </div>
+
+</div>

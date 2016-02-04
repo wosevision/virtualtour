@@ -1,0 +1,96 @@
+---
+name: reviews
+url: /reviews
+animationIn: slideInRight
+animationOut:  slideOutRight
+---
+<div class="grid-content">
+<section class="reviews block-list with-icons">
+  <h3 class="text-center">REVIEWS</h3>
+  <ul ng-init="reviews = [
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      {image:'http://placeimg.com/200/200/arch', location:'The Oriental, Bangkok'},
+      ]">
+    <!-- With a label -->
+    <li ng-repeat="review in reviews" class="with-chevron">
+      <a href="#">
+        <img src="{{review.image}}">
+        <span class="left stars block-list-label">&#42; &#42; &#42; &#42; &#42;</span>
+        <span class="block-list-label">{{review.location}}</span>
+      </a>
+    </li>
+
+
+    <li class="with-chevron">
+      <a href="#">
+        <img src="http://placeimg.com/200/200/arch">
+        <span class="left stars block-list-label">&#42; &#42; &#42; &#42; &#42;</span>
+        <span class="block-list-label">The Oriental, Bangkok</span>
+      </a>
+    </li>
+    <li class="with-chevron">
+      <a href="#">
+        <img src="http://placeimg.com/200/200/arch">
+        <span class="left stars block-list-label">&#42; &#42; &#42; &#42; &#42;</span>
+        <span class="block-list-label">The Oriental, Bangkok</span>
+      </a>
+    </li>
+    <li class="with-chevron">
+      <a href="#">
+        <img src="http://placeimg.com/200/200/arch">
+        <span class="left stars block-list-label">&#42; &#42; &#42; &#42; &#42;</span>
+        <span class="block-list-label">The Oriental, Bangkok</span>
+      </a>
+    </li>
+    <li class="with-chevron">
+      <a href="#">
+        <img src="http://placeimg.com/200/200/arch">
+        <span class="left stars block-list-label">&#42; &#42; &#42; &#42; &#42;</span>
+        <span class="block-list-label">The Oriental, Bangkok</span>
+      </a>
+    </li>
+    
+
+
+  </ul>
+</section>
+</div>
