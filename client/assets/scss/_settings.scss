@@ -89,7 +89,7 @@ $include-css: (
 // We use these to control various global styles
 // $body-background: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: $franklin_gothic_fsbook;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 // $body-antialiased: true;
@@ -276,7 +276,7 @@ $include-css: (
 // $blocklist-fullbleed: true;
 // $blocklist-fontsize: 1rem;
 
-// $blocklist-item-padding: 0.8rem 1rem;
+$blocklist-item-padding: 1.2rem 1rem;
 // $blocklist-item-color: isitlight($blocklist-background, #000, #fff);
 // $blocklist-item-background-hover: smartscale($blocklist-background, 4.5%);
 // $blocklist-item-color-disabled: #999;
@@ -285,7 +285,7 @@ $include-css: (
 // $blocklist-item-label-color: scale-color($blocklist-item-color, $lightness: 60%);
 // $blocklist-item-icon-size: 0.8;
 
-// $blocklist-header-fontsize: 0.8em;
+$blocklist-header-fontsize: 1.2em;
 // $blocklist-header-color: smartscale($blocklist-item-color, 40%);
 // $blocklist-header-uppercase: true;
 

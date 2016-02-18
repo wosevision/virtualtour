@@ -1,4 +1,10 @@
+@import "variables";
 @import "settings";
 @import "foundation";
+@import "typography";
 
 @import "pannellum";
+
+.menu-bar.icon-top li a {
+	justify-content: center;
+}

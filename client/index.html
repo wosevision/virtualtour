@@ -19,36 +19,37 @@
   </style>
 
   <body>
-    <div class="grid-frame vertical">
+    <div class="grid-frame">
 
-      <div class="grid-block">
-        <div class="grid-content collapse small-12 medium-6 large-8">
-          <div class="title-bar dark" style="border-bottom:0;">
-            <div class="center title">Virtual Tour</div>
+      <div class="grid-block vertical" style="height:100%;padding:0 !important;">
+        <div class="grid-content collapse" ng-controller="panoController" style="height:calc(100% - 3.2rem);background:#232323;">
+          <div class="title-bar" style="border-bottom:0;width:100%;background:#fff;">
+            <div class="center title"><h1 style="font-family:franklin_gothic_fscondensed;font-weight:normal;font-size:1.2rem;text-transform:uppercase;color:#003C71;margin:0;">UOIT Virtual Tour</h1></div>
+            <span class="left"><a href="#"><img src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="UOIT shield logo" style="max-height: 45px;margin:-1rem;padding: 0.2rem 0.4rem"></a></span>
             <span class="right show-for-small-only"><a zf-toggle="sidebar">☰</a></span>
           </div>
-        </div>
-        <zf-panel id="sidebar" position="right" class="medium-grid-content collapse medium-6 large-4" style="padding:0 !important;">
-          <ul class="dark menu-bar">
-            <li ui-sref-active="is-active"><a ui-sref="locations">By location</a></li>
-            <li ui-sref-active="is-active"><a ui-sref="map">By map</a></li>
-            <li ui-sref-active="is-active" ><a ui-sref="settings">Settings</a></li>
-          </ul>
-        </zf-panel>
-      </div>
-
-      <div class="grid-block" style="height:calc(100% - 48px);">
-        <div class="grid-block small-12 medium-6 large-8" ng-controller="panoController" style="height:100%">
           <div id="panorama"></div>
         </div>
+      </div>
 
-        <zf-panel id="sidebar" position="right"  class="medium-grid-block  medium-6 large-4">
-          <div ng-class="['ui-animation']" ui-view class="grid-content" style="padding:0;">
+        <zf-panel id="sidebar" position="right" class="medium-grid-block medium-6 large-4">
+          <div class="grid-block">
+            <div ng-class="['ui-animation']" ui-view class="grid-block vertical">
+            </div>
+          </div>
+          <div class="grid-block shrink">
             
+              <ul class="medium-vertical icon-top dark menu-bar">
+                <li ui-sref-active="is-active"><a ui-sref="locations"><img zf-iconic="" icon="bookmark" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By location</span></a></li>
+                <li ui-sref-active="is-active"><a ui-sref="map"><img zf-iconic="" icon="dashboard" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By map</span></a></li>
+                <li ui-sref-active="is-active" ><a ui-sref="connect"><img zf-iconic="" icon="comment-square" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Connect</span></a></li>
+                <li ui-sref-active="is-active" ><a ui-sref="search"><img zf-iconic="" icon="magnifying-glass" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Search</span></a></li>
+                <li ui-sref-active="is-active" ><a ui-sref="settings"><img zf-iconic="" icon="cog" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Settings</span></a></li>
+              </ul>
+
           </div>
           <a href="#" zf-close="sidebar" class="close-button show-for-small-only">×</a>
         </zf-panel>
-      </div>
 
     </div>
 

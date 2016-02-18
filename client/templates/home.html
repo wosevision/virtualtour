@@ -5,34 +5,40 @@ animationIn: slideInRight
 animationOut:  slideOutRight
 ---
 
-<div class="grid-content small-12">
-	<h3 class="text-center">Our Amazing Hotels</h3>
-	<h3 class="subheader">Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue.
-	</h3>
-</div>
-<div class="grid-block small-12 small-up-1 large-up-2"  style="margin:0;padding:1rem;"
-      ng-init="listings = [
-      {hotel: 'Best Western', class: 'alert', location:'Cortona, Italy'} ,
-      {hotel: 'Best Western', class: 'primary', location:'Sabi Sands, South Africa'},
-      {hotel: 'Best Western', class: 'dark', location:'Munich, Germany'},
-      {hotel: 'Best Western', class: 'success', location:'Hawaii'},
-      {hotel: 'Best Western', class: 'warning', location:'Agra, India'},
-      {hotel: 'Best Western', class: 'alert', location:'The Oriental, Bangkok'},
-      {hotel: 'Best Western', class: 'none', location:'Reims, France'},
-      {hotel: 'Best Western', class: 'success', location:'Antigua'},
-      {hotel: 'Best Western', class: 'warning', location:'Budapest'},
-      {hotel: 'Best Western', class: 'alert', location:'Cape Town, South Africa'},
-      {hotel: 'Best Western', class: 'none', location:'Chiang Mai, Thailand'},
-      {hotel: 'Best Western', class: 'success', location:'Moremi Game Reserve, Botswana'},
-      {hotel: 'Best Western', class: 'warning', location:'Tanzania'},
-      {hotel: 'Best Western', class: 'alert', location:'Soufriere, St Lucia'},
-      {hotel: 'Best Western', class: 'none', location:'Zihuatanejo, Mexico'},
-      {hotel: 'Best Western', class: 'success', location:'Masai Mara, Kenya'},
-      {hotel: 'Best Western', class: 'warning', location:'Amman, Jordan'},
+<div class="grid-content" ng-init="listings = [
+      {hotel: 'Business and IT Building', class: 'alert', location:'Cortona, Italy'} ,
+      {hotel: 'North Oshawa Library', class: 'primary', location:'Sabi Sands, South Africa'},
+      {hotel: 'Campus Tennis Centre', class: 'dark', location:'Munich, Germany'},
+      {hotel: 'Simcoe Building', class: 'success', location:'Hawaii'},
+      {hotel: 'Student Centre', class: 'warning', location:'Agra, India'},
+      {hotel: 'University Pavillion', class: 'alert', location:'The Oriental, Bangkok'},
       {hotel: 'Best Western', class: 'alert', location:'Cortona, Italy'}
       ]">
+	<h3 class="text-center">Select locations</h3>
+	<h3 class="subheader">Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue.
+	</h3>
+  <section class="block-list">
+    <header>North Location</header>
+    <ul>
+      
+      <li ng-repeat="listing in listings" class="{{listing.class}} with-chevron">
+        <a href="">{{listing.hotel}} <small>{{listing.location}}</small></a>
+      </li>
 
-  <div class="grid-content" ng-repeat="listing in listings">
+    </ul>
+    <header>Downtown Location</header>
+    <ul>
+      
+      <li ng-repeat="listing in listings" class="{{listing.class}} with-chevron">
+        <a href="">{{listing.hotel}} <small>{{listing.location}}</small></a>
+      </li>
+
+    </ul>
+  </section>
+</div>
+
+
+<!--   <div class="small-up-1 large-up-2" ng-repeat="listing in listings">
     <div class="{{listing.class}} card">
       <img src="http://placeimg.com/640/480/arch">
       <div class="card-divider">
@@ -43,7 +49,4 @@ animationOut:  slideOutRight
         <p>Consistently rated as one of the great hotels of the world.</p>
       </div>
     </div>
-  </div>
-
-
-</div> 
+  </div> -->
