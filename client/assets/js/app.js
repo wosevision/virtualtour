@@ -8,10 +8,13 @@
     //foundation
     'foundation',
     'foundation.dynamicRouting',
-    'foundation.dynamicRouting.animations'
+    'foundation.dynamicRouting.animations',
+
+    //services
+    'services'
   ])
     .config(config)
-    .controller('panoController', ['$scope', function($scope) {
+    .controller('panoController', ['$scope', 'LocationService', function($scope) {
       $scope.panorama = pannellum.viewer('panorama', {   
         "default": {
             "firstScene": "library",
@@ -21,7 +24,7 @@
         
         "scenes": {
             "library": {
-                "title": "George Peabody Library",
+                "title": "Example",
                 "hfov": 100,
                 "pitch": 10,
                 "yaw": 50,
@@ -152,6 +155,9 @@
         }
       });
 
+    }])
+    .controller('poiController', ['$scope', 'LocationService', function($scope, LocationService) {
+      $scope.pois = LocationService.all();
     }])
     .run(run)
   ;

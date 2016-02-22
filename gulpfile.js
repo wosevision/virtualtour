@@ -46,6 +46,7 @@ var paths = {
   // These files are for your app's JavaScript
   appJS: [
     'bower_components/pannellum/dist/pannellum.js',
+    'client/assets/js/services.js',
     'client/assets/js/app.js'
   ]
 }
