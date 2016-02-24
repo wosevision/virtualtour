@@ -1,8 +1,9 @@
 ---
 name: locations
-url: /
+url: /location
 animationIn: slideInRight
-animationOut:  slideOutRight
+animationOut:  slideOutLeft
+controller: poiController
 ---
 
 <div class="grid-content collapse" ng-controller="poiController">
@@ -17,7 +18,7 @@ animationOut:  slideOutRight
         <ul>
           
           <li ng-repeat="location in poi.locations" class="with-chevron">
-            <a ui-sref="locations.location({ id : '{{location.code}}' })">{{location.name}} <!-- <small>{{listing.location}}</small> --></a>
+            <a ui-sref="location({ id : '{{location.code}}' })">{{location.name}} <!-- <small>{{listing.location}}</small> --></a>
           </li>
 
         </ul>
