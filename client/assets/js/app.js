@@ -156,8 +156,10 @@
       });
 
     }])
-    .controller('poiController', ['$scope', 'LocationService', function($scope, LocationService) {
+    .controller('poiController', ['$scope', '$state', 'LocationService', function($scope, $state, LocationService) {
       $scope.pois = LocationService.all();
+      $scope.locations = LocationService.locations();
+      $scope.location = LocationService.get($state.params.id || '');
     }])
     .run(run)
   ;

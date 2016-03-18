@@ -32,12 +32,8 @@
         </div>
       </div>
 
-        <zf-panel id="sidebar" position="right" class="medium-grid-block medium-6 large-4">
-          <div class="grid-block order-2">
-            <div ng-class="['ui-animation']" ui-view class="grid-block vertical">
-            </div>
-          </div>
-          <div class="grid-block order-1 shrink">
+        <zf-panel id="sidebar" position="right" class="medium-grid-block medium-6 large-4"> <!-- style="background: #111;box-shadow: -100px 0 100px #111;" -->
+          <div class="grid-block order-2 shrink">
             
               <ul class="medium-vertical icon-top dark menu-bar">
                 <li ui-sref-active="is-active"><a ui-sref="locations"><img zf-iconic="" icon="bookmark" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By location</span></a></li>
@@ -47,6 +43,10 @@
                 <li ui-sref-active="is-active" ><a ui-sref="settings"><img zf-iconic="" icon="cog" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Settings</span></a></li>
               </ul>
 
+          </div>
+          <div class="grid-block order-1">
+            <div ng-class="['ui-animation']" ui-view class="grid-block vertical">
+            </div>
           </div>
           <a href="#" zf-close="sidebar" class="close-button show-for-small-only">×</a>
         </zf-panel>

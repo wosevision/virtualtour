@@ -1,6 +1,5 @@
 angular.module('services', [])
 	.factory('LocationService', function($http){
-
 		// icon markers
 		var iconPixel = 'https://uoit.ca/maps/img/map/markerpixel.png';
 		var iconMarker = {
@@ -1294,6 +1293,26 @@ angular.module('services', [])
     return {
     	"all": function () {
     		return poi;
+    	},
+    	"locations": function () {
+    		var out = [];
+    		angular.forEach(poi, function(value) {
+    			angular.forEach(value.locations, function (v) {
+    				out.push(v);
+    			});
+    		});
+    		return out;
+    	},
+    	"get": function (code) {
+    		var out = {};
+    		angular.forEach(poi, function(value) {
+    			angular.forEach(value.locations, function (v) {
+    				if (v.code == code) {
+    					out = v;
+    				}
+    			});
+    		});
+    		return out;
     	}
     };
 	});
