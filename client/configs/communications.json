@@ -1,0 +1,41 @@
+[{
+  "communications": {
+    "title": "61 Charles Street, Communications and Marketing",
+    "hfov": 100,
+    "pitch": 10,
+    "yaw": 50,
+    "compass": true,
+    "northOffset": 289,
+    "type": "multires",
+    "multiRes": {
+    	"basePath": "./assets/img/communications",
+        "path": "/%l/%s%y_%x",
+        "fallbackPath": "/fallback/%s",
+        "extension": "jpg",
+        "tileResolution": 512,
+        "maxLevel": 4,
+        "cubeResolution": 3144
+    },
+    "hotSpotDebug": true,
+    "hotSpots": [
+        {
+            "pitch": -3.6501243721966894,
+            "yaw": 108.26748650582584,
+            "type": "info",
+            "text": "Holly sits here"
+        },
+        {
+            "pitch": -5.813491154095978,
+            "yaw": 55.24370993111606,
+            "type": "info",
+            "text": "This spot represents a 3-dimensional vector path that intersects both Kalvin and Jackson's torsos from this vantage point!"
+        },
+        {
+            "pitch": -0.30999524012304286,
+            "yaw": -91.78602409965778,
+            "type": "info",
+            "text": "If you look really close, you can see creep in the window"
+        }
+    ]
+  }
+}]
