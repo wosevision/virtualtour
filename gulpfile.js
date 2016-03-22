@@ -22,13 +22,15 @@ var paths = {
   assets: [
     './client/**/*.*',
     '!./client/templates/**/*.*',
-    '!./client/assets/{scss,js}/**/*.*'
+    '!./client/assets/{scss,js}/**/*.*',
+    '!./client/assets/configs/*.json'
   ],
   // Sass will check these folders for files when you use @import.
   sass: [
     'client/assets/scss',
     'bower_components/foundation-apps/scss',
-    'bower_components/pannellum/dist'
+    //'bower_components/pannellum/dist'
+    'node_modules/pannellum/build'
   ],
   // These files include Foundation for Apps and its dependencies
   foundationJS: [
@@ -45,8 +47,11 @@ var paths = {
   ],
   // These files are for your app's JavaScript
   appJS: [
-    'bower_components/pannellum/dist/pannellum.js',
-    'client/assets/js/services.js',
+    //'bower_components/pannellum/dist/pannellum.js',
+    'node_modules/pannellum/build/pannellum.js',
+    'client/assets/js/services/*.js',
+    'client/assets/js/controllers/*.js',
+    'client/assets/js/directives/*.js',
     'client/assets/js/app.js'
   ]
 }
