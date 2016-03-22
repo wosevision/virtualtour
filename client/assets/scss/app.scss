@@ -18,3 +18,24 @@
 .block-list, .block-list ul {
 	margin-bottom: 0;
 }
+
+.pnlm-container {
+    font-family: $franklin_gothic_fsbook;
+}
+
+.pnlm-panorama-info {
+    bottom: 0.5rem;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 0;
+    padding: 0.5rem 1.25rem 0.65rem;
+}
+
+.pnlm-title-box {
+    font-family: $franklin_gothic_fscondensed;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.pnlm-author-box {
+    padding-left: 0;
+}
