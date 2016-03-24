@@ -2,23 +2,91 @@
 @import "settings";
 @import "foundation";
 @import "typography";
+@import "extends";
 
 @import "pannellum";
 
-.menu-bar.icon-top li a {
-	justify-content: center;
-	text-align: center;
+// TITLE BAR
+.title-bar {
+	z-index: 3;
+	width:100%;
+	& h1 {
+		font-family: $franklin_gothic_fscondensed;
+		font-size:1.2rem;
+		color:#003C71;
+		margin:0;
+	}
+	& .inline-list {
+		margin: 0;
+		line-height: 1;
+		text-align: right;
+		> li {
+			margin: 0 0.9375rem;
+		}
+		> li > a {
+			@extend %text_nav_primary;
+			padding: 0;	
+			background: #fff;
+			color: $uoitgrey;
+			transition: 0.15s linear;
+			&:hover {
+				color: $uoitlightblue;
+			}
+		}
+	}
 }
 
+.pano-container {
+	height:calc(100% - 3.2rem);
+	& .menu-bar {
+		z-index: 3;
+		width: 7rem;
+		&.icon-top li a {
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}
+
+// ACCORDION AND BLOCKLIST
 .accordion-content {
 	padding-top: 0;
 	padding-bottom: 0;
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-title {
+	@extend %text_nav_primary;
+}
+
+.is-active > .accordion-content {
+    max-height:1500px;
 }
 
 .block-list, .block-list ul {
 	margin-bottom: 0;
 }
 
+// OFFCANVAS
+#sidebar {
+	height:calc(100% - 3.2rem);
+	top: 3.2rem;
+	right: 7rem;
+	& h1,h2,h3,h4,h5,h6 {
+		color: #fff;
+	}
+}
+
+.pnlm-compass {
+	right: 0.5rem;
+	bottom: auto;
+	top: 0.5rem;
+}
+
+// PANORAMA
 .pnlm-container {
     font-family: $franklin_gothic_fsbook;
 }

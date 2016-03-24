@@ -6,13 +6,13 @@ animationOut:  slideOutLeft
 controller: poiController
 ---
 
-<div class="grid-content collapse" ng-controller="poiController">
+<div class="grid-content collapse">
   <div class="grid-content">
   	<h2>Select a location</h2>
   	<h3 class="subheader">Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue.
   	</h3>
   </div>
-  <zf-accordion>
+  <zf-accordion auto-open="false" multi-open="true">
     <zf-accordion-item ng-repeat="poi in pois" title="{{poi.category}}">
       <section class="block-list">
         <ul>

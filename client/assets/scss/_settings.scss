@@ -242,7 +242,7 @@ $body-font-family: $franklin_gothic_fsbook;
 
 $accordion-border: 0;
 
-$accordion-title-background: $uoitdarkblue;
+$accordion-title-background: rgba($uoitdarkblue, 0.8);
 // $accordion-title-background-hover: smartscale($accordion-title-background, 5%);
 // $accordion-title-background-active: lighten($gray-light, 2);
 // $accordion-title-color: isitlight($accordion-title-background);
@@ -277,8 +277,8 @@ $accordion-title-padding: 1.5rem 1rem;
 // $blocklist-fontsize: 1rem;
 
 $blocklist-item-padding: 1rem;
-// $blocklist-item-color: isitlight($blocklist-background, #000, #fff);
-// $blocklist-item-background-hover: smartscale($blocklist-background, 4.5%);
+$blocklist-item-color: #fff;
+$blocklist-item-background-hover: rgba(255,255,255,0.1);
 // $blocklist-item-color-disabled: #999;
 // $blocklist-item-border: 1px solid smartscale($blocklist-background, 18.5%);
 
@@ -421,7 +421,7 @@ $blocklist-header-fontsize: 1.2em;
 // - - - - - - - - - - - - - - - - - - - -
 
 // $menubar-fontsize: 1rem;
-// $menubar-background: #fff;
+// $menubar-background: scale-color($uoitgrey, $lightness: -65%);
 // $menubar-background-hover: smartscale($menubar-background, 7%);
 // $menubar-background-active: $menubar-background-hover;
 // $menubar-color: isitlight($menubar-background);
@@ -515,13 +515,13 @@ $blocklist-header-fontsize: 1.2em;
 // 20. Off-canvas
 // - - - - - - - - - - - - - - - - - - - -
 
-// $offcanvas-size-horizontal: 250px;
+$offcanvas-size-horizontal: 400px;
 // $offcanvas-size-vertical: 250px;
 
-// $offcanvas-background: #fff;
-// $offcanvas-color: isitlight($offcanvas-background);
+$offcanvas-background: rgba(0,0,0,0.6);
+$offcanvas-color: #fff;
 // $offcanvas-padding: 0;
-// $offcanvas-shadow: 3px 0 10px rgba(black, 0.25);
+$offcanvas-shadow: none;
 // $offcanvas-animation-speed: 0.25s;
 
 // $offcanvas-frame-selector: '.grid-frame';
@@ -579,9 +579,9 @@ $blocklist-header-fontsize: 1.2em;
 
 // $titlebar-center-width: 50%;
 // $titlebar-side-width: (100% - $titlebar-center-width) / 2;
-// $titlebar-background: #eee;
-// $titlebar-color: #000;
-// $titlebar-border: 1px solid #ccc;
+$titlebar-background: #fff;
+$titlebar-color: #003C71;
+$titlebar-border: 0;
 // $titlebar-padding: $global-padding;
 // $titlebar-item-classes: (
 //   center: 'center',
