@@ -17,49 +17,46 @@
 
     <div class="vertical grid-frame" ng-controller="panoController">
     
-      <div class="grid-block">
-          <div class="title-bar">
-            <div class="center title"> 
-              <h1>UOIT Virtual Tour</h1>
-            </div>
-            <span class="left">
-              <a href="/"><img src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="UOIT shield logo" style="max-height: 45px;margin:-1rem;padding: 0.2rem 0.4rem"></a>
-            </span>
-            <span class="right">
-
-              <ul class="inline-list">
-                <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="home" size="small" class="iconic-color-primary"> Home</a></li>
-                <li><a zf-toggle="separate-actionsheet" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="reload" size="small" class="iconic-color-primary"> Panoramas</a></li>
-<!--                 <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="magnifying-glass" size="small" class="iconic-color-primary"> Photos</a></li>
-                <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="zoom" size="small" class="iconic-color-primary"> Videos</a></li> -->
-                <li><a zf-toggle="sidebar">{{ menuState === false ? 'Open menu' : 'Close menu'}}<!-- ☰ --></a></li>
-              </ul>
-              
-            </span>
-          </div>
-
+      <div class="grid-block shrink">
+        <nav class="nav-bar">
+          <a href="/" class="logo"><img src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="UOIT shield logo"></a>
+          <h1>UOIT Virtual Tour</h1>
+          <ul class="inline-list">
+            <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="home" size="small" class="iconic-color-primary"> Home</a></li>
+            <li><a title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="reload" size="small" class="iconic-color-primary"> Panoramas</a></li>
+            <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="magnifying-glass" size="small" class="iconic-color-primary"> Photos</a></li>
+            <li><a href="/" title="Go back to the Virtual Tour homepage"><img zf-iconic="" icon="zoom" size="small" class="iconic-color-primary"> Videos</a></li>
+            <li><a zf-toggle="sidebar">
+              <!-- ☰ -->
+              <!-- {{ menuState === false ? 'Open menu' : 'Close menu'}} -->
+              <img zf-iconic="" icon="chevron" size="small" class="iconic-color-primary sidebar-toggle" ng-class="{'flip-x': menuState === false}"> {{ menuState === false ? 'Open menu' : 'Close menu'}}
+            </a></li>
+          </ul>
+        </nav>
       </div>
 
-        <div class="grid-block pano-container">
-          <div class="grid-block" id="panorama"></div>
+      <div class="grid-block pano-container">
 
-          <div class="grid-block shrink">
-            <ul class="vertical icon-top dark menu-bar">
-              <li ui-sref-active="is-active"><a ui-sref="locations" zf-open="sidebar"><img zf-iconic="" icon="bookmark" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By location</span></a></li>
-              <li ui-sref-active="is-active"><a ui-sref="map" zf-open="sidebar"><img zf-iconic="" icon="dashboard" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By map</span></a></li>
-              <li ui-sref-active="is-active" ><a ui-sref="connect" zf-open="sidebar"><img zf-iconic="" icon="comment-square" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Connect</span></a></li>
-              <li ui-sref-active="is-active" ><a ui-sref="search" zf-open="sidebar"><img zf-iconic="" icon="magnifying-glass" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Search</span></a></li>
-              <li ui-sref-active="is-active" ><a ui-sref="settings" zf-open="sidebar"><img zf-iconic="" icon="cog" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Settings</span></a></li>
-            </ul>
-          </div>
-
+        <div class="grid-block" id="panorama">
         </div>
 
+        <div class="grid-block shrink">
+          <ul class="vertical icon-top dark menu-bar">
+            <li ui-sref-active="is-active"><a ui-sref="locations" zf-open="sidebar"><img zf-iconic="" icon="bookmark" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By location</span></a></li>
+            <li ui-sref-active="is-active"><a ui-sref="map" zf-open="sidebar"><img zf-iconic="" icon="dashboard" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">By map</span></a></li>
+            <li ui-sref-active="is-active" ><a ui-sref="connect" zf-open="sidebar"><img zf-iconic="" icon="comment-square" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Connect</span></a></li>
+            <li ui-sref-active="is-active" ><a ui-sref="search" zf-open="sidebar"><img zf-iconic="" icon="magnifying-glass" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Search</span></a></li>
+            <li ui-sref-active="is-active" ><a ui-sref="settings" zf-open="sidebar"><img zf-iconic="" icon="cog" size="medium" class="iconic-color-primary"><span class="show-for-medium-up">Settings</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+
     </div>
-    <zf-offcanvas id="sidebar" position="right">
+    <zf-offcanvas id="sidebar" position="right" class="with-shadow">
+      <!-- <a zf-close="" class="close-button">×</a> -->
       <div ng-class="['ui-animation']" ui-view class="grid-block vertical">
       </div>
-      <a zf-close="" class="close-button">×</a>
      
     </zf-offcanvas>
 
