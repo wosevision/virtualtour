@@ -23,7 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "foundation-apps": "~1.2.0",
-    "pannellum": "2.2.0"
+    "foundation-apps": "~1.2.0"
   }
 }

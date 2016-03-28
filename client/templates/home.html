@@ -10,6 +10,7 @@ controller: poiController
   	<h3 class="subheader">Click the sections below to expand their contents. Choose a location within the section to view its associated media.
   	</h3>
   </div>
+  <div class="grid-content collapse">
   <zf-accordion auto-open="false" multi-open="true">
     <zf-accordion-item ng-repeat="poi in pois" title="{{poi.category}}">
       <section class="block-list">
@@ -23,3 +24,4 @@ controller: poiController
       </section>
     </zf-accordion-item>
   </zf-accordion>
+  </div>
