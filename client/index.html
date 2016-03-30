@@ -52,8 +52,8 @@
 
       </div>
 
-      <div class="sheet-dialog-container">
-        <div class="sheet-dialog top" position="top" ng-class="{'is-active': addHotspot.active}">
+      <div class="action-sheet-container">
+        <div class="action-sheet top" position="top" ng-class="{'is-active': addHotspot.active}" id="addHotspot">
           <div>
             <p>Add Hotspot (<strong>{{addHotspot.data.pitch | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong> , <strong>{{addHotspot.data.yaw | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong>)</p>
             <ul>
@@ -66,14 +66,18 @@
                   <span class="inline-label">
                     <span class="form-label">{{ addHotspot.data.type == 'info' ? 'Popover text' : 'Select scene' }}</span>
                     <input type="text" ng-model="addHotspot.data.text" ng-show="addHotspot.data.type == 'info'" />
+                    <input type="text" ng-model="addHotspot.data.sceneId" ng-show="addHotspot.data.type == 'scene'" placeholder="Click to display scene list..." zf-open="sceneSelect"/>
+                  </span>
+                </label>
+                <label>
+                  <span class="inline-label">
                     <span class="form-label" ng-show="addHotspot.data.type == 'info'">Link (optional)</span>
                     <input type="text" ng-model="addHotspot.data.URL" ng-show="addHotspot.data.type == 'info'" />
-                    <input type="text" ng-model="addHotspot.data.sceneId" ng-show="addHotspot.data.type == 'scene'" placeholder="Click to display scene list..." zf-open="sceneSelect"/>
                   </span>
                 </label>
               </li>
               <li class="btn-block">
-                <a href="" title="Add the current hotspot">Submit</a>
+                <a href="" title="Add the current hotspot" ng-click="submitHotspot()">Submit</a>
               </li>
               <li class="btn-block cancel">
                 <a title="Discard hotspot" ng-click="addHotspot.active = !addHotspot.active">Cancel</a>

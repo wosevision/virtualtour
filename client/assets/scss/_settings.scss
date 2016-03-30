@@ -95,13 +95,13 @@ $body-font-family: $franklin_gothic_fsbook;
 // $body-antialiased: true;
 
 // Application Colors
-// $primary-color: #00558b;
-// $secondary-color: #f1f1f1;
-// $alert-color: #F04124;
-// $info-color: #A0D3E8;
-// $success-color: #43AC6A;
-// $warning-color: #F08A24;
-// $dark-color: #232323;
+$primary-color: $uoitlightblue;
+$secondary-color: $uoitdarkblue;
+$alert-color: $uoitorange;
+$info-color: $uoitgreylight;
+$success-color: $uoitgreen;
+$warning-color: $fhs;
+$dark-color: $uoitdcgrey;
 // $gray: #dfdfdf;
 // $gray-dark: darken($gray, 8);
 // $gray-light: lighten($gray, 8);
@@ -133,9 +133,9 @@ $body-font-family: $franklin_gothic_fsbook;
 
 // 4. Typography
 // - - - - - - - - - - - - - - - - - - - -
-
+// 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
+$header-font-family: $franklin_gothic_fscondensed;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: $font-weight-normal;
 // $header-font-color: #222;

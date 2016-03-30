@@ -1,5 +1,7 @@
 angular.module('controllers', [])
-    .controller('panoController', ['$rootScope', '$scope', 'FoundationApi', 'PanoService', function($rootScope, $scope, FoundationApi, PanoService) {
+    .controller('panoController', ['$rootScope', '$scope', '$http', 'FoundationApi', 'PanoService', function($rootScope, $scope, $http, FoundationApi, PanoService) {
+
+      var actionSheet = document.getElementById('addHotspot');
 
       $scope.sceneId = 'communications';
       $scope.panoConfigs = [];
@@ -40,6 +42,13 @@ angular.module('controllers', [])
         });
       }
 
+      $scope.submitHotspot = function(response) {
+        var data = JSON.stringify($scope.addHotspot.data);
+        $http.post('http://virtualtour-server.herokuapp.com/hotspots', data).then(function(response) {
+          console.log(response);
+        });
+      }
+
       FoundationApi.subscribe('sidebar', function(event) {
           if (event === 'close') {
               $scope.menuState = false;
@@ -60,9 +69,13 @@ angular.module('controllers', [])
       var touchContainer = document.getElementById('panorama');
       var hammertime = new Hammer(touchContainer);
       hammertime.on('press', function(ev) {
-        $scope.addHotspot.active = !$scope.addHotspot.active;
+        // if ($scope.addHotspot.active === false) {
+          actionSheet.style.top = ev.center.y+"px";
+          actionSheet.style.left = ev.center.x+"px";
+          $scope.addHotspot.active = true;
+        // }
         coords = $scope.panorama.mouseEventToCoords(ev.srcEvent);
-          console.log(coords);
+          console.log(ev);
         $scope.addHotspot.data.pitch = coords[0];
         $scope.addHotspot.data.yaw = coords[1];
         $scope.$digest();
