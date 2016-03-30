@@ -1,13 +1,18 @@
 angular.module('services')
 	.factory('PanoService', function($http){
-		var baseURL = 'configs/';
+		var baseURL = 'http://virtualtour-server.herokuapp.com';
 		return {
+			getList: function() {
+				return $http.get(baseURL + '/panoramas')
+				.then(function(response) {
+				  return response;
+				});
+			},
 			getConfig: function(id) {
-				getURL = baseURL + id + '.json';
-				return $http.get(getURL)
-					.then(function(response) {
-					  return response;
-					});
+				return $http.get(baseURL + '/panoramas/' + id)
+				.then(function(response) {
+				  return response;
+				});
 			}
 		}
 	});

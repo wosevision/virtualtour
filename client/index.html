@@ -52,7 +52,56 @@
 
       </div>
 
+      <div class="sheet-dialog-container">
+        <div class="sheet-dialog top" position="top" ng-class="{'is-active': addHotspot.active}">
+          <div>
+            <p>Add Hotspot (<strong>{{addHotspot.data.pitch | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong> , <strong>{{addHotspot.data.yaw | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong>)</p>
+            <ul>
+              <li class="radio-block">
+                <label><input type="radio" name="hotspot_type" value="info" ng-model="addHotspot.data.type">Info</label>
+                <label><input type="radio" name="hotspot_type" value="scene" ng-model="addHotspot.data.type">Scene</label>
+              </li>
+              <li class="textbox-block">
+                <label>
+                  <span class="inline-label">
+                    <span class="form-label">{{ addHotspot.data.type == 'info' ? 'Popover text' : 'Select scene' }}</span>
+                    <input type="text" ng-model="addHotspot.data.text" ng-show="addHotspot.data.type == 'info'" />
+                    <span class="form-label" ng-show="addHotspot.data.type == 'info'">Link (optional)</span>
+                    <input type="text" ng-model="addHotspot.data.URL" ng-show="addHotspot.data.type == 'info'" />
+                    <input type="text" ng-model="addHotspot.data.sceneId" ng-show="addHotspot.data.type == 'scene'" placeholder="Click to display scene list..." zf-open="sceneSelect"/>
+                  </span>
+                </label>
+              </li>
+              <li class="btn-block">
+                <a href="" title="Add the current hotspot">Submit</a>
+              </li>
+              <li class="btn-block cancel">
+                <a title="Discard hotspot" ng-click="addHotspot.active = !addHotspot.active">Cancel</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div zf-modal="" id="sceneSelect" class="collapse">
+        <div class="grid-block vertical">
+        <div class="primary title-bar">
+        <div class="center title">Scene Select</div>
+        <span zf-close="" class="left"><a>Category</a></span>
+        <span zf-close="" class="right"><a>Cancel</a></span>
+        </div>
+        <div class="grid-content padding" style="padding-top: 1rem;">
+        <select>
+          <option ng-repeat="pano in panoConfigs" value="{{pano.code}}">{{pano.title}}</option>
+        </select>
+        <a zf-close="" class="button">OK</a>
+        <a zf-close="" class="button">Cancel</a>
+        </div>
+        </div>
+      </div>
+
     </div>
+
     <zf-offcanvas id="sidebar" position="right" class="with-shadow">
       <!-- <a zf-close="" class="close-button">×</a> -->
       <div ng-class="['ui-animation']" ui-view class="grid-block vertical">
