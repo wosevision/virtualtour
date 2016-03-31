@@ -3,13 +3,12 @@ angular.module('controllers', [])
 
       var actionSheet = document.getElementById('addHotspot');
 
-      $scope.sceneId = 'communications';
       $scope.panoConfigs = [];
       $scope.menuState = false;
       $scope.addHotspot = {
         active: false,
         data: {
-          parent: $scope.sceneId,
+          parent: '',
           type: 'info',
           text: '',
           URL: '',
@@ -28,23 +27,23 @@ angular.module('controllers', [])
         var scenes = [];
         angular.forEach(configs, function(val,key) {
           var scene = {};
-          scene[val.code] = val;
-          scenes.push(scene);
+          scenes[val.code] = val;
         });
+        console.log(scenes);
+        $scope.addHotspot.data.parent = configs[0]._id;
         return pannellum.viewer('panorama', {   
           "default": {
               "firstScene": configs[0].code,
-              "author": "Kalv & Jax",
               "autoLoad": true
           },
           
-          "scenes": scenes[0]
+          "scenes": scenes
         });
       }
 
       $scope.submitHotspot = function(response) {
         var data = JSON.stringify($scope.addHotspot.data);
-        $http.post('http://virtualtour-server.herokuapp.com/hotspots', data).then(function(response) {
+        $http.post('http://localhost:3000/hotspots', data).then(function(response) {
           console.log(response);
         });
       }
@@ -60,7 +59,7 @@ angular.module('controllers', [])
           };
       });
 
-      PanoService.getConfig($scope.sceneId).then(function(response){
+      PanoService.getList().then(function(response){
         $scope.panoConfigs = response.data;
       }).finally(function(){
         $scope.panorama = getScenes($scope.panoConfigs);
@@ -75,10 +74,10 @@ angular.module('controllers', [])
           $scope.addHotspot.active = true;
         // }
         coords = $scope.panorama.mouseEventToCoords(ev.srcEvent);
-          console.log(ev);
         $scope.addHotspot.data.pitch = coords[0];
         $scope.addHotspot.data.yaw = coords[1];
         $scope.$digest();
+          console.log($scope.addHotspot);
       });
       
 

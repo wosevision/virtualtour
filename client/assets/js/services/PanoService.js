@@ -1,6 +1,6 @@
 angular.module('services')
 	.factory('PanoService', function($http){
-		var baseURL = 'http://virtualtour-server.herokuapp.com';
+		var baseURL = 'http://localhost:3000';
 		return {
 			getList: function() {
 				return $http.get(baseURL + '/panoramas')
