@@ -16,8 +16,8 @@ controller: poiController
       <section class="block-list">
         <ul>
           
-          <li ng-repeat="location in poi.locations" class="with-chevron">
-            <a ui-sref="location({ location : '{{location.code}}' })">{{location.name}} <!-- <small>{{listing.location}}</small> --></a>
+          <li ng-repeat="scene in poi.scenes" class="with-chevron">
+            <a ui-sref="location({ location : '{{scene.code}}' })">{{scene.title}} <!-- <small>{{listing.location}}</small> --></a>
           </li>
 
         </ul>

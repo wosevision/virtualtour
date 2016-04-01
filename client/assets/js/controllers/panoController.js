@@ -3,23 +3,23 @@ angular.module('controllers')
 
       $scope.panorama = {};
       $scope.UIState = UIStateService.get('location')
-      $scope.panoConfigs = [];
+      $scope.panoConfig = [];
       $scope.menuState = false;
 
-      function getScenes(configs) {
+      function getScenes(config) {
         // iteratively build array of scene objects
         // each object has single top-level key denoting code
         // i.e. { "charles": {...(scene)...} }
         var scenes = [];
-        angular.forEach(configs, function(val,key) {
+        angular.forEach(config.scenes, function(val,key) {
           var scene = {};
           scenes[val.code] = val;
         });
-        console.log(scenes);
+        console.log(config);
         return pannellum.viewer('panorama', {   
           "default": {
-              "firstScene": configs[0].code,
-              "author": configs[0].group,
+              "firstScene": config.scenes[0].code,
+              "author": config.name,
               "sceneFadeDuration": 1000,
               "autoLoad": true
           },
@@ -38,10 +38,10 @@ angular.module('controllers')
           };
       });
 
-      PanoService.getList().then(function(response){
-        $scope.panoConfigs = response.data;
+      PanoService.getScenes('charles').then(function(response){
+        $scope.panoConfig = response.data[0];
       }).finally(function(){
-        $scope.panorama = getScenes($scope.panoConfigs);
+        $scope.panorama = getScenes($scope.panoConfig);
       });
       
       $scope.welcome = function() {
