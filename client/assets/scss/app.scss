@@ -52,10 +52,20 @@
 	transform: scaleX(1);;
 				transition: 0.3s ease-in-out;
 }
-
 .flip-x {
 	transform: scaleX(-1);
 				transition: 0.3s ease-in-out;
+}
+
+.title-bar {
+	select {
+		margin: -1rem;
+		background: transparent;
+		color: #fff;
+		border: 0;
+		border-right: solid 1px white;
+		padding-right: 1rem;
+	}
 }
 
 .pano-container {
