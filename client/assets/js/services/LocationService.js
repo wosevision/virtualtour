@@ -32,6 +32,11 @@ angular.module('services', [])
 									+"<p>ACE enables knowledge and practical experience to combine more effectively and to create synergies across disciplines and skill sets, leading to a stronger manufacturing economy in Canada. At the same time, it helps educate and train the skilled personnel needed to take the automotive industry and manufacturing to a new level of competitiveness and success.</p>", 
 							img: 'ace.jpg',
 							icon: iconPixel,
+							scenes: [
+								{code:'atrium', name: 'Atrium (Main Entrance)'},
+								{code:'windtunnel', name: 'Climatic Wind Tunnel', description: 'Colin wuz here'},
+								{code:'chamber', name: 'Anechoic Chamber'}
+							],
 							coords: [43.94565,-78.899121],
 							coordsEntrance: [43.945627,-78.898769],						  
 						},

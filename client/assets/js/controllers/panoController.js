@@ -1,24 +1,10 @@
-angular.module('controllers', [])
-    .controller('panoController', ['$rootScope', '$scope', '$http', 'FoundationApi', 'PanoService', function($rootScope, $scope, $http, FoundationApi, PanoService) {
+angular.module('controllers')
+    .controller('panoController', ['$rootScope', '$scope', '$http', 'FoundationApi', 'UIStateService', 'PanoService', function($rootScope, $scope, $http, FoundationApi, UIStateService, PanoService) {
 
-      var actionSheet = document.getElementById('addHotspot');
-
+      $scope.panorama = {};
+      $scope.UIState = UIStateService.get('location')
       $scope.panoConfigs = [];
       $scope.menuState = false;
-      $scope.addHotspot = {
-        active: false,
-        data: {
-          parent: '',
-          type: 'info',
-          text: '',
-          URL: '',
-          sceneId: '',
-          targetPitch: 0,
-          targetYaw: 0,
-          pitch: 0,
-          yaw: 0
-        }
-      };
 
       function getScenes(configs) {
         // iteratively build array of scene objects
@@ -30,21 +16,15 @@ angular.module('controllers', [])
           scenes[val.code] = val;
         });
         console.log(scenes);
-        $scope.addHotspot.data.parent = configs[0]._id;
         return pannellum.viewer('panorama', {   
           "default": {
               "firstScene": configs[0].code,
+              "author": configs[0].group,
+              "sceneFadeDuration": 1000,
               "autoLoad": true
           },
           
           "scenes": scenes
-        });
-      }
-
-      $scope.submitHotspot = function(response) {
-        var data = JSON.stringify($scope.addHotspot.data);
-        $http.post('http://localhost:3000/hotspots', data).then(function(response) {
-          console.log(response);
         });
       }
 
@@ -54,8 +34,7 @@ angular.module('controllers', [])
           } else if (event === 'open') {
               $scope.menuState = true;
           } else { 
-              // event === 'toggle'
-              $scope.menuState = !$scope.menuState;
+            $scope.menuState = !$scope.menuState;
           };
       });
 
@@ -64,21 +43,10 @@ angular.module('controllers', [])
       }).finally(function(){
         $scope.panorama = getScenes($scope.panoConfigs);
       });
-
-      var touchContainer = document.getElementById('panorama');
-      var hammertime = new Hammer(touchContainer);
-      hammertime.on('press', function(ev) {
-        // if ($scope.addHotspot.active === false) {
-          actionSheet.style.top = ev.center.y+"px";
-          actionSheet.style.left = ev.center.x+"px";
-          $scope.addHotspot.active = true;
-        // }
-        coords = $scope.panorama.mouseEventToCoords(ev.srcEvent);
-        $scope.addHotspot.data.pitch = coords[0];
-        $scope.addHotspot.data.yaw = coords[1];
-        $scope.$digest();
-          console.log($scope.addHotspot);
-      });
       
+      $scope.welcome = function() {
+        FoundationApi.publish('welcome-notifications', { title: 'Welcome to the UOIT Virtual Tour', content: 'Take a guided tour of the university from the comfort of your home with our digital tour guide, or just dive in!', color: 'dark', image: 'https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png' });
+      }
 
-    }]);
+    }
+  ]);
