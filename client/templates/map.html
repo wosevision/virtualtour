@@ -1,17 +1,30 @@
 ---
 name: map
 url: /map
-animationIn: slideInRight
-animationOut:  slideOutLeft
+animationIn: fadeIn
+animationOut:  fadeOut
+controller: mapController
 ---
 
-<div class="grid-content">
-  <!-- Add search bar -->
-  <h3 class="text-center">Campus map</h3>
-  <h4>Subtitle goes here</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio vitae rerum amet voluptates culpa nam, alias nobis non, dolorem eveniet consectetur dolorum dicta sint, quos earum eaque! Illo, quidem, enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam animi dolore optio quam asperiores nostrum vero perspiciatis assumenda enim suscipit vel tenetur ipsa fugiat eaque voluptatibus sapiente debitis possimus, adipisci.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio vitae rerum amet voluptates culpa nam, alias nobis non, dolorem eveniet consectetur dolorum dicta sint, quos earum eaque! Illo, quidem, enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam animi dolore optio quam asperiores nostrum vero perspiciatis assumenda enim suscipit vel tenetur ipsa fugiat eaque voluptatibus sapiente debitis possimus, adipisci.</p>
-</div>
+<div class="grid-block" style="height:100%">
+	<div class="grid-content collapse" style="height:100%">
 
-<div class="grid-block shrink">
+    <script type="text/ng-template" id="searchbox.tpl.html">
+        <input type="text" placeholder="Search Box">
+    </script>
+
+		<ui-gmap-google-map
+		         center="map.center"
+		         pan="map.pan"
+		         zoom="map.zoom"
+		         draggable="true"
+		         refresh="map.refresh"
+		         options="map.options"
+		         events="map.events"
+		         bounds="map.bounds">
+<ui-gmap-search-box template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
+		    <!-- other ui-gmap-directives here -->
+
+		</ui-gmap-google-map>
+	</div>
 </div>

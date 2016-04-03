@@ -5,6 +5,31 @@
 @import "extends";
 
 @import "pannellum";
+@import "loading-bar";
+
+
+// LOADING BAR AND SPINNER
+#loading-bar {
+	.peg {
+	  height: 5px;
+	  box-shadow: #0077CA 4px 0 8px 1px;
+	}
+	.bar {
+		background: #0077CA;
+	  height: 5px;
+	}
+}
+
+#loading-bar-spinner {
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  .spinner-icon {
+	  width: 30px;
+	  height: 30px;
+	  border-top-color:  #0077CA;
+	  border-left-color: #0077CA;
+	}
+}
 
 // TITLE BAR
 .nav-bar {
@@ -158,13 +183,13 @@
 	}
 }
 
+// PANORAMA
 .pnlm-compass {
 	right: 0.5rem;
 	bottom: auto;
 	top: 0.5rem;
 }
 
-// PANORAMA
 .pnlm-container {
     font-family: $franklin_gothic_fsbook;
 }
@@ -184,6 +209,30 @@
 
 .pnlm-author-box {
     padding-left: 0;
+}
+
+// GOOGLE MAP
+.angular-google-map,
+.angular-google-map-container {
+  width: 400px;
+  height: 100vh;
+  // height: calc(100vh - 60px);
+  background: transparent !important;
+  input {
+  	font-family: $franklin_gothic_fsbook;
+  	transition: 0.1s;
+  	background: rgba(255,255,255,0.2);
+  	color: #fff;
+  	border: solid 1px #fff;
+  	border-radius: 100em;
+  	margin-top: 0.5rem;
+  	padding: 1.5rem 2rem;
+  	width: calc(100% - 0.5rem);
+  	&:hover, &:focus{
+	  	background: rgba(255,255,255,0.9);
+  	}
+  }
+
 }
 
 // ACTION SHEET

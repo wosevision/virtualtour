@@ -2,15 +2,18 @@
   'use strict';
 
   angular.module('application', [
+    // dependencies
     'ui.router',
     'ngAnimate',
+    'angular-loading-bar',
+    'uiGmapgoogle-maps',
 
     //foundation
     'foundation',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
 
-    //services
+    //app
     'services',
     'controllers'
   ])
@@ -18,9 +21,16 @@
     .run(run)
   ;
 
-  config.$inject = ['$urlRouterProvider', '$locationProvider'];
+  config.$inject = ['$urlRouterProvider', '$locationProvider', 'uiGmapGoogleMapApiProvider', 'cfpLoadingBarProvider'];
 
-  function config($urlProvider, $locationProvider) {
+  function config($urlProvider, $locationProvider, uiGmapGoogleMapApiProvider, cfpLoadingBarProvider) {
+
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyA4FYWF5t10-jOHCiAzlRmoetVJ8D1_oc8',
+        v: '3.22', //defaults to latest 3.X anyhow
+        libraries: 'geometry,visualization,places'
+    });
+
     $urlProvider.otherwise('/');
 
     $locationProvider.html5Mode({

@@ -29,7 +29,7 @@ var paths = {
   sass: [
     'client/assets/scss',
     'bower_components/foundation-apps/scss',
-    //'bower_components/pannellum/dist'
+    'bower_components/angular-loading-bar/build',
     'node_modules/pannellum/build'
   ],
   // These files include Foundation for Apps and its dependencies
@@ -47,7 +47,11 @@ var paths = {
   ],
   // These files are for your app's JavaScript
   appJS: [
-    //'bower_components/pannellum/dist/pannellum.js',
+    'bower_components/lodash/dist/lodash.min.js',
+    'bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
+    //'bower_components/angular-google-maps/dist/angular-google-maps.min.js',
+    'bower_components/angular-google-maps/dist/angular-google-maps.js',
+    'bower_components/angular-loading-bar/build/loading-bar.min.js',
     'node_modules/pannellum/build/pannellum.js',
     'client/assets/js/services/*.js',
     'client/assets/js/controllers/*.js',
