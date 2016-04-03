@@ -13,7 +13,7 @@ controller: poiController
   	<section class="block-list thumbs">
 			<header>Scenes</header>
 			<ul>
-				<li ng-repeat="scene in location.scenes"><a ui-sref="location({ location : '{{location.code}}', scene: '{{scene.code}}' })"><h4>{{scene.name}}</h4>{{scene.description}}<img ng-src="assets/img/{{location.code}}/{{scene.code}}/{{scene.code}}_thumb.jpg" class="thumb"></a></li>
+				<li ng-repeat="scene in location.scenes"><a ui-sref="location({ location : '{{location.code}}', scene: '{{scene.code}}' })"><h4>{{scene.title}}</h4>{{scene.description}}<img ng-src="assets/img/{{location.code}}/{{scene.code}}/{{scene.code}}.jpg" class="thumb"></a></li>
 			</ul>
 		</section>
   </div>

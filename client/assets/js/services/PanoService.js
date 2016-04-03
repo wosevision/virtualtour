@@ -8,7 +8,7 @@ angular.module('services')
 				  return response;
 				});
 			},
-			getScenes: function(location) {
+			getLocation: function(location) {
 				return $http.get(baseURL + '/panoramas/' + location)
 				.then(function(response) {
 				  return response;

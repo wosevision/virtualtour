@@ -8,7 +8,13 @@ angular.module('services', [])
 				.then(function(response) {
 				  return response;
 				});
-			}
+			},
+            getScenes: function(location) {
+                return $http.get(baseURL + '/locations/'+location)
+                .then(function(response) {
+                  return response;
+                });
+            }
 		}
     // return {
     // 	"all": function () {

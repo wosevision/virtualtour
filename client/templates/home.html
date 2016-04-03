@@ -1,8 +1,8 @@
 ---
 name: locations
 url: /
-animationIn: slideInRight
-animationOut:  slideOutLeft
+animationIn: fadeIn
+animationOut:  fadeOut
 controller: poiController
 ---
   <div class="grid-content">
@@ -12,12 +12,12 @@ controller: poiController
   </div>
   <div class="grid-content collapse">
   <zf-accordion auto-open="false" multi-open="true">
-    <zf-accordion-item ng-repeat="poi in pois" title="{{poi.category}}">
+    <zf-accordion-item title="Downtown">
       <section class="block-list">
         <ul>
           
-          <li ng-repeat="scene in poi.scenes" class="with-chevron">
-            <a ui-sref="location({ location : '{{scene.code}}' })">{{scene.title}} <!-- <small>{{listing.location}}</small> --></a>
+          <li ng-repeat="poi in pois" class="with-chevron">
+            <a ui-sref="location({ location: poi.code })">{{poi.label}} &nbsp;<span class="badge">{{poi.scenes.length}}</span></a>
           </li>
 
         </ul>

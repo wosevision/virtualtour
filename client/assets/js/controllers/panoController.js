@@ -2,31 +2,50 @@ angular.module('controllers')
     .controller('panoController', ['$rootScope', '$scope', '$http', 'FoundationApi', 'UIStateService', 'PanoService', function($rootScope, $scope, $http, FoundationApi, UIStateService, PanoService) {
 
       $scope.panorama = {};
-      $scope.UIState = UIStateService.get('location')
-      $scope.panoConfig = [];
+      $scope.location = {};
       $scope.menuState = false;
 
-      function getScenes(config) {
-        // iteratively build array of scene objects
-        // each object has single top-level key denoting code
-        // i.e. { "charles": {...(scene)...} }
-        var scenes = [];
-        angular.forEach(config.scenes, function(val,key) {
-          var scene = {};
-          scenes[val.code] = val;
-        });
-        console.log(config);
+      function makePano(location, firstScene) {
         return pannellum.viewer('panorama', {   
           "default": {
-              "firstScene": config.scenes[0].code,
-              "author": config.name,
+              "firstScene": firstScene || location.scenes[0].code,
+              "author": location.name,
               "sceneFadeDuration": 1000,
               "autoLoad": true
           },
-          
-          "scenes": scenes
+          "scenes": makeScenes($scope.location)
         });
       }
+
+      function makeScenes(location) {
+        // iteratively build array of scene objects
+        // each object has single top-level key denoting code
+        // i.e. { "charles": {...(scene)...} }
+        var scenes = {};
+        angular.forEach(location.scenes, function(val,key) {
+          var scene = {};
+          scenes[val.code] = val;
+        });
+        return scenes;
+      }
+      
+      function loadScenes(location, firstScene) {
+        PanoService.getLocation(location).then(function(response){
+          $scope.location = response.data[0];
+        }).finally(function(){
+          $scope.panorama = makePano($scope.location, firstScene);
+        });
+      }
+
+      loadScenes('charles', 'charles_ext_1a');
+
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+        if (toParams.scene) {
+          renderer = $scope.panorama.getRenderer();
+          renderer.destroy();
+          loadScenes(toParams.location, toParams.scene);
+        }
+      });
 
       FoundationApi.subscribe('sidebar', function(event) {
           if (event === 'close') {
@@ -36,12 +55,6 @@ angular.module('controllers')
           } else { 
             $scope.menuState = !$scope.menuState;
           };
-      });
-
-      PanoService.getScenes('charles').then(function(response){
-        $scope.panoConfig = response.data[0];
-      }).finally(function(){
-        $scope.panorama = getScenes($scope.panoConfig);
       });
       
       $scope.welcome = function() {
