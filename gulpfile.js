@@ -30,6 +30,7 @@ var paths = {
     'client/assets/scss',
     'bower_components/foundation-apps/scss',
     'bower_components/angular-loading-bar/build',
+    'bower_components/intro.js',
     'node_modules/pannellum/build'
   ],
   // These files include Foundation for Apps and its dependencies
@@ -39,6 +40,7 @@ var paths = {
     'bower_components/tether/tether.js',
     'bower_components/hammerjs/hammer.js',
     'bower_components/angular/angular.js',
+    'bower_components/angular-sanitize/angular-sanitize.js',
     'bower_components/angular-animate/angular-animate.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/foundation-apps/js/vendor/**/*.js',
@@ -48,10 +50,11 @@ var paths = {
   // These files are for your app's JavaScript
   appJS: [
     'bower_components/lodash/dist/lodash.min.js',
-    'bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
-    //'bower_components/angular-google-maps/dist/angular-google-maps.min.js',
+    'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
     'bower_components/angular-google-maps/dist/angular-google-maps.js',
-    'bower_components/angular-loading-bar/build/loading-bar.min.js',
+    'bower_components/angular-loading-bar/build/loading-bar.js',
+    'bower_components/intro.js/intro.js',
+    'bower_components/angular-intro.js/src/angular-intro.js',
     'node_modules/pannellum/build/pannellum.js',
     'client/assets/js/services/*.js',
     'client/assets/js/controllers/*.js',
@@ -119,9 +122,9 @@ gulp.task('sass', function () {
       outputStyle: (isProduction ? 'compressed' : 'nested'),
       errLogToConsole: true
     }))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie 10']
-    }))
+    // .pipe($.autoprefixer({
+    //   browsers: ['last 2 versions', 'ie 10']
+    // }))
     .pipe(minifyCss)
     .pipe(gulp.dest('./build/assets/css/'))
   ;
