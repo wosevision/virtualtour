@@ -5,8 +5,10 @@
     // dependencies
     'ui.router',
     'ngAnimate',
+    'ngSanitize',
     'angular-loading-bar',
     'uiGmapgoogle-maps',
+    'angular-intro',
 
     //foundation
     'foundation',

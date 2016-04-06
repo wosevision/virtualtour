@@ -6,7 +6,70 @@
 
 @import "pannellum";
 @import "loading-bar";
+@import "introjs";
 
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.04, 1.04);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+body {
+	overflow: hidden;
+}
+
+// WELCOME TOUR
+.introjs-fixParent {
+  position: relative !important;
+  overflow: visible !important;
+}
+.introjs-helperLayer {
+// background: -moz-radial-gradient(center,ellipse cover,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.6) 100%);
+// background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(255,255,255,0.2)),color-stop(100%,rgba(255,255,255,0.6)));
+// background: -webkit-radial-gradient(center,ellipse cover,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.6) 100%);
+// background: -o-radial-gradient(center,ellipse cover,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.6) 100%);
+// background: -ms-radial-gradient(center,ellipse cover,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.6) 100%);
+// background: radial-gradient(center, ellipse cover, rgba(255,255,255,0.2) 0, rgba(255,255,255,0.6) 100%);
+	> a {
+	}
+}
+.introjs-showElement {
+	  // animation-name: pulse;
+	  // animation-iteration-count: infinite;
+	  // animation-duration: 2s;
+	  // animation-fill-mode: both;
+	a {
+		background: inherit !important;
+	}
+}
+
+// MENU BAR
+.pano-container {
+	height:calc(100% - 60px);
+	.menu-bar {
+		z-index: 3;
+		width: 7rem;
+		li {
+			background: inherit;
+			&.introjs-showElement {
+				border-radius: 4px;
+		  	overflow: hidden !important;
+			}
+		}
+		&.icon-top li a {
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}
 
 // LOADING BAR AND SPINNER
 #loading-bar {
@@ -60,15 +123,20 @@
 		list-style: none;
 		> li {
 			margin: 0 0.9375rem;
-		}
-		> li > a {
-			@extend %text_nav_primary;
-			padding: 0;	
 			background: #fff;
-			color: $uoitgrey;
-			transition: 0.15s linear;
-			&:hover {
-				color: $uoitlightblue;
+			> a {
+				@extend %text_nav_primary;
+				padding: calc(1rem + 2.5px) 0;	
+				background: #fff;
+				color: $uoitgrey;
+				transition: 0.15s linear;
+				&:hover {
+					color: $uoitlightblue;
+				}
+				&.active {
+					//background: $uoitgreylight;
+					box-shadow: inset 0 -2px 0 $uoitlightblue;
+				}
 			}
 		}
 	}
@@ -90,18 +158,6 @@
 		border: 0;
 		border-right: solid 1px white;
 		padding-right: 1rem;
-	}
-}
-
-.pano-container {
-	height:calc(100% - 60px);
-	& .menu-bar {
-		z-index: 3;
-		width: 7rem;
-		&.icon-top li a {
-			justify-content: center;
-			text-align: center;
-		}
 	}
 }
 
@@ -141,7 +197,7 @@
 		position:relative;
 		overflow: hidden;
 		padding: 2rem;
-		box-shadow: inset 200px 0 100px rgba(0,0,0,0.6);
+		box-shadow: inset 200px 0 100px rgba(0,0,0,0.7);
 		h4 {
 			line-height: 10px;
 		}
@@ -152,13 +208,16 @@
 		left: 0;
 		top: 0;
 		z-index: -1;
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 }
 
 // OFFCANVAS
+#sidebar:not(.ng-animate) {
+	z-index: -1;
+}
 #sidebar {
-	filter: blur(px);
+	//filter: blur(5px);
 	right: 7rem;
 	&.with-shadow {
 		top: 0;
@@ -167,6 +226,7 @@
 		transition: 0.6s ease-in-out;
 		&.is-active {
 			box-shadow: -100px 0 100px rgba(0,0,0,0.7);
+			z-index: 2;
 		}
 	}
 	&:not(.with-shadow) {
@@ -215,7 +275,7 @@
 .angular-google-map,
 .angular-google-map-container {
   width: 400px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   // height: calc(100vh - 60px);
   background: transparent !important;
   input {
