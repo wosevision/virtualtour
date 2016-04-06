@@ -3,9 +3,13 @@ angular.module('controllers')
 
       $scope.panorama = {};
       $scope.location = {};
+      $scope.scenes = {};
+      $scope.currentScene = '';
       $scope.menuState = false;
 
       function makePano(location, firstScene) {
+        $scope.scenes = makeScenes(location);
+        $scope.currentScene = $scope.scenes[firstScene];
         return pannellum.viewer('panorama', {   
           "default": {
               "firstScene": firstScene || location.scenes[0].code,
@@ -13,7 +17,7 @@ angular.module('controllers')
               "sceneFadeDuration": 1000,
               "autoLoad": true
           },
-          "scenes": makeScenes($scope.location)
+          "scenes": $scope.scenes
         });
       }
 
@@ -28,7 +32,7 @@ angular.module('controllers')
         });
         return scenes;
       }
-      
+
       function loadScenes(location, firstScene) {
         PanoService.getLocation(location).then(function(response){
           $scope.location = response.data[0];
@@ -36,14 +40,17 @@ angular.module('controllers')
           $scope.panorama = makePano($scope.location, firstScene);
         });
       }
+      function loadScene (scene, pitch, yaw) {
+        $scope.panorama.loadScene(scene, pitch, yaw);
+      }
 
       loadScenes('charles', 'charles_ext_1a');
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
         if (toParams.scene) {
-          renderer = $scope.panorama.getRenderer();
-          renderer.destroy();
-          loadScenes(toParams.location, toParams.scene);
+          $scope.currentScene = $scope.scenes[toParams.scene];
+          console.log($scope.currentScene);
+          loadScene(toParams.scene, 0, 0);
         }
       });
 

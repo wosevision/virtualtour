@@ -2,8 +2,6 @@ angular.module('controllers', [])
   .controller('addHotspotController', ['$scope', '$http','FoundationApi', 'UIStateService', function($scope, $http, FoundationApi, UIStateService) {
 
       var actionSheet = document.getElementById('addHotspot');
-
-      $scope.UIState = UIStateService.get('location')
       $scope.addHotspot = {
         active: false,
         data: {
@@ -20,7 +18,7 @@ angular.module('controllers', [])
       };
 
       $scope.submitHotspot = function(response) {
-        $scope.addHotspot.data.parent = $scope.panoConfigs[0]._id;
+        $scope.addHotspot.data.parent = $scope.currentScene._id;
         var data = JSON.stringify($scope.addHotspot.data);
         $http.post('http://localhost:3000/hotspots', data).then(function(response) {
           $scope.addHotspot.active = false;
@@ -42,7 +40,7 @@ angular.module('controllers', [])
         $scope.addHotspot.data.pitch = coords[0];
         $scope.addHotspot.data.yaw = coords[1];
         $scope.$digest();
-          console.log($scope.addHotspot,ev);
+          console.log($scope.currentScene);
       });
       
 

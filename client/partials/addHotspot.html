@@ -2,7 +2,7 @@
 <!-- <div class="action-sheet-container"> -->
   <div class="action-sheet top" position="top" ng-class="{'is-active': addHotspot.active}" id="addHotspot">
     <div>
-      <p>Add Hotspot (<strong>{{addHotspot.data.pitch | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong> , <strong>{{addHotspot.data.yaw | limitTo:8}}<span ng-if="addHotspot.data.pitch > 8">...</span></strong>)</p>
+      <p>Add Hotspot (<strong>{{addHotspot.data.pitch}}<!--  | limitTo:8 <span ng-if="addHotspot.data.pitch > 8">...</span> --></strong> , <strong>{{addHotspot.data.yaw}}<!-- | limitTo:8 <span ng-if="addHotspot.data.pitch > 8">...</span> --></strong>)</p>
       <ul>
         <li class="radio-block">
           <label><input type="radio" name="hotspot_type" value="info" ng-model="addHotspot.data.type">Info</label>
@@ -47,7 +47,7 @@
     </div>
     <div class="grid-content padding" style="padding-top: 1rem;">
       <select ng-model="addHotspot.data.sceneId">
-        <option ng-repeat="pano in panoConfigs" value="{{pano.code}}">{{pano.code}}</option>
+        <option ng-repeat="scene in scenes" value="{{scene.code}}">{{scene.code}}</option>
       </select>
       <a zf-close="" class="button">OK</a>
       <a zf-close="" class="button">Cancel</a>
