@@ -1,0 +1,63 @@
+
+
+<!--               
+  <section layout-padding>
+    <form>
+      <md-input-container>
+        <label for="testInput">Location search</label>
+        <input type="text" id="testInput"
+               ng-model="data" md-autofocus>
+      </md-input-container>
+    </form>
+  </section>
+-->
+
+<md-tabs md-border-bottom layout-fill class="md-primary md-hue-3 sidebar-tabs">
+
+  <md-tab>
+    <md-tab-label>
+    	<!-- <ng-md-icon icon="panorama_horizontal" style="fill: white"></ng-md-icon> -->
+    	<div>North location</div>
+      <md-tooltip md-direction="bottom">
+        View tours of 2000 Simcoe St North Oshawa location
+      </md-tooltip>
+    </md-tab-label>
+    <md-tab-body>
+
+      <md-toolbar md-scroll-shrink ng-if="true" class="md-primary">
+        <div class="md-toolbar-tools">Locations</div>
+      </md-toolbar>
+      <md-content style="height: calc(100vh - 178px);">
+        <section ng-repeat="(header,data) in northLocations">
+          <md-subheader class="md-primary">{{::header}}</md-subheader>
+          <md-list layout-padding>
+            <md-list-item class="md-3-line" ng-repeat="location in data">
+                <div class="md-list-item-text" layout-fill flex>
+                  <h3>{{::location.name}}</h3>
+                </div>
+            </md-list-item>
+          </md-list>
+        </section>
+      </md-content>
+
+    </md-tab-body>
+  </md-tab>
+
+  <md-tab>
+    <md-tab-label>
+    	<!-- <ng-md-icon icon="3d_rotation" style="fill: white"></ng-md-icon> -->
+    	<div>Downtown location</div>
+      <md-tooltip md-direction="bottom">
+        View tours of the downtown Oshawa locations
+      </md-tooltip>
+    </md-tab-label>
+    <md-tab-body>
+
+      <md-content layout-padding>
+        WORD UP
+      </md-content>
+
+    </md-tab-body>
+  </md-tab>
+
+</md-tabs>

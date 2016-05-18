@@ -1,0 +1,15 @@
+
+
+<script type="text/ng-template" id="buildEntity">
+    <a-{{entity.type || 'entity'}} build-attrs="entity.attrs">
+        <a-entity ng-repeat="entity in entity.entities" ng-include="'buildEntity'">           
+        </a-entity>
+    </a-{{entity.type || 'entity'}}>
+</script>
+
+<a-scene><!-- ng-include="'buildEntity'" -->
+  <a-entity ng-repeat="entity in attrsCopy" ng-init="entity.type = entity.type ? entity.type : 'entity'">
+    <a-{{entity.type}}>
+    </a-{{entity.type}}>
+  </a-entity>
+</a-scene>

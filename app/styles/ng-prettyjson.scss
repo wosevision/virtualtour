@@ -1,0 +1,9 @@
+pre.pretty-json {
+	padding-left: 1rem;
+}
+pre.pretty-json span.string { color: #ec008c; } //magenta; }
+pre.pretty-json span.number { color: #fff200; } //yellow; }
+pre.pretty-json span.boolean { color: #00a651; } //green; }
+pre.pretty-json span.null { color: #b7b7b7; }
+pre.pretty-json span.key { color: #00aeef; } //cyan; }
+pre.pretty-json span.sep { color: white; }
