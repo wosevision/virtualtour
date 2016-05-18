@@ -18,7 +18,7 @@ angular.module('controllers')
           position: 'auto'
         }
       ],
-        showStepNumbers: true,
+        showStepNumbers: false,
         showProgress: true,
         exitOnOverlayClick: true,
         exitOnEsc: true,

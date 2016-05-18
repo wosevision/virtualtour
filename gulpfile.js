@@ -140,7 +140,7 @@ gulp.task('uglify:foundation', function(cb) {
     }));
 
   return gulp.src(paths.foundationJS)
-    .pipe(uglify)
+    //.pipe(uglify)
     .pipe($.concat('foundation.js'))
     .pipe(gulp.dest('./build/assets/js/'))
   ;
@@ -153,7 +153,7 @@ gulp.task('uglify:app', function() {
     }));
 
   return gulp.src(paths.appJS)
-    .pipe(uglify)
+    //.pipe(uglify)
     .pipe($.concat('app.js'))
     .pipe(gulp.dest('./build/assets/js/'))
   ;

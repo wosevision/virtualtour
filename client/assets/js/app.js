@@ -37,7 +37,7 @@
 
     $locationProvider.html5Mode({
       enabled:true,
-      requireBase: '/' //false
+      requireBase: '/virtualtour/test/' //false
     });
 
     $locationProvider.hashPrefix('!');
