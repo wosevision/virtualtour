@@ -10,11 +10,19 @@ function MainCtrl($rootScope, $scope, $timeout, $mdSidenav, $log, Scene, GlobalS
   // check for mobile/landscape on every digest
   $scope.$watch(
     function() {
-      return window.matchMedia('screen and (max-device-width: 767px) and (orientation: landscape)').matches;
+      var m;
+      if (window.matchMedia('screen and (max-device-width: 767px)').matches) {
+        m = true;
+        if (window.matchMedia('screen and (orientation: landscape)').matches) {
+          m = 'landscape';
+        }
+        return m;
+      }
+      //return window.matchMedia('screen and (max-device-width: 767px) and (orientation: landscape)').matches;
     },
     function(m) {
-      $scope.landscapeMobile = m;
-      console.log(m);
+      $rootScope.mobile = m;
+      //console.log(m);
     }
   );
 
@@ -84,20 +92,24 @@ function MainCtrl($rootScope, $scope, $timeout, $mdSidenav, $log, Scene, GlobalS
 
   s.toggleMenu = function(navID, view) {
     // return function() {
-    if (view) {
+    if (view && !s.menuViews[view].show) {
       angular.forEach(s.menuViews, function(v) { v.show = false; });
       s.menuViews[view].show = true;
-    }
+      if (!$mdSidenav(navID).isOpen()) {
+        $mdSidenav(navID).open();
+      }
+    } else {
       $mdSidenav(navID)
         .toggle()
         .then(function () {
           // $log.debug("toggle " + navID  + " is done");
-        });
-    // }
+        }
+      );
+    }
   }
 
   s.toolbar = {
-    isOpen: GlobalSettings.USER._TOOLBAR_OPEN,
+    isOpen: $rootScope.appSettings._USER.__TOOLBAR_OPEN.val,
     toggle: function() {
       this.isOpen = !this.isOpen;
       !this.isOpen&&$mdSidenav('right').close();
