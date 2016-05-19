@@ -29,13 +29,17 @@
       </md-toolbar>
       <md-content style="height: calc(100vh - 178px);">
         <section ng-repeat="(header,data) in northLocations">
-          <md-subheader class="md-primary">{{::header}}</md-subheader>
+          <md-subheader class="md-primary">{{::header}} : {{currentLocation}}</md-subheader>
           <md-list layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="location in data">
+<!--             <md-list-item class="md-3-line" ng-repeat="location in data">
                 <div class="md-list-item-text" layout-fill flex>
                   <h3>{{::location.name}}</h3>
                 </div>
-            </md-list-item>
+            </md-list-item> -->
+  <md-list-item class="secondary-button" ng-repeat="location in data" ng-click="showLocationDetail(location, $event)">
+    <p>{{::location.name}}</p>
+    <!-- <md-button class="md-primary"> --><ng-md-icon icon="chevron_right"></ng-md-icon><!-- </md-button> -->
+  </md-list-item>
           </md-list>
         </section>
       </md-content>

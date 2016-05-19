@@ -1,6 +1,6 @@
-<md-progress-linear md-mode="determinate" class="md-hue-3" ng-if="!landscapeMobile"></md-progress-linear>
+<md-progress-linear md-mode="determinate" class="md-hue-3" ng-if="mobile!='landscape'"></md-progress-linear>
 
-<md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-if="!landscapeMobile"> <!-- hide show-gt-sm -->
+<md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-if="mobile!='landscape'"> <!-- hide show-gt-sm -->
 
     <md-toolbar-filler layout layout-align="left center">
       <img ng-src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="University of Ontario Institute of Technology" class="logo-shield">
@@ -11,22 +11,23 @@
 
       <span flex></span>
 
-      <md-button ng-click="gotoScene()">
+<!--       <md-button ng-click="gotoScene()">
         Switcheroo!
-      </md-button>
+      </md-button> -->
 
       <md-button ng-click="toggleMenu('config')" ng-class="{ 'active': isMenuOpen('config') }">
         <span hide show-gt-xs>{{ isMenuOpen('config') ? 'Disable' : 'Enable' }} editor</span>
         <ng-md-icon icon="edit" style="fill: #003c71;" hide-gt-xs></ng-md-icon>
-        <md-tooltip md-direction="bottom">
+        <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
           Toggle the scene builder
         </md-tooltip>
+
       </md-button>
       
       <md-button ng-click="toolbar.toggle()" ng-class="{ 'active': toolbar.isOpen }">
         <span hide show-gt-xs>{{ toolbar.isOpen ? 'Hide' : 'Show' }} toolbar</span>
         <ng-md-icon icon="menu" style="fill: #003c71;" hide-gt-xs></ng-md-icon>
-        <md-tooltip md-direction="bottom">
+        <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
           Toggle list of Virtual Tour locations
         </md-tooltip>
       </md-button>

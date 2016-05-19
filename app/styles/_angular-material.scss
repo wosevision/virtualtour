@@ -2708,7 +2708,7 @@ md-grid-list {
 }
 
 
-md-icon {
+md-icon, ng-md-icon {
   margin: auto;
   background-repeat: no-repeat no-repeat;
   display: inline-block;
@@ -3378,6 +3378,15 @@ md-list-item, md-list-item .md-list-item-inner {
     margin-bottom: 12px;
     box-sizing: content-box;
   }
+  & > div.md-primary > ng-md-icon:not(.md-avatar-icon),
+  & > div.md-secondary > ng-md-icon:not(.md-avatar-icon),
+  & > ng-md-icon:first-child:not(.md-avatar-icon),
+  > ng-md-icon.md-secondary:not(.md-avatar-icon) {
+    width: $list-item-primary-icon-width;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    box-sizing: content-box;
+  }
   & > div.md-primary > md-checkbox,
   & > div.md-secondary > md-checkbox,
   & > md-checkbox,
@@ -3387,6 +3396,9 @@ md-list-item, md-list-item .md-list-item-inner {
   }
 
   & > md-icon:first-child:not(.md-avatar-icon) {
+    margin-right: $list-item-primary-width - $list-item-primary-icon-width;
+  }
+  & > ng-md-icon:first-child:not(.md-avatar-icon) {
     margin-right: $list-item-primary-width - $list-item-primary-icon-width;
   }
   & > md-checkbox {

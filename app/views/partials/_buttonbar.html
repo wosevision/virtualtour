@@ -1,7 +1,7 @@
 <aside layout="column" class="button-bar" md-whiteframe="2" show-gt-sm ng-if="toolbar.isOpen&&!landscapeMobile">
   <md-button flex ng-repeat="(v,view) in ::menuViews" ng-click="toggleMenu('right', v)">
     {{ ::view.label }}
-    <md-tooltip md-direction="left">
+    <md-tooltip md-direction="left" md-autohide ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
       {{ ::view.desc }}
     </md-tooltip>
   </md-button>
