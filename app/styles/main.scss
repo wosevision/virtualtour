@@ -1,13 +1,22 @@
+//
+// BASE
 @import 'variables';
 @import 'typography';
-
+//
+// LIBS
 @import 'animate';
-
+//
+// NG LIBS
 @import 'angular-material';
 @import 'angular-ui-tree';
 @import 'ng-prettyjson';
-
+//
+// TOOLBARS
 @import 'components/titlebar';
+@import 'components/buttonbar';
+//
+// SIDENAV PANES
+@import 'components/locationmenu';
 
 section.viewbox {
 	// &::after {
@@ -23,46 +32,6 @@ section.viewbox {
 	// 	background: radial-gradient(ellipse at center,  rgba(0,0,0,0) 70%,rgba(0,0,0,0.3) 100%);
 	// 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#4d000000',GradientType=1 );
 	// }
-}
-
-.a-enter-vr {
-	transition: 0.8s ease;
-}
-.toolbar-open {
-	.a-enter-vr {
-		transform: translateX(-7.25rem);
-	}
-}
-
-aside.button-bar {
-	z-index: 100;
-	position: absolute;
-	right: -2rem;
-	padding-right: 2rem;
-	height: 100%;
-	width: 9.25rem;
-	background: rgba($uoitgreydark,0.95);
-	.md-button {
-		margin: 0;
-		color: white;
-		line-height: 1.15;
-	}
-  &.ng-enter {
-    -webkit-animation: bounceInRight 0.8s;
-    -moz-animation: bounceInRight 0.8s;
-    -ms-animation: bounceInRight 0.8s;
-    animation: bounceInRight 0.8s;
-  }
-  &.ng-leave {
-    -webkit-animation: bounceOutRight 0.8s;
-    -moz-animation: bounceOutRight 0.8s;
-    -ms-animation: bounceOutRight 0.8s;
-    animation: bounceOutRight 0.8s;
-  }
-}
-
-h1, h2, h3, .uppercase {
-	text-transform: uppercase;
 }
 
 .badge {
@@ -113,10 +82,5 @@ h1, h2, h3, .uppercase {
 	pre {
     direction:ltr;
 
-	}
-}
-.toolbar-open {
-	.md-sidenav-right {
-		left: calc(100% - 7.25rem);
 	}
 }
