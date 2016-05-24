@@ -1,27 +1,42 @@
 function LocationCtrl($scope, $timeout, $mdSidenav, $log, Location) {
 	'ngInject';
 
-  const s = $scope
+  const l = this;
+  const s = $scope;
+
+  const L = Object.assign(l, {
+    North: [],
+    Downtown: [],
+    Current: false,
+    showDetail: function(location, $event) {
+      var self = this;
+      Location.get({ code: location.code }, function(data) {
+        self.Current = data.location;
+        //console.log(data);
+      });
+    },
+    goBack: function () {
+      this.Current = false; 
+    }
+  }, l);
   
-  s.northLocations = [];
-  s.dtLocations = [];
+
+
   var northLocations = [];
   var dtLocations = [];
-
-  s.currentLocation = {};
 
   Location.query({ north: true }, function(data) {
     angular.forEach(data, function(location){
       northLocations.push(location);
     });
-    s.northLocations = _.reduce( northLocations, reducer, {} );
+    l.North = _.reduce( northLocations, reducer, {} );
   });
 
   Location.query({ downtown: true }, function(data) {
     angular.forEach(data, function(location){
       dtLocations.push(location);
     });
-    s.dtLocations = _.reduce( dtLocations, reducer, {} );
+    l.Downtown = _.reduce( dtLocations, reducer, {} );
   });
 
   function reducer(output, name) {
@@ -32,11 +47,6 @@ function LocationCtrl($scope, $timeout, $mdSidenav, $log, Location) {
       output[lCase[0]] = [name]; // Else add a key
     return output;
   }
-
-  s.showLocationDetail = function(location, $event) {
-    s.currentLocation = location;
-  }
-
 
 }
 

@@ -1,6 +1,6 @@
 function Location($resource, GlobalSettings) {
   'ngInject';
-  return $resource(GlobalSettings.APP._API_URL + '/locations/:id');
+  return $resource(GlobalSettings.APP._API_URL + '/locations/:code');
 }
 
 export default {

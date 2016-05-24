@@ -1,0 +1,43 @@
+.sidebar-tabs {
+	background: transparent;
+	& md-content {
+		background: transparent;
+	}
+  &.ng-enter {
+    -webkit-animation: bounceInLeft 0.8s;
+    -moz-animation: bounceInLeft 0.8s;
+    -ms-animation: bounceInLeft 0.8s;
+    animation: bounceInLeft 0.8s;
+  }
+  &.ng-leave {
+    -webkit-animation: bounceOutLeft 0.8s;
+    -moz-animation: bounceOutLeft 0.8s;
+    -ms-animation: bounceOutLeft 0.8s;
+    animation: bounceOutLeft 0.8s;
+  }
+}
+
+.location-detail {
+  &.ng-enter {
+    -webkit-animation: bounceInLeft 0.8s;
+    -moz-animation: bounceInLeft 0.8s;
+    -ms-animation: bounceInLeft 0.8s;
+    animation: bounceInLeft 0.8s;
+  }
+  &.ng-leave {
+    -webkit-animation: bounceOutLeft 0.8s;
+    -moz-animation: bounceOutLeft 0.8s;
+    -ms-animation: bounceOutLeft 0.8s;
+    animation: bounceOutLeft 0.8s;
+  }
+}
+
+.md-sidenav-right {
+	// background: none;
+	// background-image: url('../images/fade-bg-right.png');
+	// background-size: 100% auto;
+	// background-repeat: repeat-y;
+	// 
+	// background-color: rgba(white, 0.9);
+	// box-shadow: -50px 0 50px rgba(white, 0.9);
+}
