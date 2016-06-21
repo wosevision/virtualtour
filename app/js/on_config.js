@@ -32,33 +32,116 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThem
     })
     .accentPalette('grey');
 
-  // $mdIconProvider
-  //               //.iconSet('action', '../images/icons/material-design/action-icons.svg', 24)
-  //               .iconSet('alert', '../images/icons/material-design/alert-icons.svg', 24)
-  //               //.iconSet('av', '../images/icons/material-design/av-icons.svg', 24)
-  //               .iconSet('communication', '../images/icons/material-design/communication-icons.svg', 24)
-  //               .iconSet('content', '../images/icons/material-design/content-icons.svg', 24)
-  //               .iconSet('device', '../images/icons/material-design/device-icons.svg', 24)
-  //               .iconSet('editor', '../images/icons/material-design/editor-icons.svg', 24)
-  //               .iconSet('file', '../images/icons/material-design/file-icons.svg', 24)
-  //               .iconSet('hardware', '../images/icons/material-design/hardware-icons.svg', 24)
-  //               .iconSet('icons', '../images/icons/material-design/icons-icons.svg', 24)
-  //               .iconSet('image', '../images/icons/material-design/image-icons.svg', 24)
-  //               .iconSet('maps', '../images/icons/material-design/maps-icons.svg', 24)
-  //               .iconSet('navigation', '../images/icons/material-design/navigation-icons.svg', 24)
-  //               //.iconSet('notification', '../images/icons/material-design/notification-icons.svg', 24)
-  //               .iconSet('social', '../images/icons/material-design/social-icons.svg', 24);
-  //               //.iconSet('toggle', '../images/icons/material-design/toggle-icons.svg', 24);
-
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state('Home', {
-    url: '/',
-    controller: 'SceneCtrl as scene',
-    templateUrl: 'home.html',
-    title: 'Home'
-  });
+    .state('home', {
+      url: '',
+      //url: '',
+      abstract: true,
+      views: {
+        '@' : {
+          templateUrl: 'home.html'
+        }
+      }
+    });
+  $stateProvider
+    .state('location', {
+      url: '/',
+      //url: 'location',
+      parent: 'home',
+      views: {
+        'sidebarView' : {
+          templateUrl: '_sidebar/_location.html',
+          controller: 'LocationCtrl as Location'
+        },
+        'sceneView' : { 
+          templateUrl: 'welcome.html',
+          controller: function($mdDialog) {
+            function DialogController($scope, $mdDialog) {
+              $scope.hide = function() {
+                $mdDialog.hide();
+              };
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+              $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+              };
+            }
+            $mdDialog.show({
+              controller: DialogController,
+              templateUrl: 'partials/_welcomedialog.html',
+              parent: angular.element(document.body),
+              clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                  $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                  $scope.status = 'You cancelled the dialog.';
+                });
+          } 
+        }
+      }
+    })
+      .state('location.detail', {
+        url: ':code',
+        // params: { code: null },
+        views: {
+          'sidebarView@home' : {
+            templateUrl: '_sidebar/_location-detail.html',
+            resolve: {
+              locationResource: function (Location, $stateParams) {
+                return Location.get({ code: $stateParams.code }).$promise;
+              }
+            },
+            controller: function($scope, locationResource) {
+              $scope.location = locationResource.location;
+            }
+          }
+        }
+      })
+        .state('scene', {
+          url: '/:code/:id',
+          parent: 'home',
+          //url: '/:id',
+          //parent: 'location.detail',
+          views: {
+            'sceneView@home' : {
+              template: '<build-scene scene="scene"></build-scene>',
+              resolve: {
+                sceneResource: function (Scene, $stateParams) {
+                  return Scene.get({ id: $stateParams.id }).$promise;
+                }
+              },
+              controller: function($scope, $stateParams, sceneResource) {
+                $scope.scene = sceneResource.scene;
+              }
+            },
+            'sidebarView@home' : {
+              templateUrl: '_sidebar/_location-detail.html',
+              resolve: {
+                locationResource: function (Location, $stateParams) {
+                  return Location.get({ code: $stateParams.code }).$promise;
+                }
+              },
+              controller: function($scope, locationResource) {
+                $scope.location = locationResource.location;
+              }
+            }
+          }
+        });
+  $stateProvider
+    .state('settings', {
+      //url: '/',
+      parent: 'home',
+      views: {
+          'sidebarView' : {
+            templateUrl: '_sidebar/_settings.html',
+            controller: 'SettingsCtrl'
+          }
+      }
+    });
 
   $urlRouterProvider.otherwise('/');
 

@@ -1,5 +1,12 @@
-function OnRun($rootScope, $templateCache, GlobalSettings) {
+function OnRun($rootScope, $templateCache, GlobalSettings, Datastore) {
   'ngInject';
+
+  // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) { 
+  //   event.preventDefault(); 
+  //   if (fromState == '') {
+
+  //   }
+  // });
 
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState) => {
@@ -17,20 +24,25 @@ function OnRun($rootScope, $templateCache, GlobalSettings) {
       return !func(item); 
     }
   };
-
+  
+  var _USER = Datastore.appSettings.get('_USER');
+  console.log('appSettings._USER:', _USER);
   $rootScope.appSettings = {
     _USER: {
       __TOOLBAR_OPEN: {
-        val: true,
+        val: _USER ? _USER.__TOOLBAR_OPEN.val : true,
         label: 'Toolbar open by default',
         icon: 'last_page'
       },
       __SHOW_TOOLTIPS: {
-        val: true,
+        val: _USER ? _USER.__SHOW_TOOLTIPS.val : true,
         label: 'Show hint messages',
         icon: 'announcement'
       }
     }
+  }
+  if (!_USER) {
+    Datastore.appSettings.set('_USER', $rootScope.appSettings._USER);
   }
 
   // hook libs up to window

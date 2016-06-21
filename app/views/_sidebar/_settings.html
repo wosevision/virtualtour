@@ -1,0 +1,9 @@
+<md-list>
+  <md-subheader class="md-no-sticky">Interface settings</md-subheader>
+  <md-list-item ng-repeat="setting in appSettings._USER">
+    <!-- <md-icon md-svg-icon="{{::setting.icon}}"></md-icon> -->
+    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}"></ng-md-icon>
+    <p> &nbsp;{{ ::setting.label }} </p>
+    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()"></md-switch>
+  </md-list-item>
+</md-list>

@@ -9,29 +9,38 @@
 // NG LIBS
 @import 'angular-material';
 @import 'angular-ui-tree';
+@import 'loading-bar';
 @import 'ng-prettyjson';
 //
-// TOOLBARS
+// COMPONENTS
 @import 'components/titlebar';
 @import 'components/buttonbar';
-//
-// SIDENAV PANES
 @import 'components/locationmenu';
+@import 'components/configmenu';
+@import 'components/scene';
 
-section.viewbox {
-	// &::after {
-	// 	content: '';
-	// 	z-index: 1;
-	// 	position: absolute;
-	// 	width: 100%;
-	// 	height: 100%;
-	// 	left: 0;
-	// 	top: 0;
-	// 	background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 70%, rgba(0,0,0,0.3) 100%);
-	// 	background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 70%,rgba(0,0,0,0.3) 100%);
-	// 	background: radial-gradient(ellipse at center,  rgba(0,0,0,0) 70%,rgba(0,0,0,0.3) 100%);
-	// 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#4d000000',GradientType=1 );
-	// }
+
+// LOADING BAR AND SPINNER
+#loading-bar {
+	.peg {
+	  height: 5px;
+	  box-shadow: #0077CA 4px 0 8px 1px;
+	}
+	.bar {
+		background: #0077CA;
+	  height: 5px;
+	}
+}
+
+#loading-bar-spinner {
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  .spinner-icon {
+	  width: 30px;
+	  height: 30px;
+	  border-top-color:  #0077CA;
+	  border-left-color: #0077CA;
+	}
 }
 
 .badge {
@@ -42,45 +51,6 @@ section.viewbox {
 	float: right;
 }
 
-.sidebar-tabs {
-	// .md-tab {
-	// 	line-height: 20px;
-	// 	> md-icon {
-	// 	  margin-bottom: 5px;
-
-	// 	  margin: 20px;
-	// 	  margin-top: 0;
-	// 	  width: 24px;
-	// 	  height: 24px;
-	// 	}
-	// }
-	// md-pagination-wrapper, md-tabs-canvas {
-	//   height: 72px;
-	// }
-}
-
 .md-track-ticks canvas {
 	left: 0;
-}
-
-.debug-container {
-	height: calc(100vh - 64px);
-	padding-top: 150px;
-	padding-bottom: 150px;
-  direction:rtl; 
-	overflow-y: scroll;
-	position: absolute;
-	top: -150px;
-	left: 320px;
-	margin: 0;
-	background: rgba(black, 0.7);
-	background: -moz-linear-gradient(left,  rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.7) 100%);
-	background: linear-gradient(to right,  rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.7) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
-	box-shadow: 150px 0 300px rgba(black, 0.7);
-	pre {
-    direction:ltr;
-
-	}
 }

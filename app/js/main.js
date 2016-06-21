@@ -9,15 +9,23 @@ import onRun     from './on_run';
 import 'ng-lodash';
 import 'angular-ui-router';
 import 'angular-ui-tree';
-import 'angular-aria';
 import 'angular-animate';
-import 'angular-resource';
+import 'angular-aria';
+import 'angular-cookies';
+import 'angular-loading-bar';
 import 'angular-material';
 import 'angular-material-icons';
+import 'angular-resource';
+import 'angular-storage';
 //import '../../node_modules/ng-prettyjson/dist/ng-prettyjson.min.js';
 
 //aframe
 import 'aframe';
+import extras from 'aframe-extras';
+extras.registerAll(); //.controls
+import 'aframe-drag-look-controls-component';
+import 'aframe-selectable-component';
+import 'aframe-mouse-cursor-component';
 
 import './templates';
 import './filters';
@@ -32,6 +40,9 @@ const requires = [
   'ui.router',
   'ui.tree',
   'ngAnimate',
+  'angular-loading-bar',
+  'angular-storage',
+  'ngCookies',
   'ngResource',
   'ngMaterial',
   'ngMdIcons',

@@ -1,4 +1,4 @@
-function LocationCtrl($scope, $timeout, $mdSidenav, $log, Location) {
+function LocationCtrl($scope, $state, $timeout, $mdSidenav, $log, Location) {
 	'ngInject';
 
   const l = this;
@@ -7,16 +7,16 @@ function LocationCtrl($scope, $timeout, $mdSidenav, $log, Location) {
   const L = Object.assign(l, {
     North: [],
     Downtown: [],
-    Current: false,
     showDetail: function(location, $event) {
-      var self = this;
-      Location.get({ code: location.code }, function(data) {
-        self.Current = data.location;
+      // var self = this;
+      // Location.get({ code: location.code }, function(data) {
+      //   self.Current = data.location;
+        $state.go('location.detail', { code: location.code });
         //console.log(data);
-      });
+      // });
     },
     goBack: function () {
-      this.Current = false; 
+      $state.go('location');
     }
   }, l);
   

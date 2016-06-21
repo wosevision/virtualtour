@@ -12,7 +12,7 @@
 }
 
 aside.button-bar {
-  z-index: 100;
+  z-index: 10000000;
   position: absolute;
   right: -2rem;
   padding-right: 2rem;
@@ -23,6 +23,10 @@ aside.button-bar {
     margin: 0;
     color: white;
     line-height: 1.15;
+    ng-md-icon {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
   }
   &.ng-enter {
     -webkit-animation: bounceInRight 0.8s;

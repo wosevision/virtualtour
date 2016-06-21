@@ -3,28 +3,60 @@
 	& md-content {
 		background: transparent;
 	}
-  &.ng-enter {
-    -webkit-animation: bounceInLeft 0.8s;
-    -moz-animation: bounceInLeft 0.8s;
-    -ms-animation: bounceInLeft 0.8s;
-    animation: bounceInLeft 0.8s;
-  }
-  &.ng-leave {
-    -webkit-animation: bounceOutLeft 0.8s;
-    -moz-animation: bounceOutLeft 0.8s;
-    -ms-animation: bounceOutLeft 0.8s;
-    animation: bounceOutLeft 0.8s;
-  }
+  // &.ng-enter {
+  //   -webkit-animation: bounceInLeft 0.8s;
+  //   -moz-animation: bounceInLeft 0.8s;
+  //   -ms-animation: bounceInLeft 0.8s;
+  //   animation: bounceInLeft 0.8s;
+  // }
+  // &.ng-leave {
+  //   -webkit-animation: bounceOutLeft 0.8s;
+  //   -moz-animation: bounceOutLeft 0.8s;
+  //   -ms-animation: bounceOutLeft 0.8s;
+  //   animation: bounceOutLeft 0.8s;
+  // }
 }
 
 .location-detail {
+  md-toolbar {
+    background-size: cover;
+    overflow: hidden;
+    h2 {
+      color: $uoitlightblue;
+      font-size: 1.5rem;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 140%;
+      height: 100%;
+      top: 0;
+      left: -20%;
+      box-shadow: inset 0 -80px 80px white;
+    }
+  }
+}
+
+// [ui-view] {
+//   background: transparent;
+//   & md-content {
+//     background: transparent;
+//   }
+// }
+
+[ui-view].sidebar-view {
   &.ng-enter {
-    -webkit-animation: bounceInLeft 0.8s;
-    -moz-animation: bounceInLeft 0.8s;
-    -ms-animation: bounceInLeft 0.8s;
-    animation: bounceInLeft 0.8s;
+    -webkit-animation: bounceInRight 0.8s;
+    -moz-animation: bounceInRight 0.8s;
+    -ms-animation: bounceInRight 0.8s;
+    animation: bounceInRight 0.8s;
   }
   &.ng-leave {
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 0;
     -webkit-animation: bounceOutLeft 0.8s;
     -moz-animation: bounceOutLeft 0.8s;
     -ms-animation: bounceOutLeft 0.8s;

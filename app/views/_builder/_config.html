@@ -1,0 +1,51 @@
+  <md-toolbar class="md-theme-primary">
+    <div class="md-toolbar-tools">
+<!--       <md-button class="md-icon-button" aria-label="Settings">
+        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+      </md-button> -->
+      <h2>
+        <span>Builder</span>
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="More">
+        <ng-md-icon icon="code" style="fill: #FFF" size="20"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-content ng-controller="builderCtrl as bc" layout="column" flex>
+
+    <div ui-tree style="text-align: right;position: relative;height:calc(100vh - 128px);">
+
+<!--       <md-fab-toolbar md-open="false" count="0"
+          md-direction="right">
+        <md-fab-trigger class="align-with-text">
+          <md-button aria-label="menu" class="md-fab md-primary">
+            <ng-md-icon icon="cloud_upload" style="fill: white" size="30"></ng-md-icon>
+          </md-button>
+        </md-fab-trigger>
+        <md-toolbar>
+          <md-fab-actions class="md-toolbar-tools">
+            <md-button aria-label="comment" ng-click="bc.expandAll">
+              Expand all
+            </md-button>
+            <md-button aria-label="label" ng-click="bc.collapseAll">
+              Collapse all
+            </md-button>
+          </md-fab-actions>
+        </md-toolbar>
+      </md-fab-toolbar>
+
+      <h2 style="position:absolute;height:56px;line-height:36px;top:0;right:5px;">Node tree</h2> -->
+      <ul ui-tree-nodes="" ng-model="scene.entities" id="tree-root">
+        <li ng-repeat="entity in scene.entities" ui-tree-node ng-include="'_builder/_renderconfig.html'" ng-init="nodeIndex = $index">
+        </li>
+      </ul>
+    </div>
+  </md-content>
+</md-sidenav>
+<!-- 
+<div class="debug-container" ng-if="isOpenConfig()">
+
+  <pre pretty-json="mc.entities"  />
+</div> -->
