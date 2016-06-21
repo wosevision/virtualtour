@@ -1,4 +1,4 @@
-function MainCtrl($rootScope, $scope, $timeout, $mdSidenav, $log, Scene, GlobalSettings) {
+function MainCtrl($rootScope, $scope, $state, $timeout, $mdComponentRegistry, $mdSidenav, $log, Scene, GlobalSettings) {
   'ngInject';
   // ViewModel
 
@@ -26,68 +26,28 @@ function MainCtrl($rootScope, $scope, $timeout, $mdSidenav, $log, Scene, GlobalS
     }
   );
 
-  mc.scenes = {
-    ua_int: [
-      {},
-      { b_link: '' },
-      { a: '' }
-    ]
-  };
+  // Scene.get({ id: 'ua_int_2a' }, function(data) {
+  //   mc.scenes.ua_int[2].a = data.scene;
+  //   //console.log(data);
+  // });
+  // Scene.get({ id: 'ua_int_1b-link' }, function(data) {
+  //   //console.log(data);
+  //   mc.scene = data.scene;
+  // });
 
-  Scene.get({ id: 'ua_int_2a' }, function(data) {
-    mc.scenes.ua_int[2].a = data.scene;
-    //console.log(data);
-  });
-  Scene.get({ id: 'ua_int_1b-link' }, function(data) {
-    mc.scenes.ua_int[1].b_link = data.scene;
-    //console.log(data);
-    mc.scene = mc.scenes.ua_int[1].b_link;
-  });
-
-  s.gotoScene = function() {
-    var lastScene = mc.scene;
-    mc.scene = {};
-    mc.scene = lastScene==mc.scenes.ua_int[2].a ? mc.scenes.ua_int[1].b_link : mc.scenes.ua_int[2].a;
+  s.gotoScene = function(code, id) {
+    //console.log($state);
+    $state.go('scene', { code: code, id: id });
   }
 
-  s.menuViews = {
-    location: {
-      label: 'By location',
-      icon: '',
-      desc: 'View a list of available tour locations',
-      show: false
-    },
-    map: {
-      label: 'By map',
-      icon: '',
-      desc: 'Explore locations from the UOIT Campus Map',
-      show: false
-    },
-    tour: {
-      label: 'Guided tour',
-      icon: '',
-      desc: 'Take a preset trip with a video tour guide',
-      show: false
-    },
-    playground: {
-      label: 'Playground',
-      icon: '',
-      desc: 'Explore UOIT\'s latest web experiments in 3D',
-      show: false
-    },
-    settings: {
-      label: 'Settings',
-      icon: '',
-      desc: 'Adjust the Virtual Tour experience',
-      show: false
-    }
-  };
+  s.menuViews = GlobalSettings.APP._MENU_VIEWS;
 
   //s.toggleMenu = buildToggler('right');
   //s.toggleConfig = buildToggler('config');
 
   s.isMenuOpen = function(navID){
-    return $mdSidenav(navID).isOpen();
+    $mdSidenav(navID).isOpen();
+    //console.log($mdSidenav(navID));
   };
 
   s.toggleMenu = function(navID, view) {
@@ -98,13 +58,22 @@ function MainCtrl($rootScope, $scope, $timeout, $mdSidenav, $log, Scene, GlobalS
       if (!$mdSidenav(navID).isOpen()) {
         $mdSidenav(navID).open();
       }
+      var viewOpts = { 
+        location: true,
+        inherit: true,
+        relative: $state.$current,
+        notify: true
+      }
+      $state.go(view);
     } else {
-      $mdSidenav(navID)
-        .toggle()
-        .then(function () {
-          // $log.debug("toggle " + navID  + " is done");
-        }
-      );
+      //$mdComponentRegistry.when(navID).then(function(){
+        $mdSidenav(navID)
+          .toggle();
+          // .then(function () {
+          //   // $log.debug("toggle " + navID  + " is done");
+          // }
+        
+      //});
     }
   }
 

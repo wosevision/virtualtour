@@ -9,35 +9,12 @@
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body layout="column" layout-fill ng-controller="MainCtrl as mc">
-  
-    <ng-include src="'partials/_menubar.html'"></ng-include>
-
-    <section layout="row" flex style="position: relative;height: calc(100% - 64px);" ng-class="{ 'toolbar-open' : toolbar.isOpen&&!landscapeMobile }">
-
-      <section ui-view class="viewbox">
-      </section>
-
-      <ng-include src="'partials/_buttonbar.html'"></ng-include>
-
-      <md-sidenav
-        class="md-sidenav-right"
-        md-component-id="right"
-        md-whiteframe="4">
-          <ng-include src="'partials/_sidebar/_locations.html'" ng-controller="LocationCtrl" ng-if="menuViews.location.show"></ng-include>
-          <ng-include src="'partials/_sidebar/_settings.html'" ng-controller="SettingsCtrl" ng-if="menuViews.settings.show"></ng-include>
-      </md-sidenav>
-      
-      <md-sidenav
-        class="md-sidenav-left"
-        md-component-id="config"
-        md-disable-backdrop
-        md-whiteframe="4">
-        <ng-include src="'partials/_builder/_config.html'"></ng-include>
-      </md-sidenav>
-
-    </section>
-
+  <body>
+    
+    <div ng-controller="MainCtrl as mc" layout="column" layout-fill>
+      <ng-include src="'partials/_menubar.html'"></ng-include>
+      <ui-view layout="column" layout-fill/>
+    </div>
     <script src="js/main.js"></script>
   </body>
 </html>
