@@ -1,4 +1,5 @@
 import angular from 'angular';
+import io from 'socket.io/lib/client';
 
 // angular modules
 import 'angular-ui-router';

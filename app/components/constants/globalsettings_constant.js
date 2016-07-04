@@ -1,7 +1,7 @@
 const GlobalSettings = {
 	APP: {
 		_TITLE: 'UOIT Virtual Tour',
-	  _API_URL: 'http://localhost:3000', //https://virtualtour-server.herokuapp.com
+	  _API_URL: 'http://localhost:3000/api', //https://virtualtour-server.herokuapp.com
 	  _MENU_VIEWS: {
 	    location: {
 	      label: 'By location',
