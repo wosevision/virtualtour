@@ -9,12 +9,20 @@
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
+
+  <body ng-cloak ng-controller="MainCtrl as mc" layout="column" layout-fill>
     
-    <div ng-controller="MainCtrl as mc" layout="column" layout-fill>
-      <ng-include src="'partials/_menubar.html'"></ng-include>
-      <ui-view layout="column" layout-fill/>
-    </div>
+      <ng-include src="'titlebar/_titlebar.html'" flex="nogrow"></ng-include>
+
+      <div flex layout="row">
+      	<ng-include src="'buttonbar/_buttonbar.html'" layout="column" flex="nogrow"></ng-include>
+
+      	<ng-include src="'sidebar/_sidebar.html'"></ng-include>
+
+      	<ng-include src="'scene/_scene.html'" flex flex-order="-2" layout="column" layout-fill></ng-include>
+      </div>
+      
     <script src="js/main.js"></script>
   </body>
+
 </html>

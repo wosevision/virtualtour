@@ -10,15 +10,14 @@ export default {
   buildDir: './build/',
 
   styles: {
-    index: 'app/main.scss',
-    src: 'app/components/**/*.scss',
+    src: 'app/styles/**/*.scss',
     dest: 'build/css',
     prodSourcemap: false,
     sassIncludePaths: [ ]
   },
 
   scripts: {
-    src: 'app/components/**/*.js',
+    src: 'app/js/**/*.js',
     dest: 'build/js',
     test: 'test/**/*.js',
     gulp: 'gulp/**/*.js'
@@ -51,8 +50,8 @@ export default {
 
   views: {
     index: 'app/index.html',
-    src: 'app/components/**/*.html',
-    dest: 'app/components'
+    src: 'app/views/**/*.html',
+    dest: 'app/js'
   },
 
   gzip: {
@@ -75,10 +74,6 @@ export default {
     this.views.watch = [
       this.views.index,
       this.views.src
-    ];
-    this.styles.watch = [
-      this.styles.index,
-      this.styles.src
     ];
 
     return this;

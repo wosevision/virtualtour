@@ -1,0 +1,56 @@
+//
+// BASE
+@import 'styles/variables';
+@import 'styles/typography';
+//
+// LIBS
+@import 'styles/libs/animate';
+//
+// NG LIBS
+@import 'styles/libs/angular-material';
+//@import 'libs/angular-ui-tree';
+@import 'styles/libs/loading-bar';
+//@import 'libs/ng-prettyjson';
+//
+// COMPONENTS
+@import 'components/titlebar/titlebar';
+@import 'components/buttonbar/buttonbar';
+@import 'components/sidebar/location/location';
+@import 'components/sidebar/builder/builder';
+@import 'components/scene/scene';
+
+
+// LOADING BAR AND SPINNER
+#loading-bar {
+	.peg {
+	  height: 5px;
+	  box-shadow: #0077CA 4px 0 8px 1px;
+	}
+	.bar {
+		background: #0077CA;
+	  height: 5px;
+	}
+}
+
+#loading-bar-spinner {
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  .spinner-icon {
+	  width: 30px;
+	  height: 30px;
+	  border-top-color:  #0077CA;
+	  border-left-color: #0077CA;
+	}
+}
+
+.badge {
+	font-size: 10px;
+}
+
+.text-right {
+	float: right;
+}
+
+.md-track-ticks canvas {
+	left: 0;
+}

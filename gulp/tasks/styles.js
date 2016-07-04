@@ -13,7 +13,7 @@ gulp.task('styles', function () {
 
   const createSourcemap = !global.isProd || config.styles.prodSourcemap;
 
-  return gulp.src(config.styles.src)
+  return gulp.src(config.styles.index)
     .pipe(gulpif(createSourcemap, sourcemaps.init()))
     .pipe(sass({
       sourceComments: !global.isProd,

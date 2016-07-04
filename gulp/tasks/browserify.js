@@ -23,7 +23,7 @@ function buildScript(file) {
   const shouldCreateSourcemap = !global.isProd || config.browserify.prodSourcemap;
 
   let bundler = browserify({
-    entries: [config.sourceDir + 'js/' + file],
+    entries: [config.sourceDir + file],
     debug: shouldCreateSourcemap,
     cache: {},
     packageCache: {},

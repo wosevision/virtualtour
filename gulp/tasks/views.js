@@ -15,7 +15,10 @@ gulp.task('views', function() {
   // Process any other view files from app/views
   const views = gulp.src(config.views.src)
     .pipe(templateCache({
-      standalone: true
+      standalone: true,
+      filename: 'app_templates.js',
+      module: 'app.templates',
+      moduleSystem: 'ES6'
     }))
     .pipe(gulp.dest(config.views.dest));
 
