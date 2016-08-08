@@ -2,9 +2,10 @@
 
 export default {
 
-  browserPort: 3000,
+  serverProxy: 'http://localhost:3000',
   UIPort: 3001,
   testPort: 3002,
+  browserPort: 4000,
 
   sourceDir: './app/',
   buildDir: './build/',

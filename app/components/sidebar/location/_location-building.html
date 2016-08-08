@@ -1,0 +1,13 @@
+
+  <section ng-repeat="(header, buildingData) in lc.location.buildings">
+    <md-subheader class="md-primary">{{::header}}</md-subheader>
+    <md-list>
+
+      <md-list-item class="secondary-button" ng-repeat="building in buildingData" ui-sref="scenes({code: building.code})">
+        <p>{{::building.name}}</p>
+        <ng-md-icon icon="chevron_right"></ng-md-icon>
+      </md-list-item>
+
+    </md-list>
+  </section>
+  <div flex ui-view></div>

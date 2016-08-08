@@ -1,21 +1,37 @@
 import angular from 'angular';
+const bulk = require('bulk-require');
 
-import './constants'
-import './main';
-import './filters';
-import './entity';
-import './entities';
-import './sidebar';
-import './scene';
+const components = bulk(__dirname, ['./**/!(*index|*_spec|app_*).js']);
 
-const components = angular.module('app.components', [
-	'app.components.constants',
-	'app.components.main',
-	'app.components.filters',
-	'app.components.entity',
-	'app.components.entities',
-	'app.components.sidebar',
-	'app.components.scene'
-]);
+let componentPath = __dirname.split('/');
+componentPath.shift();
+const component = componentPath.join('.');
+const componentModule = angular.module(component, []);
 
-export default components;
+function declare(componentMap, toDeclare) {
+  Object.keys(componentMap).forEach((key) => {
+    let item = componentMap[key];
+
+    if (!item) {
+      return;
+    }
+
+    if (item.fn) { // && typeof item.fn === 'function'
+    	switch (toDeclare) {
+    		case 'run':
+    		case 'config':
+    			componentModule[toDeclare](item.fn);
+    			break;
+    		default:
+      		componentModule[toDeclare](item.name, item.fn);
+    			break;
+    	}
+    } else {
+      declare(item, key.split('_')[1]);
+    }
+  });
+}
+
+declare(components);
+
+export default componentModule;

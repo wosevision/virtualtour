@@ -1,14 +1,15 @@
-function builderCtrl($scope, $window) {
+function builderCtrl($scope, $mdDialog, $timeout, $mdToast) {
 	'ngInject';
 
   const bc = this;
   
   // ADD ATTRIBUTE MENU
-  var originatorEv;
+  let originatorEv;
   bc.openMenu = function($mdOpenMenu, ev) {
     originatorEv = ev;
     $mdOpenMenu(ev);
   };
+
   bc.menuOptions = [{
     category: 'All',
     props: [{
@@ -54,46 +55,32 @@ function builderCtrl($scope, $window) {
     }]
   }];
 
-  bc.update = function(scope, $modelValue, prop, $index) {
-    $modelValue.attrs[0].val[$index] = scope.val;
-    
-    //console.log(newVal.attrs[0].val[$index]);
-    // $window.setTimeout(function() {
-    //   console.log($index, scope);
-    //   //scope.$parent.val = scope.val;
-    // }, 0);
+  let draftMsg = $mdToast.simple()
+    .textContent('Draft automatically saved!')
+    .action('LOCK IN CHANGES')
+    .highlightAction(true)
+    // .highlightClass('md-primary')
+    .position('bottom left');
 
+  let debouncer = function() {
+  	return $timeout(function() {
+	    $mdToast.show(draftMsg).then(function(response) {
+	      if ( response == 'ok' ) {
+	        alert('You clicked the \'UNDO\' action.');
+	      }
+	    });
+	  }, 5000);
+  }
+  let debounceToken;
+  bc.onChange = function () {
+  	$timeout.cancel(debounceToken);
+  	debounceToken = debouncer();
   }
 
-	bc.remove = function (scope) {
-    scope.remove();
-  };
-
-  bc.toggle = function (scope) {
-    scope.toggle();
-  };
-
-  bc.moveLastToTheBeginning = function () {
-    var a = mc.entities.pop();
-    mc.entities.splice(0, 0, a);
-  };
-
-  bc.newSubItem = function (scope) {
-    var nodeData = scope.$modelValue;
-    nodeData.nodes.push({
-      id: nodeData.id * 10 + nodeData.nodes.length,
-      title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-      nodes: []
-    });
-  };
-
-  bc.collapseAll = function () {
-    $scope.$broadcast('angular-ui-tree:collapse-all');
-  };
-
-  bc.expandAll = function () {
-    $scope.$broadcast('angular-ui-tree:expand-all');
-  };
+  bc.editorOpts = {
+  	mode: 'tree',
+  	onChange: bc.onChange
+  }
 
 }
 

@@ -1,36 +1,53 @@
-<!-- <md-progress-linear md-mode="determinate" class="md-hue-3" ng-if="mobile!='landscape'"></md-progress-linear> -->
-
 <md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-if="mobile!='landscape'"> <!-- hide show-gt-sm -->
 
     <md-toolbar-filler layout layout-align="left center">
-      <img ng-src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="University of Ontario Institute of Technology" class="logo-shield">
+      <img ui-sref="locations" ng-src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="University of Ontario Institute of Technology" class="logo-shield">
     </md-toolbar-filler>
 
     <div class="md-toolbar-tools">
-      <h1>UOIT Virtual Tour</h1>
+      <h1 ui-sref="locations">{{::tb.title}}</h1>
+
+      <div ncy-breadcrumb></div>
 
       <span flex></span>
+      <ng-transclude></ng-transclude>
+<!--       <md-button
+      	class="icon-button"
+      	ng-repeat="opt in tb.options"
+      	ng-click="tb.onClick(opt.id)"
+      	ng-class="{ 'active': opt.active }"
+      	aria-label="{{ ::opt.label }}">
+        <ng-md-icon
+        	icon="{{ opt.active ? (opt.icon[0] || opt.icon) : (opt.icon[1] || opt.icon) }}"
+        	style="fill: #003c71;">
+        </ng-md-icon>
+        <md-tooltip md-direction="bottom" md-autohide ng-if="!(mc.mobile||!mc.appSettings._USER.__SHOW_TOOLTIPS.val)">
+          {{ opt.active ? (opt.tooltip[0] || opt.tooltip) : (opt.tooltip[1] || opt.tooltip) }}
+        </md-tooltip>
 
-<!--       <md-button ng-click="gotoScene()">
-        Switcheroo!
       </md-button> -->
 
-      <md-button ng-click="toggleMenu('config')" ng-class="{ 'active': !isMenuOpen('config') }">
-        <span hide show-gt-xs>{{ isMenuOpen('config') ? 'Disable' : 'Enable' }} editor</span>
-        <ng-md-icon icon="edit" style="fill: #003c71;" hide-gt-xs></ng-md-icon>
-        <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
+<!--      <md-button class="icon-button" ng-click="mc.toolbar.toggle('config')" ng-class="{ 'active': isMenuOpen('config') }" aria-label="Scene builder">
+        <ng-md-icon icon="edit" style="fill: #003c71;"></ng-md-icon>
+        <md-tooltip md-direction="bottom" md-autohide ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
           Toggle the scene builder
         </md-tooltip>
 
       </md-button>
-      
-      <md-button ng-click="toolbar.toggle()" ng-class="{ 'active': !toolbar.isOpen }">
-        <span hide show-gt-xs>{{ toolbar.isOpen ? 'Hide' : 'Show' }} toolbar</span>
-        <ng-md-icon icon="menu" style="fill: #003c71;" hide-gt-xs></ng-md-icon>
-        <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
-          Toggle list of Virtual Tour locations
+
+ 			<md-button class="icon-button" ng-click="mc.toolbar.condense()" ng-class="{'active': !mc.toolbar.isCondensed}" aria-label="Toolbar size">
+        <ng-md-icon icon="{{ mc.toolbar.isCondensed ? 'flip_to_front' : 'flip_to_back'}}" style="fill: #003c71;"></ng-md-icon>
+        <md-tooltip md-direction="bottom" md-autohide ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
+          {{ mc.toolbar.isCondensed ? 'Expand' : 'Condense'}} toolbar
         </md-tooltip>
       </md-button>
+      
+      <md-button class="icon-button" ng-click="mc.toolbar.toggle('right')" ng-class="{ 'active': mc.toolbar.isOpen }" aria-label="Toolbar visibility">
+        <ng-md-icon icon="{{ mc.toolbar.isOpen ? 'last_page' : 'first_page'}}" style="fill: #003c71;""></ng-md-icon>
+        <md-tooltip md-direction="bottom" md-autohide ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
+          {{ mc.toolbar.isOpen ? 'Hide' : 'Show'}} toolbar
+        </md-tooltip>
+      </md-button> -->
     </div>
 
 </md-toolbar>

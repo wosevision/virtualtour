@@ -4,22 +4,73 @@
       <base href="/">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title ng-bind="pageTitle"></title>
+      <title 
+      	ncy-breadcrumb-last="{{ ncyBreadcrumbLabel ? ncyBreadcrumbLabel +' | ' : null }}UOIT Virtual Tour">
+			</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" href="css/main.css">
   </head>
 
-  <body ng-cloak ng-controller="MainCtrl as mc" layout="column" layout-fill>
+  <body
+  	ng-controller="MainCtrl as mc"
+  	layout="column"
+  	layout-fill
+  	ng-cloak>
     
-      <ng-include src="'titlebar/_titlebar.html'" flex="nogrow"></ng-include>
+<!--       <ng-include src="'titlebar/_titlebar.html'" flex="nogrow">
+      </ng-include> -->
+      <title-bar title="Virtual Tour">
+	      <title-bar-button
+	      	ng-repeat="(o, option) in mc.titlebar.options"
+	      	on-click="mc.titlebar.clickHandlers[o]()"
+	      	active="option.active"
+	      	icon="option.icon"
+	      	tooltip="option.tooltip">
+	      </title-bar-button>
+      </title-bar>
 
-      <div flex layout="row">
-      	<ng-include src="'buttonbar/_buttonbar.html'" layout="column" flex="nogrow"></ng-include>
+      <div 
+      	ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&&!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }"
+      	layout="row"
+      	flex>
+      
+      	<button-bar
+      		items="mc.toolbar.views"
+      		open="mc.toolbar.isOpen"
+      		condensed="mc.toolbar.isCondensed"
+      		layout="column"
+      		flex="nogrow">
+      	</button-bar>
 
-      	<ng-include src="'sidebar/_sidebar.html'"></ng-include>
+				<md-sidenav
+				  class="md-sidenav-right"
+				  md-component-id="right"
+				  md-disable-backdrop
+				  md-whiteframe="4"
+				  flex>
+				  <ui-view flex layout="column" layout-fill></ui-view>
+				</md-sidenav>
 
-      	<ng-include src="'scene/_scene.html'" flex flex-order="-2" layout="column" layout-fill></ng-include>
+				<md-sidenav
+				  class="md-sidenav-left"
+				  md-component-id="config"
+				  md-disable-backdrop
+				  md-whiteframe="4"
+				  style="max-width: none;width: auto;">
+				  <div resizable r-directions="['right']" flex layout-fill>
+				  <ng-include src="'sidebar/builder/_builder.html'"></ng-include>
+				  </div>
+				</md-sidenav>
+
+      	<section flex flex-order="-2" layout="column" layout-fill class="scene-view">
+      		<aframe-scene 
+      			sky="{{mc.activeScene.code}}"
+      			entities="mc.activeScene.entities"
+      			assets="mc.activeScene.assets">
+      		</aframe-scene>
+      	</section>
+
       </div>
       
     <script src="js/main.js"></script>

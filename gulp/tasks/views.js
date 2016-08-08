@@ -5,6 +5,10 @@ import gulp          from 'gulp';
 import merge         from 'merge-stream';
 import templateCache from 'gulp-angular-templatecache';
 
+
+const TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>).run([\'$templateCache\', function($templateCache) {';
+const TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
+
 // Views task
 gulp.task('views', function() {
 
@@ -18,7 +22,9 @@ gulp.task('views', function() {
       standalone: true,
       filename: 'app_templates.js',
       module: 'app.templates',
-      moduleSystem: 'ES6'
+      moduleSystem: 'ES6',
+      templateHeader: TEMPLATE_HEADER,
+      templateBody: TEMPLATE_BODY
     }))
     .pipe(gulp.dest(config.views.dest));
 

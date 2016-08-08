@@ -1,0 +1,35 @@
+md-sidenav.md-sidenav-right {
+  transition: left 0.8s ease;
+	top: 65px;
+}
+
+md-backdrop.md-sidenav-backdrop {
+  background-color: #003C71;
+  top: 65px;
+}
+
+.toolbar-open {
+  .md-sidenav-right {
+    left: calc(100% - 7.25rem);
+  }
+}
+
+.toolbar-condensed {
+  .md-sidenav-right {
+    left: calc(100% - 60px);
+  	transition: left 0.6s cubic-bezier(1,-1,.5,1);
+  }
+}
+
+.vAccordion--default v-pane-header {
+	color: #003C71;
+	position: relative;
+	margin: 0;
+  line-height: 1em;
+  text-transform: uppercase;
+  font-family: franklin_gothic_fsdemi;
+	padding: 16px;
+	&::after, &::before {
+		right: 16px;
+	}
+}

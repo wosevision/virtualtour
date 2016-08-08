@@ -1,17 +1,25 @@
 import angular from 'angular';
 
+import io from 'socket.io-client';
+window.io = io;
+import JSONEditor from 'jsoneditor';
+window.JSONEditor = JSONEditor;
+
 // angular modules
 import 'angular-ui-router';
-// import 'angular-ui-tree';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-cookies';
+import 'angular-resizable';
 import 'angular-loading-bar';
 import 'angular-material';
 import 'angular-material-icons';
 import 'angular-resource';
+import 'angular-sanitize';
 import 'angular-storage';
-//import '../../node_modules/ng-prettyjson/dist/ng-prettyjson.min.js';
+import 'angular-socket-io';
+import 'angular-breadcrumb';
+import 'v-accordion';
 
 // aframe modules
 import 'aframe';
@@ -29,10 +37,14 @@ import './components';
 
 // list required modules for DI
 const requires = [
-  //'ngPrettyJson',
+  'btford.socket-io',
+  'ncy-angular-breadcrumb',
   'ui.router',
-  //'ui.tree',
+  'ngAria',
+  'ngSanitize',
   'ngAnimate',
+  'vAccordion',
+  'angularResizable',
   'angular-loading-bar',
   'angular-storage',
   'ngCookies',

@@ -1,4 +1,4 @@
-function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
+function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider, $breadcrumbProvider ) { //, $mdIconProvider
   'ngInject';
 
   $mdThemingProvider.definePalette('UOITprimary', {
@@ -36,131 +36,55 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThem
 
   $stateProvider
     .state('home', {
-      //url: '/',
-      url: '',
-      abstract: true//,
-      // views: {
-      //   // '@' : {
-      //   //   templateUrl: 'scene/_scene.html'
-      //   // },
-      //   'sidebarView' : {
-      //     templateUrl: 'sidebar/location/_location.html',
-      //     controller: 'LocationCtrl as Location'
-      //   }
-      // }
+      url: '/',
+      // url: '',
+      abstract: true,
+		  ncyBreadcrumb: {
+		    label: ''
+		  }
     });
-  $stateProvider
-    .state('location', {
-      url: '/',
-      parent: 'home',
-      views: {
-        'sidebarView@' : {
-          templateUrl: 'sidebar/location/_location.html',
-          controller: 'LocationCtrl as Location'
-        }
-      }
-    })
-/*
-  $stateProvider
-    .state('location', {
-      url: '/',
-      //url: 'location',
-      parent: 'home',
-      views: {
-        'sidebarView' : {
-          templateUrl: '_sidebar/_location.html',
-          controller: 'LocationCtrl as Location'
-        },
-        'sceneView' : { 
-          templateUrl: 'welcome.html',
-          controller: function($mdDialog) {
-            function DialogController($scope, $mdDialog) {
-              $scope.hide = function() {
-                $mdDialog.hide();
-              };
-              $scope.cancel = function() {
-                $mdDialog.cancel();
-              };
-              $scope.answer = function(answer) {
-                $mdDialog.hide(answer);
-              };
-            }
-            $mdDialog.show({
-              controller: DialogController,
-              templateUrl: 'partials/_welcomedialog.html',
-              parent: angular.element(document.body),
-              clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                  $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                  $scope.status = 'You cancelled the dialog.';
-                });
-          } 
-        }
-      }
-    })
-*/
-      .state('location.detail', {
-        url: ':code',
-        // params: { code: null },
-        views: {
-          'sidebarView@' : {
-            templateUrl: 'sidebar/location/_location-detail.html',
-            resolve: {
-              locationResource: function (Location, $stateParams) {
-                return Location.get({ code: $stateParams.code }).$promise;
-              }
-            },
-            controller: function($scope, locationResource) {
-              $scope.location = locationResource.location;
-            }
-          }
-        }
-      })
-        .state('scene', {
-          url: '/:code/:id',
-          parent: 'home',
-          //url: '/:id',
-          //parent: 'location.detail',
-          views: {
-            'sceneView@' : {
-              template: '<build-scene scene="scene"></build-scene>',
-              resolve: {
-                sceneResource: function (Scene, $stateParams) {
-                  return Scene.get({ id: $stateParams.id }).$promise;
-                }
-              },
-              controller: function($scope, $stateParams, sceneResource) {
-                $scope.scene = sceneResource.scene;
-              }
-            },
-            'sidebarView@' : {
-              templateUrl: 'sidebar/location/_location-detail.html',
-              resolve: {
-                locationResource: function (Location, $stateParams) {
-                  return Location.get({ code: $stateParams.code }).$promise;
-                }
-              },
-              controller: function($scope, locationResource) {
-                $scope.location = locationResource.location;
-              }
-            }
-          }
-        });
+
   $stateProvider
     .state('settings', {
       //url: '/',
       parent: 'home',
       views: {
-          'sidebarView@' : {
+          '@' : {
             templateUrl: 'sidebar/settings/_settings.html',
             controller: 'SettingsCtrl'
           }
-      }
+      },
+		  ncyBreadcrumb: {
+		    label: 'App settings'
+		  }
+    });
+    
+  $stateProvider
+    .state('playground', {
+      //url: '/',
+      parent: 'home',
+      views: {
+          '@' : {
+            template: '<chat-window></chat-window>'
+          }
+      },
+		  ncyBreadcrumb: {
+		    label: '3D playground'
+		  }
     });
   $urlRouterProvider.otherwise('/');
 
+  $breadcrumbProvider.setOptions({
+    prefixStateName: 'home',
+    template:
+    	`<div class="breadcrumbs">
+    		<md-button ng-href="{{step.ncyBreadcrumbLink}}" ng-repeat="step in steps">
+    		 	<ng-md-icon icon="chevron_right" style="fill: #003c71;" size="20"></ng-md-icon>
+    			{{ step.ncyBreadcrumbLabel }}
+    		</md-button>
+    	</div>`
+  });
+
 }
 
-export default OnConfig;
+export default AppConfig;

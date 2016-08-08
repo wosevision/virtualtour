@@ -2,18 +2,27 @@
 
 describe('Unit: MainCtrl', function() {
 
-  let ctrl;
+  let createController;
 
   beforeEach(function() {
     // instantiate the app module
     angular.mock.module('app');
 
-    angular.mock.inject(($controller) => {
-      ctrl = $controller('MainCtrl');
+    angular.mock.inject(($controller, $rootScope) => {
+      let scope = $rootScope.$new();
+      // let SettingsFactory = _SettingsFactory_;
+
+      createController = () => {
+        return $controller('MainCtrl', {
+          '$scope': scope
+        });
+      };
+      // ctrl = $controller('MainCtrl');
     });
   });
 
   it('should exist', function() {
+  	let ctrl = createController();
     expect(ctrl).toBeDefined();
   });
 

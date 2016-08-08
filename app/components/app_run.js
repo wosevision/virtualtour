@@ -1,55 +1,44 @@
-function OnRun($rootScope, $templateCache, GlobalSettings, Settings) {
+function AppRun($rootScope, $templateCache, $breadcrumb, GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
-  // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) { 
-  //   event.preventDefault(); 
-  //   if (fromState == '') {
-
-  //   }
-  // });
-
-  // change page title based on state
-  $rootScope.$on('$stateChangeSuccess', (event, toState) => {
-    $rootScope.pageTitle = '';
-    if ( toState.title ) {
-      $rootScope.pageTitle += toState.title;
-      $rootScope.pageTitle += ' | ';
-    }
-    $rootScope.pageTitle += GlobalSettings.APP._TITLE;
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) { 
+    // event.preventDefault(); 
+    console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
   });
 
-  // not() utility function for use in views
-  $rootScope.not = function(func) {
-    return function (item) { 
-      return !func(item); 
+  // change page title based on state
+  $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
+    $rootScope.pageTitle = '';
+    if ( toState.ncyBreadcrumbLabel ) {
+      $rootScope.pageTitle += toState.ncyBreadcrumbLabel;
+      $rootScope.pageTitle += ' | ';
     }
-  };
+    $rootScope.pageTitle += GLOBAL_SETTINGS.APP._TITLE;
+    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
+  });
+
+  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+    console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
+  });
+
+  $rootScope.$on('$viewContentLoaded', (event) => {
+    console.log('try this sucka: ', $breadcrumb.getLastStep());
+  });
   
-  var _USER = Settings.appSettings.get('_USER');
-  // console.log('appSettings._USER:', _USER);
+  let _USER = SettingsFactory.appSettings.get('_USER');
+
   $rootScope.appSettings = {
-    _USER: {
-      __TOOLBAR_OPEN: {
-        val: _USER ? _USER.__TOOLBAR_OPEN.val : true,
-        label: 'Toolbar open by default',
-        icon: 'last_page'
-      },
-      __SHOW_TOOLTIPS: {
-        val: _USER ? _USER.__SHOW_TOOLTIPS.val : true,
-        label: 'Show hint messages',
-        icon: 'announcement'
-      }
-    }
+    USER: _USER || APP_SETTINGS.USER
   }
+
   if (!_USER) {
-    Settings.appSettings.set('_USER', $rootScope.appSettings._USER);
+    SettingsFactory.appSettings.set('_USER', $rootScope.appSettings.USER);
   }
 
   // hook libs up to window
   $rootScope.AFrame = window.AFRAME;
-  $rootScope._ = window._;
   //$rootScope.AFrame.registerComponent('fps-look-controls', require('aframe-fps-look-component').component);
 
 }
 
-export default OnRun;
+export default AppRun;

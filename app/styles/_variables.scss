@@ -42,17 +42,17 @@ $grad				 	 : #000000;
 $red					 : #a40b0b;
 $emergency     : #a40b0b;
 
-.uoitlightblue { color: $uoitlightblue; }
-.uoitdarkblue { color: $uoitdarkblue; }
-span.uoitgrey { color: $uoitgrey; }
-span.fbit		{ color: $fbit; }
-span.fed 		{ color: $fed; }
-span.fesns	{ color: $fesns; }
-span.feas		{ color: $feas; }
-span.fhs		{ color: $fhs; }
-span.fsci		{ color: $fsci; }
-span.fssh		{ color: $fssh; }
-span.grad		{ color: $grad; }
+.uoitlightblue, .uoit-blue-light { color: $uoitlightblue; }
+.uoitdarkblue, .uoit-blue-dark { color: $uoitdarkblue; }
+.uoitgrey { color: $uoitgrey; }
+.fbit		{ color: $fbit; }
+.fed 		{ color: $fed; }
+.fesns	{ color: $fesns; }
+.feas		{ color: $feas; }
+.fhs		{ color: $fhs; }
+.fsci		{ color: $fsci; }
+.fssh		{ color: $fssh; }
+.grad		{ color: $grad; }
 
 
 

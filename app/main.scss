@@ -2,22 +2,33 @@
 // BASE
 @import 'styles/variables';
 @import 'styles/typography';
+@import 'styles/mixins';
+
+
 //
 // LIBS
 @import 'styles/libs/animate';
+@import 'styles/libs/jsoneditor';
+
+
 //
 // NG LIBS
 @import 'styles/libs/angular-material';
-//@import 'libs/angular-ui-tree';
+@import 'styles/libs/angular-resizable';
+@import 'styles/libs/v-accordion';
 @import 'styles/libs/loading-bar';
-//@import 'libs/ng-prettyjson';
+
+
 //
 // COMPONENTS
 @import 'components/titlebar/titlebar';
 @import 'components/buttonbar/buttonbar';
-@import 'components/sidebar/location/location';
-@import 'components/sidebar/builder/builder';
-@import 'components/scene/scene';
+
+@import 'components/sidebar/sidebar';
+	@import 'components/sidebar/location/location';
+	@import 'components/sidebar/builder/builder';
+
+	@import 'components/aframe/scene/scene';
 
 
 // LOADING BAR AND SPINNER
