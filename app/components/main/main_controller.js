@@ -1,16 +1,21 @@
-function MainCtrl($rootScope, $scope, $state, $timeout, $mdComponentRegistry, $mdSidenav, $log, Scene, GlobalSettings) {
+function MainCtrl(
+	$rootScope, $scope, $state, $timeout, $log,
+	$mdComponentRegistry, $mdSidenav, $mdToast,
+	SceneResource, $aframeScene, testScene,
+	GLOBAL_SETTINGS, BUTTONBAR_VIEWS, TITLEBAR_OPTS
+) {
   'ngInject';
   // ViewModel
 
   // MainCtrl reference
   const mc = this;
-  const s = $scope;
+  mc.activeScene = {};
 
   // screen and (max-device-width: 767px) and (orientation: landscape)
   // check for mobile/landscape on every digest
   $scope.$watch(
-    function() {
-      var m;
+    () => {
+      let m;
       if (window.matchMedia('screen and (max-device-width: 767px)').matches) {
         m = true;
         if (window.matchMedia('screen and (orientation: landscape)').matches) {
@@ -20,61 +25,79 @@ function MainCtrl($rootScope, $scope, $state, $timeout, $mdComponentRegistry, $m
       }
       //return window.matchMedia('screen and (max-device-width: 767px) and (orientation: landscape)').matches;
     },
-    function(m) {
+    m => {
       $rootScope.mobile = m;
       //console.log(m);
     }
   );
 
-  // Scene.get({ id: 'ua_int_2a' }, function(data) {
-  //   mc.scenes.ua_int[2].a = data.scene;
-  //   //console.log(data);
-  // });
-  // Scene.get({ id: 'ua_int_1b-link' }, function(data) {
-  //   //console.log(data);
-  //   mc.scene = data.scene;
-  // });
-
-  s.gotoScene = function(code, id) {
-    //console.log($state);
-    $state.go('scene', { code: code, id: id });
-  }
-
-  s.menuViews = GlobalSettings.APP._MENU_VIEWS;
-
-  //s.toggleMenu = buildToggler('right');
-  //s.toggleConfig = buildToggler('config');
-
-  s.isMenuOpen = function(navID){
-    $mdSidenav(navID).isOpen();
-    //console.log($mdSidenav(navID));
+  mc.welcomeMsg = function() {
+    var toast = $mdToast.simple()
+      .textContent('We\'ve configured app data usage settings according to your device!')
+      .action('CHANGE SETTINGS')
+      .highlightAction(true)
+      // .highlightClass('md-primary')
+      .position('bottom left');
+      // console.log(toast);
+    $mdToast.show(toast).then(function(response) {
+      if ( response == 'ok' ) {
+        alert('You clicked the \'UNDO\' action.');
+      }
+    });
   };
 
-  s.toggleMenu = function(navID, view) {
-      if (view && !s.menuViews[view].show) {
-      angular.forEach(s.menuViews, function(v) { v.show = false; });
-      s.menuViews[view].show = true;
-      if (!$mdSidenav(navID).isOpen()) {
-        $mdSidenav(navID).open();
-      }
-      var viewOpts = { 
-        location: true,
-        inherit: true,
-        relative: $state.$current,
-        notify: true
-      }
-      $state.go(view);
-    } else {
-        $mdSidenav(navID)
-          .toggle();
-    }
+  mc.gotoScene = (location, code, id) => {
+    //console.log($state);
+    $state.go('scene', { location, code, id });
+    // SceneResource.get({ id: id }, data => {
+    // 	// $aframeScene.setScene(data.scene, id);
+    // 	// $scope.activeScene = $aframeScene.scene;
+    // 	mc.activeScene = data.scene;
+    // 	//console.log($scope.activeScene);
+    // });
   }
 
-  s.toolbar = {
-    isOpen: $rootScope.appSettings._USER.__TOOLBAR_OPEN.val,
-    toggle: function() {
-      this.isOpen = !this.isOpen;
-      !this.isOpen&&$mdSidenav('right').close();
+  // $timeout(function() {
+  // 	mc.gotoScene('north', 'ua', 'ua_int_2a');
+  // 	// mc.activeScene = testScene['2a'];
+  // }, 1000)
+  // 	.then(function() {
+  // 		mc.welcomeMsg();
+  // 		return $timeout(function() {
+  // 			mc.gotoScene('north', 'ua', 'ua_int_3a');
+		//   	// mc.activeScene = testScene['3a'];
+		//   }, 1000);
+  // 	});
+
+  mc.titlebar = {
+		options: TITLEBAR_OPTS,
+		clickHandlers: {
+			config: () => {
+      	$mdSidenav('config').toggle();
+			},
+			right: () => {
+		    mc.toolbar.toggle();
+      	mc.titlebar.options.right.active = mc.toolbar.isOpen;
+			},
+			condense: () => {
+		    mc.toolbar.condense();
+      	mc.titlebar.options.condense.active = mc.toolbar.isCondensed;
+			}
+		} 
+  }
+
+  mc.toolbar = {
+  	views: BUTTONBAR_VIEWS,
+    isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val || true,
+    isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val || true,
+    toggle() {
+  		this.isOpen = !this.isOpen;
+  		this.isOpen&&$mdSidenav('right').close();
+    },
+    condense() {
+      !this.isOpen&&this.toggle();
+      this.isCondensed = !this.isCondensed;
+      return this.isCondensed;
     }
   }
 }

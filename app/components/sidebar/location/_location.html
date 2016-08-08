@@ -1,83 +1,26 @@
 
+<div
+	ng-repeat="(loc, location) in lc.locations"
+	class="location-card location-{{ ::loc }}"
+	md-ink-ripple="{{ !location.active && '#003C71' }}"
+	ng-click="lc.activateLoc(loc)"
+	ui-sref="buildings({location: loc})"
+	ng-if="!location.hidden"
+	layout="column"
+	flex="100">
 
-<!--               
-  <section layout-padding>
-    <form>
-      <md-input-container>
-        <label for="testInput">Location search</label>
-        <input type="text" id="testInput"
-               ng-model="data" md-autofocus>
-      </md-input-container>
-    </form>
-  </section>
--->
+	    <h2
+	    flex="auto">
+	    	<span class="md-display-3 uoit-blue-dark">{{ location.label }} Oshawa</span><br/>
+	      <span class="md-headline uoit-blue-light">campus location</span>
+	    </h2>
 
-<md-tabs md-border-bottom layout-fill class="md-primary md-hue-3">
+  <md-content
+  	flex="{{ location.active ? 100 : 0 }}"
+  	ui-view
+  	layout-fill
+  	class="building-list"
+  	ng-click="$event.stopPropagation()">
+	</md-content>
 
-  <md-tab>
-    <md-tab-label>
-    	<!-- <ng-md-icon icon="panorama_horizontal" style="fill: white"></ng-md-icon> -->
-    	<div>North location</div>
-      <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
-        View tours of 2000 Simcoe St North Oshawa location
-      </md-tooltip>
-    </md-tab-label>
-    <md-tab-body>
-
-      <md-toolbar md-scroll-shrink ng-if="true" class="md-primary">
-        <div class="md-toolbar-tools">
-          <h2 flex>2000 Simcoe St North Oshawa</h2>
-        </div>
-      </md-toolbar>
-
-      <md-content style="height: calc(100vh - 178px);">
-        <section ng-repeat="(header,data) in Location.North">
-          <md-subheader class="md-primary">{{::header}}</md-subheader>
-          <md-list layout-padding>
-
-            <md-list-item class="secondary-button" ng-repeat="location in data" ng-click="Location.showDetail(location, $event)">
-              <p>{{::location.name}}</p>
-              <!-- <md-button class="md-primary"> --><ng-md-icon icon="chevron_right"></ng-md-icon><!-- </md-button> -->
-            </md-list-item>
-
-          </md-list>
-        </section>
-      </md-content>
-
-    </md-tab-body>
-  </md-tab>
-
-  <md-tab>
-    <md-tab-label>
-    	<!-- <ng-md-icon icon="3d_rotation" style="fill: white"></ng-md-icon> -->
-    	<div>Downtown location</div>
-      <md-tooltip md-direction="bottom" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
-        View tours of the downtown Oshawa locations
-      </md-tooltip>
-    </md-tab-label>
-    <md-tab-body>
-
-      <md-toolbar md-scroll-shrink ng-if="true" class="md-primary">
-        <div class="md-toolbar-tools">
-          <h2 flex>Downtown Oshawa</h2>
-        </div>
-      </md-toolbar>
-
-      <md-content style="height: calc(100vh - 178px);">
-        <section ng-repeat="(header,data) in Location.Downtown">
-          <md-subheader class="md-primary">{{::header}}</md-subheader>
-          <md-list layout-padding>
-
-            <md-list-item class="secondary-button" ng-repeat="location in data" ng-click="Location.showDetail(location, $event)">
-              <p>{{::location.name}}</p>
-              <ng-md-icon icon="chevron_right"></ng-md-icon>
-            </md-list-item>
-            
-          </md-list>
-        </section>
-      </md-content>
-
-    </md-tab-body>
-  </md-tab>
-
-</md-tabs>
+</div>

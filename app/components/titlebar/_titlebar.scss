@@ -2,23 +2,70 @@
 	min-height: 60px;
 	border-top: solid 5px $uoitdarkblue;
 	.logo-shield {
-		height: 45px;
-		margin-left: 0.4375rem;
+		height: 36px;
+		margin-left: 0.75rem;
 	}
 	.md-toolbar-tools {
 		padding: 0;
-		// padding-left: 0;
 		height: 60px;
 	}
-	.md-button {
+	md-toolbar-filler {
+		width: 3.5rem;
+	}
+	.md-button.icon-button {
 		margin: 0;
+    min-width: 0;
 		height: 60px;
-		padding-left: 2rem;
-		padding-right: 2rem;
+		padding-left: 18px;
+		padding-right: 18px;
 		color: $uoitgrey !important;
 		border-left: solid 3px white;
 		&.active {
 			box-shadow: inset 0 -3px 0 $uoitlightblue;
 		}
 	}
-}
+	.breadcrumbs {
+			height: 100%;
+		.md-button {
+			margin: 0;
+			color: $uoitgrey !important;
+			font-family: franklin_gothic_fscondensed;
+			line-height: 60px;
+			overflow: visible;
+			height: 100%;
+			padding-left: 40px;
+			padding-right: 30px;
+		  &.ng-enter {
+		    animation: fadeInLeft 0.6s;
+		  }
+		  &.ng-leave {
+		    animation: fadeOutLeft 0.6s;
+		  }
+			&:not(:first-child) {
+				margin-left: -20px;
+			}
+			&::after, &::before {
+				content: '';
+				width: 0;
+				height: 0;
+				position: absolute;
+				top: 0;
+				border-style: solid;
+				border-width: 30px 0 30px 20px;
+				border-color: transparent;
+			}
+			&::after {
+				right: 0;
+				border-color: white white white transparent;
+			}
+			&::before {
+				transition: border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+				z-index: 100000;
+				left: 0;
+			}
+			&:hover::before, &:focus::before {
+				border-color: transparent transparent transparent white;
+			}
+		}
+	}
+}	

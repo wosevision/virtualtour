@@ -1,0 +1,19 @@
+<a-scene id="aframe-scene">
+	<a-assets>
+		<aframe-entity
+			asset="true"
+			ng-repeat="asset in assets track by ('asset_' + asset.type + $index)"
+			ng-if="asset"
+			type="{{asset.type}}"
+			attrs="asset.attrs"
+			entities="asset.entities">
+			</aframe-entity>
+	</a-assets>
+		<aframe-entity
+			ng-repeat="entity in entities track by ('entity_' + entity.type + $index)"
+			ng-if="entity"
+			type="{{entity.type}}"
+			attrs="entity.attrs"
+			entities="entity.entities">
+		</aframe-entity>
+</a-scene>

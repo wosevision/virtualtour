@@ -1,4 +1,4 @@
-function Settings(store) {
+function SettingsFactory(store) {
   'ngInject';
   return {
   	appSettings: store.getNamespacedStore('appSettings')
@@ -6,6 +6,6 @@ function Settings(store) {
 }
 
 export default {
-  name: 'Settings',
-  fn: Settings
+  name: 'SettingsFactory',
+  fn: SettingsFactory
 };

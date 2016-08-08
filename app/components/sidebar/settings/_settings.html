@@ -1,9 +1,99 @@
-<md-list>
-  <md-subheader class="md-no-sticky">Interface settings</md-subheader>
-  <md-list-item ng-repeat="setting in appSettings._USER">
-    <!-- <md-icon md-svg-icon="{{::setting.icon}}"></md-icon> -->
+<!-- <md-list>
+  <md-subheader class="md-no-sticky">App settings</md-subheader>
+  <md-list-item ng-repeat="setting in appSettings.USER">
     <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}"></ng-md-icon>
     <p> &nbsp;{{ ::setting.label }} </p>
     <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()"></md-switch>
   </md-list-item>
-</md-list>
+  <md-subheader class="md-no-sticky">Data usage</md-subheader>
+  <md-list-item layout>
+
+      <div flex="20" layout layout-align="center center">
+        <span class="md-body-1">Less</span>
+      </div>
+      <md-slider
+      	flex
+      	md-vertical
+      	md-discrete
+      	class="md-primary"
+      	ng-model="rating1"
+      	step="1" min="1" max="5"
+      	aria-label="rating">
+      </md-slider>
+      <div flex="20" layout layout-align="center center">
+        <span class="md-body-1">More</span>
+      </div>
+
+  </md-list-item>
+</md-list> -->
+
+  	<v-accordion class="vAccordion--default" multiple flex>
+
+		  <!-- add expanded attribute to open the section -->
+		  <v-pane expanded>
+		    <v-pane-header>
+  				App settings
+		    </v-pane-header>
+		    <v-pane-content>
+					<md-list>
+					  <md-list-item ng-repeat="setting in appSettings.USER">
+					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
+					    <span flex>{{ ::setting.label }}</span>
+					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()"></md-switch>
+					  </md-list-item>
+					</md-list>
+		    </v-pane-content>
+		  </v-pane>
+
+		  <v-pane>
+		    <v-pane-header>
+		      Data usage
+		    </v-pane-header>
+
+		    <v-pane-content>
+					<md-list>
+
+					  <md-list-item layout>
+								<md-subheader class="md-no-sticky" flex="35">Compression</md-subheader>
+					      <div flex="15" layout layout-align="center center">
+					        <span class="md-body-1">Less</span>
+					      </div>
+					      <md-slider
+					      	flex
+					      	md-vertical
+					      	md-discrete
+					      	class="md-primary"
+					      	ng-model="rating1"
+					      	step="1" min="1" max="5"
+					      	aria-label="rating">
+					      </md-slider>
+					      <div flex="15" layout layout-align="center center">
+					        <span class="md-body-1">More</span>
+					      </div>
+
+					  </md-list-item>
+					  <md-list-item layout>
+								<md-subheader class="md-no-sticky" flex="35">Preloading</md-subheader>
+					      <div flex="15" layout layout-align="center center">
+					        <span class="md-body-1">None</span>
+					      </div>
+					      <md-slider
+					      	flex
+					      	md-vertical
+					      	md-discrete
+					      	class="md-primary"
+					      	ng-model="rating1"
+					      	step="1" min="1" max="5"
+					      	aria-label="rating">
+					      </md-slider>
+					      <div flex="15" layout layout-align="center center">
+					        <span class="md-body-1">Proactive</span>
+					      </div>
+
+					  </md-list-item>
+
+					</md-list>
+		    </v-pane-content>
+		  </v-pane>
+
+		</v-accordion>

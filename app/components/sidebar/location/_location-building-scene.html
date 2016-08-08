@@ -1,0 +1,22 @@
+<md-content class="building-list" flex>
+<!--   <md-toolbar class="md-tall md-primary md-hue-3" ng-style="{ 'background-image' : 'url(images/panoramas/' + lc.building.code + '/thumb.png)' }">
+    <span flex></span>
+    <div class="md-toolbar-tools md-toolbar-tools-bottom">
+      <md-button class="md-icon-button" aria-label="Back to locations" ui-sref="locations">
+        <ng-md-icon icon="chevron_left" style="fill: #0077ca;"></ng-md-icon>
+        <md-tooltip md-direction="left" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
+        	Go back to location list
+      	</md-tooltip>
+      </md-button>
+      <h2 flex layout layout-align="end">{{ lc.building.label }}</h2>
+    </div>
+  </md-toolbar> -->
+  <md-list>
+
+    <md-list-item class="secondary-button" ng-repeat="scene in lc.building.scenes" ui-sref="scene({id: scene.code})">  <!-- ng-click="gotoScene(lc.location.code, lc.scene.code)" -->
+      <p>{{::scene.name}}</p>
+      <ng-md-icon icon="chevron_right"></ng-md-icon>
+    </md-list-item>
+    
+  </md-list>
+</md-content>
