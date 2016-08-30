@@ -24,7 +24,7 @@ gulp.task('nodemon', ['babelize'], function (cb) {
   let called = false;
   return nodemon({
     // nodemon our expressjs server
-    script: './server',
+    script: './server/bin/www',
     // watch core server file(s) that require server restart on change
     watch: ['./server'],
     tasks: ['babelize']

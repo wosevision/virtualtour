@@ -2,7 +2,7 @@
 
 export default {
 
-  serverProxy: 'http://localhost:3000',
+  serverProxy: 'http://localhost:8080',
   UIPort: 3001,
   testPort: 3002,
   browserPort: 4000,
@@ -47,6 +47,7 @@ export default {
     'otf',
     'ttc',
     'ttf',
+    'webp',
     'woff2?'
   ],
 
