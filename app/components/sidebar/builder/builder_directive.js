@@ -4,7 +4,7 @@ function jsonBuilder($timeout) {
   return {
     restrict: 'A',
     require: 'ngModel',
-    scope: {'options': '=', 'ngJsoneditor': '=', 'preferText': '='},
+    scope: {'options': '<', 'ngJsoneditor': '<', 'preferText': '<'},
 		link($scope, element, attrs, ngModel) {
 			var debounceTo, debounceFrom;
       var editor;

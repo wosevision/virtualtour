@@ -11,7 +11,7 @@ const componentModule = angular.module(component, []);
 function declare(componentMap, toDeclare) {
   Object.keys(componentMap).forEach((key) => {
     let item = componentMap[key];
-
+    // console.log(item);
     if (!item) {
       return;
     }

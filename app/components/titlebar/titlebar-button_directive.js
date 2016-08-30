@@ -8,9 +8,10 @@ function titleBarButton($log) {
     require: '^titleBar',
     scope: {
     	onClick: '&',
-    	active: '=',
-			tooltip: '=',
-			icon: '='
+    	label: '@',
+    	active: '<',
+			tooltip: '<',
+			icon: '<'
     },
    //  controllerAs: 'btn',
     link: function(scope, elm, attrs) {

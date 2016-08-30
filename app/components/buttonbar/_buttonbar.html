@@ -1,10 +1,22 @@
-<aside layout="column" flex class="button-bar" ng-class="{'collapsed': bar.condensed}" md-whiteframe="2" show-gt-sm ng-if="bar.open&&!landscapeMobile"> <!--  -->
-	<div flex flex-grow ng-repeat="(v,view) in ::bar.items">
-	  <md-button ng-click="bar.toggleMenu('right', v)" layout-fill aria-label="::view.label">
+<aside
+	class="button-bar"
+	ng-class="{'collapsed': bar.condensed}"
+	ng-if="bar.open&&!landscapeMobile"
+	md-whiteframe="2"
+	layout="column"
+	show-gt-sm
+	flex>
+	<div ng-repeat="(v,view) in ::bar.items" flex="grow"
+	  	ui-sref=".{{::v}}"
+	  	ui-sref-opts="{ absolute: true }">
+	  <md-button
+	  	ng-click="bar.toggleMenu('right', v)"
+	  	aria-label="::view.label"
+	  	layout-fill>
 	  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
 	    <span ng-bind="::view.label"></span>
-	    <md-tooltip md-direction="left" md-autohide md-delay="1000" ng-if="!(mobile||!appSettings._USER.__SHOW_TOOLTIPS.val)">
-	      {{ ::view.desc }}
+	    <md-tooltip md-direction="left" md-autohide md-delay="bar.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
+	      {{ bar.condensed ? view.label : view.desc }}
 	    </md-tooltip>
 	  </md-button>
   </div>

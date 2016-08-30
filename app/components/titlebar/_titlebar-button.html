@@ -7,7 +7,7 @@
   	icon="{{ active ? icon[0] || icon : icon[1] || icon }}"
   	style="fill: #003c71;">
   </ng-md-icon>
-  <md-tooltip md-direction="bottom" md-autohide ng-if="!(mc.mobile||!mc.appSettings._USER.__SHOW_TOOLTIPS.val)">
+  <md-tooltip md-direction="bottom" md-autohide ng-if="!(mc.mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
     {{ active ? (tooltip[0] || tooltip) : (tooltip[1] || tooltip) }}
   </md-tooltip>
 

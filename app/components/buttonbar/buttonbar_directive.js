@@ -5,9 +5,9 @@ function buttonBar($log) {
     templateUrl: 'buttonbar/_buttonbar.html',
     transclude: true,
     bindToController: {
-    	items: '=',
-    	open: '=?',
-    	condensed: '=?'
+    	items: '<',
+    	open: '<?',
+    	condensed: '<?'
     },
     controller: 'ButtonbarCtrl',
     controllerAs: 'bar',

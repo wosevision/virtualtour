@@ -39,7 +39,7 @@
 					  <md-list-item ng-repeat="setting in appSettings.USER">
 					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
 					    <span flex>{{ ::setting.label }}</span>
-					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()"></md-switch>
+					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()" aria-label="{{ ::setting.label }}"></md-switch>
 					  </md-list-item>
 					</md-list>
 		    </v-pane-content>
