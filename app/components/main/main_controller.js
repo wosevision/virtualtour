@@ -33,7 +33,8 @@ function MainCtrl(
 
   mc.welcomeMsg = function() {
     var toast = $mdToast.simple()
-      .textContent('We\'ve configured app data usage settings according to your device!')
+      .textContent(`Welcome!
+      	We've configured the Virtual Tour's data usage settings according to your device's optimal range.`)
       .action('CHANGE SETTINGS')
       .highlightAction(true)
       // .highlightClass('md-primary')
@@ -62,7 +63,7 @@ function MainCtrl(
   // 	// mc.activeScene = testScene['2a'];
   // }, 1000)
   // 	.then(function() {
-  // 		mc.welcomeMsg();
+  		mc.welcomeMsg();
   // 		return $timeout(function() {
   // 			mc.gotoScene('north', 'ua', 'ua_int_3a');
 		//   	// mc.activeScene = testScene['3a'];

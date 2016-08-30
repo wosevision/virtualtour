@@ -58,14 +58,14 @@
 				  md-disable-backdrop
 				  md-whiteframe="4"
 				  style="max-width: none;width: auto;">
-				  <div resizable r-directions="['right']" flex layout-fill>
-				  <ng-include src="'sidebar/builder/_builder.html'"></ng-include>
+				  <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
+				  	<ng-include src="'sidebar/builder/_builder.html'"></ng-include>
 				  </div>
 				</md-sidenav>
 
       	<section flex flex-order="-2" layout="column" layout-fill class="scene-view">
       		<aframe-scene 
-      			sky="{{mc.activeScene.code}}"
+      			sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"
       			assets="mc.activeScene.assets">
       		</aframe-scene>
