@@ -1,0 +1,19 @@
+<span class="{{ item.active ? 'md-caption' : 'md-headline' }}">
+	{{ ::item.label || item.name }}
+</span>
+
+<!-- <md-divider/>
+<div class="md-caption" layout="row" layout-wrap flex>
+	<div flex="30">
+		<small>level:</small> <strong>{{ ::level }}</strong><br/>
+	</div>
+	<div flex="70">
+		<small>active:</small> <strong>{{ item.active }}</strong>
+		|
+		<small>hidden:</small> <strong>{{ item.hidden }}</strong>
+	</div>
+	<div flex="100">
+		<strong><small>MODEL:</small></strong>
+		<br/><pre style="font-size: 8px">{{ item | dropOffTheKids:false | json }}</pre>
+	</div> 
+</div> -->

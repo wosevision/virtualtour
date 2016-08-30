@@ -16,7 +16,9 @@ function LocationConfig($stateProvider) {
       parent: 'home',
       views: {
         '@' : {
-          template: `<location-menu></location-menu>`
+        	controller: 'LocationCtrl',
+        	controllerAs: 'lc',
+          template: `<drilldown-menu children="lc.locations" on-toggle="lc.onToggle"></drilldown-menu><ui-view/>`
         }
       },
 		  ncyBreadcrumb: {
@@ -24,81 +26,163 @@ function LocationConfig($stateProvider) {
 		  	label: ''
 		  }
     })
-      .state('buildings', {
+     //  .state('buildings', {
+     //    url: ':location',
+     //  	parent: 'locations',
+     //    // params: { location: null },
+     //        resolve: {
+     //          locationCode($stateParams) {
+     //            return $stateParams.location;
+     //          },
+     //          buildingList(BuildingResource, locationCode) {
+     //            return BuildingResource.query({location: locationCode}).$promise;
+     //          }
+     //        },
+     //    views: {
+     //      '@locations' : {
+     //        templateUrl: 'sidebar/location/_location-building.html',
+     //        controller($scope, $state, locationCode, buildingList) {
+     //          $scope.lc.location = {
+     //          	label: $scope.lc.locations[locationCode].label,
+     //          	buildings: buildingList.reduce( alphaGroupReducer, {} )
+     //          }
+     //        }
+     //      }
+     //    },
+			  // ncyBreadcrumb: {
+			  //   label: '{{ lc.location.label }} location'
+			  // }
+     //  })
+     //    .state('scenes', {
+     //      url: '/:code',
+     //      parent: 'buildings',
+     //      // url: '/:code/:id',
+     //      // parent: 'home',
+     //          resolve: {
+	    //           buildingCode($stateParams) {
+	    //             return $stateParams.code;
+	    //           },
+     //            currentBuilding(BuildingResource, buildingCode) {
+     //              return BuildingResource.get({code: buildingCode}).$promise;
+     //            },
+     //            sceneList(SceneResource, buildingCode) {
+     //              return SceneResource.get({id: buildingCode}).$promise.then(function(data) {
+     //              	return data.scenes;
+     //              });
+     //            }
+     //          },
+     //      views: {
+     //        '@buildings' : {
+     //          templateUrl: 'sidebar/location/_location-building-scene.html',
+     //          controller($scope, currentBuilding, sceneList) {
+     //            $scope.lc.building = currentBuilding;
+     //            $scope.lc.building.scenes = sceneList;
+     //          }
+     //        }
+     //      },
+				 //  ncyBreadcrumb: {
+				 //    label: `{{ lc.building.name }}`
+				 //  }
+     //    })
+     //    
+     //    
+     //    
+      //   .state('scene', {
+      //     url: '/:id',
+      //     // parent: 'scenes',
+      //     parent: 'locations',
+      //         resolve: {
+	     //          sceneCode($stateParams, buildingCode) {
+	     //            return `${ buildingCode }_${ $stateParams.id }`;
+	     //          },
+      //           currentScene(SceneResource, sceneCode) {
+      //             return SceneResource.get({id: sceneCode}).$promise;
+      //           }
+      //         },
+      //     views: {
+      //       '@buildings' : {
+      //         templateUrl: 'sidebar/location/_location-building-scene.html',
+      //         controller($scope, currentBuilding, sceneCode, currentScene, sceneList) {
+      //           console.log(sceneList);
+      //           $scope.lc.building = currentBuilding;
+      //           $scope.mc.activeScene = currentScene;
+      //           $scope.mc.activeScene.sky = sceneCode;
+      //         }
+      //       }
+      //     },
+				  // ncyBreadcrumb: {
+				  //   label: `{{ mc.activeScene.name }}`
+				  // }
+      //   });
+      .state('location', {
         url: ':location',
       	parent: 'locations',
         // params: { location: null },
             resolve: {
-              currentLocation($stateParams) {
+              locationCode($stateParams) {
                 return $stateParams.location;
-              },
-              buildingList(LocationResource, currentLocation) {
-                return LocationResource.query({location: currentLocation}).$promise;
               }
             },
         views: {
           '@locations' : {
-            templateUrl: 'sidebar/location/_location-building.html',
-            controller($scope, $state, currentLocation, buildingList) {
-              $scope.lc.location = {
-              	label: $scope.lc.locations[currentLocation].label,
-              	buildings: buildingList.reduce( alphaGroupReducer, {} )
-              }
+            template: '<ui-view/>',
+            controller($scope, $state, locationCode) {
+              $scope.lc.currentLocation = $scope.lc.locations[locationCode];
             }
           }
         },
 			  ncyBreadcrumb: {
-			    label: '{{ lc.location.label }} location'
+			    label: '{{ lc.currentLocation.code }} location'
 			  }
       })
-        .state('scenes', {
+        .state('building', {
           url: '/:code',
-          parent: 'buildings',
-          // url: '/:code/:id',
-          // parent: 'home',
+          parent: 'location',
               resolve: {
-	              currentBuilding($stateParams) {
+	              buildingCode($stateParams) {
 	                return $stateParams.code;
 	              },
-                sceneList(LocationResource, currentBuilding) {
-                  return LocationResource.get({code: currentBuilding}).$promise;
+                currentBuilding(BuildingResource, buildingCode) {
+                  return BuildingResource.get({code: buildingCode}).$promise;
                 }
               },
           views: {
-            '@buildings' : {
-              templateUrl: 'sidebar/location/_location-building-scene.html',
-              controller($scope, sceneList) {
-                $scope.lc.building = sceneList.location;
+            '@location' : {
+            	template: '<ui-view/>',
+              controller($scope, currentBuilding) {
+                $scope.lc.currentBuilding = currentBuilding;
               }
             }
           },
 				  ncyBreadcrumb: {
-				    label: `{{ lc.building.name }}`
+				    label: `{{ lc.currentBuilding.name }}`
 				  }
         })
         .state('scene', {
+          // url: ':code/:id',
           url: '/:id',
-          parent: 'scenes',
+          parent: 'building',
+          // parent: 'locations',
               resolve: {
-	              currentScene($stateParams) {
-	                return $stateParams.id;
+	              sceneCode($stateParams) {
+	                return [$stateParams.code, $stateParams.id].join('_');
 	              },
-                sceneResolve(SceneResource, currentScene) {
-                  return SceneResource.get({id: currentScene}).$promise;
+                currentScene(SceneResource, sceneCode) {
+                  return SceneResource.get({id: sceneCode}).$promise;
                 }
               },
           views: {
-            '@buildings' : {
-              templateUrl: 'sidebar/location/_location-building-scene.html',
-              controller($scope, sceneResolve, sceneList) {
-                console.log(sceneList);
-                $scope.lc.building = sceneList.location;
-                $scope.mc.activeScene = sceneResolve.scene;
-              }
+            '@building' : {
+            	template: '',
+		          controller($scope, sceneCode, currentScene) {
+		            // $scope.lc.building = currentBuilding;
+		            $scope.mc.activeScene = currentScene;
+		            $scope.mc.activeScene.sky = sceneCode;
+		          }
             }
           },
 				  ncyBreadcrumb: {
-				    label: `{{ mc.activeScene.name }}`
+				    label: `{{ lc.currentScene.name }}`
 				  }
         });
 }

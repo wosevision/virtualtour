@@ -1,0 +1,26 @@
+<md-content
+	class="drilldown-menu"
+	ng-init="children = item.children; level = level + 1"
+	layout="column"
+	layout-fill
+	flex>
+	<div
+		class="drilldown-item {{ item.active && !item.hidden ? 'flex-grow' : 'flex-shrink' }}"
+		ng-repeat="item in item.children track by $index"
+		ng-style="item.style"
+		ng-click="toggle($event, this, level)"
+		layout="column"
+		layout-align="start start"
+		flex>
+		<div 
+			class="drilldown-item-content"
+			ng-if="!item.hidden"
+			layout="column"
+			layout-padding
+			flex="nogrow">
+
+		</div>
+		<ng-include ng-if="item.active" src="'drilldown/_drilldown.html'" layout layout-fill flex/>
+		<!-- <flex-drilldown children="item.children"></flex-drilldown> -->
+	</div>
+</md-content>

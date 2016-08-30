@@ -27,7 +27,7 @@ function ButtonbarCtrl($state, $mdSidenav, $buttonBar) {
       if (!$mdSidenav(navID).isOpen()) {
         $mdSidenav(navID).open();
       }
-      $state.go(view);
+      // $state.go(view, null, { location: 'false', inherit: true, relative: $state.$current });
     } else {
       $mdSidenav(navID)
         .toggle();
