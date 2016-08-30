@@ -71,7 +71,8 @@ function aframeScene($compile, $aframeScene) {
 			 * @return {Element}        JQLite-wrapped <img> element
 			 */
 			function loadSkyAsset(asset, cb) {
-  			let assetPath = `api/panoramas/ua/${asset}.jpg`;
+
+  			let assetPath = `api/panoramas/${ asset.split('_')[0] }/${ asset.split('_')[1] }.jpg`;
 				return $compile(`<img src="${assetPath}" id="${asset}" />`)(scope, function (clone) {
 					$assets.append(clone);
 					skyLoadedList.push(asset);
