@@ -20,28 +20,45 @@
     
 <!--       <ng-include src="'titlebar/_titlebar.html'" flex="nogrow">
       </ng-include> -->
-      <title-bar title="Virtual Tour">
-	      <title-bar-button
-	      	ng-repeat="(o, option) in mc.titlebar.options"
-	      	on-click="mc.titlebar.clickHandlers[o]()"
-	      	active="option.active"
-	      	icon="option.icon"
-	      	tooltip="option.tooltip">
-	      </title-bar-button>
-      </title-bar>
+      <div flex layout="column" layout-fill style="position:absolute;">
+
+	      <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
+		      <title-bar-button
+		      	ng-repeat="(o, option) in mc.titlebar.options"
+		      	on-click="mc.titlebar.clickHandlers[o]()"
+		      	active="option.active"
+		      	icon="option.icon"
+		      	tooltip="option.tooltip">
+		      </title-bar-button>
+	      </title-bar>
+
+	      <div 
+	      	ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&&!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }"
+	      	layout="row"
+	      	layout-align="end start"
+	      	flex="grow">
+		      <button-bar
+	      		items="mc.toolbar.views"
+	      		open="mc.toolbar.isOpen"
+	      		condensed="mc.toolbar.isCondensed"
+		      	mobile="mc.mobile">
+	      	</button-bar>
+	      </div>
+
+      </div>
 
       <div 
       	ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&&!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }"
       	layout="row"
       	flex>
       
-      	<button-bar
+<!--       	<button-bar
       		items="mc.toolbar.views"
       		open="mc.toolbar.isOpen"
       		condensed="mc.toolbar.isCondensed"
       		layout="column"
       		flex="nogrow">
-      	</button-bar>
+      	</button-bar> -->
 
 				<md-sidenav
 				  class="md-sidenav-right"
@@ -63,7 +80,7 @@
 				  </div>
 				</md-sidenav>
 
-      	<section flex flex-order="-2" layout="column" layout-fill class="scene-view">
+      	<section flex="grow" layout="column" layout-fill class="scene-view" id="scene-view">
       		<aframe-scene 
       			sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"

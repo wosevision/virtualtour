@@ -7,3 +7,40 @@
 	top: 0;
 	left: 0;
 }
+
+@mixin button($padding: 0, $margin: 0) {
+  padding: $padding;
+  margin: $margin;
+
+  box-sizing: border-box;
+  user-select: none;
+  position: relative; //for child absolute-positioned <canvas>
+  outline: none;
+  border: 0;
+  align-items: center;
+  background: transparent;
+  white-space: nowrap;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: $body-font-size-base;
+  font-style: inherit;
+  font-variant: inherit;
+  font-family: $franklin_gothic;
+  text-decoration: none;
+
+  cursor: pointer;
+  overflow: hidden;   // for ink containment
+
+  transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
+              background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}

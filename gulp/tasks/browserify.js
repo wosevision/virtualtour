@@ -11,7 +11,8 @@ import browserify   from 'browserify';
 import babelify     from 'babelify';
 import uglify       from 'gulp-uglify';
 import browserSync  from 'browser-sync';
-import debowerify   from 'debowerify';
+// import rollupify   	from 'rollupify';
+// import debowerify   from 'debowerify';
 import ngAnnotate   from 'browserify-ngannotate';
 import handleErrors from '../util/handleErrors';
 import bundleLogger from '../util/bundleLogger';
@@ -22,7 +23,7 @@ function buildScript(file) {
 
   const shouldCreateSourcemap = !global.isProd || config.browserify.prodSourcemap;
 
-  let bundler = browserify({
+  let bundler = browserify({ //config.sourceDir + file, 
     entries: [config.sourceDir + file],
     debug: shouldCreateSourcemap,
     cache: {},
@@ -37,8 +38,15 @@ function buildScript(file) {
   }
 
   const transforms = [
+  //   { 'name':'rollupify', 
+  //   	'options': {
+		//     config: {
+		//     	entry: config.sourceDir + file
+		//     }
+		//   }
+		// },
     { 'name':babelify, 'options': {}},
-    { 'name':debowerify, 'options': {}},
+    // { 'name':debowerify, 'options': {}},
     { 'name':ngAnnotate, 'options': {}},
     { 'name':'brfs', 'options': {}},
     { 'name':'bulkify', 'options': {}}

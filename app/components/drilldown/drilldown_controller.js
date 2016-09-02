@@ -1,26 +1,3 @@
-// function DrilldownCtrl($scope, $state, $timeout, $mdSidenav, $log) {
-// 	'ngInject';
-
-//   const dd = this;
-
-//   // dd.children = {};
-
-//   dd.activateLoc = function(loc) {
-//   	// if (!dd.locations[loc].active) {
-// 	  	Object.keys(dd.children).forEach( function(key) {
-// 	  		let isEqual = (key == loc);
-// 	  		dd.children[key].active = isEqual ? !dd.children[key].active : dd.children[key].active;
-// 	  		dd.children[key].hidden = !isEqual ? !dd.children[key].hidden : dd.children[key].hidden;
-// 	  	});
-//   	// } else {
-// 	  // 	Object.keys(dd.children).forEach( function(key) {
-// 	  // 		dd.children[key].active = false;
-// 	  // 		dd.children[key].hidden = false;
-// 	  // 	});
-//   	// }
-//   }
-
-// }
 function deactivateItem(item) {
 	// make item inactive but unhide (default state)
 	item.active = item.hidden = false;
@@ -50,7 +27,7 @@ class DrilldownCtrl {
 	constructor($scope) {
 		'ngInject';
 		this.$sc = $scope;
-		this.$sc.toggle = ($ev, $sc, level) => {
+		this.$sc.toggle = ($ev, $sc) => {
 			// prevent click from bubbling up
 			$ev.stopPropagation();
 
@@ -66,7 +43,7 @@ class DrilldownCtrl {
 
 			// run callback
 			if (this.onToggle && typeof this.onToggle === 'function') {
-				this.onToggle()($ev, $sc, level);
+				this.onToggle()($ev, $sc);
 			}
 
 		}

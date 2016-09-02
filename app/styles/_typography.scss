@@ -26,14 +26,14 @@
 
 // Franklin Gothic Book
 @font-face {
-  font-family: "franklin_gothic_fsbook";
+  font-family: 'Franklin Gothic';
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.eot');
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.eot?#iefix') format('embedded-opentype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.woff2') format('woff2'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.woff') format('woff'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.ttf') format('truetype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.svg#franklin_gothic_fsbook') format('svg');  
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;     
 }
 // $franklin_gothic_fsbook: "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
@@ -41,28 +41,28 @@
 
 // Franklin Gothic Medium
 @font-face {
-    font-family: 'franklin_gothic_fsmedium';
+    font-family: 'Franklin Gothic';
     src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.eot');
     src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.eot?#iefix') format('embedded-opentype'),
          url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.woff2') format('woff2'),
          url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.woff') format('woff'),
          url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.ttf') format('truetype'),
          url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.svg#franklin_gothic_fsmedium') format('svg');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 }
 
 
 // Franklin Gothic Demi
 @font-face {
-  font-family: 'franklin_gothic_fsdemi';
+  font-family: 'Franklin Gothic';
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.eot');
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.eot?#iefix') format('embedded-opentype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.woff2') format('woff2'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.woff') format('woff'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.ttf') format('truetype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.svg#franklin_gothic_fsdemi') format('svg');
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
 }
 // $franklin_gothic_fsdemi: "franklin_gothic_fsdemi", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
@@ -70,14 +70,14 @@
 
 // Franklin Gothic Condensed
 @font-face {
-  font-family: 'franklin_gothic_fscondensed';
+  font-family: 'Franklin Gothic Condensed';
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.eot');
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.eot?#iefix') format('embedded-opentype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.woff2') format('woff2'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.woff') format('woff'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.ttf') format('truetype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.svg#franklin_gothic_fscondensed') format('svg');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
 }
 // $franklin_gothic_fscondensed: "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
@@ -85,14 +85,14 @@
 
 // Franklin Gothic Medium Condensed
 @font-face {
-  font-family: 'franklin_gothic_fsMdCn';
+  font-family: 'Franklin Gothic Condensed';
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.eot');
   src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.eot?#iefix') format('embedded-opentype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.woff2') format('woff2'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.woff') format('woff'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.ttf') format('truetype'),
        url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.svg#franklin_gothic_fsMdCn') format('svg');
-  font-weight: normal;
+  font-weight: 500;
   font-style: normal;
 }
 // $franklin_gothic_fsMdCn: "franklin_gothic_fsMdCn", "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
@@ -111,6 +111,6 @@
 }
 // $uoit_icon_font: "uoit_icons";
 
-h1, h2, h3, .uppercase {
+.uppercase {
   text-transform: uppercase;
 }

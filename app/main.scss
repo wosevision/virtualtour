@@ -11,6 +11,16 @@
 @import 'styles/libs/jsoneditor';
 
 
+$font-family: $franklin_gothic;
+$font-family-display: $franklin_gothic_condensed;
+$font-family-bold: $franklin_gothic_demi;
+
+$button-left-right-padding: 16px;
+$button-border-radius: 0;
+
+// $checkbox-border-radius: 1px;
+// $checkbox-border-width: 1px;
+
 //
 // NG LIBS
 @import 'styles/libs/angular-material';
@@ -25,11 +35,12 @@
 @import 'components/buttonbar/buttonbar';
 
 @import 'components/sidebar/sidebar';
-	@import 'components/drilldown/drilldown';
-	@import 'components/sidebar/builder/builder';
+@import 'components/drilldown/drilldown';
+@import 'components/sidebar/builder/builder';
 
-	@import 'components/aframe/scene/scene';
+@import 'components/aframe/scene/scene';
 
+@import 'components/welcome/welcome';
 
 // LOADING BAR AND SPINNER
 #loading-bar {
@@ -64,4 +75,16 @@
 
 .md-track-ticks canvas {
 	left: 0;
+}
+
+.md-display-4,
+.md-display-3,
+.md-display-2,
+.md-display-1 {
+	font-weight: normal;
+	text-transform: uppercase;
+	font-family: $font-family-display;
+}
+.md-button, .md-tab {
+  font-weight: 700;
 }

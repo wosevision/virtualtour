@@ -1,17 +1,19 @@
 <md-content
 	class="drilldown-menu"
-	ng-init="children = item.children; level = level + 1"
+	ng-init="children = item.children; this.level += 1"
 	layout="column"
 	layout-fill
 	flex>
 	<div
-		class="drilldown-item {{ item.active && !item.hidden ? 'flex-grow' : 'flex-shrink' }}"
+		class="drilldown-item"
+		ng-class="{ 'is-active': item.active }"
+		md-ink-ripple="{{ item.active ? false : '#003C71' }}"
 		ng-repeat="item in item.children track by $index"
 		ng-style="item.style"
-		ng-click="toggle($event, this, level)"
+		ng-click="toggle($event, this)"
 		layout="column"
-		layout-align="start start"
-		flex>
+		layout-align="start center"
+		flex="{{ item.active && !item.hidden ? 'grow' : 'shrink' }}">
 		<div 
 			class="drilldown-item-content"
 			ng-if="!item.hidden"

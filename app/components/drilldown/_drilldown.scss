@@ -22,69 +22,24 @@
   }
 }
 
-.location-card {
-	transition: 0.6s ease;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
-	// overflow: hidden;
-	position: relative;
-	&.location-north {
-		background-image: url('../images/north_bg.jpg');
-	}
-	&.location-dt {
-		background-image: url('../images/dt_bg.jpg');
-	}
-	&::before {
-		@include cover(absolute);
-		content: '';
-		z-index: 0;
-		background-color: rgba(white, 0.6);
-		background-image: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%),
-											linear-gradient(to top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%);
+// .building-list {
+// 	background-color: transparent;
+// 	display: block;
+// 	md-list {
+// 		background-image: linear-gradient(to bottom,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+// 	}
+// }
 
-	}
-	h2 {
-		padding: 1rem;
-		text-align: left;
-		position: relative;
-		z-index: 1;
-	}
-	md-content {
-		transition: 1s ease;
-	}
-  // .ng-enter {
-  //   animation: slideInUp 0.6s;
-  // }
-  // .ng-leave {
-  //   animation: slideOutDown 0.6s;
-  // }
-  &.ng-enter {
-    animation: flexIn 0.8s ease;
-  }
-  &.ng-leave {
-    animation: flexOut 0.8s cubic-bezier(1,-1,.5,1);
-  }
-}
-
-.building-list {
-	background-color: transparent;
-	display: block;
-	md-list {
-		background-image: linear-gradient(to bottom,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-	}
-}
-
-.location-detail {
-  md-toolbar {
-    background-size: cover;
-    overflow: hidden;
-    h2 {
-      color: $uoitlightblue;
-      font-size: 1.5rem;
-    }
-  }
-}
+// .location-detail {
+//   md-toolbar {
+//     background-size: cover;
+//     overflow: hidden;
+//     h2 {
+//       color: $uoitlightblue;
+//       font-size: 1.5rem;
+//     }
+//   }
+// }
 
 .drilldown-menu md-content {
 	background: none;
@@ -108,22 +63,32 @@
 	box-shadow: inset 0 5px 15px rgba(black, 0.05), inset 0 2px 7px rgba(black, 0.15);
 	overflow: hidden;
 	span {
-		font-family: $franklin_gothic_fscondensed;
+		font-family: $franklin_gothic_condensed;
 		text-transform: uppercase;
 		color: white;
+		z-index: 100;
+	}
+	&:hover span {
+		transform: scale(1.05);
 	}
 	&::before {
 		@include cover(absolute);
+		transition: 0.3s;
 		content: '';
 		z-index: 0;
 		// background-color: rgba(white, 0.3);
-		background-color: rgba($uoitdarkblue, 0.75);
+		background-color: rgba($uoitdarkblue, 0.6);
 		// background-image: linear-gradient(to bottom,  rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%),
 		// 									linear-gradient(to top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%);
 		// background-image: linear-gradient(to bottom,  rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%),
 		// 									linear-gradient(to top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%);
-		background-image: linear-gradient(to bottom,  rgba(black,0.75) 0%, rgba(black,0) 40%);
-
+		background-image: linear-gradient(to bottom,  rgba(black,0.4) 0%, rgba(black,0) 75%);
+	}
+	&:not(.is-active):hover::after {
+		@include cover(absolute);
+		content: '';
+		z-index: 0;
+		background-color: rgba($uoitdarkblue, 0.15);
 	}
 	.ng-enter {
   	// animation: zoomInUp 0.9s;
@@ -135,6 +100,7 @@
   	animation: fadeOutDown 0.9s;
 	}
 	&-content {
+		text-align: center;
 		position: relative;
 		&.ng-enter {
 			animation: fadeInDown 0.6s;

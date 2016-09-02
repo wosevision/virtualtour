@@ -77,12 +77,10 @@ $footer_link_hover_bg_color: scale-color($footer_link_bg_color, $lightness: $lin
 // 3. Fonts
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$franklin_gothic_fsbook: "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
-$franklin_gothic_fsmedium: "franklin_gothic_fsmedium", Arial, Helvetica, sans-serif;
-$franklin_gothic_fsdemi: "franklin_gothic_fsdemi", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
-$franklin_gothic_fscondensed: "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
-$franklin_gothic_fsMdCn: "franklin_gothic_fsMdCn", "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
-$uoit_icon_font: "uoit_icons";
+$franklin_gothic: "Franklin Gothic", Arial, Helvetica, sans-serif;
+$franklin_gothic_demi: "Franklin Gothic Demi", 'Franklin Gothic', Arial, Helvetica, sans-serif;
+$franklin_gothic_condensed: "Franklin Gothic Condensed", 'Franklin Gothic', Arial, Helvetica, sans-serif;
+$uoit_icons: "uoit_icons";
 
 
 
