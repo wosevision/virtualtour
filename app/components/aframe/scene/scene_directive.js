@@ -14,6 +14,7 @@ function aframeScene($compile, $aframeScene) {
     restrict: 'E',
     scope: {
       entities: '=?',
+      markers: '=?',
       assets: '=?',
       sky: '@'
     },

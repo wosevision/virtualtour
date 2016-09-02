@@ -16,4 +16,10 @@
 			attrs="entity.attrs"
 			entities="entity.entities">
 		</aframe-entity>
+		<aframe-entity
+			ng-repeat="marker in markers track by ('marker_' + $index)"
+			ng-if="marker"
+			type="{{marker.type}}"
+			attrs="marker.attrs">
+		</aframe-entity>
 </a-scene>
