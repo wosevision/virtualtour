@@ -6,7 +6,8 @@ function titleBar($log) {
     scope: true,
     templateUrl: 'titlebar/_titlebar.html',
     bindToController: {
-    	title: '@'
+    	title: '@',
+    	mobile: '<'
     },
     controller: 'TitlebarCtrl',
     controllerAs: 'tb',

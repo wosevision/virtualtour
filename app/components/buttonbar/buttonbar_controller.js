@@ -1,24 +1,5 @@
-function ButtonbarCtrl($state, $mdSidenav, $buttonBar) {
+function ButtonbarCtrl($state, $mdSidenav) {
 	'ngInject';
-
-	let update = (toUpdate, value) => {
-		$buttonBar[toUpdate] = value;
-		this[toUpdate] = $buttonBar[toUpdate];
-	}
-
-	this.init = (bar) => {
-		$buttonBar.init(bar);
-		update('items', bar.items);
-		update('open', bar.open);
-		update('condensed', bar.condensed);
-		
-		bar.$watch('open', (value) => {
-			update('open', value);
-		});
-		bar.$watch('condensed', (value) => {
-			update('condensed', value);
-		});
-	}
 
   this.toggleMenu = (navID, view) => {
   	//console.log(navID, view);
