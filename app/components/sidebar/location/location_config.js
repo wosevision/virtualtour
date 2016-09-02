@@ -127,12 +127,12 @@ function LocationConfig($stateProvider) {
           '@locations' : {
             template: '<ui-view/>',
             controller($scope, $state, locationCode) {
-              $scope.lc.currentLocation = $scope.lc.locations[locationCode];
+              $scope.lc.current[1] = $scope.lc.locations[locationCode];
             }
           }
         },
 			  ncyBreadcrumb: {
-			    label: '{{ lc.currentLocation.code }} location'
+			    label: '{{ lc.current[1].name }} location'
 			  }
       })
         .state('building', {
@@ -150,12 +150,12 @@ function LocationConfig($stateProvider) {
             '@location' : {
             	template: '<ui-view/>',
               controller($scope, currentBuilding) {
-                $scope.lc.currentBuilding = currentBuilding;
+                $scope.lc.current[2] = currentBuilding;
               }
             }
           },
 				  ncyBreadcrumb: {
-				    label: `{{ lc.currentBuilding.name }}`
+				    label: `{{ lc.current[2].name }}`
 				  }
         })
         .state('scene', {
@@ -182,7 +182,7 @@ function LocationConfig($stateProvider) {
             }
           },
 				  ncyBreadcrumb: {
-				    label: `{{ lc.currentScene.name }}`
+				    label: `{{ lc.current[3].name }}`
 				  }
         });
 }
