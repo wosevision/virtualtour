@@ -1,8 +1,8 @@
 function MainCtrl(
-	$rootScope, $scope, $state, $timeout, $log,
-	$mdComponentRegistry, $mdSidenav, $mdToast,
-	SceneResource, $aframeScene, testScene,
-	GLOBAL_SETTINGS, BUTTONBAR_VIEWS, TITLEBAR_OPTS
+	$rootScope, $scope, $state, $timeout, $log, // ng deps
+	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
+	BUTTONBAR_VIEWS, TITLEBAR_OPTS, // consts
+	// nzTour
 ) {
   'ngInject';
   // ViewModel
