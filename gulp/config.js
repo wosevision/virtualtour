@@ -38,6 +38,7 @@ export default {
   assetExtensions: [
     'js',
     'css',
+    'dae',
     'png',
     'jpe?g',
     'html',
