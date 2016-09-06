@@ -2,7 +2,7 @@ function MainCtrl(
 	$rootScope, $scope, $state, $timeout, $log, // ng deps
 	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
 	BUTTONBAR_VIEWS, TITLEBAR_OPTS, // consts
-	// nzTour
+	nzTour
 ) {
   'ngInject';
   // ViewModel
@@ -44,6 +44,30 @@ function MainCtrl(
     true
   );
 
+  mc.introTour = function() {
+  	nzTour.start({
+	    config: {
+        mask: {
+          visible: false
+        },
+        dark: true
+	    },
+	    steps: [{
+	        target: '#locations',
+	        placementPriority: [ 'top', 'left', 'bottom', 'right' ],
+	        content: 'This is the first step!',
+	    }, {
+	        target: '#map',
+	        placementPriority: [ 'left', 'top', 'bottom', 'right' ],
+	        content: 'Blah blah blah. I prefer to show up on the right.',
+	    }, {
+	        target: '#settings',
+	        placementPriority: [ 'left', 'top', 'bottom', 'right' ],
+	        content: 'I guess this is a menu!',
+	    }]
+		});
+  }
+
   mc.welcomeMsg = function() {
       
     var toast = $mdToast.simple()
@@ -58,21 +82,6 @@ function MainCtrl(
     //     alert('You clicked the \'UNDO\' action.');
     //   }
     // });
-
-    const tour = {
-	    //config: {} // see config
-	    steps: [{
-	        target: document.getElementById('locations'),
-	        content: 'This is the first step!',
-	    }, {
-	        target: document.getElementById('map'),
-	        placementPriority: [ 'right', 'top', 'bottom', 'left' ],
-	        content: 'Blah blah blah. I prefer to show up on the right.',
-	    }, {
-	        target: document.getElementById('settings'),
-	        content: 'I guess this is a menu!',
-	    }]
-		};
 
     $mdDialog.show({
       controller: 'DialogCtrl',
@@ -95,19 +104,22 @@ function MainCtrl(
     })
     .then(
     	(answer) => {
-
+    		if (answer && answer == 'startTour') {
+    			mc.introTour();
+    		}
 	      $mdToast.show(toast).then(function(response) {
 		      if ( response == 'ok' ) {
-		        alert('You clicked the \'UNDO\' action.');
+		        $state.go('settings');
+		        $mdSidenav('right').open();
 		      }
 		    });
 			}, () => {
 	      $mdToast.show(toast).then(function(response) {
 		      if ( response == 'ok' ) {
-		        alert('You clicked the \'UNDO\' action.');
+		        $state.go('settings');
+		        $mdSidenav('right').open();
 		      }
 		    });
-// nzTour.start(tour);
 	    }
 	  );
   };

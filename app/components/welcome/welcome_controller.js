@@ -1,4 +1,4 @@
-function DialogCtrl($scope, $mdDialog) {
+function DialogCtrl($scope, $mdDialog, nzTour) {
   'ngInject';
   $scope.hide = function() {
     $mdDialog.hide();

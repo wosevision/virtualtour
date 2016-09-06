@@ -49,20 +49,20 @@
 		height: 90px;
 		margin: 2rem 0 0.5rem 0;
 		opacity: 0.5;
-		// &.compass-icon {
-	 //    perspective: 200px;
-	 //    svg {
-		//     animation-name: spinner;
-		//     animation-timing-function: ease-in-out;
-		//     animation-iteration-count: infinite;
-		//     animation-duration: 6s;
-	 //    }
-	 //  }
-		// &.tips-icon {
-		//     animation-iteration-count: infinite;
-		//     animation-duration: 2s;
-		//     animation-name: delaybounce;
-	 //  }
+		&.compass-icon {
+	    perspective: 200px;
+	    svg {
+		    animation-name: spinner;
+		    animation-timing-function: ease-in-out;
+		    animation-iteration-count: infinite;
+		    animation-duration: 6s;
+	    }
+	  }
+		&.tips-icon {
+		    animation-iteration-count: infinite;
+		    animation-duration: 2s;
+		    animation-name: delaybounce;
+	  }
 	}
 	md-content h1, md-content h2 {
 		color: $uoitdarkblue;
