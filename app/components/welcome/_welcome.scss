@@ -63,6 +63,11 @@
 		    animation-duration: 2s;
 		    animation-name: delaybounce;
 	  }
+		&.access-icon {
+		    animation-iteration-count: infinite;
+		    animation-duration: 1s;
+		    animation-name: pulse;
+	  }
 	}
 	md-content h1, md-content h2 {
 		color: $uoitdarkblue;

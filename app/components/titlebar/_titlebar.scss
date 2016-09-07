@@ -1,13 +1,11 @@
 .title-bar {
-		&.is-mobile {
-			background: transparent !important;
-		}
 	min-height: 65px;
 	border-top: solid 5px $uoitdarkblue;
 	.logo-shield {
 		height: 36px;
 	}
 	.md-toolbar-tools {
+		color: $uoitdarkblue;
 		font-family: $font-family-display;
 		text-transform: uppercase;
 		padding: 0;
@@ -69,4 +67,24 @@
 			}
 		}
 	}
+
+	&.is-mobile {
+		background: transparent !important;
+		border-top: 0;
+		.md-toolbar-tools {
+			color: white;
+		}
+		.breadcrumbs {
+			display: none;
+		}
+
+		.md-button.menu-button {
+			margin: 0;
+	    min-width: 0;
+			height: 60px;
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+
 }	

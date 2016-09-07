@@ -79,12 +79,14 @@
 				          </div>
 				        </md-list-item>
 				        <md-list-item class="md-2-line md-long-text" ng-click="null" layout="row">
+					        <ng-md-icon icon="screen_rotation" size="24" style="fill: #0077CA;"></ng-md-icon>
 				          <div class="md-list-item-text" layout="column">
 				            <h3>Mobile VR</h3>
 				            <p>Turn your smartphone into a portal to UOIT with a mobile VR peripheral like HTC Vive, Samsung Gear or Google Cardboard.</p>
 				          </div>
 				        </md-list-item>
 				        <md-list-item class="md-2-line md-long-text" ng-click="null" layout="row">
+					        <ng-md-icon icon="settings" size="24" style="fill: #0077CA;"></ng-md-icon>
 				          <div class="md-list-item-text" layout="column">
 				            <h3>Customization</h3>
 				            <p>Learn about the options available for fine-tuning the virtual tour interface.</p>
@@ -98,20 +100,27 @@
         </md-tab>
 
         <md-tab label="Accessibility">
-          <h2 class="md-display-2"><span class="md-display-2">Accessibility</span><br/><span class="md-headline">information</span></h1>
-          <md-content class="md-padding" layout-xs="column" layout="row">
-						
+          <md-content class="md-padding" layout="column">
+	          <div>
+		        	<ng-md-icon
+		        		class="dialog-icon access-icon"
+						  	icon="accessibility"
+						  	size="90"
+						  	style="fill: #0077CA;">
+						  </ng-md-icon>
+		          <h2><span class="md-display-2">Accessibility</span><br/><span class="md-headline">information</span></h2>
+	          </div>
           </md-content>
         </md-tab>
 
       </md-tabs>
     </md-dialog-content>
     <md-dialog-actions layout="row" class="footer-pane">
-    	<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog">
+    	<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog" md-autofocus>
         <strong>Don't show me this again</strong>
       </md-checkbox>
       <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="answer('startTour')" md-autofocus >
+      <md-button class="md-raised md-primary" ng-click="answer('startTour')">
         Take an interactive tour
       </md-button>
       <md-button class="md-primary" ng-click="hide()" style="margin-right:20px;" >

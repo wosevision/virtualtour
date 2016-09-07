@@ -10,7 +10,17 @@
       <div ncy-breadcrumb></div>
 
       <span flex></span>
-      <ng-transclude></ng-transclude>
+      <ng-transclude ng-if="!tb.mobile.screen"></ng-transclude>
+      <md-button
+      	ng-if="tb.mobile.screen"
+				class="menu-button"
+				ng-click="toggleMenu()"
+				aria-label="Toggle menu">
+			  <ng-md-icon
+			  	icon="menu"
+			  	style="fill: white;">
+			  </ng-md-icon>
+			</md-button>
     </div>
 
 </md-toolbar>
