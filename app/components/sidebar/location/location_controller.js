@@ -16,7 +16,7 @@ function LocationCtrl($scope, $state, $timeout, $mdSidenav, $log, BuildingResour
   lc.locations = [{
 		name: 'North',
 		label: 'North Oshawa campus location',
-		style: { backgroundImage: `url('images/north_bg.jpg')` },
+		// style: { backgroundImage: `url('images/north_bg.jpg')` },
 		code: 'north',
 		active: false,
 		hidden: false,
@@ -25,7 +25,7 @@ function LocationCtrl($scope, $state, $timeout, $mdSidenav, $log, BuildingResour
 	{
 		name: 'Downtown',
 		label: 'Downtown Oshawa campus location',
-		style: { backgroundImage: `url('images/dt_bg.jpg')` },
+		// style: { backgroundImage: `url('images/dt_bg.jpg')` },
 		code: 'dt',
 		active: false,
 		hidden: false,

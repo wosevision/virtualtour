@@ -1,6 +1,17 @@
-<span class="{{ item.active ? 'md-caption' : 'md-headline' }}">
-	{{ ::item.label || item.name }}
-</span>
+<ng-switch on="this.level < 4">
+
+	<div ng-switch-when="true">
+		<span class="{{ item.active ? 'md-caption' : 'md-headline' }}">
+			{{ ::item.label || item.name }}
+		</span>
+		<div class="open-indicator"></div>
+	</div>
+
+	<div ng-switch-when="false" class="image-box">
+		<img ng-src="api/panoramas/{{ item.building }}/{{ item.code }}.jpg?thumb" />
+	</div>
+
+</ng-switch>
 <!-- <div style="text-align: center;">
 	<ng-md-icon icon="{{ item.active ? 'expand_less' : 'expand_more' }}" style="fill: #ffffff;"></ng-md-icon>
 </div> -->
