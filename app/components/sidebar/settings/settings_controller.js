@@ -2,10 +2,12 @@ function SettingsCtrl($scope, $rootScope, SettingsFactory) {
   'ngInject';
 	const s = $scope;
 
-	s.syncSettings = function () {
+	s.syncUser = function () {
 		 SettingsFactory.appSettings.set('_USER', $rootScope.appSettings.USER);
 	}
-	//s.userSettings = $rootScope.appSettings._USER;
+	s.syncData = function () {
+		 SettingsFactory.appSettings.set('_DATA', $rootScope.appSettings.DATA);
+	}
 }
 
 export default {

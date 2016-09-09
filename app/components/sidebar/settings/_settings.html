@@ -39,7 +39,7 @@
 					  <md-list-item ng-repeat="setting in appSettings.USER">
 					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
 					    <span flex>{{ ::setting.label }}</span>
-					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()" aria-label="{{ ::setting.label }}"></md-switch>
+					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncUser()" aria-label="{{ ::setting.label }}"></md-switch>
 					  </md-list-item>
 					</md-list>
 		    </v-pane-content>
@@ -51,48 +51,18 @@
 		    </v-pane-header>
 
 		    <v-pane-content>
-					<md-list>
+		    	<div layout="row" layout-padding>
+						
+						<label class="text-center" ng-repeat="setting in appSettings.DATA" flex>
+							{{ ::setting.label }}
+				    	<md-slider-container flex>
+					      <h5>{{ ::setting.labels[1] }}</h5>
+					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-vertical md-discrete></md-slider>
+					      <h5>{{ ::setting.labels[0] }}</h5>
+					    </md-slider-container>
+						</label>
 
-					  <md-list-item layout>
-								<md-subheader class="md-no-sticky" flex="35">Compression</md-subheader>
-					      <div flex="15" layout layout-align="center center">
-					        <span class="md-body-1">Less</span>
-					      </div>
-					      <md-slider
-					      	flex
-					      	md-vertical
-					      	md-discrete
-					      	class="md-primary"
-					      	ng-model="rating1"
-					      	step="1" min="1" max="5"
-					      	aria-label="rating">
-					      </md-slider>
-					      <div flex="15" layout layout-align="center center">
-					        <span class="md-body-1">More</span>
-					      </div>
-
-					  </md-list-item>
-					  <md-list-item layout>
-								<md-subheader class="md-no-sticky" flex="35">Preloading</md-subheader>
-					      <div flex="15" layout layout-align="center center">
-					        <span class="md-body-1">None</span>
-					      </div>
-					      <md-slider
-					      	flex
-					      	md-vertical
-					      	md-discrete
-					      	class="md-primary"
-					      	ng-model="rating1"
-					      	step="1" min="1" max="5"
-					      	aria-label="rating">
-					      </md-slider>
-					      <div flex="15" layout layout-align="center center">
-					        <span class="md-body-1">Proactive</span>
-					      </div>
-
-					  </md-list-item>
-
-					</md-list>
+			    </div>
 		    </v-pane-content>
 		  </v-pane>
 
