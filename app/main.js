@@ -17,8 +17,9 @@ import 'angular-material-icons';
 import 'angular-resource';
 import 'angular-sanitize';
 import 'angular-storage';
-import 'angular-socket-io';
+// import 'angular-socket-io';
 import 'angular-breadcrumb';
+import 'ngmap';
 import 'nz-tour';
 import 'v-accordion';
 
@@ -61,7 +62,7 @@ import './components/index';
 
 // list required modules for DI
 const requires = [
-  'btford.socket-io',
+  // 'btford.socket-io',
   'nzTour',
   'ncy-angular-breadcrumb',
   'ui.router',
@@ -76,6 +77,7 @@ const requires = [
   'ngResource',
   'ngMaterial',
   'ngMdIcons',
+  'ngMap',
   'app.templates',
   'app.components'
 ];

@@ -36,8 +36,10 @@ $button-border-radius: 0;
 @import 'components/buttonbar/buttonbar';
 
 @import 'components/sidebar/sidebar';
+	@import 'components/sidebar/map/map';
+	@import 'components/sidebar/builder/builder';
+
 @import 'components/drilldown/drilldown';
-@import 'components/sidebar/builder/builder';
 
 @import 'components/aframe/scene/scene';
 

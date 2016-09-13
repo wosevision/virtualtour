@@ -10,6 +10,7 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" href="css/main.css">
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Z_tA7YdsRXkHdThiC-VA0dvwX6a4Kto"></script>
   </head>
 
   <body
@@ -57,11 +58,12 @@
       		open="mc.toolbar.isOpen"
       		condensed="mc.toolbar.isCondensed"
       		layout="column"
-      		flex="nogrow">
+      		flex="nogrow">z
       	</button-bar> -->
 
 				<md-sidenav
 				  class="md-sidenav-right"
+				  ng-class="{ 'map-open' : ('map' | isState) }"
 				  md-component-id="right"
 				  md-disable-backdrop
 				  md-whiteframe="4"
@@ -80,7 +82,13 @@
 				  </div>
 				</md-sidenav>
 
-      	<section flex="grow" layout="column" layout-fill class="scene-view" id="scene-view">
+      	<section
+      		flex="grow"
+      		layout="column"
+      		layout-fill
+      		id="scene-view"
+      		class="scene-view"
+				  ng-class="{ 'map-open' : ('map' | isState) }">
       		<aframe-scene 
       			sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"
