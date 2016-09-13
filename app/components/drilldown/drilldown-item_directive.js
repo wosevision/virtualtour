@@ -10,7 +10,7 @@ function drilldownItemContent($compile) {
 		require: '^drilldownMenu',
 		compile(iElem, iAttrs) {
 			return (scope, elem, attrs, ctrl) => {
-				console.log(scope);
+				// console.log(scope);
 			}
 		}
 	};
