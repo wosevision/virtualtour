@@ -12,7 +12,7 @@ function LocationConfig($stateProvider) {
 
 	$stateProvider
     .state('locations', {
-      url: '',
+      // url: '',
       parent: 'home',
       views: {
         '@' : {

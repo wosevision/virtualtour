@@ -11,9 +11,8 @@
 		layout="column"
 		layout-align="center center"
 		flex="noshrink"
-  	ui-sref=".{{::v}}"
+  	ui-sref="home({view: v})"
   	ui-sref-active="is-active"
-  	ui-sref-opts="{ absolute: true }"
   	ng-click="bar.toggleMenu('right', v)"
   	md-ink-ripple="#0077CA"
   	id="{{::v}}">

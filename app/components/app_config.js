@@ -38,8 +38,15 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
     .state('home', {
       url: '/',
       // url: '',
-      abstract: true,
+      // abstract: true,
+      params: { view: null },
+      controller($state, $stateParams) {
+        if ($stateParams.view) {
+        	$state.go($stateParams.view);
+        }
+      },
 		  ncyBreadcrumb: {
+		  	skip: true,
 		    label: ''
 		  }
     });
