@@ -14,7 +14,7 @@ const TITLEBAR_OPTS = {
 	right: {
 		active: true,
 		label: 'Toolbar visibility',
-		tooltip: [ 'Show toolbar', 'Hide toolbar' ],
+		tooltip: [ 'Hide toolbar', 'Show toolbar' ],
 		icon: [ 'last_page', 'first_page' ]
 	}
 };

@@ -7,9 +7,13 @@
     <div class="md-toolbar-tools">
       <h1 ui-sref="locations">{{::tb.title}}</h1>
 
-      <div ncy-breadcrumb></div>
+      <div ncy-breadcrumb id="breadcrumbs"></div>
 
       <span flex></span>
+      <md-button class="cta-button bg-pink md-raised" ng-click="null" ng-if="!tb.mobile.screen">Register now</md-button>
+      <md-button class="cta-button bg-green md-raised" ng-click="null" ng-if="!tb.mobile.screen">Schedule visit</md-button>
+      <md-button class="cta-button bg-orange md-raised" ng-click="null" ng-if="!tb.mobile.screen">Apply online</md-button>
+
       <ng-transclude ng-if="!tb.mobile.screen"></ng-transclude>
       <md-button
       	ng-if="tb.mobile.screen"

@@ -28,6 +28,19 @@ $uoitpink			 : #c71566;
 $uoitgreen		 : #1a875c;
 $uoitorange		 : #ce4825;
 
+.bg-pink, .bg-green, .bg-orange {
+	color: white !important;
+}
+.bg-pink {
+	background-color: $uoitpink !important;
+}
+.bg-green {
+	background-color: $uoitgreen !important;
+}
+.bg-orange {
+	background-color: $uoitorange !important;
+}
+
 $uoitdcgrey		 : #414042;
 
 // Faculty colours also need to be set in individual faculty main scss file for global overrides

@@ -111,8 +111,25 @@
 }
 // $uoit_icon_font: "uoit_icons";
 
+$font-family: $franklin_gothic;
+$font-family-display: $franklin_gothic_condensed;
+$font-family-bold: $franklin_gothic_demi;
+
+.md-display-4,
+.md-display-3,
+.md-display-2,
+.md-display-1 {
+	font-weight: normal;
+	text-transform: uppercase;
+	font-family: $font-family-display;
+}
+
 .uppercase {
   text-transform: uppercase;
+}
+
+.text-right {
+	text-align: right;
 }
 .text-center {
   text-align: center;

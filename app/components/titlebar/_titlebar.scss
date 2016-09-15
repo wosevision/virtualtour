@@ -1,6 +1,8 @@
+/* MAIN TITLEBAR STYLES */
 .title-bar {
 	min-height: 65px;
 	border-top: solid 5px $uoitdarkblue;
+	z-index: 100;
 	.logo-shield {
 		height: 36px;
 	}
@@ -10,6 +12,9 @@
 		text-transform: uppercase;
 		padding: 0;
 		height: 100%;
+	}
+	.md-button.menu-button {
+		font-family: $font-family-bold;
 	}
 	.md-button.icon-button {
 		margin: 0;
@@ -22,62 +27,13 @@
 			box-shadow: inset 0 -3px 0 $uoitlightblue;
 		}
 	}
-	.breadcrumbs {
-		height: 100%;
-		.md-button {
-			margin: 0;
-			color: $uoitgrey !important;
-			font-family: $font-family-display;
-			font-weight: 400;
-			line-height: 60px;
-			overflow: visible;
-			height: 100%;
-			padding-left: 40px;
-			padding-right: 30px;
-		  &.ng-enter {
-		    animation: fadeInLeft 0.6s;
-		  }
-		  &.ng-leave {
-		    animation: fadeOutLeft 0.6s;
-		  }
-			&:not(:first-child) {
-				margin-left: -20px;
-			}
-			&::after, &::before {
-				content: '';
-				width: 0;
-				height: 0;
-				position: absolute;
-				top: 0;
-				border-style: solid;
-				border-width: 30px 0 30px 20px;
-				border-color: transparent;
-			}
-			&::after {
-				right: 0;
-				border-color: white white white transparent;
-			}
-			&::before {
-				transition: border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-				z-index: 100000;
-				left: 0;
-			}
-			&:hover::before, &:focus::before {
-				border-color: transparent transparent transparent white;
-			}
-		}
-	}
-
+	// MOBILE OVERWRITES
 	&.is-mobile {
 		background: transparent !important;
 		border-top: 0;
 		.md-toolbar-tools {
 			color: white;
 		}
-		.breadcrumbs {
-			display: none;
-		}
-
 		.md-button.menu-button {
 			margin: 0;
 	    min-width: 0;
@@ -86,5 +42,133 @@
 			padding-right: 18px;
 		}
 	}
+}
 
-}	
+.breadcrumbs {
+	// height: 100%;
+	.md-button {
+		margin: 0;
+		color: $uoitgrey !important;
+		font-family: $font-family-display;
+		font-weight: 400;
+		line-height: 60px;
+		overflow: visible;
+		height: 100%;
+		padding-left: 40px;
+		padding-right: 30px;
+		margin-left: -20px;
+	  &.ng-enter {
+	    animation: fadeInLeft 0.6s;
+	  }
+	  &.ng-leave {
+	    animation: fadeOutLeft 0.6s;
+	  }
+		// ::PSEUDO
+		&:first-child {
+			margin-left: 10px;
+		}
+		&::after, &::before {
+			transition: border-color 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 0;
+			border-style: solid;
+			border-width: 30px 0 30px 20px;
+			border-color: transparent;
+		}
+		&::after {
+			right: 0;
+			border-color: white white white transparent;
+		}
+		&::before {
+			z-index: 100000;
+			left: 0;
+		}
+		// :STATE
+		&:hover::before, &:focus::before {
+			border-color: transparent transparent transparent white;
+		}
+	}
+	// MOBILE OVERWRITES
+	.is-mobile & {
+		display: none;
+	}
+}
+
+.md-button.cta-button {
+	transition: transform 0.3s cubic-bezier(0.35, 0, 0.25, 1),
+							background-color 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+	font-family: $font-family-bold;
+	overflow: visible;
+	position: relative;
+	padding: 2.25rem 0.2rem 0.75rem 0.2rem;
+	line-height: 1;
+	font-size: 0.88rem;
+	max-width: 90px;
+	white-space: initial;
+	word-wrap: break-word;
+	transform: translateY(-25%);
+	filter: drop-shadow(0 3px 5px rgba(black, 0.25));
+	&.md-raised:not([disabled]) {
+		box-shadow: none;
+	}
+	// ::PSEUDO
+	&::before, &::after {
+		transition: border-color 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+		z-index: 10;
+		position: absolute;
+		bottom: -19px;
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+	}
+	&::before {
+		left: 0;
+		border-width: 20px 45px 0 0;
+	}
+	&::after {
+		right: 0;
+		border-width: 0 45px 20px 0;
+	}
+	// :STATE
+	&:hover, &:focus {
+		transform: translateY(0);
+	}
+	// SOME COLOUR LOGIC: LOOP THROUGH BG COLOURS
+	$uoit-colors-list: pink orange green;
+	$uoit-colors: $uoitpink $uoitorange $uoitgreen;
+	@for $i from 1 through length($uoit-colors-list) {
+    &.bg-#{nth($uoit-colors-list, $i)} {
+    	&::before {
+      	border-color: nth($uoit-colors, $i) transparent transparent transparent;
+	    }
+    	&::after {
+      	border-color: transparent nth($uoit-colors, $i) transparent transparent;
+	    }
+			&:hover, &:focus {
+				background-color: tint(nth($uoit-colors, $i), 10%) !important;
+				&::before {
+					border-color: tint(nth($uoit-colors, $i), 10%) transparent transparent transparent;
+				}
+				&::after {
+					border-color: transparent tint(nth($uoit-colors, $i), 10%) transparent transparent;
+				}
+			}
+			&:active {
+				background-color: tint(nth($uoit-colors, $i), 20%) !important;
+				&::before {
+					transition: border-color 0.6s cubic-bezier(0.35, 0, 0.25, 1);
+					border-color: tint(nth($uoit-colors, $i), 41%) transparent transparent transparent;
+				}
+				&::after {
+					transition: border-color 0.6s cubic-bezier(0.35, 0, 0.25, 1);
+					border-color: transparent tint(nth($uoit-colors, $i), 41%) transparent transparent;
+				}
+			}
+	  }
+	}
+
+}
