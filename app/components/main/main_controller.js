@@ -44,38 +44,22 @@ function MainCtrl(
     true
   );
 
-  mc.introTour = function() {
-  	nzTour.start({
-	    config: {
-        mask: {
-          visible: false
-        },
-        dark: true
-	    },
-	    steps: [{
-	        target: '#locations',
-	        placementPriority: [ 'top', 'left', 'bottom', 'right' ],
-	        content: 'This is the first step!',
-	    }, {
-	        target: '#map',
-	        placementPriority: [ 'left', 'top', 'bottom', 'right' ],
-	        content: 'Blah blah blah. I prefer to show up on the right.',
-	    }, {
-	        target: '#settings',
-	        placementPriority: [ 'left', 'top', 'bottom', 'right' ],
-	        content: 'I guess this is a menu!',
-	    }]
-		});
-  }
-
-  mc.welcomeMsg = function() {
-      
-    var toast = $mdToast.simple()
+  let settingsToast = () => {
+    let toast = $mdToast.simple()
       .textContent(`Data usage settings auto-configured to your device!`)
       .action('CHANGE SETTINGS')
       .highlightAction(true)
       .highlightClass('md-warn')
       .position('bottom left');
+    $mdToast.show(toast).then(response => {
+      if ( response == 'ok' ) {
+        $state.go('settings');
+        $mdSidenav('right').open();
+      }
+    });
+  }
+
+  mc.welcomeMsg = function() {
       // console.log(toast);
     // $mdToast.show(toast).then(function(response) {
     //   if ( response == 'ok' ) {
@@ -103,28 +87,23 @@ function MainCtrl(
       }
     })
     .then(
-    	(answer) => {
-    		if (answer && answer == 'startTour') {
-    			mc.introTour();
-    		}
-	      $mdToast.show(toast).then(function(response) {
-		      if ( response == 'ok' ) {
-		        $state.go('settings');
-		        $mdSidenav('right').open();
-		      }
-		    });
-			}, () => {
-	      $mdToast.show(toast).then(function(response) {
-		      if ( response == 'ok' ) {
-		        $state.go('settings');
-		        $mdSidenav('right').open();
-		      }
-		    });
-	    }
+    	answer => (answer != 'tour') && settingsToast()
+	  ).catch(
+    	() => settingsToast()
 	  );
   };
+
   $timeout(
   	() => mc.welcomeMsg(),
+  	// () => $mdDialog.show(
+  	// 	$mdDialog.error({
+  	// 		locals: {
+	  // 			type: 'Error',
+	  // 			message: 'Request has timed out!',
+	  // 			suggest: [0, 2, 1]
+		 //  	}
+		 //  })
+  	// ),
 	  500
 	);
 
