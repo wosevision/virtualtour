@@ -1,11 +1,11 @@
 {
   "name": "uoit-virtualtour",
-  "version": "1.5.8",
+  "version": "0.0.1",
   "author": "Jackson Teather <jackson.teather@uoit.ca>",
   "description": "University of Ontario Institute of Technology 3D Virtual Tour; built with Node, Angular, MongoDB and ES2015.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git"
+    "url": "https://github.com/wosevision/virtualtour.git"
   },
   "keywords": [
     "express",
@@ -16,7 +16,9 @@
     "karma",
     "jasmine",
     "protractor",
-    "boilerplate"
+    "aframe",
+    "babel",
+    "material"
   ],
   "private": false,
   "engines": {
@@ -106,8 +108,6 @@
     "jsoneditor": "^5.5.7",
     "ng-prettyjson": "^0.2.0",
     "ngmap": "^1.17.6",
-    "socket.io": "^1.4.8",
-    "socket.io-client": "^1.4.8",
     "v-accordion": "^1.6.0"
   }
 }

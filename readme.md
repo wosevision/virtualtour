@@ -1,6 +1,8 @@
 UOIT Virtual Tour
 =====================================
 
+## Version 0.0.1
+
 This is the front-end (only) component of the UOIT Virtual Tour web application, and uses a variety of different technologies to power the application and build process:
 
 ### Application
@@ -17,7 +19,7 @@ This is the front-end (only) component of the UOIT Virtual Tour web application,
 - [Gulp](#gulp) – Build system
 - [Browserify](#browserify) – Module requirer/bundler
 
-Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/angularjs-styleguide)~~ (**NOW DEPRECATED**: architecture update to [this style](https://github.com/toddmotto/angular-styleguide) in progress) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
+Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/angular-styleguide/tree/angular-old-es5)~~ (**NOW DEPRECATED**: architecture update to [this style](https://github.com/toddmotto/angular-styleguide) in progress) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
 
 [View original boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate/)
 
@@ -61,29 +63,31 @@ This application uses the latest versions of the following libraries:
 
 ### AngularJS
 
-AngularJS is a MVW (Model-View-Whatever) Javascript Framework for creating single-page web applications. In this boilerplate, it is used for all the application routing as well as all of the frontend views and logic.
+AngularJS is a MVW (Model-View-Whatever) Javascript Framework for creating single-page web applications. In this project, it is used for all the application routing as well as all of the frontend views and logic.
 
-The AngularJS files are all located within `/app/js`, structured in the following manner:
+The AngularJS files are all located within `/app`, structured in the following manner:
 
 ```
-/controllers
-  index.js   (the main module on which all controllers will be mounted, loaded in main.js)
-  example.js
-/directives
-  index.js   (the main module on which all directives will be mounted, loaded in main.js)
-  example.js
-/filters
-  index.js (the main module on which all filters will be mounted, loaded in main.js)
-  example.js
-/services
-  index.js   (the main module on which all services will be mounted, loaded in main.js)
-  example.js
-constants.js  (any constant values that you want to make available to Angular)
-main.js       (the main file read by Browserify, also where the application is defined and bootstrapped)
-on_run.js     (any functions or logic that need to be executed on app.run)
-on_config.js  (all route definitions and any logic that need to be executed on app.config)
-templates.js  (this is created via Gulp by compiling your views, and will not be present beforehand)
+├── components
+│   ├── component
+│   │   ├── childcomponent
+│   │   │   ├── example_directive.js
+│   │   │   ├── example-part_factory.js
+│   │   │   ├── example_directive.js
+│   │   │   └── example_filter.js
+│   │   └── childcomponent
+│   │       ├── example_directive.js
+│   │       ├── example-part_factory.js
+│   │       ├── example_directive.js
+│   │       └── example_filter.js
+│   ├── app_config.js 
+│   ├── app_run.js
+│   ├── app_templates.js
+│   ├── index.js
+└── main.js
 ```
+
+
 
 ##### Module organization
 
