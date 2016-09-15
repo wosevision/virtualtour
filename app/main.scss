@@ -10,11 +10,6 @@
 @import 'styles/libs/animate';
 @import 'styles/libs/jsoneditor';
 
-
-$font-family: $franklin_gothic;
-$font-family-display: $franklin_gothic_condensed;
-$font-family-bold: $franklin_gothic_demi;
-
 $button-left-right-padding: 16px;
 $button-border-radius: 0;
 
@@ -68,26 +63,40 @@ $button-border-radius: 0;
 	}
 }
 
-.badge {
-	font-size: 10px;
+.error-message {
+	max-width: 650px;
+	md-tabs-wrapper {
+		display: none;
+	}
+	md-select {
+		margin: 0;
+	}
+	md-content {
+		h2 {
+			margin-top: 16px;
+			margin-bottom: 0px;
+		}
+		p {
+			margin-bottom: 32px;
+		}
+	}
+	.md-list-item-text:not(:last-child) {
+		padding-right: 32px;
+	}
 }
 
-.text-right {
+.float-right {
 	float: right;
+}
+
+.badge {
+	font-size: 10px;
 }
 
 .md-track-ticks canvas {
 	left: 0;
 }
 
-.md-display-4,
-.md-display-3,
-.md-display-2,
-.md-display-1 {
-	font-weight: normal;
-	text-transform: uppercase;
-	font-family: $font-family-display;
-}
 .md-button, .md-tab {
   font-weight: 700;
 }

@@ -1,0 +1,55 @@
+<md-dialog class="error-message">
+	<md-dialog-content>
+
+		<md-tabs class="md-primary" md-selected="error.sendReport" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}" md-dynamic-height md-border-bottom>
+
+      <md-tab id="message" label="error">
+
+				<md-content layout-padding>
+					<h2 class="md-display-1">{{ error.type || 'Whoops!' }}</h2>
+					<p>{{ error.message || 'An unknown error occurred.' }}</p>
+
+					<span class="md-caption"><strong>Maybe try:</strong></span>
+				</md-content>
+				<md-list>
+					<md-divider></md-divider>
+
+					<md-list-item class="md-2-line md-long-text" ng-if="error.suggestions.length > 0" ng-repeat="item in ::error.suggestions">
+		        <ng-md-icon icon="{{ ::item.icon }}" size="24" style="fill: #0077CA;"></ng-md-icon>
+		        <div class="md-list-item-text" layout="column">
+		          <h3 bind-html-compile compile="::item.title"></h3>
+		          <p>{{ ::item.desc }}</p>
+		        </div>
+		        <md-button class="md-secondary md-primary" ng-if="::item.action||item.goToSettings" ng-click="::item.goToSettings ? goToSettings() : item.action(item.params)">Show me how</md-button>
+					</md-list-item>
+
+					<md-list-item class="md-2-line md-long-text" ng-click="error.sendReport = 1" md-autofocus>
+		        <ng-md-icon icon="error" size="24" style="fill: #0077CA;"></ng-md-icon>
+		        <div class="md-list-item-text" layout="column">
+		          <h3>Send an error report</h3>
+		          <p>Help us help you by reporting this error to the UOIT Webteam.</p>
+		        </div>
+					</md-list-item>
+				</md-list>
+
+      </md-tab>
+
+      <md-tab id="report" label="send report" layout-padding>
+
+      </md-tab>
+
+    </md-tabs>
+
+	</md-dialog-content>
+	<md-dialog-actions>
+
+		<md-button ng-click="refreshApp()" class="md-primary md-raised">
+			Refresh page
+		</md-button>
+
+		<md-button ng-click="closeDialog()" class="md-primary">
+			Close and try again
+		</md-button>
+
+	</md-dialog-actions>
+</md-dialog>
