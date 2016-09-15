@@ -1,38 +1,61 @@
-angularjs-gulp-browserify-boilerplate
+UOIT Virtual Tour
 =====================================
-[![Build Status](https://travis-ci.org/jakemmarsh/angularjs-gulp-browserify-boilerplate.svg)](https://travis-ci.org/jakemmarsh/angularjs-gulp-browserify-boilerplate) [![devDependency Status](https://david-dm.org/jakemmarsh/angularjs-gulp-browserify-boilerplate/dev-status.svg)](https://david-dm.org/jakemmarsh/angularjs-gulp-browserify-boilerplate#info=devDependencies)
 
-A boilerplate using AngularJS, SASS, Gulp, and Browserify that also utilizes [these best AngularJS practices](https://github.com/toddmotto/angularjs-styleguide)  and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
+This is the front-end (only) component of the UOIT Virtual Tour web application, and uses a variety of different technologies to power the application and build process:
 
-[View contributors](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate/graphs/contributors)
+### Application
+
+- [AngularJS](#angularjs) – M-V-* framework
+	- [Angular Material](#angular-material) – UI library based on Material Design
+- [A-Frame](#a-frame) – Web VR building blocks
+- [Google Maps](#google-maps)
+
+### Build process
+
+- [Babel](#babel) – ES6-to-boring-JS transpiler
+- [Sass](#sass) – CSS compiler
+- [Gulp](#gulp) – Build system
+- [Browserify](#browserify) – Module requirer/bundler
+
+Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/angularjs-styleguide)~~ (**NOW DEPRECATED**: architecture update to [this style](https://github.com/toddmotto/angular-styleguide) in progress) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
+
+[View original boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate/)
 
 ---
 
 ### Getting up and running
 
-1. Clone this repo from `https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git`
+1. Clone this repo from `https://github.com/wosevision/virtualtour.git`
 2. Run `npm install` from the root directory
 3. Run `gulp dev` (may require installing Gulp globally `npm install gulp -g`)
 4. Your browser will automatically be opened and directed to the browser-sync proxy address
+	- **NOTE:** The browser-sync server is loaded in tandem with a [nodemon](http://nodemon.io/) process with the `dev` flag, which provides the API/routing express server; **often, the timing between booting the two processes is less than ideal on first load and casuses it to hang**. This fixes itself after a page refresh for the rest of the Gulp process and does not occur in `prod`.
 5. To prepare assets for production, run the `gulp prod` task (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `gulp dev` during development. More information below)
 
 Now that `gulp dev` is running, the server is up as well and serving files from the `/build` directory. Any changes in the `/app` directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
 
 #### Other resources
 
-- [Yeoman generator](https://github.com/alferov/generator-angular-gulp-browserify)
-- [Cordova-friendly fork](https://github.com/StrikeForceZero/angularjs-cordova-gulp-browserify-boilerplate)
+- [Ben Nadel](http://www.bennadel.com/)
+- [Dr. Axel Rauschmayer](http://www.2ality.com/)
 
 ---
 
-This boilerplate uses the latest versions of the following libraries:
+This application uses the latest versions of the following libraries:
 
 - [AngularJS](http://angularjs.org/)
-- [SASS](http://sass-lang.com/)
+- [Angular Material](https://material.angularjs.org/latest/)
+- [A-Frame](https://aframe.io)
+- [Google Maps](https://developers.google.com/maps/documentation/javascript/)
+
+... and build tools:
+
+- [Babel](https://babeljs.io/)
+- [Sass](http://sass-lang.com/)
 - [Gulp](http://gulpjs.com/)
 - [Browserify](http://browserify.org/)
 
-Along with many Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks/`).
+...along with many Angular modules and Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks/`).
 
 ---
 
