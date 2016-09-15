@@ -8,14 +8,15 @@
 	<!-- <div flex="initial" ng-if="bar.condensed"></div> -->
 	<div ng-repeat="(v,view) in ::bar.items"
 		class="button-bar-btn"
+		ng-class="{ 'is-active': bar.menuOpen && (v | isState)}"
 		layout="column"
 		layout-align="center center"
 		flex="noshrink"
   	ui-sref="home({view: v})"
-  	ui-sref-active="is-active"
   	ng-click="bar.toggleMenu('right', v)"
   	md-ink-ripple="#0077CA"
   	id="{{::v}}">
+  	<!-- ui-sref-active="is-active" -->
 	  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
 	    <span ng-bind="::view.label"></span>
 	    <md-tooltip md-direction="left" md-autohide md-delay="bar.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">

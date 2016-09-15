@@ -1,11 +1,18 @@
-function ButtonbarCtrl($state, $mdSidenav) {
+function ButtonbarCtrl($scope, $state, $mdSidenav) {
 	'ngInject';
 
+	$scope.$watch(
+		() => $mdSidenav('right').isOpen(),
+		(newVal) => {
+			this.menuOpen = newVal;
+		}
+	);
+
   this.toggleMenu = (navID, view) => {
-  	console.log(navID, view, this.items);
+  	// console.log(navID, view, this.items);
     if (view && !this.items[view].show) {
       angular.forEach(this.items, (val, key) => { val.show = (key == view); });
-      if (!$mdSidenav(navID).isOpen()) {
+      if (!this.menuOpen) {
         $mdSidenav(navID).open();
       }
       // $state.go('home', { view: view });
@@ -14,6 +21,7 @@ function ButtonbarCtrl($state, $mdSidenav) {
         .toggle();
     }
   }
+
 }
 
 export default {
