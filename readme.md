@@ -3,7 +3,7 @@ UOIT Virtual Tour
 
 __*Version 0.0.1*__
 
-Welcome to the Github repository of the **UOIT Virtual Tour web application**, powered by the [MEAN](https://en.wikipedia.org/wiki/MEAN_&lpar;software_bundle&rpar;) software stack! This is (only) the front-end component of the application; the server that powers the tour is currently hosted in a [separate repository](https://github.com/wosevision/virtualtour-server). The Virtual Tour's complete documentation will be featured in this repository, with each folder containing docs for its respective contents.
+Welcome to the Github repository of the **UOIT Virtual Tour web application**, powered by the [MEAN](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) software stack! This is (only) the front-end component of the application; the server that powers the tour is currently hosted in a [separate repository](https://github.com/wosevision/virtualtour-server). The Virtual Tour's complete documentation will be featured in this repository, with each folder containing docs for its respective contents.
 
 ## Table of contents
 
