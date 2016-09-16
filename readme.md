@@ -1,23 +1,47 @@
 UOIT Virtual Tour
 =====================================
 
-## Version 0.0.1
+__*Version 0.0.1*__
 
-This is the front-end (only) component of the UOIT Virtual Tour web application, and uses a variety of different technologies to power the application and build process:
+Welcome to the Github repository of the **UOIT Virtual Tour web application**, powered by the [MEAN](https://en.wikipedia.org/wiki/MEAN_&lpar;software_bundle&rpar;) software stack! This is (only) the front-end component of the application; the server that powers the tour is currently hosted in a [separate repository](https://github.com/wosevision/virtualtour-server). The Virtual Tour's complete documentation will be featured in this repository, with each folder containing docs for its respective contents.
+
+## Table of contents
+
+### Quick start
+1. [Getting up and running](#getting-up-and-running)
+2. [Libraries](#libraries)
+3. [Blog resources](#blog-resources)
 
 ### Application
 
-- [AngularJS](#angularjs) – M-V-* framework
+4. [AngularJS](#angularjs) – M-V-* framework
+	- [Naming convention](#naming-convention)
+	- [Module organization](#module-organization)
+	- [Dependency injection](#dependency-injection)
 	- [Angular Material](#angular-material) – UI library based on Material Design
-- [A-Frame](#a-frame) – Web VR building blocks
-- [Google Maps](#google-maps)
+5. [A-Frame](#a-frame) – Web VR building blocks
+	- [Angular integration](#angular-integration)
+6. [Google Maps](#google-maps)
 
 ### Build process
 
-- [Sass](#sass) – CSS compiler
-- [Browserify](#browserify) – Module requirer/bundler
-- [Babel](#babel) – ES6-to-boring-JS transpiler
-- [Gulp](#gulp) – Build system
+7. [Sass](#sass) – CSS compiler
+	- [Stylesheet organization](#stylesheet-organization)
+8. [Browserify](#browserify) – Module requirer/bundler
+9. [Babel](#babel) – ES6-to-boring-JS transpiler
+10. [Gulp](#gulp) – Build system
+	- [Web Server](#web-server)
+	- [Scripts](#scripts)
+	- [Styles](#styles)
+	- [Images](#images)
+	- [Views](#views)
+	- [Watching files](#watching-files)
+	- [Production](#production)
+	- [Compression](#compression)
+	- [Tests](#tests)
+11. [Testing](#testing-still-heavily-under-development)
+	- [End-to-End (e2e) tests](#end-to-end-e2e-tests)
+	- [Unit tests](#unit-tests)
 
 Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/angular-styleguide/tree/angular-old-es5)~~ (**NOW DEPRECATED**: architecture update to [this style](https://github.com/toddmotto/angular-styleguide) in progress) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
 
@@ -28,13 +52,18 @@ Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/an
 ### Getting up and running
 
 1. Clone this repo from `https://github.com/wosevision/virtualtour.git`
+	- _**NOTE:** Server files will need to be added separately; more details in [server repository](https://github.com/wosevision/virtualtour-server)_
 2. Run `npm install` from the root directory
 3. Run `gulp dev` (may require installing Gulp globally `npm install gulp -g`)
 4. Your browser will automatically be opened and directed to the browser-sync proxy address
-	- **NOTE:** The browser-sync server is loaded in tandem with a [nodemon](http://nodemon.io/) process with the `dev` flag, which provides the API/routing express server; **often, the timing between booting the two processes is less than ideal on first load and casuses it to hang**. This fixes itself after a page refresh for the rest of the Gulp process and does not occur in `prod`.
+	- _**NOTE:** The browser-sync server is loaded in tandem with a [nodemon](http://nodemon.io/) process with the `dev` flag, which provides the API/routing express server; **often, the timing between booting the two processes is less than ideal on first load and causes the page to hang**. This fixes itself after a page refresh for the rest of the Gulp process and does not occur in `prod`_
 5. To prepare assets for production, run the `gulp prod` task (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `gulp dev` during development. More information below)
 
 Now that `gulp dev` is running, the server is up as well and serving files from the `/build` directory. Any changes in the `/app` directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
+
+#### Libraries
+
+This application uses the latest versions of Angular and A-Frame as its cornerstones, but is supported by a wide range of additional Angular modules and Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks`). Any documentation specific to those libraries should be sought from the library's official docs, and will only be included in these docs if special details exist.
 
 #### Blog resources
 
@@ -42,24 +71,6 @@ The following blogs are indispensable resources containing programming technique
 
 - [Ben Nadel](http://www.bennadel.com/): advanced Angular techniques
 - [Dr. Axel Rauschmayer](http://www.2ality.com/): ES6 techniques and best practices
-
-#### Libraries
-
-This application uses the latest versions of the following libraries:
-
-- [AngularJS](http://angularjs.org/)
-- [Angular Material](https://material.angularjs.org/latest/)
-- [A-Frame](https://aframe.io)
-- [Google Maps](https://developers.google.com/maps/documentation/javascript/)
-
-... and build tools:
-
-- [Sass](http://sass-lang.com/)
-- [Browserify](http://browserify.org/)
-- [Babel](https://babeljs.io/)
-- [Gulp](http://gulpjs.com/)
-
-...along with many Angular modules and Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks`).
 
 ---
 
@@ -128,6 +139,24 @@ Angular Material is both a UI Component framework and a reference implementation
 
 ---
 
+### [A-Frame](https://aframe.io)
+
+A-Frame is an open-source WebVR framework for creating virtual reality (VR) experiences with HTML. It is used to build VR scenes that work across smartphones, desktops, Oculus Rift, and consumer headsets like HTC Vive and Samsung Gear.
+
+##### Angular integration
+
+This project contains some custom Angular directives for use with A-Frame, which include:
+- `<aframe-scene>` – proxies `<a-scene>` and provides a shared controller to all elements within the scene
+- `<aframe-entity>` – wraps the `<a-entity>` building block to provide Angular data-binding to entity attributes; also provides a base class that can be extended to write new A-Frame components (in line with their core philosophy)
+
+---
+
+### [Google Maps](https://developers.google.com/maps/documentation/javascript/)
+
+The **Google Maps V3 Javascript API** provides the tour with cartographical navigation and geolocation features. It is wrapped in the **[ng-map](https://ngmap.github.io/)** Angular directive for data-binding, and uses tour API data in the [GeoJSON](http://geojson.org/) format.
+
+---
+
 ### [Sass](http://sass-lang.com/)
 
 Sass is a CSS extension language adding things like extending, variables, and mixins to the language. This project provides a `/app/styles` folder which contains common Sass elements, such as mixins, variables, global styles, and libraries. Explicit imports into `/app/main.scss` bootstrap the styles as well as module-specific `.scss` files. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
@@ -142,13 +171,15 @@ Browserify is a Javascript file and module loader, allowing you to `require('mod
 
 ### [Babel](http://babeljs.io/)
 
-Babel is an ES6-to-ES5 transpiler. ECMAScript 2015 (or **ES6**/**ES2015**) is an ECMAScript standard that was ratified in June 2015. ES6 is a significant update to the JavaScript language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is underway now, but this project uses Babel to maintain support for pre-ES6 engines. Transpiling is handled by Gulp, discussed below.
+This application's JavaScript is written in _ECMAScript 2015_ and uses Babel during compilation. 
+
+Babel is an ES6-to-ES5 transpiler. _ECMAScript 2015_ (or **ES6**/**ES2015**) is an ECMAScript standard that was ratified in June 2015. ES6 is a significant update to the JavaScript language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is underway now, but this project uses Babel to maintain support for pre-ES6 engines. The transpiling step is handled by Gulp, discussed below.
 
 ---
 
 ### [Gulp](http://gulpjs.com/)
 
-Gulp is a "streaming build system", providing a very fast and efficient method for running your build tasks.
+Gulp is a Node-based "streaming build system", which provides a very fast and efficient method for running build tasks.
 
 A `/gulp` folder is included in the project, and contains a configuration file, some utilities, and a directory of `/gulp/tasks` inside containing single modules for various build processes.
 
@@ -157,7 +188,7 @@ A `/gulp` folder is included in the project, and contains a configuration file, 
 ├── config.js
 ├── index.js
 ├── tasks
-│   └── ...example.js
+│   └── ...example-task.js
 └── util
     ├── bundleLogger.js
     ├── handleErrors.js
@@ -167,7 +198,7 @@ A `/gulp` folder is included in the project, and contains a configuration file, 
 
 ##### Web Server
 
-Gulp is used here to provide an Express web server for viewing and testing the application as you build. It serves static files from the `/build` directory, leaving routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes.
+Gulp is used here to provide an Express web server for viewing and testing the application as you build. It serves static files from the `/build` directory, and leaves app-level routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes.
 
 The application is served to `localhost:8080` after running the `gulp` (`dev` only) task. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (which will be `localhost:4000` by default). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
 
@@ -206,17 +237,17 @@ Files inside `/app/components`, on the other hand, go through a slightly more co
 
 All of the Gulp processes mentioned above are run automatically when any of the corresponding files in the `/app` directory are changed, and this is thanks to our Gulp watch tasks. Running `gulp dev` will begin watching all of these files, while also serving to `localhost:8080`, and with browser-sync proxy running at `localhost:4000` (by default).
 
-##### Production Task
+##### Production
 
 Just as there is the `gulp dev` task for development, there is also a `gulp prod` task for putting the Virtual Tour into a production-ready state. This will run each of the tasks, while also adding the image minification task discussed above. There is also `gulp deploy` task *(currently in development)* that is included when running the production task. This deploy task will automatically push a production-ready app to the host.
 
 **Reminder:** When running the production task, gulp will not fire up the express server and serve your index.html. This task is designed to be run before the `deploy` step that may copy the files from `/build` to a production web server.
 
-##### Pre-compressing text assets
+##### Compression
 
 When running with `gulp prod`, a pre-compressed file is generated in addition to uncompressed file (.html.gz, .js.gz, css.gz). This is done to enable web servers serve compressed content without having to compress it on the fly. Pre-compression is handled by `gzip` task.
 
-##### Testing
+##### Tests
 
 A Gulp task also exists for running the test framework (discussed in detail below). Running `gulp test` will run any and all tests inside each `/app/components` directory and show the results (and any errors) in the terminal.
 
