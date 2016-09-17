@@ -1,3 +1,5 @@
+import { forEach } from 'angular';
+
 function deactivateItem(item) {
 	// make item inactive but unhide (default state)
 	item.active = item.hidden = false;
@@ -5,7 +7,7 @@ function deactivateItem(item) {
 	// if the item has children...
 	if (item.children) {
 		// recursively deactivate its children as well
-		angular.forEach(item.children, deactivateItem);
+		forEach(item.children, deactivateItem);
 	}
 }
 
@@ -19,7 +21,7 @@ function toggleItem(item) {
 	// if the item is NOW inactive and has children...
 	if (!item.active && item.children) {
 		// ...then deactivateItem() all its children
-		angular.forEach(item.children, deactivateItem);
+		forEach(item.children, deactivateItem);
 	}
 }
 
@@ -35,10 +37,10 @@ class DrilldownCtrl {
 			if (!$sc.item.active) {
 				// ...then go up a level, run toggleItem() on every item
 				// ...using the clicked item as the context of 'this'
-				angular.forEach($sc.$parent.children, toggleItem, $sc.item);
+				forEach($sc.$parent.children, toggleItem, $sc.item);
 			} else {
 				// ...otherwise, go up a level and deactivateItem() all
-				angular.forEach($sc.$parent.children, deactivateItem);
+				forEach($sc.$parent.children, deactivateItem);
 			}
 
 			// run callback

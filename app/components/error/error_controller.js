@@ -3,7 +3,7 @@ function ErrorCtrl($scope, $state, $sce, $window, $mdSidenav, $mdDialog, ERROR_S
 
 	this.suggestions = [];
 
-	if (this.suggest && this.suggest.length > 0) {
+	if (this.suggest && this.suggest.length) {
 		this.suggest.forEach(index => {
 			this.suggestions.push(ERROR_SUGGESTIONS[index]);
 		})

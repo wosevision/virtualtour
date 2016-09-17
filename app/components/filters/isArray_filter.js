@@ -1,12 +1,14 @@
-function isArray() {
+import { isArray } from 'angular';
+
+function isArrayFn() {
 
   return function(input) {
-    return angular.isArray(input);
+    return isArray(input);
   };
 
 }
 
 export default {
   name: 'isArray',
-  fn: isArray
+  fn: isArrayFn
 };

@@ -8,7 +8,7 @@
 		class="drilldown-item"
 		ng-class="{ 'is-active': item.active }"
 		md-ink-ripple="{{ item.active ? false : '#003C71' }}"
-		ng-repeat="item in item.children track by $index"
+		ng-repeat="item in (item.children | orderBy:'item.label') track by $index"
 		ng-style="item.style"
 		ng-click="toggle($event, this)"
 		layout="column"

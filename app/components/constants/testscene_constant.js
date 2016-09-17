@@ -141,35 +141,35 @@ const testScene = {
       }
     ]
   },
-  "3a": {
-    "name": "Interior 3A",
-    "code": "ua_int_3a",
-    "entities": [
+  '3a': {
+    'name': 'Interior 3A',
+    'code': 'ua_int_3a',
+    'entities': [
       {
-        "type": "entity",
-        "attrs": {
-          "position": [
-            "0",
-            "1.8",
-            "0"
+        'type': 'entity',
+        'attrs': {
+          'position': [
+            '0',
+            '1.8',
+            '0'
           ],
-          "id": "57195e0397cd55e725185606"
+          'id': '57195e0397cd55e725185606'
         },
-        "entities": [
+        'entities': [
           {
-            "type": "camera",
-            "attrs": {
-              "wasd-controls": "enabled:false;",
-              "drag-look-controls": "",
-              "mouse-cursor": "",
-              "id": "5768116013b4ea194c2cb995"
+            'type': 'camera',
+            'attrs': {
+              'wasd-controls': 'enabled:false;',
+              'drag-look-controls': '',
+              'mouse-cursor': '',
+              'id': '5768116013b4ea194c2cb995'
             },
-            "entities": [
+            'entities': [
               {
-                "type": "cursor",
-                "attrs": {
-                  "color": "#0077CA",
-                  "id": "57621af2485bead118b0ac0c"
+                'type': 'cursor',
+                'attrs': {
+                  'color': '#0077CA',
+                  'id': '57621af2485bead118b0ac0c'
                 }
               }
             ]

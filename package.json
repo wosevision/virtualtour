@@ -105,6 +105,7 @@
     "angular-socket-io": "^0.7.0",
     "angular-storage": "0.0.15",
     "angular-ui-router": "^0.3.1",
+    "eslint": "^3.5.0",
     "jsoneditor": "^5.5.7",
     "ng-prettyjson": "^0.2.0",
     "ngmap": "^1.17.6",

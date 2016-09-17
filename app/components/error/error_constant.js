@@ -15,7 +15,7 @@ Clear your <md-select
 </md-select> cache`,
 		desc: 'Clearing your browser cache is a non-invasive troubleshooting step that resolves many simple web issues.',
 		icon: 'delete_forever',
-		action: function (browser) {
+		action(browser) {
 			let url = 'http://www.refreshyourcache.com';
 			switch (browser) {
 				case 'gc':

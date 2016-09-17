@@ -1,3 +1,6 @@
+import { utils } from 'aframe';
+import { element } from 'angular';
+
 function MainCtrl(
 	$rootScope, $scope, $state, $timeout, $log, // ng deps
 	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
@@ -10,24 +13,6 @@ function MainCtrl(
   // MainCtrl reference
   const mc = this;
   mc.activeScene = {};
-  mc.markers = [
-  	// {
-  	// 	type: 'warp-marker',
-  	// 	attrs: {
-  	// 		position: [ 1, 1, 0 ],
-  	// 		rotation: [ 0, 90, 0],
-  	// 		scene: 'ua_2a'
-  	// 	}
-  	// },
-  	{
-  		type: 'entity',
-  		attrs: {
-  			position: [ 1, 1, 0 ],
-  			rotation: [ 0, 90, 0],
-  			'warp-marker': 'ua_2a'
-  		}
-  	}
-  ]
 
   // screen and (max-device-width: 767px) and (orientation: landscape)
   // check for mobile/landscape on every digest
@@ -36,17 +21,17 @@ function MainCtrl(
     () => ({
     	screen: !$mdMedia('gt-sm'),
     	landscape: $mdMedia('landscape'),
-    	device: AFRAME.utils.isMobile()
+    	device: utils.isMobile()
     }),
     m => {
-      mc.mobile = m; console.log(m);
+      mc.mobile = m; //console.log(m);
     },
     true
   );
 
-  let settingsToast = () => {
-    let toast = $mdToast.simple()
-      .textContent(`Data usage settings auto-configured to your device!`)
+  const settingsToast = () => {
+    const toast = $mdToast.simple()
+      .textContent('Data usage settings auto-configured to your device!')
       .action('CHANGE SETTINGS')
       .highlightAction(true)
       .highlightClass('md-warn')
@@ -70,7 +55,7 @@ function MainCtrl(
     $mdDialog.show({
       controller: 'DialogCtrl',
       templateUrl: 'welcome/_welcome-dialog.html',
-      parent: angular.element(document.body),
+      parent: element(document.body),
       // targetEvent: ev,
       clickOutsideToClose: true,
       openFrom: {
@@ -93,6 +78,7 @@ function MainCtrl(
 	  );
   };
 
+  const WELCOME_DELAY = 500; //ms
   $timeout(
   	() => mc.welcomeMsg(),
   	// () => $mdDialog.show(
@@ -104,7 +90,7 @@ function MainCtrl(
 		 //  	}
 		 //  })
   	// ),
-	  500
+	  WELCOME_DELAY
 	);
 
   mc.gotoScene = (location, code, id) => {

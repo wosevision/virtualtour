@@ -1,7 +1,7 @@
 function AppRun($rootScope, $state, $templateCache, $breadcrumb, GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
-  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) { 
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
     // console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
     // event.preventDefault();
     // if ( toState.name == 'home' ) {
@@ -18,21 +18,21 @@ function AppRun($rootScope, $state, $templateCache, $breadcrumb, GLOBAL_SETTINGS
       $rootScope.pageTitle += ' | ';
     }
     $rootScope.pageTitle += GLOBAL_SETTINGS.APP._TITLE;
-    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
+    // console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
 
   });
 
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
   	event.preventDefault();
-    console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
+    // console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
   });
 
   // $rootScope.$on('$viewContentLoaded', (event) => {
     //console.log('try this sucka: ', $breadcrumb.getLastStep());
   // });
   
-  let _USER = SettingsFactory.appSettings.get('_USER');
-  let _DATA = ''//SettingsFactory.appSettings.get('_DATA');
+  const _USER = SettingsFactory.appSettings.get('_USER');
+  const _DATA = ''//SettingsFactory.appSettings.get('_DATA');
 
   $rootScope.appSettings = {
     USER: _USER || APP_SETTINGS.USER,

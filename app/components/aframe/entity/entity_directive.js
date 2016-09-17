@@ -1,14 +1,14 @@
+import { isObject, isArray, isUndefined, equals } from 'angular';
+
 function formatAttrs(attrs, oldAttrs = false) {
-	if (attrs && angular.isObject(attrs)) {
+	const attrArray = [];
 
-		let attrArray = [];
-	  for (let attr of Object.keys(attrs)) {
-
+	if (attrs && isObject(attrs)) {
+	  for (const attr of Object.keys(attrs)) {
 	  	let val = attrs[attr];
 
-			if ( attr && !angular.equals(val, oldAttrs[attr]) )  {
-
-				if (angular.isArray(val)) {
+			if ( attr && !equals(val, oldAttrs[attr]) )  {
+				if (isArray(val)) {
 		  		val = attrs[attr].map( (a, i) => {
 		  			return attrs[attr][i];
 		  		}).join(' ');
@@ -16,14 +16,13 @@ function formatAttrs(attrs, oldAttrs = false) {
 
 		  	if (oldAttrs === false) {
 					attrArray.push(`${attr}="${val}"`);
-					console.log(`Attribute ${attr}="${val}" added; NEW`);
+					//console.log(`Attribute ${attr}="${val}" added; NEW`);
 		  	} else {
 					attrArray[attr] = val;
-					console.log(`Attribute ${attr}="${val}" added`);
+					//console.log(`Attribute ${attr}="${val}" added`);
 		  	}
 
 			}
-
 		}
 		return attrArray;
 	}
@@ -35,33 +34,34 @@ function aframeEntity($compile) {
   return {
     restrict: 'EA',
     scope: {
-    	entities: '=?',
-    	attrs: '=?'
+    	entities: '<?',
+    	attrs: '<?'
     },
     transclude: true,
 		link(scope, element, attributes, sceneCtrl, transclude) {
 
+			const IS_ASSET = (attributes.hasOwnProperty('asset') && attributes.asset);
+
 			/* PULL TYPE AND ASSET FLAG FROM ATTRS */
 			/* IF ENTITY IS NOT ASSET, A-* PREFIX */
 			let type = attributes.type || 'entity';
-			let isAsset = (attributes.hasOwnProperty('asset') && !!attributes.asset);
-			if (!isAsset) {
+			if (!IS_ASSET) {
 				type = `a-${type}`;
 			}
 
 			/* FORMAT STRING OF ATTR BINDINGS */
-		  let attrs = formatAttrs(scope.attrs).join(' ');
+		  const attrs = formatAttrs(scope.attrs).join(' ');
 
     	/* CHECK IF NEW ELEMENT HAS CHILDREN */
     	/* MAKE FULL COMPILE STRING IF DEFINED */
     	let entities = '';
-      if (angular.isUndefined(scope.entities)) {
+      if (isUndefined(scope.entities)) {
       	scope.entities = [];
       }
       	entities = `<aframe-entity
-      								${ isAsset ? 'asset' : '' }
-      								ng-repeat="entity in entities track by ('${ isAsset ? 'asset' : 'entity' }_' + entity.type + $index)"
-      								ng-if="${ isAsset ? 'asset' : 'entity' }"
+      								${ IS_ASSET ? 'asset' : '' }
+      								ng-repeat="entity in entities track by ('${ IS_ASSET ? 'asset' : 'entity' }_' + entity.type + $index)"
+      								ng-if="${ IS_ASSET ? 'asset' : 'entity' }"
       								type="{{entity.type}}"
       								attrs="entity.attrs"
       								entities="entity.entities">
@@ -70,24 +70,24 @@ function aframeEntity($compile) {
       /* MAKE STRING FOR NEW DOM ELEMENT */
       /* COMPILE ELEMENT AGAINST SCOPE */
       /* REPLACE DIRECTIVE ELEMENT */
-			let $entity = `<${type} ${attrs}>${entities}</${type}>`;
+			const $entity = `<${type} ${attrs}>${entities}</${type}>`;
 
-			$compile($entity)(scope, function(clone, cScope){
+			$compile($entity)(scope, (clone, cloneScope) => {
 
       	element.replaceWith(clone);
 	      element.remove();
 
-      	let attrWatch = scope.$watch('attrs', function (newVal, oldVal) {
+      	const attrWatch = scope.$watch('attrs', (newVal, oldVal) => {
 
-					let newAttrs = formatAttrs(newVal, oldVal);
-					if ( newAttrs && angular.isObject(newAttrs) ) {
+					const newAttrs = formatAttrs(newVal, oldVal);
+					if ( newAttrs && isObject(newAttrs) ) {
 						clone.attr(newAttrs);
 					}
 
-					if (oldVal && angular.isObject(oldVal)) {
-						for (let attr of Object.keys(oldVal)) {
+					if (oldVal && isObject(oldVal)) {
+						for (const attr of Object.keys(oldVal)) {
 							if (oldVal[attr] && !newVal[attr]) {
-								console.log(`Attribute ${attr} removed from <${type}>`);
+								// console.log(`Attribute ${attr} removed from <${type}>`);
 								clone.removeAttr(attr);
 							}
 						}
@@ -97,11 +97,11 @@ function aframeEntity($compile) {
 
 				// **
 				// CLEAN UP ELEMENT ON SCOPE $DESTROY?	
-	      cScope.$on('$destroy', function handleDestroyEvent() {
+	      cloneScope.$on('$destroy', () => {
 	      	attrWatch();
 	        clone.remove();
 	      	element.remove();
-	        // angular.element(document.getElementById(scope.attrs.id)).remove();
+	        // element(document.getElementById(scope.attrs.id)).remove();
 	      });
 	      // **
 	      

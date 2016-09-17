@@ -14,7 +14,7 @@ function titleBarButton($log) {
 			icon: '<'
     },
    //  controllerAs: 'btn',
-    link: function(scope, elm, attrs) {
+    link(scope, elm, attrs) {
     	// console.log(scope, attrs);
     }
   };

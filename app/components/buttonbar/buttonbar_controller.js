@@ -1,3 +1,5 @@
+import { forEach } from 'angular';
+
 function ButtonbarCtrl($scope, $state, $mdSidenav) {
 	'ngInject';
 
@@ -11,7 +13,9 @@ function ButtonbarCtrl($scope, $state, $mdSidenav) {
   this.toggleMenu = (navID, view) => {
   	// console.log(navID, view, this.items);
     if (view && !this.items[view].show) {
-      angular.forEach(this.items, (val, key) => { val.show = (key == view); });
+      
+      forEach(this.items, (val, key) => { val.show = (key == view); });
+      
       if (!this.menuOpen) {
         $mdSidenav(navID).open();
       }

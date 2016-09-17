@@ -1,11 +1,11 @@
 function bindHtmlCompile($compile) {
 	'ngInject';
   return function(scope, element, attrs) {
-    var ensureCompileRunsOnce = scope.$watch(
-      function(scope) {
+    const ensureCompileRunsOnce = scope.$watch(
+      scope => {
         return scope.$eval(attrs.compile);
       },
-      function(value) {
+      value => {
         element.html(value);
         $compile(element.contents())(scope);
         ensureCompileRunsOnce();

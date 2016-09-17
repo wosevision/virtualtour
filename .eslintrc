@@ -1,24 +1,42 @@
 {
   "parser": "babel-eslint",
   "ecmaFeatures": {
-    "modules": true
+    "modules": true,
+    "impliedStrict": true
   },
   "env": {
     "browser": true,
     "node": true,
     "es6": true
   },
+  "extends": "eslint:recommended",
   "rules": {
-    "quotes": [2, "single"],
-    "eol-last": 0,
-    "no-debugger": 1,
-    "no-mixed-requires": 0,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-mixed-spaces-and-tabs": 0,
+
+    "no-eq-null": 1,
+    "no-implicit-coercion": 1,
+    "no-magic-numbers": 1,
+    "no-mixed-requires": 1,
     "no-underscore-dangle": 0,
     "no-multi-spaces": 0,
+    "no-useless-concat": 1,
+
+    "no-unused-vars": 0,
+
+    "comma-dangle": 2,
+    "comma-style": 1,
+    "linebreak-style": 1,
+    "new-cap": 1,
     "no-trailing-spaces": 0,
-    "no-extra-boolean-cast": 0,
-    "no-unused-vars": 2,
-    "new-cap": 0,
-    "camelcase": 2
+    "quotes": [2, "single"],
+    "eol-last": 0,
+
+    "no-useless-computed-key": 1,
+    "no-var": 2,
+    "object-shorthand": 1,
+    "prefer-arrow-callback": 1,
+    "prefer-const": 1
   }
 }

@@ -31,8 +31,8 @@ function aframeScene($compile, $aframeScene) {
 			 * @type {Element}
 			 * @type {Element}
 			 */
-    	let $scene = element.find('a-scene');
-    	let $assets = $scene.find('a-assets');
+    	const $scene = element.find('a-scene');
+    	const $assets = $scene.find('a-assets');
 
 			/**
 			 * Cache vars to store JQLite <img> and <a-sky>
@@ -45,8 +45,8 @@ function aframeScene($compile, $aframeScene) {
 			 */
 			let $sky,
 					$skyAsset,
-					skyLoaded = false,
-					skyLoadedList = [];
+					skyLoaded = false;
+			const skyLoadedList = [];
 
 			/**
 			 * Compiles a new <a-sky> and binds to scope.sky
@@ -56,7 +56,7 @@ function aframeScene($compile, $aframeScene) {
 			 * @return {Element}    JQLite-wrapped <a-sky> element
 			 */
 			function loadSky(sky) {
-				return $compile(`<a-sky ng-src="{{ '#'+sky }}" />`)(scope, function (clone) {
+				return $compile('<a-sky ng-src="{{ \'#\' + sky }}" />')(scope, clone => {
 					$scene.append(clone);
 					skyLoaded = true;
 					return clone;
@@ -73,7 +73,7 @@ function aframeScene($compile, $aframeScene) {
 			 */
 			function loadSkyAsset(asset, cb) {
 
-  			let assetPath = `api/panoramas/${ asset.split('_')[0] }/${ asset.split('_')[1] }.jpg`;
+  			const assetPath = `api/panoramas/${ asset.split('_')[0] }/${ asset.split('_')[1] }.jpg`;
 				return $compile(`<img src="${assetPath}" id="${asset}" />`)(scope, function (clone) {
 					$assets.append(clone);
 					skyLoadedList.push(asset);

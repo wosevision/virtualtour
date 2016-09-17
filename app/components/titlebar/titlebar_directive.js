@@ -11,7 +11,7 @@ function titleBar($log) {
     },
     controller: 'TitlebarCtrl',
     controllerAs: 'tb',
-    link: function(scope, elm, attrs) {
+    link(scope, elm, attrs) {
 
     }
   };

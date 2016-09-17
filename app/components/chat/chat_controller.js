@@ -1,9 +1,11 @@
+import { element } from 'angular';
+
 function ChatCtrl($scope, $sce, ChatSocket) {
   'ngInject';
 
   const TYPING_TIMER_LENGTH = 400; // ms
 
-  let ctrl = this;
+  const ctrl = this;
   ctrl.username = null;
   ctrl.connected = false;
   ctrl.typing = false;
@@ -20,10 +22,14 @@ function ChatCtrl($scope, $sce, ChatSocket) {
   }];
   ctrl.message = '';
   // Log a message
-/*  ctrl.log (message, options) {
-    var $el = $('<li>').addClass('log').text(message);
-    addMessageElement($el, options);
-  }*/
+  ctrl.log = (message, options) => {
+    const $el = element('<li>').addClass('log').text(message);
+    ctrl.addMessageElement($el, options);
+  }
+
+  ctrl.addMessageElement = (el, options) => {
+    //ctrl.messages.push(el, options);
+  }
 
 /*  ctrl.addParticipantsMessage (data) {
     var message = '';
@@ -42,7 +48,7 @@ function ChatCtrl($scope, $sce, ChatSocket) {
     // If the username is valid
     if (ctrl.username) {
       // Tell the server your username
-      ChatSocket.emit('add user', username);
+      ChatSocket.emit('add user', name);
     }
   }
 
@@ -54,7 +60,7 @@ function ChatCtrl($scope, $sce, ChatSocket) {
     if (message && ctrl.connected) {
       ctrl.addChatMessage({
         username: ctrl.username,
-        message: message
+        message
       });
       // tell server to execute 'new message' and send along one parameter
       ChatSocket.emit('new message', message);
@@ -70,7 +76,7 @@ function ChatCtrl($scope, $sce, ChatSocket) {
   ctrl.addChatTyping = (data) => {
     data.typing = true;
     data.message = 'is typing';
-    addChatMessage(data);
+    ctrl.addChatMessage(data);
   }
 
   // Removes the visual chat typing message
@@ -86,11 +92,11 @@ function ChatCtrl($scope, $sce, ChatSocket) {
         ctrl.typing = true;
         ChatSocket.emit('typing');
       }
-      let lastTypingTime = (new Date()).getTime();
+      const lastTypingTime = (new Date()).getTime();
 
-      setTimeout(function () {
-        let typingTimer = (new Date()).getTime();
-        let timeDiff = typingTimer - lastTypingTime;
+      setTimeout( () => {
+        const typingTimer = (new Date()).getTime();
+        const timeDiff = typingTimer - lastTypingTime;
         if (timeDiff >= TYPING_TIMER_LENGTH && ctrl.typing) {
           ChatSocket.emit('stop typing');
           ctrl.typing = false;
@@ -105,39 +111,39 @@ function ChatCtrl($scope, $sce, ChatSocket) {
   ChatSocket.on('login', data => {
     ctrl.connected = true;
     // Display the welcome message
-    let message = `Welcome to Socket.IO Chat – ${data}`;
-    // log(message, {
+    const message = `Welcome to Socket.IO Chat – ${data}`;
+    // ctrl.log(message, {
     //   prepend: true
     // });
-    addParticipantsMessage(data);
+    ctrl.addParticipantsMessage(data);
   });
 
   // Whenever the server emits 'new message', update the chat body
   ChatSocket.on('new message', data => {
-    addChatMessage(data);
+    ctrl.addChatMessage(data);
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
   ChatSocket.on('user joined', data => {
-    log(data.username + ' joined');
-    addParticipantsMessage(data);
+    ctrl.log(data.username + ' joined');
+    ctrl.addParticipantsMessage(data);
   });
 
   // Whenever the server emits 'user left', log it in the chat body
   ChatSocket.on('user left', data => {
-    log(data.username + ' left');
-    addParticipantsMessage(data);
-    removeChatTyping(data);
+    ctrl.log(data.username + ' left');
+    ctrl.addParticipantsMessage(data);
+    ctrl.removeChatTyping(data);
   });
 
   // Whenever the server emits 'typing', show the typing message
   ChatSocket.on('typing', data => {
-    addChatTyping(data);
+    ctrl.addChatTyping(data);
   });
 
   // Whenever the server emits 'stop typing', kill the typing message
   ChatSocket.on('stop typing', data => {
-    removeChatTyping(data);
+    ctrl.removeChatTyping(data);
   });
 
 }

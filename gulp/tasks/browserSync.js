@@ -11,7 +11,7 @@ import nodemon     from 'gulp-nodemon';
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 let cache = new Cache();
 
-gulp.task('babelize', function () {
+gulp.task('babelize', ['nodemon'], function () {
   var stream = gulp.src('./server') // your ES2015 code 
                    .pipe(cache.filter()) // remember files 
                    .pipe(babel({ presets: ['es2015'] })) // compile new ones 
@@ -20,7 +20,7 @@ gulp.task('babelize', function () {
   return stream; // important for gulp-nodemon to wait for completion 
 })
 
-gulp.task('nodemon', ['babelize'], function (cb) {
+gulp.task('nodemon', function (cb) {
   let called = false;
   return nodemon({
     // nodemon our expressjs server
@@ -53,7 +53,7 @@ gulp.task('nodemon', ['babelize'], function (cb) {
 	  // });
 });
 
-gulp.task('browserSync', ['nodemon'], function() {
+gulp.task('browserSync', ['babelize'], function() {
 
   const DEFAULT_FILE = 'index.html';
   const ASSET_EXTENSION_REGEX = new RegExp(`\\b(?!\\?)\\.(${config.assetExtensions.join('|')})\\b(?!\\.)`, 'i');

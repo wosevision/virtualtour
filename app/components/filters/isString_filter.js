@@ -1,12 +1,14 @@
-function isString() {
+import { isString } from 'angular';
+
+function isStringFn() {
 
   return function(input) {
-    return input = '' ? true : angular.isString(input);
+    return (input === '') ? true : isString(input);
   };
 
 }
 
 export default {
   name: 'isString',
-  fn: isString
+  fn: isStringFn
 };

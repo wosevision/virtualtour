@@ -12,7 +12,7 @@ function buttonBar($log) {
     },
     controller: 'ButtonbarCtrl',
     controllerAs: 'bar',
-    link: function(scope, elm, attrs, ButtonbarCtrl) {
+    link(scope, elm, attrs, ButtonbarCtrl) {
 
     }
   };

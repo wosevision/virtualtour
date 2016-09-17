@@ -18,7 +18,7 @@ function chatWindow() {
     },
     controller: 'ChatCtrl',
     controllerAs: 'ctrl',
-    link: function(scope, elm, attrs, ChatCtrl, transclude) {
+    link(scope, elm, attrs, ChatCtrl, transclude) {
     	// scope.messages = ChatCtrl.messages;
       // scope.disabled = false;
       // if (attrs.disable) {

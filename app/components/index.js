@@ -1,4 +1,4 @@
-// import angular from 'angular';
+import angular from 'angular';
 const bulk = require('bulk-require');
 
 const components = bulk('app/components', ['./**/!(*index|*_spec|app_*).js']);
@@ -13,9 +13,9 @@ const componentModule = angular.module('app.components', []);
 function declare(componentMap, toDeclare = null) {
   Object.keys(componentMap).forEach((key) => {
 
-    // console.log(key);
+  	const TYPEID_POS = 1; // position of the component's toDeclare type
+    const item = componentMap[key];
 
-    let item = componentMap[key];
     if (!item) {
       return;
     }
@@ -36,7 +36,7 @@ function declare(componentMap, toDeclare = null) {
     	}
     } else {
     	// console.log(item, key);
-      declare(item, key.split('_')[1]);
+      declare(item, key.split('_')[TYPEID_POS]);
       // declare(item);
     }
   });
