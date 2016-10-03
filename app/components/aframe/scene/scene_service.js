@@ -1,10 +1,13 @@
 class $aframeScene {
-	setScene(scene, id) {
-		this.id = id;
-		this.scene = scene;
+	constructor() {
+		return this;
+	}
+	setScene({ scene, sky }) {
+		console.log(scene, sky);
+		this.sceneData = { scene, sky };
 	}
 	getScene() {
-		return this.scene;
+		return this.sceneData;
 	}
 }
 

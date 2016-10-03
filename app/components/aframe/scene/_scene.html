@@ -10,6 +10,13 @@
 			entities="asset.entities">
 			</aframe-entity>
 	</a-assets>
+		<a-entity
+			camera
+			mouse-cursor
+			drag-look-controls
+			wasd-controls="enabled:false;"
+			look-controls="enabled:false;">
+		</a-entity>
 		<aframe-entity
 			ng-repeat="entity in entities track by ('entity_' + entity.type + $index)"
 			ng-if="entity"
@@ -17,10 +24,10 @@
 			attrs="entity.attrs"
 			entities="entity.entities">
 		</aframe-entity>
-		<aframe-entity
-			ng-repeat="marker in markers track by ('marker_' + $index)"
-			ng-if="marker"
-			type="{{marker.type}}"
-			attrs="marker.attrs">
+		<a-entity
+			ng-repeat="link in sceneLinks track by $index"
+			collada-model="#arrow"
+			position="{{ link.position.join(' ') }}"
+			rotation="{{ link.rotation.join(' ') }}">
 		</aframe-entity>
 </a-scene>

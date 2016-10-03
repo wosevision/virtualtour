@@ -26,10 +26,13 @@ function toggleItem(item) {
 }
 
 class DrilldownCtrl {
-	constructor($scope) {
+	constructor($scope, $state) {
 		'ngInject';
+		// save a reference to the $scope
 		this.$sc = $scope;
+
 		this.$sc.toggle = ($ev, $sc) => {
+			// console.log(this.$sc, $sc);
 			// prevent click from bubbling up
 			$ev.stopPropagation();
 
@@ -42,6 +45,8 @@ class DrilldownCtrl {
 				// ...otherwise, go up a level and deactivateItem() all
 				forEach($sc.$parent.children, deactivateItem);
 			}
+
+			$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
 
 			// run callback
 			if (this.onToggle && typeof this.onToggle === 'function') {

@@ -14,15 +14,15 @@ function aframeScene($compile, $aframeScene) {
     restrict: 'E',
     scope: {
       entities: '=?',
-      markers: '=?',
+      sceneLinks: '=?',
       assets: '=?',
       sky: '@'
     },
-    // controller: ['$scope', sceneCtrl],
+    controller: 'SceneCtrl',
     // controllerAs: 'scene',
    	templateUrl: 'aframe/scene/_scene.html',
     transclude: true,
-		link(scope, element, attributes, sceneCtrl, transclude) {
+		link(scope, element, attributes, c, t, $aframeScene) {
 
 			/**
 			 * Cache vars for <a-scene> and <a-assets>
@@ -112,19 +112,6 @@ function aframeScene($compile, $aframeScene) {
       // 	}
       // );
 
-
-      /**
-       * Checks if sky ID exists and is not already loaded
-       * Loads <img> asset with loadSkyAsset() and saves
-       * Loads <a-sky> entity with loadSky() and saves
-       * 
-       * @param  {string} sky ID for asset reference
-       * @return {void}				No return
-       */
-      function handleEntityWatch(newEnts, oldEnts) {
-      	// console.log(newEnts, oldEnts);
-      }
-      scope.$watch('entities', handleEntityWatch)
 
 	  }
 	  //  ^ ^ ^ ^ ^ ^ 

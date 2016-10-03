@@ -40,6 +40,7 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
       // url: '',
       // abstract: true,
       params: { view: null },
+      template: '<ui-view flex layout="column" layout-fill></ui-view>',
       controller($state, $stateParams) {
         if ($stateParams.view) {
         	$state.go($stateParams.view);
@@ -66,19 +67,19 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
 		  }
     });
     
-  $stateProvider
-    .state('playground', {
-      //url: '/',
-      parent: 'home',
-      views: {
-          '@' : {
-            template: '<chat-window></chat-window>'
-          }
-      },
-		  ncyBreadcrumb: {
-		    label: '3D playground'
-		  }
-    });
+  // $stateProvider
+  //   .state('playground', {
+  //     //url: '/',
+  //     parent: 'home',
+  //     views: {
+  //         '@' : {
+  //           template: '<chat-window></chat-window>'
+  //         }
+  //     },
+		//   ncyBreadcrumb: {
+		//     label: '3D playground'
+		//   }
+  //   });
   $urlRouterProvider.otherwise('/');
 
   $breadcrumbProvider.setOptions({

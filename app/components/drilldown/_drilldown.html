@@ -14,6 +14,7 @@
 		layout="column"
 		layout-align="start start"
 		flex="{{ item.hidden ? 0 : 100 }}">
+		<!-- ui-sref="location({ location: item._id })" -->
 		<div 
 			class="drilldown-item-content"
 			level="{{this.level}}"
@@ -23,7 +24,10 @@
 			flex>
 
 		</div>
-		<ng-include ng-if="item.active" src="'drilldown/_drilldown.html'" layout layout-fill flex/>
+		<!-- <ng-include ng-if="item.active" src="'drilldown/_drilldown.html'" layout layout-fill flex/> -->
+		<div ng-if="item.active" layout="column" layout-fill flex>
+			<ui-view layout layout-fill flex="grow"/>
+		</div>
 		<!-- <flex-drilldown children="item.children"></flex-drilldown> -->
 	</div>
 </md-content>
