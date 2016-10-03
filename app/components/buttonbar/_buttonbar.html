@@ -1,26 +1,27 @@
 <aside
 	class="button-bar"
-	ng-class="{'collapsed': bar.condensed}"
-	ng-if="bar.open&&!bar.mobile.screen"
+	ng-class="{'collapsed': $ctrl.condensed}"
+	ng-if="$ctrl.open&&!$ctrl.mobile.screen"
 	md-whiteframe="2"
 	layout="column"
-	flex="nogrow">
-	<!-- <div flex="initial" ng-if="bar.condensed"></div> -->
-	<div ng-repeat="(v,view) in ::bar.items"
+	layout-align="end end"
+	flex="grow">
+	<!-- <div flex="initial" ng-if="$ctrl.condensed"></div> -->
+	<div ng-repeat="(v,view) in ::$ctrl.items"
 		class="button-bar-btn"
-		ng-class="{ 'is-active': bar.menuOpen && (v | isState)}"
+		ng-class="{ 'is-active': $ctrl.menuOpen && (v | isState)}"
 		layout="column"
 		layout-align="center center"
-		flex="noshrink"
+		flex="grow"
   	ui-sref="home({view: v})"
-  	ng-click="bar.toggleMenu('right', v)"
+  	ng-click="$ctrl.toggleMenu('right', v)"
   	md-ink-ripple="#0077CA"
   	id="{{::v}}">
   	<!-- ui-sref-active="is-active" -->
 	  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
 	    <span ng-bind="::view.label"></span>
-	    <md-tooltip md-direction="left" md-autohide md-delay="bar.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
-	      {{ bar.condensed ? view.label : view.desc }}
+	    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
+	      {{ $ctrl.condensed ? view.label : view.desc }}
 	    </md-tooltip>
   </div>
 </aside>

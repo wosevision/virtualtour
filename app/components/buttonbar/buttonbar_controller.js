@@ -1,27 +1,33 @@
 import { forEach } from 'angular';
 
-function ButtonbarCtrl($scope, $state, $mdSidenav) {
-	'ngInject';
+class ButtonbarCtrl {
+	constructor($scope, $state, $mdSidenav) {
+		'ngInject';
+		this.$scope = $scope;
+		this.$state = $state;
+		this.$mdSidenav = $mdSidenav;
+		this.$scope.$watch(
+			() => this.$mdSidenav('right').isOpen(),
+			(newVal) => {
+				this.menuOpen = newVal;
+			}
+		);
+	}
 
-	$scope.$watch(
-		() => $mdSidenav('right').isOpen(),
-		(newVal) => {
-			this.menuOpen = newVal;
-		}
-	);
-
-  this.toggleMenu = (navID, view) => {
+  toggleMenu(navID, view) {
   	// console.log(navID, view, this.items);
     if (view && !this.items[view].show) {
       
-      forEach(this.items, (val, key) => { val.show = (key == view); });
+      forEach(
+      	this.items,
+      	(val, key) => val.show = (key == view)
+      );
       
       if (!this.menuOpen) {
-        $mdSidenav(navID).open();
+        this.$mdSidenav(navID).open();
       }
-      // $state.go('home', { view: view });
     } else {
-      $mdSidenav(navID)
+      this.$mdSidenav(navID)
         .toggle();
     }
   }
