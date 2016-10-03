@@ -1,37 +1,22 @@
-function MapCtrl(NgMap, BuildingResource) {
-	'ngInject';
-	let m = this;
-
-	m._settings = {
-		type: 'ROADMAP',
-		styles: [{
-      "featureType": "landscape.natural",
-      "elementType": "geometry",
-      "stylers": [{
-        "visibility": "off"
-      }]
-    }, {
-      "featureType": "poi.school",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#ededed"
-      }]
-    }, {
-      "featureType": "landscape.man_made",
-      "elementType": "geometry",
-      "stylers": [{
-        "color": "#0077ca"
-      }]
-    }]
+class MapCtrl {
+	constructor(NgMap, BuildingResource, MAP_SETTINGS) {
+		'ngInject';
+		this.BuildingResource = BuildingResource;
+		this.settings = MAP_SETTINGS;
+	  this.icon = {
+	    url:'https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png',
+	    scaledSize:[34,43],
+	    origin: [0, 0],
+	    anchor: [0,0]
+	  }
+		NgMap.getMap().then(instance => {
+			this.mapInstance = instance;
+			google.maps.event.trigger(instance,'resize');
+		});
 	}
-
-	m.markers = BuildingResource.query();
-
-	NgMap.getMap().then(instance => {
-		Object.assign(m, instance);
-		google.maps.event.trigger(m,'resize');
-		console.log(m)
-	});
+  showInfo($event, marker) {
+  	console.log($event, marker);
+  }
 }
 
 export default {
