@@ -1,33 +1,79 @@
 <a-scene id="aframe-scene">
 	<a-assets>
-		<a-asset-item id="arrow" src="images/arrow.dae"></a-asset-item>
+
+		<!-- SCENE LINK ARROW ASSET -->
+		<!-- <a-asset-item id="arrow" src="images/arrow-blue.dae"></a-asset-item> -->
+
+		<!-- GENERIC ASSETS -->
 		<aframe-entity
 			asset="true"
-			ng-repeat="asset in assets track by ('asset_' + asset.type + $index)"
+			ng-repeat="asset in scene.assets track by ('asset_' + asset._id)"
 			ng-if="asset"
 			type="{{asset.type}}"
 			attrs="asset.attrs"
 			entities="asset.entities">
-			</aframe-entity>
+		</aframe-entity>
+
 	</a-assets>
-		<a-entity
-			camera
-			mouse-cursor
-			drag-look-controls
-			wasd-controls="enabled:false;"
-			look-controls="enabled:false;">
+
+		<!-- CAMERA ENTITY -->
+		<a-entity position="0 1.8 0">
+			<a-entity
+				camera
+				mouse-cursor
+				reverse-look-controls
+				wasd-controls="enabled:false;"
+				look-controls="enabled:false;">
+				<!-- VR CURSOR -->
+<!-- 				<a-cursor
+					color="white"
+					raycaster="interval: 1000; recursive: true; objects: .scene-link">
+				</a-cursor> -->
+			</a-entity>
 		</a-entity>
+		
+		<!-- GENERIC ENTITIES -->
 		<aframe-entity
-			ng-repeat="entity in entities track by ('entity_' + entity.type + $index)"
+			ng-repeat="entity in scene.entities track by ('entity_' + entity._id)"
 			ng-if="entity"
 			type="{{entity.type}}"
 			attrs="entity.attrs"
 			entities="entity.entities">
 		</aframe-entity>
+		
+		<!-- SCENE LINKS -->
 		<a-entity
-			ng-repeat="link in sceneLinks track by $index"
-			collada-model="#arrow"
-			position="{{ link.position.join(' ') }}"
-			rotation="{{ link.rotation.join(' ') }}">
-		</aframe-entity>
+			ng-repeat="link in scene.sceneLinks track by link._id"
+			class="scene-link"
+			scene-link="link.scene"
+			ng-attr-id="{{ ::link._id }}"
+			ng-attr-position="{{ link.position.join(' ') }}"
+			ng-attr-rotation="{{ link.rotation.join(' ') }}"
+			event-set__1="_event: mouseenter; scale: 1.05 1.1 1.05;"
+			event-set__2="_event: mouseleave; scale: 1 1 1;">
+			<a-cone
+				color="#0077CA"
+				opacity="0.5"
+				height="0.5"
+				radius-bottom="0.5"
+				radius-top="0"
+				roughness="1"
+				scale="0.1 1 1"
+				segments-height="1"
+				segments-radial="4"
+				event-set__1="_event: mouseenter; material.opacity: 0.7; material.color: #C71566;"
+				event-set__2="_event: mouseleave; material.opacity: 0.5; material.color: #0077CA;">
+				<a-animation
+					attribute="position"
+					from="0 0 0"
+					to="0 -0.1 0"
+					repeat="indefinite"
+					direction="alternate"
+					dur="500">
+				</a-animation>
+			</a-cone>
+      <a-animation attribute="scale" begin="click" dur="100" to="0 0 0"></a-animation>
+
+		</a-entity>
+
 </a-scene>

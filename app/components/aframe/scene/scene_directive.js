@@ -13,10 +13,8 @@ function aframeScene($compile, $aframeScene) {
   return {
     restrict: 'E',
     scope: {
-      entities: '=?',
-      sceneLinks: '=?',
-      assets: '=?',
-      sky: '@'
+      sky: '@',
+      scene: '=?'
     },
     controller: 'SceneCtrl',
     // controllerAs: 'scene',
@@ -73,8 +71,8 @@ function aframeScene($compile, $aframeScene) {
 			 */
 			function loadSkyAsset(asset, cb) {
 
-  			const assetPath = `api/panoramas/${ asset.split('_')[0] }/${ asset.split('_')[1] }.jpg`;
-				return $compile(`<img src="${assetPath}" id="${asset}" />`)(scope, function (clone) {
+  			const assetPath = `api/panoramas/${ asset.split('_').join('/') }.jpg`;
+				return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
 					$assets.append(clone);
 					skyLoadedList.push(asset);
 					cb(asset);
@@ -99,7 +97,7 @@ function aframeScene($compile, $aframeScene) {
           });
         }
       }
-      scope.$watch('sky', handleSkyWatch);
+      scope.$watch('sky', handleSkyWatch); // location/building/scene
 
       // scope.$watch(
       // 	// ON-THE-FLY SCENE ID GRABBER

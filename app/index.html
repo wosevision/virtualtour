@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head>
-      <base href="/">
+      <base href="/virtualtour/">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title 
@@ -90,11 +90,13 @@
       		id="scene-view"
       		class="scene-view"
 				  ng-class="{ 'map-open' : ('map' | isState) }">
-      		<aframe-scene 
-      			sky="{{mc.activeScene.sky}}"
+      		<aframe-scene scene="mc.activeScene">
+      			<!-- sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"
-      			assets="mc.activeScene.assets">
+      			assets="mc.activeScene.assets"
+      			scene-links="mc.activeScene.sceneLinks" -->
       		</aframe-scene>
+      			
       	</section>
 
       </div>

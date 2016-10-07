@@ -25,34 +25,12 @@ import 'v-accordion';
 
 // aframe modules
 import 'aframe';
-import 'aframe-drag-look-controls-component';
+import 'aframe-event-set-component';
+import 'aframe-reverse-look-controls-component';
 import 'aframe-selectable-component';
 import 'aframe-mouse-cursor-component';
-import extras from 'aframe-extras';
-extras.registerAll(); //.controls
-
-// var coordinates = AFRAME.utils.coordinates;
-// AFRAME.registerComponent('warp-marker', {
-//   schema: {
-//     type: 'string'
-//   },
-//   dependencies: ['position', 'rotation'],
-//   init: function () {
-
-//     this.material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-//     this.geometry = new THREE.CylinderGeometry(0, 30, 80, 4, 1, true);
-
-//     this.el.setObject3D('mesh', new THREE.Mesh(this.geometry, this.material));
-//   },
-//   update: function () {
-
-//     this.el.setObject3D('mesh', new THREE.Mesh(this.geometry, this.material));
-//   },
-  
-//   remove: function () {
-//     this.el.removeObject3D('mesh');
-//   }
-// });
+// import {controls} from 'aframe-extras';
+// controls.registerAll();
 
 // app modules
 import config  from './components/app_config';

@@ -1,9 +1,10 @@
 import { utils } from 'aframe';
-import { element } from 'angular';
+import { element, isUndefined } from 'angular';
 
 function MainCtrl(
 	$rootScope, $scope, $state, $timeout, $log, // ng deps
 	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
+	$aframeScene, // aframe
 	BUTTONBAR_VIEWS, TITLEBAR_OPTS, // consts
 	nzTour
 ) {
@@ -45,12 +46,6 @@ function MainCtrl(
   }
 
   mc.welcomeMsg = function() {
-      // console.log(toast);
-    // $mdToast.show(toast).then(function(response) {
-    //   if ( response == 'ok' ) {
-    //     alert('You clicked the \'UNDO\' action.');
-    //   }
-    // });
 
     $mdDialog.show({
       controller: 'DialogCtrl',
@@ -79,24 +74,10 @@ function MainCtrl(
   };
 
   const WELCOME_DELAY = 500; //ms
-  $timeout(
-  	() => mc.welcomeMsg(),
-  	// () => $mdDialog.show(
-  	// 	$mdDialog.error({
-  	// 		locals: {
-	  // 			type: 'Error',
-	  // 			message: 'Request has timed out!',
-	  // 			suggest: [0, 2, 1]
-		 //  	}
-		 //  })
-  	// ),
-	  WELCOME_DELAY
-	);
-
-  mc.gotoScene = (location, code, id) => {
-    //console.log($state);
-    $state.go('scene', { location, code, id });
-  }
+ //  $timeout(
+ //  	() => mc.welcomeMsg(),
+	//   WELCOME_DELAY
+	// );
 
   mc.titlebar = {
 		options: TITLEBAR_OPTS,
@@ -117,8 +98,14 @@ function MainCtrl(
 
   mc.toolbar = {
   	views: BUTTONBAR_VIEWS,
-    isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val || true,
-    isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val || true,
+  	//
+  	//
+    // isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val || true,
+    // isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val || true,
+    isOpen: true,
+    isCondensed: true,
+    //
+    //
     toggle() {
   		this.isOpen = !this.isOpen;
   		this.isOpen&&$mdSidenav('right').close();

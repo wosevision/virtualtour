@@ -1,6 +1,6 @@
 import { isUndefined } from 'angular';
 
-function SceneCtrl($scope, $aframeScene) {
+function SceneCtrl($scope, $element, $aframeScene) {
 	'ngInject';
 
   	// console.log($scope);
@@ -15,13 +15,8 @@ function SceneCtrl($scope, $aframeScene) {
   const handleSceneWatch = (newData, oldData) => {
   	if (!isUndefined(newData)) {
   		if (isUndefined(oldData) || newData.sky !== oldData.sky) {
-  			let scene = newData.scene;
-		  	$scope.sky = newData.sky;
-
-		  	$scope.sceneLinks = scene.sceneLinks;
-		  	$scope.entities = scene.entities;
-		  	$scope.assets = scene.assets;
-  			console.log(scene);
+		  		$scope.sky = newData.sky;
+			  	$scope.scene = newData.scene;
   		}
   	}
   }
