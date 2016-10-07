@@ -1,14 +1,17 @@
-function AppRun($rootScope, $state, $templateCache, $breadcrumb, GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
+function AppRun(
+	$rootScope, $state, $templateCache,
+	$mdDialog, $breadcrumb,
+	GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
-  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
-    // console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
-    // event.preventDefault();
-    // if ( toState.name == 'home' ) {
-    // 	console.log('going to '+toParams.view)
-    // 	$state.go(toParams.view);
-    // }
-  });
+  // $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
+  //   console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
+  //   // event.preventDefault();
+  //   // if ( toState.name == 'home' ) {
+  //   	// console.log('going to ' + toState, toParams)
+  //   // 	$state.go(toParams.view);
+  //   // }
+  // });
 
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
@@ -22,10 +25,21 @@ function AppRun($rootScope, $state, $templateCache, $breadcrumb, GLOBAL_SETTINGS
 
   });
 
-  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-  	event.preventDefault();
-    // console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
-  });
+  $rootScope.$on('handler:exception', function( event, error ) {
+	  let locals = {
+			type: error.cause,
+			message: error.exception.message,
+			suggest: [0, 2, 1]
+  	}
+  	$mdDialog.show(
+			$mdDialog.error({ locals })
+		);
+  })
+
+  // $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+  // 	// event.preventDefault();
+  //   console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
+  // });
 
   // $rootScope.$on('$viewContentLoaded', (event) => {
     //console.log('try this sucka: ', $breadcrumb.getLastStep());
@@ -48,6 +62,9 @@ function AppRun($rootScope, $state, $templateCache, $breadcrumb, GLOBAL_SETTINGS
 
   // hook libs up to window
   $rootScope.AFrame = window.AFRAME;
+  $rootScope.debugMode = {
+  	scene: false
+  };
   //$rootScope.AFrame.registerComponent('fps-look-controls', require('aframe-fps-look-component').component);
 
 }

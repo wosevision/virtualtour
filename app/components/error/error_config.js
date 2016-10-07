@@ -1,4 +1,4 @@
-function ErrorConfig($provide ,$mdDialogProvider) { //, $mdIconProvider
+function ErrorConfig($provide , $mdDialogProvider) { //, $mdIconProvider
   'ngInject';
 	$mdDialogProvider.addPreset('error', {
 	  options() {
@@ -14,23 +14,21 @@ function ErrorConfig($provide ,$mdDialogProvider) { //, $mdIconProvider
 	  }
 	});
 
-	$provide.decorator('$exceptionHandler', ['$log', '$delegate', '$injector',
-    function($log, $delegate, $injector) {
-    	// let $ErrorReporter = $injector.get('$mdDialog');
-      return function(exception, cause) {
-        $log.debug('Default exception handler.', exception, cause);
-    //     let locals = {
-	  	// 		type: 'Error',
-	  	// 		message: 'Request has timed out!',
-	  	// 		suggest: [0, 2, 1]
-		  // 	}
-		  // 	$mdDialog.show(
-				// 	$mdDialog.error({ locals })
-				// );
-        // $delegate(exception, cause);
-      };
-    }
-  ]);
+	$provide.decorator('$exceptionHandler', function($log, $delegate, $injector) {
+		'ngInject';
+    return function(exception, cause) {
+	    let $rootScope = $injector.get('$rootScope');
+	    $rootScope.$broadcast('handler:exception', {
+	      exception: exception,
+	      cause: cause || 'Application error'
+	    });
+
+	    // FOR "SOFTER" ERRORS:
+      // $log.debug('Delegated exception:', errorData);
+      
+  		$delegate(exception, cause);
+    };
+  });
 
 }
 
