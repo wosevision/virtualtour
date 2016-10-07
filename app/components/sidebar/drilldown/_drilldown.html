@@ -1,6 +1,6 @@
 <md-content
 	class="drilldown-menu"
-	ng-init="children = item.children; this.level = this.level + 1"
+	ng-init="children = item.children"
 	layout="column"
 	layout-fill
 	flex>
@@ -15,15 +15,15 @@
 		layout-align="start start"
 		flex="{{ item.hidden ? 0 : 100 }}">
 		<!-- ui-sref="location({ location: item._id })" -->
-		<div 
-			class="drilldown-item-content"
-			level="{{this.level}}"
+		<drilldown-content
 			ng-if="!item.hidden"
+			next-level="{{::item.nextLevel}}"
+			item="item"
 			layout="column"
 			layout-padding
 			flex>
+		</drilldown-content>
 
-		</div>
 		<!-- <ng-include ng-if="item.active" src="'drilldown/_drilldown.html'" layout layout-fill flex/> -->
 		<div ng-if="item.active" layout="column" layout-fill flex>
 			<ui-view layout layout-fill flex="grow"/>

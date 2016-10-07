@@ -13,10 +13,10 @@
 		layout="column"
 		layout-align="center center"
 		flex="grow"
-  	ui-sref="home({view: v})"
   	ng-click="$ctrl.toggleMenu('right', v)"
   	md-ink-ripple="#0077CA"
   	id="{{::v}}">
+  	<!-- ui-sref="home({view: v})" -->
   	<!-- ui-sref-active="is-active" -->
 	  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
 	    <span ng-bind="::view.label"></span>

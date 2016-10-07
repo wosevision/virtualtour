@@ -5,7 +5,7 @@ const drilldownMenu = {
 			nextLevel: '@',
 			children: '<'
 		},
-		templateUrl: 'drilldown/_drilldown.html',
+		templateUrl: 'sidebar/drilldown/_drilldown.html',
 		controller: 'DrilldownCtrl as item'
 	};
 

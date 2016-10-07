@@ -87,9 +87,10 @@
   "license": "MIT",
   "dependencies": {
     "aframe": "^0.3.1",
-    "aframe-drag-look-controls-component": "^0.1.7",
+    "aframe-event-set-component": "^3.0.1",
     "aframe-extras": "^2.3.0",
     "aframe-mouse-cursor-component": "^0.2.1",
+    "aframe-reverse-look-controls-component": "^3.0.0",
     "aframe-selectable-component": "^1.6.0",
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",

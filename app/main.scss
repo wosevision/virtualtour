@@ -8,7 +8,6 @@
 //
 // LIBS
 @import 'styles/libs/animate';
-@import 'styles/libs/jsoneditor';
 
 $button-left-right-padding: 16px;
 $button-border-radius: 0;
@@ -31,10 +30,11 @@ $button-border-radius: 0;
 @import 'components/buttonbar/buttonbar';
 
 @import 'components/sidebar/sidebar';
-	@import 'components/sidebar/map/map';
+	@import 'components/sidebar/drilldown/drilldown';
 	@import 'components/sidebar/builder/builder';
+		@import 'components/sidebar/builder/jsoneditor/jsoneditor';
+	@import 'components/sidebar/map/map';
 
-@import 'components/drilldown/drilldown';
 
 @import 'components/aframe/scene/scene';
 

@@ -49,13 +49,16 @@ class DrilldownCtrl {
 			$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
 
 			// run callback
-			if (this.onToggle && typeof this.onToggle === 'function') {
-				this.onToggle()($ev, $sc);
-			}
+			// if (this.onToggle && typeof this.onToggle === 'function') {
+			// 	this.onToggle()($ev, $sc);
+			// }
 
 		}
+
 	}
 }
+
+DrilldownCtrl.$inject = ['$scope', '$state']
 
 export default {
   name: 'DrilldownCtrl',

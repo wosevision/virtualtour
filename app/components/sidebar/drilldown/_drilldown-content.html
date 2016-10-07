@@ -1,14 +1,19 @@
-<ng-switch on="this.level < 4">
+<ng-switch on="$ctrl.nextLevel == 'scene'">
 
-	<div ng-switch-when="true">
-		<span class="{{ item.active ? 'md-caption' : 'md-headline' }}">
-			{{ ::item.label || item.name }}
+	<div ng-switch-when="false" style="padding-right: 30px;">
+		<span class="{{ $ctrl.item.active ? 'md-caption' : 'md-headline' }}">
+			{{ ::$ctrl.item.label || $ctrl.item.name }}
 		</span>
 		<div class="open-indicator"></div>
 	</div>
 
-	<div ng-switch-when="false" class="image-box">
-		<img ng-src="api/panoramas/{{ item.building }}/{{ item.code }}.jpg?thumb" />
+	<div ng-switch-when="true" layout="column" layout-fill>
+		<div class="image-box"><img ng-src="api/panoramas/{{ $ctrl.item.sky.split('_').join('/') }}.jpg?thumb" /></div>
+		
+		<md-content layout="column" layout-fill layout-padding>
+			<span class="md-display-2">Points of interest</span>
+
+		</md-content>
 	</div>
 
 </ng-switch>

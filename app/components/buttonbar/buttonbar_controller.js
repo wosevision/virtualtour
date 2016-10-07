@@ -15,8 +15,9 @@ class ButtonbarCtrl {
 	}
 
   toggleMenu(navID, view) {
-  	// console.log(navID, view, this.items);
+  	console.log(navID, view, this.items);
     if (view && !this.items[view].show) {
+    	this.$state.go(view);
       
       forEach(
       	this.items,
@@ -33,6 +34,8 @@ class ButtonbarCtrl {
   }
 
 }
+
+ButtonbarCtrl.$inject = ['$scope', '$state', '$mdSidenav'];
 
 export default {
   name: 'ButtonbarCtrl',

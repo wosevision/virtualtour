@@ -3,21 +3,25 @@
   top: 65px;
 }
 
+.md-sidenav-right,
+.md-sidenav-left {
+	top: 65px;
+}
+
 .md-sidenav-right {
 	background-color: transparent;
 	max-width: none;
 	min-width: auto;
   transition: left 0.8s ease;
-	top: 65px;
 	.toolbar-open & {	
-		width: calc(50% - 7.25rem);
+		width: calc(35% - 7.25rem);
     left: calc(100% - 7.25rem);
 		&.map-open {
 			width: calc(100% - 7.25rem);
 		}
 	}
 	.toolbar-condensed & {
-		width: calc(50% - 60px);
+		width: calc(35% - 60px);
     left: calc(100% - 60px);
   	transition: left 0.6s cubic-bezier(1,-1,.5,1);
 		&.map-open {
