@@ -19,3 +19,11 @@
 
 	}
 }
+
+.builder-toolbar {
+	md-toolbar-filler .md-button {
+		min-width: 100%;
+		min-height: 50%;
+		margin: 0;
+	}
+}

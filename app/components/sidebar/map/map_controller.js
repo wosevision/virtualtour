@@ -19,6 +19,8 @@ class MapCtrl {
   }
 }
 
+MapCtrl.$inject = ['NgMap', 'BuildingResource', 'MAP_SETTINGS']
+
 export default {
 	name: 'MapCtrl',
 	fn: MapCtrl

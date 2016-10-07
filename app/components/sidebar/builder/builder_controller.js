@@ -1,85 +1,70 @@
-function builderCtrl($scope, $mdDialog, $timeout, $mdToast) {
+import { isUndefined } from 'angular';
+
+function builderCtrl($scope, $mdDialog, $timeout, $mdToast, $aframeScene, SceneResource) {
 	'ngInject';
 
-  const bc = this;
-  
-  // ADD ATTRIBUTE MENU
-  let originatorEv;
-  bc.openMenu = function($mdOpenMenu, ev) {
-    originatorEv = ev;
-    $mdOpenMenu(ev);
-  };
-
-  bc.menuOptions = [{
-    category: 'All',
-    props: [{
-      name: 'position',
-      default: [0, 0, 0]
-    },{
-      name: 'rotation',
-      default: [0, 0, 0]
-    },{
-      name: 'scale',
-      default: [0, 0, 0]
-    }]
-  },{
-    category: 'Geometry',
-    props: [{
-      name: 'translate',
-      default: [0, 0, 0]
-    },
-      'Box',
-    {
-      name: 'width',
-      default: 1
-    }, {
-      name: 'height',
-      default: 1
-    }, {
-      name: 'depth',
-      default: 1
-    },
-      'Circle',
-    {
-      name: 'radius',
-      default: 1
-    },{
-      name: 'segments',
-      default: 32
-    },{
-      name: 'thetaStart',
-      default: 0
-    },{
-      name: 'thetaLength',
-      default: 360
-    }]
-  }];
-
-  let draftMsg = $mdToast.simple()
-    .textContent('Draft automatically saved!')
-    .action('LOCK IN CHANGES')
-    .highlightAction(true)
-    // .highlightClass('md-primary')
+  const draftMsg = $mdToast.simple()
+    .textContent('Draft saved!')
+    .action('Publish changes')
+    .highlightAction(false)
+    .highlightClass('md-primary')
+    .position('bottom left');
+  const publishMsg = $mdToast.simple()
+    .textContent('Changes published!')
+    .action('Dismiss')
+    .position('bottom left');
+  const discardMsg = $mdToast.simple()
+    .textContent('Draft discarded!')
+    .action('Dismiss')
     .position('bottom left');
 
-  let debouncer = function() {
-  	return $timeout(function() {
-	    $mdToast.show(draftMsg).then(function(response) {
-	      if ( response == 'ok' ) {
-	        alert('You clicked the \'UNDO\' action.');
-	      }
-	    });
-	  }, 5000);
-  }
-  let debounceToken;
-  bc.onChange = function () {
-  	$timeout.cancel(debounceToken);
-  	debounceToken = debouncer();
+	this.changesMade = false;
+
+  this.publishChanges = () => {
+  	SceneResource.update({ 
+  		id: this.currentData._id
+  	}, this.currentData).$promise
+		.then(scene => {
+			this.lastPublished = this.currentData = scene;
+			this.changesMade = false;
+  		$mdToast.show(publishMsg);
+  	});
+	}
+
+  this.saveDraft = () => {
+    $mdToast.show(draftMsg).then(response => {
+      if ( response == 'ok' ) {
+      	this.publishChanges();
+        // alert(JSON.stringify(this.currentData));
+      }
+    });
   }
 
-  bc.editorOpts = {
+	this.revertDraft = () => {
+		SceneResource.get({ 
+  		id: this.currentData._id
+  	}).$promise
+		.then(scene => {
+			$scope.mc.activeScene = scene;
+  	});
+		// $scope.mc.activeScene = this.lastPublished;
+		// 
+		$mdToast.show(discardMsg);
+	}
+
+  let draftTimeout;
+  this.onChange = data => {
+  	$timeout.cancel(draftTimeout);
+  	this.changesMade = true;
+  	this.currentData = data;
+  	draftTimeout = $timeout( () => {
+  		this.saveDraft();
+	  }, 3000);
+  }
+
+  this.editorDefaults = {
   	mode: 'tree',
-  	onChange: bc.onChange
+  	onChange: this.onChange
   }
 
 }

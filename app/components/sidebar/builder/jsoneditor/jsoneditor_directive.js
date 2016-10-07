@@ -1,4 +1,4 @@
-function jsonBuilder($timeout) {
+function jsonEditor($timeout) {
   'ngInject';
   var defaults = {};
   return {
@@ -33,7 +33,7 @@ function jsonBuilder($timeout) {
                           }
 
                           if (settings && settings.hasOwnProperty('onChange')) {
-                              settings.onChange(error);
+                              settings.onChange(error || ngModel.$modelValue);
                           }
                       }
                   }, settings.timeout || 100);
@@ -109,6 +109,6 @@ function jsonBuilder($timeout) {
 }
 
 export default {
-  name: 'jsonBuilder',
-  fn: jsonBuilder
+  name: 'jsonEditor',
+  fn: jsonEditor
 };
