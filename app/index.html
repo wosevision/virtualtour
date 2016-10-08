@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head>
-      <base href="/virtualtour/">
+      <base href="/">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title 
@@ -79,7 +79,7 @@
 				  md-whiteframe="4"
 				  style="max-width: none;width: auto;">
 				  <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
-				  	<ng-include src="'sidebar/builder/_builder.html'"></ng-include>
+				  	<scene-builder current-data="mc.activeScene"></scene-builder>
 				  </div>
 				</md-sidenav>
 

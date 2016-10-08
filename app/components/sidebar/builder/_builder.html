@@ -1,5 +1,4 @@
 <md-content
-	ng-controller="builderCtrl as bc"
 	layout="column"
 	layout-fill>
 	<md-toolbar
@@ -26,47 +25,60 @@
       <div>
         <h2 class="md-toolbar-tools uppercase">Scene builder</h2>
         <md-menu-bar>
-        <!--
+        
           <md-menu>
             <button ng-click="$mdOpenMenu()">
               File
             </button>
             <md-menu-content>
               <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('share', $event)">
-                  Share...
+                <md-button ng-click="bc.menuActions.new('scene', $event)">
+                  New scene
+                  <span class="md-alt-text"> {{ 'M-N' | keyboardShortcut }}</span>
                 </md-button>
               </md-menu-item>
-              <md-menu-divider></md-menu-divider>
               <md-menu-item>
                 <md-menu>
-                  <md-button ng-click="$mdOpenMenu()">New</md-button>
+                  <md-button ng-click="$mdOpenMenu()">New&hellip;</md-button>
                   <md-menu-content>
-                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('new:hotspot', $event)">Hotspot</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('new:scenelink', $event)">Scene link</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('new:entity', $event)">Entity</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('new:asset', $event)">Asset</md-button></md-menu-item>
                   </md-menu-content>
                 </md-menu>
               </md-menu-item>
+              <md-menu-divider></md-menu-divider>
               <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('Open', $event)">
-                  Open...
+                <md-button ng-click="ctrl.menuActions.new('openscene', $event)">
+                  Open scene
                   <span class="md-alt-text"> {{ 'M-O' | keyboardShortcut }}</span>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
-                <md-button disabled="disabled" ng-click="ctrl.sampleAction('Rename', $event)">
-                  Rename
-                </md-button>
+                <md-menu>
+	                <md-button ng-click="$mdOpenMenu()">
+	                  Open current&hellip;
+	                </md-button>
+                  <md-menu-content>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('open:location', $event)">Location</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('open:building', $event)">Building</md-button></md-menu-item>
+                    <!-- <md-menu-item><md-button ng-click="ctrl.menuActions.new('open:scene', $event)">Scene</md-button></md-menu-item> -->
+                  </md-menu-content>
+                </md-menu>
               </md-menu-item>
               <md-menu-divider></md-menu-divider>
               <md-menu-item>
-                <md-button ng-click="ctrl.sampleAction('Print', $event)">
-                  Print
-                  <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
-                </md-button>
+                <md-menu>
+	                <md-button ng-click="$mdOpenMenu()">
+	                  Add reference
+	                </md-button>
+                  <md-menu-content>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('reference:location', $event)">Location</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('reference:building', $event)">Building</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.menuActions.new('reference:scene', $event)">Scene</md-button></md-menu-item>
+                  </md-menu-content>
+                </md-menu>
               </md-menu-item>
             </md-menu-content>
           </md-menu>
@@ -120,7 +132,7 @@
               </md-menu-item>
             </md-menu-content>
           </md-menu>
-        -->
+
           <md-menu>
             <button ng-click="$mdOpenMenu()">
               View
@@ -228,14 +240,13 @@
     </div> -->
     <div 
     	json-editor
-    	ng-model="mc.activeScene"
+    	ng-model="bc.currentData"
     	options="bc.editorDefaults"
     	r-flex="true"
     	prefer-text="false"
     	flex="grow">
     </div>
   </md-content>
-</md-sidenav>
 <!-- 
 <div class="debug-container" ng-if="isOpenConfig()">
 
