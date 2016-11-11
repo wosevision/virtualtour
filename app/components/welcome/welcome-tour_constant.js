@@ -1,19 +1,9 @@
 const TOUR_STEPS = {
   config: {
-    mask: {
-      visible: true,
-      clickThrough: false, 
-      clickExit: true,
-      scrollThrough: false,
-      color: 'rgba(0,60,113,.7)'
-    },
-    container: 'body',
-    scrollBox: 'body',
-    previousText: 'Previous',
-    nextText: 'Next',
-    finishText: 'Finish',
-    animationDuration: 400,
-    dark: true
+    // mask: {
+    //   visible: false
+    // },
+    // dark: true
   },
   steps: [{
       target: '#locations',
@@ -24,25 +14,17 @@ const TOUR_STEPS = {
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
       content: '<h3>Explore locations on the campus map!</h3>The same locations featured above are layed out on an <strong>interactive map, available in this menu</strong>.'
   }, {
+      target: '#settings',
+      placementPriority: [ 'left', 'top', 'bottom', 'right' ],
+      content: '<h3>And don\'t forget...</h3>'
+  }, {
       target: '#breadcrumbs',
       placementPriority: [ 'bottom', 'right', 'left', 'top' ],
-      content: 'If you\'re ever <strong>wondering where you are</strong>, the title bar will always show the current location in a breadcrumb trail that appears here.'
-  }, {
-      target: '#tour',
-      placementPriority: [ 'left', 'top', 'bottom', 'right' ],
-      content: '<h3>Why not enjoy a guided tour?</h3>See a curated selection of UOIT\'s most interesting locations and landmarks on a <strong>guided tour of highlights</strong>.'
-  }, {
-      target: '#toolbar-controls',
-      placementPriority: [ 'bottom', 'left', 'right', 'top' ],
-      content: 'The <strong>button toolbar below can be expanded, condensed, or hidden entirely</strong> with these buttons.'
+      content: 'The title bar will always show <strong>exactly where you are</strong> in a breadcrumb trail that appears here.'
   }, {
       target: '#settings',
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
-      content: 'If you want your preferences saved for future visits, you can <strong>configure your own personal settings</strong> for the Virtual Tour experience here!'
-  }, {
-      target: '#aframe-scene',
-      placementPriority: [ 'bottom', 'top', 'left', 'right' ],
-      content: 'Would you like to learn how to navigate through <strong>scenes</strong>?<br/><div class="text-center" layout-margin><md-button class="md-raised md-primary">Show me how</md-button><md-button>No thanks</md-button></div>'
+      content: 'You can <strong>configure your own personal</strong> settings for the Virtual Tour experience!'
   }]
 };
 
