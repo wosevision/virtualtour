@@ -5,6 +5,7 @@ function sceneLink($state, SceneResource) {
     scope: {
     	sceneId: '<sceneLink'
     },
+    templateUrl: 'aframe/scenelink/_scenelink.html',
 		link(scope, element, attrs) {
 			attrs.$observe('id', function (id) {
 				document.getElementById(id).addEventListener('click', function() {

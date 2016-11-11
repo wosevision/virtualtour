@@ -51,29 +51,16 @@
 			ng-attr-rotation="{{ link.rotation.join(' ') }}"
 			event-set__1="_event: mouseenter; scale: 1.05 1.1 1.05;"
 			event-set__2="_event: mouseleave; scale: 1 1 1;">
-			<a-cone
-				color="#0077CA"
-				opacity="0.8"
-				height="0.5"
-				radius-bottom="0.5"
-				radius-top="0"
-				roughness="1"
-				scale="0.1 1 1"
-				segments-height="1"
-				segments-radial="4"
-				event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
-				event-set__2="_event: mouseleave; material.opacity: 0.8; material.color: #0077CA;">
-				<a-animation
-					attribute="position"
-					from="0 0 0"
-					to="0 -0.1 0"
-					repeat="indefinite"
-					direction="alternate"
-					dur="500">
-				</a-animation>
-			</a-cone>
-      <a-animation attribute="scale" begin="click" dur="100" to="0 0 0"></a-animation>
-
 		</a-entity>
+		<!-- SCENE LINKS -->
+		<a-entity
+			ng-repeat="hotspot in scene.hotSpots track by hotspot._id"
+			class="scene-link"
+			hot-spot="hotspot"
+			ng-attr-id="{{ ::hotspot._id }}"
+			ng-attr-position="{{ hotspot.position.join(' ') }}" look-at="[camera]">
+			<a-torus color="#0077ca" arc="360" radius="0.5" radius-tubular="0.05" segments-tubular="4" rotation="0 90 90"></a-torus>
+		</a-entity>
+
 
 </a-scene>

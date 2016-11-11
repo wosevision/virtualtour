@@ -5,7 +5,7 @@ const drilldownContent = {
 		item: '<'
 	},
 	// require: '^drilldownMenu',
-	templateUrl: 'sidebar/drilldown/_drilldown-content.html'
+	templateUrl: 'sidebar/drilldown/content/_drilldown-content.html'
 };
 
 export default {

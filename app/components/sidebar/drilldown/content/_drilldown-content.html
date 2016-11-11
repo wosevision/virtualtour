@@ -2,7 +2,7 @@
 
 	<div ng-switch-when="false" style="padding-right: 30px;">
 		<span class="{{ $ctrl.item.active ? 'md-caption' : 'md-headline' }}">
-			{{ ::$ctrl.item.label || $ctrl.item.name }}
+			{{ ::$ctrl.item.name }}
 		</span>
 		<div class="open-indicator"></div>
 	</div>
@@ -12,6 +12,18 @@
 		
 		<md-content layout="column" layout-fill layout-padding>
 			<span class="md-display-2">Points of interest</span>
+			<md-list class="md-dense" flex>
+        <md-subheader class="md-no-sticky" ng-if="$ctrl.item.scene.hotSpots.length">Hotspots</md-subheader>
+        <md-list-item class="md-2-line" ng-repeat="hotspot in $ctrl.item.scene.hotSpots track by hotspot._id">
+          <ng-md-icon icon="near_me" style="fill:white" size="24" class="md-avatar-icon"></ng-md-icon>
+          <poi-item to-render="hotspot" class="md-list-item-text text-right" layout="column"></poi-item>
+        </md-list-item>
+        <md-subheader class="md-no-sticky" ng-if="$ctrl.item.scene.sceneLinks.length">Scene links</md-subheader>
+        <md-list-item class="md-2-line poi-item" ng-repeat="link in $ctrl.item.scene.sceneLinks track by link._id">
+          <ng-md-icon icon="near_me" style="fill:white" size="24" class="md-avatar-icon"></ng-md-icon>
+          <poi-item to-render="link" class="md-list-item-text text-right" layout="column"></poi-item>
+        </md-list-item>
+      </md-list>
 
 		</md-content>
 	</div>

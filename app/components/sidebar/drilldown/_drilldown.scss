@@ -59,6 +59,10 @@ drilldown-content {
 	}
 	span {
 		transition: 0.6s ease;
+		&.md-display-2 {
+			color: rgba($uoitdarkblue, 0.8);
+			font-size: calc( 16px + (48 - 16) * (100vw - 568px) / (1920 - 568) );
+		}
 	}
 	.image-box {
 		display: block;
@@ -69,18 +73,22 @@ drilldown-content {
 		width: calc(100% + 54px);
 		img {
 			@include cover(relative, false);
+			z-index: 100;
 			display: block;
 			min-width:100%;
 			opacity: 0.5;
 		}
 		&:after {
 			@include cover(absolute);
+			z-index: 101;
 			content: '';
 			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%);
 		}
 	}
 	md-content {
 		height: 100%;
+			z-index: 	1000;
+			background: transparent;
 	}
 }
 
@@ -116,4 +124,12 @@ drilldown-content {
   &::before {
     transform: rotate(0deg);
   }
+}
+
+.poi-item {
+		transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+	&:hover {
+		background-color: rgba(158,158,158,0.2);
+		cursor: default;
+	}
 }

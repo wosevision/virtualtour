@@ -1,9 +1,54 @@
-<a-entity
-	ng-attr-wasd-controls="enabled:{{ true }};"
-	ng-attr-position="{{ $ctrl.position.join(' ') }}">
-	<a-entity
-		ng-attr-rotation="{{ $ctrl.rotation.join(' ') }}"
-		scale="2 4 3"
-		collada-model="#arrow">
+<!-- ARROW GEOMETRY WITH HOVER ANIMATION -->
+<a-cone
+	color="#0077CA"
+	opacity="0.85"
+	height="0.5"
+	radius-bottom="0.5"
+	radius-top="0"
+	roughness="1"
+	scale="0.1 1 1"
+	segments-height="1"
+	segments-radial="4"
+	event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
+	event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;">
+	<!-- ROCKING ANIMATION -->
+	<a-animation
+		attribute="position"
+		from="0 0 0"
+		to="0 -0.1 0"
+		repeat="indefinite"
+		direction="alternate"
+		dur="500">
+	</a-animation>
+	<!-- GLOW SPHERES -->
+	<a-entity 
+		ng-attr-id="link_{{ ::sceneId }}"
+		scale="5 0.5 0.5"
+		visible="false"
+		event-set__1="_event: mouseenter; visible: true;"
+		event-set__2="_event: mouseleave; visible: false;">
+		<a-sphere radius="0.6" material="color:white;shader:flat;opacity:0.1;transparent:true;">
+			<a-animation
+				attribute="scale"
+				from="0.9 0.9 0.9"
+				to="1.25 1.25 1.25"
+				repeat="indefinite"
+				direction="alternate"
+				dur="1500">
+			</a-animation>
+		</a-sphere>
+		<a-sphere radius="0.6" material="color:white;shader:flat;opacity:0.05;">
+			<a-animation
+				attribute="scale"
+				from="1 1 1"
+				to="1.5 1.5 1.5"
+				repeat="indefinite"
+				direction="alternate"
+				dur="1500">
+			</a-animation>
+		</a-sphere>
 	</a-entity>
-</a-entity>
+
+</a-cone>
+<!-- SHRINK ON CLICK -->
+<a-animation attribute="scale" begin="click" dur="100" to="0 0 0"></a-animation>
