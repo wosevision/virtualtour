@@ -96,6 +96,9 @@ function aframeScene($compile, $aframeScene) {
             }
           });
         }
+        // else if (attributes.defaultScene) {
+	      	// scope.sky = attributes.defaultScene;
+        // }
       }
       scope.$watch('sky', handleSkyWatch); // location/building/scene
 

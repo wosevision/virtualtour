@@ -78,9 +78,9 @@
 				  md-disable-backdrop
 				  md-whiteframe="4"
 				  style="max-width: none;width: auto;">
-				  <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
+				  <!-- <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
 				  	<scene-builder current-data="mc.activeScene"></scene-builder>
-				  </div>
+				  </div> -->
 				</md-sidenav>
 
       	<section
@@ -90,12 +90,12 @@
       		id="scene-view"
       		class="scene-view"
 				  ng-class="{ 'map-open' : ('map' | isState) }">
-      		<aframe-scene scene="mc.activeScene">
+      		<aframe-scene default-scene="north_ext_3h"></aframe-scene>
+      			<!-- scene="mc.activeScene" ng-if="mc.activeScene" -->
       			<!-- sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"
       			assets="mc.activeScene.assets"
       			scene-links="mc.activeScene.sceneLinks" -->
-      		</aframe-scene>
       			
       	</section>
 
