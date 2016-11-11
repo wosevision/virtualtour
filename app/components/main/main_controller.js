@@ -74,10 +74,10 @@ function MainCtrl(
   };
 
   const WELCOME_DELAY = 500; //ms
- //  $timeout(
- //  	() => mc.welcomeMsg(),
-	//   WELCOME_DELAY
-	// );
+  $timeout(
+  	() => mc.welcomeMsg(),
+	  WELCOME_DELAY
+	);
 
   mc.titlebar = {
 		options: TITLEBAR_OPTS,

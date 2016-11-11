@@ -5,16 +5,12 @@ function MapConfig($stateProvider) {
     .state('map', {
       // url: 'map',
       parent: 'home',
-      // views: {
-      //   '@' : {
-      //   	controller: 'MapCtrl',
-      //   	controllerAs: 'map',
-      //     templateUrl: 'sidebar/map/_map.html'
-      //   }
-      // },
       resolve: {
-      	markers(BuildingResource) {
-      		return BuildingResource.query();
+      	// markers(BuildingResource) {
+      	// 	return BuildingResource.query();
+      	// }
+      	onGotoBldg() {
+      		return () => data => alert(JSON.stringify(data));
       	}
       },
       component: 'campusMap',

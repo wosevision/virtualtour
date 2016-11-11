@@ -22,6 +22,7 @@ import 'angular-breadcrumb';
 import 'ngmap';
 import 'nz-tour';
 import 'v-accordion';
+import 'uoit-campus-map';
 
 // aframe modules
 import 'aframe';
@@ -41,6 +42,7 @@ import './components/index';
 // list required modules for DI
 const requires = [
   // 'btford.socket-io',
+  'campusMap',
   'nzTour',
   'ncy-angular-breadcrumb',
   'ui.router',

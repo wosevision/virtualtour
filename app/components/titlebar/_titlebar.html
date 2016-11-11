@@ -14,7 +14,7 @@
       <md-button class="cta-button bg-green md-raised" ng-click="null" ng-if="!tb.mobile.screen">Schedule visit</md-button>
       <md-button class="cta-button bg-orange md-raised" ng-click="null" ng-if="!tb.mobile.screen">Apply online</md-button>
 
-      <ng-transclude ng-if="!tb.mobile.screen"></ng-transclude>
+      <ng-transclude ng-if="!tb.mobile.screen" id="toolbar-controls"></ng-transclude>
       <md-button
       	ng-if="tb.mobile.screen"
 				class="menu-button"
