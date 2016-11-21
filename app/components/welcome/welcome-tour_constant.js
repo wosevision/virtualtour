@@ -28,7 +28,7 @@ const TOUR_STEPS = {
       placementPriority: [ 'bottom', 'right', 'left', 'top' ],
       content: 'If you\'re ever <strong>wondering where you are</strong>, the title bar will always show the current location in a breadcrumb trail that appears here.'
   }, {
-      target: '#tour',
+      target: '#guided',
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
       content: '<h3>Why not enjoy a guided tour?</h3>See a curated selection of UOIT\'s most interesting locations and landmarks on a <strong>guided tour of highlights</strong>.'
   }, {
@@ -40,7 +40,7 @@ const TOUR_STEPS = {
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
       content: 'If you want your preferences saved for future visits, you can <strong>configure your own personal settings</strong> for the Virtual Tour experience here!'
   }, {
-      target: '#aframe-scene',
+      // target: '#aframe-scene',
       placementPriority: [ 'bottom', 'top', 'left', 'right' ],
       content: 'Would you like to learn how to navigate through <strong>scenes</strong>?<br/><div class="text-center" layout-margin><md-button class="md-raised md-primary">Show me how</md-button><md-button>No thanks</md-button></div>'
   }]

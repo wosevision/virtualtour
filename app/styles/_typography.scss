@@ -118,8 +118,9 @@ $font-family-bold: $franklin_gothic_demi;
 .md-display-4,
 .md-display-3,
 .md-display-2,
-.md-display-1 {
-	font-weight: normal;
+.md-display-1,
+.md-title {
+	font-weight: normal !important;
 	text-transform: uppercase;
 	font-family: $font-family-display;
 }

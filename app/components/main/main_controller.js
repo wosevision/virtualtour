@@ -13,7 +13,7 @@ function MainCtrl(
 
   // MainCtrl reference
   const mc = this;
-  mc.activeScene = {};
+  // mc.activeScene = $aframeScene.scene;
 
   // screen and (max-device-width: 767px) and (orientation: landscape)
   // check for mobile/landscape on every digest
@@ -100,10 +100,8 @@ function MainCtrl(
   	views: BUTTONBAR_VIEWS,
   	//
   	//
-    // isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val || true,
-    // isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val || true,
-    isOpen: true,
-    isCondensed: true,
+    isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val,
+    isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val,
     //
     //
     toggle() {

@@ -64,12 +64,12 @@
 
 				<md-sidenav
 				  class="md-sidenav-right"
-				  ng-class="{ 'map-open' : ('map' | isState) }"
+				  ng-class="{ 'map-open' : ('map' | isState), 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }"
 				  md-component-id="right"
 				  md-disable-backdrop
 				  md-whiteframe="4"
 				  flex>
-				  <ui-view flex layout="column" layout-fill></ui-view>
+				  <ui-view></ui-view>
 				</md-sidenav>
 
 				<md-sidenav
@@ -78,9 +78,9 @@
 				  md-disable-backdrop
 				  md-whiteframe="4"
 				  style="max-width: none;width: auto;">
-				  <!-- <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
-				  	<scene-builder current-data="mc.activeScene"></scene-builder>
-				  </div> -->
+				  <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
+				  	<scene-builder scene-data="mc.activeScene"></scene-builder>
+				  </div>
 				</md-sidenav>
 
       	<section
@@ -90,7 +90,7 @@
       		id="scene-view"
       		class="scene-view"
 				  ng-class="{ 'map-open' : ('map' | isState) }">
-      		<aframe-scene default-scene="north_ext_3h"></aframe-scene>
+      		<aframe-scene default-scene="north_ext_3h" scene="mc.activeScene"></aframe-scene>
       			<!-- scene="mc.activeScene" ng-if="mc.activeScene" -->
       			<!-- sky="{{mc.activeScene.sky}}"
       			entities="mc.activeScene.entities"
