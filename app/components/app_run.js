@@ -44,20 +44,18 @@ function AppRun(
   // $rootScope.$on('$viewContentLoaded', (event) => {
     //console.log('try this sucka: ', $breadcrumb.getLastStep());
   // });
-  
-  const _USER = SettingsFactory.appSettings.get('_USER');
-  const _DATA = ''//SettingsFactory.appSettings.get('_DATA');
+  const _USER = SettingsFactory.get('USER');
+  const _DATA = SettingsFactory.get('DATA');
+  const USER = _USER || APP_SETTINGS.USER;
+  const DATA = _DATA || APP_SETTINGS.DATA;
 
-  $rootScope.appSettings = {
-    USER: _USER || APP_SETTINGS.USER,
-    DATA: _DATA || APP_SETTINGS.DATA
-  }
+  $rootScope.appSettings = { USER, DATA };
 
   if (!_USER) {
-    SettingsFactory.appSettings.set('_USER', $rootScope.appSettings.USER);
+    SettingsFactory.set('USER', $rootScope.appSettings.USER);
   }
   if (!_DATA) {
-    SettingsFactory.appSettings.set('_DATA', $rootScope.appSettings.DATA);
+    SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
   }
 
   // hook libs up to window

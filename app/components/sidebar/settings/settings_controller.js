@@ -3,10 +3,10 @@ function SettingsCtrl($scope, $rootScope, SettingsFactory) {
 	const s = $scope;
 
 	s.syncUser = function () {
-		 SettingsFactory.appSettings.set('_USER', $rootScope.appSettings.USER);
+		 SettingsFactory.set('USER', $rootScope.appSettings.USER);
 	}
 	s.syncData = function () {
-		 SettingsFactory.appSettings.set('_DATA', $rootScope.appSettings.DATA);
+		 SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
 	}
 }
 

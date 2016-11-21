@@ -40,7 +40,7 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
       // url: '',
       abstract: true,
       // params: { view: null },
-      template: '<ui-view flex layout="column" layout-fill></ui-view>',
+      template: '<ui-view></ui-view>',
       // controller($state, $stateParams) {
       //   if ($stateParams.view) {
       //   	$state.go($stateParams.view);

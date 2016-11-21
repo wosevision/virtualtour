@@ -1,8 +1,6 @@
 function SettingsFactory(store) {
   'ngInject';
-  return {
-  	appSettings: store.getNamespacedStore('appSettings')
-  }
+  return store.getNamespacedStore('appSettings');
 }
 
 export default {
