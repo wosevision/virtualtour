@@ -3,7 +3,7 @@ function sceneBuilder() {
   return {
     restrict: 'E',
     scope: {
-    	currentData: '=?'
+    	sceneData: '=?'
     },
     controller: 'BuilderCtrl as bc',
     bindToController: true,

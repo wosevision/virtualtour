@@ -9,14 +9,14 @@
       <md-toolbar-filler layout="column" layout-align="center center">
         <!-- <ng-md-icon icon="mode_edit" style="fill: #ffffff;"></ng-md-icon> -->
         <md-button
-        	ng-disabled="!bc.changesMade"
-        	ng-class="{'md-raised md-primary': bc.changesMade}"
+        	ng-disabled="!bc.unpublishedChanges"
+        	ng-class="{'md-raised md-primary': bc.unpublishedChanges}"
         	ng-click="bc.publishChanges()">
         	<ng-md-icon icon="publish"></ng-md-icon>
         </md-button>
         <md-button
-        	ng-disabled="!bc.changesMade"
-        	ng-class="{'md-raised md-warn': bc.changesMade}"
+        	ng-disabled="!bc.unpublishedChanges"
+        	ng-class="{'md-raised md-warn': bc.unpublishedChanges}"
         	ng-click="bc.revertDraft()">
         	<ng-md-icon icon="undo"></ng-md-icon>
         </md-button>
@@ -88,14 +88,14 @@
             </button>
             <md-menu-content>
               <md-menu-item class="md-indent">
-                <md-icon md-svg-icon="undo"></md-icon>
+                <ng-md-icon icon="undo" size="24"></ng-md-icon>
                 <md-button ng-click="ctrl.sampleAction('undo', $event)">
                   Undo
                   <span class="md-alt-text">{{ 'M-Z' | keyboardShortcut }}</span>
                 </md-button>
               </md-menu-item>
               <md-menu-item class="md-indent">
-                <md-icon md-svg-icon="redo"></md-icon>
+                <ng-md-icon icon="redo"></ng-md-icon>
                 <md-button ng-click="ctrl.sampleAction('redo', $event)">
                   Redo
                   <span class="md-alt-text">{{ 'M-Y' | keyboardShortcut }}</span>
@@ -103,21 +103,21 @@
               </md-menu-item>
               <md-menu-divider></md-menu-divider>
               <md-menu-item class="md-indent">
-                <md-icon md-svg-icon="content-cut"></md-icon>
+                <ng-md-icon icon="content_cut"></ng-md-icon>
                 <md-button ng-click="ctrl.sampleAction('cut', $event)">
                   Cut
                   <span class="md-alt-text">{{ 'M-X' | keyboardShortcut }}</span>
                 </md-button>
               </md-menu-item>
               <md-menu-item class="md-indent">
-                <md-icon md-svg-icon="content-copy"></md-icon>
+                <ng-md-icon icon="content_copy"></ng-md-icon>
                 <md-button ng-click="ctrl.sampleAction('copy', $event)">
                   Copy
                   <span class="md-alt-text">{{ 'M-C' | keyboardShortcut }}</span>
                 </md-button>
               </md-menu-item>
               <md-menu-item class="md-indent">
-                <md-icon md-svg-icon="content-paste"></md-icon>
+                <ng-md-icon icon="content_paste"></ng-md-icon>
                 <md-button ng-click="ctrl.sampleAction('paste', $event)">
                   Paste
                   <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
@@ -138,20 +138,11 @@
               View
             </button>
             <md-menu-content>
-              <md-menu-item type="checkbox" ng-model="builder.show.Entities">Entities</md-menu-item>
-              <md-menu-item type="checkbox" ng-model="builder.show.Assets">Assets</md-menu-item>
-              <md-menu-item type="checkbox" ng-model="builder.show.Scenelinks">Scenelinks</md-menu-item>
-              <md-menu-item type="checkbox" ng-model="builder.show.Hotspots">Hotspots</md-menu-item>
-              <md-menu-item class="md-indent">
-                <md-menu>
-                  <md-button ng-click="$mdOpenMenu()">Mode</md-button>
-                  <md-menu-content width="3">
-                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'presentation'">Presentation</md-menu-item>
-                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'edit'">Edit</md-menu-item>
-                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'modifiable'">Modifiable</md-menu-item>
-                  </md-menu-content>
-                </md-menu>
-              </md-menu-item>
+              <md-menu-item type="radio" ng-model="bc.currentData" value="">All</md-menu-item>
+              <md-menu-item type="radio" ng-model="bc.currentData" value="entities">Entities</md-menu-item>
+              <md-menu-item type="radio" ng-model="bc.currentData" value="assets">Assets</md-menu-item>
+              <md-menu-item type="radio" ng-model="bc.currentData" value="sceneLinks">Scenelinks</md-menu-item>
+              <md-menu-item type="radio" ng-model="bc.currentData" value="hotSpots">Hotspots</md-menu-item>
               <md-menu-divider></md-menu-divider>
               <md-menu-item type="checkbox" ng-model="ctrl.settings.showRuler">Show ruler</md-menu-item>
               <md-menu-item type="checkbox" ng-model="ctrl.settings.showEquationToolbar">Show equation toolbar</md-menu-item>
@@ -240,7 +231,17 @@
     </div> -->
     <div 
     	json-editor
-    	ng-model="bc.currentData"
+    	ng-if="!bc.currentData"
+    	ng-model="bc.sceneData"
+    	options="bc.editorDefaults"
+    	r-flex="true"
+    	prefer-text="false"
+    	flex="grow">
+    </div>
+    <div 
+    	json-editor
+    	ng-if="bc.currentData"
+    	ng-model="bc.sceneData[bc.currentData]"
     	options="bc.editorDefaults"
     	r-flex="true"
     	prefer-text="false"
