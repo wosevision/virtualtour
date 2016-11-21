@@ -8,3 +8,10 @@
 	</span>
 	<md-button class="md-primary" ng-click="$ctrl.goto($ctrl.scene)">Go to scene &raquo;</md-button>
 </div>
+<div ng-if="$ctrl.hotspot" layout="row" layout-align="end center">
+	<span>
+		<h3>{{ $ctrl.hotspot.name }}</h3>
+		<p ng-bind-html="$ctrl.hotspot.content"></p>
+	</span>
+	<md-button class="md-primary" ng-click="$ctrl.info($ctrl.hotspot)">More info &raquo;</md-button>
+</div>

@@ -1,7 +1,7 @@
 <ng-switch on="$ctrl.nextLevel == 'scene'">
 
-	<div ng-switch-when="false" style="padding-right: 30px;">
-		<span class="{{ $ctrl.item.active ? 'md-caption' : 'md-headline' }}">
+	<div ng-switch-when="false" style="padding-right: 30px;" class="drilldown-item-title">
+		<span class="{{ $ctrl.item.active ? 'md-caption' : 'md-title' }}">
 			{{ ::$ctrl.item.name }}
 		</span>
 		<div class="open-indicator"></div>
@@ -14,8 +14,8 @@
 			<span class="md-display-2">Points of interest</span>
 			<md-list class="md-dense" flex>
         <md-subheader class="md-no-sticky" ng-if="$ctrl.item.scene.hotSpots.length">Hotspots</md-subheader>
-        <md-list-item class="md-2-line" ng-repeat="hotspot in $ctrl.item.scene.hotSpots track by hotspot._id">
-          <ng-md-icon icon="near_me" style="fill:white" size="24" class="md-avatar-icon"></ng-md-icon>
+        <md-list-item class="md-2-line poi-item" ng-repeat="hotspot in $ctrl.item.scene.hotSpots track by hotspot._id">
+          <ng-md-icon icon="info_outline" style="fill:white" size="24" class="md-avatar-icon"></ng-md-icon>
           <poi-item to-render="hotspot" class="md-list-item-text text-right" layout="column"></poi-item>
         </md-list-item>
         <md-subheader class="md-no-sticky" ng-if="$ctrl.item.scene.sceneLinks.length">Scene links</md-subheader>
@@ -29,22 +29,3 @@
 	</div>
 
 </ng-switch>
-<!-- <div style="text-align: center;">
-	<ng-md-icon icon="{{ item.active ? 'expand_less' : 'expand_more' }}" style="fill: #ffffff;"></ng-md-icon>
-</div> -->
-
-<!-- <md-divider/>
-<div class="md-caption" layout="row" layout-wrap flex>
-	<div flex="30">
-		<small>level:</small> <strong>{{ ::level }}</strong><br/>
-	</div>
-	<div flex="70">
-		<small>active:</small> <strong>{{ item.active }}</strong>
-		|
-		<small>hidden:</small> <strong>{{ item.hidden }}</strong>
-	</div>
-	<div flex="100">
-		<strong><small>MODEL:</small></strong>
-		<br/><pre style="font-size: 8px">{{ item | dropOffTheKids:false | json }}</pre>
-	</div> 
-</div> -->

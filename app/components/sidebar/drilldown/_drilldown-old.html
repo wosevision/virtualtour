@@ -1,0 +1,33 @@
+<md-content
+	class="drilldown-menu"
+	ng-init="children = item.children"
+	layout="column"
+	layout-fill
+	flex>
+	<div
+		class="drilldown-item"
+		ng-class="{ 'is-active': item.active }"
+		md-ink-ripple="{{ item.active ? false : '#003C71' }}"
+		ng-repeat="item in (item.children | orderBy:'item.label') track by $index"
+		ng-click="toggle($event, this)"
+		layout="column"
+		layout-align="start start"
+		flex="{{ item.hidden ? 0 : 100 }}">
+		<!-- flex="{{ item.hidden ? 0 : 1 }}" -->
+		<!-- ui-sref="location({ location: item._id })" -->
+		<drilldown-content
+			ng-if="!item.hidden"
+			next-level="{{::item.nextLevel}}"
+			item="item"
+			layout="column"
+			layout-padding
+			flex>
+		</drilldown-content>
+
+		<!-- <ng-include ng-if="item.active" src="'drilldown/_drilldown.html'" layout layout-fill flex/> -->
+		<div ng-if="item.active" layout="column" layout-fill flex>
+			<ui-view layout layout-fill flex="grow"/>
+		</div>
+		<!-- <flex-drilldown children="item.children"></flex-drilldown> -->
+	</div>
+</md-content>
