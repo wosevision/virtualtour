@@ -1,8 +1,9 @@
-<a-scene id="aframe-scene">
+<a-scene id="aframe-scene"> <!-- stats -->
 	<a-assets>
 
 		<!-- SCENE LINK ARROW ASSET -->
 		<!-- <a-asset-item id="arrow" src="images/arrow-blue.dae"></a-asset-item> -->
+		<!-- <img src="https://shared.uoit.ca/global/files/img/logos/UOIT_RGB.jpg" id="uoit-logo-asset"> -->
 
 		<!-- GENERIC ASSETS -->
 		<aframe-entity
@@ -57,9 +58,56 @@
 			ng-repeat="hotspot in scene.hotSpots track by hotspot._id"
 			class="scene-link"
 			hot-spot="hotspot"
-			ng-attr-id="{{ ::hotspot._id }}"
 			ng-attr-position="{{ hotspot.position.join(' ') }}" look-at="[camera]">
-			<a-torus color="#0077ca" arc="360" radius="0.5" radius-tubular="0.05" segments-tubular="4" rotation="0 90 90"></a-torus>
+			<a-torus 
+				arc="360"
+				radius="0.25"
+				radius-tubular="0.015"
+				segments-tubular="32"
+				rotation="0 0 0"
+				material="shader: flat; color: #0077CA;">
+				<a-animation
+					attribute="rotation"
+					from="0 0 0"
+					to="0 360 0"
+					repeat="indefinite"
+					direction="alternate"
+					dur="2000">
+				</a-animation>
+				<a-entity
+					position="-0.025 -0.165 -0.01"
+					scale="0.6 0.6 0.6"
+					text="text:i"
+					material="shader: flat; color: #0077CA;">
+				</a-entity>
+			</a-torus>
+			<a-entity 
+				ng-attr-id="hotspot_{{ ::hotspot._id }}"
+				scale="0.5 0.5 0.5"
+				visible="false"
+				event-set__1="_event: mouseenter; visible: true;"
+				event-set__2="_event: mouseleave; visible: false;">
+				<a-sphere radius="0.6" material="color:#C71566;shader:flat;opacity:0.2;transparent:true;">
+					<a-animation
+						attribute="scale"
+						from="0.9 0.9 0.9"
+						to="1.25 1.25 1.25"
+						repeat="indefinite"
+						direction="alternate"
+						dur="1500">
+					</a-animation>
+				</a-sphere>
+				<a-sphere radius="0.6" material="color:#C71566;shader:flat;opacity:0.15;">
+					<a-animation
+						attribute="scale"
+						from="1 1 1"
+						to="1.5 1.5 1.5"
+						repeat="indefinite"
+						direction="alternate"
+						dur="1500">
+					</a-animation>
+				</a-sphere>
+			</a-entity>
 		</a-entity>
 
 

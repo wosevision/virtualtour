@@ -54,7 +54,7 @@ function aframeScene($compile, $aframeScene) {
 			 * @return {Element}    JQLite-wrapped <a-sky> element
 			 */
 			function loadSky(sky) {
-				return $compile('<a-sky ng-src="{{ \'#\' + sky }}" />')(scope, clone => {
+				return $compile('<a-sky ng-src="{{ \'#\' + loadedSky }}" />')(scope, clone => {
 					$scene.append(clone);
 					skyLoaded = true;
 					return clone;
@@ -71,11 +71,13 @@ function aframeScene($compile, $aframeScene) {
 			 */
 			function loadSkyAsset(asset, cb) {
 
-  			const assetPath = `api/panoramas/${ asset.split('_').join('/') }.jpg`;
-				return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
+  			// const assetPath = `api/panoramas/${ asset.split('_').join('/') }.jpg`;
+  			const assetId = asset.split('/scenes/panorama/')[1].split('.')[0];
+				// return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
+				return $compile(`<img src="${ asset }" id="${ assetId }" />`)(scope, function (clone) {
 					$assets.append(clone);
 					skyLoadedList.push(asset);
-					cb(asset);
+					cb(assetId);
 					return clone;
 				});
 			}
@@ -89,13 +91,16 @@ function aframeScene($compile, $aframeScene) {
        * @return {void}				No return
        */
       function handleSkyWatch(sky) {
-        if (!!sky && !skyLoadedList.includes(sky)) {
-          $skyAsset = loadSkyAsset(sky, sky => {
-            if(!skyLoaded) {
-              $sky = loadSky(sky);
-            }
-          });
-        }
+        if (sky) {
+        	if (!skyLoadedList.includes(sky)) {
+	          $skyAsset = loadSkyAsset(sky, sky => {
+	            if(!skyLoaded) {
+	              $sky = loadSky(sky);
+	            }
+	          });
+	        }
+	        scope.loadedSky = sky.split('/scenes/panorama/')[1].split('.')[0];
+	      }
         // else if (attributes.defaultScene) {
 	      	// scope.sky = attributes.defaultScene;
         // }

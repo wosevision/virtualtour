@@ -46,14 +46,15 @@ function DrilldownConfig($stateProvider) {
           },
           children($aframeScene, currentLocation, BuildingResource) {
 
-          	$aframeScene.setScene({
+          	$aframeScene.scene = {
           		scene: currentLocation[0].default, 
-          		sky: [
-          			currentLocation[0].code,
-          			'ext',
-          			currentLocation[0].default.code
-          		].join('_')
-          	});
+          		sky: currentLocation[0].default.panorama.url
+          		// [
+          		// 	currentLocation[0].code,
+          		// 	'ext',
+          		// 	currentLocation[0].default.code
+          		// ].join('_')
+          	};
 
       			return BuildingResource.query({
       				filter: {
@@ -87,14 +88,15 @@ function DrilldownConfig($stateProvider) {
 	          },
             children($aframeScene, currentLocation, currentBuilding, SceneResource) {
 
-            	$aframeScene.setScene({
+            	$aframeScene.scene = {
             		scene: currentBuilding[0].default, 
-            		sky: [
-            			currentLocation[0].code,
-            			currentBuilding[0].code,
-            			currentBuilding[0].default.code
-            		].join('_')
-            	});
+            		sky: currentBuilding[0].default.panorama.url
+            		// [
+            		// 	currentLocation[0].code,
+            		// 	currentBuilding[0].code,
+            		// 	currentBuilding[0].default.code
+            		// ].join('_')
+            	};
 
       				return SceneResource.query({
       					filter: {
@@ -131,9 +133,9 @@ function DrilldownConfig($stateProvider) {
             	return currentScene.$promise.then((data) => {
             		const sceneData = {
 	            		scene: data[0],
-	            		sky: sceneCode
+	            		sky: data[0].panorama.url//sceneCode
 	            	};
-	            	$aframeScene.setScene(sceneData);
+	            	$aframeScene.scene = sceneData;
 	            	return sceneData;
             	});
             }

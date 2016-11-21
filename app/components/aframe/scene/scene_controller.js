@@ -21,7 +21,7 @@ function SceneCtrl($scope, $element, $aframeScene) {
   	}
   }
   $scope.$watch( () => {
-  	return $aframeScene.getScene();
+  	return $aframeScene.scene;
   }, handleSceneWatch);
 }
 
