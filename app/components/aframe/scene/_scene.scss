@@ -44,3 +44,13 @@
     width: 100%;
     height: 100%;
 }
+
+.scene-select {
+	li {
+		height: auto;
+	}
+}
+
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
+	z-index: 1000;
+}
