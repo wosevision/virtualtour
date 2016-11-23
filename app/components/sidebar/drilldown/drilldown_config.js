@@ -44,17 +44,13 @@ function DrilldownConfig($stateProvider) {
       				}
       			}).$promise;
           },
-          children($aframeScene, currentLocation, BuildingResource) {
-
-          	$aframeScene.scene = {
-          		scene: currentLocation[0].default, 
-          		sky: currentLocation[0].default.panorama.url
-          		// [
-          		// 	currentLocation[0].code,
-          		// 	'ext',
-          		// 	currentLocation[0].default.code
-          		// ].join('_')
-          	};
+          children($stateParams, $aframeScene, currentLocation, BuildingResource) {
+          	if (!$stateParams.building && !$stateParams.scene) {
+	          	$aframeScene.scene = {
+	          		scene: currentLocation[0].default, 
+	          		sky: currentLocation[0].default.panorama.url
+	          	};
+	          }
 
       			return BuildingResource.query({
       				filter: {
@@ -64,13 +60,11 @@ function DrilldownConfig($stateProvider) {
       			});
           },
 	      	nextLevel(children) {
-	      		// console.log(children);
 	      		return 'building';
 	      	}
         },
 			  ncyBreadcrumb: {
 			    label: '{{ this.item.label || "Location" }}'
-			    // label: 'Location'
 			  }
       })
         .state('building', {
@@ -86,17 +80,14 @@ function DrilldownConfig($stateProvider) {
       					}
       				}).$promise;
 	          },
-            children($aframeScene, currentLocation, currentBuilding, SceneResource) {
+            children($stateParams, $aframeScene, currentLocation, currentBuilding, SceneResource) {
 
-            	$aframeScene.scene = {
-            		scene: currentBuilding[0].default, 
-            		sky: currentBuilding[0].default.panorama.url
-            		// [
-            		// 	currentLocation[0].code,
-            		// 	currentBuilding[0].code,
-            		// 	currentBuilding[0].default.code
-            		// ].join('_')
-            	};
+	          	if (!$stateParams.scene) {
+	            	$aframeScene.scene = {
+	            		scene: currentBuilding[0].default, 
+	            		sky: currentBuilding[0].default.panorama.url
+	            	};
+	            }
 
       				return SceneResource.query({
       					filter: {
@@ -128,12 +119,11 @@ function DrilldownConfig($stateProvider) {
       					}
       				});
             },
-            item($aframeScene, sceneCode, currentScene) {
-            	// console.log(skyCode);
+            item($aframeScene, currentScene) {
             	return currentScene.$promise.then((data) => {
             		const sceneData = {
 	            		scene: data[0],
-	            		sky: data[0].panorama.url//sceneCode
+	            		sky: data[0].panorama.url
 	            	};
 	            	$aframeScene.scene = sceneData;
 	            	return sceneData;

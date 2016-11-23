@@ -53,7 +53,7 @@ function aframeScene($compile, $aframeScene) {
 			 * @param  {string} sky ID for asset reference
 			 * @return {Element}    JQLite-wrapped <a-sky> element
 			 */
-			function loadSky(sky) {
+			function loadSky() {
 				return $compile('<a-sky ng-src="{{ \'#\' + loadedSky }}" />')(scope, clone => {
 					$scene.append(clone);
 					skyLoaded = true;
@@ -69,16 +69,21 @@ function aframeScene($compile, $aframeScene) {
 			 * @param  {Function} cb    Callback after load
 			 * @return {Element}        JQLite-wrapped <img> element
 			 */
-			function loadSkyAsset(asset, cb) {
+			function loadSkyAsset(skyUrl, cb) {
 
   			// const assetPath = `api/panoramas/${ asset.split('_').join('/') }.jpg`;
-  			const assetId = asset.split('/scenes/panorama/')[1].split('.')[0];
+  			const assetId = skyUrl.split('/scenes/panorama/')[1].split('.')[0];
+
 				// return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
-				return $compile(`<img src="${ asset }" id="${ assetId }" />`)(scope, function (clone) {
-					$assets.append(clone);
-					skyLoadedList.push(asset);
-					cb(assetId);
-					return clone;
+				return $compile(`<img src="${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)(scope, function (clone) {
+	        clone.on('load', event => {
+	          scope.$apply(() => {
+							$assets.append(clone);
+							skyLoadedList.push(skyUrl);
+							cb(assetId);
+	          });
+						return clone;
+	        });
 				});
 			}
 
@@ -90,16 +95,19 @@ function aframeScene($compile, $aframeScene) {
        * @param  {string} sky ID for asset reference
        * @return {void}				No return
        */
-      function handleSkyWatch(sky) {
-        if (sky) {
-        	if (!skyLoadedList.includes(sky)) {
-	          $skyAsset = loadSkyAsset(sky, sky => {
+      function handleSkyWatch(skyUrl) {
+        if (skyUrl) {
+	  			const skyId = skyUrl.split('/scenes/panorama/')[1].split('.')[0];
+        	if (!skyLoadedList.includes(skyId)) {
+	          $skyAsset = loadSkyAsset(skyUrl, () => {
+			        scope.loadedSky = skyId;
 	            if(!skyLoaded) {
-	              $sky = loadSky(sky);
+	              $sky = loadSky();
 	            }
 	          });
+	        } else {
+		        scope.loadedSky = skyId;
 	        }
-	        scope.loadedSky = sky.split('/scenes/panorama/')[1].split('.')[0];
 	      }
         // else if (attributes.defaultScene) {
 	      	// scope.sky = attributes.defaultScene;

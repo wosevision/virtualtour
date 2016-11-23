@@ -29,9 +29,9 @@ class DrilldownCtrl {
 	constructor($scope, $state) {
 		'ngInject';
 		// save a reference to the $scope
-		this.$sc = $scope;
+		this.$scope = $scope;
 
-		this.$sc.toggle = ($ev, $sc) => {
+		this.$scope.toggle = ($ev, $sc) => {
 			// console.log(this.$sc, $sc);
 			// prevent click from bubbling up
 			$ev.stopPropagation();
