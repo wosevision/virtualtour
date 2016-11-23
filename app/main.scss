@@ -100,3 +100,14 @@ $button-border-radius: 0;
 .md-button, .md-tab {
   font-weight: 700;
 }
+
+.md-input-invalid::after {
+	position: absolute;
+	color: rgb(221,44,0);
+	content: 'Invalid!';
+	font-family: $font-family;
+	font-weight: 700;
+	font-size: 12px;
+	text-transform: uppercase;
+	bottom: 18px;
+}

@@ -34,7 +34,7 @@ ng-map > div, ng-map > div > div {
 				transform: rotate(-135deg);
 			}
 		}
-			.map-controls, .map-detail {
+			.map-controls, .map-detail, .floating-panel {
 			  background-color: rgba(255, 255, 255, 0.75);
 			  -webkit-transition: 0.3s;
 			  transition: 0.3s;
@@ -56,7 +56,7 @@ ng-map > div, ng-map > div > div {
 /* 		.map-detail md-list {
 			padding: 0;
 		} */
-		.map-controls:hover, .map-detail:hover {
+		.map-controls:hover, .map-detail:hover, .floating-panel:hover {
 		  background-color: rgba(255, 255, 255, 0.9);
 		}
 		md-toolbar:not(.md-menu-toolbar),
