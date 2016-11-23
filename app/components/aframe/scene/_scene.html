@@ -14,7 +14,6 @@
 			attrs="asset.attrs"
 			entities="asset.entities">
 		</aframe-entity>
-
 	</a-assets>
 
 		<!-- CAMERA ENTITY -->
@@ -46,14 +45,9 @@
 		<a-entity
 			ng-repeat="link in scene.sceneLinks track by link._id"
 			class="scene-link"
-			scene-link="link.scene"
-			ng-attr-id="{{ ::link._id }}"
-			ng-attr-position="{{ link.position.join(' ') }}"
-			ng-attr-rotation="{{ link.rotation.join(' ') }}"
-			event-set__1="_event: mouseenter; scale: 1.05 1.1 1.05;"
-			event-set__2="_event: mouseleave; scale: 1 1 1;">
+			scene-link="link">
 		</a-entity>
-		<!-- SCENE LINKS -->
+		<!-- HOTSPOTS -->
 		<a-entity
 			ng-repeat="hotspot in scene.hotSpots track by hotspot._id"
 			class="scene-link"

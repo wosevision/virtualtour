@@ -1,0 +1,70 @@
+<div class="md-whiteframe-16dp floating-panel" layout="column">
+	<v-accordion class="vAccordion--default" multiple flex>
+	  <!-- add expanded attribute to open the section -->
+	  <v-pane>
+	    <v-pane-header>
+				Position
+	    </v-pane-header>
+	    <v-pane-content>
+			  <div layout="row" layout-padding>
+			    <md-input-container flex ng-repeat="val in ::[{label:'x',path:'M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z'},{label:'z',path:'M9,3L5,7H8V14H10V7H13M16,17V10H14V17H11L15,21L19,17H16Z'},{label:'y',path:'M14.83,13.41L13.42,14.82L16.55,17.95L14.5,20H20V14.5L17.96,16.54L14.83,13.41M14.5,4L16.54,6.04L4,18.59L5.41,20L17.96,7.46L20,9.5V4M10.59,9.17L5.41,4L4,5.41L9.17,10.58L10.59,9.17Z'}] track by $index" style="margin-bottom:0;padding-bottom:0;margin-top:36px;">
+			    	<label layout layout-align="space-between center"><strong>{{ ::val.label }}</strong><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#000000" ng-attr-d="{{ ::val.path }}" /></svg></label>
+			      <input type="number" min="-15" max="15" step="0.05" flex ng-model="$ctrl.sceneLink.position[$index]" to-number aria-label="position" aria-controls="scenelink-position">
+			    </md-input-container>
+			  </div>
+	    </v-pane-content>
+	  </v-pane>
+
+	  <v-pane>
+	    <v-pane-header>
+				Rotation
+	    </v-pane-header>
+	    <v-pane-content>
+			  <div layout="row" layout-padding>
+			    <md-input-container flex ng-repeat="val in ::[{label:'roll',path:'M17,17H7V14L3,18L7,22V19H19V13H17M7,7H17V10L21,6L17,2V5H5V11H7V7Z'},{label:'yaw',path:'M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z'},{label:'pitch',path:'M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z'}] track by $index" style="margin-bottom:0;padding-bottom:0;margin-top:36px;">
+			    	<label layout layout-align="space-between center"><strong>{{ ::val.label }}</strong><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#000000" ng-attr-d="{{ ::val.path }}" /></svg></label>
+			      <input type="number" min="-180" max="180" step="5" flex ng-model="$ctrl.sceneLink.rotation[$index]" to-number aria-label="rotation" aria-controls="scenelink-rotation">
+			    </md-input-container>
+			  </div>
+	    </v-pane-content>
+	  </v-pane>
+
+	  <v-pane>
+	    <v-pane-header>
+				Link
+	    </v-pane-header>
+	    <v-pane-content>
+			  <div layout="column" layout-padding>
+			    <form ng-submit="$event.preventDefault()">
+			      <p>Choose a scene for this arrow to link to:</p>
+			      <md-autocomplete
+			          md-selected-item="$ctrl.selectedScene"
+			          md-search-text="$ctrl.queryText"
+			          md-items="item in $ctrl.queryScenes($ctrl.queryText)"
+			          md-item-text="item.name"
+			          placeholder="Select a scene"
+			          md-menu-class="scene-select">
+			        <md-item-template>
+				        <div layout="column" layout-align="center space-between">
+				          <div>
+				            <span class="md-subhead demi uppercase" md-highlight-text="$ctrl.queryText"> {{ ::item.name }} </span>
+				          </div>
+				          <div layout="row" layout-align="space-between center" layout-wrap>
+				            <span class="md-caption">{{ $ctrl.parentList[item.parent]}}</span>
+				            <span class="md-caption">
+				              <code>{{ ::item.code }}</code>
+				            </span>
+				          </div>
+			          </div>
+			        </md-item-template>
+						  <md-not-found>
+						    No scenes found with <em>"{{ $ctrl.queryText }}"</em>.
+						  </md-not-found>
+			      </md-autocomplete>
+			    </form>
+			  </div>
+	    </v-pane-content>
+	  </v-pane>
+
+	</v-accordion>
+</div>
