@@ -1,7 +1,7 @@
 const GLOBAL_SETTINGS = {
 	APP: {
 		_TITLE: 'UOIT Virtual Tour',
-	  _API_URL: 'https://virtualtour-cms.herokuapp.com/api/v1'
+	  _API_URL: '/api/v1'
 	  // KEYSTONE HEROKU
 	  // https://virtualtour-cms.herokuapp.com
 	  // 

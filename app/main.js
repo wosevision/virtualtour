@@ -2,15 +2,15 @@ import angular from 'angular';
 
 // import io from 'socket.io-client';
 // window.io = io;
-import JSONEditor from 'jsoneditor';
-window.JSONEditor = JSONEditor;
+// import JSONEditor from 'jsoneditor';
+// window.JSONEditor = JSONEditor;
 
 // angular modules
 import 'angular-ui-router';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-cookies';
-import 'angular-resizable';
+// import 'angular-resizable';
 import 'angular-loading-bar';
 import 'angular-material';
 import 'angular-material-icons';
@@ -51,7 +51,7 @@ const requires = [
   'ngSanitize',
   'ngAnimate',
   'vAccordion',
-  'angularResizable',
+  // 'angularResizable',
   'angular-loading-bar',
   'angular-storage',
   'ngCookies',

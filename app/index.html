@@ -12,17 +12,12 @@
       <link rel="stylesheet" href="css/main.css">
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Z_tA7YdsRXkHdThiC-VA0dvwX6a4Kto"></script>
   </head>
-
   <body
   	ng-controller="MainCtrl as mc"
   	layout="column"
   	layout-fill
   	ng-cloak>
-    
-<!--       <ng-include src="'titlebar/_titlebar.html'" flex="nogrow">
-      </ng-include> -->
       <div flex layout="column" layout-fill style="position:absolute;">
-
 	      <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
 		      <title-bar-button
 		      	ng-repeat="(o, option) in mc.titlebar.options"
@@ -32,7 +27,6 @@
 		      	tooltip="option.tooltip">
 		      </title-bar-button>
 	      </title-bar>
-
 	      <div 
 	      	ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&&!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }"
 	      	layout="row"
@@ -46,30 +40,19 @@
 		      	mobile="mc.mobile">
 	      	</button-bar>
 	      </div>
-
       </div>
-
       <div 
       	ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&&!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }"
       	layout="row"
       	flex>
-      
-<!--       	<button-bar
-      		items="mc.toolbar.views"
-      		open="mc.toolbar.isOpen"
-      		condensed="mc.toolbar.isCondensed"
-      		layout="column"
-      		flex="nogrow">
-      	</button-bar> -->
-
 				<md-sidenav
+				  ui-view
 				  class="md-sidenav-right"
 				  ng-class="{ 'map-open' : ('map' | isState), 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }"
 				  md-component-id="right"
 				  md-disable-backdrop
 				  md-whiteframe="4"
 				  flex>
-				  <ui-view></ui-view>
 				</md-sidenav>
 <!-- 
 				<md-sidenav
@@ -81,8 +64,8 @@
 				  <div resizable r-directions="['right']" style="min-width:400px;" flex layout-fill>
 				  	<scene-builder scene-data="mc.activeScene"></scene-builder>
 				  </div>
-				</md-sidenav> -->
-
+				</md-sidenav>
+-->
       	<section
       		flex="grow"
       		layout="column"
@@ -91,16 +74,8 @@
       		class="scene-view"
 				  ng-class="{ 'map-open' : ('map' | isState) }">
       		<aframe-scene default-scene="north_ext_3h" scene="mc.activeScene"></aframe-scene>
-      			<!-- scene="mc.activeScene" ng-if="mc.activeScene" -->
-      			<!-- sky="{{mc.activeScene.sky}}"
-      			entities="mc.activeScene.entities"
-      			assets="mc.activeScene.assets"
-      			scene-links="mc.activeScene.sceneLinks" -->
-      			
       	</section>
-
       </div>
-      
     <script src="js/main.js"></script>
   </body>
 
