@@ -68,7 +68,7 @@ function sceneLink($state, $mdPanel, SceneResource) {
 						clickOutsideToClose: true,
 						escapeToClose: true,
 						focusOnOpen: true,
-						zIndex: 1000,
+						zIndex: 85,
 						onDomRemoved() {
 							panelRef&&panelRef.destroy();
 						},

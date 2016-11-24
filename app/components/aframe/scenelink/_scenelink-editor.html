@@ -34,8 +34,8 @@
 				Link
 	    </v-pane-header>
 	    <v-pane-content>
-			  <div layout="column" layout-padding>
-			    <form ng-submit="$event.preventDefault()">
+			  <div layout="row" layout-padding>
+			    <!-- <form ng-submit="$event.preventDefault()">
 			      <p>Choose a scene for this arrow to link to:</p>
 			      <md-autocomplete
 			          md-selected-item="$ctrl.selectedScene"
@@ -61,7 +61,13 @@
 						    No scenes found with <em>"{{ $ctrl.queryText }}"</em>.
 						  </md-not-found>
 			      </md-autocomplete>
-			    </form>
+			    </form> -->
+			    <md-select placeholder="Select building" ng-model="$ctrl.building" md-on-open="$ctrl.loadBuildings()" ng-model-options="{trackBy: '$value._id'}">
+			      <md-option ng-value="building" ng-repeat="building in $ctrl.buildings">{{building.label}}</md-option>
+			    </md-select>
+			    <md-select placeholder="Select scene" ng-model="$ctrl.scene" md-on-open="$ctrl.loadScenes()" ng-model-options="{trackBy: '$value._id'}">
+			      <md-option ng-value="scene" ng-repeat="scene in $ctrl.scenes">{{scene.name}}</md-option>
+			    </md-select>
 			  </div>
 	    </v-pane-content>
 	  </v-pane>
