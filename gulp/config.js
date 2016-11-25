@@ -8,31 +8,31 @@ export default {
   browserPort: 4000,
 
   sourceDir: './app/',
-  buildDir: './build/',
+  buildDir: '../virtualtour-ks/public/', //'./build/',
 
   styles: {
     index: 'app/main.scss',
     src: 'app/components/**/*.scss',
-    dest: 'build/css',
+    dest: '../virtualtour-ks/public/css', //'build/css',
     prodSourcemap: false,
     sassIncludePaths: [ ]
   },
 
   scripts: {
     src: 'app/components/**/*.js',
-    dest: 'build/js',
+    dest:  '../virtualtour-ks/public/js', //'build/js',
     test: 'test/**/*.js',
     gulp: 'gulp/**/*.js'
   },
 
   images: {
     src: 'app/images/**/*',
-    dest: 'build/images'
+    dest: '../virtualtour-ks/public/images', //'build/images'
   },
 
   fonts: {
     src: ['app/fonts/**/*'],
-    dest: 'build/fonts'
+    dest: '../virtualtour-ks/public/fonts', //'build/fonts'
   },
 
   assetExtensions: [
@@ -59,8 +59,8 @@ export default {
   },
 
   gzip: {
-    src: 'build/**/*.{html,xml,json,css,js,js.map,css.map}',
-    dest: 'build/',
+    src: '../virtualtour-ks/public/**/*.{html,xml,json,css,js,js.map,css.map}', //'build/**/*.{html,xml,json,css,js,js.map,css.map}',
+    dest: '../virtualtour-ks/public/', //'build/',
     options: {}
   },
 
