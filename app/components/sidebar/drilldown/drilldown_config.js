@@ -14,6 +14,8 @@ function DrilldownConfig($stateProvider) {
     .state('locations', {
       parent: 'home',
       url: '/',
+      // templateUrl: 'drilldown',
+      // controller: 'DrilldownCtrl',
       component: 'drilldownMenu',
       resolve: {
       	LocationResource: 'LocationResource',
@@ -34,6 +36,9 @@ function DrilldownConfig($stateProvider) {
       .state('location', {
       	parent: 'locations',
         url: ':location',
+     //    templateUrl: function(params) {
+			  //   return `drilldown/${ params.location }`;
+			  // },
         component: 'drilldownMenu',
         resolve: {
       		BuildingResource: 'BuildingResource',
@@ -70,6 +75,9 @@ function DrilldownConfig($stateProvider) {
         .state('building', {
           parent: 'location',
           url: '/:building',
+	     //    templateUrl: function(params) {
+				  //   return `drilldown/${ params.location }/${ params.building}`;
+				  // },
         	component: 'drilldownMenu',
           resolve: {
       			SceneResource: 'SceneResource',
@@ -115,7 +123,7 @@ function DrilldownConfig($stateProvider) {
       				return SceneResource.query({
       					filter: {
       						code: $stateParams.scene,
-      						parent: currentBuilding._id
+      						parent: currentBuilding[0]._id
       					}
       				});
             },

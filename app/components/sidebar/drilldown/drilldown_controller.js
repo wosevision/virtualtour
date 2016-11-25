@@ -31,10 +31,11 @@ class DrilldownCtrl {
 		// save a reference to the $scope
 		this.$scope = $scope;
 
-		this.$scope.toggle = ($ev, $sc) => {
+		// this.$scope.toggle = ($event, code, nextLevel) => {
+		this.$scope.toggle = ($event, $sc) => {
 			// console.log(this.$sc, $sc);
 			// prevent click from bubbling up
-			$ev.stopPropagation();
+			$event.stopPropagation();
 
 			// if clicked item is inactive...
 			if (!$sc.item.active) {
@@ -46,6 +47,7 @@ class DrilldownCtrl {
 				forEach($sc.$parent.children, deactivateItem);
 			}
 
+			// $state.go(nextLevel, { [nextLevel]: code });
 			$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
 
 			// run callback

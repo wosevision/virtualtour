@@ -73,7 +73,7 @@
       		id="scene-view"
       		class="scene-view"
 				  ng-class="{ 'map-open' : ('map' | isState) }">
-      		<aframe-scene default-scene="north_ext_3h" scene="mc.activeScene"></aframe-scene>
+      		<aframe-scene default-scene="north_ext_3h" scene="mc.activeScene" ng-if="mc.activeScene.sky"></aframe-scene>
       	</section>
       </div>
     <script src="js/main.js"></script>
