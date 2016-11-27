@@ -1,18 +1,18 @@
-class $aframeScene {
-	constructor($rootScope) {
-		'ngInject';
-		
-		this.$rootScope = $rootScope;
+// import { isArray } from 'angular';
 
-		return this;
+class $aframeScene {
+	constructor() {
+		'ngInject';
 	}
 	get scene() {
-		(this.$rootScope.debugMode.scene)&&console.log('Scene service queried; returning:', this.sceneData);
-		return this.sceneData;
+		if (this.sceneData) {
+			// console.log('Scene service queried; returning:', this.sceneData);
+			return this.sceneData;
+		}
 	}
-	set scene({ scene, sky }) {
-		this.sceneData = { scene, sky };
-		(this.$rootScope.debugMode.scene)&&console.log('Scene service set to:', this.sceneData);
+	set scene({ _id, sceneLinks, hotSpots, sky }) {
+		this.sceneData = { _id, sceneLinks, hotSpots, sky };
+		// console.log('Scene service set to:', this.sceneData);
 	}
 }
 

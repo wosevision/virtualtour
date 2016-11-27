@@ -1,19 +1,17 @@
+<ng-transclude></ng-transclude>
 <a-scene id="aframe-scene"> <!-- stats -->
 	<a-assets>
 
-		<!-- SCENE LINK ARROW ASSET -->
-		<!-- <a-asset-item id="arrow" src="images/arrow-blue.dae"></a-asset-item> -->
-		<!-- <img src="https://shared.uoit.ca/global/files/img/logos/UOIT_RGB.jpg" id="uoit-logo-asset"> -->
-
 		<!-- GENERIC ASSETS -->
-		<aframe-entity
+<!-- 		<aframe-entity
 			asset="true"
-			ng-repeat="asset in scene.assets track by ('asset_' + asset._id)"
+			ng-repeat="asset in $ctrl.assets track by ('asset_' + asset._id)"
 			ng-if="asset"
 			type="{{asset.type}}"
 			attrs="asset.attrs"
 			entities="asset.entities">
-		</aframe-entity>
+		</aframe-entity> -->
+
 	</a-assets>
 
 		<!-- CAMERA ENTITY -->
@@ -33,23 +31,23 @@
 		</a-entity>
 		
 		<!-- GENERIC ENTITIES -->
-		<aframe-entity
-			ng-repeat="entity in scene.entities track by ('entity_' + entity._id)"
+<!-- 		<aframe-entity
+			ng-repeat="entity in entities track by ('entity_' + entity._id)"
 			ng-if="entity"
 			type="{{entity.type}}"
 			attrs="entity.attrs"
 			entities="entity.entities">
-		</aframe-entity>
+		</aframe-entity> -->
 		
 		<!-- SCENE LINKS -->
 		<a-entity
-			ng-repeat="link in scene.sceneLinks track by link._id"
+			ng-repeat="link in $ctrl.sceneLinks track by link._id"
 			class="scene-link"
 			scene-link="link">
 		</a-entity>
 		<!-- HOTSPOTS -->
 		<a-entity
-			ng-repeat="hotspot in scene.hotSpots track by hotspot._id"
+			ng-repeat="hotspot in $ctrl.hotSpots track by hotspot._id"
 			class="scene-link"
 			hot-spot="hotspot"
 			ng-attr-position="{{ hotspot.position.join(' ') }}" look-at="[camera]">
