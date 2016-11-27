@@ -7,12 +7,13 @@ function sceneLink($state, $mdPanel, SceneResource) {
     scope: {
     	sceneLink: '='
     },
+    require: '^aframeScene',
     templateUrl: 'aframe/scenelink/_scenelink.html',
-		link(scope, elem, attrs) {
+		link(scope, elem, attrs, SceneCtrl) {
 			//
 			// Get some vars queued up
 			// $element-wrapped <a-scene> and click type checker
-			let $scene = element(elem[0].sceneEl),
+			let $scene = SceneCtrl.$sceneEl,
 					rightClick = false, panelRef;
 			//
 			//
@@ -57,9 +58,9 @@ function sceneLink($state, $mdPanel, SceneResource) {
 		      // Build dialog config
 					const config = {
 						attachTo: angular.element(document.body),
-						templateUrl: 'aframe/scenelink/_scenelink-editor.html',
+						templateUrl: 'aframe/editor/_editor-dialog.html',
 						panelClass: 'demo-menu-example',
-						controller: 'LinkEditorCtrl',
+						controller: 'EditorDialogCtrl',
 					  bindToController: true,
 					  controllerAs: '$ctrl',
 						locals: {

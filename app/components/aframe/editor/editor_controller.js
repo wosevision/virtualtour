@@ -1,7 +1,7 @@
 import { isUndefined, equals } from 'angular';
 let draftTimeout;
 
-class BuilderCtrl {
+class EditorCtrl {
 	static get $inject() {
 		return [
 			'$scope', '$timeout', 
@@ -127,6 +127,6 @@ class BuilderCtrl {
 }
 
 export default {
-  name: 'BuilderCtrl',
-  fn: BuilderCtrl
+  name: 'EditorCtrl',
+  fn: EditorCtrl
 };

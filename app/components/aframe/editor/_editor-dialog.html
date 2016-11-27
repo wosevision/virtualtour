@@ -1,4 +1,12 @@
 <div class="md-whiteframe-16dp floating-panel" layout="column">
+
+  <div class="md-toolbar-tools">
+    <span class="md-title">Scene editor</span>
+    <span flex></span>
+    <md-button class="md-icon-button md-primary" aria-label="Cancel" ng-click="$ctrl.closeDialog()">
+      <ng-md-icon icon="close" size="24"></ng-md-icon>
+    </md-button>
+  </div>
 	<v-accordion class="vAccordion--default" multiple flex>
 	  <!-- add expanded attribute to open the section -->
 	  <v-pane>
@@ -73,4 +81,18 @@
 	  </v-pane>
 
 	</v-accordion>
+
+  <div class="md-toolbar-tools">
+    <md-button class="md-warn" aria-label="Go Back">
+      Delete
+    </md-button>
+    <span flex></span>
+    <md-button class="md-primary" aria-label="Save draft">
+      Save draft
+    </md-button>
+    <md-button class="md-raised md-primary" aria-label="Publish">
+      Publish
+    </md-button>
+  </div>
+
 </div>

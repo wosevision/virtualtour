@@ -1,4 +1,4 @@
-class LinkEditorCtrl {
+class EditorDialogCtrl {
 	static get $inject() {
 		return ['$q', '$scope', 'BuildingResource', 'SceneResource'];
 	}
@@ -13,6 +13,10 @@ class LinkEditorCtrl {
 				this.building = building;
 			});
 		});
+		console.log(this)
+	}
+	$onInit() {
+		alert('heyo')
 	}
 	loadBuildings(callback) {
 		return this.BuildingResource.query().$promise.then(buildings => {
@@ -47,10 +51,13 @@ class LinkEditorCtrl {
 		})
 		return query;
 	}
+	closeDialog() {
+		this.mdPanelRef.close();
+	}
 	//
 }
 
 export default {
-  name: 'LinkEditorCtrl',
-  fn: LinkEditorCtrl
+  name: 'EditorDialogCtrl',
+  fn: EditorDialogCtrl
 };
