@@ -1,8 +1,9 @@
 .resizable {
   position: relative;
-}
-.resizable.no-transition {
-  transition: none !important;
+
+  &.no-transition {
+    transition: none !important;
+  }
 }
 
 .rg-right, .rg-left, .rg-top, .rg-bottom {
@@ -12,13 +13,25 @@
   line-height: 14px;
   position: absolute;
   z-index: 1;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+  transition: background-color 0.3s ease;
   background: transparent;
+  background-color: rgba(white, 0);
+  user-select: none;
+  &:hover {
+  	background-color: rgba(white, 0.3);  
+  	span {
+		  width: 1px;
+		  margin-left: 6px;
+  		background-color: white;
+  		border-color: transparent;
+  		border-width: 0;
+  		box-shadow: 0 0 10px white;
+  	}
+  }
 }
+
 .rg-right span, .rg-left span, .rg-top span, .rg-bottom span {
+  transition: all 0.15s ease;
   position: absolute;
   box-sizing: border-box;
   display: block;
@@ -55,6 +68,7 @@
   height: 100%;
   right: 0;
   top: 0;
+
   // margin-right: -14px;
 }
 
