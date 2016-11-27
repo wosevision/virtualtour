@@ -1,4 +1,12 @@
 <div class="md-whiteframe-16dp floating-panel" layout="column">
+
+  <div class="md-toolbar-tools">
+    <span class="md-title">Scene editor</span>
+    <span flex></span>
+    <md-button class="md-icon-button md-primary" aria-label="Cancel" ng-click="$ctrl.closeDialog()">
+      <ng-md-icon icon="close" size="24"></ng-md-icon>
+    </md-button>
+  </div>
 	<v-accordion class="vAccordion--default" multiple flex>
 	  <!-- add expanded attribute to open the section -->
 	  <v-pane>
@@ -34,8 +42,8 @@
 				Link
 	    </v-pane-header>
 	    <v-pane-content>
-			  <div layout="column" layout-padding>
-			    <form ng-submit="$event.preventDefault()">
+			  <div layout="row" layout-padding>
+			    <!-- <form ng-submit="$event.preventDefault()">
 			      <p>Choose a scene for this arrow to link to:</p>
 			      <md-autocomplete
 			          md-selected-item="$ctrl.selectedScene"
@@ -61,10 +69,30 @@
 						    No scenes found with <em>"{{ $ctrl.queryText }}"</em>.
 						  </md-not-found>
 			      </md-autocomplete>
-			    </form>
+			    </form> -->
+			    <md-select placeholder="Select building" ng-model="$ctrl.building" md-on-open="$ctrl.loadBuildings()" ng-model-options="{trackBy: '$value._id'}">
+			      <md-option ng-value="building" ng-repeat="building in $ctrl.buildings">{{building.label}}</md-option>
+			    </md-select>
+			    <md-select placeholder="Select scene" ng-model="$ctrl.scene" md-on-open="$ctrl.loadScenes()" ng-model-options="{trackBy: '$value._id'}">
+			      <md-option ng-value="scene" ng-repeat="scene in $ctrl.scenes">{{scene.name}}</md-option>
+			    </md-select>
 			  </div>
 	    </v-pane-content>
 	  </v-pane>
 
 	</v-accordion>
+
+  <div class="md-toolbar-tools">
+    <md-button class="md-warn" aria-label="Go Back">
+      Delete
+    </md-button>
+    <span flex></span>
+    <md-button class="md-primary" aria-label="Save draft">
+      Save draft
+    </md-button>
+    <md-button class="md-raised md-primary" aria-label="Publish">
+      Publish
+    </md-button>
+  </div>
+
 </div>

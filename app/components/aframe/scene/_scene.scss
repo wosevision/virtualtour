@@ -1,48 +1,28 @@
 .scene-view {
 	transition: filter 0.15s;//, transform 0.15s;
-    background-image: url('../images/plnsk_bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    @include cover(absolute);
-    a-scene {	
-        width: 100%;
-        height: 100%;
-    }
-    // &.ng-enter {
-    //     position: absolute;
-    //     //z-index: 10000;
-    //     top: 0;
-    //     left: 0;
-    //     -webkit-animation: fadeIn 0.4s;
-    //     -moz-animation: fadeIn 0.4s;
-    //     -ms-animation: fadeIn 0.4s;
-    //     animation: fadeIn 0.4s;
-    // }
-    // &.ng-leave {
-    //     position: absolute;
-    //     //z-index: 10000;
-    //     top: 0;
-    //     left: 0;
-    //     -webkit-animation: fadeOut 0.4s;
-    //     -moz-animation: fadeOut 0.4s;
-    //     -ms-animation: fadeOut 0.4s;
-    //     animation: fadeOut 0.4s;
-    // }
+  background-image: url('../images/plnsk_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  @include cover(absolute);
+  aframe-scene {
+  	position: relative;
+  }
+  a-scene, aframe-scene {	
+    width: 100%;
+    height: 100%;
+  }
+  ng-transclude {	
+  	position: absolute;
+  	top: 65px;
+  	left: 0;
+  	width: 100%;
+  	z-index: 100
+  }
   &.map-open {
   	// transform: scale(1.1);
   	filter: blur(20px);
   }
-}
-
-.welcome-screen {
-    background-image: url('../images/plnsk_bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    position: relative;
-    width: 100%;
-    height: 100%;
 }
 
 .scene-select {

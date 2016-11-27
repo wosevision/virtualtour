@@ -1,16 +1,15 @@
-// drilldown-menu * {
-	// box-sizing: border-box;
-// }
-
-.drilldown-menu, drilldown-menu, drilldown-menu ui-view {
+.drilldown-menu, drilldown-menu {
 	background: transparent;
   min-height: 100%;
+}
+
+.drilldown-menu, drilldown-menu, drilldown-menu ui-view {
   height: 100%;
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
+  z-index: 1;
 }
-
 
 .drilldown-item {
 	position:relative;
@@ -29,13 +28,15 @@
 	&.is-active .drilldown-item:first-child {
 		border-top: solid 2px $uoitlightblue;
 	}
-	&:not(.is-active):after {
-		@include cover(absolute);
-		transition: all 0.6s;
-		content: '';
-	}
-	&:not(.is-active):hover:after {
-		background-color: rgba($uoitlightblue, 0.15);
+	&:not(.is-active) {
+		&::after {
+			@include cover(absolute);
+			transition: all 0.6s;
+			content: '';
+		}
+		&:hover::after {
+			background-color: rgba($uoitlightblue, 0.15);
+		}
 	}
 	&.is-active {
     flex: 1 0 auto;
@@ -44,63 +45,58 @@
     flex: 0;
 	}
 	ui-view {
-		// &.ng-enter {
-		// }
-		// &.ng-leave {
-		// }
+		width: 100%;
+		overflow: hidden;
+		.ng-leave {
+			position: absolute;
+			height: 0;
+		  flex: 0 0 auto;
+	    transition: 0.6s;
+		}
 	}
 }
 
-drilldown-content {
+.drilldown-content {
 	font-family: $franklin_gothic_condensed;
 	text-transform: uppercase;
 	color: $uoitdarkblue;
 	text-align: left;
 	padding: 0.75rem 1rem;
 	&.ng-enter {
-		animation: 0.6s fadeInUp;
+		animation: fadeInUp;
 	}
-	&.ng-leave {
+	&:hover {
+		color: $uoitlightblue;
 	}
-	span {
-		transition: 0.6s ease;
-		&.md-display-2 {
-			color: rgba($uoitdarkblue, 0.8);
-			font-size: calc( 16px + (48 - 16) * (100vw - 568px) / (1920 - 568) );
-		}
+	&.selected {
+		color: $uoitlightblue;
+		text-shadow: 0 0 25px rgba(0, 119, 202, 0.5);
 	}
-
-
-	&:hover .drilldown-item-title {
-		span {
-			color: $uoitlightblue;
-		}
-	}
-	.image-box {
-		display: block;
-		position: absolute;
-		margin-left: -27px;
-		// margin-top: -16px;
-		// height:400px;
-		width: calc(100% + 54px);
-		img {
-			@include cover(relative, false);
-			z-index: 100;
-			display: block;
-			min-width:100%;
-			opacity: 0.5;
-		}
-		&:after {
-			@include cover(absolute);
-			z-index: 101;
-			content: '';
-			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%);
-		}
-	}
+	// .image-box {
+	// 	display: block;
+	// 	position: absolute;
+	// 	margin-left: -27px;
+	// 	// margin-top: -16px;
+	// 	// height:400px;
+	// 	width: calc(100% + 54px);
+	// 	img {
+	// 		@include cover(relative, false);
+	// 		z-index: 100;
+	// 		display: block;
+	// 		min-width:100%;
+	// 		opacity: 0.5;
+	// 	}
+	// 	&:after {
+	// 		@include cover(absolute);
+	// 		z-index: 101;
+	// 		content: '';
+	// 		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%);
+	// 	}
+	// }
 	md-content {
 		height: 100%;
-			z-index: 	1000;
-			background: transparent;
+		z-index: 	1000;
+		background: transparent;
 	}
 }
 
@@ -128,6 +124,7 @@ drilldown-content {
     transform: rotate(-90deg);
   }
 }
+
 &.is-active > drilldown-content .open-indicator {
   &::after {
     transform: rotate(90deg);
@@ -136,12 +133,4 @@ drilldown-content {
   &::before {
     transform: rotate(0deg);
   }
-}
-
-.poi-item {
-		transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-	&:hover {
-		background-color: rgba(158,158,158,0.2);
-		cursor: default;
-	}
 }

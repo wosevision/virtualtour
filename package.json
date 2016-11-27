@@ -111,6 +111,7 @@
     "jsoneditor": "^5.5.7",
     "ng-prettyjson": "^0.2.0",
     "ngmap": "^1.17.6",
+    "uoit-campus-map": "github:wosevision/uoit-campus-map",
     "v-accordion": "^1.6.0"
   }
 }

@@ -1,17 +1,16 @@
 <md-content
 	class="drilldown-menu"
 	ng-init="children = item.children">
-	<div
+<!-- 	<div
 		class="drilldown-item"
 		ng-class="{ 'is-active': item.active, 'is-hidden': item.hidden }"
 		md-ink-ripple="{{ item.active ? false : '#003C71' }}"
-		ng-repeat="item in item.children track by $index"
+		ng-repeat="item in ::item.children track by $index"
 		ng-click="toggle($event, this)">
-		<drilldown-content
-			ng-if="!item.hidden"
-			next-level="{{::item.nextLevel}}"
-			item="item">
-		</drilldown-content>
+		<div ng-if="!item.hidden" style="padding-right: 30px;" class="drilldown-content" ng-class="{'md-caption': item.active, 'md-title': !item.active, 'selected': item.selected }">
+			<span>{{ ::item.name }}</span>
+			<div class="open-indicator"></div>
+		</div>
 		<ui-view ng-if="item.active" />
-	</div>
+	</div> -->
 </md-content>

@@ -20,7 +20,7 @@ function DrilldownConfig($stateProvider) {
       	children(LocationResource) {
       		return LocationResource.query({
   					sort: 'name'
-  				});
+  				}).$promise;
       	},
       	nextLevel() {
       		return 'location';
@@ -46,9 +46,11 @@ function DrilldownConfig($stateProvider) {
           },
           children($stateParams, $aframeScene, currentLocation, BuildingResource) {
           	if (!$stateParams.building && !$stateParams.scene) {
+          		const { sceneLinks, hotSpots, panorama } = currentLocation[0].default;
 	          	$aframeScene.scene = {
-	          		scene: currentLocation[0].default, 
-	          		sky: currentLocation[0].default.panorama.url
+	          		sceneLinks,
+	          		hotSpots,
+	          		sky: [ panorama.version, panorama.public_id].join('/')
 	          	};
 	          }
 
@@ -57,7 +59,7 @@ function DrilldownConfig($stateProvider) {
       					parent: currentLocation[0]._id
       				},
       				sort: 'name'
-      			});
+      			}).$promise;
           },
 	      	nextLevel(children) {
 	      		return 'building';
@@ -81,12 +83,13 @@ function DrilldownConfig($stateProvider) {
       				}).$promise;
 	          },
             children($stateParams, $aframeScene, currentLocation, currentBuilding, SceneResource) {
-
+          		const { sceneLinks, hotSpots, panorama } = currentBuilding[0].default;
 	          	if (!$stateParams.scene) {
-	            	$aframeScene.scene = {
-	            		scene: currentBuilding[0].default, 
-	            		sky: currentBuilding[0].default.panorama.url
-	            	};
+		          	$aframeScene.scene = {
+		          		sceneLinks,
+		          		hotSpots,
+		          		sky: [ panorama.version, panorama.public_id].join('/')
+		          	};
 	            }
 
       				return SceneResource.query({
@@ -94,7 +97,7 @@ function DrilldownConfig($stateProvider) {
       						parent: currentBuilding[0]._id
       					},
       					sort: 'name'
-      				});
+      				}).$promise;
             },
 		      	nextLevel() {
 		      		return 'scene';
@@ -108,29 +111,26 @@ function DrilldownConfig($stateProvider) {
           parent: 'building',
           url: '/:scene',
           resolve: {
-            sceneCode($stateParams) {
-            	return [$stateParams.location, $stateParams.building, $stateParams.scene].join('_');
-            },
             currentScene($stateParams, currentBuilding, SceneResource) {
       				return SceneResource.query({
       					filter: {
       						code: $stateParams.scene,
-      						parent: currentBuilding._id
+      						parent: currentBuilding[0]._id
       					}
       				});
             },
             item($aframeScene, currentScene) {
             	return currentScene.$promise.then((data) => {
-            		const sceneData = {
-	            		scene: data[0],
-	            		sky: data[0].panorama.url
-	            	};
-	            	$aframeScene.scene = sceneData;
-	            	return sceneData;
+            		console.log(data[0]);
+          			const { sceneLinks, hotSpots, panorama } = data[0];
+		          	$aframeScene.scene = {
+		          		sceneLinks,
+		          		hotSpots,
+		          		sky: [ panorama.version, panorama.public_id].join('/')
+		          	};
             	});
             }
           },
-          component: 'drilldownContent',
 				  ncyBreadcrumb: {
 			    	label: '{{ this.item.label || "Scene" }}'
 				  }

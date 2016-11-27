@@ -1,5 +1,9 @@
 import { forEach } from 'angular';
 
+function selectItem(item) {
+	item.selected = (item === this);
+}
+
 function deactivateItem(item) {
 	// make item inactive but unhide (default state)
 	item.active = item.hidden = false;
@@ -26,39 +30,61 @@ function toggleItem(item) {
 }
 
 class DrilldownCtrl {
-	constructor($scope, $state) {
+	constructor($scope, $element, $compile, $state) {
 		'ngInject';
 		// save a reference to the $scope
 		this.$scope = $scope;
-
-		this.$scope.toggle = ($ev, $sc) => {
-			// console.log(this.$sc, $sc);
+		this.$state = $state;
+		this.$element = $element;
+		this.$compile = $compile;
+	}
+	$onInit() {
+		// this.$scope.toggle = ($event, code, nextLevel) => {
+		this.$scope.toggle = ($event, $sc) => {
 			// prevent click from bubbling up
-			$ev.stopPropagation();
-
-			// if clicked item is inactive...
-			if (!$sc.item.active) {
-				// ...then go up a level, run toggleItem() on every item
-				// ...using the clicked item as the context of 'this'
-				forEach($sc.$parent.children, toggleItem, $sc.item);
+			$event.stopPropagation();
+			// only open drilldown if final level not reached
+			if (this.nextLevel !== 'scene') {
+				// if clicked item is inactive...
+				if (!$sc.item.active) {
+					// ...then go up a level, run toggleItem() on every item
+					// ...using the clicked item as the context of 'this'
+					forEach($sc.$parent.children, toggleItem, $sc.item);
+				} else {
+					// ...otherwise, go up a level and deactivateItem() all
+					forEach($sc.$parent.children, deactivateItem);
+				}
 			} else {
-				// ...otherwise, go up a level and deactivateItem() all
-				forEach($sc.$parent.children, deactivateItem);
+				forEach($sc.$parent.children, selectItem, $sc.item);
 			}
-
-			$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
-
+			// $state.go(nextLevel, { [nextLevel]: code });
+			this.$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
 			// run callback
 			// if (this.onToggle && typeof this.onToggle === 'function') {
 			// 	this.onToggle()($ev, $sc);
 			// }
-
 		}
 
+		const $content = this.$element.find('md-content')[0];
+		this.children.forEach(item => {
+			const childScope = this.$scope.$new();
+			childScope.item = item;
+			this.$compile(`<div
+				class="drilldown-item"
+				ng-class="{ 'is-active': item.active, 'is-hidden': item.hidden }"
+				md-ink-ripple="{{ item.active ? false : '#003C71' }}"
+				ng-click="toggle($event, this)">
+				<div ng-if="!item.hidden" style="padding-right: 30px;" class="drilldown-content" ng-class="{'md-caption': item.active, 'md-title': !item.active, 'selected': item.selected }">
+					<span>{{ ::item.name }}</span>
+					<div class="open-indicator"></div>
+				</div>
+				<ui-view ng-if="item.active" />
+			</div>`)(childScope, (clone, scope) => {
+				$content.append(clone[0]);
+			})
+		});
 	}
 }
-
-DrilldownCtrl.$inject = ['$scope', '$state']
 
 export default {
   name: 'DrilldownCtrl',
