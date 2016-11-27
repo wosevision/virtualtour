@@ -13,8 +13,8 @@ const TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
 gulp.task('views', function() {
 
   // Put our index.html in the dist folder
-  const indexFile = gulp.src(config.views.index)
-    .pipe(gulp.dest(config.buildDir));
+  // const indexFile = gulp.src(config.views.index)
+  //   .pipe(gulp.dest(config.buildDir));
 
   // Process any other view files from app/views
   const views = gulp.src(config.views.src)
@@ -28,6 +28,6 @@ gulp.task('views', function() {
     }))
     .pipe(gulp.dest(config.views.dest));
 
-  return merge(indexFile, views);
+  return views; //merge(indexFile, views);
 
 });
