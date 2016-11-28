@@ -4,16 +4,6 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	'ngInject';
 
 	/**
-	 * Cache vars for <a-scene> and <a-assets>
-	 * Store JQLite-wrapped DOM elements
-	 * 
-	 * @type {Element}
-	 * @type {Element}
-	 */
-	this.$sceneEl = $element.find('a-scene');
-	this.$assetsEl = this.$sceneEl.find('a-assets');
-
-	/**
 	 * Cache vars to store JQLite <img> and <a-sky>
 	 * Flag for init sky load and array of loaded skies
 	 * 
@@ -102,15 +92,6 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	}
 
   /**
-   * __$onInit__
-   * 
-   * @return {void}		No return
-   */
-  // this.$onInit = () => {
-  // 	console.log(sky, scene);
-  // }
-
-  /**
    * __$doCheck__
    * Checks $aframeScene's current scene object each digest
    * Proceeds if scene is defined; calls setScene()
@@ -123,6 +104,10 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	  		setScene($aframeScene.scene);
 	  	}
   	}
+  }
+
+  this.$onDestroy = () => {
+		this.$sceneEl.off('contextmenu', contextMenu);
   }
 }
 
