@@ -9,8 +9,8 @@ function MapConfig($stateProvider) {
       	// markers(BuildingResource) {
       	// 	return BuildingResource.query();
       	// }
-      	onGotoBldg() {
-      		return () => data => alert(JSON.stringify(data));
+      	onGotoBldg($state) {
+      		return () => data => $state.go('building', data); // alert(JSON.stringify(data));
       	}
       },
       component: 'campusMap',

@@ -28,6 +28,7 @@ import 'uoit-campus-map';
 import 'aframe';
 import 'aframe-event-set-component';
 import 'aframe-reverse-look-controls-component';
+import 'aframe-look-at-component';
 // import 'aframe-selectable-component';
 import 'aframe-text-component';
 import 'aframe-mouse-cursor-component';

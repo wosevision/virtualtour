@@ -27,6 +27,19 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 			skyElLoaded = false;
 	const skyLoadedList = [];
 
+  /**
+   * __$onInit__
+	 * Store JQLite-wrapped <a-scene> and <a-assets>
+	 * Init internal check for right click event
+   * 
+   * @return {void}		No return
+   */
+  this.$onInit = () => {
+		this.$sceneEl = $element.find('a-scene');
+		this.$assetsEl = this.$sceneEl.find('a-assets');
+		this._rightClick = false;
+  }
+
 	/**
 	 * Compiles a new <a-sky> and binds to scope.sky
 	 * Flags sky element as loaded
@@ -68,15 +81,14 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 		});
 	}
 
-	const setScene = (scene) => {
-		const { sky, sceneLinks, hotSpots } = scene;
+	const setScene = scene => {
 		
+		const { sky, sceneLinks, hotSpots } = scene;
 		this.sky = sky;
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
-
+  	
 		const skyId = sky.split('scenes/panorama/')[1].split('.')[0];
-
   	if (!skyLoadedList.includes(skyId)) {
       $skyAsset = loadSkyAsset(this.sky, () => {
         this.loadedSky = `#${skyId}`;
