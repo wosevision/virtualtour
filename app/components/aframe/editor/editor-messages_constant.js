@@ -5,24 +5,24 @@ const EDITOR_MESSAGES = {
 		highlightAction: false,
 		highlightClass: 'md-primary',
 		position: 'bottom left'
-	}
+	},
 	loadDraftMsg: {
 		textContent: 'Autosaved draft found!',
 		action: 'Load saved draft',
 		highlightAction: true,
 		highlightClass: 'md-primary',
 		position: 'bottom left'
-	}
+	},
 	publishMsg: {
 		textContent: 'Changes published!',
 		action: 'Dismiss',
 		position: 'bottom left'
-	}
+	},
 	discardMsg: {
 		textContent: 'Draft discarded!',
 		action: 'Dismiss',
 		position: 'bottom left'
-	}
+	},
 	loadedMsg: {
 		textContent: 'Draft loaded!',
 		action: 'Dismiss',

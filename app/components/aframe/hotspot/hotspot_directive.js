@@ -1,12 +1,12 @@
-function sceneLink($state, SceneResource) {
+function hotSpot($state, SceneResource) {
   'ngInject';
   return {
     restrict: 'A',
     scope: {
-    	sceneLink: '='
+    	hotSpot: '='
     },
     require: '^aframeScene',
-    templateUrl: 'aframe/scenelink/_scenelink.html',
+    templateUrl: 'aframe/hotspot/_hotspot.html',
 		link(scope, elem, attrs, SceneCtrl) {
 			//
 			// Listen for clicks on scene link element
@@ -14,16 +14,16 @@ function sceneLink($state, SceneResource) {
 				// If there's a right click active...
 				if (SceneCtrl._rightClick && SceneCtrl._editable) {
 					// ...open the scene link editor:
-					const { position, rotation, scene } = scope.sceneLink;
-					SceneCtrl.openEditor(SceneCtrl._rightClick, { position, rotation, scene });
+					const { position, content, feature } = scope.hotSpot;
+					SceneCtrl.openEditor(SceneCtrl._rightClick, { position, content, feature });
 				} else {
 					// ...otherwise just use the default scene link behavior
-					const sceneId = scope.sceneLink.scene;
-					const gotoSceneHandler = data => {
-						document.getElementById(`link_${sceneId}`).emit('goto');
-						$state.go('scene', { building: data.parent.code, scene: data.code });
-					}
-					SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler);
+					// const sceneId = scope.hotSpot.scene;
+					// const gotoSceneHandler = data => {
+					// 	document.getElementById(`link_${sceneId}`).emit('goto');
+					// 	$state.go('scene', { building: data.parent.code, scene: data.code });
+					// }
+					// SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler);
 				}
 			};
 			elem.on('click', elemClick);
@@ -39,6 +39,6 @@ function sceneLink($state, SceneResource) {
 }
 
 export default {
-  name: 'sceneLink',
-  fn: sceneLink
+  name: 'hotSpot',
+  fn: hotSpot
 };

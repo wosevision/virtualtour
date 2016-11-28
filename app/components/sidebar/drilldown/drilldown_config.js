@@ -121,12 +121,14 @@ function DrilldownConfig($stateProvider) {
             },
             item($aframeScene, currentScene) {
             	return currentScene.$promise.then((data) => {
-          			const { sceneLinks, hotSpots, panorama } = data[0];
-		          	$aframeScene.scene = {
-		          		sceneLinks,
-		          		hotSpots,
-		          		sky: [ panorama.version, panorama.public_id].join('/')
-		          	};
+            		if (data.length === 1 && data[0].panorama) {
+	          			const { sceneLinks, hotSpots, panorama } = data[0];
+			          	$aframeScene.scene = {
+			          		sceneLinks,
+			          		hotSpots,
+			          		sky: [ panorama.version, panorama.public_id].join('/')
+			          	};
+            		}
             	});
             }
           },

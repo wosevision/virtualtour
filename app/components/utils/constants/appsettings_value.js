@@ -6,7 +6,7 @@ const APP_SETTINGS = {
       icon: 'last_page'
     },
     _TOOLBAR_CONDENSED: {
-      val: true,
+      val: false,
       label: 'Toolbar condensed by default',
       icon: 'flip_to_back'
     },
