@@ -7,16 +7,14 @@ class EditorDialogCtrl {
 		this.BuildingResource = BuildingResource;
 		this.SceneResource = SceneResource;
 		this.parentList = {};
-		SceneResource.get({ id: this.sceneLink.scene }).$promise.then(scene => {
-			this.scene = scene;
-			BuildingResource.get({ id: scene.parent._id }).$promise.then(building => {
-				this.building = building;
+		if (this.scene) {
+			SceneResource.get({ id: this.scene }).$promise.then(scene => {
+				this.scene = scene;
+				BuildingResource.get({ id: scene.parent._id }).$promise.then(building => {
+					this.building = building;
+				});
 			});
-		});
-		console.log(this)
-	}
-	$onInit() {
-		alert('heyo')
+		}
 	}
 	loadBuildings(callback) {
 		return this.BuildingResource.query().$promise.then(buildings => {
