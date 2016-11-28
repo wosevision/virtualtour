@@ -45,7 +45,7 @@ function DrilldownConfig($stateProvider) {
       			}).$promise;
           },
           children($stateParams, $aframeScene, currentLocation, BuildingResource) {
-          	if (!$stateParams.building && !$stateParams.scene) {
+          	if (!$stateParams.building && !$stateParams.scene && currentLocation[0].default) {
           		const { sceneLinks, hotSpots, panorama } = currentLocation[0].default;
 	          	$aframeScene.scene = {
 	          		sceneLinks,
@@ -83,8 +83,8 @@ function DrilldownConfig($stateProvider) {
       				}).$promise;
 	          },
             children($stateParams, $aframeScene, currentLocation, currentBuilding, SceneResource) {
-          		const { sceneLinks, hotSpots, panorama } = currentBuilding[0].default;
-	          	if (!$stateParams.scene) {
+	          	if (!$stateParams.scene && currentBuilding[0].default) {
+          			const { sceneLinks, hotSpots, panorama } = currentBuilding[0].default;
 		          	$aframeScene.scene = {
 		          		sceneLinks,
 		          		hotSpots,
@@ -121,7 +121,6 @@ function DrilldownConfig($stateProvider) {
             },
             item($aframeScene, currentScene) {
             	return currentScene.$promise.then((data) => {
-            		console.log(data[0]);
           			const { sceneLinks, hotSpots, panorama } = data[0];
 		          	$aframeScene.scene = {
 		          		sceneLinks,

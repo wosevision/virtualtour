@@ -1,19 +1,18 @@
-import { isUndefined, equals } from 'angular';
+import { isUndefined, equals, element } from 'angular';
 let draftTimeout;
 
 class EditorCtrl {
 	static get $inject() {
 		return [
 			'$scope', '$timeout', 
-			'$mdDialog', '$mdToast', 
-			'$aframeScene', 'SceneResource', 'DraftFactory'];
+			'$mdPanel', '$mdToast',
+			'SceneResource', 'DraftFactory'];
 	}
 	constructor(
 		$scope, $timeout, 
-		$mdDialog, $mdToast,
-		$aframeScene, SceneResource, DraftFactory
+		$mdPanel, $mdToast,
+		SceneResource, DraftFactory
 	) {
-		'ngInject';
 
 		// CONSTANTS
 	  this.draftMsg = $mdToast.simple()
@@ -45,10 +44,9 @@ class EditorCtrl {
 		this.unpublishedChanges = false;
 
 		this.$scope = $scope;
-		this.$mdDialog = $mdDialog;
+		this.$mdPanel = $mdPanel;
 		this.$timeout = $timeout;
 		this.$mdToast = $mdToast;
-		this.$aframeScene = $aframeScene;
 		this.SceneResource = SceneResource;
 		this.DraftFactory = DraftFactory;
 
@@ -59,12 +57,6 @@ class EditorCtrl {
 	  	draftTimeout = $timeout( () => {
 	  		this.saveDraft();
 		  }, 3000);
-	  }
-
-	  // FINAL CONFIG
-	  this.editorDefaults = {
-	  	mode: 'tree',
-	  	onChange: this.onChange
 	  }
 	}
 	$onInit() {
@@ -85,6 +77,59 @@ class EditorCtrl {
 				initLoaded();
 			}
 		});
+		//
+		const SceneCtrl = this.SceneCtrl;
+		const contextMenu = ev => {
+		  ev.stopPropagation();
+			if (!SceneCtrl._rightClick) {
+				SceneCtrl._rightClick = ev;
+				ev.preventDefault();
+				SceneCtrl.$sceneEl.on('mouseup', () => {
+					SceneCtrl._rightClick = false;
+					SceneCtrl.$sceneEl.off('mouseup')
+				});
+			}
+		};
+		SceneCtrl.$sceneEl.on('contextmenu', contextMenu);
+		//
+		SceneCtrl._editable = true;
+		SceneCtrl.openEditor = (ev, locals) => {
+			// Animation to open dialog from and close to right click
+			// Position to hold in bottom left of screen
+			const position = this.$mdPanel.newPanelPosition()
+	      .absolute()
+	      .bottom(0)
+	      .left(0);
+	    const animation = this.$mdPanel.newPanelAnimation()
+	      .openFrom({top: ev.clientY - 150, left: ev.clientX})
+	      .withAnimation(this.$mdPanel.animation.SCALE)
+	      .closeTo({top: ev.clientY - 150, left: ev.clientX});
+	    const attachTo = element(document.body);
+	    const onDomRemoved = () => {
+				this.panelRef&&this.panelRef.destroy();
+			};
+	    // Build dialog config
+			const config = {
+				templateUrl: 'aframe/editor/_editor-dialog.html',
+				panelClass: 'demo-menu-example',
+				controller: 'EditorDialogCtrl',
+			  bindToController: true,
+			  controllerAs: '$ctrl',
+				clickOutsideToClose: true,
+				escapeToClose: true,
+				focusOnOpen: true,
+				zIndex: 85,
+				onDomRemoved,
+				position,
+				animation,
+				attachTo,
+				locals
+			};
+	    this.$mdPanel.open(config)
+	      .then(result => {
+	        this.panelRef = result;
+	      });
+		}
 	}
 	publishChanges() {
   	this.SceneResource.update({ 

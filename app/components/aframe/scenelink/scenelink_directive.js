@@ -1,6 +1,4 @@
-import { element } from 'angular';
-
-function sceneLink($state, $mdPanel, SceneResource) {
+function sceneLink($state, SceneResource) {
   'ngInject';
   return {
     restrict: 'A',
@@ -11,85 +9,27 @@ function sceneLink($state, $mdPanel, SceneResource) {
     templateUrl: 'aframe/scenelink/_scenelink.html',
 		link(scope, elem, attrs, SceneCtrl) {
 			//
-			// Get some vars queued up
-			// $element-wrapped <a-scene> and click type checker
-			let $scene = SceneCtrl.$sceneEl,
-					rightClick = false, panelRef;
-			//
-			//
-			// Listen for right clicks on entire scene
-			const contextMenu = ev => {
-	      ev.stopPropagation();
-				if (!rightClick) {
-					rightClick = ev;
-					ev.preventDefault();
-					$scene.on('mouseup', () => {
-						rightClick = false;
-						$scene.off('mouseup')
-					});
-				}
-			};
-			$scene.on('contextmenu', contextMenu);
-			//
-			//
 			// Listen for clicks on scene link element
 			const elemClick =  event => {
-				const sceneId = scope.sceneLink.scene;
-				// If there's no right click active...
-				if (!rightClick) {
-					// ...then just use the default scene link behavior
-					SceneResource.get({ id: sceneId }).$promise.then(data => {
+				// If there's a right click active...
+				if (SceneCtrl._rightClick && SceneCtrl._editable) {
+					// ...open the scene link editor:
+					SceneCtrl.openEditor(SceneCtrl._rightClick, { sceneLink: scope.sceneLink })
+				} else {
+					// ...otherwise just use the default scene link behavior
+					const sceneId = scope.sceneLink.scene;
+					const gotoSceneHandler = data => {
 						document.getElementById(`link_${sceneId}`).emit('goto');
 						$state.go('scene', { building: data.parent.code, scene: data.code });
-					});
-				} else {
-					// Otherwise, open the scene link editor
-					// 
-					// Animation to open dialog from and close to right click
-					// Position to hold in bottom left of screen
-			    const animation = $mdPanel.newPanelAnimation()
-		        .openFrom({top: rightClick.clientY - 150, left: rightClick.clientX})
-		        .withAnimation($mdPanel.animation.SCALE)
-		        .closeTo({top: rightClick.clientY - 150, left: rightClick.clientX});
-					const position = $mdPanel.newPanelPosition()
-		        .absolute()
-		        .bottom(0)
-		        .left(0);
-		      // Build dialog config
-					const config = {
-						attachTo: angular.element(document.body),
-						templateUrl: 'aframe/editor/_editor-dialog.html',
-						panelClass: 'demo-menu-example',
-						controller: 'EditorDialogCtrl',
-					  bindToController: true,
-					  controllerAs: '$ctrl',
-						locals: {
-							sceneLink: scope.sceneLink
-						},
-						clickOutsideToClose: true,
-						escapeToClose: true,
-						focusOnOpen: true,
-						zIndex: 85,
-						onDomRemoved() {
-							panelRef&&panelRef.destroy();
-						},
-						position,
-						animation
-					};
-			    $mdPanel.open(config)
-		        .then(result => {
-		          panelRef = result;
-		        });
+					}
+					SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler);
 				}
 			};
 			elem.on('click', elemClick);
 			//
-			//
 			// Scope cleanup on $destroy
 			scope.$on('$destroy', () => {
-				panelRef&&panelRef.destroy();
 				elem.off('click');
-				$scene.off('contextmenu');
 			});
 			//
     }
