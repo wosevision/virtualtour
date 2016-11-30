@@ -5,15 +5,13 @@
 	event-set__1="_event: mouseenter; scale: 1.05 1.1 1.05;"
 	event-set__2="_event: mouseleave; scale: 1 1 1;">
 	<a-cone
-		color="#0077CA"
-		opacity="0.85"
 		height="0.5"
 		radius-bottom="0.5"
 		radius-top="0"
-		roughness="1"
 		scale="0.1 1 1"
 		segments-height="1"
 		segments-radial="4"
+		mixin="mixin-blue"
 		event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
 		event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;">
 		<!-- ROCKING ANIMATION -->
@@ -32,7 +30,25 @@
 			visible="false"
 			event-set__1="_event: mouseenter; visible: true;"
 			event-set__2="_event: mouseleave; visible: false;">
-			<a-sphere radius="0.6" color="white" material="shader:flat;opacity:0.1;transparent:true;">
+			<!-- ng-attr-id="link_{{ ::scene._id }}" -->
+
+<!-- 			<a-entity position="0 0 0.9">
+				<a-entity
+					position="0.75 0 0"
+					scale="0.3 0.3 0.3"
+					rotation="90 0 -90"
+					ng-attr-text="text:{{ ::scene.parent.label }}"
+					material="shader: flat;color:white;opacity: 0.6">
+				</a-entity>
+				<a-entity
+					position="0.5 0 0"
+					scale="0.3 0.3 0.3"
+					rotation="90 0 -90"
+					ng-attr-text="text:{{ ::scene.name }}"
+					material="shader: flat;color:white;opacity: 0.6">
+				</a-entity>
+			</a-entity> -->
+			<a-sphere radius="0.6" mixin="mixin-glow">
 				<a-animation
 					attribute="scale"
 					from="0.9 0.9 0.9"
@@ -42,7 +58,7 @@
 					dur="1500">
 				</a-animation>
 			</a-sphere>
-			<a-sphere radius="0.6" color="white" material="shader:flat;opacity:0.05;">
+			<a-sphere radius="0.6" mixin="mixin-glow" opacity="0.05">
 				<a-animation
 					attribute="scale"
 					from="1 1 1"

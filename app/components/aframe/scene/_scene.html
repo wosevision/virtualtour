@@ -11,17 +11,20 @@
 			attrs="asset.attrs"
 			entities="asset.entities">
 		</aframe-entity> -->
+		<a-mixin id="mixin-blue" material="color: #0077CA;opacity: 0.85; transparent: true;">
+		</a-mixin>
+		<a-mixin id="mixin-glow" material="color:white;shader:flat;opacity:0.1;transparent: true;"></a-mixin>
 
 	</a-assets>
 
 		<!-- CAMERA ENTITY -->
-		<a-entity position="0 1.8 0">
+		<a-entity position="0 1.8 0" id="aframe-camera">
 			<a-entity
 				camera
 				mouse-cursor
 				reverse-look-controls
-				wasd-controls="enabled:false;"
-				look-controls="enabled:false;">
+				wasd-controls-enabled="false"
+				look-controls-enabled="false">
 				<!-- VR CURSOR -->
 <!-- 				<a-cursor
 					color="white"
