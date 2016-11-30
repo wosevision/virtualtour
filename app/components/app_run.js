@@ -1,6 +1,6 @@
 function AppRun(
 	$rootScope, $state, $templateCache,
-	$mdDialog, $breadcrumb,
+	$breadcrumb, $ErrorReporter,
 	GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
@@ -21,19 +21,16 @@ function AppRun(
       $rootScope.pageTitle += ' | ';
     }
     $rootScope.pageTitle += GLOBAL_SETTINGS.APP._TITLE;
-    // console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
-
+    // console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams)
   });
-
+  
   $rootScope.$on('handler:exception', function( event, error ) {
 	  let locals = {
 			type: error.cause,
 			message: error.exception.message,
 			suggest: [0, 2, 1]
   	}
-  	$mdDialog.show(
-			$mdDialog.error({ locals })
-		);
+		$ErrorReporter.error({locals});
   })
 
   // $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
@@ -44,6 +41,7 @@ function AppRun(
   // $rootScope.$on('$viewContentLoaded', (event) => {
     //console.log('try this sucka: ', $breadcrumb.getLastStep());
   // });
+  
   const _USER = SettingsFactory.get('USER');
   const _DATA = SettingsFactory.get('DATA');
   const USER = _USER || APP_SETTINGS.USER;

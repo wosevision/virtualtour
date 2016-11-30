@@ -17,14 +17,14 @@ function ErrorConfig($provide , $mdDialogProvider) { //, $mdIconProvider
 	$provide.decorator('$exceptionHandler', function($log, $delegate, $injector) {
 		'ngInject';
     return function(exception, cause) {
-	    let $rootScope = $injector.get('$rootScope');
-	    $rootScope.$broadcast('handler:exception', {
-	      exception: exception,
-	      cause: cause || 'Application error'
-	    });
+	    // let $rootScope = $injector.get('$rootScope');
+	    // $rootScope.$broadcast('handler:exception', {
+	    //   exception: exception,
+	    //   cause: cause || 'Application error'
+	    // });
 
 	    // FOR "SOFTER" ERRORS:
-      // $log.debug('Delegated exception:', errorData);
+      $log.debug(exception, cause);
       
   		$delegate(exception, cause);
     };

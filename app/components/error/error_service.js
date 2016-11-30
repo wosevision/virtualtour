@@ -2,7 +2,7 @@ class $ErrorReporter {
 	constructor($mdDialog) {
 		this.$mdDialog = $mdDialog;
 	}
-	error(locals = null) {
+	error({locals = null} = {}) {
 		this.$mdDialog.show(
 			this.$mdDialog.error({ locals })
 		);
