@@ -2,7 +2,7 @@
 .title-bar {
 	min-height: 65px;
 	border-top: solid 5px $uoitdarkblue;
-	z-index: 100;
+	// z-index: 100;
 	.logo-shield {
 		height: 36px;
 	}
@@ -11,7 +11,7 @@
 		font-family: $font-family-display;
 		text-transform: uppercase;
 		padding: 0;
-		height: 100%;
+		height: auto;
 	}
 	.md-button.menu-button {
 		font-family: $font-family-bold;
