@@ -27,6 +27,7 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
   this.$onInit = () => {
 		this.$sceneEl = $element.find('a-scene');
 		this.$assetsEl = this.$sceneEl.find('a-assets');
+		this.$aframeScene = $aframeScene;
 		this._rightClick = false;
   }
 
@@ -71,9 +72,9 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 		});
 	}
 
-	const setScene = scene => {
+	const setScene = (scene, sky) => {
 		
-		const { sky, sceneLinks, hotSpots } = scene;
+		const { sceneLinks, hotSpots } = scene;
 		this.sky = sky;
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
@@ -89,6 +90,7 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
     } else {
       this.loadedSky = `#${skyId}`;
     }
+    this.checkForDraft&&this.checkForDraft();
 	}
 
   /**
@@ -100,8 +102,8 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
    */
   this.$doCheck = () => {
   	if (!isUndefined($aframeScene.scene)) {
-			if (!this.sky || $aframeScene.scene.sky !== this.sky) {
-	  		setScene($aframeScene.scene);
+			if (!this.sky || $aframeScene.sky !== this.sky) {
+	  		setScene($aframeScene.scene, $aframeScene.sky);
 	  	}
   	}
   }

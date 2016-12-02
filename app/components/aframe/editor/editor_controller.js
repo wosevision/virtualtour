@@ -1,84 +1,43 @@
 import { isUndefined, equals, element } from 'angular';
+
+const attachTo = element(document.body);
 let draftTimeout;
 
 class EditorCtrl {
-	static get $inject() {
-		return [
-			'$scope', '$timeout', 
-			'$mdPanel', '$mdToast',
-			'SceneResource', 'DraftFactory'];
-	}
 	constructor(
-		$scope, $timeout, 
-		$mdPanel, $mdToast,
-		SceneResource, DraftFactory
+		$mdPanel, $mdDialog, //$mdToast,
+		$aframeScene//, DraftFactory
 	) {
-
-		// CONSTANTS
-	  this.draftMsg = $mdToast.simple()
-	    .textContent('Draft saved automatically')
-	    .action('Publish changes')
-	    .highlightAction(false)
-	    .highlightClass('md-primary')
-	    .position('bottom left');
-	  this.loadDraftMsg = $mdToast.simple()
-	    .textContent('Autosaved draft found!')
-	    .action('Load saved draft')
-	    .highlightAction(true)
-	    .highlightClass('md-primary')
-	    .position('bottom left');
-	  this.publishMsg = $mdToast.simple()
-	    .textContent('Changes published!')
-	    .action('Dismiss')
-	    .position('bottom left');
-	  this.discardMsg = $mdToast.simple()
-	    .textContent('Draft discarded.')
-	    .action('Dismiss')
-	    .position('bottom left');
-	  this.loadedMsg = $mdToast.simple()
-	    .textContent('Draft loaded!')
-	    .action('Dismiss')
-	    .position('bottom left');
-
+		'ngInject';
 	  // INIT VARS
 		this.unpublishedChanges = false;
-
-		this.$scope = $scope;
 		this.$mdPanel = $mdPanel;
-		this.$timeout = $timeout;
-		this.$mdToast = $mdToast;
-		this.SceneResource = SceneResource;
-		this.DraftFactory = DraftFactory;
-
-		// CHANGE HANDLER
-	  this.onChange = data => {
-	  	$timeout.cancel(draftTimeout);
-	  	this.unpublishedChanges = true;
-	  	draftTimeout = $timeout( () => {
-	  		this.saveDraft();
-		  }, 3000);
-	  }
+		this.$mdDialog = $mdDialog;
+		this.$aframeScene = $aframeScene;
 	}
 	$onInit() {
-		// INIT FUNCTION
-		let initLoaded = this.$scope.$watch('bc.sceneData', (newVal) => {
-			if (!isUndefined(newVal) && newVal._id) {
-				const savedDraft = this.DraftFactory.get(this.sceneData._id);
-				if (savedDraft) {
-	  			this.$mdToast.show(this.loadDraftMsg).then(response => {
-			      if ( response == 'ok' ) {
-							this.loadDraft();
-							this.$mdToast.show(this.loadedMsg)
-			      }
-			    });
-				} else {
-					this.lastPublished = newVal;
-				}
-				initLoaded();
-			}
-		});
-		//
 		const SceneCtrl = this.SceneCtrl;
+		const updateSceneData = data => {
+			Object.assign(SceneCtrl, data);
+		}
+		//
+		this.publish = () => {
+			this.$aframeScene.publish();
+		}
+		this.saveDraft = () => {
+			this.$aframeScene.saveDraft();
+		}
+		this.loadDraft = () => {
+			this.$aframeScene.loadDraft({ notify: true}, updateSceneData);
+		}
+		this.revertToDraft = () => {
+			this.$aframeScene.revertToDraft({ notify: true}, updateSceneData);
+		}
+		this.SceneCtrl.checkForDraft = () => {
+			this.$aframeScene.checkForDraft({ notify: true}, updateSceneData);
+		}
+		// 
+		//
 		const contextMenu = ev => {
 		  ev.stopPropagation();
 			if (!SceneCtrl._rightClick) {
@@ -93,7 +52,7 @@ class EditorCtrl {
 		SceneCtrl.$sceneEl.on('contextmenu', contextMenu);
 		//
 		SceneCtrl._editable = true;
-		SceneCtrl.openEditor = (ev, locals) => {
+		SceneCtrl.openEditor = (ev, item, collection) => {
 			// Animation to open dialog from and close to right click
 			// Position to hold in bottom left of screen
 			const position = this.$mdPanel.newPanelPosition()
@@ -104,14 +63,25 @@ class EditorCtrl {
 	      .openFrom({top: ev.clientY - 150, left: ev.clientX})
 	      .withAnimation(this.$mdPanel.animation.SCALE)
 	      .closeTo({top: ev.clientY - 150, left: ev.clientX});
-	    const attachTo = element(document.body);
 	    const onDomRemoved = () => {
 				this.panelRef&&this.panelRef.destroy();
 			};
+
+			const locals = { item };
+	    locals.onPublish = this.publish;
+	    locals.onSaveDraft = this.saveDraft;
+			locals.removeThis = () => {
+				this.$aframeScene.removeItemFrom(item, collection, () => {
+					this.panelRef&&this.panelRef.close();
+				});
+			}
+			locals.closeDialog = () => {
+				this.panelRef&&this.panelRef.close();
+			}
 	    // Build dialog config
 			const config = {
 				templateUrl: 'aframe/editor/_editor-dialog.html',
-				panelClass: 'demo-menu-example',
+				// panelClass: 'demo-menu-example',
 				controller: 'EditorDialogCtrl',
 			  bindToController: true,
 			  controllerAs: '$ctrl',
@@ -131,44 +101,83 @@ class EditorCtrl {
 	      });
 		}
 	}
-	publishChanges() {
-  	this.SceneResource.update({ 
-  		id: this.sceneData._id
-  	}, this.sceneData)
-  	.$promise.then(scene => {
-  		this.$timeout.cancel(draftTimeout);
-			this.lastPublished = this.sceneData || scene;
-			this.discardDraft()
-	  	this.unpublishedChanges = false;
-  		this.$mdToast.show(this.publishMsg);
-  	});
-	}
-	loadDraft() {
-		if (this.lastDraft) {
-			this.sceneData = this.lastDraft;
-		} else {
-			this.sceneData = this.DraftFactory.get(this.sceneData._id) || this.lastPublished;// || this.sceneData;
+	addItem(ev, collection) {
+		let locals = { newItem: true };
+    locals.onPublish = () => {
+    	this.$mdDialog&&this.$mdDialog.hide('ok');
+    }
+		locals.removeThis = () => {
+			this.$mdDialog&&this.$mdDialog.cancel();
 		}
-  	this.unpublishedChanges = !equals(this.sceneData, this.lastPublished);
-	}
-	discardDraft() {
-  	this.lastDraft = null;
-  	this.DraftFactory.set(this.sceneData._id, null);
-	}
-	revertDraft() {
-  	this.$timeout.cancel(draftTimeout);
-		this.loadDraft();
-		this.$mdToast.show(this.discardMsg);
-	}
-	saveDraft() {
-  	this.lastDraft = this.sceneData;
-  	this.DraftFactory.set(this.sceneData._id, this.sceneData);
-    this.$mdToast.show(this.draftMsg).then(response => {
-      if ( response == 'ok' ) {
-      	this.publishChanges();
-      }
+		locals.closeDialog = locals.removeThis;
+    locals.onSaveDraft = this.saveDraft;
+		switch(collection) {
+			case 'sceneLinks':
+				locals.item = { scene: null, position: [0,0,0], rotation: [0,0,90] };
+				break;
+			case 'hotSpots':
+				locals.item = { linked: false, content: '', feature: '', position: [0,0,0] };
+				break;
+		}
+    this.$mdDialog.show({
+      controller: 'EditorDialogCtrl',
+			templateUrl: 'aframe/editor/_editor-dialog.html',
+      parent: attachTo,
+      targetEvent: ev,
+		  bindToController: true,
+		  controllerAs: '$ctrl',
+			clickOutsideToClose: true,
+			escapeToClose: true,
+			focusOnOpen: true,
+			locals
+    })
+    .then(answer => {
+    	if (answer === 'ok') {
+				this.$aframeScene.addItemTo( locals.item, this.SceneCtrl[collection], newData => {
+					this.$aframeScene.scene[collection] = newData;
+				});
+    	}
+    }, () => {
+			// this.$aframeScene.removeItemFrom(locals.item, this.SceneCtrl[collection]);
+			this.$aframeScene.discardDraft();
     });
-  }
+	}
+	newScene(ev) {
+		let locals = { newItem: true };
+		locals.item = {
+			code: '',
+			name: '',
+			panorama: '',
+			parent: ''
+		};
+    locals.onPublish = () => {
+    	this.$mdDialog&&this.$mdDialog.hide('ok');
+    }
+		locals.removeThis = () => {
+			this.$mdDialog&&this.$mdDialog.cancel();
+		}
+		locals.closeDialog = locals.removeThis;
+    locals.onSaveDraft = this.saveDraft;
+    this.$mdDialog.show({
+      controller: 'EditorDialogCtrl',
+			templateUrl: 'aframe/editor/_editor-dialog.html',
+      parent: attachTo,
+      targetEvent: ev,
+		  bindToController: true,
+		  controllerAs: '$ctrl',
+			clickOutsideToClose: true,
+			escapeToClose: true,
+			focusOnOpen: true,
+			locals
+    })
+    .then(answer => {
+    	if (answer === 'ok') {
+				this.$aframeScene.publish(locals.item);
+    	}
+    }, () => {
+			this.$aframeScene.discardDraft();
+    });
+	}
 }
 
 export default {
