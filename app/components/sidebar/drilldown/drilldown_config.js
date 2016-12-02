@@ -46,14 +46,8 @@ function DrilldownConfig($stateProvider) {
           },
           children($stateParams, $aframeScene, currentLocation, BuildingResource) {
           	if (!$stateParams.building && !$stateParams.scene && currentLocation[0].default) {
-          		const { sceneLinks, hotSpots, panorama } = currentLocation[0].default;
-	          	$aframeScene.scene = {
-	          		sceneLinks,
-	          		hotSpots,
-	          		sky: [ panorama.version, panorama.public_id].join('/')
-	          	};
+	          	$aframeScene.scene = currentLocation[0].default;
 	          }
-
       			return BuildingResource.query({
       				filter: {
       					parent: currentLocation[0]._id
@@ -84,12 +78,7 @@ function DrilldownConfig($stateProvider) {
 	          },
             children($stateParams, $aframeScene, currentLocation, currentBuilding, SceneResource) {
 	          	if (!$stateParams.scene && currentBuilding[0].default) {
-          			const { sceneLinks, hotSpots, panorama } = currentBuilding[0].default;
-		          	$aframeScene.scene = {
-		          		sceneLinks,
-		          		hotSpots,
-		          		sky: [ panorama.version, panorama.public_id].join('/')
-		          	};
+		          	$aframeScene.scene = currentBuilding[0].default;
 	            }
 
       				return SceneResource.query({
@@ -122,12 +111,7 @@ function DrilldownConfig($stateProvider) {
             item($aframeScene, currentScene) {
             	return currentScene.$promise.then((data) => {
             		if (data.length === 1 && data[0].panorama) {
-	          			const { sceneLinks, hotSpots, panorama } = data[0];
-			          	$aframeScene.scene = {
-			          		sceneLinks,
-			          		hotSpots,
-			          		sky: [ panorama.version, panorama.public_id].join('/')
-			          	};
+			          	$aframeScene.scene = data[0];
             		}
             	});
             }
