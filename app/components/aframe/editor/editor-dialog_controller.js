@@ -1,56 +1,76 @@
 class EditorDialogCtrl {
-	static get $inject() {
-		return ['$q', '$scope', 'BuildingResource', 'SceneResource'];
-	}
-	constructor($q, $scope, BuildingResource, SceneResource) {
-		this.$q = $q;
+	constructor($scope, $filter, LocationResource, BuildingResource, SceneResource) {
+		'ngInject';
+		this.$filter = $filter;
+		this.LocationResource = LocationResource;
 		this.BuildingResource = BuildingResource;
 		this.SceneResource = SceneResource;
-		this.parentList = {};
-		if (this.scene) {
-			SceneResource.get({ id: this.scene }).$promise.then(scene => {
-				this.scene = scene;
-				BuildingResource.get({ id: scene.parent._id }).$promise.then(building => {
-					this.building = building;
-				});
+		if (this.item.scene) {
+			$scope.$applyAsync(() => {
+				this.initCurrentScene();
 			});
 		}
 	}
-	loadBuildings(callback) {
-		return this.BuildingResource.query().$promise.then(buildings => {
-			this.buildings = buildings;
-			callback&&callback(buildings);
+	initCurrentScene() {
+		let _id;
+		this.loadScenes(scenes => {
+			_id = this.item.scene.hasOwnProperty('_id') ? this.item.scene._id : this.item.scene;
+			this.scene = this.$filter('filter')(scenes, { _id }, true)[0];
+			this.initCurrentBuilding();
 		});
 	}
-	loadScenes(callback) {
+	initCurrentBuilding() {
+		let _id;
+		this.loadBuildings(buildings => {
+			_id = this.scene.parent.hasOwnProperty('_id') ? this.scene.parent._id : this.scene.parent;
+			this.building = this.$filter('filter')(buildings, { _id }, true)[0];
+			this.initCurrentLocation();
+		});
+	}
+	initCurrentLocation() {
+		let _id;
+		this.loadLocations(locations => {
+			_id = this.building.parent.hasOwnProperty('_id') ? this.building.parent._id : this.building.parent;
+			this.location = this.$filter('filter')(locations, { _id }, true)[0];
+		});
+	}
+	loadLocations(cb) {
+		return this.LocationResource.query().$promise.then(locations => {
+			this.locations = locations;
+			cb&&cb(locations);
+		});
+	}
+	loadBuildings(cb) {
+		return this.BuildingResource.query(this.location ? {
+			filter: {
+				parent: this.location._id
+			}
+		} : null).$promise.then(buildings => {
+			this.buildings = buildings;
+			cb&&cb(buildings);
+		});
+	}
+	loadScenes(cb) {
 		return this.SceneResource.query(this.building ? {
 			filter: {
 				parent: this.building._id
 			}
 		} : null).$promise.then(scenes => {
 			this.scenes = scenes;
-			callback&&callback(scenes);
+			cb&&cb(scenes);
 		});
 	}
-	//
-	getParent(id) {
-		return this.BuildingResource.get({id}).$promise.then(building => {
-			return building.label || building.name;
-		});
+	onChangeScene() {
+		this.item.scene = this.scene._id;
 	}
-	queryScenes(q) {
-		const query = this.SceneResource.query().$promise;
-		query.then(scenes => {
-			scenes.forEach(scene => {
-				this.BuildingResource.get({ id: scene.parent }).$promise.then(building => {
-					this.parentList[scene.parent] = building.label || building.name;
-				});
-			})
-		})
-		return query;
+	onChangeBuilding() {
+		this.item.building = this.building._id;
+		this.scene = null;
 	}
-	closeDialog() {
-		this.mdPanelRef.close();
+	onChangeLocation() {
+		this.item.location = this.location._id;
+		this.building = null;
+		this.scene = null;
 	}
 	//
 }

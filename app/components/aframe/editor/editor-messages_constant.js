@@ -1,31 +1,70 @@
 const EDITOR_MESSAGES = {
-	draftMsg: {
-		textContent: 'Draft saved automatically',
-		action: 'Publish changes',
-		highlightAction: false,
-		highlightClass: 'md-primary',
-		position: 'bottom left'
+	confirm: {
+		textContent: 'Are you sure?',
+		action: 'Confirm',
+		highlightAction: true,
+		highlightClass: 'md-warn',
+		position: 'bottom left',
+		hideDelay: 0
 	},
-	loadDraftMsg: {
-		textContent: 'Autosaved draft found!',
-		action: 'Load saved draft',
+	itemRemoved: {
+		textContent: 'Item removed!',
+		action: 'Dismiss',
+		position: 'bottom left',
+		hideDelay: 1000
+	},
+	itemAdded: {
+		textContent: 'Item added!',
+		action: 'Publish changes',
 		highlightAction: true,
 		highlightClass: 'md-primary',
-		position: 'bottom left'
+		position: 'bottom left',
+		hideDelay: 5000
 	},
-	publishMsg: {
+	saveDraft: {
+		textContent: 'Draft saved!',
+		action: 'Publish changes',
+		highlightAction: true,
+		highlightClass: 'md-primary',
+		position: 'bottom left',
+		hideDelay: 5000
+	},
+	draftFound: {
+		textContent: 'Saved draft found!',
+		action: 'Load draft',
+		highlightAction: true,
+		highlightClass: 'md-primary',
+		position: 'bottom left',
+		hideDelay: 5000
+	},
+	publish: {
 		textContent: 'Changes published!',
 		action: 'Dismiss',
-		position: 'bottom left'
+		position: 'bottom left',
+		hideDelay: 5000
 	},
-	discardMsg: {
+	discardDraft: {
 		textContent: 'Draft discarded!',
 		action: 'Dismiss',
-		position: 'bottom left'
+		position: 'bottom left',
+		hideDelay: 1000
 	},
-	loadedMsg: {
+	revertToDraft: {
+		textContent: 'Reverted to last draft!',
+		action: 'Dismiss',
+		position: 'bottom left',
+		hideDelay: 2000
+	},
+	loadDraft: {
 		textContent: 'Draft loaded!',
 		action: 'Dismiss',
-		position: 'bottom left'
+		position: 'bottom left',
+		hideDelay: 2000
 	}
 }
+
+export default {
+  name: 'EDITOR_MESSAGES',
+  fn: EDITOR_MESSAGES
+};
+
