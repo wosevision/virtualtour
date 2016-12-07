@@ -1,20 +1,52 @@
 class EditorDialogCtrl {
-	constructor($scope, $filter, LocationResource, BuildingResource, SceneResource) {
+	constructor(
+		$scope, $filter,
+		LocationResource, BuildingResource, SceneResource,
+		CategoryResource, FeatureResource, CollectionResource) {
 		'ngInject';
 		this.$filter = $filter;
 		this.LocationResource = LocationResource;
 		this.BuildingResource = BuildingResource;
 		this.SceneResource = SceneResource;
+		this.CategoryResource = CategoryResource;
+		this.FeatureResource = FeatureResource;
+		this.CollectionResource = CollectionResource;
 		if (this.item.scene) {
 			$scope.$applyAsync(() => {
 				this.initCurrentScene();
 			});
 		}
+		if (this.item.feature) {
+			$scope.$applyAsync(() => {
+				this.initCurrentFeature();
+			});
+		}
+	}
+	initCurrentCategory() {
+		let _id;
+		this.loadCategories(categories => {
+			_id = this.feature.properties.category&&this.feature.properties.category.hasOwnProperty('_id') 
+				? this.feature.properties.category._id
+				: this.feature.properties.category;
+			this.category = this.$filter('filter')(categories, { _id }, true)[0];
+		});
+	}
+	initCurrentFeature() {
+		let _id;
+		this.loadFeatures(features => {
+			_id = this.item.feature&&this.item.feature.hasOwnProperty('_id')
+				? this.item.feature._id
+				: this.item.feature;
+			this.feature = this.$filter('filter')(features, { _id }, true)[0];
+			this.initCurrentCategory();
+		});
 	}
 	initCurrentScene() {
 		let _id;
 		this.loadScenes(scenes => {
-			_id = this.item.scene.hasOwnProperty('_id') ? this.item.scene._id : this.item.scene;
+			_id = this.item.scene.hasOwnProperty('_id')
+				? this.item.scene._id
+				: this.item.scene;
 			this.scene = this.$filter('filter')(scenes, { _id }, true)[0];
 			this.initCurrentBuilding();
 		});
@@ -22,7 +54,9 @@ class EditorDialogCtrl {
 	initCurrentBuilding() {
 		let _id;
 		this.loadBuildings(buildings => {
-			_id = this.scene.parent.hasOwnProperty('_id') ? this.scene.parent._id : this.scene.parent;
+			_id = this.scene.parent.hasOwnProperty('_id')
+				? this.scene.parent._id
+				: this.scene.parent;
 			this.building = this.$filter('filter')(buildings, { _id }, true)[0];
 			this.initCurrentLocation();
 		});
@@ -30,7 +64,9 @@ class EditorDialogCtrl {
 	initCurrentLocation() {
 		let _id;
 		this.loadLocations(locations => {
-			_id = this.building.parent.hasOwnProperty('_id') ? this.building.parent._id : this.building.parent;
+			_id = this.building.parent.hasOwnProperty('_id')
+				? this.building.parent._id
+				: this.building.parent;
 			this.location = this.$filter('filter')(locations, { _id }, true)[0];
 		});
 	}
@@ -59,6 +95,28 @@ class EditorDialogCtrl {
 			this.scenes = scenes;
 			cb&&cb(scenes);
 		});
+	}
+	loadCategories(cb) {
+		return this.CategoryResource.query().$promise.then(categories => {
+			this.categories = categories;
+			cb&&cb(categories);
+		});
+	}
+	loadFeatures(cb) {
+		return this.FeatureResource.query(this.category ? {
+			filter: {
+				"properties.category": this.category._id
+			}
+		} : null).$promise.then(features => {
+			this.features = features;
+			cb&&cb(features);
+		});
+	}
+	onChangeCategory() {
+		this.feature = null;
+	}
+	onChangeFeature() {
+		this.item.feature = this.feature;
 	}
 	onChangeScene() {
 		this.item.scene = this.scene._id;

@@ -120,10 +120,10 @@ class EditorCtrl {
 		let locals;
 		switch(collection) {
 			case 'sceneLinks':
-				locals = { item: { scene: null, position: [0,0,0], rotation: [0,0,90] } };
+				locals = { item: { scene: '', position: [0,0,0], rotation: [0,0,70] } };
 				break;
 			case 'hotSpots':
-				locals = { item: { linked: false, content: '', feature: '', position: [0,0,0] } };
+				locals = { item: { linked: false, name: '', desc: '', feature: '', position: [0,0,0] } };
 				break;
 		}
 		locals.newItem = true;

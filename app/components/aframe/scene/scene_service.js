@@ -1,5 +1,5 @@
 // import { isArray } from 'angular';
-import { isArray, isObject, equals } from 'angular';
+import { isArray, isObject } from 'angular';
 import { pick } from 'lodash';
 
 function getProps(obj) {
@@ -126,8 +126,12 @@ class $aframeScene {
 			  	collection.splice(index, 1);
 			  	this.saveDraft({ notify: false });
 	      	cb&&cb();
-	      	this.$mdToast.show(this.toasts.itemRemoved);
-			  }
+	      	return this.$mdToast.show(this.toasts.itemRemoved);
+			  } 
+      }
+    }).then(response => {
+      if ( response == 'ok' ) {
+      	this.publish();
       }
     });
 	}
