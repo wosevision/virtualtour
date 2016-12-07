@@ -9,7 +9,7 @@
   </div>
 	<v-accordion class="vAccordion--default" multiple flex>
 	  <!-- add expanded attribute to open the section -->
-	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('name') || $ctrl.item.hasOwnProperty('label') || $ctrl.item.hasOwnProperty('code'))">
+	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('name') || $ctrl.item.hasOwnProperty('label') || $ctrl.item.hasOwnProperty('code') || $ctrl.item.hasOwnProperty('desc') || $ctrl.item.hasOwnProperty('feature'))">
 	    <v-pane-header>
 				Metadata
 	    </v-pane-header>
@@ -20,7 +20,7 @@
 			      <input type="text" flex ng-model="$ctrl.item.name" aria-label="name">
 			    </md-input-container>
 			  </div>
-			  <div layout="row" layout-paddingt ng-if="::$ctrl.item.hasOwnProperty('label')">
+			  <div layout="row" layout-padding ng-if="::$ctrl.item.hasOwnProperty('label')">
 			    <md-input-container flex style="margin-bottom:0;padding-bottom:0;">
 			    	<label>Label</label>
 			      <input type="text" flex ng-model="$ctrl.item.label" aria-label="label">
@@ -32,6 +32,26 @@
 			      <input type="text" flex ng-model="$ctrl.item.code" aria-label="code">
 			    </md-input-container>
 			  </div>
+			  <div layout="column" layout-padding ng-if="::($ctrl.item.hasOwnProperty('desc') || $ctrl.item.hasOwnProperty('feature'))">
+		    	<div><md-checkbox
+              ng-model="$ctrl.item.linked"
+              aria-label="Link to campus map feature"
+              class="md-primary">
+            Link to campus map feature?	
+          </md-checkbox></div>
+					<div ng-if="$ctrl.item.linked">
+				    <md-select placeholder="Select category" ng-model="$ctrl.category" md-on-open="$ctrl.loadCategories()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeCategory()">
+				      <md-option ng-value="category" ng-repeat="category in $ctrl.categories track by category._id">{{category.name}}</md-option>
+				    </md-select>
+				    <md-select placeholder="Select feature" ng-model="$ctrl.feature" md-on-open="$ctrl.loadFeatures()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeFeature()">
+				      <md-option ng-value="feature" ng-repeat="feature in $ctrl.features track by feature._id">{{feature.properties.name}}</md-option>
+				    </md-select>
+				  </div>
+	        <md-input-container ng-if="!$ctrl.item.linked">
+	          <label>Content</label>
+	          <textarea ng-model="$ctrl.item.desc" md-maxlength="250" rows="4" md-select-on-focus></textarea>
+	        </md-input-container>
+        </div>
 	    </v-pane-content>
 	  </v-pane>
 	  <v-pane ng-if="::$ctrl.item.position.length">
@@ -110,7 +130,7 @@
 	    </v-pane-content>
 	  </v-pane> -->
 
-	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('content') || $ctrl.item.hasOwnProperty('feature'))">
+<!-- 	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('desc') || $ctrl.item.hasOwnProperty('feature'))">
 	    <v-pane-header>
 				Description
 	    </v-pane-header>
@@ -123,21 +143,21 @@
             Link to campus map feature?	
           </md-checkbox>
 					<div ng-if="$ctrl.item.linked">
-				    <md-select placeholder="Select category" ng-model="$ctrl.category" md-on-open="$ctrl.loadCategories()" ng-model-options="{trackBy: '$value._id'}">
+				    <md-select placeholder="Select category" ng-model="$ctrl.category" md-on-open="$ctrl.loadCategories()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeCategory()">
 				      <md-option ng-value="category" ng-repeat="category in $ctrl.categories track by category._id">{{category.name}}</md-option>
 				    </md-select>
-				    <md-select placeholder="Select feature" ng-model="$ctrl.feature" md-on-open="$ctrl.loadFeatures()" ng-model-options="{trackBy: '$value._id'}">
-				      <md-option ng-value="feature" ng-repeat="feature in $ctrl.features track by feature._id">{{feature.name}}</md-option>
+				    <md-select placeholder="Select feature" ng-model="$ctrl.feature" md-on-open="$ctrl.loadFeatures()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeFeature()">
+				      <md-option ng-value="feature" ng-repeat="feature in $ctrl.features track by feature._id">{{feature.properties.name}}</md-option>
 				    </md-select>
 				  </div>
 	        <md-input-container ng-if="!$ctrl.item.linked">
 	          <label>Content</label>
-	          <textarea ng-model="$ctrl.item.content" md-maxlength="250" rows="4" md-select-on-focus></textarea>
+	          <textarea ng-model="$ctrl.item.desc" md-maxlength="250" rows="4" md-select-on-focus></textarea>
 	        </md-input-container>
         </div>
 	    </v-pane-content>
 	  </v-pane>
-	</v-accordion>
+	</v-accordion> -->
 
 <!--   <div class="md-toolbar-tools" ng-if="$ctrl.newItem">
     <md-button aria-label="Cancel" ng-click="$ctrl.closeDialog()">
