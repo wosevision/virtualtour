@@ -1,4 +1,4 @@
-import { fromJson } from 'angular';
+// import { fromJson } from 'angular';
 
 function SceneResource($resource, GLOBAL_SETTINGS) {
   'ngInject';

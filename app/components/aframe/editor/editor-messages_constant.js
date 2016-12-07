@@ -9,12 +9,22 @@ const EDITOR_MESSAGES = {
 	},
 	itemRemoved: {
 		textContent: 'Item removed!',
-		action: 'Dismiss',
+		action: 'Publish changes',
+		highlightAction: true,
+		highlightClass: 'md-primary',
 		position: 'bottom left',
-		hideDelay: 1000
+		hideDelay: 5000
 	},
 	itemAdded: {
 		textContent: 'Item added!',
+		action: 'Publish changes',
+		highlightAction: true,
+		highlightClass: 'md-primary',
+		position: 'bottom left',
+		hideDelay: 5000
+	},
+	loadDraft: {
+		textContent: 'Draft loaded!',
 		action: 'Publish changes',
 		highlightAction: true,
 		highlightClass: 'md-primary',
@@ -30,8 +40,8 @@ const EDITOR_MESSAGES = {
 		hideDelay: 5000
 	},
 	draftFound: {
-		textContent: 'Saved draft found!',
-		action: 'Load draft',
+		textContent: 'Saved drafts found!',
+		action: 'Load most recent',
 		highlightAction: true,
 		highlightClass: 'md-primary',
 		position: 'bottom left',
@@ -51,12 +61,6 @@ const EDITOR_MESSAGES = {
 	},
 	revertToDraft: {
 		textContent: 'Reverted to last draft!',
-		action: 'Dismiss',
-		position: 'bottom left',
-		hideDelay: 2000
-	},
-	loadDraft: {
-		textContent: 'Draft loaded!',
 		action: 'Dismiss',
 		position: 'bottom left',
 		hideDelay: 2000

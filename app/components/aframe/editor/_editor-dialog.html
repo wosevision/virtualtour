@@ -157,10 +157,10 @@
       {{ ::($ctrl.newItem ? 'Cancel' : 'Delete') }}
     </md-button>
     <span flex></span>
-    <md-button class="md-primary" aria-label="Save draft" ng-click="$ctrl.onSaveDraft()">
+    <md-button class="md-primary" aria-label="Save draft" ng-click="$ctrl.saveDraft()">
       Save draft
     </md-button>
-    <md-button class="md-raised md-primary" aria-label="Publish" ng-click="$ctrl.onPublish()">
+    <md-button class="md-raised md-primary" aria-label="Publish" ng-click="$ctrl.publish()">
       {{ ::($ctrl.newItem ? 'Add' : 'Publish') }}
     </md-button>
   </div>

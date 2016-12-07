@@ -19,23 +19,38 @@ class EditorCtrl {
 		const SceneCtrl = this.SceneCtrl;
 		const updateSceneData = data => {
 			Object.assign(SceneCtrl, data);
+			this.$aframeScene.scene = data;
 		}
 		//
-		this.publish = () => {
-			this.$aframeScene.publish();
+		this.publish = (newData, notify = true) => {
+			this.$aframeScene.publish(newData, { notify }, updateSceneData);
 		}
-		this.saveDraft = () => {
-			this.$aframeScene.saveDraft();
+		this.saveDraft = (notify = true) => {
+			this.$aframeScene.saveDraft({ notify });
 		}
-		this.loadDraft = () => {
-			this.$aframeScene.loadDraft({ notify: true}, updateSceneData);
+		this.loadDraft = (draft, notify = true) => {
+			this.$aframeScene.loadDraft(draft._id, { notify }, updateSceneData);
 		}
-		this.revertToDraft = () => {
-			this.$aframeScene.revertToDraft({ notify: true}, updateSceneData);
+		this.revertToDraft = (notify = true) => {
+			this.$aframeScene.revertToDraft({ notify }, updateSceneData);
 		}
-		this.SceneCtrl.checkForDraft = () => {
-			this.$aframeScene.checkForDraft({ notify: true}, updateSceneData);
+		this.discardDraft = (draft, notify = true) => {
+			const confirm = this.$mdDialog.confirm()
+        .title('Are you sure?')
+        .textContent('This action cannot be undone.')
+        .ok('Confirm')
+        .cancel('Cancel');
+	    this.$mdDialog.show(confirm).then(() => {
+				this.$aframeScene.discardDraft(draft._id, { notify });
+	    });
 		}
+		this.checkForDraft = (notify = true) => {
+			this.draftList = null;
+			this.$aframeScene.checkForDraft({ notify }, updateSceneData).then(drafts => {
+				this.draftList = drafts;
+			});
+		}
+		SceneCtrl.checkForDraft = this.checkForDraft;
 		// 
 		//
 		const contextMenu = ev => {
@@ -68,8 +83,8 @@ class EditorCtrl {
 			};
 
 			const locals = { item };
-	    locals.onPublish = this.publish;
-	    locals.onSaveDraft = this.saveDraft;
+	    locals.publish = this.publish;
+	    locals.saveDraft = this.saveDraft;
 			locals.removeThis = () => {
 				this.$aframeScene.removeItemFrom(item, collection, () => {
 					this.panelRef&&this.panelRef.close();
@@ -102,23 +117,24 @@ class EditorCtrl {
 		}
 	}
 	addItem(ev, collection) {
-		let locals = { newItem: true };
-    locals.onPublish = () => {
+		let locals;
+		switch(collection) {
+			case 'sceneLinks':
+				locals = { item: { scene: null, position: [0,0,0], rotation: [0,0,90] } };
+				break;
+			case 'hotSpots':
+				locals = { item: { linked: false, content: '', feature: '', position: [0,0,0] } };
+				break;
+		}
+		locals.newItem = true;
+    locals.publish = () => {
     	this.$mdDialog&&this.$mdDialog.hide('ok');
     }
 		locals.removeThis = () => {
 			this.$mdDialog&&this.$mdDialog.cancel();
 		}
 		locals.closeDialog = locals.removeThis;
-    locals.onSaveDraft = this.saveDraft;
-		switch(collection) {
-			case 'sceneLinks':
-				locals.item = { scene: null, position: [0,0,0], rotation: [0,0,90] };
-				break;
-			case 'hotSpots':
-				locals.item = { linked: false, content: '', feature: '', position: [0,0,0] };
-				break;
-		}
+    locals.saveDraft = this.saveDraft;
     this.$mdDialog.show({
       controller: 'EditorDialogCtrl',
 			templateUrl: 'aframe/editor/_editor-dialog.html',
@@ -143,21 +159,23 @@ class EditorCtrl {
     });
 	}
 	newScene(ev) {
-		let locals = { newItem: true };
-		locals.item = {
-			code: '',
-			name: '',
-			panorama: '',
-			parent: ''
+		let locals = { 
+			item: {
+				code: '',
+				name: '',
+				panorama: '',
+				parent: ''
+			}
 		};
-    locals.onPublish = () => {
+		locals.newItem = true;
+    locals.publish = () => {
     	this.$mdDialog&&this.$mdDialog.hide('ok');
     }
 		locals.removeThis = () => {
 			this.$mdDialog&&this.$mdDialog.cancel();
 		}
 		locals.closeDialog = locals.removeThis;
-    locals.onSaveDraft = this.saveDraft;
+    locals.saveDraft = this.saveDraft;
     this.$mdDialog.show({
       controller: 'EditorDialogCtrl',
 			templateUrl: 'aframe/editor/_editor-dialog.html',

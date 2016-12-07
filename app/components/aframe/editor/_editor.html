@@ -24,9 +24,27 @@
       <md-button aria-label="Save draft" class="md-icon-button" ng-mouseenter="$ctrl.tooltipMsg = 'Save draft'" ng-click="$ctrl.saveDraft()">
         <ng-md-icon icon="save"></ng-md-icon>
       </md-button>
-      <md-button aria-label="Revert changes" class="md-icon-button" ng-mouseenter="$ctrl.tooltipMsg = 'Revert changes'" ng-click="$ctrl.revertToDraft()">
-        <ng-md-icon icon="undo"></ng-md-icon>
-      </md-button>
+<!--       <md-button aria-label="Load draft" class="md-icon-button" ng-mouseenter="$ctrl.tooltipMsg = 'Load draft'" ng-click="$ctrl.revertToDraft()">
+        <ng-md-icon icon="folder_open"></ng-md-icon>
+      </md-button> -->
+
+      <md-menu md-offset="0 -7">
+        <md-button aria-label="Load draft" class="md-icon-button" ng-mouseenter="$ctrl.tooltipMsg = 'Load draft'" ng-click="$ctrl.checkForDraft(false);$mdOpenMenu($event)">
+	        <ng-md-icon icon="folder_open"></ng-md-icon>
+	      </md-button>
+        <md-menu-content width="6" ng-switch="$ctrl.draftList.length">
+          <md-menu-item ng-repeat="draft in $ctrl.draftList">
+            <md-button ng-click="$ctrl.loadDraft(draft)">{{ draft.updatedAt | date:'medium' }}</md-button>
+            <md-button ng-click="$ctrl.discardDraft(draft)" class="md-icon-button md-raised md-warn">
+			        <ng-md-icon icon="delete" size="22"></ng-md-icon>
+			      </md-button>
+          </md-menu-item>
+          <md-menu-item ng-hide="$ctrl.draftList.length">
+          	<span>No drafts available</span>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
       <md-button aria-label="Publish changes" class="md-icon-button" ng-mouseenter="$ctrl.tooltipMsg = 'Publish changes'" ng-click="$ctrl.publish()">
         <ng-md-icon icon="publish"></ng-md-icon>
       </md-button>
