@@ -39,8 +39,14 @@
 			width: 100%;
 		}
 	}
+	&.map-open {
+			> ui-view {
+			width: 100% !important;
+		}
+	}
 	ui-view {
 		height: 100%;
+		min-width: 200px;
 	}
 }
 
