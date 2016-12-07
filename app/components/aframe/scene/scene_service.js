@@ -11,12 +11,13 @@ class $aframeScene {
 	// CONSTRUCTOR
 	constructor(
 		$timeout, $mdToast,
-		SceneResource, DraftFactory,
+		SceneResource, DraftResource, DraftFactory,
 		EDITOR_MESSAGES) {
 		'ngInject';
 		this.$timeout = $timeout;
 		this.$mdToast = $mdToast;
 		this.SceneResource = SceneResource;
+		this.DraftResource = DraftResource;
 		this.DraftFactory = DraftFactory;
 		this.toasts = {};
 		getProps( EDITOR_MESSAGES ).forEach(type => {
@@ -47,48 +48,73 @@ class $aframeScene {
 	//
 	// DRAFT METHODS
 	checkForDraft({ notify = true } = {}, cb) {
-		if (this.sceneData && this.DraftFactory.get(this.sceneData._id)) {
-			this.$mdToast.show(this.toasts.draftFound).then(response => {
-	      if ( response == 'ok' ) {
-	      	this.loadDraft({ notify: true }, cb);
-	      }
-	    });
+		if (this.sceneData) {
+			return this.DraftResource.query({
+				sort: '-updatedAt',
+				filter: {
+					original: this.sceneData._id
+				}
+			}).$promise.then(drafts => {
+				drafts.length&&notify&&this.$mdToast.show(this.toasts.draftFound).then(response => {
+		      if ( response == 'ok' ) {
+		      	this.loadDraft(drafts[0]._id, { notify: true }, cb);
+		      }
+		    });
+		    return drafts;
+	  	});
 		}
 	}
-	loadDraft({ notify = true } = {}, cb) {
-		console.log(this.sceneData);
-		this.sceneData = this.DraftFactory.get(this.sceneData._id) || this.lastPublished;
-		console.log(this.sceneData);
-		cb&&cb(this.sceneData);
-  	this.lastDraft = this.sceneData;
-  	this.unpublishedChanges = !equals(this.sceneData, this.lastPublished);
-		notify&&this.$mdToast.show(this.toasts.loadDraft);
+	loadDraft(id, { notify = true } = {}, cb) {
+  	this.DraftResource.get({ id }).$promise.then(draft => {
+	  	cb&&cb(draft.content);
+	  	this.lastDraft = draft.content;
+	    notify&&this.$mdToast.show(this.toasts.loadDraft).then(response => {
+	      if ( response == 'ok' ) {
+	      	this.publish();
+	      }
+	    });
+  	});
 	}
-	discardDraft({ notify = true } = {}, cb) {
-  	this.DraftFactory.set(this.sceneData._id, null);
-  	cb&&cb(this.sceneData);
-  	this.lastDraft = null;
-		notify&&this.$mdToast.show(this.toasts.discardDraft);
+	discardDraft(id, { notify = true } = {}, cb) {
+  	this.DraftResource.remove({ id }).$promise.then(response => {
+			notify&&this.$mdToast.show(this.toasts.discardDraft);
+	  	cb&&cb(response);
+  	});
 	}
 	revertToDraft({ notify = true } = {}, cb) {
 		// if (this.lastDraft) {
 		// 	this.sceneData = this.lastDraft;
 		// 	cb&&cb(this.sceneData);
 		// } else {
-			this.loadDraft({ notify: false }, cb);
-			this.saveDraft({ notify: false }, cb);
+			this.checkForDraft({ notify: false }).then(drafts => {
+      	this.loadDraft(drafts[0]._id, { notify: true }, cb);
+	  	});
+			// this.saveDraft({ notify: false }, cb);
 		// }
 		notify&&this.$mdToast.show(this.toasts.revertToDraft);
 	}
 	saveDraft({ notify = true } = {}, cb) {
-  	this.DraftFactory.set(this.sceneData._id, this.sceneData);
-  	cb&&cb(this.sceneData);
-  	this.lastDraft = this.sceneData;
-    notify&&this.$mdToast.show(this.toasts.saveDraft).then(response => {
-      if ( response == 'ok' ) {
-      	this.publish();
-      }
-    });
+  	// this.DraftFactory.set(this.sceneData._id, this.sceneData);
+  	// cb&&cb(this.sceneData);
+  	// this.lastDraft = this.sceneData;
+   //  notify&&this.$mdToast.show(this.toasts.saveDraft).then(response => {
+   //    if ( response == 'ok' ) {
+   //    	this.publish();
+   //    }
+   //  });
+  	this.DraftResource.save({
+  		content: this.sceneData,
+  		kind: 'Scene',
+  		original: this.sceneData._id
+  	}).$promise.then(draft => {
+	  	cb&&cb(draft);
+	  	this.lastDraft = draft.content;
+	    notify&&this.$mdToast.show(this.toasts.saveDraft).then(response => {
+	      if ( response == 'ok' ) {
+	      	this.publish();
+	      }
+	    });
+  	});
   }
   //
   // SCENE MANIPULATION
@@ -147,7 +173,7 @@ class $aframeScene {
   	}, newData)
   	.$promise.then(scene => {
 			this.lastPublished = this.sceneData || scene;
-			this.discardDraft({ notify: false })
+			// this.discardDraft({ notify: false })
 	  	this.unpublishedChanges = false;
   		notify&&this.$mdToast.show(this.toasts.publish);
   		cb&&cb(scene);
