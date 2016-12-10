@@ -1,4 +1,4 @@
-function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider, $breadcrumbProvider ) { //, $mdIconProvider
+function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
   'ngInject';
 
   $mdThemingProvider.definePalette('UOITprimary', {
@@ -36,62 +36,21 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
 
   $stateProvider
     .state('home', {
-      // url: '/',
-      // url: '',
       abstract: true,
-      // params: { view: null },
       template: '<ui-view></ui-view>',
-      // controller($state, $stateParams) {
-      //   if ($stateParams.view) {
-      //   	$state.go($stateParams.view);
-      //   }
-      // },
-		  ncyBreadcrumb: {
-		  	skip: true,
-		    label: ''
-		  }
     });
 
   $stateProvider
     .state('settings', {
-      //url: '/',
       parent: 'home',
-      views: {
-          '@' : {
-            templateUrl: 'sidebar/settings/_settings.html',
-            controller: 'SettingsCtrl'
-          }
-      },
+      templateUrl: 'sidebar/settings/_settings.html',
+      controller: 'SettingsCtrl',
 		  ncyBreadcrumb: {
 		    label: 'App settings'
 		  }
     });
-    
-  // $stateProvider
-  //   .state('playground', {
-  //     //url: '/',
-  //     parent: 'home',
-  //     views: {
-  //         '@' : {
-  //           template: '<chat-window></chat-window>'
-  //         }
-  //     },
-		//   ncyBreadcrumb: {
-		//     label: '3D playground'
-		//   }
-  //   });
-  $urlRouterProvider.otherwise('/');
 
-  $breadcrumbProvider.setOptions({
-    prefixStateName: 'home',
-    template:
-    	`<div class="breadcrumbs">
-    		<md-button ng-href="{{step.ncyBreadcrumbLink}}" ng-repeat="step in steps">
-    		 	<ng-md-icon icon="chevron_right" style="fill: #003c71;" size="20"></ng-md-icon>
-    			{{ step.ncyBreadcrumbLabel }}
-    		</md-button>
-    	</div>`
-  });
+  $urlRouterProvider.otherwise('/');
 
 }
 

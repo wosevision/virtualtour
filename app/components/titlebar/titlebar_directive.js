@@ -10,10 +10,7 @@ function titleBar($log) {
     	mobile: '<'
     },
     controller: 'TitlebarCtrl',
-    controllerAs: 'tb',
-    link(scope, elm, attrs) {
-
-    }
+    controllerAs: 'tb'
   };
 }
 

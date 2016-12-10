@@ -1,7 +1,5 @@
 const drilldownMenu = {
-		// transclude: true,
 		bindings: {
-			// onToggle: '&?',
 			nextLevel: '@',
 			children: '<'
 		},

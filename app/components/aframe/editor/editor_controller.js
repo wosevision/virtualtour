@@ -5,8 +5,8 @@ let draftTimeout;
 
 class EditorCtrl {
 	constructor(
-		$mdPanel, $mdDialog, //$mdToast,
-		$aframeScene//, DraftFactory
+		$mdPanel, $mdDialog,
+		$aframeScene
 	) {
 		'ngInject';
 	  // INIT VARS

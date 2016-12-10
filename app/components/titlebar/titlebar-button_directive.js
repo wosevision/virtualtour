@@ -1,9 +1,6 @@
 function titleBarButton($log) {
 	'ngInject';
   return {
-    // replace: true,
-    transclude: true,
-    // scope: true,
     templateUrl: 'titlebar/_titlebar-button.html',
     require: '^titleBar',
     scope: {
@@ -12,10 +9,6 @@ function titleBarButton($log) {
     	active: '<',
 			tooltip: '<',
 			icon: '<'
-    },
-   //  controllerAs: 'btn',
-    link(scope, elm, attrs) {
-    	// console.log(scope, attrs);
     }
   };
 }

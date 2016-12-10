@@ -19,10 +19,7 @@ function GuidedTourConfig($stateProvider) {
       	nextLevel() {
       		return 'tour';
       	}
-      },
-		  ncyBreadcrumb: {
-		  	label: 'Guided tours'
-		  }
+      }
     });
 }
 

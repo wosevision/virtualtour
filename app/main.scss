@@ -3,18 +3,11 @@
 @import 'styles/variables';
 @import 'styles/typography';
 @import 'styles/mixins';
-
-
 //
 // LIBS
 @import 'styles/libs/animate';
-
 $button-left-right-padding: 16px;
 $button-border-radius: 0;
-
-// $checkbox-border-radius: 1px;
-// $checkbox-border-width: 1px;
-
 //
 // NG LIBS
 @import 'styles/libs/angular-material';
@@ -23,8 +16,6 @@ $button-border-radius: 0;
 @import 'styles/libs/loading-bar';
 @import 'styles/libs/nz-tour';
 @import 'styles/libs/ng-wig';
-
-
 //
 // COMPONENTS
 @import 'components/titlebar/titlebar';
@@ -35,7 +26,6 @@ $button-border-radius: 0;
 	@import 'components/sidebar/builder/builder';
 		@import 'components/sidebar/builder/jsoneditor/jsoneditor';
 	@import 'components/sidebar/map/map';
-
 
 @import 'components/aframe/scene/scene';
 

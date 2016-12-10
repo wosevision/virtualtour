@@ -9,15 +9,8 @@ function MainCtrl(
 	nzTour
 ) {
   'ngInject';
-  // ViewModel
-
-  // MainCtrl reference
-  const mc = this;
-  // mc.activeScene = $aframeScene.scene;
-
-  // screen and (max-device-width: 767px) and (orientation: landscape)
   // check for mobile/landscape on every digest
-  mc.mobile = {};
+  this.mobile = {};
   $scope.$watch(
     () => ({
     	screen: !$mdMedia('gt-sm'),
@@ -25,7 +18,7 @@ function MainCtrl(
     	device: utils.isMobile()
     }),
     m => {
-      mc.mobile = m; //console.log(m);
+      this.mobile = m; //console.log(m);
     },
     true
   );
@@ -45,7 +38,7 @@ function MainCtrl(
     });
   }
 
-  mc.welcomeMsg = function() {
+  this.welcomeMsg = function() {
 
     $mdDialog.show({
       controller: 'DialogCtrl',
@@ -75,35 +68,31 @@ function MainCtrl(
 
   const WELCOME_DELAY = 500; //ms
   $timeout(
-  	() => mc.welcomeMsg(),
+  	() => this.welcomeMsg(),
 	  WELCOME_DELAY
 	);
 
-  mc.titlebar = {
+  this.titlebar = {
 		options: TITLEBAR_OPTS,
 		clickHandlers: {
 			config: () => {
       	$mdSidenav('config').toggle();
 			},
 			right: () => {
-		    mc.toolbar.toggle();
-      	mc.titlebar.options.right.active = mc.toolbar.isOpen;
+		    this.toolbar.toggle();
+      	this.titlebar.options.right.active = this.toolbar.isOpen;
 			},
 			condense: () => {
-		    mc.toolbar.condense();
-      	mc.titlebar.options.condense.active = mc.toolbar.isCondensed;
+		    this.toolbar.condense();
+      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
 			}
 		} 
   }
 
-  mc.toolbar = {
+  this.toolbar = {
   	views: BUTTONBAR_VIEWS,
-  	//
-  	//
     isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val,
     isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val,
-    //
-    //
     toggle() {
   		this.isOpen = !this.isOpen;
   		this.isOpen&&$mdSidenav('right').close();

@@ -1,6 +1,9 @@
 .drilldown-menu, drilldown-menu {
-	background: transparent;
+	background: radial-gradient(ellipse at center, hsla(0,0%,100%,0) 0%,hsla(0,0%,100%,0.7) 100%);
   min-height: 100%;
+  .drilldown-menu, drilldown-menu {
+  	background: transparent;
+  }
 }
 
 .drilldown-menu, drilldown-menu, drilldown-menu ui-view {
@@ -16,7 +19,7 @@
 	cursor: pointer;
 	outline: 0;
 	transition: all 0.6s;
-	background-color: rgba(white, 0.8);
+	background-color: rgba(white, 0.5);
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
