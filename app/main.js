@@ -20,6 +20,7 @@ import 'angular-storage';
 // import 'angular-socket-io';
 import 'angular-breadcrumb';
 import 'ngmap';
+import 'ng-wig';
 import 'nz-tour';
 import 'v-accordion';
 import 'uoit-campus-map';
@@ -60,6 +61,7 @@ const requires = [
   'ngMaterial',
   'ngMdIcons',
   'ngMap',
+  'ngWig',
   'app.templates',
   'app.components'
 ];
