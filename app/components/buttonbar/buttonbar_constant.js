@@ -14,10 +14,10 @@ const BUTTONBAR_VIEWS = {
     icon: 'rotate_90_degrees_ccw',
     desc: 'Take a preset trip with a video tour guide'
   },
-  playground: {
-    label: 'Playground',
-    icon: 'vidiogame_asset',
-    desc: 'Explore UOIT\'s latest web experiments in 3D'
+  search: {
+    label: 'Search',
+    icon: 'search',
+    desc: 'Find specific Virtual Tour highlights'
   },
   settings: {
     label: 'Settings',
