@@ -1,10 +1,4 @@
 const TITLEBAR_OPTS = {
-	// config: {
-	// 	active: false,
-	// 	label: 'Scene builder',
-	// 	tooltip: [ 'Open the scene builder', 'Close the scene builder' ],
-	// 	icon: ['edit', 'edit']
-	// },
 	condense: {
 		active: true,
 		label: 'Toolbar size',

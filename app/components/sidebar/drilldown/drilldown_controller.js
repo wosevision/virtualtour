@@ -57,12 +57,8 @@ class DrilldownCtrl {
 			} else {
 				forEach($sc.$parent.children, selectItem, $sc.item);
 			}
-			// $state.go(nextLevel, { [nextLevel]: code });
+			// go to state based on nextLevel prop and item code
 			this.$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
-			// run callback
-			// if (this.onToggle && typeof this.onToggle === 'function') {
-			// 	this.onToggle()($ev, $sc);
-			// }
 		}
 
 		const $content = this.$element.find('md-content')[0];

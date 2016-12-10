@@ -8,17 +8,16 @@ import angular from 'angular';
 // angular modules
 import 'angular-ui-router';
 import 'angular-animate';
+import 'angular-resource';
 import 'angular-aria';
-import 'angular-cookies';
-import 'angular-resizable';
-import 'angular-loading-bar';
+import 'angular-sanitize';
 import 'angular-material';
 import 'angular-material-icons';
-import 'angular-resource';
-import 'angular-sanitize';
+import 'angular-cookies';
 import 'angular-storage';
+import 'angular-resizable';
+import 'angular-loading-bar';
 // import 'angular-socket-io';
-import 'angular-breadcrumb';
 import 'ngmap';
 import 'ng-wig';
 import 'nz-tour';
@@ -30,7 +29,6 @@ import 'aframe';
 import 'aframe-event-set-component';
 import 'aframe-reverse-look-controls-component';
 import 'aframe-look-at-component';
-// import 'aframe-selectable-component';
 import 'aframe-text-component';
 import 'aframe-mouse-cursor-component';
 // import {controls} from 'aframe-extras';
@@ -45,23 +43,22 @@ import './components/index';
 // list required modules for DI
 const requires = [
   // 'btford.socket-io',
-  'campusMap',
-  'nzTour',
-  'ncy-angular-breadcrumb',
   'ui.router',
+  'ngAnimate',
+  'ngResource',
   'ngAria',
   'ngSanitize',
-  'ngAnimate',
-  'vAccordion',
-  'angularResizable',
-  'angular-loading-bar',
-  'angular-storage',
-  'ngCookies',
-  'ngResource',
   'ngMaterial',
   'ngMdIcons',
+  'ngCookies',
+  'angular-storage',
+  'angularResizable',
+  'angular-loading-bar',
   'ngMap',
   'ngWig',
+  'nzTour',
+  'vAccordion',
+  'campusMap',
   'app.templates',
   'app.components'
 ];

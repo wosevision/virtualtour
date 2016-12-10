@@ -101,77 +101,7 @@
 			  </div>
 	    </v-pane-content>
 	  </v-pane>
-<!-- 
-	  <v-pane ng-if="::$ctrl.item.hasOwnProperty('scene')">
-	    <v-pane-header>
-				Scene
-	    </v-pane-header>
-	    <v-pane-content>
-			  <div layout="row" layout-padding>
-			    <md-select placeholder="Select building" ng-model="$ctrl.building" md-on-open="$ctrl.loadBuildings()" ng-model-options="{trackBy: '$value._id'}">
-			      <md-option ng-value="building" ng-repeat="building in $ctrl.buildings track by building._id">{{building.label}}</md-option>
-			    </md-select>
-			    <md-select ng-if="$ctrl.item.hasOwnProperty('scene')" placeholder="Select scene" ng-model="$ctrl.scene" md-on-open="$ctrl.loadScenes()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeScene()">
-			      <md-option ng-value="scene" ng-repeat="scene in $ctrl.scenes track by scene._id">{{scene.name}}</md-option>
-			    </md-select>
-			  </div>
-	    </v-pane-content>
-	  </v-pane>
-
-	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('parent') || $ctrl.item.hasOwnProperty('building'))">
-	    <v-pane-header>
-				Building
-	    </v-pane-header>
-	    <v-pane-content>
-			  <div layout="row" layout-padding>
-			    <md-select placeholder="Select building" ng-model="$ctrl.building" md-on-open="$ctrl.loadBuildings()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeBuilding()">
-			      <md-option ng-value="building" ng-repeat="building in $ctrl.buildings track by building._id">{{building.label}}</md-option>
-			    </md-select>
-			  </div>
-	    </v-pane-content>
-	  </v-pane> -->
-
-<!-- 	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('desc') || $ctrl.item.hasOwnProperty('feature'))">
-	    <v-pane-header>
-				Description
-	    </v-pane-header>
-	    <v-pane-content>
-		    <div layout="column" layout-padding>
-		    	<md-checkbox
-              ng-model="$ctrl.item.linked"
-              aria-label="Link to campus map feature"
-              class="md-primary">
-            Link to campus map feature?	
-          </md-checkbox>
-					<div ng-if="$ctrl.item.linked">
-				    <md-select placeholder="Select category" ng-model="$ctrl.category" md-on-open="$ctrl.loadCategories()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeCategory()">
-				      <md-option ng-value="category" ng-repeat="category in $ctrl.categories track by category._id">{{category.name}}</md-option>
-				    </md-select>
-				    <md-select placeholder="Select feature" ng-model="$ctrl.feature" md-on-open="$ctrl.loadFeatures()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeFeature()">
-				      <md-option ng-value="feature" ng-repeat="feature in $ctrl.features track by feature._id">{{feature.properties.name}}</md-option>
-				    </md-select>
-				  </div>
-	        <md-input-container ng-if="!$ctrl.item.linked">
-	          <label>Content</label>
-	          <textarea ng-model="$ctrl.item.desc" md-maxlength="250" rows="4" md-select-on-focus></textarea>
-	        </md-input-container>
-        </div>
-	    </v-pane-content>
-	  </v-pane>
-	</v-accordion> -->
-
-<!--   <div class="md-toolbar-tools" ng-if="$ctrl.newItem">
-    <md-button aria-label="Cancel" ng-click="$ctrl.closeDialog()">
-      Cancel
-    </md-button>
-    <span flex></span>
-    <md-button class="md-primary" aria-label="Save draft" ng-click="$ctrl.onSaveDraft()">
-      Save draft
-    </md-button>
-    <md-button class="md-primary" aria-label="Confirm add item" ng-click="$ctrl.confirmDialog('add')">
-      + Add
-    </md-button>
-  </div> -->
+	</v-accordion>
 
   <div class="md-toolbar-tools">
     <md-button class="md-warn" aria-label="Go Back" ng-click="$ctrl.removeThis()">

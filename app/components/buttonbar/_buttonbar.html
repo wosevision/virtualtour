@@ -6,7 +6,6 @@
 	layout="column"
 	layout-align="end end"
 	flex="grow">
-	<!-- <div flex="initial" ng-if="$ctrl.condensed"></div> -->
 	<div ng-repeat="(v,view) in ::$ctrl.items"
 		class="button-bar-btn"
 		ng-class="{ 'is-active': $ctrl.menuOpen && (v | isState)}"
@@ -16,12 +15,10 @@
   	ng-click="$ctrl.toggleMenu('right', v)"
   	md-ink-ripple="#0077CA"
   	id="{{::v}}">
-  	<!-- ui-sref="home({view: v})" -->
-  	<!-- ui-sref-active="is-active" -->
-	  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
-	    <span ng-bind="::view.label"></span>
-	    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
-	      {{ $ctrl.condensed ? view.label : view.desc }}
-	    </md-tooltip>
+  	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
+    <span ng-bind="::view.label"></span>
+    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!(mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
+      {{ $ctrl.condensed ? view.label : view.desc }}
+    </md-tooltip>
   </div>
 </aside>

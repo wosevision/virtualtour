@@ -25,11 +25,7 @@ function DrilldownConfig($stateProvider) {
       	nextLevel() {
       		return 'location';
       	}
-      },
-		  ncyBreadcrumb: {
-		  	skip: true,
-		  	label: ''
-		  }
+      }
     })
       .state('location', {
       	parent: 'locations',
@@ -58,10 +54,7 @@ function DrilldownConfig($stateProvider) {
 	      	nextLevel(children) {
 	      		return 'building';
 	      	}
-        },
-			  ncyBreadcrumb: {
-			    label: '{{ this.item.label || "Location" }}'
-			  }
+        }
       })
         .state('building', {
           parent: 'location',
@@ -91,10 +84,7 @@ function DrilldownConfig($stateProvider) {
 		      	nextLevel() {
 		      		return 'scene';
 		      	}
-          },
-				  ncyBreadcrumb: {
-			    	label: '{{ this.item.label || "Building" }}'
-				  }
+          }
         })
         .state('scene', {
           parent: 'building',
@@ -115,10 +105,7 @@ function DrilldownConfig($stateProvider) {
             		}
             	});
             }
-          },
-				  ncyBreadcrumb: {
-			    	label: '{{ this.item.label || "Scene" }}'
-				  }
+          }
         });
 }
 

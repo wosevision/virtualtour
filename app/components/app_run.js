@@ -1,27 +1,22 @@
 function AppRun(
-	$rootScope, $state, $templateCache,
-	$breadcrumb, $ErrorReporter,
+	$rootScope, $state,
+	$ErrorReporter,
 	GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
-  // $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
-  //   console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
-  //   // event.preventDefault();
-  //   // if ( toState.name == 'home' ) {
-  //   	// console.log('going to ' + toState, toParams)
-  //   // 	$state.go(toParams.view);
-  //   // }
-  // });
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
+    console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
+  });
 
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
     $rootScope.pageTitle = '';
-    if ( toState.ncyBreadcrumbLabel ) {
-      $rootScope.pageTitle += toState.ncyBreadcrumbLabel;
-      $rootScope.pageTitle += ' | ';
-    }
     $rootScope.pageTitle += GLOBAL_SETTINGS.APP._TITLE;
-    // console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams)
+    if ( toState.label ) {
+      $rootScope.pageTitle += ' | ';
+      $rootScope.pageTitle += toState.label;
+    }
+    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams)
   });
   
   $rootScope.$on('handler:exception', function( event, error ) {
@@ -33,14 +28,9 @@ function AppRun(
 		$ErrorReporter.error({locals});
   })
 
-  // $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-  // 	// event.preventDefault();
-  //   console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
-  // });
-
-  // $rootScope.$on('$viewContentLoaded', (event) => {
-    //console.log('try this sucka: ', $breadcrumb.getLastStep());
-  // });
+  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+    console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
+  });
   
   const _USER = SettingsFactory.get('USER');
   const _DATA = SettingsFactory.get('DATA');
@@ -61,8 +51,6 @@ function AppRun(
   $rootScope.debugMode = {
   	scene: false
   };
-  //$rootScope.AFrame.registerComponent('fps-look-controls', require('aframe-fps-look-component').component);
-
 }
 
 export default AppRun;
