@@ -1,0 +1,43 @@
+<md-content class="search-bar" layout="column" layout-fill>
+
+	<div md-whiteframe="{{ whiteframeDp || 8 }}" ng-mouseenter="whiteframeDp = 16" ng-mouseleave="whiteframeDp = 8" class="floating-panel" layout="column" layout-align="center center" layout-margin flex="grow">
+	  <md-input-container md-no-float class="md-block md-icon-left">
+	    <ng-md-icon icon="search" size="24"></ng-md-icon>
+	    <input ng-model="$ctrl.query" aria-label="Search the Virtual Tour">
+	  </md-input-container>
+
+	  <md-input-container>
+        <label>Search in:</label>
+        <md-select ng-model="$ctrl.filters.in"
+                   multiple>
+          <md-optgroup label="Search in">
+            <md-option ng-value="type.value" ng-repeat="type in ::[{label:'Virtual tour',value:'tour'},{label:'Campus map',value:'map'}]">{{type.label}}</md-option>
+          </md-optgroup>
+        </md-select>
+	  </md-input-container>
+	  <md-input-container>
+        <label>Search for:</label>
+        <md-select ng-model="$ctrl.filters.for"
+                   multiple>
+          <md-optgroup label="Virtual tour" ng-repeat="type in ::[{label:'Tour scenes',value:'scenes'},{label:'Points of interest',value:'hotspots'}]">
+            <md-option ng-value="type.value">{{type.label}}</md-option>
+          </md-optgroup>
+          <md-optgroup label="Campus map" ng-repeat="type in ::[{label:'Map features',value:'features'},{label:'Feature collections',value:'collections'}]">
+            <md-option ng-value="type.value">{{type.label}}</md-option>
+          </md-optgroup>
+        </md-select>
+	  </md-input-container>
+  </div>
+
+	<md-list flex="noshrink" class="search-results">
+		<md-list-item ng-click="null">
+			Fun!
+		</md-list-item>
+		<md-divider></md-divider>
+		<md-list-item ng-click="null">
+			Fun!
+		</md-list-item>
+		<md-divider></md-divider>	
+	</md-list>
+	
+</md-content>

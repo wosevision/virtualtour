@@ -26,6 +26,8 @@ $button-border-radius: 0;
 	@import 'components/sidebar/builder/builder';
 		@import 'components/sidebar/builder/jsoneditor/jsoneditor';
 	@import 'components/sidebar/map/map';
+	@import 'components/sidebar/search/search';
+	@import 'components/sidebar/settings/settings';
 
 @import 'components/aframe/scene/scene';
 
