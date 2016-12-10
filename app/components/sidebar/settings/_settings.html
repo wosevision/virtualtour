@@ -1,34 +1,38 @@
-<!-- <md-list>
-  <md-subheader class="md-no-sticky">App settings</md-subheader>
-  <md-list-item ng-repeat="setting in appSettings.USER">
-    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}"></ng-md-icon>
-    <p> &nbsp;{{ ::setting.label }} </p>
-    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncSettings()"></md-switch>
-  </md-list-item>
-  <md-subheader class="md-no-sticky">Data usage</md-subheader>
-  <md-list-item layout>
+<md-content layout="column" class="user-dashboard" layout-fill>
 
-      <div flex="20" layout layout-align="center center">
-        <span class="md-body-1">Less</span>
-      </div>
-      <md-slider
-      	flex
-      	md-vertical
-      	md-discrete
-      	class="md-primary"
-      	ng-model="rating1"
-      	step="1" min="1" max="5"
-      	aria-label="rating">
-      </md-slider>
-      <div flex="20" layout layout-align="center center">
-        <span class="md-body-1">More</span>
-      </div>
+<!-- 	<md-card flex="nogrow" id="user_dashboard">
+	  <img ng-src="images/north_bg.jpg" class="md-card-image" alt="image caption">
 
-  </md-list-item>
-</md-list> -->
-<md-content>
+	  <md-card-header layout-align="space-around center">
+	    <md-card-avatar>
+	      <img class="md-user-avatar" ng-src="{{ ::user.avatar.url }}">
+	    </md-card-avatar>
+	    <md-card-header-text>
+	      <span class="md-headline">{{ ::user.name.first }} {{ ::user.name.last }}</span>
+	      <span class="md-subhead">{{ ::user.bannerId }}</span>
+	    </md-card-header-text>
+	  </md-card-header>
+
+	  <md-card-actions layout="row" layout-align="start center">
+	    <md-button class="md-raised md-primary">Admin</md-button>
+	    <md-button class="md-raised">Log out</md-button>
+	    <md-card-icon-actions>
+	      <md-button class="md-icon-button md-primary" aria-label="edit profile">
+	        <ng-md-icon icon="edit"></ng-md-icon>
+	      </md-button>
+	    </md-card-icon-actions>
+	  </md-card-actions>
+
+	  <md-card-content>
+	    <p class="md-subhead">
+	     Card content
+	    </p>
+	  </md-card-content> -->
+		<ng-include src="'/dashboard'" scope="this" onload=""></ng-include>
+	<!-- </md-card> -->
+
+	<md-card flex="nogrow" id="user_settings">
   	<v-accordion class="vAccordion--default" multiple flex>
-
 		  <!-- add expanded attribute to open the section -->
 		  <v-pane expanded>
 		    <v-pane-header>
@@ -66,17 +70,6 @@
 		    </v-pane-content>
 		  </v-pane>
 
-		  <v-pane expanded>
-		    <v-pane-header>
-		      Administration
-		    </v-pane-header>
-
-		    <v-pane-content>
-          <div layout="row" layout-fill layout-padding> 
-			      <iframe src="/keystone" style="min-height:calc(100vh - 170px);width:100%;" frameborder="0"></iframe>
-          </div>
-		    </v-pane-content>
-		  </v-pane>
-
 		</v-accordion>
+	</md-card>
 </md-content>
