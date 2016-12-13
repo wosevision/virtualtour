@@ -1,6 +1,6 @@
 /* MAIN TITLEBAR STYLES */
 .title-bar {
-	min-height: 65px;
+	// min-height: 65px;
 	border-top: solid 5px $uoitdarkblue;
 	// z-index: 100;
 	.logo-shield {
@@ -19,7 +19,7 @@
 	.md-button.icon-button {
 		margin: 0;
     min-width: 0;
-		height: 60px;
+		height: 64px;
 		padding-left: 18px;
 		padding-right: 18px;
 		border-left: solid 3px white;
