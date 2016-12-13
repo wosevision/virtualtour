@@ -1,4 +1,4 @@
-function DialogCtrl($scope, $mdDialog, nzTour, TOUR_STEPS) {
+function DialogCtrl($rootScope, $scope, $mdDialog, nzTour, SettingsFactory, TOUR_STEPS) {
   'ngInject';
   $scope.hide = function() {
     $mdDialog.hide();
@@ -12,6 +12,9 @@ function DialogCtrl($scope, $mdDialog, nzTour, TOUR_STEPS) {
   $scope.startTour = function() {
     $mdDialog.hide('tour');
   	nzTour.start(TOUR_STEPS);
+  }
+  $scope.syncUser = () => {
+		SettingsFactory.set('USER', $rootScope.appSettings.USER);
   }
 }
 

@@ -34,8 +34,8 @@ function AppRun(
   
   const _USER = SettingsFactory.get('USER');
   const _DATA = SettingsFactory.get('DATA');
-  const USER = _USER || APP_SETTINGS.USER;
-  const DATA = _DATA || APP_SETTINGS.DATA;
+  const USER = Object.assign(APP_SETTINGS.USER, _USER);
+  const DATA = Object.assign(APP_SETTINGS.DATA, _DATA);
 
   $rootScope.appSettings = { USER, DATA };
 
@@ -47,10 +47,10 @@ function AppRun(
   }
 
   // hook libs up to window
-  $rootScope.AFrame = window.AFRAME;
-  $rootScope.debugMode = {
-  	scene: false
-  };
+  // $rootScope.AFrame = window.AFRAME;
+  // $rootScope.debugMode = {
+  // 	scene: false
+  // };
 }
 
 export default AppRun;
