@@ -9,7 +9,7 @@
 
     <span flex></span>
 
-    <ng-transclude ng-if="!$ctrl.mobile.screen" id="toolbar-controls" layout></ng-transclude>
+    <ng-transclude ng-if="!$ctrl.mobile.screen" id="toolbar-controls" layout layout-align="center center"></ng-transclude>
     <md-button
     	ng-if="$ctrl.mobile.screen"
 			class="menu-button"
