@@ -30,6 +30,14 @@ $button-border-radius: 0;
 
 @import 'components/aframe/scene/scene';
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  position: relative;
+  &::after {
+  	content: 'Loading...';
+  	background: rgba($uoitdarkblue, 0.8);
+  	@include cover(absolute);
+  }
+}
 // LOADING BAR AND SPINNER
 #loading-bar {
 	.peg {
@@ -48,8 +56,8 @@ $button-border-radius: 0;
   .spinner-icon {
 	  width: 30px;
 	  height: 30px;
-	  border-top-color:  #0077CA;
-	  border-left-color: #0077CA;
+	  border-top-color:  $uoitlightblue;
+	  border-left-color: $uoitlightblue;
 	}
 }
 
