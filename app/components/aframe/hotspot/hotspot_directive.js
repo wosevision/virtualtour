@@ -1,4 +1,4 @@
-function hotSpot($state, FeatureResource) {
+function hotSpot($state, $mapApi, $analytics) {
   'ngInject';
   return {
     restrict: 'A',
@@ -8,6 +8,7 @@ function hotSpot($state, FeatureResource) {
     require: '^aframeScene',
     templateUrl: 'aframe/hotspot/_hotspot.html',
 		link(scope, elem, attrs, SceneCtrl) {
+			const FeatureResource = $mapApi.feature;
 			const hotspotId = scope.hotSpot._id;
 			//  and handlers: success...
 			const viewHotspotHandler = data => {
@@ -32,12 +33,6 @@ function hotSpot($state, FeatureResource) {
 					// ...open the scene link editor:
 					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.hotSpot, SceneCtrl.hotSpots);
 				} else {
-					// ...otherwise just use the default scene link behavior
-					// const sceneId = scope.hotSpot.scene;
-					// const gotoSceneHandler = data => {
-					// 	document.getElementById(`link_${sceneId}`).emit('goto');
-					// 	$state.go('scene', { building: data.parent.code, scene: data.code });
-					// }
 					if (scope.hotSpot.linked && scope.hotSpot.feature) {
 						FeatureResource.get({ id: scope.hotSpot.feature }).$promise.then(viewHotspotHandler, errorHandler);
 					} else {

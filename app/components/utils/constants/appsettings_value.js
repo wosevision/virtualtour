@@ -14,6 +14,11 @@ const APP_SETTINGS = {
       val: true,
       label: 'Show hint messages',
       icon: 'announcement'
+    },
+    _SHOW_WELCOME: {
+      val: true,
+      label: 'Always show welcome',
+      icon: 'live_tv'
     }
   },
   DATA: {

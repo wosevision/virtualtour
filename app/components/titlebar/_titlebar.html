@@ -1,20 +1,17 @@
-<md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-class="{'is-mobile' : tb.mobile.screen}">
+<md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-class="{'is-mobile' : $ctrl.mobile.screen}">
 
   <md-toolbar-filler flex="nogrow" layout layout-align="center center">
     <img ui-sref="locations" ng-src="https://shared.uoit.ca/global/files/img/logos/UOIT_blue_shield.png" alt="University of Ontario Institute of Technology" class="logo-shield" id="uoit_logo">
   </md-toolbar-filler>
 
   <div class="md-toolbar-tools">
-    <h1 ui-sref="locations">{{::tb.title}}</h1>
+    <h1 ui-sref="locations">{{::$ctrl.title}}</h1>
 
     <span flex></span>
-    <md-button class="cta-button bg-pink md-raised" ng-click="null" ng-if="!tb.mobile.screen">Register now</md-button>
-    <md-button class="cta-button bg-green md-raised" ng-click="null" ng-if="!tb.mobile.screen">Schedule visit</md-button>
-    <md-button class="cta-button bg-orange md-raised" ng-click="null" ng-if="!tb.mobile.screen">Apply online</md-button>
 
-    <ng-transclude ng-if="!tb.mobile.screen" id="toolbar-controls"></ng-transclude>
+    <ng-transclude ng-if="!$ctrl.mobile.screen" id="toolbar-controls" layout></ng-transclude>
     <md-button
-    	ng-if="tb.mobile.screen"
+    	ng-if="$ctrl.mobile.screen"
 			class="menu-button"
 			ng-click="toggleMenu()"
 			aria-label="Toggle menu">

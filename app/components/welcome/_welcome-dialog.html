@@ -116,7 +116,7 @@
       </md-tabs>
     </md-dialog-content>
     <md-dialog-actions layout="row" class="footer-pane">
-    	<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog" md-autofocus>
+    	<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog" md-autofocus ng-model="$root.appSettings.USER._SHOW_WELCOME.val" ng-true-value="false" ng-false-value="true" ng-change="syncUser()">
         <strong>Don't show me this again</strong>
       </md-checkbox>
       <span flex></span>

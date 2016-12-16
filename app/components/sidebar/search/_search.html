@@ -1,22 +1,24 @@
 <md-content class="search-bar" layout="column" layout-fill>
 
 	<div md-whiteframe="{{ whiteframeDp || 8 }}" ng-mouseenter="whiteframeDp = 16" ng-mouseleave="whiteframeDp = 8" class="floating-panel" layout="column" layout-align="center center" layout-margin flex="grow">
+    <label for="search_q">I'm looking for things with</label>
 	  <md-input-container md-no-float class="md-block md-icon-left">
 	    <ng-md-icon icon="search" size="24"></ng-md-icon>
-	    <input ng-model="$ctrl.query" aria-label="Search the Virtual Tour">
+	    <input ng-model="$ctrl.query" aria-label="Search the Virtual Tour" id="search_q">
 	  </md-input-container>
 
+    <label>within all</label>
 	  <md-input-container>
-        <label>Search in:</label>
-        <md-select ng-model="$ctrl.filters.in"
-                   multiple>
-          <md-optgroup label="Search in">
-            <md-option ng-value="type.value" ng-repeat="type in ::[{label:'Virtual tour',value:'tour'},{label:'Campus map',value:'map'}]">{{type.label}}</md-option>
-          </md-optgroup>
-        </md-select>
+      <md-select ng-model="$ctrl.filters.in"
+      	id="search_filter"
+				multiple>
+        <md-optgroup label="Search in">
+          <md-option ng-value="type.value" ng-repeat="type in ::[{label:'Virtual tour',value:'tour'},{label:'Campus map',value:'map'}]">{{type.label}}</md-option>
+        </md-optgroup>
+      </md-select>
 	  </md-input-container>
+    <label>by their</label>
 	  <md-input-container>
-        <label>Search for:</label>
         <md-select ng-model="$ctrl.filters.for"
                    multiple>
           <md-optgroup label="Virtual tour" ng-repeat="type in ::[{label:'Tour scenes',value:'scenes'},{label:'Points of interest',value:'hotspots'}]">

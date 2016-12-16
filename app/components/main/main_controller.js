@@ -68,7 +68,7 @@ function MainCtrl(
 
   const WELCOME_DELAY = 500; //ms
   $timeout(
-  	() => this.welcomeMsg(),
+  	() => ($rootScope.appSettings.USER._SHOW_WELCOME.val && this.welcomeMsg()),
 	  WELCOME_DELAY
 	);
 
