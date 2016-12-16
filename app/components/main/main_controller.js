@@ -9,6 +9,9 @@ function MainCtrl(
 	nzTour
 ) {
   'ngInject';
+  // split up user prefs from $rootScope.appSettings.USER
+  const { _SHOW_WELCOME, _TOOLBAR_OPEN, _TOOLBAR_CONDENSED } = $rootScope.appSettings.USER;
+
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
@@ -91,8 +94,8 @@ function MainCtrl(
 
   this.toolbar = {
   	views: BUTTONBAR_VIEWS,
-    isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val,
-    isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val,
+    isOpen: _TOOLBAR_OPEN.val,
+    isCondensed: _TOOLBAR_CONDENSED.val,
     toggle() {
   		this.isOpen = !this.isOpen;
   		this.isOpen&&$mdSidenav('right').close();

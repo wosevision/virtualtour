@@ -1,4 +1,4 @@
-import angular from 'angular';
+import * as angular from 'angular';
 
 // import io from 'socket.io-client';
 // window.io = io;
@@ -68,7 +68,7 @@ const requires = [
 ];
 
 // mount on window for testing
-window.app = angular.module('app', requires);
+angular.module('app', requires);
 angular.module('app').config(config);
 angular.module('app').run(run);
 angular.bootstrap(document, ['app'], {
