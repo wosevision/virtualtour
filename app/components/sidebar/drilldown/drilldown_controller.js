@@ -30,13 +30,14 @@ function toggleItem(item) {
 }
 
 class DrilldownCtrl {
-	constructor($scope, $element, $compile, $state) {
+	constructor($scope, $element, $compile, $state, $analytics) {
 		'ngInject';
 		// save a reference to the $scope
 		this.$scope = $scope;
 		this.$state = $state;
 		this.$element = $element;
 		this.$compile = $compile;
+		this.$analytics = $analytics;
 	}
 	$onInit() {
 		// this.$scope.toggle = ($event, code, nextLevel) => {
@@ -58,6 +59,7 @@ class DrilldownCtrl {
 				forEach($sc.$parent.children, selectItem, $sc.item);
 			}
 			// go to state based on nextLevel prop and item code
+			this.$analytics.eventTrack('click', { category: 'drilldown', label: [$sc.$parent.code, $sc.item.code].join('_') });
 			this.$state.go(this.nextLevel, { [this.nextLevel]: $sc.item.code });
 		}
 

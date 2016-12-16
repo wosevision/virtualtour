@@ -18,6 +18,8 @@ import 'angular-storage';
 import 'angular-resizable';
 import 'angular-loading-bar';
 // import 'angular-socket-io';
+import 'angulartics';
+import 'angulartics-google-analytics';
 import 'ngmap';
 import 'ng-wig';
 import 'nz-tour';
@@ -54,6 +56,8 @@ const requires = [
   'angular-storage',
   'angularResizable',
   'angular-loading-bar',
+  'angulartics',
+  'angulartics.google.analytics',
   'ngMap',
   'ngWig',
   'nzTour',

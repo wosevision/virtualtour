@@ -11,6 +11,7 @@ function hotSpot($state, FeatureResource) {
 			const hotspotId = scope.hotSpot._id;
 			//  and handlers: success...
 			const viewHotspotHandler = data => {
+				$analytics.eventTrack('click', { category: 'hotspot', label: hotspotId });
 				document.getElementById(`hotSpot_${hotspotId}`).emit('goto');
 				console.log(data);
 			}

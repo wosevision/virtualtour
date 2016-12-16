@@ -12,6 +12,7 @@ function sceneLink($state, $ErrorReporter, SceneResource) {
 			const sceneId = scope.sceneLink.scene;
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
+				$analytics.eventTrack('click', { category: 'scenelink', label: [data.parent.code, data.code].join('_') });
 				document.getElementById(`link_${sceneId}`).emit('goto');
 				$state.go('scene', { building: data.parent.code, scene: data.code });
 			}
