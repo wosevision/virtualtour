@@ -1,4 +1,4 @@
-function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
+function sceneLink($state, $popupWindow, $tourApi, $analytics) {
   'ngInject';
   return {
     restrict: 'A',
@@ -22,7 +22,7 @@ function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
 					type: 'Scene load error!',
 					message: 'Looks like this scene link is broken – darn.'
 		  	}
-				$ErrorReporter.error({ locals });
+				$popupWindow.error({ locals });
 			}
 			//
 			// Listen for clicks on scene link element

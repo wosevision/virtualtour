@@ -1,6 +1,6 @@
 function AppRun(
 	$rootScope, $state,
-	$ErrorReporter,
+	$popupWindow,
 	GLOBAL_SETTINGS, APP_SETTINGS, SettingsFactory) {
   'ngInject';
 
@@ -25,7 +25,7 @@ function AppRun(
 			message: error.exception.message,
 			suggest: [0, 2, 1]
   	}
-		$ErrorReporter.error({locals});
+		$popupWindow.warning({locals});
   })
 
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
@@ -45,12 +45,6 @@ function AppRun(
   if (!_DATA) {
     SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
   }
-
-  // hook libs up to window
-  // $rootScope.AFrame = window.AFRAME;
-  // $rootScope.debugMode = {
-  // 	scene: false
-  // };
 }
 
 export default AppRun;

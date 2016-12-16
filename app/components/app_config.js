@@ -1,4 +1,4 @@
-function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
+function AppConfig($provide, $stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
   'ngInject';
 
   $mdThemingProvider.definePalette('UOITprimary', {
@@ -51,6 +51,22 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
     });
 
   $urlRouterProvider.otherwise('/');
+
+	$provide.decorator('$exceptionHandler', function($log, $delegate, $injector) {
+		'ngInject';
+    return function(exception, cause) {
+	    let $rootScope = $injector.get('$rootScope');
+	    $rootScope.$broadcast('handler:exception', {
+	      exception: exception,
+	      cause: cause || 'Application error'
+	    });
+
+	    // FOR "SOFTER" ERRORS:
+      $log.debug(exception, cause);
+      
+  		// $delegate(exception, cause);
+    };
+  });
 
 }
 

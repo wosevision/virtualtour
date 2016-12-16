@@ -1,4 +1,4 @@
-function hotSpot($state, $mapApi, $analytics) {
+function hotSpot($state, $mapApi, $popupWindow, $analytics) {
   'ngInject';
   return {
     restrict: 'A',
@@ -22,7 +22,7 @@ function hotSpot($state, $mapApi, $analytics) {
 					type: 'Hotspot load error!',
 					message: 'Looks like this hotspot is broken – darn.'
 		  	}
-				$ErrorReporter.error({ locals });
+				$popupWindow.error({ locals });
 			}
 			//
 			// Listen for clicks on scene link element

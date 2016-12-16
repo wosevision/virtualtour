@@ -3,10 +3,9 @@ import { element, isUndefined } from 'angular';
 
 function MainCtrl(
 	$rootScope, $scope, $state, $timeout, $log, // ng deps
-	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
-	$aframeScene, // aframe
-	BUTTONBAR_VIEWS, TITLEBAR_OPTS, // consts
-	nzTour
+	$mdComponentRegistry, $mdSidenav, $mdMedia, // md deps
+	$aframeScene, $popupWindow, // my libs
+	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
 ) {
   'ngInject';
   // split up user prefs from $rootScope.appSettings.USER
@@ -26,14 +25,11 @@ function MainCtrl(
     true
   );
 
-  const settingsToast = () => {
-    const toast = $mdToast.simple()
-      .textContent('Data usage settings auto-configured to your device!')
-      .action('CHANGE SETTINGS')
-      .highlightAction(true)
-      .highlightClass('md-warn')
-      .position('bottom left');
-    $mdToast.show(toast).then(response => {
+  const showSettingsMsg = () => {
+    $popupWindow.toast('warn', {
+    	message: 'Data usage settings auto-configured to your device!',
+    	action: 'Change settings'
+    }).then(response => {
       if ( response == 'ok' ) {
         $state.go('settings');
         $mdSidenav('right').open();
@@ -41,39 +37,15 @@ function MainCtrl(
     });
   }
 
-  this.welcomeMsg = function() {
-
-    $mdDialog.show({
-      controller: 'DialogCtrl',
-      templateUrl: 'welcome/_welcome-dialog.html',
-      parent: element(document.body),
-      // targetEvent: ev,
-      clickOutsideToClose: true,
-      openFrom: {
-      	top: 18,
-      	left: 18,
-      	width: 36,
-      	height: 60
-      },
-      closeTo: {
-      	top: 18,
-      	left: 18,
-      	width: 36,
-      	height: 60
-      }
-    })
-    .then(
-    	answer => (answer != 'tour') && settingsToast()
-	  ).catch(
-    	() => settingsToast()
-	  );
-  };
-
   const WELCOME_DELAY = 500; //ms
-  $timeout(
-  	() => ($rootScope.appSettings.USER._SHOW_WELCOME.val && this.welcomeMsg()),
-	  WELCOME_DELAY
-	);
+  const showWelcomeMsg = () => {
+  	if (_SHOW_WELCOME.val) {
+  		$popupWindow.welcome()
+		    .then( answer => (answer != 'tour') && showSettingsMsg() )
+		    .catch( () => showSettingsMsg() );
+  	}
+  }
+  $timeout(showWelcomeMsg, WELCOME_DELAY);
 
   this.titlebar = {
 		options: TITLEBAR_OPTS,
