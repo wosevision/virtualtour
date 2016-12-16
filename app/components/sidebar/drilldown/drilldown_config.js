@@ -16,9 +16,9 @@ function DrilldownConfig($stateProvider) {
       url: '/',
       component: 'drilldownMenu',
       resolve: {
-      	LocationResource: 'LocationResource',
-      	children(LocationResource) {
-      		return LocationResource.query({
+      	Tour: '$tourApi',
+      	children(Tour) {
+      		return Tour.location.query({
   					sort: 'name'
   				}).$promise;
       	},
@@ -32,19 +32,18 @@ function DrilldownConfig($stateProvider) {
         url: ':location',
         component: 'drilldownMenu',
         resolve: {
-      		BuildingResource: 'BuildingResource',
-          currentLocation($stateParams, LocationResource) {
-      			return LocationResource.query({ 
+          currentLocation($stateParams, Tour) {
+      			return Tour.location.query({ 
       				filter: {
       					code: $stateParams.location 
       				}
       			}).$promise;
           },
-          children($stateParams, $aframeScene, currentLocation, BuildingResource) {
+          children($stateParams, $aframeScene, currentLocation, Tour) {
           	if (!$stateParams.building && !$stateParams.scene && currentLocation[0].default) {
 	          	$aframeScene.scene = currentLocation[0].default;
 	          }
-      			return BuildingResource.query({
+      			return Tour.building.query({
       				filter: {
       					parent: currentLocation[0]._id
       				},
@@ -61,20 +60,19 @@ function DrilldownConfig($stateProvider) {
           url: '/:building',
         	component: 'drilldownMenu',
           resolve: {
-      			SceneResource: 'SceneResource',
-	          currentBuilding($stateParams, BuildingResource) {
-      				return BuildingResource.query({
+	          currentBuilding($stateParams, Tour) {
+      				return Tour.building.query({
       					filter: {
       						code: $stateParams.building
       					}
       				}).$promise;
 	          },
-            children($stateParams, $aframeScene, currentLocation, currentBuilding, SceneResource) {
+            children($stateParams, $aframeScene, currentLocation, currentBuilding, Tour) {
 	          	if (!$stateParams.scene && currentBuilding[0].default) {
 		          	$aframeScene.scene = currentBuilding[0].default;
 	            }
 
-      				return SceneResource.query({
+      				return Tour.scene.query({
       					filter: {
       						parent: currentBuilding[0]._id
       					},
@@ -90,8 +88,8 @@ function DrilldownConfig($stateProvider) {
           parent: 'building',
           url: '/:scene',
           resolve: {
-            currentScene($stateParams, currentBuilding, SceneResource) {
-      				return SceneResource.query({
+            currentScene($stateParams, currentBuilding, Tour) {
+      				return Tour.scene.query({
       					filter: {
       						code: $stateParams.scene,
       						parent: currentBuilding[0]._id

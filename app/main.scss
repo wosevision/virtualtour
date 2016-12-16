@@ -20,18 +20,15 @@ $button-border-radius: 0;
 // COMPONENTS
 @import 'components/titlebar/titlebar';
 @import 'components/buttonbar/buttonbar';
+@import 'components/welcome/welcome';
 
 @import 'components/sidebar/sidebar';
 	@import 'components/sidebar/drilldown/drilldown';
-	@import 'components/sidebar/builder/builder';
-		@import 'components/sidebar/builder/jsoneditor/jsoneditor';
 	@import 'components/sidebar/map/map';
 	@import 'components/sidebar/search/search';
 	@import 'components/sidebar/settings/settings';
 
 @import 'components/aframe/scene/scene';
-
-@import 'components/welcome/welcome';
 
 // LOADING BAR AND SPINNER
 #loading-bar {

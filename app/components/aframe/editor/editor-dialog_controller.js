@@ -1,16 +1,15 @@
 class EditorDialogCtrl {
 	constructor(
 		$scope, $filter,
-		LocationResource, BuildingResource, SceneResource,
-		CategoryResource, FeatureResource, CollectionResource) {
+		$tourApi, $mapApi) {
 		'ngInject';
 		this.$filter = $filter;
-		this.LocationResource = LocationResource;
-		this.BuildingResource = BuildingResource;
-		this.SceneResource = SceneResource;
-		this.CategoryResource = CategoryResource;
-		this.FeatureResource = FeatureResource;
-		this.CollectionResource = CollectionResource;
+		this.LocationResource = $tourApi.location;
+		this.BuildingResource = $tourApi.building;
+		this.SceneResource = $tourApi.scene;
+		this.CategoryResource = $mapApi.category;
+		this.FeatureResource = $mapApi.feature;
+		this.CollectionResource = $mapApi.collection;
 		if (this.item.scene) {
 			$scope.$applyAsync(() => {
 				this.initCurrentScene();

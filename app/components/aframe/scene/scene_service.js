@@ -11,14 +11,13 @@ class $aframeScene {
 	// CONSTRUCTOR
 	constructor(
 		$timeout, $mdToast,
-		SceneResource, DraftResource, DraftFactory,
+		$tourApi, DraftResource,
 		EDITOR_MESSAGES) {
 		'ngInject';
 		this.$timeout = $timeout;
 		this.$mdToast = $mdToast;
-		this.SceneResource = SceneResource;
+		this.SceneResource = $tourApi.scene;
 		this.DraftResource = DraftResource;
-		this.DraftFactory = DraftFactory;
 		this.toasts = {};
 		getProps( EDITOR_MESSAGES ).forEach(type => {
 			const toast = $mdToast.simple();

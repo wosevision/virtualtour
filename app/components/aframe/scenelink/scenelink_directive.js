@@ -1,4 +1,4 @@
-function sceneLink($state, $ErrorReporter, SceneResource) {
+function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
   'ngInject';
   return {
     restrict: 'A',
@@ -8,7 +8,7 @@ function sceneLink($state, $ErrorReporter, SceneResource) {
     require: '^aframeScene',
     templateUrl: 'aframe/scenelink/_scenelink.html',
 		link(scope, elem, attrs, SceneCtrl) {
-			// Set up scene ID reference...
+			const SceneResource = $tourApi.scene;
 			const sceneId = scope.sceneLink.scene;
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
@@ -36,30 +36,7 @@ function sceneLink($state, $ErrorReporter, SceneResource) {
 				}
 			};
 			elem.on('click', elemClick);
-			//
-			// const sceneId = scope.sceneLink.scene;
-			// // Listen for clicks on scene link element
-			// const elemClick =  () => {
-			// 	// If there's a right click active...
-			// 	if (SceneCtrl._rightClick && SceneCtrl._editable) {
-			// 		// ...open the scene link editor:
-			// 		// const { position, rotation, scene } = scope.sceneLink;
-			// 		SceneCtrl.openEditor(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
-			// 	} else {
-			// 		// ...otherwise just use the default scene link behavior
-			// 		// const sceneId = scope.sceneLink.scene;
-			// 		// const gotoSceneHandler = data => {
-			// 			document.getElementById(`link_${sceneId}`).emit('goto');
-			// 			$state.go('scene', { building: scope.scene.parent.code, scene: scope.scene.code });
-			// 		// }
-			// 		// SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler);
-			// 	}
-			// };
-			// SceneResource.get({ id: sceneId }).$promise.then(data => {
-			// 	scope.scene = data;
-			// 	elem.on('click', elemClick);
-			// });
-			//
+
 			// Scope cleanup on $destroy
 			scope.$on('$destroy', () => {
 				elem.off('click');
