@@ -40,7 +40,7 @@
 		    </v-pane-header>
 		    <v-pane-content>
 					<md-list>
-					  <md-list-item ng-repeat="setting in appSettings.USER">
+					  <md-list-item ng-repeat="setting in appSettings.settings">
 					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
 					    <span flex>{{ ::setting.label }}</span>
 					    <md-switch class="md-primary" ng-model="setting.val" ng-change="$ctrl.syncUser()" aria-label="{{ ::setting.label }}"></md-switch>
@@ -57,7 +57,7 @@
 		    <v-pane-content>
 		    	<div layout="row" layout-padding>
 						
-						<label class="text-center" ng-repeat="setting in appSettings.DATA" flex>
+						<label class="text-center" ng-repeat="setting in appSettings.usage" flex>
 							{{ ::setting.label }}
 				    	<md-slider-container flex>
 					      <h5>{{ ::setting.labels[1] }}</h5>

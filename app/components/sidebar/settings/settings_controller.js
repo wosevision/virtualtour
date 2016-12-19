@@ -2,16 +2,16 @@ function SettingsCtrl($rootScope, $popupWindow, UserAuth, UserSession, SettingsF
   'ngInject';
 	this.syncUser = () => {
 		if (UserSession.userId) {
-			UserSession.settings = $rootScope.appSettings.USER;
+			UserSession.settings = $rootScope.appSettings.settings;
 		} else {
-			SettingsFactory.set('USER', $rootScope.appSettings.USER);
+			SettingsFactory.set('settings', $rootScope.appSettings.settings);
 		}
 	}
 	this.syncData = () => {
 		if (UserSession.userId) {
-			UserSession.usage = $rootScope.appSettings.DATA;
+			UserSession.usage = $rootScope.appSettings.usage;
 		} else {
-			SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
+			SettingsFactory.set('usage', $rootScope.appSettings.usage);
 		}
 	}
 	this.promptLogin = () => {

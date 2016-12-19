@@ -44,9 +44,9 @@ function MainCtrl(
 	    .catch( () => showSettingsMsg() );
   }
 
-  const settingsLoaded = $rootScope.$watch('appSettings', settings => {
-  	if (!isUndefined(settings) && settings.USER) {
-		  const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.USER;
+  const settingsLoaded = $rootScope.$watch('appSettings', userSettings => {
+  	if (!isUndefined(userSettings) && userSettings.settings) {
+		  const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.settings;
 
 			if (showWelcome.val) {
 			  $timeout(showWelcomeMsg, WELCOME_DELAY);
