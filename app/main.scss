@@ -39,10 +39,10 @@ $button-border-radius: 0;
 	background: $uoitdarkblue;
 	align-items: center;
 	align-content: center;
-	div:not(#loading-spinner) {
+	div:not(.loading-spinner) {
 		display: none !important;
 	}
-	#loading-spinner {
+	.loading-spinner {
 		display: flex;
 	  color: rgba(white, 0.6);
 	  font-size: 11px;

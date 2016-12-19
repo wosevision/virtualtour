@@ -3,7 +3,7 @@ const TITLEBAR_OPTS = {
 		active: true,
 		label: 'Register now',
 		tooltip: false,
-		icon: ['person_add', 'person_add'],
+		icon: ['person_outline', 'person_outline'],
 		class: 'cta-button bg-pink'
 	},
 	schedule: {
@@ -17,7 +17,7 @@ const TITLEBAR_OPTS = {
 		active: true,
 		label: 'Apply online',
 		tooltip: false,
-		icon: ['assignment_turned_in', 'assignment_turned_in'],
+		icon: ['bookmark_outline', 'bookmark_outline'],
 		class: 'cta-button bg-orange'
 	},
 	condense: {
