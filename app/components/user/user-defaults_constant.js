@@ -1,28 +1,28 @@
-const APP_SETTINGS = {
-	USER: {
-    _TOOLBAR_OPEN: {
+const USER_DEFAULTS = {
+	settings: {
+    toolbarOpen: {
       val: true,
       label: 'Toolbar open by default',
       icon: 'last_page'
     },
-    _TOOLBAR_CONDENSED: {
+    toolbarCondensed: {
       val: false,
       label: 'Toolbar condensed by default',
       icon: 'flip_to_back'
     },
-    _SHOW_TOOLTIPS: {
+    showHints: {
       val: true,
       label: 'Show hint messages',
       icon: 'announcement'
     },
-    _SHOW_WELCOME: {
+    showWelcome: {
       val: true,
       label: 'Always show welcome',
       icon: 'live_tv'
     }
   },
-  DATA: {
-  	_COMPRESSION: {
+  usage: {
+  	compression: {
   		val: 1,
   		min: 1,
   		max: 5,
@@ -30,7 +30,7 @@ const APP_SETTINGS = {
   		label: 'Compression level',
   		labels: ['Less', 'More']
   	},
-  	_PRELOADING: {
+  	preloading: {
   		val: 0,
   		min: 0,
   		max: 3,
@@ -38,7 +38,7 @@ const APP_SETTINGS = {
   		label: 'Preloading strategy',
   		labels: ['None', 'Proactive']
   	},
-  	_CACHING: {
+  	cache: {
   		val: 0,
   		min: 0,
   		max: 250,
@@ -50,7 +50,7 @@ const APP_SETTINGS = {
 };
 
 export default {
-  name: 'APP_SETTINGS',
-  fn: APP_SETTINGS
+  name: 'USER_DEFAULTS',
+  fn: USER_DEFAULTS
 };
 

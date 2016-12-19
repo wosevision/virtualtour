@@ -1,12 +1,24 @@
-function SettingsCtrl($scope, $rootScope, SettingsFactory) {
+function SettingsCtrl($rootScope, $popupWindow, UserAuth, UserSession, SettingsFactory) {
   'ngInject';
-	const s = $scope;
-
-	s.syncUser = function () {
-		 SettingsFactory.set('USER', $rootScope.appSettings.USER);
+	this.syncUser = () => {
+		if (UserSession.userId) {
+			UserSession.settings = $rootScope.appSettings.USER;
+		} else {
+			SettingsFactory.set('USER', $rootScope.appSettings.USER);
+		}
 	}
-	s.syncData = function () {
-		 SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
+	this.syncData = () => {
+		if (UserSession.userId) {
+			UserSession.usage = $rootScope.appSettings.DATA;
+		} else {
+			SettingsFactory.set('DATA', $rootScope.appSettings.DATA);
+		}
+	}
+	this.promptLogin = () => {
+		return $popupWindow.login();
+	}
+	this.logout = () => {
+		UserAuth.logout();
 	}
 }
 

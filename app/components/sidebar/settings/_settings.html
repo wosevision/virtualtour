@@ -43,7 +43,7 @@
 					  <md-list-item ng-repeat="setting in appSettings.USER">
 					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
 					    <span flex>{{ ::setting.label }}</span>
-					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncUser()" aria-label="{{ ::setting.label }}"></md-switch>
+					    <md-switch class="md-primary" ng-model="setting.val" ng-change="$ctrl.syncUser()" aria-label="{{ ::setting.label }}"></md-switch>
 					  </md-list-item>
 					</md-list>
 		    </v-pane-content>
@@ -61,7 +61,7 @@
 							{{ ::setting.label }}
 				    	<md-slider-container flex>
 					      <h5>{{ ::setting.labels[1] }}</h5>
-					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-vertical md-discrete></md-slider>
+					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-vertical md-discrete ng-change="$ctrl.syncData()"></md-slider>
 					      <h5>{{ ::setting.labels[0] }}</h5>
 					    </md-slider-container>
 						</label>

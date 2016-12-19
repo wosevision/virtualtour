@@ -3,11 +3,29 @@ class $popupWindow {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.$mdToast = $mdToast
+		this.standardToast = $mdToast.simple()
+      .action('Dismiss')
+      .hideDelay(5000)
+      .highlightAction(true)
+      .highlightClass(`md-warn`)
+      .position('bottom left');
 	}
 	welcome() {
 	  return this.$mdDialog.show(
 			this.$mdDialog.welcome()
 		);
+	}
+	login() {
+	  return this.$mdDialog.show(
+			this.$mdDialog.login()
+		);
+	}
+	toast(type, { message, action }) {
+		const toast = this.standardToast
+      .textContent(message)
+      .action(action)
+      .highlightClass(`md-${type}`);
+		return this.$mdToast.show(toast);
 	}
 	error({locals = null} = {}) {
 		return this.$mdDialog.show(
@@ -15,22 +33,9 @@ class $popupWindow {
 		);
 	}
 	warning({locals = null} = {}) {
-		const toast = this.$mdToast.simple()
+		const toast = this.standardToast
       .textContent(locals.message || 'An unknown error occurred!')
-      .action('Dismiss')
-      .hideDelay(5000)
-      .highlightAction(true)
-      .highlightClass(`md-warn`)
       .position('bottom right');
-		return this.$mdToast.show(toast);
-	}
-	toast(type, { message, action }) {
-		const toast = this.$mdToast.simple()
-      .textContent(message)
-      .action(action)
-      .highlightAction(true)
-      .highlightClass(`md-${type}`)
-      .position('bottom left');
 		return this.$mdToast.show(toast);
 	}
 }

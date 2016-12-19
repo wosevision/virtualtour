@@ -1,16 +1,37 @@
 <md-dialog class="login-message">
 	<md-dialog-content>
+		<div layout="column" layout-padding>
+		  <div layout="column" layout-align="center center" ng-if="!$ctrl.state.attempt">
+		  	<h2>Please sign in</h2>
+		    <md-input-container class="md-icon-float md-icon-left md-block">
+		      <label>User name</label>
+		      <ng-md-icon icon="person_outline"></ng-md-icon>
+		      <input ng-model="$ctrl.username"/>
+		    </md-input-container>
 
+		    <md-input-container class="md-icon-float md-icon-left md-block">
+		      <label>Password</label>
+		      <ng-md-icon icon="lock_outline"></ng-md-icon>
+		      <input ng-model="$ctrl.password" type="password">
+		    </md-input-container>
+		    
+		    <md-button class="md-raised md-primary" ng-click="$ctrl.login()">Sign in</md-button>
+		  </div>
+
+		  <div layout="column" layout-align="center center" ng-if="$ctrl.state.attempt && $ctrl.state.success">
+		  	<h2>Login success!</h2>
+		  </div>
+		  <div layout="column" layout-align="center center" ng-if="$ctrl.state.attempt && $ctrl.state.failed">
+		  	<h2>Login failure!</h2>
+		  </div>
+		</div>
 	</md-dialog-content>
 <!-- 	<md-dialog-actions>
-
 		<md-button ng-click="refreshApp()" class="md-primary md-raised">
 			Refresh page
 		</md-button>
-
 		<md-button ng-click="closeDialog()" class="md-primary">
 			Close and try again
 		</md-button>
-
 	</md-dialog-actions> -->
 </md-dialog>

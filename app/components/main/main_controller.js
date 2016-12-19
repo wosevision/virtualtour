@@ -9,7 +9,7 @@ function MainCtrl(
 ) {
   'ngInject';
   // split up user prefs from $rootScope.appSettings.USER
-  const { _SHOW_WELCOME, _TOOLBAR_OPEN, _TOOLBAR_CONDENSED } = $rootScope.appSettings.USER;
+  // const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.USER;
 
   // check for mobile/landscape on every digest
   this.mobile = {};
@@ -39,45 +39,55 @@ function MainCtrl(
 
   const WELCOME_DELAY = 500; //ms
   const showWelcomeMsg = () => {
-  	if (_SHOW_WELCOME.val) {
-  		$popupWindow.welcome()
-		    .then( answer => (answer != 'tour') && showSettingsMsg() )
-		    .catch( () => showSettingsMsg() );
-  	}
+		$popupWindow.welcome()
+	    .then( answer => (answer != 'tour') && showSettingsMsg() )
+	    .catch( () => showSettingsMsg() );
   }
-  $timeout(showWelcomeMsg, WELCOME_DELAY);
 
-  this.titlebar = {
-		options: TITLEBAR_OPTS,
-		clickHandlers: {
-			config: () => {
-      	$mdSidenav('config').toggle();
-			},
-			right: () => {
-		    this.toolbar.toggle();
-      	this.titlebar.options.right.active = this.toolbar.isOpen;
-			},
-			condense: () => {
-		    this.toolbar.condense();
-      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+  const settingsLoaded = $rootScope.$watch('appSettings', settings => {
+  	if (!isUndefined(settings) && settings.USER) {
+		  const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.USER;
+
+			if (showWelcome.val) {
+			  $timeout(showWelcomeMsg, WELCOME_DELAY);
 			}
-		} 
-  }
 
-  this.toolbar = {
-  	views: BUTTONBAR_VIEWS,
-    isOpen: _TOOLBAR_OPEN.val,
-    isCondensed: _TOOLBAR_CONDENSED.val,
-    toggle() {
-  		this.isOpen = !this.isOpen;
-  		this.isOpen&&$mdSidenav('right').close();
-    },
-    condense() {
-      !this.isOpen&&this.toggle();
-      this.isCondensed = !this.isCondensed;
-      return this.isCondensed;
-    }
-  }
+		  this.titlebar = {
+				options: TITLEBAR_OPTS,
+				clickHandlers: {
+					config: () => {
+		      	$mdSidenav('config').toggle();
+					},
+					right: () => {
+				    this.toolbar.toggle();
+		      	this.titlebar.options.right.active = this.toolbar.isOpen;
+					},
+					condense: () => {
+				    this.toolbar.condense();
+		      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+					}
+				} 
+		  }
+
+		  this.toolbar = {
+		  	views: BUTTONBAR_VIEWS,
+		    isOpen: toolbarOpen.val,
+		    isCondensed: toolbarCondensed.val,
+		    toggle() {
+		  		this.isOpen = !this.isOpen;
+		  		this.isOpen&&$mdSidenav('right').close();
+		    },
+		    condense() {
+		      !this.isOpen&&this.toggle();
+		      this.isCondensed = !this.isCondensed;
+		      return this.isCondensed;
+		    }
+		  }
+
+		  settingsLoaded();
+  	}
+  });
+
 }
 
 export default {

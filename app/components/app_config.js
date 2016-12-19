@@ -45,9 +45,7 @@ function AppConfig($provide, $stateProvider, $locationProvider, $urlRouterProvid
       parent: 'home',
       templateUrl: 'sidebar/settings/_settings.html',
       controller: 'SettingsCtrl',
-		  ncyBreadcrumb: {
-		    label: 'App settings'
-		  }
+      controllerAs: '$ctrl'
     });
 
   $urlRouterProvider.otherwise('/');

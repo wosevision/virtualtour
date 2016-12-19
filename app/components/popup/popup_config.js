@@ -43,6 +43,20 @@ function PopupConfig($mdDialogProvider) {
 	  }
 	});
 
+	$mdDialogProvider.addPreset('login', {
+	  options() {
+	    return {
+	    	parent,
+	      templateUrl: 'popup/login/_login.html',
+	      controller: 'LoginCtrl',
+	      controllerAs: '$ctrl',
+	      bindToController: true,
+	      clickOutsideToClose: true,
+	      escapeToClose: true
+	    };
+	  }
+	});
+
 }
 
 export default {
