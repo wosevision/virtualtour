@@ -6,17 +6,20 @@ function UserAuth($http, UserSession) {
   var userAuth = {};
 
   userAuth.createSession = user => {
-    UserSession.create(user);
-    return UserSession.user;
+  	console.log('starting session creation...');
+    return UserSession.create(user);
   }
 
   userAuth.initAuth = () => {
+  	console.log('checking for user...');
     return $http
       .get('/user/me')
       .then(res => {
+		  	console.log('user found');
         return userAuth.createSession(res.data.user);
       }, err => {
-      	return false;
+		  	console.log('user not found');
+        return userAuth.createSession(false);
       });
   }
  

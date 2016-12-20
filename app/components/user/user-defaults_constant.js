@@ -22,6 +22,9 @@ const USER_DEFAULTS = {
     }
   },
   usage: {
+  	auto: {
+  		val: true
+  	},
   	compression: {
   		val: 1,
   		min: 1,

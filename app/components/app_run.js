@@ -1,7 +1,6 @@
 function AppRun(
 	$rootScope, $state,
-	$popupWindow, UserAuth,
-	GLOBAL_SETTINGS, USER_DEFAULTS, SettingsFactory) {
+	$popupWindow, UserAuth) {
   'ngInject';
   
   $rootScope.$on('handler:exception', function( event, error ) {
@@ -31,33 +30,9 @@ function AppRun(
     console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
   });
 
-  function mergeSettings(settings, usage) {
-	  if (settings) {
-	  	Object.keys(settings).map(key => {
-		  	if (USER_DEFAULTS.settings[key]) {
-		  		USER_DEFAULTS.settings[key].val = settings[key];	
-		  	}
-		  });
-		}
-	  if (usage) {
-	  	Object.keys(usage).map(key => {
-		  	if (USER_DEFAULTS.usage[key]) {
-		  		USER_DEFAULTS.usage[key].val = usage[key];	
-		  	}
-		  });
-		}
-
-	  $rootScope.appSettings = USER_DEFAULTS;
-    SettingsFactory.set('settings', $rootScope.appSettings.settings);
-    SettingsFactory.set('usage', $rootScope.appSettings.usage);
-  }
-
+  console.log('starting auth init...')
   UserAuth.initAuth().then(user => {
-	  if (user) {
-		  mergeSettings(user.settings, user.usage);
-	  } else {
-		  mergeSettings(SettingsFactory.get('settings'), SettingsFactory.get('usage'));
-	  }
+	  console.log('auth init complete!')
   });
 }
 

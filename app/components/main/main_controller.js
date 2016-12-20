@@ -2,15 +2,12 @@ import { utils } from 'aframe';
 import { element, isUndefined } from 'angular';
 
 function MainCtrl(
-	$rootScope, $scope, $state, $timeout, $log, // ng deps
-	$mdComponentRegistry, $mdSidenav, $mdMedia, // md deps
-	$aframeScene, $popupWindow, // my libs
+	$scope, $state, $timeout, // ng deps
+	$mdSidenav, $mdMedia, // md deps
+	$popupWindow, UserSession, // my libs
 	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
 ) {
   'ngInject';
-  // split up user prefs from $rootScope.appSettings.USER
-  // const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.USER;
-
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
@@ -44,9 +41,10 @@ function MainCtrl(
 	    .catch( () => showSettingsMsg() );
   }
 
-  const settingsLoaded = $rootScope.$watch('appSettings', userSettings => {
-  	if (!isUndefined(userSettings) && userSettings.settings) {
-		  const { showWelcome, toolbarOpen, toolbarCondensed } = $rootScope.appSettings.settings;
+  $scope.userSettings = UserSession.settings;
+  const settingsLoaded = $scope.$watch('userSettings', userSettings => {
+  	if (!isUndefined(userSettings)) {
+		  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
 			if (showWelcome.val) {
 			  $timeout(showWelcomeMsg, WELCOME_DELAY);
