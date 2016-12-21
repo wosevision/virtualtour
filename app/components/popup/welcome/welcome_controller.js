@@ -1,20 +1,22 @@
-function DialogCtrl($rootScope, $scope, $mdDialog, nzTour, SettingsFactory, TOUR_STEPS) {
+function DialogCtrl($scope, $mdDialog, UserSession, nzTour, TOUR_STEPS) {
   'ngInject';
-  $scope.hide = function() {
+  this.hide = function() {
     $mdDialog.hide();
   };
-  $scope.cancel = function() {
+  this.cancel = function() {
     $mdDialog.cancel();
   };
-  $scope.answer = function(answer) {
+  this.answer = function(answer) {
     $mdDialog.hide(answer);
   };
-  $scope.startTour = function() {
+  this.startTour = function() {
     $mdDialog.hide('tour');
   	nzTour.start(TOUR_STEPS);
   }
-  $scope.syncUser = () => {
-		SettingsFactory.set('USER', $rootScope.appSettings.USER);
+  this.syncSettings = () => {
+  	const currentSettings = UserSession.settings;
+  	currentSettings.showWelcome.val = this.showWelcome;
+  	UserSession.settings = currentSettings;
   }
 }
 

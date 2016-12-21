@@ -42,8 +42,9 @@ function MainCtrl(
   }
 
   $scope.userSettings = UserSession.settings;
-  const settingsLoaded = $scope.$watch('userSettings', userSettings => {
+  const settingsLoaded = $scope.$watch(() => UserSession.settings, userSettings => {
   	if (!isUndefined(userSettings)) {
+  		console.log('main controller applying settings')
 		  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
 			if (showWelcome.val) {

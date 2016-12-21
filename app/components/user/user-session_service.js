@@ -1,3 +1,5 @@
+import { isUndefined } from 'angular';
+
 class UserSession {
 	constructor($http, $popupWindow, SettingsFactory, USER_ROLES, USER_DEFAULTS) {
 	  'ngInject';
@@ -10,10 +12,7 @@ class UserSession {
 		this._usage = USER_DEFAULTS.usage;
 
 		this.roles = [];
-		this.user = {
-			settings: {},
-			usage: {}
-		};
+		this.user = {};
 	}
 	create(user) {
 		if (user) {
@@ -53,13 +52,15 @@ class UserSession {
 		this.userId = null;
 	}
 	get settings() {
+		if (this.user.settings) {
 	  	Object.keys(this.user.settings).map(key => {
 	  		this._settings[key].val = this.user.settings[key];
 		  });
 		  return this._settings;
+		}
 	}
 	set settings(settings) {
-	  if (settings) {
+	  if (!isUndefined(settings)) {
 	  	Object.keys(settings).map(key => {
 	  		this.user.settings[key] = settings[key].val;
 		  });
@@ -73,7 +74,7 @@ class UserSession {
 		  return this._usage;
 	}
 	set usage(usage) {
-	  if (usage) {
+	  if (!isUndefined(usage)) {
 	  	Object.keys(usage).map(key => {
 	  		this.user.usage[key] = usage[key].val;
 		  });

@@ -17,7 +17,7 @@
   	id="{{::v}}">
   	<ng-md-icon icon="{{ ::view.icon }}" style="fill: #ffffff;"></ng-md-icon>
     <span ng-bind="::view.label"></span>
-    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!(mobile||!$ctrl.settings.showHints.val)">
+    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!(mobile||!$ctrl.showHints())">
       {{ $ctrl.condensed ? view.label : view.desc }}
     </md-tooltip>
   </div>

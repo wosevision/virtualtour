@@ -6,7 +6,7 @@ class ButtonbarCtrl {
 		this.$scope = $scope;
 		this.$state = $state;
 		this.$mdSidenav = $mdSidenav;
-		this.UserSession = UserSession;
+  	this.showHints = () => UserSession.settings.showHints.val;
 	}
 
   toggleMenu(navID, view) {
@@ -29,7 +29,6 @@ class ButtonbarCtrl {
   }
 
   $onInit() {
-  	this.settings = this.UserSession.settings;
 		this.$scope.$watch(
 			() => this.$mdSidenav('right').isOpen(),
 			(newVal) => {

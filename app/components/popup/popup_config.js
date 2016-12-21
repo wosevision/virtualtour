@@ -25,6 +25,8 @@ function PopupConfig($mdDialogProvider) {
 	      parent,
 	      controller: 'DialogCtrl',
 	      templateUrl: 'popup/welcome/_welcome-dialog.html',
+	      controllerAs: '$ctrl',
+	      bindToController: true,
 	      // targetEvent: ev,
 	      clickOutsideToClose: true,
 	      openFrom: {
