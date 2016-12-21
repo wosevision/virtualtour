@@ -68,10 +68,12 @@ class UserSession {
 		}
 	}
 	get usage() {
+		if (this.user.usage) {
 	  	Object.keys(this.user.usage).map(key => {
 	  		this._usage[key].val = this.user.usage[key];
 		  });
 		  return this._usage;
+		}
 	}
 	set usage(usage) {
 	  if (!isUndefined(usage)) {

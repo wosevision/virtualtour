@@ -55,16 +55,6 @@
 		    </v-pane-header>
 
 		    <v-pane-content>
-					<!-- <div layout="row" layout-padding>
-						<label class="text-center" ng-repeat="setting in $ctrl.usage" flex>
-							{{ ::setting.label }}
-				    	<md-slider-container flex>
-					      <h5>{{ ::setting.labels[1] }}</h5>
-					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-vertical md-discrete ng-change="$ctrl.syncData()"></md-slider>
-					      <h5>{{ ::setting.labels[0] }}</h5>
-					    </md-slider-container>
-						</label>
-			    </div> -->
 		    	<div layout="column" layout-padding>
 						
 						<label ng-repeat="(key, setting) in $ctrl.usage" flex>

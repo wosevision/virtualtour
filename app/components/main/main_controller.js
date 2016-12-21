@@ -8,6 +8,8 @@ function MainCtrl(
 	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
 ) {
   'ngInject';
+  const WELCOME_MSG_DELAY = 500; //ms
+  const SETTINGS_MSG_DELAY = 1000; //ms
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
@@ -22,33 +24,53 @@ function MainCtrl(
     true
   );
 
-  const showSettingsMsg = () => {
-    $popupWindow.toast('warn', {
-    	message: 'Data usage settings auto-configured to your device!',
-    	action: 'Change settings'
-    }).then(response => {
-      if ( response == 'ok' ) {
+  $scope.userSettings = UserSession.settings;
+	$scope.userUsage = UserSession.usage;
+
+	const goToSettings = response => {
+		switch (response) {
+			case 'ok':
+			default:
         $state.go('settings');
         $mdSidenav('right').open();
-      }
-    });
+				break;
+		}
+	}
+
+  const showSettingsMsg = () => {
+  	const autoconfig = UserSession.usage.auto;
+  	if (autoconfig && autoconfig.val) {
+	    $popupWindow.toast('primary', {
+	    	message: 'Data usage settings auto-configured to your device!',
+	    	action: 'Change settings'
+	    }).then(response => {
+	    	goToSettings(response);
+	    });
+  	} else {
+	    $popupWindow.toast('warn', {
+	    	message: 'Automatic data usage is currently disabled, but can be enabled in Settings.',
+	    	action: 'Show me how'
+	    }).then(response => {
+	    	goToSettings(response);
+	    });
+	  }
   }
 
-  const WELCOME_DELAY = 500; //ms
   const showWelcomeMsg = () => {
 		$popupWindow.welcome()
 	    .then( answer => (answer != 'tour') && showSettingsMsg() )
 	    .catch( () => showSettingsMsg() );
   }
 
-  $scope.userSettings = UserSession.settings;
   const settingsLoaded = $scope.$watch(() => UserSession.settings, userSettings => {
   	if (!isUndefined(userSettings)) {
   		console.log('main controller applying settings')
 		  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
 			if (showWelcome.val) {
-			  $timeout(showWelcomeMsg, WELCOME_DELAY);
+			  $timeout(showWelcomeMsg, WELCOME_MSG_DELAY);
+			} else {
+			  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
 			}
 
 		  this.titlebar = {
