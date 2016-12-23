@@ -1,6 +1,7 @@
 function AppRun(
 	$rootScope, $state,
-	$popupWindow, UserAuth) {
+	$popupWindow, UserAuth,
+	AUTH_EVENTS) {
   'ngInject';
   
   $rootScope.$on('handler:exception', function( event, error ) {
@@ -14,6 +15,17 @@ function AppRun(
 
   $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
     console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
+    const authorizedRoles = toState.data.authorizedRoles;
+    if (!UserAuth.isAuthorized(authorizedRoles)) {
+      event.preventDefault();
+      if (UserAuth.isAuthenticated()) {
+        // user is not allowed
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+      } else {
+        // user is not logged in
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      }
+    }
   });
 
   // change page title based on state
@@ -32,6 +44,7 @@ function AppRun(
 
   console.log('starting auth init...')
   UserAuth.initAuth().then(user => {
+    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
 	  console.log('auth init complete!')
   });
 }

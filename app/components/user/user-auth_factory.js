@@ -17,7 +17,7 @@ function UserAuth($http, UserSession) {
       .then(res => {
 		  	console.log('user found');
         return userAuth.createSession(res.data.user);
-      }, err => {
+      }).catch(err => {
 		  	console.log('user not found');
         return userAuth.createSession(false);
       });
@@ -35,6 +35,7 @@ function UserAuth($http, UserSession) {
 		return $http
 			.post('/user/signout')
 			.then(res =>{
+				UserSession.destroy();
 				alert('success! logged out user:');
 			}, error => {
 				alert('error! user not logged out:');
@@ -46,9 +47,12 @@ function UserAuth($http, UserSession) {
   };
  
   userAuth.isAuthorized = authorizedRoles => {
+    if (!authorizedRoles || authorizedRoles.length === 0) return true;
+
     if (!isArray(authorizedRoles)) {
       authorizedRoles = [authorizedRoles];
     }
+
     let isAuthorized = false;
     for (const role of UserSession.roles) {
     	if (authorizedRoles.indexOf(role) !== -1) {

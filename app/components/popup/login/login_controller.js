@@ -13,11 +13,10 @@ function LoginCtrl($rootScope, $timeout, $window, $mdDialog, UserAuth, AUTH_EVEN
 			this.state.attempt = true;
 
 			UserAuth.login({ username, password }).then(user => {
-	      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+	      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
 	      this.state.success = true;
 	      $timeout(() => {
 	      	$mdDialog.hide();
-	      	$window.location.reload();
 	      }, 3000);
 	    }, () => {
 	      $rootScope.$broadcast(AUTH_EVENTS.loginFailed);

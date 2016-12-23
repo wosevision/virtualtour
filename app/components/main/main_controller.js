@@ -24,15 +24,12 @@ function MainCtrl(
     true
   );
 
-  $scope.userSettings = UserSession.settings;
-	$scope.userUsage = UserSession.usage;
-
 	const goToSettings = response => {
 		switch (response) {
 			case 'ok':
-			default:
         $state.go('settings');
         $mdSidenav('right').open();
+			default:
 				break;
 		}
 	}

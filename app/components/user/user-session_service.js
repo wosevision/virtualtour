@@ -1,4 +1,4 @@
-import { isUndefined } from 'angular';
+import { isDefined, equals } from 'angular';
 
 class UserSession {
 	constructor($http, $popupWindow, SettingsFactory, USER_ROLES, USER_DEFAULTS) {
@@ -11,10 +11,10 @@ class UserSession {
 		this._settings = USER_DEFAULTS.settings;
 		this._usage = USER_DEFAULTS.usage;
 
-		this.roles = [];
 		this.user = {};
 	}
 	create(user) {
+		this.roles = [];
 		if (user) {
 			this.userId = user._id;
 			this.user = user;
@@ -23,11 +23,39 @@ class UserSession {
 			(isAdmin) && this.roles.push(this._roles.admin);
 			(isEditor) && this.roles.push(this._roles.editor);
 			(isContributor) && this.roles.push(this._roles.Contributor);
+
 	  	console.log('created session from user');
 		} else {
-			this.user.settings = this.SettingsFactory.get('settings'),
-			this.user.usage = this.SettingsFactory.get('usage');
-	  	console.log('created session from local defaults');
+			/**
+			 * Look inside SettingsFactory for user data matching the pattern
+			 * defined in USER_DEFAULTS, i.e. if found, it returns an object
+			 * in the form of 
+			 * {
+			 *   toolbarOpen: {
+			 *     val: false,
+			 *     label: 'Toolbar open',
+			 *     ...
+			 *   }
+			 * }
+			 * instead of the db user's model
+			 * { toolbarOpen: false }
+			 */
+			const _settings = this.SettingsFactory.get('thurs'),
+						_usage = this.SettingsFactory.get('weds');
+
+			this.user = {
+				settings: {},
+				usage: {}
+			}
+
+			/**
+			 * Use this instance's getter/setters to merge the found setting
+			 * values into USER_DEFAULTS via the user model
+			 */
+			this.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
+			this.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
+
+	  	console.log('created session from local defaults', _settings);
 		}
 		return this.user;
 	}
@@ -38,29 +66,36 @@ class UserSession {
 		    	message: 'User settings updated!',
 		    	action: 'Dismiss'
 		    });
+
 		  	console.log('saved settings to user!');
 			});
 		} else {
-			this.SettingsFactory.set('settings', this.user.settings);
-			this.SettingsFactory.set('usage', this.user.usage);
-	  	console.log('saved settings to local!');
+			this.SettingsFactory.set('thurs', this.settings);
+			this.SettingsFactory.set('weds', this.usage);
+
+	  	console.log('saved settings to local!', this.user);
 		}
 	}
 	destroy() {
-		this.user = null;
+		this.user = {
+			settings: {},
+			usage: {}
+		};
 		this.roles = null;
 		this.userId = null;
+
+  	console.log('user session destroyed');
 	}
 	get settings() {
 		if (this.user.settings) {
 	  	Object.keys(this.user.settings).map(key => {
 	  		this._settings[key].val = this.user.settings[key];
 		  });
-		  return this._settings;
 		}
+	  return this._settings;
 	}
 	set settings(settings) {
-	  if (!isUndefined(settings)) {
+	  if (isDefined(settings)) {
 	  	Object.keys(settings).map(key => {
 	  		this.user.settings[key] = settings[key].val;
 		  });
@@ -72,11 +107,11 @@ class UserSession {
 	  	Object.keys(this.user.usage).map(key => {
 	  		this._usage[key].val = this.user.usage[key];
 		  });
-		  return this._usage;
 		}
+	  return this._usage;
 	}
 	set usage(usage) {
-	  if (!isUndefined(usage)) {
+	  if (isDefined(usage)) {
 	  	Object.keys(usage).map(key => {
 	  		this.user.usage[key] = usage[key].val;
 		  });
