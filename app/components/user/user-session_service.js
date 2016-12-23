@@ -13,6 +13,22 @@ class UserSession {
 
 		this.user = {};
 	}
+	/**
+	 * This function creates a new user session, which is
+	 * necessary to store application settings regardless of
+	 * whether there is a "real" user logged in. If there is
+	 * a user, the UserSession service will:
+	 * 
+	 * - set the `userId` property to indicate an active user
+	 * - read user roles based on their boolean values on user
+	 * - push role strings into a `roles` property on UserSession
+	 * 
+	 * If not, the service checks for local settings and inits
+	 * a "blank" user with those settings (or the app defaults).
+	 * 
+	 * @param  {Object} user DB user object to use for session
+	 * @return {Object}      Fully-formed user object after settings
+	 */
 	create(user) {
 		this.roles = [];
 		if (user) {
@@ -27,30 +43,25 @@ class UserSession {
 	  	console.log('created session from user');
 		} else {
 			/**
-			 * Look inside SettingsFactory for user data matching the pattern
-			 * defined in USER_DEFAULTS, i.e. if found, it returns an object
-			 * in the form of 
-			 * {
-			 *   toolbarOpen: {
-			 *     val: false,
-			 *     label: 'Toolbar open',
-			 *     ...
-			 *   }
-			 * }
-			 * instead of the db user's model
-			 * { toolbarOpen: false }
+			 * Looks inside SettingsFactory for user data matching the pattern
+			 * defined in USER_DEFAULTS; store in temporary vars.
 			 */
 			const _settings = this.SettingsFactory.get('thurs'),
 						_usage = this.SettingsFactory.get('weds');
 
+			/**
+			 * Init a 'blank' user with the required settings properties to
+			 * avoid assignment errors (i.e. `this.user.settings[key] = ...`)
+			 * @type {Object}
+			 */
 			this.user = {
 				settings: {},
 				usage: {}
 			}
 
 			/**
-			 * Use this instance's getter/setters to merge the found setting
-			 * values into USER_DEFAULTS via the user model
+			 * Use the UserSession's getter/setters to merge the found setting
+			 * values into USER_DEFAULTS via the user model.
 			 */
 			this.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
 			this.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
@@ -60,6 +71,10 @@ class UserSession {
 		return this.user;
 	}
 	save() {
+		/**
+		 * Check the `userId` property to verify whether settings should
+		 * save to a logged in user; if not, set on localStorage
+		 */
 		if (this.userId) {
 			this.$http.post('/user/save', this.user).then(user => {
 				this.$popupWindow.toast('primary', {
@@ -86,6 +101,31 @@ class UserSession {
 
   	console.log('user session destroyed');
 	}
+	/**
+	 * Getter/setter pairs for merging user setting objects from
+	 * the DB the form of:
+	 * 
+	 * `{ toolbarOpen: false }`
+	 * 
+	 * into fully-qualified app-level settings objects that look like:
+	 * 
+	 * ```
+	 * {
+	 *   toolbarOpen: {
+	 *     val: false,
+	 *     label: 'Toolbar open',
+	 *     ...
+	 *   }
+	 * }
+	 * ```
+	 *
+	 * or vice-versa for setting the user object based on app prefs.
+	 * 
+	 * @param  {Object} [settings/usage]        Incoming app settings
+	 *                                          to merge into user
+	 * @return {Object} this.[_settings/_usage] Merged app settings
+	 *                                          built from user
+	 */
 	get settings() {
 		if (this.user.settings) {
 	  	Object.keys(this.user.settings).map(key => {
