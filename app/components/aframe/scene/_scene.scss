@@ -8,6 +8,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
+  @include cover(absolute);
   aframe-scene {
   	position: relative;
   }
@@ -17,7 +18,7 @@
   }
   ng-transclude {	
   	position: absolute;
-  	top: 0;
+  	top: 65px;
   	left: 0;
   	width: 100%;
   	z-index: 50

@@ -12,9 +12,12 @@ const aframeScene = {
     bindings: {
       sky: '@',
       sceneLinks: '<?',
-      hotSpots: '<?'
+      hotSpots: '<?',
+      mobile: '<?'
     },
-    transclude: true,
+    transclude: {
+      'editor': '?sceneEditor'
+    },
     controller: 'SceneCtrl',
    	templateUrl: 'aframe/scene/_scene.html'
   };

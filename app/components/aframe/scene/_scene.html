@@ -1,4 +1,4 @@
-<ng-transclude></ng-transclude>
+<ng-transclude ng-transclude-slot="editor"></ng-transclude>
 <a-scene id="aframe-scene"> <!-- stats -->
 	<a-assets>
 
@@ -16,7 +16,6 @@
 		<a-mixin id="mixin-glow" material="color:white;shader:flat;opacity:0.1;transparent: true;"></a-mixin>
 
 	</a-assets>
-
 		<!-- CAMERA ENTITY -->
 		<a-entity position="0 1.8 0" id="aframe-camera">
 			<a-entity
@@ -26,10 +25,15 @@
 				wasd-controls-enabled="false"
 				look-controls-enabled="false">
 				<!-- VR CURSOR -->
-<!-- 				<a-cursor
-					color="white"
-					raycaster="interval: 1000; recursive: true; objects: .scene-link">
-				</a-cursor> -->
+				<a-entity
+					ng-if="$ctrl.mobile.device"
+					cursor="fuse: true; fuseTimeout: 500"
+          position="0 0 -1"
+          geometry="primitive: ring;"
+          scale="0.01 0.01 0.01"
+          material="color: white; shader: flat"
+					raycaster="interval: 1000; recursive: true;">
+				</a-entity>
 			</a-entity>
 		</a-entity>
 		
