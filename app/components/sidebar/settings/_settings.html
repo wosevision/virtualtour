@@ -1,16 +1,17 @@
-<md-content layout="column" class="user-dashboard" layout-fill>
+<md-content layout="column" layout-align="start center" class="user-dashboard" layout-fill>
 
-	<md-card id="user_dashboard" flex="noshrink" ng-if="!$ctrl.isLoggedIn()">
+	<md-card id="user_dashboard" layout="column" layout-align="center center" flex="noshrink" ng-if="!$ctrl.isLoggedIn()">
 	  <md-card-header layout-align="space-around center" class="signin-msg">
 	    <md-card-content layout="column">
-	      <p class="md-headline">Sign in to or register to save your user preferences across sessions!</p>
+	      <p class="md-headline">Sign in to or register to save your user preferences permanently!</p>
+	      <p class="md-subtitle">Preferences will still be saved without a user but will be limited to your browser session.</p>
 	      <md-button ng-click="$ctrl.promptLogin()" class="md-raised md-primary">Sign in</md-button>
 	      <md-button href="/keystone/signin" target="_self" class="md-primary">Register</md-button>
 	    </md-card-content>
 	  </md-card-header>
 	</md-card>
 
-	<md-card id="user_dashboard" flex="noshrink" ng-if="$ctrl.isLoggedIn()">
+	<md-card id="user_dashboard" flex="none" ng-if="$ctrl.isLoggedIn()">
 		<img ng-src="images/north_bg.jpg" alt="" class="md-card-image" />
 	  <md-card-header layout-align="space-around center">
 	    <md-card-avatar><img ng-src="{{ $ctrl.user.avatar.url }}" class="md-user-avatar"/></md-card-avatar>
@@ -29,12 +30,10 @@
 	  </md-card-actions>
 	</md-card>
 
-	<!-- <ng-include src="'/dashboard'" scope="this" onload=""></ng-include> -->
-
 	<md-card flex="nogrow" id="user_settings">
-  	<v-accordion class="vAccordion--default" multiple flex>
+  	<v-accordion class="vAccordion--default" multiple flex control="accordion">
 		  <!-- add expanded attribute to open the section -->
-		  <v-pane expanded>
+		  <v-pane>
 		    <v-pane-header>
   				App settings
 		    </v-pane-header>
@@ -49,7 +48,7 @@
 		    </v-pane-content>
 		  </v-pane>
 
-		  <v-pane expanded>
+		  <v-pane>
 		    <v-pane-header>
 		      Data usage
 		    </v-pane-header>

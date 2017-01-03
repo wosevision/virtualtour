@@ -36,9 +36,9 @@ function UserAuth($http, UserSession) {
 			.post('/user/signout')
 			.then(res =>{
 				UserSession.destroy();
-				alert('success! logged out user:');
+		  	console.log('user logged out');
 			}, error => {
-				alert('error! user not logged out:');
+		  	console.log('error, user not logged out');
 			});
   }
  

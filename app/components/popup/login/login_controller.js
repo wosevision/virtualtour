@@ -17,13 +17,13 @@ function LoginCtrl($rootScope, $timeout, $window, $mdDialog, UserAuth, AUTH_EVEN
 	      this.state.success = true;
 	      $timeout(() => {
 	      	$mdDialog.hide();
-	      }, 3000);
+	      }, 2000);
 	    }, () => {
 	      $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 	      this.state.failed = true;
 	      $timeout(() => {
 					this.state.attempt = false;
-	      }, 3000);
+	      }, 2000);
 	    });
 		}
 	};

@@ -1,5 +1,11 @@
-function AppConfig($provide, $stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
+function AppConfig(
+	$provide, $locationProvider,
+	$stateProvider, $urlRouterProvider, $mdThemingProvider,
+	cfpLoadingBarProvider) { //, $mdIconProvider
   'ngInject';
+  
+  cfpLoadingBarProvider.includeSpinner = false;
+  // cfpLoadingBarProvider.latencyThreshold = 200;
 
   $mdThemingProvider.definePalette('UOITprimary', {
     '50': '0086FC',

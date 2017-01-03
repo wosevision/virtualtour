@@ -18,11 +18,19 @@
 		    <md-button class="md-raised md-primary" ng-click="$ctrl.login()">Sign in</md-button>
 		  </div>
 
+		  <div layout="column" layout-align="center center" ng-if="$ctrl.state.attempt && !($ctrl.state.success || $ctrl.state.failed)">
+			  <md-progress-circular md-mode="indeterminate" md-diameter="56" style="margin: 10% auto"></md-progress-circular>
+		  	<h2>Logging in, please wait...</h2>
+		  </div>
 		  <div layout="column" layout-align="center center" ng-if="$ctrl.state.attempt && $ctrl.state.success">
-		  	<h2>Login success!</h2>
+		  	<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+		  		<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+		  		<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+		  	</svg>
+		  	<h2>Logged in successfully!</h2>
 		  </div>
 		  <div layout="column" layout-align="center center" ng-if="$ctrl.state.attempt && $ctrl.state.failed">
-		  	<h2>Login failure!</h2>
+		  	<h2>Login failure! Please try again.</h2>
 		  </div>
 		</div>
 	</md-dialog-content>

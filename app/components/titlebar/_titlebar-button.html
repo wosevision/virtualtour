@@ -7,7 +7,7 @@
   	icon="{{ active ? icon[0] || icon : icon[1] || icon }}"
   	style="fill: currentColor;">
   </ng-md-icon>
-  <md-tooltip md-direction="bottom" md-autohide ng-if="tooltip && !(mc.mobile||!$root.appSettings.settings.showHints.val)">
+  <md-tooltip md-direction="bottom" md-autohide ng-if="tooltip && !(mc.mobile||!$ctrl.settings.showHints.val)">
     {{ active ? (tooltip[0] || tooltip) : (tooltip[1] || tooltip) }}
   </md-tooltip>
 	<span ng-if="::(!tooltip)">{{ ::label }}</span>
