@@ -1,7 +1,7 @@
 <aside
 	class="button-bar"
-	ng-class="{'collapsed': $ctrl.condensed}"
-	ng-if="$ctrl.open&&!$ctrl.mobile.screen"
+	ng-class="{'collapsed': $ctrl.condensed || $ctrl.mobile.screen}"
+	ng-if="$ctrl.open&&!($ctrl.mobile.landscape&&$ctrl.mobile.screen)"
 	md-whiteframe="2"
 	layout="column"
 	layout-align="end end"

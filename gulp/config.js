@@ -2,10 +2,9 @@
 
 export default {
 
-  serverProxy: 'http://localhost:8080',
-  UIPort: 3001,
-  testPort: 3002,
   browserPort: 4000,
+  UIPort: 4001,
+  testPort: 4002,
 
   sourceDir: './app/',
   buildDir: '../virtualtour-ks/public/', //'./build/',
