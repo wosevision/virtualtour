@@ -62,9 +62,9 @@
 		          </md-checkbox>
 							{{ ::setting.label }}
 				    	<md-slider-container flex ng-if="key !== 'auto'" ng-disabled="$ctrl.usage.auto.val">
-					      <h5>{{ ::setting.labels[1] }}</h5>
-					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-discrete ng-change="$ctrl.updateUsage()"></md-slider>
 					      <h5>{{ ::setting.labels[0] }}</h5>
+					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-discrete ng-change="$ctrl.updateUsage()"></md-slider>
+					      <h5>{{ ::setting.labels[1] }}</h5>
 					    </md-slider-container>
 						</label>
 

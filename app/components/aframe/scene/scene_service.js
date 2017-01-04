@@ -39,7 +39,7 @@ class $aframeScene {
 		this.sceneData = this.lastPublished = sceneData; // { _id, sceneLinks, hotSpots, sky };
 	}
 	get sky() {
-		return [ this.sceneData.panorama.version, this.sceneData.panorama.public_id].join('/')
+		return this.sceneData ? [ this.sceneData.panorama.version, this.sceneData.panorama.public_id].join('/') : null;
 	}
 	set sky(panorama) {
 		this.sceneData.panorama = panorama;
@@ -93,14 +93,6 @@ class $aframeScene {
 		notify&&this.$mdToast.show(this.toasts.revertToDraft);
 	}
 	saveDraft({ notify = true } = {}, cb) {
-  	// this.DraftFactory.set(this.sceneData._id, this.sceneData);
-  	// cb&&cb(this.sceneData);
-  	// this.lastDraft = this.sceneData;
-   //  notify&&this.$mdToast.show(this.toasts.saveDraft).then(response => {
-   //    if ( response == 'ok' ) {
-   //    	this.publish();
-   //    }
-   //  });
   	this.DraftResource.save({
   		content: this.sceneData,
   		kind: 'Scene',
