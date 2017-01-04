@@ -1,9 +1,10 @@
 import { forEach } from 'angular';
 
 class ButtonbarCtrl {
-	constructor($scope, $state, $mdSidenav, UserSession) {
+	constructor($scope, $document, $state, $mdSidenav, UserSession) {
 		'ngInject';
 		this.$scope = $scope;
+		this.$document = $document;
 		this.$state = $state;
 		this.$mdSidenav = $mdSidenav;
   	this.showHints = () => UserSession.settings.showHints.val;
@@ -26,6 +27,10 @@ class ButtonbarCtrl {
       this.$mdSidenav(navID)
         .toggle();
     }
+  }
+
+  enterVR() {
+  	this.$document[0].getElementById('aframe-scene').enterVR();
   }
 
   $onInit() {

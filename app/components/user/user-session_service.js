@@ -131,8 +131,8 @@ class UserSession {
 	  	Object.keys(this.user.settings).map(key => {
 	  		this._settings[key].val = this.user.settings[key];
 		  });
+		  return this._settings;
 		}
-	  return this._settings;
 	}
 	set settings(settings) {
 	  if (isDefined(settings)) {
@@ -147,8 +147,8 @@ class UserSession {
 	  	Object.keys(this.user.usage).map(key => {
 	  		this._usage[key].val = this.user.usage[key];
 		  });
+		  return this._usage;
 		}
-	  return this._usage;
 	}
 	set usage(usage) {
 	  if (isDefined(usage)) {

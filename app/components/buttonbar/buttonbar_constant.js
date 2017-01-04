@@ -9,11 +9,11 @@ const BUTTONBAR_VIEWS = {
     icon: 'map',
     desc: 'Explore locations from the UOIT Campus Map'
   },
-  guided: {
-    label: 'Guided tour',
-    icon: 'rotate_90_degrees_ccw',
-    desc: 'Take a preset trip with a video tour guide'
-  },
+  // guided: {
+  //   label: 'Guided tour',
+  //   icon: 'rotate_90_degrees_ccw',
+  //   desc: 'Take a preset trip with a video tour guide'
+  // },
   search: {
     label: 'Search',
     icon: 'search',
