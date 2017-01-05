@@ -15,7 +15,6 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 			const viewHotspot = data => {
 				const { category, desc, href, name } = data.properties,
 							locals = { type: 'hotspot', category, desc, href, name };
-				document.getElementById(`hotSpot_${hotspotId}`).emit('goto');
 				$analytics.eventTrack('click', { category: 'hotspot', label: hotspotId });
 				return $popupWindow.info({ locals });
 			}
@@ -35,6 +34,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 					// ...open the scene link editor:
 					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.hotSpot, SceneCtrl.hotSpots);
 				} else {
+					document.getElementById(`hotSpot_${hotspotId}`).emit('goto');
 					if (scope.hotSpot.linked && scope.hotSpot.feature) {
 						FeatureResource.get({
 							id: scope.hotSpot.feature
@@ -52,7 +52,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 				}
 			};
 			elem.on('click', elemClick);
-			
+
 			// Scope cleanup on $destroy
 			scope.$on('$destroy', () => {
 				elem.off('click', elemClick);

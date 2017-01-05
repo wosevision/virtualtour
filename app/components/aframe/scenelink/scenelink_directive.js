@@ -13,7 +13,6 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
 				$analytics.eventTrack('click', { category: 'scenelink', label: [data.parent.code, data.code].join('_') });
-				document.getElementById(`link_${sceneId}`).emit('goto');
 				$state.go('scene', { building: data.parent.code, scene: data.code });
 			}
 			// ...and error
@@ -33,6 +32,7 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
 				} else {
 					// ...otherwise just use the default scene link behavior
+					document.getElementById(`link_${sceneId}`).emit('goto');
 					SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler, errorHandler);
 				}
 			};
