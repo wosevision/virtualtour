@@ -31,8 +31,8 @@
 	      </md-button>
         <md-menu-content width="6" ng-switch="$ctrl.draftList.length">
           <md-menu-item ng-repeat="draft in $ctrl.draftList">
-            <md-button ng-click="$ctrl.loadDraft(draft)">{{ draft.updatedAt | date:'medium' }}</md-button>
-            <md-button ng-click="$ctrl.discardDraft(draft)" class="md-icon-button md-raised md-warn">
+            <md-button ng-click="$ctrl.loadDraft(draft)" ng-attr-id="draft_{{ ::draft.updatedAt }}">{{ draft.updatedAt | date:'medium' }}</md-button>
+            <md-button ng-click="$ctrl.discardDraft(draft)" class="md-icon-button md-raised md-warn" aria-label="Discard this draft" aria-labelledby="draft_{{ ::draft.updatedAt }}">
 			        <ng-md-icon icon="delete" size="22"></ng-md-icon>
 			      </md-button>
           </md-menu-item>

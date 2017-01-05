@@ -71,14 +71,16 @@ function SkyCtrl($scope, $element, $compile, UserSession) {
 		});
 	}
 
+	const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 	const getSettings = () => {
-		const mobile = (utils.isMobile || utils.device.isMobile)();
+		const mobile = (utils.isMobile || utils.device.isMobile)(),
+					lowRes = !UserSession.usage.resolution.val;
 		const settings = {
-			w: mobile ? 2048 : 4096,
-			h: mobile ? 1024 : 2048,
+			w: mobile||lowRes ? 2048 : 4096,
+			h: mobile||lowRes ? 1024 : 2048,
 			c: 'scale',
 			f: 'auto',
-			q: 250 / UserSession.usage.compression.val
+			q: COMPRESS_MAX - (COMPRESS_FACTOR * UserSession.usage.compression.val)
 		}
 		const output = [];
 		Object.keys(settings).forEach(key => {

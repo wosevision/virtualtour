@@ -66,6 +66,14 @@ const USER_DEFAULTS = {
   		step: 25,
   		label: 'Cache control',
   		labels: ['No cache', '250MB']
+  	},
+  	resolution: {
+  		val: 1,
+  		min: 0,
+  		max: 1,
+  		step: 1,
+  		label: 'Image resolution',
+  		labels: ['Low', 'High']
   	}
   }
 };
