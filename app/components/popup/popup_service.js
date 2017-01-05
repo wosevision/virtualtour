@@ -20,6 +20,11 @@ class $popupWindow {
 			this.$mdDialog.login()
 		);
 	}
+	info({locals = null} = {}) {
+		return this.$mdDialog.show(
+			this.$mdDialog.info({ locals })
+		);
+	}
 	toast(type, { message, action }) {
 		const toast = this.standardToast
       .textContent(message)

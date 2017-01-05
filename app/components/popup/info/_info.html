@@ -1,0 +1,21 @@
+<md-dialog class="login-message">
+	<md-dialog-content>
+		<md-content layout-padding>
+			<h2 class="md-display-1" ng-if="$ctrl.name">{{ ::$ctrl.name }}</h2>
+			<h2 class="md-subhead" ng-if="$ctrl.href"><a ng-href="{{ ::$ctrl.href }}">Learn more at {{ ::$ctrl.href }} &raquo;</a></h2>
+			<div ng-bind-html="$ctrl.desc" ng-if="$ctrl.desc">
+			</div>
+		</md-content>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<md-button ng-click="$ctrl.viewInTour()" class="md-primary md-raised" ng-if="$ctrl.type === 'feature'">
+			View in Virtual Tour
+		</md-button>
+		<md-button ng-click="$ctrl.viewOnMap()" class="md-primary md-raised" ng-if="$ctrl.type === 'hotspot'">
+			View on Campus Map
+		</md-button>
+		<md-button ng-click="$ctrl.closeDialog()" class="md-primary">
+			Close
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

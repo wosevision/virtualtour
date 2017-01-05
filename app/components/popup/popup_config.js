@@ -45,6 +45,20 @@ function PopupConfig($mdDialogProvider) {
 	  }
 	});
 
+	$mdDialogProvider.addPreset('info', {
+	  options() {
+	    return {
+	    	parent,
+	      templateUrl: 'popup/info/_info.html',
+	      controller: 'InfoCtrl',
+	      controllerAs: '$ctrl',
+	      bindToController: true,
+	      clickOutsideToClose: true,
+	      escapeToClose: true
+	    };
+	  }
+	});
+
 	$mdDialogProvider.addPreset('login', {
 	  options() {
 	    return {
