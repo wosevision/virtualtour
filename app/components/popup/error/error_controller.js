@@ -1,4 +1,4 @@
-function ErrorCtrl($scope, $state, $sce, $window, $mdSidenav, $mdDialog, ERROR_SUGGESTIONS) {
+function ErrorCtrl($state, $sce, $window, $mdSidenav, $mdDialog, ERROR_SUGGESTIONS) {
 	'ngInject';
 
 	this.suggestions = [];
@@ -9,22 +9,22 @@ function ErrorCtrl($scope, $state, $sce, $window, $mdSidenav, $mdDialog, ERROR_S
 		})
 	}
 
-	$scope.closeDialog = () => {
+	this.closeDialog = () => {
 		$state.reload();
 		$mdDialog.hide();
 	}
 
-	$scope.goToSettings = () => {
+	this.goToSettings = () => {
 		$mdDialog.hide();
 		$state.go('settings');
 		$mdSidenav('right').open();
 	}
 
-	$scope.refreshApp = () => {
+	this.refreshApp = () => {
 		$window.location.reload();
 	}
 
-	$scope.stopProp = $event => {
+	this.stopProp = $event => {
 		$event.stopPropagation();
 	}
 

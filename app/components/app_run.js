@@ -5,7 +5,7 @@ function AppRun(
   'ngInject';
   
   $rootScope.$on('handler:exception', function( event, error ) {
-	  let locals = {
+	  const locals = {
 			type: error.cause,
 			message: error.exception.message,
 			suggest: [0, 2, 1]
@@ -35,12 +35,28 @@ function AppRun(
       $rootScope.pageTitle += ' | ';
       $rootScope.pageTitle += toState.label;
     }
-    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams)
+    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
   });
 
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
     console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
+    const locals = {
+    	type: 'Navigation issue!',
+    	message: error.message || error.msg,
+    	suggest: [4, 3]
+    }
+		$popupWindow.error({locals});
   });
+
+  $rootScope.$on('$stateNotFound', (event, unfoundState, fromState, fromParams) => { 
+    const locals = {
+    	type: 'Page not found!',
+    	message: `The page associated with (${unfoundState.to} : ${unfoundState.toParams}) cannot be located.`,
+    	suggest: [3]
+    }
+		$popupWindow.error({locals});
+    console.log('STATE NOT FOUND', unfoundState, fromState, fromParams);
+	});
 
   console.log('starting auth init...')
   UserAuth.initAuth().then(user => {

@@ -11,7 +11,7 @@ function PopupConfig($mdDialogProvider) {
 	    	parent,
 	      templateUrl: 'popup/error/_error.html',
 	      controller: 'ErrorCtrl',
-	      controllerAs: 'error',
+	      controllerAs: '$ctrl',
 	      bindToController: true,
 	      clickOutsideToClose: true,
 	      escapeToClose: true
