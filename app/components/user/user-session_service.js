@@ -46,8 +46,8 @@ class UserSession {
 			 * Looks inside SettingsFactory for user data matching the pattern
 			 * defined in USER_DEFAULTS; store in temporary vars.
 			 */
-			const _settings = this.SettingsFactory.get('thurs'),
-						_usage = this.SettingsFactory.get('weds');
+			const _settings = this.SettingsFactory.get('settings'),
+						_usage = this.SettingsFactory.get('usage');
 
 			/**
 			 * Init a 'blank' user with the required settings properties to
@@ -85,8 +85,8 @@ class UserSession {
 		  	console.log('saved settings to user!');
 			});
 		} else {
-			this.SettingsFactory.set('thurs', this.settings);
-			this.SettingsFactory.set('weds', this.usage);
+			this.SettingsFactory.set('settings', this.settings);
+			this.SettingsFactory.set('usage', this.usage);
 
 	  	console.log('saved settings to local!', this.user);
 		}

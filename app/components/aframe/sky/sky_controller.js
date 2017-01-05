@@ -59,7 +59,7 @@ function SkyCtrl($scope, $element, $compile, UserSession) {
 		const assetId = skyUrl.split('scenes/panorama/')[1].split('.')[0];
 
 		// return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
-		return $compile(`<img src="http://res.cloudinary.com/uoit-virtual-tour/image/upload/${ getSettings() }/v${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)($scope, clone => {
+		return $compile(`<img src="//res.cloudinary.com/uoit-virtual-tour/image/upload/${ getSettings() }/v${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)($scope, clone => {
       clone.on('load', event => {
         $scope.$apply(() => {
 					this.$assetsEl.append(clone);
