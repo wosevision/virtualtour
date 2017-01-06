@@ -1,6 +1,7 @@
 const aframeSky = {
   bindings: {
-    sky: '<'
+    sky: '<',
+    preload: '<?'
   },
   require: {
   	SceneCtrl: '^aframeScene'

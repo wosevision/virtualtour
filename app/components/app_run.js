@@ -19,8 +19,7 @@ function AppRun(
 
   $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
     console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
-    const authorizedRoles = toState.data.authorizedRoles;
-    if (!UserAuth.isAuthorized(authorizedRoles)) {
+    if (toState.data && toState.data.roles && !UserAuth.isAuthorized(toState.data.roles)) {
       event.preventDefault();
       if (UserAuth.isAuthenticated()) {
         // user is not allowed

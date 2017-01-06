@@ -1,7 +1,7 @@
 import { isDefined } from 'angular';
 import { utils } from 'aframe';
 
-function SkyCtrl($scope, $element, $compile, UserSession) {
+function SkyCtrl($scope, $element, $compile, UserSession, CBuffer) {
 	'ngInject';
 
 	/**
@@ -45,6 +45,24 @@ function SkyCtrl($scope, $element, $compile, UserSession) {
 		});
 	}
 
+	const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
+	const getSettings = () => {
+		const mobile = (utils.isMobile || utils.device.isMobile)(),
+					lowRes = !UserSession.usage.resolution.val;
+		const settings = {
+			w: mobile||lowRes ? 2048 : 4096,
+			h: mobile||lowRes ? 1024 : 2048,
+			c: 'scale',
+			f: 'auto',
+			q: COMPRESS_MAX - (COMPRESS_FACTOR * UserSession.usage.compression.val)
+		}
+		const output = [];
+		Object.keys(settings).forEach(key => {
+			output.push(`${key}_${settings[key]}`)
+		})
+		return output.join(',');
+	}
+
 	/**
 	 * Compiles a new image asset with requested code
 	 * Adds element to assets and ID to list to prevent reload
@@ -71,24 +89,6 @@ function SkyCtrl($scope, $element, $compile, UserSession) {
 		});
 	}
 
-	const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
-	const getSettings = () => {
-		const mobile = (utils.isMobile || utils.device.isMobile)(),
-					lowRes = !UserSession.usage.resolution.val;
-		const settings = {
-			w: mobile||lowRes ? 2048 : 4096,
-			h: mobile||lowRes ? 1024 : 2048,
-			c: 'scale',
-			f: 'auto',
-			q: COMPRESS_MAX - (COMPRESS_FACTOR * UserSession.usage.compression.val)
-		}
-		const output = [];
-		Object.keys(settings).forEach(key => {
-			output.push(`${key}_${settings[key]}`)
-		})
-		return output.join(',');
-	}
-
 	const setSky = sky => {
 		
 		this.sky = sky;
@@ -103,6 +103,11 @@ function SkyCtrl($scope, $element, $compile, UserSession) {
       });
     } else {
       this.loadedSky = `#${skyId}`;
+    }
+    if (UserSession.usage.preloading.val > 0 && this.preload) {
+    	this.preload.forEach(link => {
+    		console.log(link.scene);
+    	});
     }
 	}
 
