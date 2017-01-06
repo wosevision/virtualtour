@@ -1,14 +1,25 @@
-// import { isArray } from 'angular';
 import { isArray, isObject } from 'angular';
 import { pick } from 'lodash';
 
+/** @function Shorthand helper for getting all own property names of object */
 function getProps(obj) {
 	return Object.getOwnPropertyNames(obj);
 }
 
+/**
+ * Scene service class
+ * @memberOf app.components.aframe.scene
+ */
 class $aframeScene {
-	//
-	// CONSTRUCTOR
+	/**
+	 * Initialize dependencies; convert EDITOR_MESSAGES constant
+	 * into $mdToast configs for use in instance methods
+	 * @param  {object} $timeout        
+	 * @param  {object} $mdToast        
+	 * @param  {object} $tourApi        Tour $resource factory service
+	 * @param  {object} DraftResource   Draft $resource factory
+	 * @param  {object} EDITOR_MESSAGES Constant to define toast configs
+	 */
 	constructor(
 		$timeout, $mdToast,
 		$tourApi, DraftResource,
@@ -28,8 +39,20 @@ class $aframeScene {
 			this.toasts[type] = toast;
 		});
 	}
-	//
-	// GETTERS / SETTERS
+	/**
+	 * Getter/setter for internal scene data
+	 * @type {object}
+	 * @example
+	 * {
+	 *   _id: '583f17cfd2cd0c0400072d9c',
+	 *   parent: '57a8e38b12ad99fe889c95f3',
+	 *   code: '2b',
+	 *   name: 'Atrium 2B',
+	 *   hotSpots: [ ... ],
+	 *   sceneLinks: [ ... ],
+	 *   panorama: { ... }
+	 * }
+	 */
 	get scene() {
 		if (this.sceneData) {
 			return this.sceneData;
@@ -38,6 +61,12 @@ class $aframeScene {
 	set scene(sceneData) {
 		this.sceneData = this.lastPublished = sceneData; // { _id, sceneLinks, hotSpots, sky };
 	}
+	/**
+	 * Getter/setter for formatting sky URL from sceneData
+	 * @type {string}
+	 * @example
+	 * 'http://res.cloudinary.com/uoit-virtual-tour/image/upload/v1480529929/scenes/panorama/k23dnerigdctblxgq5vm.jpg'
+	 */
 	get sky() {
 		return this.sceneData ? [ this.sceneData.panorama.version, this.sceneData.panorama.public_id].join('/') : null;
 	}

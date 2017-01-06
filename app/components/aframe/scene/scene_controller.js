@@ -1,6 +1,19 @@
+/** @memberOf app.components.aframe.scene */
 import { isDefined } from 'angular';
 
-function SceneCtrl($scope, $element, $compile, $aframeScene) {
+/**
+ * The scene controller manages all top-level functionality
+ * of the scene component; it is responsible for initializing
+ * the DOM elements of the scene and updating them when the
+ * $aframeScene service changes.
+ * 
+ * @namespace SceneCtrl
+ * @memberOf app.components.aframe.scene
+ * @param {object} $scope       Current scope
+ * @param {object} $element     <aframe-scene> outer elements
+ * @param {object} $aframeScene Scene service dependency
+ */
+function SceneCtrl($scope, $element, $aframeScene) {
 	'ngInject';
 
 	/**
@@ -18,10 +31,10 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	const skyLoadedList = [];
 
   /**
-   * __$onInit__
 	 * Store JQLite-wrapped <a-scene> and <a-assets>
 	 * Init internal check for right click event
-   * 
+   *
+   * @memberOf SceneCtrl
    * @return {void}		No return
    */
   this.$onInit = () => {
@@ -42,10 +55,10 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	}
 
   /**
-   * __$doCheck__
    * Checks $aframeScene's current scene object each digest
    * Proceeds if scene is defined; calls setScene()
    * 
+   * @memberOf SceneCtrl
    * @return {void}				No return
    */
   this.$doCheck = () => {

@@ -1,12 +1,14 @@
 /**
- * A-FRAME SCENE DIRECTIVE
- * Converts arrays of standardized objects to A-Frame
- * compatible DOM elements via the aframeEntity directive
- * and manages their lifecycles in the context of a scene
- * 
- * @param  {Function} $compile     DI: compiler service
- * @param  {Function} $aframeScene DI: scene service
- * @return {Object}                Scene definition object
+ * The aframeScene component definition initializes
+ * the scene's bindings for its child components as
+ * well as a transclusion point for the server-rendered
+ * scene editor.
+ *
+ * @memberOf app.components.aframe.scene
+ * @type {object}
+ * @prop {object} bindings   Interpolated binding for the sky component, one-way bindings for sceneLinks, hotSpots and mobile
+ * @prop {object} transclude Slot for scene editor if allowed by server
+ * @return {object} 				 Scene definition object
  */
 const aframeScene = {
     bindings: {

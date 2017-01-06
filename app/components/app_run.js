@@ -1,3 +1,7 @@
+/**
+  * @function
+  * @description Application run block; initializes $state event listeners, error handling and user auth
+  */
 function AppRun(
 	$rootScope, $state,
 	$popupWindow, UserAuth,

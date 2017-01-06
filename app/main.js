@@ -67,7 +67,6 @@ const requires = [
   'app.components'
 ];
 
-// mount on window for testing
 angular.module('app', requires);
 angular.module('app').config(config);
 angular.module('app').run(run);
