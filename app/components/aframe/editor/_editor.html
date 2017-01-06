@@ -1,7 +1,7 @@
 <md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="right">
   <md-fab-trigger class="align-with-text">
     <md-button aria-label="Open scene editor menu" class="md-fab md-primary">
-		  <md-tooltip md-direction="right" md-autohide ng-if="!(mc.mobile||!$root.appSettings.USER._SHOW_TOOLTIPS.val)">
+		  <md-tooltip md-direction="right" md-autohide ng-if="!(mc.mobile||!$root.appSettings.settings.showHints.val)">
 		    Open scene editor menu
 		  </md-tooltip>
       <ng-md-icon icon="edit"></ng-md-icon>
@@ -31,8 +31,8 @@
 	      </md-button>
         <md-menu-content width="6" ng-switch="$ctrl.draftList.length">
           <md-menu-item ng-repeat="draft in $ctrl.draftList">
-            <md-button ng-click="$ctrl.loadDraft(draft)">{{ draft.updatedAt | date:'medium' }}</md-button>
-            <md-button ng-click="$ctrl.discardDraft(draft)" class="md-icon-button md-raised md-warn">
+            <md-button ng-click="$ctrl.loadDraft(draft)" ng-attr-id="draft_{{ ::draft.updatedAt }}">{{ draft.updatedAt | date:'medium' }}</md-button>
+            <md-button ng-click="$ctrl.discardDraft(draft)" class="md-icon-button md-raised md-warn" aria-label="Discard this draft" aria-labelledby="draft_{{ ::draft.updatedAt }}">
 			        <ng-md-icon icon="delete" size="22"></ng-md-icon>
 			      </md-button>
           </md-menu-item>

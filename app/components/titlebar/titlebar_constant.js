@@ -1,4 +1,25 @@
 const TITLEBAR_OPTS = {
+	register: {
+		active: true,
+		label: 'Register now',
+		tooltip: false,
+		icon: ['person_outline', 'person_outline'],
+		class: 'cta-button bg-pink'
+	},
+	schedule: {
+		active: true,
+		label: 'Schedule visit',
+		tooltip: false,
+		icon: ['add_alarm', 'add_alarm'],
+		class: 'cta-button bg-green'
+	},
+	apply: {
+		active: true,
+		label: 'Apply online',
+		tooltip: false,
+		icon: ['bookmark_outline', 'bookmark_outline'],
+		class: 'cta-button bg-orange'
+	},
 	condense: {
 		active: true,
 		label: 'Toolbar size',

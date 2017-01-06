@@ -2,7 +2,8 @@
 .title-bar {
 	// min-height: 65px;
 	border-top: solid 5px $uoitdarkblue;
-	// z-index: 100;
+	width: 100%;
+	z-index: 100;
 	.logo-shield {
 		height: 36px;
 	}
@@ -13,22 +14,9 @@
 		padding: 0;
 		height: auto;
 	}
-	.md-button.menu-button {
-		font-family: $font-family-bold;
-	}
-	.md-button.icon-button {
-		margin: 0;
-    min-width: 0;
-		height: 64px;
-		padding-left: 18px;
-		padding-right: 18px;
-		border-left: solid 3px white;
-		&.active {
-			box-shadow: inset 0 -3px 0 $uoitlightblue;
-		}
-	}
 	// MOBILE OVERWRITES
 	&.is-mobile {
+		position: fixed;
 		md-toolbar-filler {
 			width: 48px;
 		}
@@ -44,6 +32,43 @@
 			height: 60px;
 			padding-left: 18px;
 			padding-right: 18px;
+		}
+	}
+}
+
+title-bar-button {
+	&.bg-orange {
+		margin-right: 14px;
+	}
+	.md-button.menu-button {
+		font-family: $font-family-bold;
+	}
+	.md-button.icon-button {
+		margin: 0;
+    min-width: 0;
+		height: 64px;
+		padding-left: 18px;
+		padding-right: 18px;
+		border-left: solid 3px white;
+		&.active {
+			box-shadow: inset 0 -3px 0 $uoitlightblue;
+		}
+	}
+	.md-button.cta-button {
+			box-shadow: none !important;
+		ng-md-icon {
+			margin-right: 0.5rem;
+		}
+		// SOME COLOUR LOGIC: LOOP THROUGH BG COLOURS
+		$uoit-colors-list: pink orange green;
+		$uoit-colors: $uoitpink $uoitorange $uoitgreen;
+		@for $i from 1 through length($uoit-colors-list) {
+	    &.bg-#{nth($uoit-colors-list, $i)} {
+	    	color: nth($uoit-colors, $i) !important;
+	    	&.active {
+			    box-shadow: inset 0 -3px 0 nth($uoit-colors, $i);
+	    	}
+		  }
 		}
 	}
 }
@@ -99,25 +124,4 @@
 	.is-mobile & {
 		display: none;
 	}
-}
-
-.md-button.cta-button {
-	height: 64px;
-	margin: 0;
-	font-family: $font-family-bold;
-	// SOME COLOUR LOGIC: LOOP THROUGH BG COLOURS
-	$uoit-colors-list: pink orange green;
-	$uoit-colors: $uoitpink $uoitorange $uoitgreen;
-	@for $i from 1 through length($uoit-colors-list) {
-    &.bg-#{nth($uoit-colors-list, $i)} {
-    	background-color: nth($uoit-colors, $i);
-			// &:hover, &:focus {
-			// 	background-color: tint(nth($uoit-colors, $i), 10%) !important;
-			// }
-			// &:active {
-			// 	background-color: tint(nth($uoit-colors, $i), 20%) !important;
-			// }
-	  }
-	}
-
 }

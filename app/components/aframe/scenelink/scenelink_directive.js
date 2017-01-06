@@ -1,4 +1,4 @@
-function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
+function sceneLink($state, $popupWindow, $tourApi, $analytics) {
   'ngInject';
   return {
     restrict: 'A',
@@ -13,7 +13,6 @@ function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
 				$analytics.eventTrack('click', { category: 'scenelink', label: [data.parent.code, data.code].join('_') });
-				document.getElementById(`link_${sceneId}`).emit('goto');
 				$state.go('scene', { building: data.parent.code, scene: data.code });
 			}
 			// ...and error
@@ -22,7 +21,7 @@ function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
 					type: 'Scene load error!',
 					message: 'Looks like this scene link is broken – darn.'
 		  	}
-				$ErrorReporter.error({ locals });
+				$popupWindow.error({ locals });
 			}
 			//
 			// Listen for clicks on scene link element
@@ -33,6 +32,7 @@ function sceneLink($state, $ErrorReporter, $tourApi, $analytics) {
 					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
 				} else {
 					// ...otherwise just use the default scene link behavior
+					document.getElementById(`link_${sceneId}`).emit('goto');
 					SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler, errorHandler);
 				}
 			};

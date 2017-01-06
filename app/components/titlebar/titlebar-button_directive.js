@@ -6,6 +6,7 @@ function titleBarButton($log) {
     scope: {
     	onClick: '&',
     	label: '@',
+			class: '@',
     	active: '<',
 			tooltip: '<',
 			icon: '<'

@@ -1,0 +1,25 @@
+.error-message {
+	max-width: 650px;
+	md-tabs-wrapper {
+		display: none;
+	}
+	md-select {
+		margin: 0;
+	}
+	md-content {
+		h2 {
+			margin-top: 16px;
+			margin-bottom: 0px;
+		}
+		p {
+			margin-bottom: 32px;
+		}
+	}
+	.md-list-item-text:not(:last-child) {
+		padding-right: 32px;
+	}
+}
+
+.login-message {
+	min-width: 40%;
+}

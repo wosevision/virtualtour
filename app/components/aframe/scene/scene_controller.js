@@ -1,6 +1,19 @@
-import { isUndefined } from 'angular';
+/** @memberOf app.components.aframe.scene */
+import { isDefined } from 'angular';
 
-function SceneCtrl($scope, $element, $compile, $aframeScene) {
+/**
+ * The scene controller manages all top-level functionality
+ * of the scene component; it is responsible for initializing
+ * the DOM elements of the scene and updating them when the
+ * $aframeScene service changes.
+ * 
+ * @namespace SceneCtrl
+ * @memberOf app.components.aframe.scene
+ * @param {object} $scope       Current scope
+ * @param {object} $element     <aframe-scene> outer elements
+ * @param {object} $aframeScene Scene service dependency
+ */
+function SceneCtrl($scope, $element, $aframeScene) {
 	'ngInject';
 
 	/**
@@ -18,10 +31,10 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 	const skyLoadedList = [];
 
   /**
-   * __$onInit__
 	 * Store JQLite-wrapped <a-scene> and <a-assets>
 	 * Init internal check for right click event
-   * 
+   *
+   * @memberOf SceneCtrl
    * @return {void}		No return
    */
   this.$onInit = () => {
@@ -31,79 +44,28 @@ function SceneCtrl($scope, $element, $compile, $aframeScene) {
 		this._rightClick = false;
   }
 
-	/**
-	 * Compiles a new <a-sky> and binds to scope.sky
-	 * Flags sky element as loaded
-	 * 
-	 * @param  {string} sky ID for asset reference
-	 * @return {Element}    JQLite-wrapped <a-sky> element
-	 */
-	const loadSky = () => {
-		return $compile('<a-sky ng-src="{{ $ctrl.loadedSky }}" />')($scope, clone => {
-			this.$sceneEl.append(clone);
-			skyElLoaded = true;
-			return clone;
-		});
-	}
-
-	/**
-	 * Compiles a new image asset with requested code
-	 * Adds element to assets and ID to list to prevent reload
-	 * 
-	 * @param  {string}   asset ID for asset reference
-	 * @param  {Function} cb    Callback after load
-	 * @return {Element}        JQLite-wrapped <img> element
-	 */
-	const loadSkyAsset = (skyUrl, cb) => {
-
-		// const assetPath = `api/panoramas/${ asset.split('_').join('/') }.jpg`;
-		const assetId = skyUrl.split('scenes/panorama/')[1].split('.')[0];
-
-		// return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
-		return $compile(`<img src="http://res.cloudinary.com/uoit-virtual-tour/image/upload/w_4096,h_2048,c_scale,f_auto,q_60/v${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)($scope, clone => {
-      clone.on('load', event => {
-        $scope.$apply(() => {
-					this.$assetsEl.append(clone);
-					skyLoadedList.push(assetId);
-					cb(assetId);
-        });
-				return clone;
-      });
-		});
-	}
-
 	const setScene = (scene, sky) => {
 		
 		const { sceneLinks, hotSpots } = scene;
-		this.sky = sky;
+
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
-  	
-		const skyId = sky.split('scenes/panorama/')[1].split('.')[0];
-  	if (!skyLoadedList.includes(skyId)) {
-      $skyAsset = loadSkyAsset(this.sky, () => {
-        this.loadedSky = `#${skyId}`;
-        if(!skyElLoaded) {
-          $sky = loadSky();
-        }
-      });
-    } else {
-      this.loadedSky = `#${skyId}`;
-    }
+
     this.checkForDraft&&this.checkForDraft();
 	}
 
   /**
-   * __$doCheck__
    * Checks $aframeScene's current scene object each digest
    * Proceeds if scene is defined; calls setScene()
    * 
+   * @memberOf SceneCtrl
    * @return {void}				No return
    */
   this.$doCheck = () => {
-  	if (!isUndefined($aframeScene.scene)) {
+  	if (isDefined($aframeScene.scene)) {
 			if (!this.sky || $aframeScene.sky !== this.sky) {
-	  		setScene($aframeScene.scene, $aframeScene.sky);
+				this.sky = $aframeScene.sky;
+	  		setScene($aframeScene.scene);
 	  	}
   	}
   }

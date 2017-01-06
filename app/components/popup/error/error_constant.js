@@ -40,13 +40,21 @@ Clear your <md-select
 		}
 	},{
 		title: 'Wait a little while and try again',
-		desc: 'The server is busy or not responding; this usually resolves itself after a short amount of time.',
+		desc: 'If the server is busy or not responding, it usually resolves itself after a short amount of time.',
 		icon: 'hourglass_empty'
 	},{
 		title: 'Adjust the tour data usage settings',
 		desc: 'If the tour is taking too long to load, you can customize its loading behaviour to better suit your situation.',
 		icon: 'data_usage',
 		goToSettings: true
+	},{
+		title: 'Double check the URL',
+		desc: 'Is the address of the page what you expected it to be? Ensure it starts with https:// and free of spelling errors.',
+		icon: 'hourglass_empty'
+	},{
+		title: 'Refresh the page',
+		desc: 'If the page has encountered a minor issue but cannot proceed past it, refreshing the browser will often solve the issue.',
+		icon: 'hourglass_empty'
 	}
 ];
 

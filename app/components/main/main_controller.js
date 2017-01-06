@@ -2,13 +2,14 @@ import { utils } from 'aframe';
 import { element, isUndefined } from 'angular';
 
 function MainCtrl(
-	$rootScope, $scope, $state, $timeout, $log, // ng deps
-	$mdComponentRegistry, $mdSidenav, $mdToast, $mdMedia, $mdDialog, // md deps
-	$aframeScene, // aframe
-	BUTTONBAR_VIEWS, TITLEBAR_OPTS, // consts
-	nzTour
+	$scope, $state, $timeout, // ng deps
+	$mdSidenav, $mdMedia, // md deps
+	$popupWindow, UserSession, // my libs
+	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
 ) {
   'ngInject';
+  const WELCOME_MSG_DELAY = 500; //ms
+  const SETTINGS_MSG_DELAY = 1000; //ms
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
@@ -23,86 +24,88 @@ function MainCtrl(
     true
   );
 
-  const settingsToast = () => {
-    const toast = $mdToast.simple()
-      .textContent('Data usage settings auto-configured to your device!')
-      .action('CHANGE SETTINGS')
-      .highlightAction(true)
-      .highlightClass('md-warn')
-      .position('bottom left');
-    $mdToast.show(toast).then(response => {
-      if ( response == 'ok' ) {
+	const goToSettings = response => {
+		switch (response) {
+			case 'ok':
         $state.go('settings');
         $mdSidenav('right').open();
-      }
-    });
+			default:
+				break;
+		}
+	}
+
+  const showSettingsMsg = () => {
+  	const autoconfig = UserSession.usage.auto;
+  	if (autoconfig && autoconfig.val) {
+	    $popupWindow.toast('primary', {
+	    	message: 'Data usage settings auto-configured to your device!',
+	    	action: 'Change settings'
+	    }).then(response => {
+	    	goToSettings(response);
+	    });
+  	} else {
+	    $popupWindow.toast('warn', {
+	    	message: 'Automatic data usage is currently disabled, but can be enabled in Settings.',
+	    	action: 'Show me how'
+	    }).then(response => {
+	    	goToSettings(response);
+	    });
+	  }
   }
 
-  this.welcomeMsg = function() {
+  const showWelcomeMsg = () => {
+		$popupWindow.welcome()
+	    .then( answer => (answer != 'tour') && showSettingsMsg() )
+	    .catch( () => showSettingsMsg() );
+  }
 
-    $mdDialog.show({
-      controller: 'DialogCtrl',
-      templateUrl: 'welcome/_welcome-dialog.html',
-      parent: element(document.body),
-      // targetEvent: ev,
-      clickOutsideToClose: true,
-      openFrom: {
-      	top: 18,
-      	left: 18,
-      	width: 36,
-      	height: 60
-      },
-      closeTo: {
-      	top: 18,
-      	left: 18,
-      	width: 36,
-      	height: 60
-      }
-    })
-    .then(
-    	answer => (answer != 'tour') && settingsToast()
-	  ).catch(
-    	() => settingsToast()
-	  );
-  };
+  const settingsLoaded = $scope.$watch(() => UserSession.settings, userSettings => {
+  	if (!isUndefined(userSettings)) {
+  		console.log('main controller applying settings')
+		  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
-  const WELCOME_DELAY = 500; //ms
-  $timeout(
-  	() => ($rootScope.appSettings.USER._SHOW_WELCOME.val && this.welcomeMsg()),
-	  WELCOME_DELAY
-	);
-
-  this.titlebar = {
-		options: TITLEBAR_OPTS,
-		clickHandlers: {
-			config: () => {
-      	$mdSidenav('config').toggle();
-			},
-			right: () => {
-		    this.toolbar.toggle();
-      	this.titlebar.options.right.active = this.toolbar.isOpen;
-			},
-			condense: () => {
-		    this.toolbar.condense();
-      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+			if (showWelcome.val) {
+			  $timeout(showWelcomeMsg, WELCOME_MSG_DELAY);
+			} else {
+			  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
 			}
-		} 
-  }
 
-  this.toolbar = {
-  	views: BUTTONBAR_VIEWS,
-    isOpen: $rootScope.appSettings.USER._TOOLBAR_OPEN.val,
-    isCondensed: $rootScope.appSettings.USER._TOOLBAR_CONDENSED.val,
-    toggle() {
-  		this.isOpen = !this.isOpen;
-  		this.isOpen&&$mdSidenav('right').close();
-    },
-    condense() {
-      !this.isOpen&&this.toggle();
-      this.isCondensed = !this.isCondensed;
-      return this.isCondensed;
-    }
-  }
+		  this.titlebar = {
+				options: TITLEBAR_OPTS,
+				clickHandlers: {
+					config: () => {
+		      	$mdSidenav('config').toggle();
+					},
+					right: () => {
+				    this.toolbar.toggle();
+		      	this.titlebar.options.right.active = this.toolbar.isOpen;
+					},
+					condense: () => {
+				    this.toolbar.condense();
+		      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+					}
+				} 
+		  }
+
+		  this.toolbar = {
+		  	views: BUTTONBAR_VIEWS,
+		    isOpen: toolbarOpen.val,
+		    isCondensed: toolbarCondensed.val,
+		    toggle() {
+		  		this.isOpen = !this.isOpen;
+		  		this.isOpen&&$mdSidenav('right').close();
+		    },
+		    condense() {
+		      !this.isOpen&&this.toggle();
+		      this.isCondensed = !this.isCondensed;
+		      return this.isCondensed;
+		    }
+		  }
+
+		  settingsLoaded();
+  	}
+  });
+
 }
 
 export default {

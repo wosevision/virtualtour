@@ -1,4 +1,4 @@
-import angular from 'angular';
+import * as angular from 'angular';
 
 // import io from 'socket.io-client';
 // window.io = io;
@@ -7,6 +7,7 @@ import angular from 'angular';
 
 // angular modules
 import 'angular-ui-router';
+import '../node_modules/angular-ui-router/commonjs/ng1/legacy/stateEvents'; // temporary: deprecated feature
 import 'angular-animate';
 import 'angular-resource';
 import 'angular-aria';
@@ -20,6 +21,7 @@ import 'angular-loading-bar';
 // import 'angular-socket-io';
 import 'angulartics';
 import 'angulartics-google-analytics';
+import 'angular-cbuffer';
 import 'ngmap';
 import 'ng-wig';
 import 'nz-tour';
@@ -46,6 +48,7 @@ import './components/index';
 const requires = [
   // 'btford.socket-io',
   'ui.router',
+  'ui.router.state.events', // temporary: deprecated feature
   'ngAnimate',
   'ngResource',
   'ngAria',
@@ -58,6 +61,7 @@ const requires = [
   'angular-loading-bar',
   'angulartics',
   'angulartics.google.analytics',
+	'cbuffer',
   'ngMap',
   'ngWig',
   'nzTour',
@@ -67,8 +71,7 @@ const requires = [
   'app.components'
 ];
 
-// mount on window for testing
-window.app = angular.module('app', requires);
+angular.module('app', requires);
 angular.module('app').config(config);
 angular.module('app').run(run);
 angular.bootstrap(document, ['app'], {

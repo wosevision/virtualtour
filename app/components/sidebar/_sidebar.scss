@@ -1,11 +1,11 @@
 .md-sidenav-backdrop {
   background-color: #003C71;
-  top: 65px;
+  top: 69px;
 }
 
 .md-sidenav-right,
 .md-sidenav-left {
-	top: 65px;
+	top: 69px;
 }
 
 .md-sidenav-right {
@@ -17,9 +17,9 @@
   overflow: visible;
 	.toolbar-open & {	
 		// width: calc(30% - 7.25rem);
-    left: calc(100% - 7.25rem);
+    left: calc(100% - 123px);
 		&.map-open {
-			width: calc(100% - 7.25rem);
+			width: calc(100% - 123px);
 		}
 	}
 	.toolbar-condensed & {
@@ -33,10 +33,12 @@
 	&.is-mobile {
 	  top: 0;
 		left: 100%;
-		width: 40%;
 		&:not(.is-landscape) {
-			padding-top: 65px;
+			padding-top: 56px;
 			width: 100%;
+		}
+		ui-view {
+			max-width: none;
 		}
 	}
 	&.map-open {

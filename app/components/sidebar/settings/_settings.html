@@ -1,72 +1,75 @@
-<md-content layout="column" class="user-dashboard" layout-fill>
+<md-content layout="column" layout-align="start center" class="user-dashboard" layout-fill>
 
-<!-- 	<md-card flex="nogrow" id="user_dashboard">
-	  <img ng-src="images/north_bg.jpg" class="md-card-image" alt="image caption">
-
-	  <md-card-header layout-align="space-around center">
-	    <md-card-avatar>
-	      <img class="md-user-avatar" ng-src="{{ ::user.avatar.url }}">
-	    </md-card-avatar>
-	    <md-card-header-text>
-	      <span class="md-headline">{{ ::user.name.first }} {{ ::user.name.last }}</span>
-	      <span class="md-subhead">{{ ::user.bannerId }}</span>
-	    </md-card-header-text>
+	<md-card id="user_dashboard" layout="column" layout-align="center center" flex="noshrink" ng-if="!$ctrl.isLoggedIn()">
+	  <md-card-header layout-align="space-around center" class="signin-msg">
+	    <md-card-content layout="column">
+	      <p class="md-headline"><strong>Sign in or register</strong> to save your user preferences permanently!</p>
+	      <p class="md-subtitle">Preferences will still be saved without a user but will be limited to your browser session.</p>
+	      <md-button ng-click="$ctrl.promptLogin()" class="md-raised md-primary">Sign in</md-button>
+	      <md-button href="/keystone/signin" target="_self" class="md-primary">Register</md-button>
+	    </md-card-content>
 	  </md-card-header>
+	</md-card>
 
+	<md-card id="user_dashboard" flex="none" ng-if="$ctrl.isLoggedIn()">
+		<img ng-src="images/north_bg.jpg" alt="" class="md-card-image" />
+	  <md-card-header layout-align="space-around center">
+	    <md-card-avatar><img ng-src="{{ $ctrl.user.avatar.secure_url }}" class="md-user-avatar"/></md-card-avatar>
+	    <md-card-header-text><span class="md-headline">{{ [$ctrl.user.name.first, $ctrl.user.name.last].join(' ') }}</span><span class="md-subhead">{{ $ctrl.user.bannerId }}</span></md-card-header-text>
+	  </md-card-header>
 	  <md-card-actions layout="row" layout-align="start center">
-	    <md-button class="md-raised md-primary">Admin</md-button>
-	    <md-button class="md-raised">Log out</md-button>
+      <md-button aria-label="go to admin" class="md-primary md-raised" ng-if="$ctrl.user.isAdmin || $ctrl.user.isEditor" href='/keystone', target='_self'>
+        Admin
+      </md-button>
+	    <md-button ng-click="$ctrl.logout()" class="md-raised">Sign out</md-button>
 	    <md-card-icon-actions>
-	      <md-button class="md-icon-button md-primary" aria-label="edit profile">
+	      <md-button aria-label="edit profile" class="md-icon-button md-primary">
 	        <ng-md-icon icon="edit"></ng-md-icon>
 	      </md-button>
 	    </md-card-icon-actions>
 	  </md-card-actions>
-
-	  <md-card-content>
-	    <p class="md-subhead">
-	     Card content
-	    </p>
-	  </md-card-content> -->
-		<ng-include src="'/dashboard'" scope="this" onload=""></ng-include>
-	<!-- </md-card> -->
+	</md-card>
 
 	<md-card flex="nogrow" id="user_settings">
-  	<v-accordion class="vAccordion--default" multiple flex>
+  	<v-accordion class="vAccordion--default" multiple flex control="accordion">
 		  <!-- add expanded attribute to open the section -->
-		  <v-pane expanded>
+		  <v-pane>
 		    <v-pane-header>
   				App settings
 		    </v-pane-header>
 		    <v-pane-content>
 					<md-list>
-					  <md-list-item ng-repeat="setting in appSettings.USER">
+					  <md-list-item ng-repeat="(key, setting) in $ctrl.settings">
 					    <ng-md-icon icon="{{::setting.icon}}" ng-attr-style="fill: {{ setting.val? '#003c71':'#cccccc'}}" flex="nogrow"></ng-md-icon>
 					    <span flex>{{ ::setting.label }}</span>
-					    <md-switch class="md-primary" ng-model="setting.val" ng-change="syncUser()" aria-label="{{ ::setting.label }}"></md-switch>
+					    <md-switch class="md-primary" ng-model="$ctrl.settings[key].val" ng-change="$ctrl.updateSettings()" aria-label="{{ ::setting.label }}"></md-switch>
 					  </md-list-item>
 					</md-list>
 		    </v-pane-content>
 		  </v-pane>
 
-		  <v-pane expanded>
+		  <v-pane>
 		    <v-pane-header>
 		      Data usage
 		    </v-pane-header>
 
 		    <v-pane-content>
-		    	<div layout="row" layout-padding>
+		    	<div layout="column" layout-padding>
 						
-						<label class="text-center" ng-repeat="setting in appSettings.DATA" flex>
+						<label ng-repeat="(key, setting) in $ctrl.usage" flex>
+					    <md-checkbox ng-if="key === 'auto'" class="md-primary" ng-model="setting.val" ng-change="$ctrl.updateUsage()" aria-label="Auto-detect optimum settings">
+		            Auto-detect optimum settings
+		          </md-checkbox>
 							{{ ::setting.label }}
-				    	<md-slider-container flex>
-					      <h5>{{ ::setting.labels[1] }}</h5>
-					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-vertical md-discrete></md-slider>
+				    	<md-slider-container flex ng-if="key !== 'auto'" ng-disabled="$ctrl.usage.auto.val">
 					      <h5>{{ ::setting.labels[0] }}</h5>
+					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-discrete ng-change="$ctrl.updateUsage()"></md-slider>
+					      <h5>{{ ::setting.labels[1] }}</h5>
 					    </md-slider-container>
 						</label>
 
 			    </div>
+
 		    </v-pane-content>
 		  </v-pane>
 

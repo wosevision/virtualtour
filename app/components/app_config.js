@@ -1,5 +1,11 @@
-function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider ) { //, $mdIconProvider
+function AppConfig(
+	$provide, $locationProvider,
+	$stateProvider, $urlRouterProvider, $mdThemingProvider,
+	cfpLoadingBarProvider) { //, $mdIconProvider
   'ngInject';
+  
+  cfpLoadingBarProvider.includeSpinner = false;
+  // cfpLoadingBarProvider.latencyThreshold = 200;
 
   $mdThemingProvider.definePalette('UOITprimary', {
     '50': '0086FC',
@@ -45,12 +51,26 @@ function AppConfig($stateProvider, $locationProvider, $urlRouterProvider, $mdThe
       parent: 'home',
       templateUrl: 'sidebar/settings/_settings.html',
       controller: 'SettingsCtrl',
-		  ncyBreadcrumb: {
-		    label: 'App settings'
-		  }
+      controllerAs: '$ctrl'
     });
 
   $urlRouterProvider.otherwise('/');
+
+	$provide.decorator('$exceptionHandler', function($log, $delegate, $injector) {
+		'ngInject';
+    return function(exception, cause) {
+	    let $rootScope = $injector.get('$rootScope');
+	    $rootScope.$broadcast('handler:exception', {
+	      exception: exception,
+	      cause: cause || 'Application error'
+	    });
+
+	    // FOR "SOFTER" ERRORS:
+      $log.debug(exception, cause);
+      
+  		// $delegate(exception, cause);
+    };
+  });
 
 }
 

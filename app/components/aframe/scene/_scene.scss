@@ -1,3 +1,7 @@
+.scene-container {
+	height: 100%;
+}
+
 .scene-view {
 	transition: filter 0.15s;//, transform 0.15s;
   background-image: url('../images/plnsk_bg.jpg');
@@ -14,7 +18,7 @@
   }
   ng-transclude {	
   	position: absolute;
-  	top: 65px;
+  	top: 68px;
   	left: 0;
   	width: 100%;
   	z-index: 50
