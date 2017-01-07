@@ -44,10 +44,12 @@ const karmaBaseConfig = {
 
   files: [
     // app-specific code
-    'build/js/main.js',
+    '../virtualtour-ks/public/js/main.js',
 
     // 3rd-party resources
     'node_modules/angular-mocks/angular-mocks.js',
+    'https://maps.googleapis.com/maps/api/js?sensor=false',
+    'node_modules/ngmap/build/scripts/ng-map.min.js',
 
     // test files
     'app/components/**/*_spec.js'

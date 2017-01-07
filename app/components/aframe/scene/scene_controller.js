@@ -16,20 +16,6 @@ import { isDefined } from 'angular';
 function SceneCtrl($scope, $element, $aframeScene) {
 	'ngInject';
 
-	/**
-	 * Cache vars to store JQLite <img> and <a-sky>
-	 * Flag for init sky load and array of loaded skies
-	 * 
-	 * @type {null}
-	 * @type {null}
-	 * @type {boolean}
-	 * @type {Array}
-	 */
-	let $sky,
-			$skyAsset,
-			skyElLoaded = false;
-	const skyLoadedList = [];
-
   /**
 	 * Store JQLite-wrapped <a-scene> and <a-assets>
 	 * Init internal check for right click event
@@ -44,7 +30,7 @@ function SceneCtrl($scope, $element, $aframeScene) {
 		this._rightClick = false;
   }
 
-	const setScene = (scene, sky) => {
+	const setScene = scene => {
 		
 		const { sceneLinks, hotSpots } = scene;
 

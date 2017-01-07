@@ -1,0 +1,1908 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='max-width-4 mx-auto'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed xs-hide fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#sceneeditor'
+                  class="">
+                  sceneEditor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#aframescene'
+                  class="">
+                  aframeScene
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isdefined'
+                  class="">
+                  isDefined
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#scenectrl'
+                  class=" toggle-sibling">
+                  SceneCtrl
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#SceneCtrl#$onInit'
+                        class='regular pre-open'>
+                        #$onInit
+                      </a></li>
+                      
+                      <li><a
+                        href='#SceneCtrl#$doCheck'
+                        class='regular pre-open'>
+                        #$doCheck
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#skyelloaded'
+                  class="">
+                  skyElLoaded
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#skyelloaded'
+                  class="">
+                  skyElLoaded
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getprops'
+                  class="">
+                  getProps
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#aframescene'
+                  class=" toggle-sibling">
+                  $aframeScene
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#$aframeScene#constructor'
+                        class='regular pre-open'>
+                        #constructor
+                      </a></li>
+                      
+                      <li><a
+                        href='#$aframeScene#scene'
+                        class='regular pre-open'>
+                        #scene
+                      </a></li>
+                      
+                      <li><a
+                        href='#$aframeScene#sky'
+                        class='regular pre-open'>
+                        #sky
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#oninit'
+                  class="">
+                  $onInit
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#onchanges'
+                  class="">
+                  $onChanges
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loadsky'
+                  class="">
+                  loadSky
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loadskyasset'
+                  class="">
+                  loadSkyAsset
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#apprun'
+                  class="">
+                  AppRun
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#user_defaults'
+                  class="">
+                  USER_DEFAULTS
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#create'
+                  class="">
+                  create
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#user'
+                  class="">
+                  user
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#settings'
+                  class="">
+                  settings
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#settings'
+                  class="">
+                  settings
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_usage'
+                  class="">
+                  _usage
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#userid'
+                  class="">
+                  userId
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='sceneeditor'>
+      sceneEditor
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>A-FRAME SCENE DIRECTIVE
+Converts arrays of standardized objects to A-Frame
+compatible DOM elements via the aframeEntity directive
+and manages their lifecycles in the context of a scene</p>
+
+
+  <div class='pre p1 fill-light mt0'>sceneEditor</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$compile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    DI: compiler service
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    DI: scene service
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Scene definition object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='aframescene'>
+      aframeScene
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The aframeScene component definition initializes
+the scene's bindings for its child components as
+well as a transclusion point for the server-rendered
+scene editor.</p>
+
+
+  <div class='pre p1 fill-light mt0'>aframeScene</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>bindings</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+          : Interpolated binding for the sky component, one-way bindings for sceneLinks, hotSpots and mobile
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>transclude</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+          : Slot for scene editor if allowed by server
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        Scene definition object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isdefined'>
+      isDefined
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>isDefined</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='scenectrl'>
+      SceneCtrl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The scene controller manages all top-level functionality
+of the scene component; it is responsible for initializing
+the DOM elements of the scene and updating them when the
+$aframeScene service changes.</p>
+
+
+  <div class='pre p1 fill-light mt0'>SceneCtrl</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Current scope
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    &#x3C;aframe-scene> outer elements
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Scene service dependency
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='SceneCtrl#$onInit'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>$onInit()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Store JQLite-wrapped &#x3C;a-scene> and &#x3C;a-assets>
+Init internal check for right click event</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onInit(): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        No return
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='SceneCtrl#$doCheck'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>$doCheck()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Checks $aframeScene's current scene object each digest
+Proceeds if scene is defined; calls setScene()</p>
+
+
+  <div class='pre p1 fill-light mt0'>$doCheck(): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        No return
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='skyelloaded'>
+      skyElLoaded
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Cache vars to store JQLite <img> and &#x3C;a-sky>
+Flag for init sky load and array of loaded skies</p>
+
+
+  <div class='pre p1 fill-light mt0'>skyElLoaded</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='skyelloaded'>
+      skyElLoaded
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Cache vars to store JQLite <img> and &#x3C;a-sky>
+Flag for init sky load and array of loaded skies</p>
+
+
+  <div class='pre p1 fill-light mt0'>skyElLoaded</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getprops'>
+      getProps
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>getProps(obj: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>obj</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='aframescene'>
+      $aframeScene
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Scene service class</p>
+
+
+  <div class='pre p1 fill-light mt0'>new $aframeScene()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='$aframeScene#constructor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>constructor($timeout, $mdToast, $tourApi, DraftResource, EDITOR_MESSAGES)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Initialize dependencies; convert EDITOR_MESSAGES constant
+into $mdToast configs for use in instance methods</p>
+
+
+  <div class='pre p1 fill-light mt0'>constructor($timeout: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdToast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $tourApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, DraftResource: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, EDITOR_MESSAGES: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$timeout</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$mdToast</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$tourApi</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Tour $resource factory service
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>DraftResource</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Draft $resource factory
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>EDITOR_MESSAGES</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Constant to define toast configs
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='$aframeScene#scene'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>scene</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Getter/setter for internal scene data</p>
+
+
+  <div class='pre p1 fill-light mt0'>scene</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>{
+  <span class="hljs-attr">_id</span>: <span class="hljs-string">'583f17cfd2cd0c0400072d9c'</span>,
+  <span class="hljs-attr">parent</span>: <span class="hljs-string">'57a8e38b12ad99fe889c95f3'</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-string">'2b'</span>,
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'Atrium 2B'</span>,
+  <span class="hljs-attr">hotSpots</span>: [ ... ],
+  <span class="hljs-attr">sceneLinks</span>: [ ... ],
+  <span class="hljs-attr">panorama</span>: { ... }
+}</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='$aframeScene#sky'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>sky</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Getter/setter for formatting sky URL from sceneData</p>
+
+
+  <div class='pre p1 fill-light mt0'>sky</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-string">'http://res.cloudinary.com/uoit-virtual-tour/image/upload/v1480529929/scenes/panorama/k23dnerigdctblxgq5vm.jpg'</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='oninit'>
+      $onInit
+    </h3>
+    
+    
+  </div>
+  
+
+  <p><strong>$onInit</strong>
+Store JQLite-wrapped &#x3C;a-scene> and &#x3C;a-assets>
+Init internal check for right click event</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onInit(): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        No return
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='onchanges'>
+      $onChanges
+    </h3>
+    
+    
+  </div>
+  
+
+  <p><strong>$doCheck</strong>
+Checks $aframeScene's current scene object each digest
+Proceeds if scene is defined; calls setSky()</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onChanges(newData: any): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>newData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        No return
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loadsky'>
+      loadSky
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Compiles a new &#x3C;a-sky> and binds to scope.sky
+Flags sky element as loaded</p>
+
+
+  <div class='pre p1 fill-light mt0'>loadSky</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sky</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    ID for asset reference
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a></code>:
+        JQLite-wrapped &#x3C;a-sky> element
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loadskyasset'>
+      loadSkyAsset
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Compiles a new image asset with requested code
+Adds element to assets and ID to list to prevent reload</p>
+
+
+  <div class='pre p1 fill-light mt0'>loadSkyAsset</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>asset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    ID for asset reference
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
+	    Callback after load
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>skyUrl</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a></code>:
+        JQLite-wrapped 
+<img>
+ element
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='apprun'>
+      AppRun
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Application run block; initializes $state event listeners, error handling and user auth</p>
+
+
+  <div class='pre p1 fill-light mt0'>AppRun($rootScope: any, $state: any, $popupWindow: any, UserAuth: any, AUTH_EVENTS: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$rootScope</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$state</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$popupWindow</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>UserAuth</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>AUTH_EVENTS</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='user_defaults'>
+      USER_DEFAULTS
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This constant holds the user preference default
+values. It is used by the <code>UserSession</code> service
+as a base layer for configurable preferences.</p>
+<p>These values are assigned to every user
+session and their <code>val</code> properties are overwritten
+by custom preferences.</p>
+<p>Only values described here will be considered by
+the app as available to the end user for configuration.</p>
+
+
+  <div class='pre p1 fill-light mt0'>USER_DEFAULTS</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>val</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Default value of the setting
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>label</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+          : Descriptive label for input
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>icon</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+          : Icon ID for input
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>icons</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+          : Array of exactly two icon IDs
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='create'>
+      create
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This function creates a new user session, which is
+necessary to store application settings regardless of
+whether there is a "real" user logged in. If there is
+a user, the UserSession service will:</p>
+<ul>
+<li>set the <code>userId</code> property to indicate an active user</li>
+<li>read user roles based on their boolean values on user</li>
+<li>push role strings into a <code>roles</code> property on UserSession</li>
+</ul>
+<p>If not, the service checks for local settings and inits
+a "blank" user with those settings (or the app defaults).</p>
+
+
+  <div class='pre p1 fill-light mt0'>create(user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    DB user object to use for session
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Fully-formed user object after settings
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='user'>
+      user
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Init a 'blank' user with the required settings properties to
+avoid assignment errors (i.e. <code>this.user.settings[key] = ...</code>)</p>
+
+
+  <div class='pre p1 fill-light mt0'>user</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='settings'>
+      settings
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Use the UserSession's getter/setters to merge the found setting
+values into USER_DEFAULTS via the user model.</p>
+
+
+  <div class='pre p1 fill-light mt0'>settings</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='settings'>
+      settings
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Getter/setter pairs for merging user setting objects from
+the DB the form of:</p>
+<p><code>{ toolbarOpen: false }</code></p>
+<p>into fully-qualified app-level settings objects that look like:</p>
+<pre><code>{
+  toolbarOpen: {
+    val: false,
+    label: 'Toolbar open',
+    ...
+  }
+}
+</code></pre>
+<p>or vice-versa for setting the user object based on app prefs.</p>
+
+
+  <div class='pre p1 fill-light mt0'>settings</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>settings/usage</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    Incoming app settings
+to merge into user
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        this.
+[
+_settings/_usage
+]
+ Merged app settings
+built from user
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_usage'>
+      _usage
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Looks inside SettingsFactory for user data matching the pattern
+defined in USER_DEFAULTS; store in temporary vars.</p>
+
+
+  <div class='pre p1 fill-light mt0'>_usage</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='userid'>
+      userId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check the <code>userId</code> property to verify whether settings should
+save to a logged in user; if not, set on localStorage</p>
+
+
+  <div class='pre p1 fill-light mt0'>userId</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
