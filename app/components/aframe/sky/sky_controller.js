@@ -120,10 +120,9 @@ function SkyCtrl($scope, $compile, $tourApi, UserSession, CBuffer) {
    * @return {void}				No return
    */
   this.$onChanges = newData => {
+  	if (newData.sky.isFirstChange()) return;
   	let sky = newData.sky.currentValue;
-  	if (isDefined(sky)) {
-  		setSky(sky);
-  	}
+  	if (sky) setSky(sky);
   }
 }
 

@@ -23,12 +23,16 @@ class $aframeScene {
 	constructor(
 		$timeout, $mdToast,
 		$tourApi, DraftResource,
+		$aframeSky,
 		EDITOR_MESSAGES) {
 		'ngInject';
+
 		this.$timeout = $timeout;
 		this.$mdToast = $mdToast;
 		this.SceneResource = $tourApi.scene;
 		this.DraftResource = DraftResource;
+		this.$aframeSky = $aframeSky;
+
 		this.toasts = {};
 		getProps( EDITOR_MESSAGES ).forEach(type => {
 			const toast = $mdToast.simple();
@@ -59,6 +63,7 @@ class $aframeScene {
 		}
 	}
 	set scene(sceneData) {
+		this.$aframeSky.sky = sceneData.panorama;
 		this.sceneData = this.lastPublished = sceneData; // { _id, sceneLinks, hotSpots, sky };
 	}
 	/**
