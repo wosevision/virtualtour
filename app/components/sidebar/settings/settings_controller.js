@@ -26,7 +26,7 @@ function SettingsCtrl(
 		this.user = UserSession.user;
 		this.settings = UserSession.settings;
 		this.usage = UserSession.usage;
-		
+
 		/**
 		 * This property will hold the user's network and
 		 * device information when it becomes available; it
@@ -50,8 +50,8 @@ function SettingsCtrl(
 	this.updateSettings = () => {
 		UserSession.settings = this.settings;
 	}
-	this.updateUsage = () => {
-		UserSession.usage = this.usage;
+	this.updateUsage = usage => {
+		UserSession.usage = usage || this.usage;
 		ConnectionDetails.calculateUsageLevel().then(usageLevelTally => {
 			this.usageLevel = ConnectionDetails.getLabelsFromTally(usageLevelTally);
 		});
@@ -61,9 +61,9 @@ function SettingsCtrl(
 		this.connection = { loading: true };
 		ConnectionDetails.detect().then(connection => {
 			this.connection = connection;
-			console.log(connection);
+			this.usage = ConnectionDetails.optimize(connection);
+			this.updateUsage();
 		});
-		this.updateUsage();
 	}
 
 	const accordionReady = $scope.$watch('accordion', accordion => {

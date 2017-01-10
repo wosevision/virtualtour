@@ -1,19 +1,44 @@
 import { isNumber } from 'angular';
 
+const SPEED_HI = 50,
+			SPEED_WF = 8,
+			SPEED_3G = 2;
+
 class ConnectionDetails {
-	constructor($rootScope, $http, $q, UserSession) {
+	constructor($rootScope, $http, $q, UserSession, USER_DEFAULTS) {
 	  'ngInject';
 	  this.$rootScope = $rootScope;
 		this.$http = $http;
 		this.$q = $q;
 
 		this.usage = UserSession.usage;
+		this.profiles = USER_DEFAULTS.profiles;
 	}
 	detect() {
 	  return this.$http.get('/user/connection').then(connection => {
 	  	this.connection = connection;
 	  	return connection;
 	  });
+	}
+	optimize(connection) {
+		const { network, useragent } = connection.data,
+					downloadSpeed = network.speeds.download,
+					deviceType = useragent.device.type;
+
+		if (downloadSpeed >= SPEED_HI && !deviceType)
+			return this.profiles.desktopFast;
+		if (downloadSpeed >= SPEED_WF && downloadSpeed < SPEED_HI && !deviceType)
+			return this.profiles.desktopSlow;
+		if (downloadSpeed < SPEED_WF && !deviceType)
+			return this.profiles.balanced;
+		if (downloadSpeed >= SPEED_WF && deviceType  === 'mobile')
+			return this.profiles.mobileWifi;
+		if (downloadSpeed >= SPEED_3G && deviceType  === 'mobile')
+			return this.profiles.mobile3g;
+		if (downloadSpeed < SPEED_3G)
+			return this.profiles.conserve;
+		// default return
+		return this.profiles.balanced;
 	}
 		/**
 	 * Tallies up values of usage settings asynchronously

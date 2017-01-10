@@ -75,13 +75,13 @@ class UserSession {
 		 * Check the `userId` property to verify whether settings should
 		 * save to a logged in user; if not, set on localStorage
 		 */
+  	console.log('saving settings to user...');
 		if (this.userId) {
 			this.$http.post('/user/save', this.user).then(user => {
 				this.$popupWindow.toast('primary', {
 		    	message: 'User settings updated!',
 		    	action: 'Dismiss'
 		    });
-
 		  	console.log('saved settings to user!');
 			});
 		} else {

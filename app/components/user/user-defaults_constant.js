@@ -96,23 +96,39 @@ const USER_DEFAULTS = {
   	}
   },
   profiles: {
-  	mobile3g: {
-  		compression: { val: 10 },
+  	conserve: {
+  		auto: { val: true },
+  		compression: { val: 5 },
   		preloading: { val: 0 },
   		resolution: { val: 0 }
   	},
+  	balanced: {
+  		auto: { val: true },
+  		compression: { val: 3 },
+  		preloading: { val: 1 },
+  		resolution: { val: 1 }
+  	},
+  	mobile3g: {
+  		auto: { val: true },
+  		compression: { val: 4 },
+  		preloading: { val: 1 },
+  		resolution: { val: 0 }
+  	},
   	mobileWifi: {
-  		compression: { val: 5 },
+  		auto: { val: true },
+  		compression: { val: 2 },
   		preloading: { val: 1 },
   		resolution: { val: 0 }
   	},
   	desktopSlow: {
-  		compression: { val: 10 },
+  		auto: { val: true },
+  		compression: { val: 5 },
   		preloading: { val: 2 },
   		resolution: { val: 1 }
   	},
   	desktopFast: {
-  		compression: { val: 0 },
+  		auto: { val: true },
+  		compression: { val: 1 },
   		preloading: { val: 2 },
   		resolution: { val: 1 }
   	}
