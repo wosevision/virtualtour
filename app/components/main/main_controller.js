@@ -10,6 +10,7 @@ function MainCtrl(
   'ngInject';
   const WELCOME_MSG_DELAY = 500; //ms
   const SETTINGS_MSG_DELAY = 1000; //ms
+  const BLURRED_VIEWS = [ 'search', 'map' ];
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
