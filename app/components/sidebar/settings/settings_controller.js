@@ -58,12 +58,14 @@ function SettingsCtrl(
 	}
 
 	this.detectConnection = () => {
-		this.connection = { loading: true };
-		ConnectionDetails.detect().then(connection => {
-			this.connection = connection;
-			this.usage = ConnectionDetails.optimize(connection);
-			this.updateUsage();
-		});
+		if (this.usage.auto.val) {
+			this.connection = { loading: true };
+			ConnectionDetails.detect().then(connection => {
+				this.connection = connection;
+				this.usage = ConnectionDetails.optimize(connection);
+				this.updateUsage();
+			});
+		}
 	}
 
 	const accordionReady = $scope.$watch('accordion', accordion => {
