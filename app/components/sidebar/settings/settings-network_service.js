@@ -5,13 +5,12 @@ const SPEED_HI = 50,
 			SPEED_3G = 2;
 
 class ConnectionDetails {
-	constructor($rootScope, $http, $q, UserSession, USER_DEFAULTS) {
+	constructor($rootScope, $http, $q, USER_DEFAULTS) {
 	  'ngInject';
 	  this.$rootScope = $rootScope;
 		this.$http = $http;
 		this.$q = $q;
 
-		this.usage = UserSession.usage;
 		this.profiles = USER_DEFAULTS.profiles;
 	}
 	detect() {
@@ -50,9 +49,10 @@ class ConnectionDetails {
 	 *   '<= 15': [0, 0, 5],
 	 *   ...
 	 * }
-	 * @return {Promise} Promise representing final levels
+	 * @param	 {object}	usage Incoming usage preference object
+	 * @return {Promise}			Promise representing final levels
 	 */
-	calculateUsageLevel() {
+	calculateUsageLevel(usage) {
 		const tally = [0, 0, 0], // [imageQual, loadTime, dataUse] / 0=low, 10=high
 	  			deferred = this.$q.defer(),
 	  			addToTally = values => {
@@ -61,11 +61,11 @@ class ConnectionDetails {
 						});
 					};
 		this.$rootScope.$applyAsync(() => {
-			Object.keys(this.usage).forEach(setting => {
+			Object.keys(usage).forEach(setting => {
 				if (setting !== 'auto') {
-					Object.keys(this.usage[setting].levels).forEach(expression => {
-						const inRange = this.$rootScope.$eval(`(${ this.usage[setting].val } ${expression})`);
-						if (inRange) addToTally(this.usage[setting].levels[expression]);
+					Object.keys(usage[setting].levels).forEach(expression => {
+						const inRange = this.$rootScope.$eval(`(${ usage[setting].val } ${expression})`);
+						if (inRange) addToTally(usage[setting].levels[expression]);
 						if (isNumber(inRange)) deferred.reject('Usage calculation error');
 					});
 				}

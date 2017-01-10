@@ -1,4 +1,4 @@
-import { element, isNumber } from 'angular';
+import { element } from 'angular';
 
 /**
  * The settings controller provides a high-level
@@ -45,18 +45,94 @@ function SettingsCtrl(
 		 * }
 		 */
 		this.connection = false;
+
+		/**
+		 * The accordion initializer watches for a valid
+		 * instance and opens the accordion once it becomes
+		 * available. Performed once then deregistered.
+		 * @param  {object} accordion   Accordion instance
+		 */
+		const accordionReady = $scope.$watch('accordion', accordion => {
+			if (accordion) {
+				$scope.$applyAsync(() => {
+					accordion.expandAll();
+				});
+				accordionReady();
+			}
+		});
+		/**
+		 * Waits for a user to log in successfully; stores user
+		 * info and opens accordion sections when login is detected.
+		 */
+		$scope.$on(AUTH_EVENTS.loginSuccess, (event, user) => {
+			this.user = user;
+			this.expandAll();
+		});
 	}
 
+	/**
+	 * Expands all accordion sections.
+	 */
+	this.expandAll = () => {
+		$scope.accordion.expandAll();
+	}
+	/**
+	 * Collapses all accordion sections.
+	 */
+	this.collapseAll = () => {
+		$scope.accordion.collapseAll();
+	}
+
+	/**
+	 * Prompts user for login.
+	 * @return {Promise} Status of popupWindow
+	 */
+	this.promptLogin = () => {
+		return $popupWindow.login();
+	}
+	/**
+	 * Logs user out directly.
+	 */
+	this.logout = () => {
+    const backdrop = $mdUtil.createBackdrop($scope, "md-dialog-backdrop md-opaque");
+    backdrop[0].tabIndex = -1;
+    $animate.enter(backdrop, element(document.body), null);
+		UserAuth.logout().then(() => {
+			$animate.leave(backdrop);
+			this.collapseAll();
+		});
+	}
+
+	/**
+	 * Updates the user's setting preferences.
+	 */
 	this.updateSettings = () => {
 		UserSession.settings = this.settings;
 	}
+	/**
+	 * Updates the user's usage preferences; uses the
+	 * ConnectionDetails service to convert usage into
+	 * a user-friendly description of what it's doing.
+	 * - Updates UserSession with current OR incoming usage
+	 * - Uses `calculateUsageLevel()` to tally usage stats
+	 * - Retrieves array of labels from `getLabelsFromTally()`
+	 * @param  {[object]} usage Optional data override
+	 */
 	this.updateUsage = usage => {
 		UserSession.usage = usage || this.usage;
-		ConnectionDetails.calculateUsageLevel().then(usageLevelTally => {
+		ConnectionDetails.calculateUsageLevel(UserSession.usage).then(usageLevelTally => {
 			this.usageLevel = ConnectionDetails.getLabelsFromTally(usageLevelTally);
 		});
 	}
 
+	/**
+	 * User-activated function for auto-optimizing usage
+	 * level using the ConnectionDetails service.
+	 * - Sets loading animation during detection
+	 * - Fetches connection information with `detect()`
+	 * - Stores returned connection information
+	 * - Sets optimized usage settings with `optimize()`
+	 */
 	this.detectConnection = () => {
 		if (this.usage.auto.val) {
 			this.connection = { loading: true };
@@ -66,40 +142,6 @@ function SettingsCtrl(
 				this.updateUsage();
 			});
 		}
-	}
-
-	const accordionReady = $scope.$watch('accordion', accordion => {
-		if (accordion) {
-			$scope.$applyAsync(() => {
-				accordion.expandAll();
-			});
-			accordionReady();
-		}
-	});
-
-	this.expandAll = () => {
-		$scope.accordion.expandAll();
-	}
-	this.collapseAll = () => {
-		$scope.accordion.collapseAll();
-	}
-
-	$scope.$on(AUTH_EVENTS.loginSuccess, (event, user) => {
-		this.user = user;
-		this.expandAll();
-	});
-
-	this.promptLogin = () => {
-		return $popupWindow.login();
-	}
-	this.logout = () => {
-    const backdrop = $mdUtil.createBackdrop($scope, "md-dialog-backdrop md-opaque");
-    backdrop[0].tabIndex = -1;
-    $animate.enter(backdrop, element(document.body), null);
-		UserAuth.logout().then(() => {
-			$animate.leave(backdrop);
-			this.collapseAll();
-		});
 	}
 }
 
