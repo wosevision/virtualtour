@@ -26,6 +26,7 @@ function SettingsCtrl(
 		this.user = UserSession.user;
 		this.settings = UserSession.settings;
 		this.usage = UserSession.usage;
+		
 		/**
 		 * This property will hold the user's network and
 		 * device information when it becomes available; it
@@ -51,63 +52,14 @@ function SettingsCtrl(
 	}
 	this.updateUsage = () => {
 		UserSession.usage = this.usage;
-		this.calculateUsageLevel().then(usageLevel => {
-			this.usageLevel = usageLevel;
+		ConnectionDetails.calculateUsageLevel().then(usageLevelTally => {
+			this.usageLevel = ConnectionDetails.getLabelsFromTally(usageLevelTally);
 		});
-	}
-
-	/**
-	 * Maps a tally array of numbers into a label
-	 * array of human-readable usage level strings.
-	 * @param  {array}  tally Array of tallied usage values
-	 * @return {string}       Usage description
-	 */
-	const getLabelsFromTally = tally => tally.map(value => {
-		if (value <= 5) return 'Very low';
-		if (value > 5 && value <= 10) return 'Low';
-		if (value > 10 && value <= 15) return 'Moderate';
-		if (value > 15 && value <= 20) return 'High';
-		if (value > 20) return 'Very high';
-	});
-	/**
-	 * Tallies up values of usage settings asynchronously
-	 * by using `$scope.$eval()` to match applicable usage
-	 * level values against their keys (which are keyed by
-	 * "condition").
-	 * @example
-	 * {
-	 *   '<= 15': [0, 0, 5],
-	 *   ...
-	 * }
-	 * @return {Promise} Promise representing final levels
-	 */
-	this.calculateUsageLevel = () => {
-		const tally = [0, 0, 0], // [imageQual, loadTime, dataUse] / 0=low, 10=high
-	  			deferred = $q.defer(),
-	  			addToTally = values => {
-						tally.forEach((v, index) => {
-							tally[index] += values[index];
-						});
-					};
-		$scope.$applyAsync(() => {
-			Object.keys(this.usage).forEach(setting => {
-				if (setting !== 'auto') {
-					Object.keys(this.usage[setting].levels).forEach(expression => {
-						const inRange = $scope.$eval(`(${ this.usage[setting].val } ${expression})`);
-						if (inRange) addToTally(this.usage[setting].levels[expression]);
-						if (isNumber(inRange)) deferred.reject('Usage calculation error');
-					});
-				}
-			});
-			const labels = getLabelsFromTally(tally);
-			deferred.resolve(labels);
-		});
-		return deferred.promise;
 	}
 
 	this.detectConnection = () => {
 		this.connection = { loading: true };
-		ConnectionDetails.then(connection => {
+		ConnectionDetails.detect().then(connection => {
 			this.connection = connection;
 			console.log(connection);
 		});

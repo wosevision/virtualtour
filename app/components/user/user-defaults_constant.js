@@ -94,6 +94,28 @@ const USER_DEFAULTS = {
   			'== 1': [10, 5, 10], //high-res
   		}
   	}
+  },
+  profiles: {
+  	mobile3g: {
+  		compression: { val: 10 },
+  		preloading: { val: 0 },
+  		resolution: { val: 0 }
+  	},
+  	mobileWifi: {
+  		compression: { val: 5 },
+  		preloading: { val: 1 },
+  		resolution: { val: 0 }
+  	},
+  	desktopSlow: {
+  		compression: { val: 10 },
+  		preloading: { val: 2 },
+  		resolution: { val: 1 }
+  	},
+  	desktopFast: {
+  		compression: { val: 0 },
+  		preloading: { val: 2 },
+  		resolution: { val: 1 }
+  	}
   }
 };
 
