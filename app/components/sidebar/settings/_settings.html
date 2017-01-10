@@ -55,18 +55,29 @@
 
 		    <v-pane-content>
 		    	<div layout="column" layout-padding>
-						
 						<label ng-repeat="(key, setting) in $ctrl.usage" flex>
-					    <md-checkbox ng-if="key === 'auto'" class="md-primary" ng-model="setting.val" ng-change="$ctrl.updateUsage()" aria-label="Auto-detect optimum settings">
-		            Auto-detect optimum settings
+					    <md-checkbox ng-if="key === 'auto'" class="md-primary" ng-model="setting.val" ng-change="$ctrl.detectConnection()" aria-label="Auto-detect optimum settings" ng-disabled="$ctrl.connection.loading">
+		            <div layout="row" layout-align="space-between stretch">
+		            	<span flex="noshrink">{{ $ctrl.connection.loading ? 'Detecting network...' : 'Auto-detect optimum settings'; }}</span>
+		            	<span flex="grow"></span>
+		            	<md-progress-circular md-mode="indeterminate" md-diameter="16" ng-show="$ctrl.connection.loading"></md-progress-circular>
+		            </div>
 		          </md-checkbox>
-							{{ ::setting.label }}
+							{{ ::setting.label }}<br/>
 				    	<md-slider-container flex ng-if="key !== 'auto'" ng-disabled="$ctrl.usage.auto.val">
 					      <h5>{{ ::setting.labels[0] }}</h5>
 					      <md-slider ng-model="setting.val" step="{{::setting.step}}" min="{{::setting.min}}" max="{{::setting.max}}" aria-label="{{setting.label}}" class="md-primary" md-discrete ng-change="$ctrl.updateUsage()"></md-slider>
 					      <h5>{{ ::setting.labels[1] }}</h5>
 					    </md-slider-container>
 						</label>
+						<span class="md-subhead">
+							<strong>Current:</strong>
+							<span class="md-caption">
+								<strong>{{ $ctrl.usageLevel[0] }}</strong> image quality;
+								<strong>{{ $ctrl.usageLevel[1] }}</strong> load time;
+								<strong>{{ $ctrl.usageLevel[2] }}</strong> data consumption
+							</span>
+						</span>
 
 			    </div>
 

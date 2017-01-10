@@ -49,31 +49,50 @@ const USER_DEFAULTS = {
   		max: 5,
   		step: 1,
   		label: 'Compression level',
-  		labels: ['Less', 'More']
+  		labels: ['Less', 'More'],
+  		levels: {
+  			// [imageQual, loadTime, dataUse] / 0=low, 10=high
+  			'<= 2': [10, 5, 10],
+  			'== 3': [5, 5, 5],
+  			'>= 4': [0, 10, 0]
+  		}
   	},
   	preloading: {
   		val: 0,
   		min: 0,
-  		max: 3,
+  		max: 2,
   		step: 1,
   		label: 'Preloading strategy',
-  		labels: ['None', 'Proactive']
+  		labels: ['None', 'Proactive'],
+  		levels: {
+  			// [imageQual, loadTime, dataUse] / 0=low, 10=high
+  			'== 0': [5, 10, 0], //no preload
+  			'== 1': [5, 5, 5], //preload
+  			'== 2': [5, 0, 5] //preload & keep last
+  		}
   	},
-  	cache: {
-  		val: 0,
-  		min: 0,
-  		max: 250,
-  		step: 25,
-  		label: 'Cache control',
-  		labels: ['No cache', '250MB']
-  	},
+  	// cache: {
+  	// 	val: 0,
+  	// 	min: 0,
+  	// 	max: 250,
+  	// 	step: 25,
+  	// 	label: 'Cache control',
+  	// 	labels: ['No cache', '250MB'],
+  	// 	levels: [
+  	// 	]
+  	// },
   	resolution: {
   		val: 1,
   		min: 0,
   		max: 1,
   		step: 1,
   		label: 'Image resolution',
-  		labels: ['Low', 'High']
+  		labels: ['Low', 'High'],
+  		levels: {
+  			// [imageQual, loadTime, dataUse] / 0=low, 10=high
+  			'== 0': [0, 0, 0], //low-res
+  			'== 1': [10, 5, 10], //high-res
+  		}
   	}
   }
 };

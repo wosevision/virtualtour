@@ -129,7 +129,7 @@ class UserSession {
 	get settings() {
 		if (this.user.settings) {
 	  	Object.keys(this.user.settings).map(key => {
-	  		this._settings[key].val = this.user.settings[key];
+	  		if (this._settings[key]) this._settings[key].val = this.user.settings[key];
 		  });
 		  return this._settings;
 		}
@@ -137,7 +137,7 @@ class UserSession {
 	set settings(settings) {
 	  if (isDefined(settings)) {
 	  	Object.keys(settings).map(key => {
-	  		this.user.settings[key] = settings[key].val;
+	  		if (this._settings[key]) this.user.settings[key] = settings[key].val;
 		  });
 		  this.save();
 		}
@@ -145,7 +145,7 @@ class UserSession {
 	get usage() {
 		if (this.user.usage) {
 	  	Object.keys(this.user.usage).map(key => {
-	  		this._usage[key].val = this.user.usage[key];
+	  		if (this._usage[key]) this._usage[key].val = this.user.usage[key];
 		  });
 		  return this._usage;
 		}
@@ -153,7 +153,7 @@ class UserSession {
 	set usage(usage) {
 	  if (isDefined(usage)) {
 	  	Object.keys(usage).map(key => {
-	  		this.user.usage[key] = usage[key].val;
+	  		if (this._usage[key]) this.user.usage[key] = usage[key].val;
 		  });
 		  this.save();
 		}
