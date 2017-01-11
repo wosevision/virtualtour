@@ -55,6 +55,13 @@
 
 		    <v-pane-content>
 		    	<div layout="column" layout-padding>
+						<span class="md-subhead">
+							<strong>Current:</strong>
+							<span class="md-caption">
+								<strong>{{ $ctrl.usageLevel[0] }} image quality</strong> with <strong>{{ $ctrl.usageLevel[1] }} load time</strong> and <strong>{{ $ctrl.usageLevel[2] }} data consumption</strong> 
+							</span>
+						</span>
+						<md-divider></md-divider>
 						<label ng-repeat="(key, setting) in $ctrl.usage" flex>
 					    <md-checkbox ng-if="key === 'auto'" class="md-primary" ng-model="setting.val" ng-change="$ctrl.detectConnection()" aria-label="Auto-detect optimum settings" ng-disabled="$ctrl.connection.loading">
 		            <div layout="row" layout-align="space-between stretch">
@@ -70,14 +77,6 @@
 					      <h5>{{ ::setting.labels[1] }}</h5>
 					    </md-slider-container>
 						</label>
-						<span class="md-subhead">
-							<strong>Current:</strong>
-							<span class="md-caption">
-								<strong>{{ $ctrl.usageLevel[0] }}</strong> image quality;
-								<strong>{{ $ctrl.usageLevel[1] }}</strong> load time;
-								<strong>{{ $ctrl.usageLevel[2] }}</strong> data consumption
-							</span>
-						</span>
 
 			    </div>
 

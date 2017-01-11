@@ -68,6 +68,8 @@ function SettingsCtrl(
 			this.user = user;
 			this.expandAll();
 		});
+
+		this.updateUsage();
 	}
 
 	/**

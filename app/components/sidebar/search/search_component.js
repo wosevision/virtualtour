@@ -3,7 +3,8 @@ const searchMenu = {
 			query: '@',
 			filters: '<'
 		},
-		templateUrl: 'sidebar/search/_search.html'
+		templateUrl: 'sidebar/search/_search.html',
+		controller: 'SearchCtrl'
 	};
 
 export default {

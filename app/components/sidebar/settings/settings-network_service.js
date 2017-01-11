@@ -82,11 +82,11 @@ class ConnectionDetails {
 	 */
 	getLabelsFromTally(tally) {
 		return tally.map(value => {
-			if (value <= 5) return 'Very low';
-			if (value > 5 && value <= 10) return 'Low';
-			if (value > 10 && value <= 15) return 'Moderate';
-			if (value > 15 && value <= 20) return 'High';
-			if (value > 20) return 'Very high';
+			if (value <= 5) return 'very low';
+			if (value > 5 && value <= 10) return 'low';
+			if (value > 10 && value <= 15) return 'moderate';
+			if (value > 15 && value <= 20) return 'high';
+			if (value > 20) return 'very high';
 		});
 	}
 }

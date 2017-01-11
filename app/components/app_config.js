@@ -43,7 +43,7 @@ function AppConfig(
   $stateProvider
     .state('home', {
       abstract: true,
-      template: '<ui-view></ui-view>',
+      template: '<ui-view></ui-view>'
     });
 
   $stateProvider
@@ -56,14 +56,12 @@ function AppConfig(
 
   $urlRouterProvider.otherwise('/');
 
-	$provide.decorator('$exceptionHandler', function($log, $delegate, $injector) {
+	$provide.decorator('$exceptionHandler', ($log, $delegate, $injector) => {
 		'ngInject';
-    return function(exception, cause) {
-	    let $rootScope = $injector.get('$rootScope');
-	    $rootScope.$broadcast('handler:exception', {
-	      exception: exception,
-	      cause: cause || 'Application error'
-	    });
+    return (exception, cause) => {
+	    const $rootScope = $injector.get('$rootScope');
+	    if (!cause) cause = 'Application error';
+	    $rootScope.$broadcast('handler:exception', { exception, cause });
 
 	    // FOR "SOFTER" ERRORS:
       $log.debug(exception, cause);
