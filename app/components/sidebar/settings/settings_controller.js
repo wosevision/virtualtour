@@ -65,7 +65,11 @@ function SettingsCtrl(
 		 * info and opens accordion sections when login is detected.
 		 */
 		$scope.$on(AUTH_EVENTS.loginSuccess, (event, user) => {
-			this.user = user;
+			this.user = UserSession.user;
+			this.settings = UserSession.settings;
+			this.usage = UserSession.usage;
+			this.updateUsage();
+			this.updateSettings();
 			this.expandAll();
 		});
 
