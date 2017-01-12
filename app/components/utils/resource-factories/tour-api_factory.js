@@ -6,6 +6,7 @@ function $tourApi($resource, GLOBAL_SETTINGS) {
   	scene: $resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id', null, {
 			'update': { method: 'PATCH' }
 	  }),
+	  preload: $resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id/preload'),
   	entity: $resource(GLOBAL_SETTINGS.apiUrl + '/entities/:id')
   }
 }

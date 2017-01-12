@@ -1,7 +1,7 @@
 import { isDefined } from 'angular';
 import { utils } from 'aframe';
 
-function SkyCtrl($scope, $element, $compile, UserSession, CBuffer) {
+function SkyCtrl($scope, $compile, $tourApi, UserSession, CBuffer) {
 	'ngInject';
 
 	/**
@@ -104,10 +104,11 @@ function SkyCtrl($scope, $element, $compile, UserSession, CBuffer) {
     } else {
       this.loadedSky = `#${skyId}`;
     }
-    if (UserSession.usage.preloading.val > 0 && this.preload) {
-    	this.preload.forEach(link => {
-    		console.log(link.scene);
-    	});
+    if (UserSession.usage.preloading.val > 0) {
+    	// $tourApi.preload()
+    	// this.preload.forEach(link => {
+    	// 	console.log(link.scene);
+    	// });
     }
 	}
 
@@ -119,10 +120,9 @@ function SkyCtrl($scope, $element, $compile, UserSession, CBuffer) {
    * @return {void}				No return
    */
   this.$onChanges = newData => {
+  	if (newData.sky.isFirstChange()) return;
   	let sky = newData.sky.currentValue;
-  	if (isDefined(sky)) {
-  		setSky(sky);
-  	}
+  	if (sky) setSky(sky);
   }
 }
 

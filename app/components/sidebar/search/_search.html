@@ -1,36 +1,88 @@
 <md-content class="search-bar" layout="column" layout-fill>
 
-	<div md-whiteframe="{{ whiteframeDp || 8 }}" ng-mouseenter="whiteframeDp = 16" ng-mouseleave="whiteframeDp = 8" class="floating-panel" layout="column" layout-align="center center" layout-margin flex="grow">
-    <label for="search_q">I'm looking for things with</label>
-	  <md-input-container md-no-float class="md-block md-icon-left">
-	    <ng-md-icon icon="search" size="24"></ng-md-icon>
-	    <input ng-model="$ctrl.query" aria-label="Search the Virtual Tour" id="search_q">
-	  </md-input-container>
-
-    <label>within all</label>
-	  <md-input-container>
-      <md-select ng-model="$ctrl.filters.in"
-      	id="search_filter"
-				multiple>
-        <md-optgroup label="Search in">
-          <md-option ng-value="type.value" ng-repeat="type in ::[{label:'Virtual tour',value:'tour'},{label:'Campus map',value:'map'}]">{{type.label}}</md-option>
-        </md-optgroup>
-      </md-select>
-	  </md-input-container>
-    <label>by their</label>
-	  <md-input-container>
-        <md-select ng-model="$ctrl.filters.for"
-                   multiple>
-          <md-optgroup label="Virtual tour" ng-repeat="type in ::[{label:'Tour scenes',value:'scenes'},{label:'Points of interest',value:'hotspots'}]">
-            <md-option ng-value="type.value">{{type.label}}</md-option>
-          </md-optgroup>
-          <md-optgroup label="Campus map" ng-repeat="type in ::[{label:'Map features',value:'features'},{label:'Feature collections',value:'collections'}]">
-            <md-option ng-value="type.value">{{type.label}}</md-option>
-          </md-optgroup>
-        </md-select>
-	  </md-input-container>
-  </div>
-
+	<div md-whiteframe="{{ whiteframeDp || 8 }}" ng-mouseenter="whiteframeDp = 16" ng-mouseleave="whiteframeDp = 8" class="floating-panel" layout="column" layout-align="center center" layout-margin layout-padding flex="grow">
+<!-- 	  <md-input-container md-no-float class="md-block md-icon-left">
+			<ng-md-icon icon="search" size="24"></ng-md-icon>
+			<input ng-model="$ctrl.query" aria-label="Search the Virtual Tour" id="search_q">
+		</md-input-container> -->
+		<label for="search_q">I'm looking for things with</label>
+		<div layout="row" layout-align="space-between center">
+			<form ng-submit="$event.preventDefault()" class="search-form" flex="shrink">
+				<md-autocomplete
+						md-search-text="$ctrl.searchText"
+						md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+						md-items="item in $ctrl.querySearch($ctrl.searchText)"
+						md-item-text="item.name"
+						md-selected-item="$ctrl.selectedItem"
+						md-selected-item-change="$ctrl.selectedItemChange(item)"
+						md-min-length="2"
+						md-no-cache
+						placeholder="charles st"
+						md-menu-class="search-results"
+						md-autofocus
+						flex>
+						<ng-md-icon icon="search" size="24"></ng-md-icon>
+					<md-item-template>
+	<!-- 					<span class="item-title">
+							<md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+							<span> {{item}} </span>
+						</span> -->
+						<span class="md-headline" md-highlight-text="$ctrl.searchText" md-highlight-flags="gi">{{ item.name }}</span><br/>
+						<span class="md-caption">{{ item.parent.name }}</span><!-- {{ item.parent.parent ? ', ' + item.parent.parent.name : '' }} -->
+						<span class="md-subhead" ng-bind-html="item.desc" md-highlight-text="$ctrl.searchText"></span>
+					</md-item-template>
+				</md-autocomplete>
+			</form>
+		</div>
+		<div layout="row" layout-wrap class="search-filters">
+			<div layout="row" layout-align="space-between center">
+				<label flex="noshrink">within the</label>
+				<md-input-container>
+					<md-select ng-model="$ctrl.filters.in"
+						id="search_filter"
+						aria-label="filter - search in"
+						multiple
+						flex="shrink">
+							<md-option ng-value="type.value" ng-repeat="type in ::$ctrl.typeFilters">{{type.label}}</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="space-between center">
+				<label flex="noshrink">for all</label>
+				<md-input-container>
+					<md-select ng-model="$ctrl.filters.for"
+						id="search_filter"
+						aria-label="filter - search for"
+						multiple
+						flex="shrink">
+						<md-optgroup label="Virtual Tour" ng-show="!$ctrl.filters.in.length || $ctrl.filters.in.includes('tour')">
+							<md-option ng-value="type.value" ng-repeat="type in ::$ctrl.modelFilters.tour">{{type.label}}</md-option>
+						</md-optgroup>
+						<md-optgroup label="Campus Map" ng-show="!$ctrl.filters.in.length || $ctrl.filters.in.includes('map')">
+							<md-option ng-value="type.value" ng-repeat="type in ::$ctrl.modelFilters.map">{{type.label}}</md-option>
+						</md-optgroup>
+					</md-select>
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="space-between center">
+				<label flex="noshrink">by their</label>
+				<md-input-container>
+						<md-select ng-model="$ctrl.filters.by"
+											 aria-label="filter - search by"
+											 multiple
+											 flex="shrink">
+							<!-- <md-optgroup label="Virtual tour" ng-repeat="type in ::$ctrl.typeFilters">
+								<md-option ng-value="::type.value">{{::type.label}}</md-option>
+							</md-optgroup> -->
+							<!-- <md-optgroup label="Campus map"> -->
+								<md-option ng-value="::field.value" ng-repeat="field in ::$ctrl.fieldFilters">{{::field.label}}</md-option>
+							<!-- </md-optgroup> -->
+						</md-select>
+				</md-input-container>
+			</div>
+		</div>
+	</div>
+<!-- 
 	<md-list flex="noshrink" class="search-results">
 		<md-list-item ng-click="null">
 			Fun!
@@ -40,6 +92,6 @@
 			Fun!
 		</md-list-item>
 		<md-divider></md-divider>	
-	</md-list>
+	</md-list> -->
 	
 </md-content>

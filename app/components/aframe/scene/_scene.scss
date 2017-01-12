@@ -23,7 +23,7 @@
   	width: 100%;
   	z-index: 50
   }
-  &.map-open {
+  &.blur-active{
   	// transform: scale(1.1);
   	filter: blur(20px);
   }

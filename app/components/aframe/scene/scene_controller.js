@@ -1,5 +1,5 @@
 /** @memberOf app.components.aframe.scene */
-import { isDefined } from 'angular';
+import { isDefined, equals } from 'angular';
 
 /**
  * The scene controller manages all top-level functionality
@@ -13,22 +13,8 @@ import { isDefined } from 'angular';
  * @param {object} $element     <aframe-scene> outer elements
  * @param {object} $aframeScene Scene service dependency
  */
-function SceneCtrl($scope, $element, $aframeScene) {
+function SceneCtrl($scope, $element, $aframeScene, $aframeSky) {
 	'ngInject';
-
-	/**
-	 * Cache vars to store JQLite <img> and <a-sky>
-	 * Flag for init sky load and array of loaded skies
-	 * 
-	 * @type {null}
-	 * @type {null}
-	 * @type {boolean}
-	 * @type {Array}
-	 */
-	let $sky,
-			$skyAsset,
-			skyElLoaded = false;
-	const skyLoadedList = [];
 
   /**
 	 * Store JQLite-wrapped <a-scene> and <a-assets>
@@ -38,18 +24,21 @@ function SceneCtrl($scope, $element, $aframeScene) {
    * @return {void}		No return
    */
   this.$onInit = () => {
+		this._rightClick = false;
+		this._currentSceneId = '';
+
 		this.$sceneEl = $element.find('a-scene');
 		this.$assetsEl = this.$sceneEl.find('a-assets');
 		this.$aframeScene = $aframeScene;
-		this._rightClick = false;
   }
 
-	const setScene = (scene, sky) => {
+	const setScene = scene => {
 		
-		const { sceneLinks, hotSpots } = scene;
+		const { sceneLinks, hotSpots, _id } = scene;
 
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
+  	this._currentSceneId = _id;
 
     this.checkForDraft&&this.checkForDraft();
 	}
@@ -63,9 +52,16 @@ function SceneCtrl($scope, $element, $aframeScene) {
    */
   this.$doCheck = () => {
   	if (isDefined($aframeScene.scene)) {
-			if (!this.sky || $aframeScene.sky !== this.sky) {
-				this.sky = $aframeScene.sky;
+  		if ($aframeScene.scene._id && $aframeScene.scene._id !== this._currentSceneId) {
+			// if (!this.sky || $aframeScene.sky !== this.sky) {
+				// this.sky = $aframeScene.sky;
 	  		setScene($aframeScene.scene);
+	  	}
+  	} else return;
+  	if ($aframeSky.sky) {
+			if (!this.sky || $aframeSky.sky !== this.sky) {
+				this.sky = $aframeSky.sky;
+				console.log('scene controller detects change in sky service', this.sky);
 	  	}
   	}
   }

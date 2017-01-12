@@ -10,6 +10,7 @@ function MainCtrl(
   'ngInject';
   const WELCOME_MSG_DELAY = 500; //ms
   const SETTINGS_MSG_DELAY = 1000; //ms
+  const BLURRED_VIEWS = [ 'search', 'map' ];
   // check for mobile/landscape on every digest
   this.mobile = {};
   $scope.$watch(
@@ -59,52 +60,64 @@ function MainCtrl(
 	    .catch( () => showSettingsMsg() );
   }
 
-  const settingsLoaded = $scope.$watch(() => UserSession.settings, userSettings => {
-  	if (!isUndefined(userSettings)) {
-  		console.log('main controller applying settings')
-		  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
+  const settingsLoaded = $scope.$watch(
+  	() => UserSession.settings, 
+  	userSettings => {
+	  	if (!isUndefined(userSettings)) {
+	  		console.log('main controller applying settings')
+			  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
-			if (showWelcome.val) {
-			  $timeout(showWelcomeMsg, WELCOME_MSG_DELAY);
-			} else {
-			  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
-			}
+				if (showWelcome.val) {
+				  $timeout(showWelcomeMsg, WELCOME_MSG_DELAY);
+				} else {
+				  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
+				}
 
-		  this.titlebar = {
-				options: TITLEBAR_OPTS,
-				clickHandlers: {
-					config: () => {
-		      	$mdSidenav('config').toggle();
-					},
-					right: () => {
-				    this.toolbar.toggle();
-		      	this.titlebar.options.right.active = this.toolbar.isOpen;
-					},
-					condense: () => {
-				    this.toolbar.condense();
-		      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
-					}
-				} 
-		  }
+			  this.titlebar = {
+					options: TITLEBAR_OPTS,
+					clickHandlers: {
+						config: () => {
+			      	$mdSidenav('config').toggle();
+						},
+						right: () => {
+					    this.toolbar.toggle();
+			      	this.titlebar.options.right.active = this.toolbar.isOpen;
+						},
+						condense: () => {
+					    this.toolbar.condense();
+			      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+						}
+					} 
+			  }
 
-		  this.toolbar = {
-		  	views: BUTTONBAR_VIEWS,
-		    isOpen: toolbarOpen.val,
-		    isCondensed: toolbarCondensed.val,
-		    toggle() {
-		  		this.isOpen = !this.isOpen;
-		  		this.isOpen&&$mdSidenav('right').close();
-		    },
-		    condense() {
-		      !this.isOpen&&this.toggle();
-		      this.isCondensed = !this.isCondensed;
-		      return this.isCondensed;
-		    }
-		  }
+			  this.toolbar = {
+			  	views: BUTTONBAR_VIEWS,
+			    isOpen: toolbarOpen.val,
+			    isCondensed: toolbarCondensed.val,
+			    toggle() {
+			  		this.isOpen = !this.isOpen;
+			  		this.isOpen&&$mdSidenav('right').close();
+			    },
+			    condense() {
+			      !this.isOpen&&this.toggle();
+			      this.isCondensed = !this.isCondensed;
+			      return this.isCondensed;
+			    }
+			  }
+			  
+			  this.sidebar = {
+			  	hasState(view) {
+			  		return $state.includes(view);
+			  	},
+			  	hasBlur() {
+			  		return BLURRED_VIEWS.some(this.hasState);
+			  	}
+			  }
 
-		  settingsLoaded();
-  	}
-  });
+			  settingsLoaded();
+	  	}
+	  }
+  );
 
 }
 
