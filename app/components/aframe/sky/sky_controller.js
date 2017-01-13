@@ -1,7 +1,7 @@
 import { isDefined } from 'angular';
 import { utils } from 'aframe';
 
-function SkyCtrl($scope, $compile, $tourApi, UserSession, CBuffer) {
+function SkyCtrl($scope, $compile, $tourApi, $aframeSky, UserSession,  CBuffer) {
 	'ngInject';
 
 	/**
@@ -77,7 +77,7 @@ function SkyCtrl($scope, $compile, $tourApi, UserSession, CBuffer) {
 		const assetId = skyUrl.split('scenes/panorama/')[1].split('.')[0];
 
 		// return $compile(`<img src="${ assetPath }" id="${ asset }" />`)(scope, function (clone) {
-		return $compile(`<img src="//res.cloudinary.com/uoit-virtual-tour/image/upload/${ getSettings() }/v${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)($scope, clone => {
+		return $compile(`<img src="//res.cloudinary.com/uoit-virtual-tour/image/upload/${ $aframeSky.getSettings() }/v${ skyUrl }" id="${ assetId }" crossOrigin="anonymous" />`)($scope, clone => {
       clone.on('load', event => {
         $scope.$apply(() => {
 					this.$assetsEl.append(clone);
@@ -103,12 +103,6 @@ function SkyCtrl($scope, $compile, $tourApi, UserSession, CBuffer) {
       });
     } else {
       this.loadedSky = `#${skyId}`;
-    }
-    if (UserSession.usage.preloading.val > 0) {
-    	// $tourApi.preload()
-    	// this.preload.forEach(link => {
-    	// 	console.log(link.scene);
-    	// });
     }
 	}
 

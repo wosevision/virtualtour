@@ -1,10 +1,14 @@
-import { isArray, isObject } from 'angular';
-import { pick } from 'lodash';
+import { utils } from 'aframe';
+
+const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 
 class $aframeSky {
-	// constructor($scope) {
-	// 	'ngInject';
-	// }
+	constructor($http, $q, UserSession, GLOBAL_SETTINGS) {
+		'ngInject';
+		this.$http = $http;
+		this.$q = $q;
+		this.UserSession = UserSession;
+	}
 	/**
 	 * Getter/setter for formatting sky URL from sceneData
 	 * @type {string}
@@ -17,6 +21,23 @@ class $aframeSky {
 	set sky(panorama) {
 		console.log('sky service set to:', panorama)
 		this.panorama = panorama;
+	}
+
+	getSettings() {
+		const mobile = (utils.isMobile || utils.device.isMobile)(),
+					lowRes = !this.UserSession.usage.resolution.val;
+		const settings = {
+			w: mobile||lowRes ? 2048 : 4096,
+			h: mobile||lowRes ? 1024 : 2048,
+			c: 'scale',
+			f: 'auto',
+			q: COMPRESS_MAX - (COMPRESS_FACTOR * this.UserSession.usage.compression.val)
+		}
+		const output = [];
+		Object.keys(settings).forEach(key => {
+			output.push(`${key}_${settings[key]}`)
+		})
+		return output.join(',');
 	}
 }
 
