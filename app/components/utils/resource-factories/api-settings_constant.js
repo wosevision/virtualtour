@@ -1,5 +1,6 @@
 const GLOBAL_SETTINGS = {
-	apiUrl: '/api/v1'
+	apiUrl: '/api/v1',
+	imageApiUrl: '//res.cloudinary.com/uoit-virtual-tour/image/upload'
   // KEYSTONE HEROKU
   // https://virtualtour-cms.herokuapp.com
   // 
