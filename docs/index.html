@@ -45,16 +45,6 @@
               
                 
                 <li><a
-                  href='#equals'
-                  class="">
-                  equals
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
                   href='#scenectrl'
                   class=" toggle-sibling">
                   SceneCtrl
@@ -68,15 +58,33 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
+                        href='#SceneCtrl#constructor'
+                        class='regular pre-open'>
+                        #constructor
+                      </a></li>
+                      
+                      <li><a
                         href='#SceneCtrl#$onInit'
                         class='regular pre-open'>
                         #$onInit
                       </a></li>
                       
                       <li><a
+                        href='#SceneCtrl#setScene'
+                        class='regular pre-open'>
+                        #setScene
+                      </a></li>
+                      
+                      <li><a
                         href='#SceneCtrl#$doCheck'
                         class='regular pre-open'>
                         #$doCheck
+                      </a></li>
+                      
+                      <li><a
+                        href='#SceneCtrl#$onDestroy'
+                        class='regular pre-open'>
+                        #$onDestroy
                       </a></li>
                       
                     </ul>
@@ -625,17 +633,153 @@ scene editor.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='equals'>
-      equals
+    <h3 class='fl m0' id='scenectrl'>
+      SceneCtrl
     </h3>
     
     
   </div>
   
 
+  <p>The scene controller manages all top-level functionality
+of the scene component; it is responsible for initializing
+the DOM elements of the scene and updating them when the
+$aframeScene service changes.</p>
+
+
+  <div class='pre p1 fill-light mt0'>new SceneCtrl()</div>
+  
   
 
-  <div class='pre p1 fill-light mt0'>equals</div>
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='SceneCtrl#constructor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>constructor($scope, $element, $aframeScene, $aframeSky)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Initializes the SceneCtrl's dependencies</p>
+
+
+  <div class='pre p1 fill-light mt0'>constructor($scope: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $element: jqlite, $aframeScene: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $aframeSky: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    The current scope
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$element</span> <code class='quiet'>(jqlite)</code>
+	    The component's &#x3C;aframe-scene> element
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    The scene service
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeSky</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    The sky service
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='SceneCtrl#$onInit'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>$onInit()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Lifecycle hook to initialize component properties; sets
+a boolean to hold the rightclick-active flag (for when a
+user mouseups the scene with right button) and a string
+for the current active scene's ID.</p>
+<p>Also stores JQLite-wrapped &#x3C;a-scene> and &#x3C;a-assets> for
+appending child elements into the scene from inner components.</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onInit()</div>
   
   
 
@@ -662,29 +806,31 @@ scene editor.</p>
   
 </section>
 
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='SceneCtrl#setScene'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setScene(scene)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='scenectrl'>
-      SceneCtrl
-    </h3>
-    
-    
-  </div>
-  
 
-  <p>The scene controller manages all top-level functionality
-of the scene component; it is responsible for initializing
-the DOM elements of the scene and updating them when the
-$aframeScene service changes.</p>
+  <p>Extracts an incoming scene object's relevant data (<code>id</code>, <code>sceneLinks</code>,
+and <code>hotSpots</code>) and assigns them to the controller for rendering
+on the component.</p>
+<p>If the server-side editor component is attached (i.e. admin user is
+logged in), it will have mounted a <code>checkForDraft()</code> method on the
+controller, which is called here to announce if a newly-navigated-to
+scene has saved drafts.</p>
 
 
-  <div class='pre p1 fill-light mt0'>SceneCtrl</div>
+  <div class='pre p1 fill-light mt0'>setScene(scene: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -700,35 +846,9 @@ $aframeScene service changes.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    Current scope
+            <span class='code bold'>scene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    A scene object from API/database
 
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    &#x3C;aframe-scene> outer elements
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    Scene service dependency
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$aframeSky</span> <code class='quiet'>(any)</code>
-	    
           </div>
           
         </div>
@@ -738,56 +858,6 @@ $aframeScene service changes.</p>
 
   
 
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='SceneCtrl#$onInit'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>$onInit()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Store JQLite-wrapped &#x3C;a-scene> and &#x3C;a-assets>
-Init internal check for right click event</p>
-
-
-  <div class='pre p1 fill-light mt0'>$onInit(): void</div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>void</code>:
-        No return
-
-      
-    
   
 
   
@@ -816,32 +886,74 @@ Init internal check for right click event</p>
 
   
 
-  <p>Checks $aframeScene's current scene object each digest
-Proceeds if scene is defined; calls setScene()</p>
+  <p>Lifecycle hook to run a check on every digest loop cycle.</p>
+<p>Checks $aframeScene's current scene object; proceeds if
+scene is defined and calls <code>setScene()</code> on the incoming data.</p>
+<p>Checks if there is a sky active on $aframeSky, and if so, if
+it is different from the current active sky. Sets the conroller's
+sky if they differ or if the controller has no sky.</p>
 
 
-  <div class='pre p1 fill-light mt0'>$doCheck(): void</div>
-  
-  
-
-  
-  
-  
+  <div class='pre p1 fill-light mt0'>$doCheck()</div>
   
   
 
   
+  
+  
+  
+  
+
+  
 
   
 
   
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>void</code>:
-        No return
 
-      
-    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='SceneCtrl#$onDestroy'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>$onDestroy()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Lifecycle cleanup method; unattaches event listener
+for context menu (right click) events from the scene.</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onDestroy()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
   
 
   
