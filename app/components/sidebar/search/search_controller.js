@@ -9,6 +9,9 @@ class SearchCtrl {
 
 		const { typeFilters, modelFilters, fieldFilters } = SEARCH_FILTERS;
 		Object.assign(this, { typeFilters, modelFilters, fieldFilters });
+	}
+
+	$onInit() {
 		this.filters = {
 			in: [],
 			for: [],

@@ -96,7 +96,7 @@
     "aframe-reverse-look-controls-component": "^3.0.0",
     "aframe-selectable-component": "^1.6.0",
     "aframe-text-component": "^0.3.0",
-    "angular": "^1.5.8",
+    "angular": "^1.6.1",
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
     "angular-breadcrumb": "^0.4.1",

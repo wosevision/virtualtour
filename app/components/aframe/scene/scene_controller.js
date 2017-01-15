@@ -80,7 +80,7 @@ class SceneCtrl {
   		if (this.$aframeScene.scene._id && this.$aframeScene.scene._id !== this._currentSceneId) {
 			// if (!this.sky || this.$aframeScene.sky !== this.sky) {
 				// this.sky = this.$aframeScene.sky;
-	  		setScene(this.$aframeScene.scene);
+	  		this.setScene(this.$aframeScene.scene);
 	  	}
   	} else return;
   	if (this.$aframeSky.sky) {
