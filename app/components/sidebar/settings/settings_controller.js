@@ -5,8 +5,8 @@ import { element } from 'angular';
  * interface to the app's user preferences and data
  * usage settings, login/logout functions, and a set
  * of automatic usage detection functions.
- * @param {object} $scope
- * @param {object} $q
+ * @param {object} $scope 					 The current scope
+ * @param {object} $q 							 Angular's promise utility
  * @param {object} $animate          For animating backdrop only
  * @param {object} $mdUtil           Init backdrop utility
  * @param {object} $popupWindow      Supplies login window
@@ -19,8 +19,20 @@ function SettingsCtrl(
 	$scope, $q, $animate, $mdUtil, $popupWindow,
 	UserAuth, UserSession, ConnectionDetails,
 	AUTH_EVENTS) {
-  'ngInject';
-	
+	'ngInject';
+	/**
+	 * Lifecycle hook to initialize dependencies when component
+	 * is mounted.
+	 * 
+	 * Stores authentication and user preference detail objects,
+	 * inits connection object to hold network info. Sets up
+	 * one-time `$watch` binding to listen for accordion init
+	 * since its contents load async before it can open.
+	 *
+	 * Sets up `$on('event')` listener for login success; passes
+	 * user data from event into controller and syncs applicable
+	 * view elements; opens accordion to expose settings to user.
+	 */
 	this.$onInit = () => {
 		this.isLoggedIn = UserAuth.isAuthenticated;
 		this.user = UserSession.user;
@@ -31,6 +43,8 @@ function SettingsCtrl(
 		 * This property will hold the user's network and
 		 * device information when it becomes available; it
 		 * remains false until availability.
+		 *
+		 * @memberof SettingsCtrl
 		 * @type {boolean|object}
 		 * @example
 		 * {
@@ -50,7 +64,8 @@ function SettingsCtrl(
 		 * The accordion initializer watches for a valid
 		 * instance and opens the accordion once it becomes
 		 * available. Performed once then deregistered.
-		 * @param  {object} accordion   Accordion instance
+		 * 
+		 * @memberof SettingsCtrl
 		 */
 		const accordionReady = $scope.$watch('accordion', accordion => {
 			if (accordion) {
@@ -60,9 +75,12 @@ function SettingsCtrl(
 				accordionReady();
 			}
 		});
+
 		/**
 		 * Waits for a user to log in successfully; stores user
 		 * info and opens accordion sections when login is detected.
+		 * 
+		 * @memberof SettingsCtrl
 		 */
 		$scope.$on(AUTH_EVENTS.loginSuccess, (event, user) => {
 			this.user = UserSession.user;
@@ -100,9 +118,9 @@ function SettingsCtrl(
 	 * Logs user out directly.
 	 */
 	this.logout = () => {
-    const backdrop = $mdUtil.createBackdrop($scope, "md-dialog-backdrop md-opaque");
-    backdrop[0].tabIndex = -1;
-    $animate.enter(backdrop, element(document.body), null);
+		const backdrop = $mdUtil.createBackdrop($scope, "md-dialog-backdrop md-opaque");
+		backdrop[0].tabIndex = -1;
+		$animate.enter(backdrop, element(document.body), null);
 		UserAuth.logout().then(() => {
 			$animate.leave(backdrop);
 			this.collapseAll();
@@ -152,6 +170,6 @@ function SettingsCtrl(
 }
 
 export default {
-  name: 'SettingsCtrl',
-  fn: SettingsCtrl
+	name: 'SettingsCtrl',
+	fn: SettingsCtrl
 };

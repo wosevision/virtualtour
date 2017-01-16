@@ -4,11 +4,18 @@
  * well as a transclusion point for the server-rendered
  * scene editor.
  *
- * @memberOf app.components.aframe.scene
- * @type {object}
- * @prop {object} bindings   Interpolated binding for the sky component, one-way bindings for sceneLinks, hotSpots and mobile
- * @prop {object} transclude Slot for scene editor if allowed by server
- * @return {object} 				 Scene definition object
+ * @example
+ * <aframe-scene
+ *   sky="{{ $ctrl.scene.sky }}"
+ *   scene-links="$ctrl.scene.sceneLinks"
+ *   hot-spots="$ctrl.scene.hotSpots"
+ *   mobile="$ctrl.mobile">
+ * </aframe-scene>
+ * 
+ * @prop {String} sky 				Interpolated sky url
+ * @prop {Array}  sceneLinks  Array of scenelink objects
+ * @prop {Array}  hotSpots		Array of hotspot object
+ * @prop {Object} mobile 			Object with device info
  */
 const aframeScene = {
     bindings: {

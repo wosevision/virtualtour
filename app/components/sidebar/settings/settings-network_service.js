@@ -1,10 +1,43 @@
 import { isNumber } from 'angular';
 
+/**
+ * Upper limit of "high-speed" connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
+
 const SPEED_HI = 50,
+/**
+ * Upper limit of "wi-fi" connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
 			SPEED_WF = 8,
+/**
+ * Upper limit of "mobile/3G" connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
 			SPEED_3G = 2;
 
+/**
+ * This service is responsible for translating user network and device
+ * details into a usable format for application settings.
+ *
+ * It contains methods for detecting details, optimizing settings based
+ * on details, calculating general reports of setting levels, and
+ * providing human-readable versions of those reports.
+ * 
+ * @param  {Object} $rootScope    The root of the app scopes
+ * @param  {Object} $http         Angular's http service
+ * @param  {Object} $q            Angular's promise builder
+ * @param  {Object} USER_DEFAULTS Constant for default settings
+ */
 class ConnectionDetails {
+	/**
+	 * Initializes the service's dependencies. Extracts usage profiles
+	 * from the `USER_DEFAULTS.profiles` constant and discards other settings.
+	 */
 	constructor($rootScope, $http, $q, USER_DEFAULTS) {
 	  'ngInject';
 	  this.$rootScope = $rootScope;
@@ -13,12 +46,29 @@ class ConnectionDetails {
 
 		this.profiles = USER_DEFAULTS.profiles;
 	}
+
+	/**
+	 * Uses Angular's `$http` service to send a request to the server
+	 * for a connection test. Internally, the server API measures
+	 * connection speed in the background, and supplies this info back
+	 * to the app along with device details when it becomes available.
+	 * 
+	 * @return {Promise} Promise that will resolve to connection details
+	 */
 	detect() {
 	  return this.$http.get('/user/connection').then(connection => {
 	  	this.connection = connection;
 	  	return connection;
 	  });
 	}
+
+	/**
+	 * Determines the best usage profile (from `USER_DEFAULTS.profiles`)
+	 * to select based on a connection details object (e.g. the result of
+	 * calling `detect()`).
+	 * @param  {Object} connection Incoming connection details object
+	 * @return {Object}            The chosen optimal settings profile
+	 */
 	optimize(connection) {
 		const { network, useragent } = connection.data,
 					downloadSpeed = network.speeds.download,
@@ -39,7 +89,8 @@ class ConnectionDetails {
 		// default return
 		return this.profiles.balanced;
 	}
-		/**
+
+	/**
 	 * Tallies up values of usage settings asynchronously
 	 * by using `$scope.$eval()` to match applicable usage
 	 * level values against their keys (which are keyed by
@@ -47,9 +98,9 @@ class ConnectionDetails {
 	 * @example
 	 * {
 	 *   '<= 15': [0, 0, 5],
-	 *   ...
+	 *   '== 0': [...]
 	 * }
-	 * @param	 {object}	usage Incoming usage preference object
+	 * @param	 {Object}	usage Incoming usage preference object
 	 * @return {Promise}			Promise representing final levels
 	 */
 	calculateUsageLevel(usage) {
@@ -74,11 +125,13 @@ class ConnectionDetails {
 		});
 		return deferred.promise;
 	}
+	// TODO(PERF): CLEAN UP THIS FUNCTION; TOO MANY NESTED CLOSURES
+
 	/**
 	 * Maps a tally array of numbers into a label
 	 * array of human-readable usage level strings.
-	 * @param  {array}  tally Array of tallied usage values
-	 * @return {string}       Usage description
+	 * @param  {Array<Number>}  tally Array of tallied usage values
+	 * @return {Array<String>}       	Usage descriptions
 	 */
 	getLabelsFromTally(tally) {
 		return tally.map(value => {

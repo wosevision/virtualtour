@@ -5,8 +5,6 @@ import { isDefined, equals } from 'angular';
  * of the scene component; it is responsible for initializing
  * the DOM elements of the scene and updating them when the
  * $aframeScene service changes.
- * 
- * @memberOf app.components.aframe.scene
  */
 class SceneCtrl {
 	/**
