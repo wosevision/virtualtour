@@ -14,7 +14,8 @@
 
       </div>
     </md-toolbar>
-    <md-dialog-content>
+  	<md-dialog-content ng-if="$ctrl.currentTips" ng-include="'popup/welcome/_welcome-dialog-tips.html'" scope="this" onload=""></md-dialog-content>
+    <md-dialog-content ng-if="!$ctrl.currentTips">
       <md-tabs
       	md-dynamic-height
       	md-border-bottom
@@ -31,8 +32,8 @@
 					  	style="fill: #0077CA;">
 					  </ng-md-icon>
             <h2 class="md-display-2">Welcome to the Virtual Tour!</h2>
-            <p class="md-headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate.</p>
-
+            <p class="md-headline">Experience an immersive 3D visit to the University of Ontario Institute of Technology.</p>
+            <p class="md-headline">Use the tabs above to learn more about how to use the Virtual Tour, or just dive in!<br/>You'll learn quickly.</p>
           </md-content>
         </md-tab>
 
@@ -52,7 +53,7 @@
             	<md-list flex>
 				        <md-subheader class="md-no-sticky">First steps</md-subheader>
 				        <md-divider ></md-divider>
-				        <md-list-item class="md-2-line md-long-text" ng-click="null" layout="row">
+				        <md-list-item class="md-2-line md-long-text" ng-click="$ctrl.viewTip('navigation')" layout="row">
 					        <ng-md-icon icon="my_location" size="24" style="fill: #0077CA;"></ng-md-icon>
 				          <div class="md-list-item-text" layout="column">
 				            <h3>Tour navigation</h3>
@@ -115,7 +116,7 @@
 
       </md-tabs>
     </md-dialog-content>
-    <md-dialog-actions layout="row" class="footer-pane">
+    <md-dialog-actions layout="row" class="footer-pane" ng-if="!$ctrl.currentTips">
     	<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog" md-autofocus ng-model="$ctrl.showWelcome" ng-true-value="false" ng-false-value="true" ng-change="$ctrl.syncSettings()">
         <strong>Don't show me this again</strong>
       </md-checkbox>

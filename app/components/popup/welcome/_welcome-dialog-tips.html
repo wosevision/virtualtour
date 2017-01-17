@@ -1,0 +1,26 @@
+<div layout layout-align="center center">
+	<md-button class="md-primary" ng-click="$ctrl.currentTips = false">« Go back</md-button>
+</div>
+<div>
+	<h2 layout-padding>
+		<span class="md-headline">{{ ::$ctrl.currentTips.title[0] }}</span><br/>
+		<span class="md-display-2">{{ ::$ctrl.currentTips.title[1] }}</span>
+	</h2>
+</div>
+<md-tabs
+	md-dynamic-height
+	md-border-bottom
+	md-center-tabs
+	md-selected="$ctrl.activeTip">
+	<!-- md-stretch-tabs="always" -->
+
+  <md-tab ng-repeat="tip in ::$ctrl.currentTips.tips" label="{{ ::tip.label }}">
+    <md-content layout="row" layout-padding> 
+	  	<div ng-bind-html="::tip.content" layout="column" layout-align="center center" flex>
+	  	</div>
+	  	<img src="images/tip-location_menu.gif" flex>
+	  	<md-button class="md-primary md-raised" ng-click="$ctrl.nextTip($index)">Next »</md-button>
+    </md-content>
+  </md-tab>
+
+</md-tabs>

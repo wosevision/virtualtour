@@ -17,13 +17,16 @@ class DialogCtrl {
 	/**
 	 * Initializes dialog's dependencies.
 	 */
-	constructor($scope, $mdDialog, UserSession, nzTour, TOUR_STEPS) {
+	constructor($scope, $mdDialog, UserSession, nzTour, TOUR_STEPS, WELCOME_TIPS) {
 	  'ngInject';
-	 this.$scope = $scope;
-	 this.$mdDialog = $mdDialog;
-	 this.UserSession = UserSession;
-	 this.OnboardTour = nzTour;
-	 this.TOUR_STEPS = TOUR_STEPS;
+		this.$scope = $scope;
+		this.$mdDialog = $mdDialog;
+		this.UserSession = UserSession;
+		this.OnboardTour = nzTour;
+		this.TOUR_STEPS = TOUR_STEPS;
+		this.WELCOME_TIPS = WELCOME_TIPS;
+
+		this.currentTips = false;
 	}
 
 	/**
@@ -49,6 +52,20 @@ class DialogCtrl {
    */
   answer(answer) {
     return this.$mdDialog.hide(answer);
+  }
+
+  /**
+   * Changes the active view of the dialog, e.g. "user tips" detail panels. 
+   * @param  {string} view The view to transition to
+   */
+  viewTip(tip) {
+  	console.log(this.WELCOME_TIPS[tip]);
+  	this.currentTips = this.WELCOME_TIPS[tip];
+  }
+
+  nextTip(index) {
+  	console.log(this.currentTips.tips.length);
+  	this.activeTip = (index === this.currentTips.tips.length - 1) ? 0 : (index + 1);
   }
 
   /**
