@@ -42,7 +42,7 @@ function AppConfig(
 
   $stateProvider
     .state('home', {
-      abstract: true,
+      // abstract: true,
       template: '<ui-view></ui-view>'
     });
 
