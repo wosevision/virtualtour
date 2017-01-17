@@ -1,11 +1,18 @@
 .search {
 	&-bar {
-		.floating-panel {
 		background: $sidebar_bg_radial_hard;
+	}
+	&-icon {
+		fill: rgba(black, 0.87);
+		transition: 0.5s cubic-bezier(.5,.05,.1,1);
+		&.active {
+			fill: rgba(lighten(#0077CA, 15%), 0.87);
+			transform: rotateY(-360deg) scale(1.25);
 		}
 	}
 	&-form {
 		width: 600px;
+		margin-left: 14px;
 	}
 	&-filters {
 		md-select {
@@ -13,6 +20,7 @@
 		}
 	}
 	&-results {
+		background: rgba(white, 0.15);
 		> li {
 		  border-bottom: 1px solid #ccc;
 		  height: auto;

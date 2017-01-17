@@ -1,36 +1,36 @@
-<md-content class="search-bar" layout="column" layout-fill>
+<div class="search-bar" layout="column" layout-fill>
 
-	<div md-whiteframe="{{ whiteframeDp || 8 }}" ng-mouseenter="whiteframeDp = 16" ng-mouseleave="whiteframeDp = 8" class="floating-panel" layout="column" layout-align="center center" layout-margin layout-padding flex="grow">
+	<div layout="column" layout-align="center center" layout-margin layout-padding flex="grow">
 <!-- 	  <md-input-container md-no-float class="md-block md-icon-left">
 			<ng-md-icon icon="search" size="24"></ng-md-icon>
 			<input ng-model="$ctrl.query" aria-label="Search the Virtual Tour" id="search_q">
 		</md-input-container> -->
 		<label for="search_q">I'm looking for things with</label>
 		<div layout="row" layout-align="space-between center">
+			<ng-md-icon class="search-icon" icon="search" size="24" ng-class="{ 'active': searchActive }"></ng-md-icon>
 			<form ng-submit="$event.preventDefault()" class="search-form" flex="shrink">
 				<md-autocomplete
 						md-search-text="$ctrl.searchText"
 						md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
 						md-items="item in $ctrl.querySearch($ctrl.searchText)"
-						md-item-text="item.name"
+						md-item-text="item"
 						md-selected-item="$ctrl.selectedItem"
 						md-selected-item-change="$ctrl.selectedItemChange(item)"
 						md-min-length="2"
 						md-no-cache
 						placeholder="charles st"
 						md-menu-class="search-results"
-						md-autofocus
+						ng-focus="searchActive = true"
+						ng-blur="searchActive = false"
 						flex>
-						<ng-md-icon icon="search" size="24"></ng-md-icon>
-					<md-item-template>
-	<!-- 					<span class="item-title">
-							<md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-							<span> {{item}} </span>
-						</span> -->
+						<md-item-template>
+							<span md-highlight-text="$ctrl.searchText" md-highlight-flags="gi">{{ item }}</span>
+						</md-item-template> 
+					<!-- <md-item-template>
 						<span class="md-headline" md-highlight-text="$ctrl.searchText" md-highlight-flags="gi">{{ item.name }}</span><br/>
-						<span class="md-caption">{{ item.parent.name }}</span><!-- {{ item.parent.parent ? ', ' + item.parent.parent.name : '' }} -->
+						<span class="md-caption">{{ item.parent.name }}</span><
 						<span class="md-subhead" ng-bind-html="item.desc" md-highlight-text="$ctrl.searchText"></span>
-					</md-item-template>
+					</md-item-template> -->
 				</md-autocomplete>
 			</form>
 		</div>
@@ -82,16 +82,19 @@
 			</div>
 		</div>
 	</div>
-<!-- 
-	<md-list flex="noshrink" class="search-results">
-		<md-list-item ng-click="null">
-			Fun!
-		</md-list-item>
-		<md-divider></md-divider>
-		<md-list-item ng-click="null">
-			Fun!
-		</md-list-item>
-		<md-divider></md-divider>	
-	</md-list> -->
+	<md-content layout="column" class="search-results" flex="nogrow">
+		<span class="md-headline" ng-if="!$ctrl.searchResults.length">No results found matching "<em>{{ $ctrl.searchText }}</em>"!</span>
+		<md-list>
+      <md-list-item class="md-3-line" ng-repeat-start="item in $ctrl.searchResults" ng-click="null">
+        <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+        <div class="md-list-item-text" layout="column">
+          <h3><strong>{{ ::item.name }}</strong><span ng-if="item.parent.parent.name">, {{item.parent.name}}</span></h3>
+          <h4>{{ ::(item.parent.parent.name || item.parent.name) }}</h4>
+          <span ng-bind-html="item.desc"></span>
+        </div>
+      </md-list-item>
+			<md-divider ng-repeat-end></md-divider>
+		</md-list>
+	</md-content>
 	
-</md-content>
+</div>

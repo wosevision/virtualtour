@@ -12,6 +12,7 @@ class SearchCtrl {
 	}
 
 	$onInit() {
+		this.searchResults = [];
 		this.filters = {
 			in: [],
 			for: [],
@@ -27,8 +28,9 @@ class SearchCtrl {
 		return this.$http.get('/api/v1/search', { params }).then(result => {
 			const output = [];
 			Object.keys(result.data.results).forEach(type => output.push(...result.data.results[type]));
-			return output;
-			// result.data.overview
+			this.searchResults = output;
+			// return output;
+			return result.data.overview;
 		});
 	}
 
