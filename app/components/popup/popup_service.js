@@ -25,7 +25,7 @@ class $popupWindow {
 			this.$mdDialog.info({ locals })
 		);
 	}
-	toast(type, { message, action }) {
+	toast(type = 'primary', { message, action = 'Dismiss' }) {
 		const toast = this.standardToast
       .textContent(message)
       .action(action)
@@ -37,9 +37,10 @@ class $popupWindow {
 			this.$mdDialog.error({ locals })
 		);
 	}
-	warning({locals = null} = {}) {
+	warning({ locals = { message: 'An unknown error occurred!', action: 'Dismiss'} } = {}) {
 		const toast = this.standardToast
       .textContent(locals.message || 'An unknown error occurred!')
+      .action(locals.action || 'Dismiss')
       .position('bottom right');
 		return this.$mdToast.show(toast);
 	}

@@ -13,7 +13,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 
 			//  and handlers: success...
 			const viewHotspot = data => {
-				const { category, desc, href, name } = data.properties,
+				const { category, desc, href, name } = data.properties || data,
 							locals = { type: 'hotspot', category, desc, href, name };
 				$analytics.eventTrack('click', { category: 'hotspot', label: hotspotId });
 				return $popupWindow.info({ locals });
