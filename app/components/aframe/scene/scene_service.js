@@ -52,10 +52,10 @@ class $aframeScene {
 		this.$aframeSky = $aframeSky;
 
 		this.toasts = {};
-		getProps( EDITOR_MESSAGES ).forEach(type => {
+		Object.keys( EDITOR_MESSAGES ).forEach(type => {
 			const toast = $mdToast.simple();
 			const toastConfig = EDITOR_MESSAGES[type];
-			getProps(toastConfig).forEach(prop => {
+			Object.keys(toastConfig).forEach(prop => {
 				toast[prop]( toastConfig[prop] );
 			});
 			this.toasts[type] = toast;

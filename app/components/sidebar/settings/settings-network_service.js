@@ -5,20 +5,21 @@ import { isNumber } from 'angular';
  * @memberof ConnectionDetails
  * @type {Number}
  */
+const SPEED_HI = 50;
 
-const SPEED_HI = 50,
 /**
  * Upper limit of "wi-fi" connection rating (in Mbps).
  * @memberof ConnectionDetails
  * @type {Number}
  */
-			SPEED_WF = 8,
+const SPEED_WF = 8;
+
 /**
  * Upper limit of "mobile/3G" connection rating (in Mbps).
  * @memberof ConnectionDetails
  * @type {Number}
  */
-			SPEED_3G = 2;
+const SPEED_3G = 2;
 
 /**
  * This service is responsible for translating user network and device

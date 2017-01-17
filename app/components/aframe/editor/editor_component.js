@@ -1,12 +1,12 @@
 /**
- * A-FRAME SCENE DIRECTIVE
- * Converts arrays of standardized objects to A-Frame
- * compatible DOM elements via the aframeEntity directive
- * and manages their lifecycles in the context of a scene
- * 
- * @param  {Function} $compile     DI: compiler service
- * @param  {Function} $aframeScene DI: scene service
- * @return {Object}                Scene definition object
+ * The scene editor is an attachment for the scene
+ * component that allows in-scene editing of scene elements.
+ * It should only be rendered directly by the server, when
+ * an admin user is logged in.
+ * @example
+ * <aframe-scene> <!-- required -->
+ *   <scene-editor></scene-editor>
+ * </aframe-scene>
  */
 const sceneEditor = {
     controller: 'EditorCtrl',

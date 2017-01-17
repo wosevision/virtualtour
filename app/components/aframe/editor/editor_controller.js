@@ -3,13 +3,19 @@ import { isUndefined, equals, element } from 'angular';
 const attachTo = element(document.body);
 let draftTimeout;
 
+/**
+ * This controller is only instantiated with the server-rendered
+ * editor component. It works by mounting a number of its
+ * behaviours onto the scene component's `SceneCtrl` directly
+ * and by proxying the `$aframeScene` service.
+ * 
+ * @param  {object} $mdPanel     ng-material's panel service
+ * @param  {object} $mdDialog    ng-material's dialog service
+ * @param  {object} $aframeScene The scene service
+ */
 class EditorCtrl {
-	constructor(
-		$mdPanel, $mdDialog,
-		$aframeScene
-	) {
+	constructor($mdPanel, $mdDialog, $aframeScene) {
 		'ngInject';
-	  // INIT VARS
 		this.unpublishedChanges = false;
 		this.$mdPanel = $mdPanel;
 		this.$mdDialog = $mdDialog;

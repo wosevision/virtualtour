@@ -1,12 +1,11 @@
 import { element } from 'angular';
 
 /**
- * The settings controller provides a high-level
- * interface to the app's user preferences and data
- * usage settings, login/logout functions, and a set
- * of automatic usage detection functions.
+ * The settings controller provides a high-level interface to
+ * the app's user preferences and data usage settings, login/logout
+ * functions, and a set of automatic usage detection functions.
+ * 
  * @param {object} $scope 					 The current scope
- * @param {object} $q 							 Angular's promise utility
  * @param {object} $animate          For animating backdrop only
  * @param {object} $mdUtil           Init backdrop utility
  * @param {object} $popupWindow      Supplies login window
@@ -15,11 +14,20 @@ import { element } from 'angular';
  * @param {object} ConnectionDetails Detects network and device
  * @param {object} AUTH_EVENTS       Authorization event names
  */
-function SettingsCtrl(
-	$scope, $q, $animate, $mdUtil, $popupWindow,
+class SettingsCtrl {
+	constructor($scope, $animate, $mdUtil, $popupWindow,
 	UserAuth, UserSession, ConnectionDetails,
 	AUTH_EVENTS) {
-	'ngInject';
+		'ngInject';
+		this.$scope = $scope;
+		this.$animate = $animate;
+		this.$mdUtil = $mdUtil;
+		this.$popupWindow = $popupWindow;
+		this.UserAuth = UserAuth;
+		this.UserSession = UserSession;
+		this.ConnectionDetails = ConnectionDetails;
+		this.AUTH_EVENTS = AUTH_EVENTS;
+	}
 	/**
 	 * Lifecycle hook to initialize dependencies when component
 	 * is mounted.
@@ -33,11 +41,11 @@ function SettingsCtrl(
 	 * user data from event into controller and syncs applicable
 	 * view elements; opens accordion to expose settings to user.
 	 */
-	this.$onInit = () => {
-		this.isLoggedIn = UserAuth.isAuthenticated;
-		this.user = UserSession.user;
-		this.settings = UserSession.settings;
-		this.usage = UserSession.usage;
+	$onInit() {
+		this.isLoggedIn = this.UserAuth.isAuthenticated;
+		this.user = this.UserSession.user;
+		this.settings = this.UserSession.settings;
+		this.usage = this.UserSession.usage;
 
 		/**
 		 * This property will hold the user's network and
@@ -67,102 +75,112 @@ function SettingsCtrl(
 		 * 
 		 * @memberof SettingsCtrl
 		 */
-		const accordionReady = $scope.$watch('accordion', accordion => {
+		const accordionReady = this.$scope.$watch('accordion', accordion => {
 			if (accordion) {
-				$scope.$applyAsync(() => {
-					accordion.expandAll();
+				this.$scope.$applyAsync(() => {
+					this.isLoggedIn() && accordion.expandAll();
 				});
 				accordionReady();
 			}
 		});
 
-		/**
-		 * Waits for a user to log in successfully; stores user
-		 * info and opens accordion sections when login is detected.
-		 * 
-		 * @memberof SettingsCtrl
-		 */
-		$scope.$on(AUTH_EVENTS.loginSuccess, (event, user) => {
-			this.user = UserSession.user;
-			this.settings = UserSession.settings;
-			this.usage = UserSession.usage;
-			this.updateUsage();
-			this.updateSettings();
-			this.expandAll();
-		});
-
-		this.updateUsage();
+		this.$scope.$on(this.AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
+		
+		this.getUsageLevel();
 	}
 
 	/**
 	 * Expands all accordion sections.
 	 */
-	this.expandAll = () => {
-		$scope.accordion.expandAll();
+	expandAll() {
+		this.$scope.accordion.expandAll();
 	}
 	/**
 	 * Collapses all accordion sections.
 	 */
-	this.collapseAll = () => {
-		$scope.accordion.collapseAll();
+	collapseAll() {
+		this.$scope.accordion.collapseAll();
 	}
 
 	/**
-	 * Prompts user for login.
+	 * Prompts user for login using `$popupWindow` service's `login()` dialog.
 	 * @return {Promise} Status of popupWindow
 	 */
-	this.promptLogin = () => {
-		return $popupWindow.login();
+	promptLogin() {
+		return this.$popupWindow.login();
 	}
 	/**
-	 * Logs user out directly.
+	 * Logs user out directly with `UserAuth.logout()`.
 	 */
-	this.logout = () => {
-		const backdrop = $mdUtil.createBackdrop($scope, "md-dialog-backdrop md-opaque");
+	logout() {
+		const backdrop = this.$mdUtil.createBackdrop(this.$scope, "md-dialog-backdrop md-opaque");
 		backdrop[0].tabIndex = -1;
-		$animate.enter(backdrop, element(document.body), null);
-		UserAuth.logout().then(() => {
-			$animate.leave(backdrop);
+		this.$animate.enter(backdrop, element(document.body), null);
+		this.UserAuth.logout().then(() => {
+			this.$animate.leave(backdrop);
 			this.collapseAll();
 		});
 	}
 
 	/**
+	 * Stores user info and opens accordion sections when login is detected.
+	 * 
+	 * @param  {Event} event  The originating event object
+	 * @param  {Object} user  The newly logged-in user
+	 */
+	loadUserAfterLogin(event, user) {
+		this.user = this.UserSession.user;
+		this.settings = this.UserSession.settings;
+		this.usage = this.UserSession.usage;
+		this.updateUsage();
+		this.updateSettings();
+		this.expandAll();
+	}
+
+	/**
 	 * Updates the user's setting preferences.
 	 */
-	this.updateSettings = () => {
-		UserSession.settings = this.settings;
+	updateSettings() {
+		this.UserSession.settings = this.settings;
 	}
 	/**
-	 * Updates the user's usage preferences; uses the
-	 * ConnectionDetails service to convert usage into
-	 * a user-friendly description of what it's doing.
-	 * - Updates UserSession with current OR incoming usage
-	 * - Uses `calculateUsageLevel()` to tally usage stats
-	 * - Retrieves array of labels from `getLabelsFromTally()`
+	 * Updates the user's usage preferences and usage level description text.
+	 * 
 	 * @param  {[object]} usage Optional data override
 	 */
-	this.updateUsage = usage => {
-		UserSession.usage = usage || this.usage;
-		ConnectionDetails.calculateUsageLevel(UserSession.usage).then(usageLevelTally => {
-			this.usageLevel = ConnectionDetails.getLabelsFromTally(usageLevelTally);
+	updateUsage(usage) {
+		this.UserSession.usage = usage || this.usage;
+		this.getUsageLevel();
+	}
+	/**
+	 * Uses the `ConnectionDetails` service to convert the current
+	 * session's usage preferences into a user-friendly description
+	 * of what the preferences' effects will be.
+	 * - Grabs `UserSession.usage` details
+	 * - Uses `ConnectionDetails.calculateUsageLevel()` to tally usage stats from details
+	 * - Passes resulting tally to `ConnectionDetails.getLabelsFromTally()`
+	 * - Assigns resulting descriptions to controller
+	 */
+	getUsageLevel() {
+		this.ConnectionDetails.calculateUsageLevel(this.UserSession.usage).then(usageLevelTally => {
+			this.usageLevel = this.ConnectionDetails.getLabelsFromTally(usageLevelTally);
 		});
 	}
 
 	/**
 	 * User-activated function for auto-optimizing usage
-	 * level using the ConnectionDetails service.
+	 * level using the `ConnectionDetails` service.
 	 * - Sets loading animation during detection
 	 * - Fetches connection information with `detect()`
 	 * - Stores returned connection information
 	 * - Sets optimized usage settings with `optimize()`
 	 */
-	this.detectConnection = () => {
+	detectConnection() {
 		if (this.usage.auto.val) {
 			this.connection = { loading: true };
-			ConnectionDetails.detect().then(connection => {
+			this.ConnectionDetails.detect().then(connection => {
 				this.connection = connection;
-				this.usage = ConnectionDetails.optimize(connection);
+				this.usage = this.ConnectionDetails.optimize(connection);
 				this.updateUsage();
 			});
 		}

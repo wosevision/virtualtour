@@ -35,6 +35,16 @@
               
                 
                 <li><a
+                  href='#editorctrl'
+                  class="">
+                  EditorCtrl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#aframescene'
                   class="">
                   aframeScene
@@ -404,12 +414,6 @@
                         .accordionReady
                       </a></li>
                     
-                      <li><a
-                        href='#SettingsCtrl$on'
-                        class='regular pre-open'>
-                        .$on
-                      </a></li>
-                    
                     </ul>
                   
                   
@@ -447,6 +451,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#SettingsCtrl#loadUserAfterLogin'
+                        class='regular pre-open'>
+                        #loadUserAfterLogin
+                      </a></li>
+                      
+                      <li><a
                         href='#SettingsCtrl#updateSettings'
                         class='regular pre-open'>
                         #updateSettings
@@ -456,6 +466,12 @@
                         href='#SettingsCtrl#updateUsage'
                         class='regular pre-open'>
                         #updateUsage
+                      </a></li>
+                      
+                      <li><a
+                        href='#SettingsCtrl#getUsageLevel'
+                        class='regular pre-open'>
+                        #getUsageLevel
                       </a></li>
                       
                       <li><a
@@ -485,21 +501,21 @@
                     <li class='h5'><span>Static members</span></li>
                     
                       <li><a
-                        href='#ConnectionDetailsSPEED_3G'
+                        href='#ConnectionDetailsSPEED_HI'
                         class='regular pre-open'>
-                        .SPEED_3G
-                      </a></li>
-                    
-                      <li><a
-                        href='#ConnectionDetailsSPEED_3G'
-                        class='regular pre-open'>
-                        .SPEED_3G
+                        .SPEED_HI
                       </a></li>
                     
                       <li><a
                         href='#ConnectionDetailsSPEED_WF'
                         class='regular pre-open'>
                         .SPEED_WF
+                      </a></li>
+                    
+                      <li><a
+                        href='#ConnectionDetailsSPEED_3G'
+                        class='regular pre-open'>
+                        .SPEED_3G
                       </a></li>
                     
                     </ul>
@@ -695,13 +711,70 @@
   </div>
   
 
-  <p>A-FRAME SCENE DIRECTIVE
-Converts arrays of standardized objects to A-Frame
-compatible DOM elements via the aframeEntity directive
-and manages their lifecycles in the context of a scene</p>
+  <p>The scene editor is an attachment for the scene
+component that allows in-scene editing of scene elements.
+It should only be rendered directly by the server, when
+an admin user is logged in.</p>
 
 
   <div class='pre p1 fill-light mt0'>sceneEditor</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>&lt;aframe-scene&gt; &lt;!-- required --&gt;
+  &lt;scene-editor&gt;&lt;/scene-editor&gt;
+&lt;/aframe-scene&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='editorctrl'>
+      EditorCtrl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This controller is only instantiated with the server-rendered
+editor component. It works by mounting a number of its
+behaviours onto the scene component's <code>SceneCtrl</code> directly
+and by proxying the <code>$aframeScene</code> service.</p>
+
+
+  <div class='pre p1 fill-light mt0'>new EditorCtrl($mdPanel: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdDialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $aframeScene: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -717,8 +790,8 @@ and manages their lifecycles in the context of a scene</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>$compile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    DI: compiler service
+            <span class='code bold'>$mdPanel</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    ng-material's panel service
 
           </div>
           
@@ -726,8 +799,17 @@ and manages their lifecycles in the context of a scene</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    DI: scene service
+            <span class='code bold'>$mdDialog</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    ng-material's dialog service
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    The scene service
 
           </div>
           
@@ -738,14 +820,6 @@ and manages their lifecycles in the context of a scene</p>
 
   
 
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        Scene definition object
-
-      
-    
   
 
   
@@ -3966,13 +4040,12 @@ checkbox affects the user's settings.</p>
   </div>
   
 
-  <p>The settings controller provides a high-level
-interface to the app's user preferences and data
-usage settings, login/logout functions, and a set
-of automatic usage detection functions.</p>
+  <p>The settings controller provides a high-level interface to
+the app's user preferences and data usage settings, login/logout
+functions, and a set of automatic usage detection functions.</p>
 
 
-  <div class='pre p1 fill-light mt0'>new SettingsCtrl($scope: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $q: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $animate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdUtil: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $popupWindow: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserAuth: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserSession: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, ConnectionDetails: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, AUTH_EVENTS: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  <div class='pre p1 fill-light mt0'>new SettingsCtrl($scope: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $animate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdUtil: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $popupWindow: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserAuth: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserSession: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, ConnectionDetails: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, AUTH_EVENTS: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -3989,15 +4062,8 @@ of automatic usage detection functions.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$q</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    
+	    The current scope
+
           </div>
           
         </div>
@@ -4160,52 +4226,6 @@ available. Performed once then deregistered.</p>
 
 
   <div class='pre p1 fill-light mt0'>accordionReady</div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='SettingsCtrl$on'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>$on</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Waits for a user to log in successfully; stores user
-info and opens accordion sections when login is detected.</p>
-
-
-  <div class='pre p1 fill-light mt0'>$on</div>
   
   
 
@@ -4398,7 +4418,7 @@ view elements; opens accordion to expose settings to user.</p>
 
   
 
-  <p>Prompts user for login.</p>
+  <p>Prompts user for login using <code>$popupWindow</code> service's <code>login()</code> dialog.</p>
 
 
   <div class='pre p1 fill-light mt0'>promptLogin(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
@@ -4451,7 +4471,7 @@ view elements; opens accordion to expose settings to user.</p>
 
   
 
-  <p>Logs user out directly.</p>
+  <p>Logs user out directly with <code>UserAuth.logout()</code>.</p>
 
 
   <div class='pre p1 fill-light mt0'>logout()</div>
@@ -4464,6 +4484,74 @@ view elements; opens accordion to expose settings to user.</p>
   
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='SettingsCtrl#loadUserAfterLogin'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>loadUserAfterLogin(event, user)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Stores user info and opens accordion sections when login is detected.</p>
+
+
+  <div class='pre p1 fill-light mt0'>loadUserAfterLogin(event: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Event</a>, user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Event</a>)</code>
+	    The originating event object
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>user</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    The newly logged-in user
+
+          </div>
+          
+        </div>
+      
+    </div>
   
 
   
@@ -4541,14 +4629,7 @@ view elements; opens accordion to expose settings to user.</p>
 
   
 
-  <p>Updates the user's usage preferences; uses the
-ConnectionDetails service to convert usage into
-a user-friendly description of what it's doing.</p>
-<ul>
-<li>Updates UserSession with current OR incoming usage</li>
-<li>Uses <code>calculateUsageLevel()</code> to tally usage stats</li>
-<li>Retrieves array of labels from <code>getLabelsFromTally()</code></li>
-</ul>
+  <p>Updates the user's usage preferences and usage level description text.</p>
 
 
   <div class='pre p1 fill-light mt0'>updateUsage(usage: [<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>])</div>
@@ -4595,6 +4676,59 @@ a user-friendly description of what it's doing.</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='SettingsCtrl#getUsageLevel'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getUsageLevel()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Uses the <code>ConnectionDetails</code> service to convert the current
+session's usage preferences into a user-friendly description
+of what the preferences' effects will be.</p>
+<ul>
+<li>Grabs <code>UserSession.usage</code> details</li>
+<li>Uses <code>ConnectionDetails.calculateUsageLevel()</code> to tally usage stats from details</li>
+<li>Passes resulting tally to <code>ConnectionDetails.getLabelsFromTally()</code></li>
+<li>Assigns resulting descriptions to controller</li>
+</ul>
+
+
+  <div class='pre p1 fill-light mt0'>getUsageLevel()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='SettingsCtrl#detectConnection'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -4608,7 +4742,7 @@ a user-friendly description of what it's doing.</p>
   
 
   <p>User-activated function for auto-optimizing usage
-level using the ConnectionDetails service.</p>
+level using the <code>ConnectionDetails</code> service.</p>
 <ul>
 <li>Sets loading animation during detection</li>
 <li>Fetches connection information with <code>detect()</code></li>
@@ -4670,7 +4804,7 @@ level using the ConnectionDetails service.</p>
   </div>
   
 
-  <p>THis service is responsible for translating user network and device
+  <p>This service is responsible for translating user network and device
 details into a usable format for application settings.</p>
 <p>It contains methods for detecting details, optimizing settings based
 on details, calculating general reports of setting levels, and
@@ -4742,11 +4876,11 @@ providing human-readable versions of those reports.</p>
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='ConnectionDetailsSPEED_3G'>
+    <div class='border-bottom' id='ConnectionDetailsSPEED_HI'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>SPEED_3G</span>
+            <span class='code strong strong truncate'>SPEED_HI</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -4757,7 +4891,57 @@ providing human-readable versions of those reports.</p>
   <p>Upper limit of "high-speed" connection rating (in Mbps).</p>
 
 
-  <div class='pre p1 fill-light mt0'>SPEED_3G</div>
+  <div class='pre p1 fill-light mt0'>SPEED_HI</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='ConnectionDetailsSPEED_WF'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>SPEED_WF</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Upper limit of "wi-fi" connection rating (in Mbps).</p>
+
+
+  <div class='pre p1 fill-light mt0'>SPEED_WF</div>
   
     <p>
       Type:
@@ -4809,50 +4993,10 @@ providing human-readable versions of those reports.</p>
 
   <div class='pre p1 fill-light mt0'>SPEED_3G</div>
   
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='ConnectionDetailsSPEED_WF'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>SPEED_WF</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Upper limit of "wi-fi" connection rating (in Mbps).</p>
-
-
-  <div class='pre p1 fill-light mt0'>SPEED_WF</div>
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
   
   
 
