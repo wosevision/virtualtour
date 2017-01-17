@@ -18,7 +18,7 @@ function AppRun(
   });
 
   $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => { 
-    console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
+    // console.log('STATE CHANGE START', toState, toParams, fromState, fromParams, options);
     if (toState.data && toState.data.roles && !UserAuth.isAuthorized(toState.data.roles)) {
       event.preventDefault();
       if (UserAuth.isAuthenticated()) {
@@ -38,7 +38,7 @@ function AppRun(
       $rootScope.pageTitle += ' | ';
       $rootScope.pageTitle += toState.label;
     }
-    console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
+    // console.log('STATE CHANGE SUCCESS', toState, toParams, fromState, fromParams);
   });
 
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {

@@ -105,6 +105,8 @@ $sidebar_nav_secondary_level_color: #757575;
 $sidebar_nav_active_color: $uoitlightblue;
 $sidebar_border_color: scale-color($uoitgrey, $lightness: 90%);
 //$sidebar_border_color: scale-color($uoitgrey, $alpha: -90%);
+$sidebar_bg_radial_hard: radial-gradient(ellipse at center, hsla(0,0%,100%,0.4) 0%,hsla(0,0%,100%,0.8) 100%);
+$sidebar_bg_radial_soft: radial-gradient(ellipse at center, hsla(0,0%,100%,0) 0%,hsla(0,0%,100%,0.7) 100%);
 
 
 

@@ -1,5 +1,5 @@
 .user-dashboard {
-	background: radial-gradient(ellipse at center, hsla(0,0%,100%,0.4) 0%,hsla(0,0%,100%,0.8) 100%);
+	background: $sidebar_bg_radial_hard;
 	md-card-header {
 		position: relative;
 		&:not(.signin-msg) {
