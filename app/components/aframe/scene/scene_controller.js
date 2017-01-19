@@ -1,4 +1,4 @@
-import { isDefined, equals } from 'angular';
+import { isDefined, equals, element } from 'angular';
 
 /**
  * The scene controller manages all top-level functionality
@@ -33,11 +33,41 @@ class SceneCtrl {
    */
   $onInit() {
 		this._rightClick = false;
+		this._isMobile = false;
 		this._currentSceneId = '';
 
 		this.$sceneEl = this.$element.find('a-scene');
 		this.$assetsEl = this.$sceneEl.find('a-assets');
+		this.$cameraEl = element(document.getElementById('aframe-camera'));
   }
+
+	$onChanges(changes) {
+		console.log(changes);
+		if (changes.mobile.isFirstChange()) return;
+		if (!this._isMobile && changes.mobile.currentValue.screen) {
+			// this.$cursorEl = element(document.createElement('a-cursor'));
+			// this.$cursorEl.attr({
+			// 	fuse: true,
+			// 	fuseTimeout: 1000,
+			// 	maxDistance: 100,
+			// 	material: 'color:white;'
+			// });
+			// this.$cameraEl
+			// 	.attr({ 'look-controls': 'enabled: true;', 'reverse-look-controls': 'enabled: false;' });
+			// this.$cameraEl.append(this.$cursorEl);
+			this._isMobile = true;
+			// console.log('mobile detected; scene adapted', this.$cameraEl, this.$cursorEl)
+		}
+		if (this._isMobile && !changes.mobile.currentValue.screen) {
+			// this.$cursorEl.remove();
+			// this.$cameraEl
+			// 	.attr({
+			// 		'look-controls': 'enabled: false;',
+			// 		'reverse-look-controls': 'enabled: true;'
+			// 	});
+			this._isMobile = false;
+		}
+	}
 
   /**
    * Extracts an incoming scene object's relevant data (`id`, `sceneLinks`,
