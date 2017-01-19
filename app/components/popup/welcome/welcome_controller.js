@@ -7,7 +7,6 @@
  * (hide/cancel), as well as methods for initializing the onboard tutorial
  * and syncing user settings (e.g. when user dismisses welcome dialog).
  *
- * @param  {object} $scope      The dialog scope
  * @param  {object} $mdDialog   ng-material's dialog service
  * @param  {object} UserSession The current user session/settings
  * @param  {object} nzTour      Onboard tour service
@@ -17,15 +16,15 @@ class DialogCtrl {
 	/**
 	 * Initializes dialog's dependencies.
 	 */
-	constructor($scope, $mdDialog, UserSession, nzTour, TOUR_STEPS, WELCOME_TIPS) {
+	constructor($mdDialog, UserSession, nzTour, TOUR_STEPS, WELCOME_TIP_LIST, WELCOME_TIPS) {
 	  'ngInject';
-		this.$scope = $scope;
 		this.$mdDialog = $mdDialog;
 		this.UserSession = UserSession;
 		this.OnboardTour = nzTour;
 		this.TOUR_STEPS = TOUR_STEPS;
 		this.WELCOME_TIPS = WELCOME_TIPS;
 
+		this.welcomeTipsList = WELCOME_TIP_LIST;
 		this.currentTips = false;
 	}
 
@@ -63,9 +62,11 @@ class DialogCtrl {
   	this.currentTips = this.WELCOME_TIPS[tip];
   }
 
-  nextTip(index) {
-  	console.log(this.currentTips.tips.length);
-  	this.activeTip = (index === this.currentTips.tips.length - 1) ? 0 : (index + 1);
+  nextTip() {
+  	this.activeTip = (this.activeTip === this.currentTips.tips.length - 1) ? 0 : (this.activeTip + 1);
+  }
+  prevTip() {
+  	this.activeTip = (this.activeTip === 0) ? this.currentTips.tips.length - 1 : (this.activeTip - 1);
   }
 
   /**

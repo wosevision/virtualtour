@@ -15,11 +15,12 @@
 	<!-- md-stretch-tabs="always" -->
 
   <md-tab ng-repeat="tip in ::$ctrl.currentTips.tips" label="{{ ::tip.label }}">
-    <md-content layout="row" layout-padding> 
-	  	<div ng-bind-html="::tip.content" layout="column" layout-align="center center" flex>
+    <md-content layout="column"> 
+	    <div layout="row" layout-padding> 
+		  	<div bind-html-compile compile="::tip.content" layout="column" layout-align="center center" flex>
+		  	</div>
+		  	<img ng-src="{{ ::tip.image }}" flex>
 	  	</div>
-	  	<img src="images/tip-location_menu.gif" flex>
-	  	<md-button class="md-primary md-raised" ng-click="$ctrl.nextTip($index)">Next »</md-button>
     </md-content>
   </md-tab>
 

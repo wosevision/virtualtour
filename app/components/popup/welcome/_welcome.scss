@@ -40,9 +40,15 @@
   }
 }
 
+.md-dialog-container {
+	// padding-top: 69px;
+	// height: calc(100% - 69px);
+}
+
 .welcome-dialog {
 	max-width:960px;
-	max-height:100%;
+	max-height: calc(95% - 69px);
+	margin-top: 69px;
 	text-align: center;
 	.dialog-icon {
 		width: 90px;
@@ -68,6 +74,13 @@
 		    animation-duration: 1s;
 		    animation-name: pulse;
 	  }
+	}
+	.md-body-1 ng-md-icon {
+		min-height: 0;
+		height: 16px;
+		min-width: 0;
+		width: 16px;
+		padding: 1px;
 	}
 	md-content h1, md-content h2 {
 		color: $uoitdarkblue;
