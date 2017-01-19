@@ -1,30 +1,30 @@
 import { isObject, isArray, isUndefined, equals } from 'angular';
 
 function formatAttrs(attrs, oldAttrs = false) {
-	const attrArray = [];
 
-	if (attrs && isObject(attrs)) {
-	  for (const attr of Object.keys(attrs)) {
-	  	let val = attrs[attr];
+	if (attrs && isArray(attrs)) {
+	//   for (const attr of Object.keys(attrs)) {
+	//   	let val = attrs[attr];
 
-			if ( attr && !equals(val, oldAttrs[attr]) )  {
-				if (isArray(val)) {
-		  		val = attrs[attr].map( (a, i) => {
-		  			return attrs[attr][i];
-		  		}).join(' ');
-		  	}
+	// 		if ( attr && !equals(val, oldAttrs[attr]) )  {
+	// 			if (isArray(val)) {
+	// 	  		val = attrs[attr].map( (a, i) => {
+	// 	  			return attrs[attr][i];
+	// 	  		}).join(' ');
+	// 	  	}
 
-		  	if (oldAttrs === false) {
-					attrArray.push(`${attr}="${val}"`);
-					//console.log(`Attribute ${attr}="${val}" added; NEW`);
-		  	} else {
-					attrArray[attr] = val;
-					//console.log(`Attribute ${attr}="${val}" added`);
-		  	}
+	// 	  	if (oldAttrs === false) {
+	// 				attrArray.push(`${attr}="${val}"`);
+	// 				//console.log(`Attribute ${attr}="${val}" added; NEW`);
+	// 	  	} else {
+	// 				attrArray[attr] = val;
+	// 				//console.log(`Attribute ${attr}="${val}" added`);
+	// 	  	}
 
-			}
-		}
-		return attrArray;
+	// 		}
+	// 	}
+	// 	return attrArray;
+		return attrs.map(attr => `${attr.prop}="${attr.val}"`)
 	}
 
 }
@@ -74,7 +74,7 @@ function aframeEntity($compile) {
 
 			$compile($entity)(scope, (clone, cloneScope) => {
 
-      	element.replaceWith(clone);
+      	element.after(clone);
 	      element.remove();
 
       	const attrWatch = scope.$watch('attrs', (newVal, oldVal) => {

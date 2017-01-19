@@ -22,6 +22,7 @@ const aframeScene = {
       sky: '@',
       sceneLinks: '<?',
       hotSpots: '<?',
+      entities: '<?',
       mobile: '<?'
     },
     transclude: {

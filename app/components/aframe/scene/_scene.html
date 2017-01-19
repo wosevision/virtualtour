@@ -18,7 +18,6 @@
 	</a-assets>
 		<aframe-sky sky="$ctrl.sky"></aframe-sky>
 		<!-- CAMERA ENTITY -->
-		<a-entity position="0 1.8 0" id="aframe-camera">
 		<a-entity position="0 1.8 0">
 			<a-entity
 				camera
@@ -33,14 +32,14 @@
 		</a-entity>
 		
 		<!-- GENERIC ENTITIES -->
-<!-- 		<aframe-entity
-			ng-repeat="entity in entities track by ('entity_' + entity._id)"
-			ng-if="entity"
+		<aframe-entity
+			ng-repeat="entity in $ctrl.entities track by entity._id"
 			type="{{entity.type}}"
 			attrs="entity.attrs"
 			entities="entity.entities">
-		</aframe-entity> -->
+		</aframe-entity>
 		
+    <!-- <a-ocean width="20" depth="40" density="30" position="16 -1 24.25"></a-ocean> -->
 		<!-- SCENE LINKS -->
 		<a-entity
 			ng-repeat="sceneLink in $ctrl.sceneLinks track by sceneLink._id"

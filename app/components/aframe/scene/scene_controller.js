@@ -83,10 +83,11 @@ class SceneCtrl {
    */
 	setScene(scene) {
 		
-		const { sceneLinks, hotSpots, _id } = scene;
+		const { sceneLinks, hotSpots, entities, _id } = scene;
 
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
+  	this.entities = entities;
   	this._currentSceneId = _id;
 
     this.checkForDraft&&this.checkForDraft();

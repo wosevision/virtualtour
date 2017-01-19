@@ -35,8 +35,8 @@ import 'aframe-reverse-look-controls-component';
 import 'aframe-look-at-component';
 import 'aframe-text-component';
 import 'aframe-mouse-cursor-component';
-// import {controls} from 'aframe-extras';
-// controls.registerAll();
+import { primitives } from 'aframe-extras';
+primitives.registerAll();
 
 // app modules
 import config  from './components/app_config';
