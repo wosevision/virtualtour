@@ -8,12 +8,14 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
     require: '^aframeScene',
     templateUrl: 'aframe/scenelink/_scenelink.html',
 		link(scope, elem, attrs, SceneCtrl) {
-			const SceneResource = $tourApi.scene;
+			const SceneResource = $tourApi.scene,
+						LocationResource = $tourApi.location;
 			const sceneId = scope.sceneLink.scene;
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
-				$analytics.eventTrack('click', { category: 'scenelink', label: [data.parent.code, data.code].join('_') });
-				$state.go('scene', { building: data.parent.code, scene: data.code });
+				$analytics.eventTrack('click', { category: 'scenelink', label: [data.scene.parent.code, data.scene.code].join('_') });
+				$state.transitionTo('scene', { location: data.location.code, building: data.scene.parent.code, scene: data.scene.code });
+				// $state.go('scene', { building: data.parent.code, scene: data.code });
 			}
 			// ...and error
 			const errorHandler = error => {
@@ -33,7 +35,14 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 				} else {
 					// ...otherwise just use the default scene link behavior
 					document.getElementById(`link_${sceneId}`).emit('goto');
-					SceneResource.get({ id: sceneId }).$promise.then(gotoSceneHandler, errorHandler);
+					let scene;
+					SceneResource.get({ id: sceneId }).$promise
+						.then(data => {
+							scene = data;
+							return LocationResource.get({ id: scene.parent.parent }).$promise;
+						}) //**
+						.then(location => ({ location, scene }) ) //**
+						.then(gotoSceneHandler, errorHandler);
 				}
 			};
 			elem.on('click', elemClick);

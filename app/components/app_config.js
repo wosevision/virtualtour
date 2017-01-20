@@ -4,8 +4,8 @@ function AppConfig(
 	cfpLoadingBarProvider) { //, $mdIconProvider
   'ngInject';
   
-  cfpLoadingBarProvider.includeSpinner = false;
-  // cfpLoadingBarProvider.latencyThreshold = 200;
+  // cfpLoadingBarProvider.includeSpinner = false;
+  cfpLoadingBarProvider.latencyThreshold = 450;
 
   $mdThemingProvider.definePalette('UOITprimary', {
     '50': '0086FC',
@@ -64,9 +64,9 @@ function AppConfig(
 	    $rootScope.$broadcast('handler:exception', { exception, cause });
 
 	    // FOR "SOFTER" ERRORS:
-      $log.debug(exception, cause);
+      // $log.debug(exception, cause);
       
-  		// $delegate(exception, cause);
+  		$delegate(exception, cause);
     };
   });
 

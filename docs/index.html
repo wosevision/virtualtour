@@ -45,6 +45,51 @@
               
                 
                 <li><a
+                  href='#entityctrl'
+                  class=" toggle-sibling">
+                  EntityCtrl
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#EntityCtrl#entityEl'
+                        class='regular pre-open'>
+                        #entityEl
+                      </a></li>
+                      
+                      <li><a
+                        href='#EntityCtrl#$onInit'
+                        class='regular pre-open'>
+                        #$onInit
+                      </a></li>
+                      
+                      <li><a
+                        href='#EntityCtrl#compileTemplate'
+                        class='regular pre-open'>
+                        #compileTemplate
+                      </a></li>
+                      
+                      <li><a
+                        href='#EntityCtrl#parseAttrs'
+                        class='regular pre-open'>
+                        #parseAttrs
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
                   href='#aframescene'
                   class="">
                   aframeScene
@@ -368,6 +413,12 @@
                         href='#DialogCtrl#answer'
                         class='regular pre-open'>
                         #answer
+                      </a></li>
+                      
+                      <li><a
+                        href='#DialogCtrl#viewTip'
+                        class='regular pre-open'>
+                        #viewTip
                       </a></li>
                       
                       <li><a
@@ -827,6 +878,361 @@ and by proxying the <code>$aframeScene</code> service.</p>
   
 
   
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='entityctrl'>
+      EntityCtrl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The <code>EntityCtrl</code> acts as an observer of the <code>$ngModel</code> directive;
+the entity's model is controlled externally (e.g. by the <code>EditorCtrl</code>)
+though ng-model, so the component has no bindings.</p>
+<p>The controller's main responsibility is setting up <code>$watch</code>es for
+the relevant model properties and translating them into the
+appropriaten DOM modifications.</p>
+<p>An entity's life cycle goes:</p>
+<ul>
+<li>Detect change to model</li>
+<li>If the model has a <code>type</code> property, <code>$compile()</code> a new <code>&#x3C;a-[type]></code></li>
+<li>If the model has an <code>attrs</code> property, <code>parseAttrs()</code> into a hash object</li>
+<li>Apply the attribute hash to the compiled element with <code>attr()</code></li>
+<li>Remove element and <code>$destroy</code> scope when parent (<code>ng-repeat</code>ed) scope is destroyed</li>
+</ul>
+
+
+  <div class='pre p1 fill-light mt0'>new EntityCtrl($scope: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $element: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a>, $compile: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Current scope; parent scope is ngRepeat
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a>)</code>
+	    Component wrapper element
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$compile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    Angular's compile service
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='EntityCtrl#entityEl'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>entityEl</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Property to hold the <code>&#x3C;a-…>&#x3C;/a-…></code> element after it has been
+compiled by <code>compileTemplate()</code>. Remains false until loaded
+so attributes are not set before element has initialized.</p>
+
+
+  <div class='pre p1 fill-light mt0'>entityEl</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='EntityCtrl#$onInit'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>$onInit()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Sets up <code>$watch</code> statements and scope cleanup. The model properties <code>type</code>
+and <code>attrs</code> each receive a watch because <code>type</code> only needs top-level
+evaluation, while <code>attrs</code> needs deep-watching.</p>
+<p>TODO: REMOVE DEEP-WATCH FOR PERFORMANCE</p>
+
+
+  <div class='pre p1 fill-light mt0'>$onInit()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='EntityCtrl#compileTemplate'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>compileTemplate(type)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Compiles a new basic A-Frame element using Angular's <code>$compile</code>
+service; replaces the component's wrapper with the new element.</p>
+
+
+  <div class='pre p1 fill-light mt0'>compileTemplate(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The element type to compile
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a></code>:
+        The compiled element
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='EntityCtrl#parseAttrs'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>parseAttrs(attrs)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Formats an array of attribute objects into a attribute hash object
+that can be applied to a jqLite element in a single <code>attr()</code> call.</p>
+<p>Contains validation helpers to check for array and object values,
+which are mapped to special (A-Frame specific) attribute syntax.</p>
+
+
+  <div class='pre p1 fill-light mt0'>parseAttrs(attrs: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>attrs</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+	    An array of prop/val attrs
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        An a-frame ready attribute hash
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// An array with objects like...</span>
+[{
+  <span class="hljs-attr">prop</span>: <span class="hljs-string">'scale'</span>
+  val: <span class="hljs-number">0.8</span>
+},{
+  <span class="hljs-attr">prop</span>: <span class="hljs-string">'position'</span>,
+  <span class="hljs-attr">val</span>: [ <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span> ]
+},{
+  <span class="hljs-attr">prop</span>: <span class="hljs-string">'material'</span>,
+  <span class="hljs-attr">val</span>: {
+    <span class="hljs-attr">color</span>: <span class="hljs-string">'#0077CA'</span>
+  }
+}]
+
+<span class="hljs-comment">// ...becomes an object like:</span>
+{
+  <span class="hljs-attr">scale</span>: <span class="hljs-string">'0.8'</span>,
+  <span class="hljs-attr">position</span>: <span class="hljs-string">'0 0 10'</span>,
+  <span class="hljs-attr">material</span>: <span class="hljs-string">'color:#0077CA;'</span>
+}</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 
@@ -3577,7 +3983,7 @@ launches (if their preferences include the welcome window).</p>
 and syncing user settings (e.g. when user dismisses welcome dialog).</p>
 
 
-  <div class='pre p1 fill-light mt0'>new DialogCtrl($scope: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdDialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserSession: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, nzTour: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, TOUR_STEPS: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  <div class='pre p1 fill-light mt0'>new DialogCtrl($mdDialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, UserSession: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, nzTour: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, TOUR_STEPS: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -3590,15 +3996,6 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
   
     <div class='py1 quiet mt1 prose-big'>Parameters</div>
     <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$scope</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    The dialog scope
-
-          </div>
-          
-        </div>
       
         <div class='space-bottom0'>
           <div>
@@ -3657,7 +4054,7 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>constructor($scope, $mdDialog, UserSession, nzTour, TOUR_STEPS)</span>
+            <span class='code strong strong truncate'>constructor($mdDialog, UserSession, nzTour, TOUR_STEPS, WELCOME_TIP_LIST, WELCOME_TIPS)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3668,7 +4065,7 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
   <p>Initializes dialog's dependencies.</p>
 
 
-  <div class='pre p1 fill-light mt0'>constructor($scope: any, $mdDialog: any, UserSession: any, nzTour: any, TOUR_STEPS: any)</div>
+  <div class='pre p1 fill-light mt0'>constructor($mdDialog: any, UserSession: any, nzTour: any, TOUR_STEPS: any, WELCOME_TIP_LIST: any, WELCOME_TIPS: any)</div>
   
   
 
@@ -3681,14 +4078,6 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
   
     <div class='py1 quiet mt1 prose-big'>Parameters</div>
     <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>$scope</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
       
         <div class='space-bottom0'>
           <div>
@@ -3717,6 +4106,22 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>TOUR_STEPS</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>WELCOME_TIP_LIST</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>WELCOME_TIPS</span> <code class='quiet'>(any)</code>
 	    
           </div>
           
@@ -3900,6 +4305,73 @@ and syncing user settings (e.g. when user dismisses welcome dialog).</p>
 
       
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='DialogCtrl#viewTip'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>viewTip(view, tip)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Changes the active view of the dialog, e.g. "user tips" detail panels.</p>
+
+
+  <div class='pre p1 fill-light mt0'>viewTip(view: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tip: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>view</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The view to transition to
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>tip</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
   
 
   
