@@ -1,5 +1,8 @@
 import { isDefined, equals } from 'angular';
 
+/**
+ * User session management service.
+ */
 class UserSession {
 	constructor($http, $popupWindow, SettingsFactory, USER_ROLES, USER_DEFAULTS) {
 	  'ngInject';
@@ -45,6 +48,9 @@ class UserSession {
 			/**
 			 * Looks inside SettingsFactory for user data matching the pattern
 			 * defined in USER_DEFAULTS; store in temporary vars.
+			 *
+			 * @alias _settings/_usage
+			 * @memberof UserSession
 			 */
 			const _settings = this.SettingsFactory.get('settings'),
 						_usage = this.SettingsFactory.get('usage');
@@ -52,17 +58,19 @@ class UserSession {
 			/**
 			 * Init a 'blank' user with the required settings properties to
 			 * avoid assignment errors (i.e. `this.user.settings[key] = ...`)
+			 * 
+			 * @memberof UserSession
 			 * @type {Object}
+			 * @prop {Object} settings The user's unparsed settings
+			 * @prop {Object} usage 	 The user's unparsed usage prefs
 			 */
 			this.user = {
 				settings: {},
 				usage: {}
 			}
 
-			/**
-			 * Use the UserSession's getter/setters to merge the found setting
-			 * values into USER_DEFAULTS via the user model.
-			 */
+			// Use the UserSession's getter/setters to merge the found setting
+			// values into USER_DEFAULTS via the user model.
 			this.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
 			this.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
 
@@ -70,11 +78,12 @@ class UserSession {
 		}
 		return this.user;
 	}
+	/**
+	 * Checks the `userId` property to verify whether settings should
+	 * save to a logged in user; if not, saves them to localStorage using
+	 * the `SettingsFactory`.
+	 */
 	save() {
-		/**
-		 * Check the `userId` property to verify whether settings should
-		 * save to a logged in user; if not, set on localStorage
-		 */
   	console.log('saving settings to user...');
 		if (this.userId) {
 			this.$http.post('/user/save', this.user).then(user => {
@@ -91,6 +100,9 @@ class UserSession {
 	  	console.log('saved settings to local!', this.user);
 		}
 	}
+	/**
+	 * Removes user session data and nulls out roles/ID.
+	 */
 	destroy() {
 		this.user = {
 			settings: {},
@@ -120,11 +132,10 @@ class UserSession {
 	 * ```
 	 *
 	 * or vice-versa for setting the user object based on app prefs.
-	 * 
-	 * @param  {Object} [settings/usage]        Incoming app settings
-	 *                                          to merge into user
-	 * @return {Object} this.[_settings/_usage] Merged app settings
-	 *                                          built from user
+	 *
+	 * @alias settings/usage
+	 * @param  {Object} [settings/usage] Incoming app settings to merge into user
+	 * @return {Object} 								 Merged app settings built from user
 	 */
 	get settings() {
 		if (this.user.settings) {

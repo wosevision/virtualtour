@@ -3,9 +3,10 @@
 // has utility methods for compiling and parsing
 
 /**
- * The `EntityCtrl` acts as an observer of the `$ngModel` directive;
- * the entity's model is controlled externally (e.g. by the `EditorCtrl`)
- * though ng-model, so the component has no bindings.
+ * The `EntityCtrl` acts as an observer of the `ngModel` directive (annotated
+ * as `$ngModel` in this controller because it is injected); the entity's
+ * model is controlled externally (e.g. by the `EditorCtrl`) though ng-model,
+ * so the component has no bindings.
  *
  * The controller's main responsibility is setting up `$watch`es for
  * the relevant model properties and translating them into the
@@ -33,6 +34,8 @@ class EntityCtrl {
      * Property to hold the `<a-…></a-…>` element after it has been
      * compiled by `compileTemplate()`. Remains false until loaded
      * so attributes are not set before element has initialized.
+     *
+     * @memberof EntityCtrl
      * @type {Boolean|element}
      */
   	this.entityEl = false;

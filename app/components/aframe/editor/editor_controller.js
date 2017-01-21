@@ -14,66 +14,75 @@ let draftTimeout;
  * @param  {object} $aframeScene The scene service
  */
 class EditorCtrl {
-	constructor($mdPanel, $mdDialog, $aframeScene) {
+	constructor($mdPanel, $mdDialog, $aframeScene, $aframeEditor) {
 		'ngInject';
-		this.unpublishedChanges = false;
 		this.$mdPanel = $mdPanel;
 		this.$mdDialog = $mdDialog;
 		this.$aframeScene = $aframeScene;
+		this.$aframeEditor = $aframeEditor;
+		/**
+		 * Property to store the state of the current scene with regard to
+		 * whether there are unsaved changes.
+		 * 
+		 * @memberof EditorCtrl
+		 * @type {Boolean}
+		 */
+		this.unpublishedChanges = false;
+	}
+	updateSceneData(data) {
+		console.info('updating scene with data from editor:', data);
+		Object.assign(this.SceneCtrl, data);
+		this.$aframeScene.scene = data;
+	}
+	saveDraft(notify = true) {
+		this.$aframeEditor.saveDraft({ notify });
+	}
+	loadDraft(draft, notify = true) {
+		this.$aframeEditor.loadDraft(draft._id, { notify })
+			.then(draftContent => this.updateSceneData(draftContent));
+	}
+	checkForDraft(notify = true) {
+		this.draftList = null;
+		this.$aframeEditor.checkForDraft({ notify })
+			.then(drafts => {
+				this.draftList = drafts;
+				return drafts.length&&notify&&this.$aframeEditor.draftFound(drafts);
+			})
+			.then(foundDraftContent => foundDraftContent&&this.updateSceneData(foundDraftContent));
+	}
+	discardDraft(draft, notify = true) {
+		const confirm = this.$mdDialog.confirm()
+      .title('Are you sure?')
+      .textContent('This action cannot be undone.')
+      .ok('Confirm')
+      .cancel('Cancel');
+    this.$mdDialog.show(confirm).then(() => {
+			this.$aframeEditor.discardDraft(draft._id, { notify });
+    });
+	}
+	publish(newData, notify = true) {
+		this.$aframeEditor.publish(newData, { notify })
+			.then(sceneData => this.updateSceneData(sceneData));
 	}
 	$onInit() {
-		const SceneCtrl = this.SceneCtrl;
-		const updateSceneData = data => {
-			Object.assign(SceneCtrl, data);
-			this.$aframeScene.scene = data;
-		}
-		//
-		this.publish = (newData, notify = true) => {
-			this.$aframeScene.publish(newData, { notify }, updateSceneData);
-		}
-		this.saveDraft = (notify = true) => {
-			this.$aframeScene.saveDraft({ notify });
-		}
-		this.loadDraft = (draft, notify = true) => {
-			this.$aframeScene.loadDraft(draft._id, { notify }, updateSceneData);
-		}
-		this.revertToDraft = (notify = true) => {
-			this.$aframeScene.revertToDraft({ notify }, updateSceneData);
-		}
-		this.discardDraft = (draft, notify = true) => {
-			const confirm = this.$mdDialog.confirm()
-        .title('Are you sure?')
-        .textContent('This action cannot be undone.')
-        .ok('Confirm')
-        .cancel('Cancel');
-	    this.$mdDialog.show(confirm).then(() => {
-				this.$aframeScene.discardDraft(draft._id, { notify });
-	    });
-		}
-		this.checkForDraft = (notify = true) => {
-			this.draftList = null;
-			this.$aframeScene.checkForDraft({ notify }, updateSceneData).then(drafts => {
-				this.draftList = drafts;
-			});
-		}
-		SceneCtrl.checkForDraft = this.checkForDraft;
-		// 
-		//
+
+		this.SceneCtrl.checkForDraft = () => this.checkForDraft();
+
 		const contextMenu = ev => {
 		  ev.stopPropagation();
-			if (!SceneCtrl._rightClick) {
-				SceneCtrl._rightClick = ev;
+			if (!this.SceneCtrl._rightClick) {
+				this.SceneCtrl._rightClick = ev;
 				ev.preventDefault();
-				SceneCtrl.$sceneEl.on('mouseup', () => {
-					SceneCtrl._rightClick = false;
-					SceneCtrl.$sceneEl.off('mouseup')
+				this.SceneCtrl.$sceneEl.on('mouseup', () => {
+					this.SceneCtrl._rightClick = false;
+					this.SceneCtrl.$sceneEl.off('mouseup')
 				});
 			}
 		};
-		SceneCtrl.$sceneEl.on('contextmenu', contextMenu);
-		//
-		SceneCtrl._editable = true;
-		SceneCtrl.openEditor = (ev, item, collection) => {
+		this.SceneCtrl.$sceneEl.on('contextmenu', contextMenu);
+
+		this.SceneCtrl._editable = true;
+		this.SceneCtrl.openEditor = (ev, item, collection) => {
 			// Animation to open dialog from and close to right click
 			// Position to hold in bottom left of screen
 			const position = this.$mdPanel.newPanelPosition()
@@ -89,8 +98,8 @@ class EditorCtrl {
 			};
 
 			const locals = { item };
-	    locals.publish = this.publish;
-	    locals.saveDraft = this.saveDraft;
+	    locals.publish = () => this.publish();
+	    locals.saveDraft = () => this.saveDraft();
 			locals.removeThis = () => {
 				this.$aframeScene.removeItemFrom(item, collection, () => {
 					this.panelRef&&this.panelRef.close();
@@ -132,15 +141,13 @@ class EditorCtrl {
 				locals = { item: { linked: false, name: '', desc: '', feature: '', position: [0,0,0] } };
 				break;
 		}
+
 		locals.newItem = true;
-    locals.publish = () => {
-    	this.$mdDialog&&this.$mdDialog.hide('ok');
-    }
-		locals.removeThis = () => {
-			this.$mdDialog&&this.$mdDialog.cancel();
-		}
+    locals.publish = () => this.$mdDialog&&this.$mdDialog.hide('ok');
+    locals.saveDraft = () => this.saveDraft();
+		locals.removeThis = () => this.$mdDialog&&this.$mdDialog.cancel();
 		locals.closeDialog = locals.removeThis;
-    locals.saveDraft = this.saveDraft;
+
     this.$mdDialog.show({
       controller: 'EditorDialogCtrl',
 			templateUrl: 'aframe/editor/_editor-dialog.html',
@@ -161,7 +168,7 @@ class EditorCtrl {
     	}
     }, () => {
 			// this.$aframeScene.removeItemFrom(locals.item, this.SceneCtrl[collection]);
-			this.$aframeScene.discardDraft();
+			this.discardDraft();
     });
 	}
 	newScene(ev) {
@@ -181,7 +188,7 @@ class EditorCtrl {
 			this.$mdDialog&&this.$mdDialog.cancel();
 		}
 		locals.closeDialog = locals.removeThis;
-    locals.saveDraft = this.saveDraft;
+    locals.saveDraft = () => this.saveDraft({ notify: true });
     this.$mdDialog.show({
       controller: 'EditorDialogCtrl',
 			templateUrl: 'aframe/editor/_editor-dialog.html',
@@ -196,10 +203,10 @@ class EditorCtrl {
     })
     .then(answer => {
     	if (answer === 'ok') {
-				this.$aframeScene.publish(locals.item);
+				this.$aframeEditor.publish(locals.item);
     	}
     }, () => {
-			this.$aframeScene.discardDraft();
+			this.discardDraft();
     });
 	}
 }

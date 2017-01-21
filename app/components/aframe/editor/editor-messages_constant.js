@@ -23,7 +23,7 @@ const EDITOR_MESSAGES = {
 		position: 'bottom left',
 		hideDelay: 5000
 	},
-	loadDraft: {
+	draftLoaded: {
 		textContent: 'Draft loaded!',
 		action: 'Publish changes',
 		highlightAction: true,
