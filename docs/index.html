@@ -55,6 +55,29 @@
                     </ul>
                   
                   
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#EditorCtrl#checkForDraft'
+                        class='regular pre-open'>
+                        #checkForDraft
+                      </a></li>
+                      
+                      <li><a
+                        href='#EditorCtrl#discardDraft'
+                        class='regular pre-open'>
+                        #discardDraft
+                      </a></li>
+                      
+                      <li><a
+                        href='#EditorCtrl#publish'
+                        class='regular pre-open'>
+                        #publish
+                      </a></li>
+                      
+                    </ul>
+                  
                   
                 </div>
                 
@@ -101,6 +124,12 @@
                         href='#$aframeEditor#checkForDraft'
                         class='regular pre-open'>
                         #checkForDraft
+                      </a></li>
+                      
+                      <li><a
+                        href='#$aframeEditor#draftFound'
+                        class='regular pre-open'>
+                        #draftFound
                       </a></li>
                       
                       <li><a
@@ -881,7 +910,7 @@ behaviours onto the scene component's <code>SceneCtrl</code> directly
 and by proxying the <code>$aframeScene</code> service.</p>
 
 
-  <div class='pre p1 fill-light mt0'>new EditorCtrl($mdPanel: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdDialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $aframeScene: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+  <div class='pre p1 fill-light mt0'>new EditorCtrl($mdPanel: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $mdDialog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $aframeScene: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, $aframeEditor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -917,6 +946,15 @@ and by proxying the <code>$aframeScene</code> service.</p>
           <div>
             <span class='code bold'>$aframeScene</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
 	    The scene service
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$aframeEditor</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    The editor service
 
           </div>
           
@@ -986,6 +1024,212 @@ whether there are unsaved changes.</p>
 </div>
 
   
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='EditorCtrl#checkForDraft'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkForDraft(notify?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calls <code>$aframeEditor.checkForDraft()</code> and sets the controller's
+<code>draftList</code> property to an array of drafts resolved from promise.</p>
+<p>If drafts are found, notifies the user; offers to load the latest draft.
+Loads draft if user confirms and updates the scene data accordingly.</p>
+
+
+  <div class='pre p1 fill-light mt0'>checkForDraft(notify: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= 		co)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>notify</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= 		co)</code>
+	    Whether to inform the user with toast
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='EditorCtrl#discardDraft'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>discardDraft(draft, notify?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Confirms with user that they would like to discard the draft
+in question; calls <code>$aframeEditor.discardDraft()</code> is user confirms.</p>
+
+
+  <div class='pre p1 fill-light mt0'>discardDraft(draft: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, notify: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= afra)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>draft</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    The draft to discard
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>notify</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= afra)</code>
+	    Whether to inform user with toast
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='EditorCtrl#publish'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>publish(newData, notify?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calls <code>$aframeEditor.publish()</code> directly (proxy method); updates
+scene data to keep app and server in sync.</p>
+
+
+  <div class='pre p1 fill-light mt0'>publish(newData: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>), notify: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= cene)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>newData</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>))</code>
+	    Data to publish or false
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>notify</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= cene)</code>
+	    Whether to inform user with toast
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 
@@ -1143,7 +1387,7 @@ by <code>$mdToast.simple()</code>'s return.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>publish(_newData?, $1, cb)</span>
+            <span class='code strong strong truncate'>publish(_newData?, $1)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1160,7 +1404,7 @@ is being updated. Uses lodash's <code>pick()</code> method to grab applicable
 properties without creating them.</p>
 
 
-  <div class='pre p1 fill-light mt0'>publish(_newData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= er (t, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</div>
+  <div class='pre p1 fill-light mt0'>publish(_newData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= publi, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
   
   
 
@@ -1176,7 +1420,7 @@ properties without creating them.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>_newData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= er (t)</code>
+            <span class='code bold'>_newData</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= publi)</code>
 	    Whether incoming data should be treated as new
 
           </div>
@@ -1186,7 +1430,7 @@ properties without creating them.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>$1</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
-            = <code>ct</code>)</code>
+            = <code>ir</code>)</code>
 	    
           </div>
           
@@ -1204,7 +1448,7 @@ properties without creating them.</p>
             <tbody class='mt1'>
               
                 <tr>
-                  <td class='break-word'><span class='code bold'>$1.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= ram </code>
+                  <td class='break-word'><span class='code bold'>$1.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= user</code>
                   </td>
                   <td class='break-word'><span>Whether to notify the user (toast)
 </span></td>
@@ -1215,20 +1459,19 @@ properties without creating them.</p>
           
         </div>
       
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    Callback to run when item published
-
-          </div>
-          
-        </div>
-      
     </div>
   
 
   
 
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        Resolves to latest scene data
+
+      
+    
   
 
   
@@ -1249,7 +1492,7 @@ properties without creating them.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>saveDraft($0, cb)</span>
+            <span class='code strong strong truncate'>saveDraft($0)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1257,10 +1500,12 @@ properties without creating them.</p>
 
   
 
-  <p>Sends an HTTP <code>POST</code> request to save a draft of the current scene.</p>
+  <p>Sends an HTTP <code>POST</code> request to save a draft of the current scene.
+Offers to publish the scene when the draft is done saving; calls
+<code>publish()</code> if the user confirms.</p>
 
 
-  <div class='pre p1 fill-light mt0'>saveDraft($0: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</div>
+  <div class='pre p1 fill-light mt0'>saveDraft($0: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
   
   
 
@@ -1277,7 +1522,7 @@ properties without creating them.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>$0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
-            = <code>r </code>)</code>
+            = <code>is</code>)</code>
 	    
           </div>
           
@@ -1295,7 +1540,7 @@ properties without creating them.</p>
             <tbody class='mt1'>
               
                 <tr>
-                  <td class='break-word'><span class='code bold'>$0.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= y th</code>
+                  <td class='break-word'><span class='code bold'>$0.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= o dr</code>
                   </td>
                   <td class='break-word'><span>Whether the notify the user (toast)
 </span></td>
@@ -1306,20 +1551,19 @@ properties without creating them.</p>
           
         </div>
       
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    Callback to run when draft saved
-
-          </div>
-          
-        </div>
-      
     </div>
   
 
   
 
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        Resolves to saved draft
+
+      
+    
   
 
   
@@ -1351,8 +1595,6 @@ properties without creating them.</p>
   <p>If there is scene data available, queries the database by the current
 scene ID via the <code>DraftResource</code> factory to check for active drafts
 held by the current logged in user.</p>
-<p>If drafts are found, notifies the user; offers to load the latest draft.
-Loads draft if user confirms and notifies them of load success.</p>
 
 
   <div class='pre p1 fill-light mt0'>checkForDraft($0: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
@@ -1372,7 +1614,7 @@ Loads draft if user confirms and notifies them of load success.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>$0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
-            = <code>ac</code>)</code>
+            = <code>d&#96;</code>)</code>
 	    
           </div>
           
@@ -1390,7 +1632,7 @@ Loads draft if user confirms and notifies them of load success.</p>
             <tbody class='mt1'>
               
                 <tr>
-                  <td class='break-word'><span class='code bold'>$0.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?=     </code>
+                  <td class='break-word'><span class='code bold'>$0.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= abas</code>
                   </td>
                   <td class='break-word'><span>Whether the notify the user (toast)
 </span></td>
@@ -1439,11 +1681,81 @@ Loads draft if user confirms and notifies them of load success.</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='$aframeEditor#draftFound'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>draftFound(drafts)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Informs a user that draft[s] have been found for the scene
+they are viewing and offers to load the most recent draft; calls
+<code>loadDraft()</code> if the user confirms and supplies it the <code>_id</code> of
+the first draft in the found draft list.</p>
+
+
+  <div class='pre p1 fill-light mt0'>draftFound(drafts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>drafts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+	    A list of available drafts
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        Resolves to toast result » loadDraft promise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='$aframeEditor#loadDraft'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>loadDraft(id, $1, cb)</span>
+            <span class='code strong strong truncate'>loadDraft(id, $1)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1456,7 +1768,7 @@ the result to a callback; notifies user that draft was loaded and
 offers to publish.</p>
 
 
-  <div class='pre p1 fill-light mt0'>loadDraft(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</div>
+  <div class='pre p1 fill-light mt0'>loadDraft(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
   
   
 
@@ -1482,7 +1794,7 @@ offers to publish.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>$1</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
-            = <code>dr</code>)</code>
+            = <code>  </code>)</code>
 	    
           </div>
           
@@ -1500,7 +1812,7 @@ offers to publish.</p>
             <tbody class='mt1'>
               
                 <tr>
-                  <td class='break-word'><span class='code bold'>$1.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?= a st</code>
+                  <td class='break-word'><span class='code bold'>$1.notify</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>?=  * @</code>
                   </td>
                   <td class='break-word'><span>Whether to notify the user (toast)
 </span></td>
@@ -1511,20 +1823,19 @@ offers to publish.</p>
           
         </div>
       
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    Callback to run when draft loaded
-
-          </div>
-          
-        </div>
-      
     </div>
   
 
   
 
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        Resolves to content of the loaded draft
+
+      
+    
   
 
   
@@ -1545,7 +1856,7 @@ offers to publish.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>revertToDraft($0, cb)</span>
+            <span class='code strong strong truncate'>revertToDraft($0)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1556,7 +1867,7 @@ offers to publish.</p>
   <p>Immediately load last saved draft of current scene.</p>
 
 
-  <div class='pre p1 fill-light mt0'>revertToDraft($0: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</div>
+  <div class='pre p1 fill-light mt0'>revertToDraft($0: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
   
   
 
@@ -1601,15 +1912,6 @@ offers to publish.</p>
           
         </div>
       
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    Callback to run when draft loaded
-
-          </div>
-          
-        </div>
-      
     </div>
   
 
@@ -1635,7 +1937,7 @@ offers to publish.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>discardDraft(id, $1, cb)</span>
+            <span class='code strong strong truncate'>discardDraft(id, $1)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1647,7 +1949,7 @@ offers to publish.</p>
 its database <code>_id</code>; notifies user if successful.</p>
 
 
-  <div class='pre p1 fill-light mt0'>discardDraft(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, cb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</div>
+  <div class='pre p1 fill-light mt0'>discardDraft(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, $1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
   
   
 
@@ -1698,15 +2000,6 @@ its database <code>_id</code>; notifies user if successful.</p>
               
             </tbody>
           </table>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cb</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code>
-	    Callback to run when draft deleted
-
-          </div>
           
         </div>
       

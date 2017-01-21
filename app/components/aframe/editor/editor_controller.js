@@ -9,9 +9,10 @@ let draftTimeout;
  * behaviours onto the scene component's `SceneCtrl` directly
  * and by proxying the `$aframeScene` service.
  * 
- * @param  {object} $mdPanel     ng-material's panel service
- * @param  {object} $mdDialog    ng-material's dialog service
- * @param  {object} $aframeScene The scene service
+ * @param {object} $mdPanel      ng-material's panel service
+ * @param {object} $mdDialog     ng-material's dialog service
+ * @param {object} $aframeScene  The scene service
+ * @param {object} $aframeEditor The editor service
  */
 class EditorCtrl {
 	constructor($mdPanel, $mdDialog, $aframeScene, $aframeEditor) {
@@ -41,6 +42,15 @@ class EditorCtrl {
 		this.$aframeEditor.loadDraft(draft._id, { notify })
 			.then(draftContent => this.updateSceneData(draftContent));
 	}
+	/**
+	 * Calls `$aframeEditor.checkForDraft()` and sets the controller's
+	 * `draftList` property to an array of drafts resolved from promise.
+	 *
+	 * If drafts are found, notifies the user; offers to load the latest draft.
+	 * Loads draft if user confirms and updates the scene data accordingly.
+	 * 
+	 * @param {Boolean} notify Whether to inform the user with toast
+	 */
 	checkForDraft(notify = true) {
 		this.draftList = null;
 		this.$aframeEditor.checkForDraft({ notify })
@@ -50,6 +60,13 @@ class EditorCtrl {
 			})
 			.then(foundDraftContent => foundDraftContent&&this.updateSceneData(foundDraftContent));
 	}
+	/**
+	 * Confirms with user that they would like to discard the draft
+	 * in question; calls `$aframeEditor.discardDraft()` is user confirms.
+	 * 
+	 * @param {Object}  draft  The draft to discard
+	 * @param {Boolean} notify Whether to inform user with toast
+	 */
 	discardDraft(draft, notify = true) {
 		const confirm = this.$mdDialog.confirm()
       .title('Are you sure?')
@@ -60,6 +77,13 @@ class EditorCtrl {
 			this.$aframeEditor.discardDraft(draft._id, { notify });
     });
 	}
+	/**
+	 * Calls `$aframeEditor.publish()` directly (proxy method); updates
+	 * scene data to keep app and server in sync.
+	 * 
+	 * @param  {Object|Boolean}  newData Data to publish or false
+	 * @param  {Boolean}         notify  Whether to inform user with toast
+	 */
 	publish(newData, notify = true) {
 		this.$aframeEditor.publish(newData, { notify })
 			.then(sceneData => this.updateSceneData(sceneData));

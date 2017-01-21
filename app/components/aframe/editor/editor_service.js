@@ -51,9 +51,9 @@ class $aframeEditor {
 	 * is being updated. Uses lodash's `pick()` method to grab applicable
 	 * properties without creating them.
 	 * 
-	 * @param  {Boolean}  _newData			Whether incoming data should be treated as new
-	 * @param  {Boolean}  $1.notify 		Whether to notify the user (toast)
-	 * @param  {Function} cb      			Callback to run when item published
+	 * @param  {Boolean}  _newData	Whether incoming data should be treated as new
+	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
+	 * @return {Promise} 						Resolves to latest scene data
 	 */
 	publish(_newData = false, { notify = true } = {}) {
 		let action = 'update';
@@ -87,9 +87,11 @@ class $aframeEditor {
 
 	/**
 	 * Sends an HTTP `POST` request to save a draft of the current scene.
+	 * Offers to publish the scene when the draft is done saving; calls
+	 * `publish()` if the user confirms.
 	 * 
-	 * @param  {Boolean}  $0.notify 			Whether the notify the user (toast)
-	 * @param  {Function} cb              Callback to run when draft saved
+	 * @param  {Boolean} $0.notify Whether the notify the user (toast)
+	 * @return {Promise} 					 Resolves to saved draft
 	 */
 	saveDraft({ notify = true } = {}) {
   	return this.DraftResource.save({
@@ -111,9 +113,6 @@ class $aframeEditor {
 	 * If there is scene data available, queries the database by the current
 	 * scene ID via the `DraftResource` factory to check for active drafts
 	 * held by the current logged in user.
-	 *
-	 * If drafts are found, notifies the user; offers to load the latest draft.
-	 * Loads draft if user confirms and notifies them of load success.
 	 * 
 	 * @param  {Boolean}  $0.notify Whether the notify the user (toast)
 	 * @param  {Function} cb        Callback to run when draft loaded
@@ -128,6 +127,15 @@ class $aframeEditor {
 		}).$promise;
 	}
 
+	/**
+	 * Informs a user that draft[s] have been found for the scene
+	 * they are viewing and offers to load the most recent draft; calls
+	 * `loadDraft()` if the user confirms and supplies it the `_id` of
+	 * the first draft in the found draft list.
+	 * 
+	 * @param  {Array}   drafts A list of available drafts
+	 * @return {Promise}      	Resolves to toast result » loadDraft promise
+	 */
 	draftFound(drafts) {
 		return this.$mdToast.show(this.toasts.draftFound)
 			.then( response => (response === 'ok') && this.loadDraft(drafts[0]._id, { notify: true }) );
@@ -138,9 +146,9 @@ class $aframeEditor {
 	 * the result to a callback; notifies user that draft was loaded and
 	 * offers to publish.
 	 * 
-	 * @param  {string}   id             The id of the draft to fetch
-	 * @param  {Boolean}  $1.notify			 Whether to notify the user (toast)
-	 * @param  {Function} cb             Callback to run when draft loaded
+	 * @param  {string}   id        The id of the draft to fetch
+	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
+	 * @return {Promise} 					  Resolves to content of the loaded draft
 	 */
 	loadDraft(id, { notify = true } = {}) {
   	return this.DraftResource.get({ id }).$promise.then(draft => {
@@ -154,14 +162,12 @@ class $aframeEditor {
 	/**
 	 * Immediately load last saved draft of current scene.
 	 * @param  {Boolean}  $0.notify 			Whether to notify the user (toast)
-	 * @param  {Function} cb              Callback to run when draft loaded
 	 */
 	revertToDraft({ notify = true } = {}) {
 		this.checkForDraft({ notify: false })
 			.then( drafts => this.loadDraft(drafts[0]._id, { notify: false }) )
 	  	.then( draftContent => notify && this.$mdToast.show(this.toasts.revertToDraft) );	
 	}
-	//NOTDONE
 
 	/**
 	 * Sends an HTTP `DELETE` request to remove a stored draft by
@@ -169,7 +175,6 @@ class $aframeEditor {
 	 * 
 	 * @param  {string}   id             The id of the draft to delete
 	 * @param  {Boolean}  $1.notify			 Whether to notify the user (toast)
-	 * @param  {Function} cb             Callback to run when draft deleted
 	 */
 	discardDraft(id, { notify = true } = {}) {
   	this.DraftResource.remove({ id }).$promise
