@@ -6,7 +6,7 @@ import { pick } from 'lodash';
  * with the `$aframeScene` service for a reference to the current
  * scene object. Uses:
  * 
- * - ng-material's `$mdDialog` and `$mdToast` services to display UI messages to user
+ * - ng-material's `$mdToast` service to display UI messages to user
  * - the `$tourApi`'s scene resource and the `DraftResource` for CRUD ops
  * - the 'EDITOR_MESSAGES' constant to provide prebuilt dialogs and toasts
  * 
@@ -46,16 +46,22 @@ class $aframeEditor {
 	 * scene resource to publish (save) the current scene.
 	 *
 	 * If the scene is new, the first parameter of this method can be
-	 * set to `true` to send the request as a new scene creation. If
-	 * left to default, it will assume the scene already exists and
-	 * is being updated. Uses lodash's `pick()` method to grab applicable
-	 * properties without creating them.
+	 * passed the new scene data, which makes it implicity truthy and
+	 * tells the method to send the request as a new scene creation. If
+	 * left to default, it will stay false and the method will assume
+	 * the scene already exists and is being updated.
+	 * 
+	 * In the case of an update, Lodash's `pick()` method is used to grab
+	 * applicable properties from the current `$aframeScene.scene` _without_
+	 * creating ones that don't exist. A new `updatedAt` property is assigned
+	 * a date for every action; if the data was new, the same date is given
+	 * to a `createdAt` property.
 	 * 
 	 * @param  {Boolean}  _newData	Whether incoming data should be treated as new
 	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
 	 * @return {Promise} 						Resolves to latest scene data
 	 */
-	publish(_newData = false, { notify = true } = {}) {
+	publish(_newData = false, notify = true) {
 		let action = 'update';
 		const newData = _newData || pick(this.$aframeScene.scene, [
 			'_id',
@@ -93,7 +99,7 @@ class $aframeEditor {
 	 * @param  {Boolean} $0.notify Whether the notify the user (toast)
 	 * @return {Promise} 					 Resolves to saved draft
 	 */
-	saveDraft({ notify = true } = {}) {
+	saveDraft(notify = true) {
   	return this.DraftResource.save({
   		content: this.$aframeScene.scene,
   		kind: 'Scene',
@@ -118,7 +124,7 @@ class $aframeEditor {
 	 * @param  {Function} cb        Callback to run when draft loaded
 	 * @return {Promise}            Promise that will resolve to draft list
 	 */
-	checkForDraft({ notify = true } = {}) {
+	checkForDraft(notify = true) {
 		return (this.$aframeScene.scene)&&this.DraftResource.query({
 			sort: '-updatedAt',
 			filter: {
@@ -138,7 +144,7 @@ class $aframeEditor {
 	 */
 	draftFound(drafts) {
 		return this.$mdToast.show(this.toasts.draftFound)
-			.then( response => (response === 'ok') && this.loadDraft(drafts[0]._id, { notify: true }) );
+			.then( response => (response === 'ok') && this.loadDraft(drafts[0]._id) );
 	}
 
 	/**
@@ -150,7 +156,7 @@ class $aframeEditor {
 	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
 	 * @return {Promise} 					  Resolves to content of the loaded draft
 	 */
-	loadDraft(id, { notify = true } = {}) {
+	loadDraft(id, notify = true) {
   	return this.DraftResource.get({ id }).$promise.then(draft => {
 	  	this.lastDraft = draft.content;
 	    notify && this.$mdToast.show(this.toasts.draftLoaded)
@@ -163,9 +169,9 @@ class $aframeEditor {
 	 * Immediately load last saved draft of current scene.
 	 * @param  {Boolean}  $0.notify 			Whether to notify the user (toast)
 	 */
-	revertToDraft({ notify = true } = {}) {
-		this.checkForDraft({ notify: false })
-			.then( drafts => this.loadDraft(drafts[0]._id, { notify: false }) )
+	revertToDraft(notify = true) {
+		this.checkForDraft(false)
+			.then( drafts => this.loadDraft(drafts[0]._id, false) )
 	  	.then( draftContent => notify && this.$mdToast.show(this.toasts.revertToDraft) );	
 	}
 
@@ -176,7 +182,7 @@ class $aframeEditor {
 	 * @param  {string}   id             The id of the draft to delete
 	 * @param  {Boolean}  $1.notify			 Whether to notify the user (toast)
 	 */
-	discardDraft(id, { notify = true } = {}) {
+	discardDraft(id, notify = true) {
   	this.DraftResource.remove({ id }).$promise
 	  	.then( discardedDraft => notify && this.$mdToast.show(this.toasts.discardDraft) );
 	}

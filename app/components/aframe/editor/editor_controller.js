@@ -1,7 +1,6 @@
 import { isUndefined, equals, element } from 'angular';
 
 const attachTo = element(document.body);
-let draftTimeout;
 
 /**
  * This controller is only instantiated with the server-rendered
@@ -30,16 +29,30 @@ class EditorCtrl {
 		 */
 		this.unpublishedChanges = false;
 	}
+	/**
+	 * Utility method for keeping controller's model of scene data in
+	 * sync with `$aframeScene`'s.
+	 * @param  {Object} data Scene data to update with
+	 */
 	updateSceneData(data) {
-		console.info('updating scene with data from editor:', data);
 		Object.assign(this.SceneCtrl, data);
 		this.$aframeScene.scene = data;
+		console.info('updated scene with data from editor:', data);
 	}
+	/**
+	 * Proxy method for `$aframeEditor.saveDraft()`.
+	 * @param  {Boolean} notify Whether to inform user of success.
+	 */
 	saveDraft(notify = true) {
-		this.$aframeEditor.saveDraft({ notify });
+		this.$aframeEditor.saveDraft(notify);
 	}
+	/**
+	 * Proxy method for `$aframeEditor.loadDraft()`.
+	 * @param  {Object}  draft  Chosen draft from draftList
+	 * @param  {Boolean} notify Whether to inform user of success.
+	 */
 	loadDraft(draft, notify = true) {
-		this.$aframeEditor.loadDraft(draft._id, { notify })
+		this.$aframeEditor.loadDraft(draft._id, notify)
 			.then(draftContent => this.updateSceneData(draftContent));
 	}
 	/**
@@ -53,7 +66,7 @@ class EditorCtrl {
 	 */
 	checkForDraft(notify = true) {
 		this.draftList = null;
-		this.$aframeEditor.checkForDraft({ notify })
+		this.$aframeEditor.checkForDraft(notify)
 			.then(drafts => {
 				this.draftList = drafts;
 				return drafts.length&&notify&&this.$aframeEditor.draftFound(drafts);
@@ -62,7 +75,7 @@ class EditorCtrl {
 	}
 	/**
 	 * Confirms with user that they would like to discard the draft
-	 * in question; calls `$aframeEditor.discardDraft()` is user confirms.
+	 * in question; calls `$aframeEditor.discardDraft()` if user confirms.
 	 * 
 	 * @param {Object}  draft  The draft to discard
 	 * @param {Boolean} notify Whether to inform user with toast
@@ -74,7 +87,7 @@ class EditorCtrl {
       .ok('Confirm')
       .cancel('Cancel');
     this.$mdDialog.show(confirm).then(() => {
-			this.$aframeEditor.discardDraft(draft._id, { notify });
+			this.$aframeEditor.discardDraft(draft._id, notify);
     });
 	}
 	/**
@@ -85,7 +98,7 @@ class EditorCtrl {
 	 * @param  {Boolean}         notify  Whether to inform user with toast
 	 */
 	publish(newData, notify = true) {
-		this.$aframeEditor.publish(newData, { notify })
+		this.$aframeEditor.publish(newData, notify)
 			.then(sceneData => this.updateSceneData(sceneData));
 	}
 	$onInit() {
@@ -190,9 +203,6 @@ class EditorCtrl {
 					this.$aframeScene.scene[collection] = newData;
 				});
     	}
-    }, () => {
-			// this.$aframeScene.removeItemFrom(locals.item, this.SceneCtrl[collection]);
-			this.discardDraft();
     });
 	}
 	newScene(ev) {
@@ -212,7 +222,7 @@ class EditorCtrl {
 			this.$mdDialog&&this.$mdDialog.cancel();
 		}
 		locals.closeDialog = locals.removeThis;
-    locals.saveDraft = () => this.saveDraft({ notify: true });
+    locals.saveDraft = () => this.saveDraft(true);
     this.$mdDialog.show({
       controller: 'EditorDialogCtrl',
 			templateUrl: 'aframe/editor/_editor-dialog.html',
@@ -229,8 +239,6 @@ class EditorCtrl {
     	if (answer === 'ok') {
 				this.$aframeEditor.publish(locals.item);
     	}
-    }, () => {
-			this.discardDraft();
     });
 	}
 }
