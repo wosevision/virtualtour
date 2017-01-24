@@ -48,7 +48,7 @@ $button-border-radius: 0;
 	.loading-spinner {
 		display: flex;
 	  color: rgba(white, 0.6);
-	  font-size: 11px;
+	  font-size: 5px;
 	  text-indent: -99999em;
 	  margin: 55px auto;
 	  position: relative;
@@ -98,15 +98,9 @@ $button-border-radius: 0;
 	}
 }
 
-#loading-bar-spinner {
-  top: calc(50% - 15px);
-  left: calc(50% - 15px);
-  .spinner-icon {
-	  width: 30px;
-	  height: 30px;
-	  border-top-color:  $uoitlightblue;
-	  border-left-color: $uoitlightblue;
-	}
+#loading-spinner {
+	position: fixed;
+  z-index: 100;
 }
 
 .float-right {

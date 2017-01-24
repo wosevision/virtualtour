@@ -5,7 +5,11 @@ function AppConfig(
   'ngInject';
   
   // cfpLoadingBarProvider.includeSpinner = false;
-  cfpLoadingBarProvider.latencyThreshold = 450;
+  // cfpLoadingBarProvider.latencyThreshold = 300;
+  cfpLoadingBarProvider.spinnerTemplate = `<div id="loading-spinner" class="loading-spinner-container" layout layout-fill layout-align="center center">
+  	<md-progress-circular md-mode="indeterminate" class="md-primary">
+  	</md-progress-circular>
+  </div>`;
 
   $mdThemingProvider.definePalette('UOITprimary', {
     '50': '0086FC',
@@ -42,7 +46,6 @@ function AppConfig(
 
   $stateProvider
     .state('home', {
-      // abstract: true,
       template: '<ui-view></ui-view>'
     });
 
