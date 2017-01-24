@@ -87,7 +87,6 @@ class $aframeScene {
 			  const index = collection.indexOf(item);
 			  if (index !== -1) {
 			  	collection.splice(index, 1);
-			  	this.saveDraft({ notify: false });
 	      	cb&&cb();
 	      	return this.$mdToast.show(this.toasts.itemRemoved);
 			  } 

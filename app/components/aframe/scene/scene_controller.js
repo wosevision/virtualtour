@@ -119,14 +119,6 @@ class SceneCtrl {
 	  	}
   	}
   }
-
-  /**
-   * Lifecycle cleanup method; unattaches event listener
-   * for context menu (right click) events from the scene.
-   */
-  $onDestroy() {
-		this.$sceneEl.off('contextmenu', contextMenu);
-  }
 }
 
 export default {

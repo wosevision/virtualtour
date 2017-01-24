@@ -31,7 +31,7 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 				// If there's a right click active...
 				if (SceneCtrl._rightClick && SceneCtrl._editable) {
 					// ...open the scene link editor:
-					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
+					SceneCtrl.editItem(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
 				} else {
 					// ...otherwise just use the default scene link behavior
 					document.getElementById(`link_${sceneId}`).emit('goto');

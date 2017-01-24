@@ -32,7 +32,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 				// If there's a right click active...
 				if (SceneCtrl._rightClick && SceneCtrl._editable) {
 					// ...open the scene link editor:
-					SceneCtrl.openEditor(SceneCtrl._rightClick, scope.hotSpot, SceneCtrl.hotSpots);
+					SceneCtrl.editItem(SceneCtrl._rightClick, scope.hotSpot, SceneCtrl.hotSpots);
 				} else {
 					document.getElementById(`hotSpot_${hotspotId}`).emit('goto');
 					if (scope.hotSpot.linked && scope.hotSpot.feature) {

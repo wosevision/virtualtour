@@ -59,7 +59,7 @@ class EntityCtrl {
 						// If there's a right click active...
 						if (this.SceneCtrl._rightClick && this.SceneCtrl._editable) {
 							// ...open the scene link editor:
-							this.SceneCtrl.openEditor(this.SceneCtrl._rightClick, this.$ngModel.$modelValue, this.SceneCtrl.entities);
+							this.SceneCtrl.editItem(this.SceneCtrl._rightClick, this.$ngModel.$modelValue, this.SceneCtrl.entities);
 						}
 					});
         }

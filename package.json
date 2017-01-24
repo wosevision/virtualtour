@@ -103,7 +103,7 @@
     "angular-cbuffer": "github:wosevision/angular-cbuffer",
     "angular-cookies": "^1.5.8",
     "angular-loading-bar": "^0.9.0",
-    "angular-material": "^1.1.1",
+    "angular-material": "git+https://github.com/angular/bower-material.git",
     "angular-material-icons": "^0.7.1",
     "angular-messages": "^1.5.8",
     "angular-resource": "^1.5.8",
