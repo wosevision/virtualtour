@@ -27,7 +27,7 @@ aside.button-bar {
     &:first-child {
   		border-top-width: 0;
     }
-    &:hover {
+    &:hover, &:focus {
     	// border: 0;
     	// box-shadow: 0 0 15px rgba(black, 0.2);
     	background-color: rgba($uoitlightblue, 0.05);
@@ -55,7 +55,7 @@ aside.button-bar {
 		    	fill: rgba(white, 0.75);
     		}
     	}
-	    &:hover {
+	    &:hover, &:focus {
 	    	background-color: rgba($uoitlightblue, 0.3);
 	    	color: white;
 		    path {

@@ -27,6 +27,7 @@ class EditorCtrl {
 		this._unpublishedChanges = false;
 		/**
 		 * Editor's reference to what the database's data schema's should look like.
+		 * 
 		 * @memberof EditorCtrl
 		 * @type {Object}
 		 */
@@ -36,6 +37,7 @@ class EditorCtrl {
 	/**
 	 * Utility method for keeping controller's model of scene data in
 	 * sync with `$aframeScene`'s.
+	 * 
 	 * @param  {Object} data Scene data to update with
 	 */
 	updateSceneData(data) {
@@ -46,7 +48,8 @@ class EditorCtrl {
 
 	/**
 	 * Proxy method for `$aframeEditor.saveDraft()`.
-	 * @param  {Boolean} notify Whether to inform user of success.
+	 * 
+	 * @param  {Boolean}	notify	Whether to inform user of success.
 	 */
 	saveDraft(notify = true) {
 		this.$aframeEditor.saveDraft(notify);
@@ -54,8 +57,9 @@ class EditorCtrl {
 
 	/**
 	 * Proxy method for `$aframeEditor.loadDraft()`.
-	 * @param  {Object}  draft  Chosen draft from draftList
-	 * @param  {Boolean} notify Whether to inform user of success.
+	 * 
+	 * @param  {Object}   draft   Chosen draft from draftList
+	 * @param  {Boolean}	notify	Whether to inform user of success.
 	 */
 	loadDraft(draft, notify = true) {
 		this.$aframeEditor.loadDraft(draft._id, notify)
@@ -69,7 +73,7 @@ class EditorCtrl {
 	 * If drafts are found, notifies the user; offers to load the latest draft.
 	 * Loads draft if user confirms and updates the scene data accordingly.
 	 * 
-	 * @param {Boolean} notify Whether to inform the user with toast
+	 * @param {Boolean}	notify	Whether to inform the user with toast
 	 */
 	checkForDraft(notify = true) {
 		this.draftList = null;
@@ -85,8 +89,8 @@ class EditorCtrl {
 	 * Confirms with user that they would like to discard the draft
 	 * in question; calls `$aframeEditor.discardDraft()` if user confirms.
 	 * 
-	 * @param {Object}  draft  The draft to discard
-	 * @param {Boolean} notify Whether to inform user with toast
+	 * @param {Object}  draft   The draft to discard
+	 * @param {Boolean}	notify	Whether to inform user with toast
 	 */
 	discardDraft(draft, notify = true) {
 		const confirm = this.$mdDialog.confirm()
@@ -246,8 +250,8 @@ class EditorCtrl {
 	 * 
 	 * @param  {Event} ev              	The mouseEvent that called the method
 	 * @param  {Object} locals          Local values to pass into dialog
-	 * @param  {Number} options.offsetX Pixels to shift dialog along X
-	 * @param  {Number} options.offsetY Pixels to shift dialog along Y
+	 * @param  {Number} $2.offsetX 			Pixels to shift dialog along X
+	 * @param  {Number} $2.offsetY 			Pixels to shift dialog along Y
 	 * @return {Promise}  							Promise representing dialog scope
 	 */
 	openEditor(ev, locals, { offsetX = 0, offsetY = 0 } = {}) {

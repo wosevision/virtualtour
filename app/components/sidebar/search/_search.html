@@ -1,6 +1,6 @@
 <div class="search-bar" layout="column" layout-fill>
 
-	<div layout="column" layout-align="center center" layout-margin layout-padding flex="grow">
+	<div layout="column" layout-align="center center" layout-margin layout-padding flex>
 <!-- 	  <md-input-container md-no-float class="md-block md-icon-left">
 			<ng-md-icon icon="search" size="24"></ng-md-icon>
 			<input ng-model="$ctrl.query" aria-label="Search the Virtual Tour" id="search_q">
@@ -82,15 +82,15 @@
 			</div>
 		</div>
 	</div>
-	<md-content layout="column" class="search-results" flex="nogrow">
-		<span class="md-headline" ng-if="!$ctrl.searchResults.length">No results found matching "<em>{{ $ctrl.searchText }}</em>"!</span>
+	<md-content layout="column" layout-align="start center" layout-margin layout-padding class="search-results" flex>
+		<span class="md-headline" ng-show="!$ctrl.searchResults.length">No results found<span ng-show="$ctrl.searchText"> matching "<em>{{ $ctrl.searchText }}</em>"</span>!</span>
 		<md-list>
       <md-list-item class="md-3-line" ng-repeat-start="item in $ctrl.searchResults" ng-click="null">
         <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
         <div class="md-list-item-text" layout="column">
-          <h3><strong>{{ ::item.name }}</strong><span ng-if="item.parent.parent.name">, {{item.parent.name}}</span></h3>
+          <h3><strong>{{ ::item.name }}</strong><span ng-if="::item.parent.parent.name">, {{::item.parent.name}}</span></h3>
           <h4>{{ ::(item.parent.parent.name || item.parent.name) }}</h4>
-          <span ng-bind-html="item.desc"></span>
+          <span ng-bind-html="::item.desc | limitTo:150" ng-class="{ 'truncated-text': (item.desc.length >= 100) }"></span>
         </div>
       </md-list-item>
 			<md-divider ng-repeat-end></md-divider>

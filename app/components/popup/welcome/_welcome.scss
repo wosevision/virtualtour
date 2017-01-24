@@ -57,7 +57,7 @@
 		opacity: 0.5;
 		&.compass-icon {
 	    perspective: 200px;
-	    svg {
+	    svg, img {
 		    animation-name: spinner;
 		    animation-timing-function: ease-in-out;
 		    animation-iteration-count: infinite;

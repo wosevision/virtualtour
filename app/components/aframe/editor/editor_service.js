@@ -58,7 +58,7 @@ class $aframeEditor {
 	 * to a `createdAt` property.
 	 * 
 	 * @param  {Boolean}  _newData	Whether incoming data should be treated as new
-	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
+	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 						Resolves to latest scene data
 	 */
 	publish(_newData = false, notify = true) {
@@ -96,8 +96,8 @@ class $aframeEditor {
 	 * Offers to publish the scene when the draft is done saving; calls
 	 * `publish()` if the user confirms.
 	 * 
-	 * @param  {Boolean} $0.notify Whether the notify the user (toast)
-	 * @return {Promise} 					 Resolves to saved draft
+	 * @param  {Boolean} notify 	Whether to notify the user (toast)
+	 * @return {Promise} 					Resolves to saved draft
 	 */
 	saveDraft(notify = true) {
   	return this.DraftResource.save({
@@ -120,8 +120,7 @@ class $aframeEditor {
 	 * scene ID via the `DraftResource` factory to check for active drafts
 	 * held by the current logged in user.
 	 * 
-	 * @param  {Boolean}  $0.notify Whether the notify the user (toast)
-	 * @param  {Function} cb        Callback to run when draft loaded
+	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise}            Promise that will resolve to draft list
 	 */
 	checkForDraft(notify = true) {
@@ -153,7 +152,7 @@ class $aframeEditor {
 	 * offers to publish.
 	 * 
 	 * @param  {string}   id        The id of the draft to fetch
-	 * @param  {Boolean}  $1.notify Whether to notify the user (toast)
+	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 					  Resolves to content of the loaded draft
 	 */
 	loadDraft(id, notify = true) {
@@ -167,10 +166,11 @@ class $aframeEditor {
 
 	/**
 	 * Immediately load last saved draft of current scene.
-	 * @param  {Boolean}  $0.notify 			Whether to notify the user (toast)
+	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
+	 * @return {Promise} 					  Resolves to state of confirm toast
 	 */
 	revertToDraft(notify = true) {
-		this.checkForDraft(false)
+		return this.checkForDraft(false)
 			.then( drafts => this.loadDraft(drafts[0]._id, false) )
 	  	.then( draftContent => notify && this.$mdToast.show(this.toasts.revertToDraft) );	
 	}
@@ -179,14 +179,14 @@ class $aframeEditor {
 	 * Sends an HTTP `DELETE` request to remove a stored draft by
 	 * its database `_id`; notifies user if successful.
 	 * 
-	 * @param  {string}   id             The id of the draft to delete
-	 * @param  {Boolean}  $1.notify			 Whether to notify the user (toast)
+	 * @param  {string}   id        The id of the draft to delete
+	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
+	 * @return {Promise} 					  Resolves to state of confirm toast
 	 */
 	discardDraft(id, notify = true) {
-  	this.DraftResource.remove({ id }).$promise
+  	return this.DraftResource.remove({ id }).$promise
 	  	.then( discardedDraft => notify && this.$mdToast.show(this.toasts.discardDraft) );
 	}
-	//NOTDONE
 }
 
 export default {

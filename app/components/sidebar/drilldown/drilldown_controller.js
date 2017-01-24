@@ -64,14 +64,15 @@ class DrilldownCtrl {
 		}
 
 		const $content = this.$element.find('md-content')[0];
-		this.children.forEach(item => {
+		this.children.forEach((item, index) => {
 			const childScope = this.$scope.$new();
 			childScope.item = item;
 			this.$compile(`<div
 				class="drilldown-item"
 				ng-class="{ 'is-active': item.active, 'is-hidden': item.hidden }"
 				md-ink-ripple="{{ item.active ? false : '#003C71' }}"
-				ng-click="toggle($event, this)">
+				ng-click="toggle($event, this)"
+				md-autofocus="${ index === 0 }">
 				<div ng-if="!item.hidden" style="padding-right: 30px;" class="drilldown-content" ng-class="{'md-caption': item.active, 'md-title': !item.active, 'selected': item.selected }">
 					<span>{{ ::item.name }}</span>
 					<div class="open-indicator"></div>

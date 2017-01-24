@@ -41,3 +41,12 @@
 		}
 	}
 }
+
+.truncated-text {
+	&:after {
+		content: '...';
+	}
+	&:after, p {
+		display: inline-block;
+	}
+}

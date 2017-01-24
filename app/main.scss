@@ -33,9 +33,10 @@ $button-border-radius: 0;
 	@import 'components/popup/error/error';
 	@import 'components/popup/welcome/welcome';
 
-@import 'components/aframe/scene/scene';
+	@import 'components/aframe/scene/scene';
+	@import 'components/aframe/editor/editor';
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak{
 	display: flex !important;
 	@include cover(fixed);
 	background: $uoitdarkblue;
