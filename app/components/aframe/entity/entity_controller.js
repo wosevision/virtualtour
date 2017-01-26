@@ -1,7 +1,3 @@
-// controller for the entity component
-// uses $onInit to set up $watches
-// has utility methods for compiling and parsing
-
 /**
  * The `EntityCtrl` acts as an observer of the `ngModel` directive (annotated
  * as `$ngModel` in this controller because it is injected); the entity's
@@ -54,6 +50,7 @@ class EntityCtrl {
         if (type && this.$ngModel.$valid) {
           console.info('entity type $watch', type);
           this.entityEl = this.compileTemplate(type);
+          console.log(this.entityEl);
           this.entityEl.attr(this.parseAttrs(this.$ngModel.$modelValue.attrs));
 					this.entityEl.on('click', () => {
 						// If there's a right click active...

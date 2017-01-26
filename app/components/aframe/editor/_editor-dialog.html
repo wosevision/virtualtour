@@ -1,7 +1,7 @@
 <div class="md-whiteframe-16dp floating-panel" layout="column">
 
   <div class="md-toolbar-tools">
-    <span class="md-title">{{ ::($ctrl.newItem ? 'New' : 'Edit') }}{{ ::($ctrl.item.hasOwnProperty('scene') ? ' scene link': '') }}{{ ::($ctrl.item.hasOwnProperty('parent') ? ' scene': '') }}{{ ::($ctrl.item.hasOwnProperty('content') || $ctrl.item.hasOwnProperty('feature') ? ' hotspot' : '') }}</span>
+    <span class="md-title">{{ ::($ctrl.newItem ? 'New' : 'Edit') }} {{ ::($ctrl.item.hasOwnProperty('scene') ? 'scene link': '') }}{{ ::($ctrl.item.hasOwnProperty('parent') ? 'scene': '') }}{{ ::($ctrl.item.hasOwnProperty('content') || $ctrl.item.hasOwnProperty('feature') ? 'hotspot' : '') }}{{ ::($ctrl.item.hasOwnProperty('attrs') ? 'entity' : '') }}</span>
     <span flex></span>
     <md-button class="md-icon-button md-primary" aria-label="Cancel" ng-click="$ctrl.closeDialog()">
       <ng-md-icon icon="close" size="24"></ng-md-icon>
@@ -98,6 +98,17 @@
 			    <md-select ng-if="$ctrl.item.hasOwnProperty('scene')" placeholder="Select scene" ng-model="$ctrl.scene" md-on-open="$ctrl.loadScenes()" ng-model-options="{trackBy: '$value._id'}" ng-change="$ctrl.onChangeScene()">
 			      <md-option ng-value="scene" ng-repeat="scene in $ctrl.scenes track by scene._id">{{::scene.name}}</md-option>
 			    </md-select>
+			  </div>
+	    </v-pane-content>
+	  </v-pane>
+
+	  <v-pane ng-if="::($ctrl.item.hasOwnProperty('attrs'))">
+	    <v-pane-header>
+				Attributes
+	    </v-pane-header>
+	    <v-pane-content>
+			  <div layout="row" layout-padding>
+			  	<entity-controls ng-model="$ctrl.item"></entity-controls>
 			  </div>
 	    </v-pane-content>
 	  </v-pane>
