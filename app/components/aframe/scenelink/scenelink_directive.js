@@ -27,7 +27,7 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 			}
 			//
 			// Listen for clicks on scene link element
-			const elemClick =  () => {
+			scope.elemClick =  () => {
 				// If there's a right click active...
 				if (SceneCtrl._rightClick && SceneCtrl._editable) {
 					// ...open the scene link editor:
@@ -45,12 +45,7 @@ function sceneLink($state, $popupWindow, $tourApi, $analytics) {
 						.then(gotoSceneHandler, errorHandler);
 				}
 			};
-			elem.on('click', elemClick);
-
-			// Scope cleanup on $destroy
-			scope.$on('$destroy', () => {
-				elem.off('click');
-			});
+			// elem.on('click', elemClick);
     }
   };
 }

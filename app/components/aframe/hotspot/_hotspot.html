@@ -9,8 +9,11 @@
 			rotation="0 0 0"
 			mixin="mixin-blue"
 			shader="flat"
+			ng-click="elemClick()"
 			event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
-			event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;">
+			event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;"
+			event-set__3="_event: focus; material.opacity: 0.6; material.color: #C71566;"
+			event-set__4="_event: blur; material.opacity: 0.85; material.color: #0077CA;">
 			<a-animation
 				begin="goto"
 				attribute="rotation"
@@ -24,7 +27,9 @@
 				text="text:i"
 				material="shader: flat;color:#0077CA;"
 				event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
-				event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;">
+				event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;"
+				event-set__3="_event: focus; material.opacity: 0.6; material.color: #C71566;"
+				event-set__4="_event: blur; material.opacity: 0.85; material.color: #0077CA;">
 			</a-entity>
 			<a-entity 
 				ng-attr-id="hotSpot_{{ ::hotSpot._id }}"

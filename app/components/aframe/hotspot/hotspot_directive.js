@@ -28,7 +28,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 			}
 
 			// Listen for clicks on scene link element
-			const elemClick = () => {
+			scope.elemClick = () => {
 				// If there's a right click active...
 				if (SceneCtrl._rightClick && SceneCtrl._editable) {
 					// ...open the scene link editor:
@@ -51,13 +51,7 @@ function hotSpot($state, $mapApi, $popupWindow, $analytics) {
 					}
 				}
 			};
-			elem.on('click', elemClick);
-
-			// Scope cleanup on $destroy
-			scope.$on('$destroy', () => {
-				elem.off('click', elemClick);
-			});
-			//
+			// elem.on('click', elemClick);
     }
 	  //
   };

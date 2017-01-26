@@ -5,7 +5,7 @@
 	    <md-card-content layout="column">
 	      <p class="md-headline"><strong>Sign in or register</strong> to save your user preferences permanently!</p>
 	      <p class="md-subtitle">Preferences will still be saved without a user but will be limited to your browser session.</p>
-	      <md-button ng-click="$ctrl.promptLogin()" class="md-raised md-primary">Sign in</md-button>
+	      <md-button ng-click="$ctrl.promptLogin()" class="md-raised md-primary" md-autofocus="!$ctrl.isLoggedIn()">Sign in</md-button>
 	      <md-button href="/keystone/signin" target="_self" class="md-primary">Register</md-button>
 	    </md-card-content>
 	  </md-card-header>
@@ -23,7 +23,7 @@
       </md-button>
 	    <md-button ng-click="$ctrl.logout()" class="md-raised">Sign out</md-button>
 	    <md-card-icon-actions>
-	      <md-button aria-label="edit profile" class="md-icon-button md-primary">
+	      <md-button aria-label="edit profile" class="md-icon-button md-primary" md-autofocus="$ctrl.isLoggedIn()">
 	        <ng-md-icon icon="edit"></ng-md-icon>
 	      </md-button>
 	    </md-card-icon-actions>

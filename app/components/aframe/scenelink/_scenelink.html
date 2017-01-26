@@ -5,6 +5,7 @@
 	event-set__1="_event: mouseenter; scale: 1.05 1.1 1.05;"
 	event-set__2="_event: mouseleave; scale: 1 1 1;">
 	<a-cone
+		ng-click="elemClick()"
 		height="0.5"
 		radius-bottom="0.5"
 		radius-top="0"
@@ -14,7 +15,9 @@
 		segments-radial="4"
 		mixin="mixin-blue"
 		event-set__1="_event: mouseenter; material.opacity: 0.6; material.color: #C71566;"
-		event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;">
+		event-set__2="_event: mouseleave; material.opacity: 0.85; material.color: #0077CA;"
+		event-set__3="_event: focus; material.opacity: 0.6; material.color: #C71566;"
+		event-set__4="_event: blur; material.opacity: 0.85; material.color: #0077CA;">
 		<!-- ROCKING ANIMATION -->
 		<a-animation
 			attribute="position"
