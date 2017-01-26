@@ -8,6 +8,8 @@ export default {
 
   sourceDir: './app/',
   buildDir: '../virtualtour-ks/public/', //'./build/',
+  componentsDir: './app/components', 
+  docsDir: './docs',
 
   styles: {
     index: 'app/main.scss',

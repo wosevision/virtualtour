@@ -1,0 +1,1541 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "WELCOME_TIP_LIST",
+            "range": [
+              6,
+              22
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 6
+              },
+              "end": {
+                "line": 1,
+                "column": 22
+              }
+            }
+          },
+          "init": {
+            "type": "ArrayExpression",
+            "elements": [
+              {
+                "type": "ArrayExpression",
+                "elements": [
+                  {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "title",
+                          "range": [
+                            33,
+                            38
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 3,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Tour navigation",
+                          "raw": "'Tour navigation'",
+                          "range": [
+                            40,
+                            57
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 3,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 26
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          33,
+                          57
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 3,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 26
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            61,
+                            65
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 4,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "my_location",
+                          "raw": "'my_location'",
+                          "range": [
+                            67,
+                            80
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 4,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 21
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          61,
+                          80
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 21
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "link",
+                          "range": [
+                            84,
+                            88
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "navigation",
+                          "raw": "'navigation'",
+                          "range": [
+                            90,
+                            102
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          84,
+                          102
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 20
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "desc",
+                          "range": [
+                            106,
+                            110
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 6,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 6,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Learn how to use warp arrows, map view and the location menu to move from scene to scene.",
+                          "raw": "'Learn how to use warp arrows, map view and the location menu to move from scene to scene.'",
+                          "range": [
+                            112,
+                            203
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 6,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 6,
+                              "column": 99
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          106,
+                          203
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 6,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 99
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      29,
+                      207
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 2
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "title",
+                          "range": [
+                            212,
+                            217
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 8,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Points of interest",
+                          "raw": "'Points of interest'",
+                          "range": [
+                            219,
+                            239
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 8,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 29
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          212,
+                          239
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 8,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 29
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            243,
+                            247
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "place",
+                          "raw": "'place'",
+                          "range": [
+                            249,
+                            256
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 15
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          243,
+                          256
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 9,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 15
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "link",
+                          "range": [
+                            260,
+                            264
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "",
+                          "raw": "''",
+                          "range": [
+                            266,
+                            268
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          260,
+                          268
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 10,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 10
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "desc",
+                          "range": [
+                            272,
+                            276
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 11,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 11,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "See which tour elements offer interactivity and how to use them.",
+                          "raw": "'See which tour elements offer interactivity and how to use them.'",
+                          "range": [
+                            278,
+                            344
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 11,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 11,
+                              "column": 74
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          272,
+                          344
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 74
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      208,
+                      348
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 3
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 2
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  28,
+                  349
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 3
+                  }
+                }
+              },
+              {
+                "type": "ArrayExpression",
+                "elements": [
+                  {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "title",
+                          "range": [
+                            355,
+                            360
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 13,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Virtual reality",
+                          "raw": "'Virtual reality'",
+                          "range": [
+                            362,
+                            379
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 13,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 26
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          355,
+                          379
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 13,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 13,
+                            "column": 26
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            383,
+                            387
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "3d_rotation",
+                          "raw": "'3d_rotation'",
+                          "range": [
+                            389,
+                            402
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 21
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          383,
+                          402
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 21
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "link",
+                          "range": [
+                            406,
+                            410
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "",
+                          "raw": "''",
+                          "range": [
+                            412,
+                            414
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          406,
+                          414
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 15,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 10
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "desc",
+                          "range": [
+                            418,
+                            422
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Experience the UOIT virtual tour immersively with an Oculus© Rift.",
+                          "raw": "'Experience the UOIT virtual tour immersively with an Oculus© Rift.'",
+                          "range": [
+                            424,
+                            492
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 76
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          418,
+                          492
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 16,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 76
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      351,
+                      496
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 12,
+                        "column": 5
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 2
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "title",
+                          "range": [
+                            501,
+                            506
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 18,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 18,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Mobile VR",
+                          "raw": "'Mobile VR'",
+                          "range": [
+                            508,
+                            519
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 18,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 18,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          501,
+                          519
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 18,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 18,
+                            "column": 20
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            523,
+                            527
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "screen_rotation",
+                          "raw": "'screen_rotation'",
+                          "range": [
+                            529,
+                            546
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 25
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          523,
+                          546
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 25
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "link",
+                          "range": [
+                            550,
+                            554
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 20,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 20,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "",
+                          "raw": "''",
+                          "range": [
+                            556,
+                            558
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 20,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 20,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          550,
+                          558
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 20,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 10
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "desc",
+                          "range": [
+                            562,
+                            566
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Turn your smartphone into a portal to UOIT with a mobile VR peripheral like HTC Vive, Samsung Gear or Google Cardboard.",
+                          "raw": "'Turn your smartphone into a portal to UOIT with a mobile VR peripheral like HTC Vive, Samsung Gear or Google Cardboard.'",
+                          "range": [
+                            568,
+                            689
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 129
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          562,
+                          689
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 21,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 129
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      497,
+                      693
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 3
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 2
+                      }
+                    }
+                  },
+                  {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "title",
+                          "range": [
+                            698,
+                            703
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 23,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 23,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Customization",
+                          "raw": "'Customization'",
+                          "range": [
+                            705,
+                            720
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 23,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 23,
+                              "column": 24
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          698,
+                          720
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 23,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 23,
+                            "column": 24
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            724,
+                            728
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 24,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "settings",
+                          "raw": "'settings'",
+                          "range": [
+                            730,
+                            740
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 24,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 18
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          724,
+                          740
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 24,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 18
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "link",
+                          "range": [
+                            744,
+                            748
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "",
+                          "raw": "''",
+                          "range": [
+                            750,
+                            752
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          744,
+                          752
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 25,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 10
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "desc",
+                          "range": [
+                            756,
+                            760
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "Learn about the options available for fine-tuning the virtual tour interface.",
+                          "raw": "'Learn about the options available for fine-tuning the virtual tour interface.'",
+                          "range": [
+                            762,
+                            841
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 87
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          756,
+                          841
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 87
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      694,
+                      844
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 22,
+                        "column": 3
+                      },
+                      "end": {
+                        "line": 27,
+                        "column": 2
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  350,
+                  845
+                ],
+                "loc": {
+                  "start": {
+                    "line": 12,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 3
+                  }
+                }
+              }
+            ],
+            "range": [
+              25,
+              847
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 25
+              },
+              "end": {
+                "line": 28,
+                "column": 1
+              }
+            }
+          },
+          "range": [
+            6,
+            847
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 28,
+              "column": 1
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        0,
+        848
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                868,
+                872
+              ],
+              "loc": {
+                "start": {
+                  "line": 31,
+                  "column": 1
+                },
+                "end": {
+                  "line": 31,
+                  "column": 5
+                }
+              }
+            },
+            "value": {
+              "type": "Literal",
+              "value": "WELCOME_TIP_LIST",
+              "raw": "'WELCOME_TIP_LIST'",
+              "range": [
+                874,
+                892
+              ],
+              "loc": {
+                "start": {
+                  "line": 31,
+                  "column": 7
+                },
+                "end": {
+                  "line": 31,
+                  "column": 25
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              868,
+              892
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 25
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "fn",
+              "range": [
+                895,
+                897
+              ],
+              "loc": {
+                "start": {
+                  "line": 32,
+                  "column": 1
+                },
+                "end": {
+                  "line": 32,
+                  "column": 3
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "WELCOME_TIP_LIST",
+              "range": [
+                899,
+                915
+              ],
+              "loc": {
+                "start": {
+                  "line": 32,
+                  "column": 5
+                },
+                "end": {
+                  "line": 32,
+                  "column": 21
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              895,
+              915
+            ],
+            "loc": {
+              "start": {
+                "line": 32,
+                "column": 1
+              },
+              "end": {
+                "line": 32,
+                "column": 21
+              }
+            }
+          }
+        ],
+        "range": [
+          865,
+          917
+        ],
+        "loc": {
+          "start": {
+            "line": 30,
+            "column": 15
+          },
+          "end": {
+            "line": 33,
+            "column": 1
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        850,
+        918
+      ],
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    918
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 33,
+      "column": 2
+    }
+  },
+  "comments": []
+}

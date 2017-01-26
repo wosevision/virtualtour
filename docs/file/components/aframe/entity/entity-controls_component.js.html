@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/aframe/entity/entity-controls_component.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/aframe/entity/entity-controls_component.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">class EntityCtrls {
+  // $injector annotations
+  static get $inject() {
+    return [&apos;$scope&apos;];
+  }
+  ////////
+  constructor($scope) {
+    this.$scope = $scope;
+  }
+  ////////
+  $onInit() {
+    this.$ngModel.$formatters.push(modelValue =&gt; {
+      let { type, attrs } = modelValue;
+      console.info(&apos;control $formatter&apos;, { type, attrs });
+      return {
+          type,
+          attrs
+      };
+    });
+    ////
+    this.$ngModel.$render = () =&gt; {
+      const { type, attrs } = this.$ngModel.$viewValue;
+      console.log(&apos;control $render&apos;, { type, attrs });
+      this.$scope.type = type;
+      this.$scope.attrs = attrs;
+    };
+    ////
+    this.$scope.$watch(
+      () =&gt; { 
+        return {
+          attrs: this.$scope.attrs, type: this.$scope.type 
+        }
+      },
+      (newVal) =&gt; {
+        console.log(&apos;control $watch&apos;, newVal);
+        this.$ngModel.$setViewValue({
+          type: this.$scope.type,
+          attrs: this.$scope.attrs
+        });
+      }, true
+    );
+    ////
+    this.$ngModel.$parsers.push(viewValue =&gt; {
+      let { type, attrs } = viewValue;
+      console.log(&apos;control $parser&apos;, { type, attrs });
+      return { type, attrs };
+    });
+  }
+  ////////
+  addAttr() {
+    console.log(&apos;attr added from control&apos;);
+    return this.$scope.attrs.push({prop:&apos;&apos;, val:&apos;&apos;});
+  }
+  ////////
+  removeAttr(attr) {
+    angular.forEach(this.$scope.attrs, (a, i) =&gt; {
+      if (a.$$hashKey === attr.$$hashKey) {
+        console.log(&apos;attr removed from control&apos;, a);
+        return this.$scope.attrs.splice(i, 1);
+      };
+    });
+  }
+}
+
+const entityControls = {
+  require: {
+    $ngModel: &apos;ngModel&apos;
+  },
+  controller: EntityCtrls,
+  template: `
+    &lt;div class=&quot;md-title&quot;&gt;
+      Element:
+    &lt;/div&gt;
+    &lt;md-input-container&gt;
+      &lt;label&gt;
+        Type:
+      &lt;/label&gt;
+        &lt;input ng-model=&quot;type&quot; /&gt;
+    &lt;/md-input-container&gt;
+    &lt;div class=&quot;md-title&quot;&gt;
+      Attributes:
+    &lt;/div&gt;
+    &lt;md-list layout=&quot;column&quot;&gt;
+      &lt;md-list-item layout layout-wrap ng-repeat=&quot;attr in attrs&quot;&gt;
+        &lt;span class=&quot;md-subheader&quot; flex=&quot;100&quot;&gt;
+          &lt;strong&gt;{{attr.prop}}=&quot;&lt;em&gt;{{attr.val}}&lt;/em&gt;&lt;/strong&gt;&quot;
+        &lt;/span&gt;&lt;br/&gt;
+        &lt;md-input-container&gt;
+          &lt;label&gt;
+            Property
+          &lt;/label&gt;
+          &lt;input ng-model=&quot;attr.prop&quot; /&gt;
+        &lt;/md-input-container&gt;
+        &lt;md-input-container&gt;
+          &lt;label&gt;
+            Value
+          &lt;/label&gt;
+          &lt;input ng-model=&quot;attr.val&quot; /&gt;
+        &lt;/md-input-container&gt;
+        &lt;md-button class=&quot;md-raised md-warn&quot; ng-click=&quot;$ctrl.removeAttr(attr)&quot;&gt;Remove&lt;/md-button&gt;
+      &lt;/md-list-item&gt;
+      &lt;md-list-item&gt;
+        &lt;md-button class=&quot;md-raised md-primary&quot; ng-click=&quot;$ctrl.addAttr()&quot;&gt;Add attribute&lt;/md-button&gt;
+      &lt;/md-list-item&gt;
+    &lt;/md-list&gt;`
+}
+
+export default {
+	name: &apos;entityControls&apos;,
+	fn: entityControls
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

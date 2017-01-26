@@ -1,0 +1,422 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "USER_ROLES",
+            "range": [
+              6,
+              16
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 6
+              },
+              "end": {
+                "line": 1,
+                "column": 16
+              }
+            }
+          },
+          "init": {
+            "type": "ObjectExpression",
+            "properties": [
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "admin",
+                  "range": [
+                    22,
+                    27
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 6
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "admin",
+                  "raw": "'admin'",
+                  "range": [
+                    29,
+                    36
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 15
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  22,
+                  36
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 15
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "editor",
+                  "range": [
+                    39,
+                    45
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "editor",
+                  "raw": "'editor'",
+                  "range": [
+                    47,
+                    55
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 17
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  39,
+                  55
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 17
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "contributor",
+                  "range": [
+                    58,
+                    69
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 12
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "contributor",
+                  "raw": "'contributor'",
+                  "range": [
+                    71,
+                    84
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 27
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  58,
+                  84
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 27
+                  }
+                }
+              }
+            ],
+            "range": [
+              19,
+              86
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 19
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          "range": [
+            6,
+            86
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        0,
+        88
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                106,
+                110
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 1
+                },
+                "end": {
+                  "line": 8,
+                  "column": 5
+                }
+              }
+            },
+            "value": {
+              "type": "Literal",
+              "value": "USER_ROLES",
+              "raw": "'USER_ROLES'",
+              "range": [
+                112,
+                124
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 7
+                },
+                "end": {
+                  "line": 8,
+                  "column": 19
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              106,
+              124
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 8,
+                "column": 19
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "fn",
+              "range": [
+                127,
+                129
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 1
+                },
+                "end": {
+                  "line": 9,
+                  "column": 3
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "USER_ROLES",
+              "range": [
+                131,
+                141
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 5
+                },
+                "end": {
+                  "line": 9,
+                  "column": 15
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              127,
+              141
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 15
+              }
+            }
+          }
+        ],
+        "range": [
+          103,
+          143
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 15
+          },
+          "end": {
+            "line": 10,
+            "column": 1
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        88,
+        143
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 1
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    143
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 10,
+      "column": 1
+    }
+  },
+  "comments": []
+}

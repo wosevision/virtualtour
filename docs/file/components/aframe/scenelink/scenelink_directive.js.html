@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/aframe/scenelink/scenelink_directive.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/aframe/scenelink/scenelink_directive.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">function sceneLink($state, $popupWindow, $tourApi, $analytics) {
+  &apos;ngInject&apos;;
+  return {
+    restrict: &apos;A&apos;,
+    scope: {
+    	sceneLink: &apos;=&apos;
+    },
+    require: &apos;^aframeScene&apos;,
+    templateUrl: &apos;aframe/scenelink/_scenelink.html&apos;,
+		link(scope, elem, attrs, SceneCtrl) {
+			const SceneResource = $tourApi.scene,
+						LocationResource = $tourApi.location;
+			const sceneId = scope.sceneLink.scene;
+			//  and handlers: success...
+			const gotoSceneHandler = data =&gt; {
+				$analytics.eventTrack(&apos;click&apos;, { category: &apos;scenelink&apos;, label: [data.scene.parent.code, data.scene.code].join(&apos;_&apos;) });
+				$state.transitionTo(&apos;scene&apos;, { location: data.location.code, building: data.scene.parent.code, scene: data.scene.code });
+				// $state.go(&apos;scene&apos;, { building: data.parent.code, scene: data.code });
+			}
+			// ...and error
+			const errorHandler = error =&gt; {
+			  const locals = {
+					type: &apos;Scene load error!&apos;,
+					message: &apos;Looks like this scene link is broken &#x2013; darn.&apos;
+		  	}
+				$popupWindow.error({ locals });
+			}
+			//
+			// Listen for clicks on scene link element
+			scope.elemClick =  () =&gt; {
+				// If there&apos;s a right click active...
+				if (SceneCtrl._rightClick &amp;&amp; SceneCtrl._editable) {
+					// ...open the scene link editor:
+					SceneCtrl.editItem(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
+				} else {
+					// ...otherwise just use the default scene link behavior
+					document.getElementById(`link_${sceneId}`).emit(&apos;goto&apos;);
+					let scene;
+					SceneResource.get({ id: sceneId }).$promise
+						.then(data =&gt; {
+							scene = data;
+							return LocationResource.get({ id: scene.parent.parent }).$promise;
+						}) //**
+						.then(location =&gt; ({ location, scene }) ) //**
+						.then(gotoSceneHandler, errorHandler);
+				}
+			};
+			// elem.on(&apos;click&apos;, elemClick);
+    }
+  };
+}
+
+export default {
+  name: &apos;sceneLink&apos;,
+  fn: sceneLink
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

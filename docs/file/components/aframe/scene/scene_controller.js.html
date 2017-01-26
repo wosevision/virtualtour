@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/aframe/scene/scene_controller.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/aframe/scene/scene_controller.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isDefined, equals, element } from &apos;angular&apos;;
+
+/**
+ * The scene controller manages all top-level functionality
+ * of the scene component; it is responsible for initializing
+ * the DOM elements of the scene and updating them when the
+ * $aframeScene service changes.
+ */
+class SceneCtrl {
+	/**
+	 * Initializes the SceneCtrl&apos;s dependencies
+	 * @param  {object} $scope       The current scope
+	 * @param  {jqlite} $element     The component&apos;s &lt;aframe-scene&gt; element
+	 * @param  {object} $aframeScene The scene service
+	 * @param  {object} $aframeSky   The sky service
+	 */
+	constructor($scope, $element, $aframeScene, $aframeSky) {
+		&apos;ngInject&apos;;
+		this.$scope = $scope;
+		this.$element = $element;
+		this.$aframeScene = $aframeScene;
+		this.$aframeSky = $aframeSky;
+	}
+
+  /**
+   * Lifecycle hook to initialize component properties; sets
+   * a boolean to hold the rightclick-active flag (for when a
+   * user mouseups the scene with right button) and a string
+   * for the current active scene&apos;s ID.
+   * 
+	 * Also stores JQLite-wrapped &lt;a-scene&gt; and &lt;a-assets&gt; for
+	 * appending child elements into the scene from inner components.
+   */
+  $onInit() {
+		this._rightClick = false;
+		this._isMobile = false;
+		this._currentSceneId = &apos;&apos;;
+
+		this.$sceneEl = this.$element.find(&apos;a-scene&apos;);
+		this.$assetsEl = this.$sceneEl.find(&apos;a-assets&apos;);
+		this.$cameraEl = element(document.getElementById(&apos;aframe-camera&apos;));
+  }
+
+	$onChanges(changes) {
+		console.log(changes);
+		if (changes.mobile.isFirstChange()) return;
+		if (!this._isMobile &amp;&amp; changes.mobile.currentValue.screen) {
+			// this.$cursorEl = element(document.createElement(&apos;a-cursor&apos;));
+			// this.$cursorEl.attr({
+			// 	fuse: true,
+			// 	fuseTimeout: 1000,
+			// 	maxDistance: 100,
+			// 	material: &apos;color:white;&apos;
+			// });
+			// this.$cameraEl
+			// 	.attr({ &apos;look-controls&apos;: &apos;enabled: true;&apos;, &apos;reverse-look-controls&apos;: &apos;enabled: false;&apos; });
+			// this.$cameraEl.append(this.$cursorEl);
+			this._isMobile = true;
+			// console.log(&apos;mobile detected; scene adapted&apos;, this.$cameraEl, this.$cursorEl)
+		}
+		if (this._isMobile &amp;&amp; !changes.mobile.currentValue.screen) {
+			// this.$cursorEl.remove();
+			// this.$cameraEl
+			// 	.attr({
+			// 		&apos;look-controls&apos;: &apos;enabled: false;&apos;,
+			// 		&apos;reverse-look-controls&apos;: &apos;enabled: true;&apos;
+			// 	});
+			this._isMobile = false;
+		}
+	}
+
+  /**
+   * Extracts an incoming scene object&apos;s relevant data (`id`, `sceneLinks`,
+   * and `hotSpots`) and assigns them to the controller for rendering
+   * on the component.
+   *
+   * If the server-side editor component is attached (i.e. admin user is
+   * logged in), it will have mounted a `checkForDraft()` method on the
+   * controller, which is called here to announce if a newly-navigated-to
+   * scene has saved drafts.
+   * 
+   * @param {object} scene A scene object from API/database
+   */
+	setScene(scene) {
+		
+		const { sceneLinks, hotSpots, entities, _id } = scene;
+
+  	this.sceneLinks = sceneLinks;
+  	this.hotSpots = hotSpots;
+  	this.entities = entities;
+  	this._currentSceneId = _id;
+
+    this.checkForDraft&amp;&amp;this.checkForDraft();
+	}
+
+  /**
+   * Lifecycle hook to run a check on every digest loop cycle.
+   * 
+   * Checks $aframeScene&apos;s current scene object; proceeds if
+   * scene is defined and calls `setScene()` on the incoming data.
+   *
+   * Checks if there is a sky active on $aframeSky, and if so, if
+   * it is different from the current active sky. Sets the conroller&apos;s
+   * sky if they differ or if the controller has no sky.
+   * 
+   */
+  $doCheck() {
+  	if (isDefined(this.$aframeScene.scene)) {
+  		if (this.$aframeScene.scene._id &amp;&amp; this.$aframeScene.scene._id !== this._currentSceneId) {
+			// if (!this.sky || this.$aframeScene.sky !== this.sky) {
+				// this.sky = this.$aframeScene.sky;
+	  		this.setScene(this.$aframeScene.scene);
+	  	}
+  	} else return;
+  	if (this.$aframeSky.sky) {
+			if (!this.sky || this.$aframeSky.sky !== this.sky) {
+				this.sky = this.$aframeSky.sky;
+				console.log(&apos;scene controller detects change in sky service&apos;, this.sky);
+	  	}
+  	}
+  }
+}
+
+export default SceneCtrl;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

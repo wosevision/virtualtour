@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">SceneCtrl | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import SceneCtrl from &apos;<span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber9">uoit-virtualtour/components/aframe/scene/scene_controller.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber9">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">SceneCtrl</h1>
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <div class="description" data-ice="description"><p>The scene controller manages all top-level functionality
+of the scene component; it is responsible for initializing
+the DOM elements of the scene and updating them when the
+$aframeScene service changes.</p>
+</div>
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">($scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, $element: <span>jqlite</span>, $aframeScene: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, $aframeSky: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Initializes the SceneCtrl&apos;s dependencies</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="memberSummary"><h2>Member Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$aframeScene">$aframeScene</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$aframeSky">$aframeSky</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$assetsEl">$assetsEl</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$cameraEl">$cameraEl</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$element">$element</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$sceneEl">$sceneEl</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$scope">$scope</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-checkForDraft">checkForDraft</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-entities">entities</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-hotSpots">hotSpots</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-sceneLinks">sceneLinks</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-sky">sky</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$doCheck">$doCheck</a></span></span><span data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Lifecycle hook to run a check on every digest loop cycle.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$onChanges">$onChanges</a></span></span><span data-ice="signature">(changes: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$onInit">$onInit</a></span></span><span data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Lifecycle hook to initialize component properties; sets
+a boolean to hold the rightclick-active flag (for when a
+user mouseups the scene with right button) and a string
+for the current active scene&apos;s ID.</p>
+<p>Also stores JQLite-wrapped <a-scene> and <a-assets> for
+appending child elements into the scene from inner components.</a-assets></a-scene></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-setScene">setScene</a></span></span><span data-ice="signature">(scene: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Extracts an incoming scene object&apos;s relevant data (<code>id</code>, <code>sceneLinks</code>,
+and <code>hotSpots</code>) and assigns them to the controller for rendering
+on the component.</p>
+<p>If the server-side editor component is attached (i.e. admin user is
+logged in), it will have mounted a <code>checkForDraft()</code> method on the
+controller, which is called here to announce if a newly-navigated-to
+scene has saved drafts.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">constructor</span><span data-ice="signature">($scope: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, $element: <span>jqlite</span>, $aframeScene: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, $aframeSky: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber17">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Initializes the SceneCtrl&apos;s dependencies</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">$scope</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The current scope</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">$element</td>
+      <td data-ice="type"><span>jqlite</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The component&apos;s &lt;aframe-scene&gt; element</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">$aframeScene</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The scene service</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">$aframeSky</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The sky service</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$aframeScene">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$aframeScene</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber21">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$aframeSky">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$aframeSky</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber22">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$assetsEl">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$assetsEl</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber40">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$cameraEl">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$cameraEl</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber41">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$element">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$element</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber20">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$sceneEl">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$sceneEl</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber39">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-$scope">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$scope</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber19">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-checkForDraft">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">checkForDraft</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber93">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-entities">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">entities</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber90">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-hotSpots">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">hotSpots</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber89">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-sceneLinks">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">sceneLinks</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber88">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-sky">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">sky</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber117">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-$doCheck">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$doCheck</span><span data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber107">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Lifecycle hook to run a check on every digest loop cycle.</p>
+<p>Checks $aframeScene&apos;s current scene object; proceeds if
+scene is defined and calls <code>setScene()</code> on the incoming data.</p>
+<p>Checks if there is a sky active on $aframeSky, and if so, if
+it is different from the current active sky. Sets the conroller&apos;s
+sky if they differ or if the controller has no sky.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-$onChanges">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$onChanges</span><span data-ice="signature">(changes: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber44">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">changes</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-$onInit">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">$onInit</span><span data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber34">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Lifecycle hook to initialize component properties; sets
+a boolean to hold the rightclick-active flag (for when a
+user mouseups the scene with right button) and a string
+for the current active scene&apos;s ID.</p>
+<p>Also stores JQLite-wrapped <a-scene> and <a-assets> for
+appending child elements into the scene from inner components.</a-assets></a-scene></p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-setScene">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">setScene</span><span data-ice="signature">(scene: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/aframe/scene/scene_controller.js.html#lineNumber84">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Extracts an incoming scene object&apos;s relevant data (<code>id</code>, <code>sceneLinks</code>,
+and <code>hotSpots</code>) and assigns them to the controller for rendering
+on the component.</p>
+<p>If the server-side editor component is attached (i.e. admin user is
+logged in), it will have mounted a <code>checkForDraft()</code> method on the
+controller, which is called here to announce if a newly-navigated-to
+scene has saved drafts.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">scene</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>A scene object from API/database</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">components/main/main_controller.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/main/main_controller.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { utils } from &apos;aframe&apos;;
+import { element, isUndefined } from &apos;angular&apos;;
+
+function MainCtrl(
+	$scope, $state, $timeout, // ng deps
+	$mdSidenav, $mdMedia, // md deps
+	$popupWindow, UserSession, // my libs
+	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
+) {
+  &apos;ngInject&apos;;
+  const WELCOME_MSG_DELAY = 500; //ms
+  const SETTINGS_MSG_DELAY = 1000; //ms
+  const BLURRED_VIEWS = [ &apos;search&apos;, &apos;map&apos; ];
+  // check for mobile/landscape on every digest
+  this.mobile = {};
+  $scope.$watch(
+    () =&gt; ({
+    	screen: !$mdMedia(&apos;gt-sm&apos;),
+    	landscape: $mdMedia(&apos;landscape&apos;),
+    	device: (utils.isMobile || utils.device.isMobile)()
+    }),
+    m =&gt; {
+      this.mobile = m; //console.log(m);
+    },
+    true
+  );
+
+	const goToSettings = response =&gt; {
+		switch (response) {
+			case &apos;ok&apos;:
+        $state.go(&apos;settings&apos;);
+        $mdSidenav(&apos;right&apos;).open();
+			default:
+				break;
+		}
+	}
+
+  const showSettingsMsg = () =&gt; {
+  	const autoconfig = UserSession.usage.auto;
+  	if (autoconfig &amp;&amp; autoconfig.val) {
+	    $popupWindow.toast(&apos;primary&apos;, {
+	    	message: &apos;Data usage settings auto-configured to your device!&apos;,
+	    	action: &apos;Change settings&apos;
+	    }).then(response =&gt; {
+	    	goToSettings(response);
+	    });
+  	} else {
+	    $popupWindow.toast(&apos;warn&apos;, {
+	    	message: &apos;Automatic data usage is currently disabled, but can be enabled in Settings.&apos;,
+	    	action: &apos;Show me how&apos;
+	    }).then(response =&gt; {
+	    	goToSettings(response);
+	    });
+	  }
+  }
+
+  const showWelcomeMsg = () =&gt; {
+		$popupWindow.welcome()
+	    .then( answer =&gt; (answer != &apos;tour&apos;) &amp;&amp; showSettingsMsg() )
+	    .catch( () =&gt; showSettingsMsg() );
+  }
+
+  const settingsLoaded = $scope.$watch(
+  	() =&gt; UserSession.settings, 
+  	userSettings =&gt; {
+	  	if (!isUndefined(userSettings)) {
+	  		console.log(&apos;main controller applying settings&apos;)
+			  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
+
+				if (showWelcome.val) {
+				  $timeout(showWelcomeMsg, WELCOME_MSG_DELAY);
+				} else {
+				  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
+				}
+
+			  this.titlebar = {
+					options: TITLEBAR_OPTS,
+					clickHandlers: {
+						config: () =&gt; {
+			      	$mdSidenav(&apos;config&apos;).toggle();
+						},
+						right: () =&gt; {
+					    this.toolbar.toggle();
+			      	this.titlebar.options.right.active = this.toolbar.isOpen;
+						},
+						condense: () =&gt; {
+					    this.toolbar.condense();
+			      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
+						}
+					} 
+			  }
+
+			  this.toolbar = {
+			  	views: BUTTONBAR_VIEWS,
+			    isOpen: toolbarOpen.val,
+			    isCondensed: toolbarCondensed.val,
+			    toggle() {
+			  		this.isOpen = !this.isOpen;
+			  		this.isOpen&amp;&amp;$mdSidenav(&apos;right&apos;).close();
+			    },
+			    condense() {
+			      !this.isOpen&amp;&amp;this.toggle();
+			      this.isCondensed = !this.isCondensed;
+			      return this.isCondensed;
+			    }
+			  }
+			  
+			  this.sidebar = {
+			  	hasState(view) {
+			  		return $state.includes(view);
+			  	},
+			  	hasBlur() {
+			  		return BLURRED_VIEWS.some(this.hasState);
+			  	}
+			  }
+
+			  settingsLoaded();
+	  	}
+	  }
+  );
+
+}
+
+export default {
+  name: &apos;MainCtrl&apos;,
+  fn: MainCtrl
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "GLOBAL_SETTINGS",
+            "range": [
+              6,
+              21
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 6
+              },
+              "end": {
+                "line": 1,
+                "column": 21
+              }
+            }
+          },
+          "init": {
+            "type": "ObjectExpression",
+            "properties": [
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "apiUrl",
+                  "range": [
+                    27,
+                    33
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "/api/v1",
+                  "raw": "'/api/v1'",
+                  "range": [
+                    35,
+                    44
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 18
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  27,
+                  44
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 18
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "imageApiUrl",
+                  "range": [
+                    47,
+                    58
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 12
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "//res.cloudinary.com/uoit-virtual-tour/image/upload",
+                  "raw": "'//res.cloudinary.com/uoit-virtual-tour/image/upload'",
+                  "range": [
+                    60,
+                    113
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 67
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  47,
+                  113
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 67
+                  }
+                },
+                "trailingComments": [
+                  {
+                    "type": "Line",
+                    "value": " KEYSTONE HEROKU",
+                    "range": [
+                      116,
+                      134
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 20
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " https://virtualtour-cms.herokuapp.com",
+                    "range": [
+                      137,
+                      177
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 42
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " ",
+                    "range": [
+                      180,
+                      183
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 5
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " VTS HEROKU",
+                    "range": [
+                      186,
+                      199
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 15
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " https://virtualtour-server.herokuapp.com",
+                    "range": [
+                      202,
+                      245
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 8,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 45
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " ",
+                    "range": [
+                      248,
+                      251
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 5
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " KEYSTONE LOCAL",
+                    "range": [
+                      254,
+                      271
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 10,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 19
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " http://localhost:3000/api/v1",
+                    "range": [
+                      274,
+                      305
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 33
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " ",
+                    "range": [
+                      308,
+                      311
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 12,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 5
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " VTS LOCAL",
+                    "range": [
+                      314,
+                      326
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 14
+                      }
+                    }
+                  },
+                  {
+                    "type": "Line",
+                    "value": " http://localhost:8080/api\\",
+                    "range": [
+                      329,
+                      358
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 31
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "range": [
+              24,
+              360
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 24
+              },
+              "end": {
+                "line": 15,
+                "column": 1
+              }
+            }
+          },
+          "range": [
+            6,
+            360
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        0,
+        361
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                382,
+                386
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 2
+                },
+                "end": {
+                  "line": 18,
+                  "column": 6
+                }
+              }
+            },
+            "value": {
+              "type": "Literal",
+              "value": "GLOBAL_SETTINGS",
+              "raw": "'GLOBAL_SETTINGS'",
+              "range": [
+                388,
+                405
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 8
+                },
+                "end": {
+                  "line": 18,
+                  "column": 25
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              382,
+              405
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "line": 18,
+                "column": 25
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "fn",
+              "range": [
+                409,
+                411
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 2
+                },
+                "end": {
+                  "line": 19,
+                  "column": 4
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "GLOBAL_SETTINGS",
+              "range": [
+                413,
+                428
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 6
+                },
+                "end": {
+                  "line": 19,
+                  "column": 21
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              409,
+              428
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 2
+              },
+              "end": {
+                "line": 19,
+                "column": 21
+              }
+            }
+          }
+        ],
+        "range": [
+          378,
+          430
+        ],
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 15
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Line",
+            "value": " KEYSTONE HEROKU",
+            "range": [
+              116,
+              134
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 2
+              },
+              "end": {
+                "line": 4,
+                "column": 20
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " https://virtualtour-cms.herokuapp.com",
+            "range": [
+              137,
+              177
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 2
+              },
+              "end": {
+                "line": 5,
+                "column": 42
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " ",
+            "range": [
+              180,
+              183
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " VTS HEROKU",
+            "range": [
+              186,
+              199
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 2
+              },
+              "end": {
+                "line": 7,
+                "column": 15
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " https://virtualtour-server.herokuapp.com",
+            "range": [
+              202,
+              245
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 2
+              },
+              "end": {
+                "line": 8,
+                "column": 45
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " ",
+            "range": [
+              248,
+              251
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 2
+              },
+              "end": {
+                "line": 9,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " KEYSTONE LOCAL",
+            "range": [
+              254,
+              271
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 2
+              },
+              "end": {
+                "line": 10,
+                "column": 19
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " http://localhost:3000/api/v1",
+            "range": [
+              274,
+              305
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 2
+              },
+              "end": {
+                "line": 11,
+                "column": 33
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " ",
+            "range": [
+              308,
+              311
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 2
+              },
+              "end": {
+                "line": 12,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " VTS LOCAL",
+            "range": [
+              314,
+              326
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "line": 13,
+                "column": 14
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " http://localhost:8080/api\\",
+            "range": [
+              329,
+              358
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 31
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        363,
+        431
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 2
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Line",
+          "value": " KEYSTONE HEROKU",
+          "range": [
+            116,
+            134
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 4,
+              "column": 20
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " https://virtualtour-cms.herokuapp.com",
+          "range": [
+            137,
+            177
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 5,
+              "column": 42
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " ",
+          "range": [
+            180,
+            183
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 6,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " VTS HEROKU",
+          "range": [
+            186,
+            199
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 2
+            },
+            "end": {
+              "line": 7,
+              "column": 15
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " https://virtualtour-server.herokuapp.com",
+          "range": [
+            202,
+            245
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 8,
+              "column": 45
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " ",
+          "range": [
+            248,
+            251
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 2
+            },
+            "end": {
+              "line": 9,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " KEYSTONE LOCAL",
+          "range": [
+            254,
+            271
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 10,
+              "column": 19
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " http://localhost:3000/api/v1",
+          "range": [
+            274,
+            305
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 2
+            },
+            "end": {
+              "line": 11,
+              "column": 33
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " ",
+          "range": [
+            308,
+            311
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " VTS LOCAL",
+          "range": [
+            314,
+            326
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 2
+            },
+            "end": {
+              "line": 13,
+              "column": 14
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " http://localhost:8080/api\\",
+          "range": [
+            329,
+            358
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 14,
+              "column": 31
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    431
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 20,
+      "column": 2
+    }
+  },
+  "comments": [
+    {
+      "type": "Line",
+      "value": " KEYSTONE HEROKU",
+      "range": [
+        116,
+        134
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 4,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " https://virtualtour-cms.herokuapp.com",
+      "range": [
+        137,
+        177
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " ",
+      "range": [
+        180,
+        183
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 6,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " VTS HEROKU",
+      "range": [
+        186,
+        199
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " https://virtualtour-server.herokuapp.com",
+      "range": [
+        202,
+        245
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " ",
+      "range": [
+        248,
+        251
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 9,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " KEYSTONE LOCAL",
+      "range": [
+        254,
+        271
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " http://localhost:3000/api/v1",
+      "range": [
+        274,
+        305
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " ",
+      "range": [
+        308,
+        311
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " VTS LOCAL",
+      "range": [
+        314,
+        326
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 2
+        },
+        "end": {
+          "line": 13,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " http://localhost:8080/api\\",
+      "range": [
+        329,
+        358
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 31
+        }
+      }
+    }
+  ]
+}

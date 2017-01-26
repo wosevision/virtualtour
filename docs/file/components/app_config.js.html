@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/app_config.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/app_config.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">function AppConfig(
+	$provide, $locationProvider,
+	$stateProvider, $urlRouterProvider, $mdThemingProvider,
+	cfpLoadingBarProvider) { //, $mdIconProvider
+  &apos;ngInject&apos;;
+  
+  // cfpLoadingBarProvider.includeSpinner = false;
+  // cfpLoadingBarProvider.latencyThreshold = 300;
+  cfpLoadingBarProvider.spinnerTemplate = `&lt;div id=&quot;loading-spinner&quot; class=&quot;loading-spinner-container&quot; layout layout-fill layout-align=&quot;center center&quot;&gt;
+  	&lt;md-progress-circular md-mode=&quot;indeterminate&quot; class=&quot;md-primary&quot;&gt;
+  	&lt;/md-progress-circular&gt;
+  &lt;/div&gt;`;
+
+  $mdThemingProvider.definePalette(&apos;UOITprimary&apos;, {
+    &apos;50&apos;: &apos;0086FC&apos;,
+    &apos;100&apos;: &apos;45A1FA&apos;,
+    &apos;200&apos;: &apos;74B8FB&apos;,
+    &apos;300&apos;: &apos;A2D0FD&apos;,
+    &apos;400&apos;: &apos;0077CA&apos;,
+    &apos;500&apos;: &apos;006BB8&apos;,
+    &apos;600&apos;: &apos;005FA6&apos;,
+    &apos;700&apos;: &apos;005495&apos;,
+    &apos;800&apos;: &apos;004883&apos;,
+    &apos;900&apos;: &apos;003C71&apos;,
+    &apos;A100&apos;: &apos;ff8a80&apos;,
+    &apos;A200&apos;: &apos;ff5252&apos;,
+    &apos;A400&apos;: &apos;ff1744&apos;,
+    &apos;A700&apos;: &apos;d50000&apos;,
+    &apos;contrastDefaultColor&apos;: &apos;light&apos;,    // whether, by default, text (contrast)
+                                        // on this palette should be dark or light
+    &apos;contrastDarkColors&apos;: [&apos;50&apos;, &apos;100&apos;, //hues which contrast should be &apos;dark&apos; by default
+     &apos;200&apos;, &apos;A100&apos;],
+    &apos;contrastLightColors&apos;: null    // could also specify this if default was &apos;dark&apos;
+  });
+
+  $mdThemingProvider.theme(&apos;default&apos;)
+    .primaryPalette(&apos;UOITprimary&apos;, {
+      &apos;default&apos;: &apos;400&apos;,
+      &apos;hue-1&apos;: &apos;300&apos;,
+      &apos;hue-2&apos;: &apos;500&apos;,
+      &apos;hue-3&apos;: &apos;900&apos;
+    })
+    .accentPalette(&apos;grey&apos;);
+
+  $locationProvider.html5Mode(true);
+
+  $stateProvider
+    .state(&apos;home&apos;, {
+      template: &apos;&lt;ui-view&gt;&lt;/ui-view&gt;&apos;
+    });
+
+  $stateProvider
+    .state(&apos;settings&apos;, {
+      parent: &apos;home&apos;,
+      templateUrl: &apos;sidebar/settings/_settings.html&apos;,
+      controller: &apos;SettingsCtrl&apos;,
+      controllerAs: &apos;$ctrl&apos;
+    });
+
+  $urlRouterProvider.otherwise(&apos;/&apos;);
+
+	$provide.decorator(&apos;$exceptionHandler&apos;, ($log, $delegate, $injector) =&gt; {
+		&apos;ngInject&apos;;
+    return (exception, cause) =&gt; {
+	    const $rootScope = $injector.get(&apos;$rootScope&apos;);
+	    if (!cause) cause = &apos;Application error&apos;;
+	    $rootScope.$broadcast(&apos;handler:exception&apos;, { exception, cause });
+
+	    // FOR &quot;SOFTER&quot; ERRORS:
+      // $log.debug(exception, cause);
+      
+  		$delegate(exception, cause);
+    };
+  });
+
+}
+
+export default AppConfig;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

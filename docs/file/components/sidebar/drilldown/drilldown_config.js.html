@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/sidebar/drilldown/drilldown_config.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/sidebar/drilldown/drilldown_config.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">function DrilldownConfig($stateProvider) {
+  &apos;ngInject&apos;
+
+  function alphaGroupReducer(output, name) {
+    let lCase = name.name.toUpperCase();
+    if (output[lCase[0]]) //if lCase is a key
+      output[lCase[0]].push(name); //Add name to its list
+    else
+      output[lCase[0]] = [name]; // Else add a key
+    return output;
+  }
+
+	$stateProvider
+    .state(&apos;locations&apos;, {
+      parent: &apos;home&apos;,
+      url: &apos;/&apos;,
+      component: &apos;drilldownMenu&apos;,
+      resolve: {
+      	Tour: &apos;$tourApi&apos;,
+      	children(Tour) {
+      		return Tour.location.query({
+  					sort: &apos;name&apos;
+  				}).$promise;
+      	},
+      	nextLevel() {
+      		return &apos;location&apos;;
+      	}
+      }
+    })
+      .state(&apos;location&apos;, {
+      	parent: &apos;locations&apos;,
+        url: &apos;:location&apos;,
+        component: &apos;drilldownMenu&apos;,
+        resolve: {
+          currentLocation($stateParams, Tour) {
+      			return Tour.location.query({ 
+      				filter: {
+      					code: $stateParams.location 
+      				}
+      			}).$promise;
+          },
+          children($stateParams, $aframeScene, currentLocation, Tour) {
+          	if (!$stateParams.building &amp;&amp; !$stateParams.scene &amp;&amp; currentLocation[0].default) {
+	          	$aframeScene.scene = currentLocation[0].default;
+	          }
+      			return Tour.building.query({
+      				filter: {
+      					parent: currentLocation[0]._id
+      				},
+      				sort: &apos;name&apos;
+      			}).$promise;
+          },
+	      	nextLevel(children) {
+	      		return &apos;building&apos;;
+	      	}
+        }
+      })
+        .state(&apos;building&apos;, {
+          parent: &apos;location&apos;,
+          url: &apos;/:building&apos;,
+        	component: &apos;drilldownMenu&apos;,
+          resolve: {
+	          currentBuilding($stateParams, Tour) {
+      				return Tour.building.query({
+      					filter: {
+      						code: $stateParams.building
+      					}
+      				}).$promise;
+	          },
+            children($stateParams, $aframeScene, currentLocation, currentBuilding, Tour) {
+	          	if (!$stateParams.scene &amp;&amp; currentBuilding[0].default) {
+		          	$aframeScene.scene = currentBuilding[0].default;
+	            }
+
+      				return Tour.scene.query({
+      					filter: {
+      						parent: currentBuilding[0]._id
+      					},
+      					sort: &apos;name&apos;
+      				}).$promise;
+            },
+		      	nextLevel() {
+		      		return &apos;scene&apos;;
+		      	}
+          }
+        })
+        .state(&apos;scene&apos;, {
+          parent: &apos;building&apos;,
+          url: &apos;/:scene&apos;,
+          resolve: {
+            currentScene($stateParams, currentBuilding, Tour) {
+      				return Tour.scene.query({
+      					filter: {
+      						code: $stateParams.scene,
+      						parent: currentBuilding[0]._id
+      					}
+      				});
+            },
+            item($aframeScene, currentScene) {
+            	return currentScene.$promise.then((data) =&gt; {
+            		if (data.length === 1 &amp;&amp; data[0].panorama) {
+			          	$aframeScene.scene = data[0];
+            		}
+            	});
+            }
+          }
+        });
+}
+
+export default {
+  name: &apos;DrilldownConfig&apos;,
+  fn: DrilldownConfig
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

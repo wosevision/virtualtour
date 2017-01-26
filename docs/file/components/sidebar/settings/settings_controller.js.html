@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/sidebar/settings/settings_controller.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/sidebar/settings/settings_controller.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { element } from &apos;angular&apos;;
+
+/**
+ * The settings controller provides a high-level interface to
+ * the app&apos;s user preferences and data usage settings, login/logout
+ * functions, and a set of automatic usage detection functions.
+ * 
+ * @param {object} $scope 					 The current scope
+ * @param {object} $animate          For animating backdrop only
+ * @param {object} $mdUtil           Init backdrop utility
+ * @param {object} $popupWindow      Supplies login window
+ * @param {object} UserAuth          Authentication check
+ * @param {object} UserSession       Holds all settings
+ * @param {object} ConnectionDetails Detects network and device
+ * @param {object} AUTH_EVENTS       Authorization event names
+ */
+class SettingsCtrl {
+	constructor($scope, $animate, $mdUtil, $popupWindow,
+	UserAuth, UserSession, ConnectionDetails,
+	AUTH_EVENTS) {
+		&apos;ngInject&apos;;
+		this.$scope = $scope;
+		this.$animate = $animate;
+		this.$mdUtil = $mdUtil;
+		this.$popupWindow = $popupWindow;
+		this.UserAuth = UserAuth;
+		this.UserSession = UserSession;
+		this.ConnectionDetails = ConnectionDetails;
+		this.AUTH_EVENTS = AUTH_EVENTS;
+	}
+	/**
+	 * Lifecycle hook to initialize dependencies when component
+	 * is mounted.
+	 * 
+	 * Stores authentication and user preference detail objects,
+	 * inits connection object to hold network info. Sets up
+	 * one-time `$watch` binding to listen for accordion init
+	 * since its contents load async before it can open.
+	 *
+	 * Sets up `$on(&apos;event&apos;)` listener for login success; passes
+	 * user data from event into controller and syncs applicable
+	 * view elements; opens accordion to expose settings to user.
+	 */
+	$onInit() {
+		this.isLoggedIn = this.UserAuth.isAuthenticated;
+		this.user = this.UserSession.user;
+		this.settings = this.UserSession.settings;
+		this.usage = this.UserSession.usage;
+
+		/**
+		 * This property will hold the user&apos;s network and
+		 * device information when it becomes available; it
+		 * remains false until availability.
+		 *
+		 * @memberof SettingsCtrl
+		 * @type {boolean|object}
+		 * @example
+		 * {
+		 *   &quot;network&quot;: {
+		 *     &quot;speeds&quot;: { ... },
+		 *     ...
+		 *   },
+		 *   &quot;useragent&quot;: {
+		 *     &quot;device&quot;: { ... },
+		 *     ...
+		 *   }
+		 * }
+		 */
+		this.connection = false;
+
+		/**
+		 * The accordion initializer watches for a valid
+		 * instance and opens the accordion once it becomes
+		 * available. Performed once then deregistered.
+		 * 
+		 * @memberof SettingsCtrl
+		 */
+		const accordionReady = this.$scope.$watch(&apos;accordion&apos;, accordion =&gt; {
+			if (accordion) {
+				this.$scope.$applyAsync(() =&gt; {
+					this.isLoggedIn() &amp;&amp; accordion.expandAll();
+				});
+				accordionReady();
+			}
+		});
+
+		this.$scope.$on(this.AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
+		
+		this.getUsageLevel();
+	}
+
+	/**
+	 * Expands all accordion sections.
+	 */
+	expandAll() {
+		this.$scope.accordion.expandAll();
+	}
+	/**
+	 * Collapses all accordion sections.
+	 */
+	collapseAll() {
+		this.$scope.accordion.collapseAll();
+	}
+
+	/**
+	 * Prompts user for login using `$popupWindow` service&apos;s `login()` dialog.
+	 * @return {Promise} Status of popupWindow
+	 */
+	promptLogin() {
+		return this.$popupWindow.login();
+	}
+	/**
+	 * Logs user out directly with `UserAuth.logout()`.
+	 */
+	logout() {
+		const backdrop = this.$mdUtil.createBackdrop(this.$scope, &quot;md-dialog-backdrop md-opaque&quot;);
+		backdrop[0].tabIndex = -1;
+		this.$animate.enter(backdrop, element(document.body), null);
+		this.UserAuth.logout().then(() =&gt; {
+			this.$animate.leave(backdrop);
+			this.collapseAll();
+		});
+	}
+
+	/**
+	 * Stores user info and opens accordion sections when login is detected.
+	 * 
+	 * @param  {Event} event  The originating event object
+	 * @param  {Object} user  The newly logged-in user
+	 */
+	loadUserAfterLogin(event, user) {
+		this.user = this.UserSession.user;
+		this.settings = this.UserSession.settings;
+		this.usage = this.UserSession.usage;
+		this.updateUsage();
+		this.updateSettings();
+		this.expandAll();
+	}
+
+	/**
+	 * Updates the user&apos;s setting preferences.
+	 */
+	updateSettings() {
+		this.UserSession.settings = this.settings;
+	}
+	/**
+	 * Updates the user&apos;s usage preferences and usage level description text.
+	 * 
+	 * @param  {[object]} usage Optional data override
+	 */
+	updateUsage(usage) {
+		this.UserSession.usage = usage || this.usage;
+		this.getUsageLevel();
+	}
+	/**
+	 * Uses the `ConnectionDetails` service to convert the current
+	 * session&apos;s usage preferences into a user-friendly description
+	 * of what the preferences&apos; effects will be.
+	 * - Grabs `UserSession.usage` details
+	 * - Uses `ConnectionDetails.calculateUsageLevel()` to tally usage stats from details
+	 * - Passes resulting tally to `ConnectionDetails.getLabelsFromTally()`
+	 * - Assigns resulting descriptions to controller
+	 */
+	getUsageLevel() {
+		this.ConnectionDetails.calculateUsageLevel(this.UserSession.usage).then(usageLevelTally =&gt; {
+			this.usageLevel = this.ConnectionDetails.getLabelsFromTally(usageLevelTally);
+		});
+	}
+
+	/**
+	 * User-activated function for auto-optimizing usage
+	 * level using the `ConnectionDetails` service.
+	 * - Sets loading animation during detection
+	 * - Fetches connection information with `detect()`
+	 * - Stores returned connection information
+	 * - Sets optimized usage settings with `optimize()`
+	 */
+	detectConnection() {
+		if (this.usage.auto.val) {
+			this.connection = { loading: true };
+			this.ConnectionDetails.detect().then(connection =&gt; {
+				this.connection = connection;
+				this.usage = this.ConnectionDetails.optimize(connection);
+				this.updateUsage();
+			});
+		}
+	}
+}
+
+export default {
+	name: &apos;SettingsCtrl&apos;,
+	fn: SettingsCtrl
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

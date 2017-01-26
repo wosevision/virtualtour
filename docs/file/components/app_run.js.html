@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/app_run.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/app_run.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { element } from &apos;angular&apos;;
+
+/**
+ * The application run block initializes $state event listeners, error handling
+ * and runtime user-authentication. It is mostly responsible for serving as
+ * a &quot;hub&quot; for the application&apos;s communication, e.g. through `$event`s.
+ *  
+ * @param {object} $rootScope   The app&apos;s top-level scope
+ * @param {object} $state       ui-router&apos;s state service
+ * @param {object} $popupWindow The popup window toast/dialog service
+ * @param {object} UserAuth     User authenticator service
+ * @param {object} AUTH_EVENTS  Constant of $event name strings
+ */
+function AppRun(
+  $rootScope, $state, $compile, $mdUtil,
+  $popupWindow, UserAuth,
+  AUTH_EVENTS) {
+  &apos;ngInject&apos;;
+
+  $rootScope.$on(&apos;cfpLoadingBar:started&apos;, event =&gt; $mdUtil.nextTick( tick =&gt; $compile(
+    element(document.getElementById(&apos;loading-spinner&apos;))
+  )($rootScope)));
+  /**
+   * Report on exceptions. The `handler:exception` event is fired
+   * anywhere an exception is caught, and if uncaught, the AppConfig
+   * block also sends this event with special delegation.
+   * 
+   * @function $rootScope.$on
+   * @memberof AppRun
+   * @param  {String}   event    The event name
+   * @param  {function} callback To execute on handler call
+   */
+  $rootScope.$on(&apos;handler:exception&apos;, (event, error) =&gt; {
+    const locals = {
+      type: error.cause,
+      message: error.exception.message,
+      suggest: [0, 2, 1]
+    }
+    return $popupWindow.warning({locals});
+  });
+
+  $rootScope.$on(&apos;$stateChangeStart&apos;, (event, toState, toParams, fromState, fromParams, options) =&gt; { 
+    // console.log(&apos;STATE CHANGE START&apos;, toState, toParams, fromState, fromParams, options);
+    if (toState.data &amp;&amp; toState.data.roles &amp;&amp; !UserAuth.isAuthorized(toState.data.roles)) {
+      event.preventDefault();
+      if (UserAuth.isAuthenticated()) {
+        // user is not allowed
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+      } else {
+        // user is not logged in
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      }
+    }
+  });
+
+  // change page title based on state
+  $rootScope.$on(&apos;$stateChangeSuccess&apos;, (event, toState, toParams, fromState, fromParams) =&gt; {
+    $rootScope.pageTitle = &apos;UOIT Virtual Tour&apos;;
+    if ( toState.label ) {
+      $rootScope.pageTitle += &apos; | &apos;;
+      $rootScope.pageTitle += toState.label;
+    }
+    // console.log(&apos;STATE CHANGE SUCCESS&apos;, toState, toParams, fromState, fromParams);
+  });
+
+  $rootScope.$on(&apos;$stateChangeError&apos;, (event, toState, toParams, fromState, fromParams, error) =&gt; {
+    console.log(&apos;STATE CHANGE ERROR: &apos;, error, toState, toParams, fromState, fromParams);
+    const locals = {
+      type: &apos;Navigation issue!&apos;,
+      message: error.message || error.msg,
+      suggest: [4, 3]
+    }
+    $popupWindow.error({locals});
+  });
+
+  $rootScope.$on(&apos;$stateNotFound&apos;, (event, unfoundState, fromState, fromParams) =&gt; { 
+    const locals = {
+      type: &apos;Page not found!&apos;,
+      message: `The page associated with (${unfoundState.to} : ${unfoundState.toParams}) cannot be located.`,
+      suggest: [3]
+    }
+    $popupWindow.error({locals});
+    console.log(&apos;STATE NOT FOUND&apos;, unfoundState, fromState, fromParams);
+  });
+
+  console.log(&apos;starting auth init...&apos;)
+  UserAuth.initAuth().then(user =&gt; {
+    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
+    console.log(&apos;auth init complete!&apos;)
+  });
+}
+
+export default AppRun;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

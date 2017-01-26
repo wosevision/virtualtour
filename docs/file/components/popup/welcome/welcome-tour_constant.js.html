@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">components/popup/welcome/welcome-tour_constant.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppConfig">AppConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRun">AppRun</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_controller.js~EditorCtrl.html">EditorCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/editor/editor_service.js~$aframeEditor.html">$aframeEditor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneEditor">sceneEditor</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_controller.js~SceneCtrl.html">SceneCtrl</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/aframe/scene/scene_service.js~$aframeScene.html">$aframeScene</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeScene">aframeScene</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/popup/welcome/welcome-tour_constant.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const TOUR_STEPS = {
+  config: {
+    mask: {
+      visible: true,
+      clickThrough: false, 
+      clickExit: true,
+      scrollThrough: false,
+      color: &apos;rgba(0,60,113,.7)&apos;
+    },
+    container: &apos;body&apos;,
+    scrollBox: &apos;body&apos;,
+    previousText: &apos;Previous&apos;,
+    nextText: &apos;Next&apos;,
+    finishText: &apos;Finish&apos;,
+    animationDuration: 400,
+    dark: true
+  },
+  steps: [{
+      target: &apos;#locations&apos;,
+      placementPriority: [ &apos;top&apos;, &apos;left&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;This is the location menu.&lt;/h3&gt;UOIT locations can be explored manually using an expanding location menu. &lt;strong&gt;Click this button to open it!&lt;/strong&gt;&apos;
+  }, {
+      target: &apos;#map&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;Explore locations on the campus map!&lt;/h3&gt;The same locations featured above are layed out on an &lt;strong&gt;interactive map, available in this menu&lt;/strong&gt;.&apos;
+  }, {
+      target: &apos;#breadcrumbs&apos;,
+      placementPriority: [ &apos;bottom&apos;, &apos;right&apos;, &apos;left&apos;, &apos;top&apos; ],
+      content: &apos;If you\&apos;re ever &lt;strong&gt;wondering where you are&lt;/strong&gt;, the title bar will always show the current location in a breadcrumb trail that appears here.&apos;
+  }, {
+      target: &apos;#guided&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;Why not enjoy a guided tour?&lt;/h3&gt;See a curated selection of UOIT\&apos;s most interesting locations and landmarks on a &lt;strong&gt;guided tour of highlights&lt;/strong&gt;.&apos;
+  }, {
+      target: &apos;#toolbar-controls&apos;,
+      placementPriority: [ &apos;bottom&apos;, &apos;left&apos;, &apos;right&apos;, &apos;top&apos; ],
+      content: &apos;The &lt;strong&gt;button toolbar below can be expanded, condensed, or hidden entirely&lt;/strong&gt; with these buttons.&apos;
+  }, {
+      target: &apos;#settings&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;If you want your preferences saved for future visits, you can &lt;strong&gt;configure your own personal settings&lt;/strong&gt; for the Virtual Tour experience here!&apos;
+  }, {
+      // target: &apos;#aframe-scene&apos;,
+      placementPriority: [ &apos;bottom&apos;, &apos;top&apos;, &apos;left&apos;, &apos;right&apos; ],
+      content: &apos;Would you like to learn how to navigate through &lt;strong&gt;scenes&lt;/strong&gt;?&lt;br/&gt;&lt;div class=&quot;text-center&quot; layout-margin&gt;&lt;md-button class=&quot;md-raised md-primary&quot;&gt;Show me how&lt;/md-button&gt;&lt;md-button&gt;No thanks&lt;/md-button&gt;&lt;/div&gt;&apos;
+  }]
+};
+
+export default {
+  name: &apos;TOUR_STEPS&apos;,
+  fn: TOUR_STEPS
+};
+
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

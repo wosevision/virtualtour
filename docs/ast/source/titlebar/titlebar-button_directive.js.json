@@ -1,0 +1,844 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "titleBarButton",
+        "range": [
+          9,
+          23
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 9
+          },
+          "end": {
+            "line": 1,
+            "column": 23
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "$log",
+          "range": [
+            24,
+            28
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 24
+            },
+            "end": {
+              "line": 1,
+              "column": 28
+            }
+          }
+        }
+      ],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "Literal",
+              "value": "ngInject",
+              "raw": "'ngInject'",
+              "range": [
+                33,
+                43
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 1
+                },
+                "end": {
+                  "line": 2,
+                  "column": 11
+                }
+              }
+            },
+            "range": [
+              33,
+              44
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 1
+              },
+              "end": {
+                "line": 2,
+                "column": 12
+              }
+            }
+          },
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "ObjectExpression",
+              "properties": [
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "templateUrl",
+                    "range": [
+                      60,
+                      71
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "titlebar/_titlebar-button.html",
+                    "raw": "'titlebar/_titlebar-button.html'",
+                    "range": [
+                      73,
+                      105
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 49
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    60,
+                    105
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 49
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "require",
+                    "range": [
+                      111,
+                      118
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "^titleBar",
+                    "raw": "'^titleBar'",
+                    "range": [
+                      120,
+                      131
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 24
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    111,
+                    131
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 24
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "scope",
+                    "range": [
+                      137,
+                      142
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 9
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "ObjectExpression",
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "onClick",
+                          "range": [
+                            151,
+                            158
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 12
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "&",
+                          "raw": "'&'",
+                          "range": [
+                            160,
+                            163
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 7,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 7,
+                              "column": 17
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          151,
+                          163
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 17
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "label",
+                          "range": [
+                            170,
+                            175
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 8,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "@",
+                          "raw": "'@'",
+                          "range": [
+                            177,
+                            180
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 8,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 15
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          170,
+                          180
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 8,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 15
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "class",
+                          "range": [
+                            185,
+                            190
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 3
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 8
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "@",
+                          "raw": "'@'",
+                          "range": [
+                            192,
+                            195
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          185,
+                          195
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 9,
+                            "column": 3
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 13
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "active",
+                          "range": [
+                            202,
+                            208
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 11
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "<",
+                          "raw": "'<'",
+                          "range": [
+                            210,
+                            213
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 16
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          202,
+                          213
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 10,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 16
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "tooltip",
+                          "range": [
+                            218,
+                            225
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 11,
+                              "column": 3
+                            },
+                            "end": {
+                              "line": 11,
+                              "column": 10
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "<",
+                          "raw": "'<'",
+                          "range": [
+                            227,
+                            230
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 11,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 11,
+                              "column": 15
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          218,
+                          230
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 3
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 15
+                          }
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "key": {
+                          "type": "Identifier",
+                          "name": "icon",
+                          "range": [
+                            235,
+                            239
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 3
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 7
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "value": "<",
+                          "raw": "'<'",
+                          "range": [
+                            241,
+                            244
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 9
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 12
+                            }
+                          }
+                        },
+                        "kind": "init",
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "range": [
+                          235,
+                          244
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 3
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 12
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      144,
+                      250
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 5
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    137,
+                    250
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 6,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 5
+                    }
+                  }
+                }
+              ],
+              "range": [
+                54,
+                254
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 9
+                },
+                "end": {
+                  "line": 14,
+                  "column": 3
+                }
+              }
+            },
+            "range": [
+              47,
+              255
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 4
+              }
+            }
+          }
+        ],
+        "range": [
+          30,
+          257
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 30
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        }
+      },
+      "generator": false,
+      "expression": false,
+      "range": [
+        0,
+        257
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                278,
+                282
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 2
+                },
+                "end": {
+                  "line": 18,
+                  "column": 6
+                }
+              }
+            },
+            "value": {
+              "type": "Literal",
+              "value": "titleBarButton",
+              "raw": "'titleBarButton'",
+              "range": [
+                284,
+                300
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 8
+                },
+                "end": {
+                  "line": 18,
+                  "column": 24
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              278,
+              300
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "line": 18,
+                "column": 24
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "fn",
+              "range": [
+                304,
+                306
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 2
+                },
+                "end": {
+                  "line": 19,
+                  "column": 4
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "titleBarButton",
+              "range": [
+                308,
+                322
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 6
+                },
+                "end": {
+                  "line": 19,
+                  "column": 20
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              304,
+              322
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 2
+              },
+              "end": {
+                "line": 19,
+                "column": 20
+              }
+            }
+          }
+        ],
+        "range": [
+          274,
+          324
+        ],
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 15
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        259,
+        325
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    325
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 20,
+      "column": 2
+    }
+  },
+  "comments": []
+}
