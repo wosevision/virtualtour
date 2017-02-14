@@ -67,7 +67,7 @@ function AppRun(
     console.log('STATE CHANGE ERROR: ', error, toState, toParams, fromState, fromParams);
     const locals = {
       type: 'Navigation issue!',
-      message: error.message || error.msg,
+      message: error.message || error.msg || 'The view you requested hit a snag while loading.',
       suggest: [4, 3]
     }
     $popupWindow.error({locals});

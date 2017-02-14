@@ -24,17 +24,13 @@ const TOUR_STEPS = {
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
       content: '<h3>Explore locations on the campus map!</h3>The same locations featured above are layed out on an <strong>interactive map, available in this menu</strong>.'
   }, {
-      target: '#breadcrumbs',
-      placementPriority: [ 'bottom', 'right', 'left', 'top' ],
-      content: 'If you\'re ever <strong>wondering where you are</strong>, the title bar will always show the current location in a breadcrumb trail that appears here.'
-  }, {
-      target: '#guided',
+      target: '#search',
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
-      content: '<h3>Why not enjoy a guided tour?</h3>See a curated selection of UOIT\'s most interesting locations and landmarks on a <strong>guided tour of highlights</strong>.'
+      content: '<h3>Not sure where to start?</h3>If you have an idea of something you\'re looking for, <strong>try searching for it</strong>.'
   }, {
       target: '#toolbar-controls',
       placementPriority: [ 'bottom', 'left', 'right', 'top' ],
-      content: 'The <strong>button toolbar below can be expanded, condensed, or hidden entirely</strong> with these buttons.'
+      content: 'The button toolbar below and to the right can be <strong>expanded, condensed, or hidden entirely</strong> with the buttons to the right-hand side here.<br/><br/>Don\' forget to <strong>register your user account</strong> for future visits or <strong>book a real tour</strong> at the university!'
   }, {
       target: '#settings',
       placementPriority: [ 'left', 'top', 'bottom', 'right' ],
