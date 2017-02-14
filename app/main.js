@@ -1,7 +1,5 @@
 import * as angular from 'angular';
 
-// import io from 'socket.io-client';
-// window.io = io;
 // import JSONEditor from 'jsoneditor';
 // window.JSONEditor = JSONEditor;
 
@@ -18,7 +16,6 @@ import 'angular-cookies';
 import 'angular-storage';
 import 'angular-resizable';
 import 'angular-loading-bar';
-// import 'angular-socket-io';
 import 'angulartics';
 import 'angulartics-google-analytics';
 import 'angular-cbuffer';
@@ -26,7 +23,7 @@ import 'ngmap';
 import 'ng-wig';
 import 'nz-tour';
 import 'v-accordion';
-import 'uoit-campus-map';
+import '../../uoit-campus-map/dist/uoit-campus-map';
 
 // aframe modules
 import 'aframe';
@@ -46,7 +43,6 @@ import './components/index';
 
 // list required modules for DI
 const requires = [
-  // 'btford.socket-io',
   'ui.router',
   'ui.router.state.events', // temporary: deprecated feature
   'ngAnimate',

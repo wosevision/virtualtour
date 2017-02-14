@@ -8,7 +8,7 @@
 	top: 69px;
 }
 
-.md-sidenav-right {
+.main-menu {
 	background-color: transparent;
 	max-width: none;
 	min-width: auto;
@@ -18,7 +18,7 @@
 	.toolbar-open & {	
 		// width: calc(30% - 7.25rem);
     left: calc(100% - 123px);
-		&.map-open {
+		&.blur-active {
 			width: calc(100% - 123px);
 		}
 	}

@@ -1,4 +1,4 @@
-<div class="md-whiteframe-16dp floating-panel" layout="column">
+<div class="md-whiteframe-16dp" layout="column">
 
   <div class="md-toolbar-tools">
     <span class="md-title">{{ ::($ctrl.newItem ? 'New' : 'Edit') }} {{ ::($ctrl.item.hasOwnProperty('scene') ? 'scene link': '') }}{{ ::($ctrl.item.hasOwnProperty('parent') ? 'scene': '') }}{{ ::($ctrl.item.hasOwnProperty('content') || $ctrl.item.hasOwnProperty('feature') ? 'hotspot' : '') }}{{ ::($ctrl.item.hasOwnProperty('attrs') ? 'entity' : '') }}</span>
