@@ -1,0 +1,1070 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angular",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular",
+        "raw": "'angular'",
+        "range": [
+          20,
+          29
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "sceneComponent",
+            "range": [
+              38,
+              52
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 21
+              }
+            }
+          },
+          "range": [
+            38,
+            52
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 21
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./scene.component",
+        "raw": "'./scene.component'",
+        "range": [
+          58,
+          77
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 27
+          },
+          "end": {
+            "line": 2,
+            "column": 46
+          }
+        }
+      },
+      "range": [
+        31,
+        78
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "sceneService",
+            "range": [
+              86,
+              98
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            86,
+            98
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./scene.service",
+        "raw": "'./scene.service'",
+        "range": [
+          104,
+          121
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 25
+          },
+          "end": {
+            "line": 3,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        79,
+        122
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "sceneModule",
+            "range": [
+              130,
+              141
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 6
+              },
+              "end": {
+                "line": 5,
+                "column": 17
+              }
+            }
+          },
+          "init": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "angular",
+                          "range": [
+                            144,
+                            151
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "module",
+                          "range": [
+                            152,
+                            158
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 28
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 34
+                            }
+                          }
+                        },
+                        "range": [
+                          144,
+                          158
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 34
+                          }
+                        }
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "aframe.scene",
+                          "raw": "'aframe.scene'",
+                          "range": [
+                            159,
+                            173
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 35
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 49
+                            }
+                          }
+                        },
+                        {
+                          "type": "ArrayExpression",
+                          "elements": [],
+                          "range": [
+                            175,
+                            177
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 51
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 53
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        144,
+                        178
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 5,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 54
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "component",
+                      "range": [
+                        181,
+                        190
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 10
+                        }
+                      }
+                    },
+                    "range": [
+                      144,
+                      190
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 10
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "aframeScene",
+                      "raw": "'aframeScene'",
+                      "range": [
+                        191,
+                        204
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 11
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 24
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "sceneComponent",
+                      "range": [
+                        206,
+                        220
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 40
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    144,
+                    221
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 41
+                    }
+                  }
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "service",
+                  "range": [
+                    224,
+                    231
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 8
+                    }
+                  }
+                },
+                "range": [
+                  144,
+                  231
+                ],
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 8
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "$aframeScene",
+                  "raw": "'$aframeScene'",
+                  "range": [
+                    232,
+                    246
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "Identifier",
+                  "name": "sceneService",
+                  "range": [
+                    248,
+                    260
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 37
+                    }
+                  }
+                }
+              ],
+              "range": [
+                144,
+                261
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 20
+                },
+                "end": {
+                  "line": 9,
+                  "column": 38
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                264,
+                268
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 1
+                },
+                "end": {
+                  "line": 11,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              144,
+              268
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 20
+              },
+              "end": {
+                "line": 11,
+                "column": 5
+              }
+            }
+          },
+          "range": [
+            130,
+            268
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 6
+            },
+            "end": {
+              "line": 11,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        124,
+        269
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 6
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "sceneModule",
+        "range": [
+          286,
+          297
+        ],
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 15
+          },
+          "end": {
+            "line": 13,
+            "column": 26
+          }
+        }
+      },
+      "range": [
+        271,
+        298
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 27
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "sceneModule",
+              "range": [
+                130,
+                141
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 6
+                },
+                "end": {
+                  "line": 5,
+                  "column": 17
+                }
+              }
+            },
+            "init": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "angular",
+                            "range": [
+                              144,
+                              151
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 5,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 5,
+                                "column": 27
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "module",
+                            "range": [
+                              152,
+                              158
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 5,
+                                "column": 28
+                              },
+                              "end": {
+                                "line": 5,
+                                "column": 34
+                              }
+                            }
+                          },
+                          "range": [
+                            144,
+                            158
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 34
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "value": "aframe.scene",
+                            "raw": "'aframe.scene'",
+                            "range": [
+                              159,
+                              173
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 5,
+                                "column": 35
+                              },
+                              "end": {
+                                "line": 5,
+                                "column": 49
+                              }
+                            }
+                          },
+                          {
+                            "type": "ArrayExpression",
+                            "elements": [],
+                            "range": [
+                              175,
+                              177
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 5,
+                                "column": 51
+                              },
+                              "end": {
+                                "line": 5,
+                                "column": 53
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          144,
+                          178
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 54
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "component",
+                        "range": [
+                          181,
+                          190
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 10
+                          }
+                        }
+                      },
+                      "range": [
+                        144,
+                        190
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 5,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 10
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "aframeScene",
+                        "raw": "'aframeScene'",
+                        "range": [
+                          191,
+                          204
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 24
+                          }
+                        }
+                      },
+                      {
+                        "type": "Identifier",
+                        "name": "sceneComponent",
+                        "range": [
+                          206,
+                          220
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 40
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      144,
+                      221
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 41
+                      }
+                    }
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "service",
+                    "range": [
+                      224,
+                      231
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "range": [
+                    144,
+                    231
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 8
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": "$aframeScene",
+                    "raw": "'$aframeScene'",
+                    "range": [
+                      232,
+                      246
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 23
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "sceneService",
+                    "range": [
+                      248,
+                      260
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 37
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  144,
+                  261
+                ],
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 38
+                  }
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "name",
+                "range": [
+                  264,
+                  268
+                ],
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                144,
+                268
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 20
+                },
+                "end": {
+                  "line": 11,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              130,
+              268
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 6
+              },
+              "end": {
+                "line": 11,
+                "column": 5
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          124,
+          269
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 6
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        271,
+        298
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 27
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    298
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 13,
+      "column": 27
+    }
+  },
+  "comments": []
+}

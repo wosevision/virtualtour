@@ -1,0 +1,35 @@
+<div class="md-title">
+  Element:
+</div>
+<md-input-container>
+  <label>
+    Type:
+  </label>
+    <input ng-model="type" />
+</md-input-container>
+<div class="md-title">
+  Attributes:
+</div>
+<md-list layout="column">
+  <md-list-item layout layout-wrap ng-repeat="attr in attrs">
+    <span class="md-subheader" flex="100">
+      <strong>{{attr.prop}}="<em>{{attr.val}}</em></strong>"
+    </span><br/>
+    <md-input-container>
+      <label>
+        Property
+      </label>
+      <input ng-model="attr.prop" />
+    </md-input-container>
+    <md-input-container>
+      <label>
+        Value
+      </label>
+      <input ng-model="attr.val" />
+    </md-input-container>
+    <md-button class="md-raised md-warn" ng-click="$ctrl.removeAttr(attr)">Remove</md-button>
+  </md-list-item>
+  <md-list-item>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.addAttr()">Add attribute</md-button>
+  </md-list-item>
+</md-list>

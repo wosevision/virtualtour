@@ -1,56 +1,422 @@
 window.esdocSearchIndex = [
   [
-    "uoit-virtualtour/components/aframe/editor/editor_service.js~$aframeeditor",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html",
-    "<span>$aframeEditor</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/editor/editor_service.js</span>",
-    "class"
-  ],
-  [
-    "uoit-virtualtour/components/aframe/scene/scene_service.js~$aframescene",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html",
-    "<span>$aframeScene</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/scene/scene_service.js</span>",
-    "class"
-  ],
-  [
-    "uoit-virtualtour/components/app_config.js~appconfig",
-    "function/index.html#static-function-AppConfig",
-    "<span>AppConfig</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/app_config.js</span>",
+    "uoit-virtualtour/client/app/app.controller.js~appcontroller",
+    "function/index.html#static-function-AppController",
+    "<span>AppController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/app.controller.js</span>",
     "function"
   ],
   [
-    "uoit-virtualtour/components/app_run.js~apprun",
-    "function/index.html#static-function-AppRun",
-    "<span>AppRun</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/app_run.js</span>",
+    "uoit-virtualtour/client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html",
+    "<span>ButtonbarController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/buttonbar/buttonbar.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/settings/connectiondetails.service.js~connectiondetailsservice",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html",
+    "<span>ConnectionDetailsService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/settings/connectionDetails.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/resource/draftresource.factory.js~draftresourcefactory",
+    "function/index.html#static-function-DraftResourceFactory",
+    "<span>DraftResourceFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/resource/draftResource.factory.js</span>",
     "function"
   ],
   [
-    "uoit-virtualtour/components/aframe/editor/editor_controller.js~editorctrl",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html",
-    "<span>EditorCtrl</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/editor/editor_controller.js</span>",
+    "uoit-virtualtour/client/app/components/drilldown/drilldown.controller.js~drilldowncontroller",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html",
+    "<span>DrilldownController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/drilldown/drilldown.controller.js</span>",
     "class"
   ],
   [
-    "uoit-virtualtour/components/aframe/scene/scene_controller.js~scenectrl",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html",
-    "<span>SceneCtrl</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/scene/scene_controller.js</span>",
+    "uoit-virtualtour/client/app/components/aframe/editor/editor.controller.js~editorcontroller",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html",
+    "<span>EditorController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/editor/editor.controller.js</span>",
     "class"
   ],
   [
-    "uoit-virtualtour/components/aframe/scene/scene_component.js~aframescene",
-    "variable/index.html#static-variable-aframeScene",
-    "<span>aframeScene</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/scene/scene_component.js</span>",
+    "uoit-virtualtour/client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html",
+    "<span>EditorDialogController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/editor/editorDialog.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/editor/editor.service.js~editorservice",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html",
+    "<span>EditorService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/editor/editor.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/entity/entity.controller.js~entitycontroller",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html",
+    "<span>EntityController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/entity/entity.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html",
+    "<span>EntityController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/entity/entityControls.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/error/error.controller.js~errorcontroller",
+    "function/index.html#static-function-ErrorController",
+    "<span>ErrorController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/error/error.controller.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/info/info.controller.js~infocontroller",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html",
+    "<span>InfoController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/info/info.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/login/login.controller.js~logincontroller",
+    "function/index.html#static-function-LoginController",
+    "<span>LoginController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/login/login.controller.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/map/map.controller.js~mapcontroller",
+    "class/client/app/components/map/map.controller.js~MapController.html",
+    "<span>MapController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/map/map.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/resource/mapresource.factory.js~mapresourcefactory",
+    "function/index.html#static-function-MapResourceFactory",
+    "<span>MapResourceFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/resource/mapResource.factory.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/popup.service.js~popupservice",
+    "class/client/app/common/popup/popup.service.js~PopupService.html",
+    "<span>PopupService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/popup.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scene/scene.controller.js~scenecontroller",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html",
+    "<span>SceneController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scene/scene.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scene/scene.service.js~sceneservice",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html",
+    "<span>SceneService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scene/scene.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/search/search.controller.js~searchcontroller",
+    "class/client/app/components/search/search.controller.js~SearchController.html",
+    "<span>SearchController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/search/search.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/settings/settings.controller.js~settingscontroller",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html",
+    "<span>SettingsController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/settings/settings.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/settings/settings.factory.js~settingsfactory",
+    "function/index.html#static-function-SettingsFactory",
+    "<span>SettingsFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/settings/settings.factory.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/sky/sky.controller.js~skycontroller",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html",
+    "<span>SkyController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/sky/sky.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/sky/sky.service.js~skyservice",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html",
+    "<span>SkyService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/sky/sky.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/resource/tourresource.factory.js~tourresourcefactory",
+    "function/index.html#static-function-TourResourceFactory",
+    "<span>TourResourceFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/resource/tourResource.factory.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/user/userauth.factory.js~userauthfactory",
+    "function/index.html#static-function-UserAuthFactory",
+    "<span>UserAuthFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/user/userAuth.factory.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/user/userresolver.factory.js~userresolverfactory",
+    "function/index.html#static-function-UserResolverFactory",
+    "<span>UserResolverFactory</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/user/userResolver.factory.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/user/usersession.service.js~usersessionservice",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html",
+    "<span>UserSessionService</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/user/userSession.service.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/welcome/welcome.controller.js~welcomecontroller",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html",
+    "<span>WelcomeController</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/welcome/welcome.controller.js</span>",
+    "class"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/aframe.js~aframemodule",
+    "variable/index.html#static-variable-aframeModule",
+    "<span>aframeModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/aframe.js</span>",
     "variable"
   ],
   [
-    "uoit-virtualtour/components/index.js~componentmodule",
+    "uoit-virtualtour/client/app/app.component.js~appcomponent",
+    "variable/index.html#static-variable-appComponent",
+    "<span>appComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/app.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/dom/bindcompile.directive.js~bindcompiledirective",
+    "function/index.html#static-function-bindCompileDirective",
+    "<span>bindCompileDirective</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/dom/bindCompile.directive.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/buttonbar/buttonbar.js~buttonbarmodule",
+    "variable/index.html#static-variable-buttonBarModule",
+    "<span>buttonBarModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/buttonbar/buttonbar.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/buttonbar/buttonbar.component.js~buttonbarcomponent",
+    "variable/index.html#static-variable-buttonbarComponent",
+    "<span>buttonbarComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/buttonbar/buttonbar.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/common.js~commonmodule",
+    "variable/index.html#static-variable-commonModule",
+    "<span>commonModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/common.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/components.js~componentmodule",
     "variable/index.html#static-variable-componentModule",
-    "<span>componentModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/index.js</span>",
+    "<span>componentModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/components.js</span>",
     "variable"
   ],
   [
-    "uoit-virtualtour/components/aframe/editor/editor_component.js~sceneeditor",
-    "variable/index.html#static-variable-sceneEditor",
-    "<span>sceneEditor</span> <span class=\"search-result-import-path\">uoit-virtualtour/components/aframe/editor/editor_component.js</span>",
+    "uoit-virtualtour/client/app/common/util/dom/dom.js~dommodule",
+    "variable/index.html#static-variable-domModule",
+    "<span>domModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/dom/dom.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/drilldown/drilldown.component.js~drilldowncomponent",
+    "variable/index.html#static-variable-drilldownComponent",
+    "<span>drilldownComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/drilldown/drilldown.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/drilldown/drilldown.js~drilldownmodule",
+    "variable/index.html#static-variable-drilldownModule",
+    "<span>drilldownModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/drilldown/drilldown.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/editor/editor.component.js~editorcomponent",
+    "variable/index.html#static-variable-editorComponent",
+    "<span>editorComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/editor/editor.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/editor/editor.js~editormodule",
+    "variable/index.html#static-variable-editorModule",
+    "<span>editorModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/editor/editor.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/entity/entity.component.js~entitycomponent",
+    "variable/index.html#static-variable-entityComponent",
+    "<span>entityComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/entity/entity.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/entity/entitycontrols.component.js~entitycomponent",
+    "variable/index.html#static-variable-entityComponent",
+    "<span>entityComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/entity/entityControls.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/entity/entity.js~entitymodule",
+    "variable/index.html#static-variable-entityModule",
+    "<span>entityModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/entity/entity.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/error/error.js~errormodule",
+    "variable/index.html#static-variable-errorModule",
+    "<span>errorModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/error/error.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/hotspot/hotspot.directive.js~hotspotdirective",
+    "function/index.html#static-function-hotspotDirective",
+    "<span>hotspotDirective</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/hotspot/hotspot.directive.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/hotspot/hotspot.js~hotspotmodule",
+    "variable/index.html#static-variable-hotspotModule",
+    "<span>hotspotModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/hotspot/hotspot.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/info/info.js~infomodule",
+    "variable/index.html#static-variable-infoModule",
+    "<span>infoModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/info/info.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/login/login.js~loginmodule",
+    "variable/index.html#static-variable-loginModule",
+    "<span>loginModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/login/login.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/map/map.component.js~mapcomponent",
+    "variable/index.html#static-variable-mapComponent",
+    "<span>mapComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/map/map.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/map/map.js~mapmodule",
+    "variable/index.html#static-variable-mapModule",
+    "<span>mapModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/map/map.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/model/model.js~modelmodule",
+    "variable/index.html#static-variable-modelModule",
+    "<span>modelModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/model/model.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/popup.js~popupmodule",
+    "variable/index.html#static-variable-popupModule",
+    "<span>popupModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/popup.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/resource/resource.js~resourcemodule",
+    "variable/index.html#static-variable-resourceModule",
+    "<span>resourceModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/resource/resource.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scene/scene.component.js~scenecomponent",
+    "variable/index.html#static-variable-sceneComponent",
+    "<span>sceneComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scene/scene.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scene/scene.js~scenemodule",
+    "variable/index.html#static-variable-sceneModule",
+    "<span>sceneModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scene/scene.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scenelink/scenelink.directive.js~scenelinkdirective",
+    "function/index.html#static-function-scenelinkDirective",
+    "<span>scenelinkDirective</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scenelink/scenelink.directive.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/scenelink/scenelink.js~scenelinkmodule",
+    "variable/index.html#static-variable-scenelinkModule",
+    "<span>scenelinkModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/scenelink/scenelink.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/search/search.component.js~searchcomponent",
+    "variable/index.html#static-variable-searchComponent",
+    "<span>searchComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/search/search.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/search/search.js~searchmodule",
+    "variable/index.html#static-variable-searchModule",
+    "<span>searchModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/search/search.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/settings/settings.component.js~settingscomponent",
+    "variable/index.html#static-variable-settingsComponent",
+    "<span>settingsComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/settings/settings.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/settings/settings.js~settingsmodule",
+    "variable/index.html#static-variable-settingsModule",
+    "<span>settingsModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/settings/settings.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/sky/sky.component.js~skycomponent",
+    "variable/index.html#static-variable-skyComponent",
+    "<span>skyComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/sky/sky.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/components/aframe/sky/sky.js~skymodule",
+    "variable/index.html#static-variable-skyModule",
+    "<span>skyModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/components/aframe/sky/sky.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/titlebar/titlebarbutton.directive.js~titlebarbuttondirective",
+    "function/index.html#static-function-titleBarButtonDirective",
+    "<span>titleBarButtonDirective</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/titlebar/titlebarButton.directive.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/titlebar/titlebar.component.js~titlebarcomponent",
+    "variable/index.html#static-variable-titleBarComponent",
+    "<span>titleBarComponent</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/titlebar/titlebar.component.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/titlebar/titlebar.js~titlebarmodule",
+    "variable/index.html#static-variable-titleBarModule",
+    "<span>titleBarModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/titlebar/titlebar.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/model/tonumber.directive.js~tonumberdirective",
+    "function/index.html#static-function-toNumberDirective",
+    "<span>toNumberDirective</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/model/toNumber.directive.js</span>",
+    "function"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/user/user.js~usermodule",
+    "variable/index.html#static-variable-userModule",
+    "<span>userModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/user/user.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/util/util.js~utilmodule",
+    "variable/index.html#static-variable-utilModule",
+    "<span>utilModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/util/util.js</span>",
+    "variable"
+  ],
+  [
+    "uoit-virtualtour/client/app/common/popup/welcome/welcome.js~welcomemodule",
+    "variable/index.html#static-variable-welcomeModule",
+    "<span>welcomeModule</span> <span class=\"search-result-import-path\">uoit-virtualtour/client/app/common/popup/welcome/welcome.js</span>",
     "variable"
   ],
   [
@@ -384,747 +750,1863 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "components/aframe/editor/editor-dialog_controller.js",
-    "file/components/aframe/editor/editor-dialog_controller.js.html",
-    "components/aframe/editor/editor-dialog_controller.js",
+    "client/app/app.component.js",
+    "file/client/app/app.component.js.html",
+    "client/app/app.component.js",
     "file"
   ],
   [
-    "components/aframe/editor/editor-messages_constant.js",
-    "file/components/aframe/editor/editor-messages_constant.js.html",
-    "components/aframe/editor/editor-messages_constant.js",
+    "client/app/app.controller.js",
+    "file/client/app/app.controller.js.html",
+    "client/app/app.controller.js",
     "file"
   ],
   [
-    "components/aframe/editor/editor-models_constant.js",
-    "file/components/aframe/editor/editor-models_constant.js.html",
-    "components/aframe/editor/editor-models_constant.js",
+    "client/app/app.js",
+    "file/client/app/app.js.html",
+    "client/app/app.js",
     "file"
   ],
   [
-    "components/aframe/editor/editor_component.js",
-    "file/components/aframe/editor/editor_component.js.html",
-    "components/aframe/editor/editor_component.js",
+    "client/app/common/buttonbar/buttonbar.component.js",
+    "file/client/app/common/buttonbar/buttonbar.component.js.html",
+    "client/app/common/buttonbar/buttonbar.component.js",
     "file"
   ],
   [
-    "components/aframe/editor/editor_config.js",
-    "file/components/aframe/editor/editor_config.js.html",
-    "components/aframe/editor/editor_config.js",
+    "client/app/common/buttonbar/buttonbar.controller.js",
+    "file/client/app/common/buttonbar/buttonbar.controller.js.html",
+    "client/app/common/buttonbar/buttonbar.controller.js",
     "file"
   ],
   [
-    "components/aframe/editor/editor_controller.js",
-    "file/components/aframe/editor/editor_controller.js.html",
-    "components/aframe/editor/editor_controller.js",
-    "file"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#$aframeeditor",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-member-$aframeEditor",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#$aframeEditor",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#$aframescene",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-member-$aframeScene",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#$aframeScene",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#$mddialog",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-member-$mdDialog",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#$mdDialog",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#$mdpanel",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-member-$mdPanel",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#$mdPanel",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#$oninit",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-$onInit",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#$onInit",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#$oninit",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-method-$onInit",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#$onInit",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#additem",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-addItem",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#addItem",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#constructor",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-constructor-constructor",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#constructor",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#checkfordraft",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-checkForDraft",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#checkForDraft",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#entervr",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-method-enterVR",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#enterVR",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#constructor",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-constructor-constructor",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#constructor",
-    "method"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#discarddraft",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-discardDraft",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#discardDraft",
-    "method"
-  ],
-  [
-    "components/aframe/editor/editor_controller.js~editorctrl#draftlist",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-member-draftList",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#draftList",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#menuopen",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-member-menuOpen",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#menuOpen",
     "member"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#edititem",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-editItem",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#editItem",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#select",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-method-select",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#select",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#loaddraft",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-loadDraft",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#loadDraft",
+    "client/app/common/buttonbar/buttonbar.controller.js~buttonbarcontroller#showhints",
+    "class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html#instance-member-showHints",
+    "client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController#showHints",
+    "member"
+  ],
+  [
+    "client/app/common/buttonbar/buttonbar.js",
+    "file/client/app/common/buttonbar/buttonbar.js.html",
+    "client/app/common/buttonbar/buttonbar.js",
+    "file"
+  ],
+  [
+    "client/app/common/common.js",
+    "file/client/app/common/common.js.html",
+    "client/app/common/common.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/error/error.controller.js",
+    "file/client/app/common/popup/error/error.controller.js.html",
+    "client/app/common/popup/error/error.controller.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/error/error.js",
+    "file/client/app/common/popup/error/error.js.html",
+    "client/app/common/popup/error/error.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js",
+    "file/client/app/common/popup/info/info.controller.js.html",
+    "client/app/common/popup/info/info.controller.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js~infocontroller#$mddialog",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-member-$mdDialog",
+    "client/app/common/popup/info/info.controller.js~InfoController#$mdDialog",
+    "member"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js~infocontroller#$mdsidenav",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-member-$mdSidenav",
+    "client/app/common/popup/info/info.controller.js~InfoController#$mdSidenav",
+    "member"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js~infocontroller#$sce",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-member-$sce",
+    "client/app/common/popup/info/info.controller.js~InfoController#$sce",
+    "member"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js~infocontroller#$state",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-member-$state",
+    "client/app/common/popup/info/info.controller.js~InfoController#$state",
+    "member"
+  ],
+  [
+    "client/app/common/popup/info/info.controller.js~infocontroller#closedialog",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-method-closeDialog",
+    "client/app/common/popup/info/info.controller.js~InfoController#closeDialog",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#newscene",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-newScene",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#newScene",
+    "client/app/common/popup/info/info.controller.js~infocontroller#constructor",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-constructor-constructor",
+    "client/app/common/popup/info/info.controller.js~InfoController#constructor",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#openeditor",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-openEditor",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#openEditor",
+    "client/app/common/popup/info/info.controller.js~infocontroller#viewintour",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-method-viewInTour",
+    "client/app/common/popup/info/info.controller.js~InfoController#viewInTour",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#publish",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-publish",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#publish",
+    "client/app/common/popup/info/info.controller.js~infocontroller#viewonmap",
+    "class/client/app/common/popup/info/info.controller.js~InfoController.html#instance-method-viewOnMap",
+    "client/app/common/popup/info/info.controller.js~InfoController#viewOnMap",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#savedraft",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-saveDraft",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#saveDraft",
+    "client/app/common/popup/info/info.js",
+    "file/client/app/common/popup/info/info.js.html",
+    "client/app/common/popup/info/info.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/login/login.controller.js",
+    "file/client/app/common/popup/login/login.controller.js.html",
+    "client/app/common/popup/login/login.controller.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/login/login.js",
+    "file/client/app/common/popup/login/login.js.html",
+    "client/app/common/popup/login/login.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/popup.js",
+    "file/client/app/common/popup/popup.js.html",
+    "client/app/common/popup/popup.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/popup.service.js",
+    "file/client/app/common/popup/popup.service.js.html",
+    "client/app/common/popup/popup.service.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/popup.service.js~popupservice#$mddialog",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-member-$mdDialog",
+    "client/app/common/popup/popup.service.js~PopupService#$mdDialog",
+    "member"
+  ],
+  [
+    "client/app/common/popup/popup.service.js~popupservice#$mdtoast",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-member-$mdToast",
+    "client/app/common/popup/popup.service.js~PopupService#$mdToast",
+    "member"
+  ],
+  [
+    "client/app/common/popup/popup.service.js~popupservice#constructor",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-constructor-constructor",
+    "client/app/common/popup/popup.service.js~PopupService#constructor",
     "method"
   ],
   [
-    "components/aframe/editor/editor_controller.js~editorctrl#updatescenedata",
-    "class/components/aframe/editor/editor_controller.js~EditorCtrl.html#instance-method-updateSceneData",
-    "components/aframe/editor/editor_controller.js~EditorCtrl#updateSceneData",
+    "client/app/common/popup/popup.service.js~popupservice#error",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-error",
+    "client/app/common/popup/popup.service.js~PopupService#error",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js",
-    "file/components/aframe/editor/editor_service.js.html",
-    "components/aframe/editor/editor_service.js",
-    "file"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#$aframescene",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-$aframeScene",
-    "components/aframe/editor/editor_service.js~$aframeEditor#$aframeScene",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#$mdtoast",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-$mdToast",
-    "components/aframe/editor/editor_service.js~$aframeEditor#$mdToast",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#draftresource",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-DraftResource",
-    "components/aframe/editor/editor_service.js~$aframeEditor#DraftResource",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#sceneresource",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-SceneResource",
-    "components/aframe/editor/editor_service.js~$aframeEditor#SceneResource",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#checkfordraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-checkForDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#checkForDraft",
+    "client/app/common/popup/popup.service.js~popupservice#info",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-info",
+    "client/app/common/popup/popup.service.js~PopupService#info",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#constructor",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-constructor-constructor",
-    "components/aframe/editor/editor_service.js~$aframeEditor#constructor",
+    "client/app/common/popup/popup.service.js~popupservice#login",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-login",
+    "client/app/common/popup/popup.service.js~PopupService#login",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#discarddraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-discardDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#discardDraft",
+    "client/app/common/popup/popup.service.js~popupservice#standardtoast",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-member-standardToast",
+    "client/app/common/popup/popup.service.js~PopupService#standardToast",
+    "member"
+  ],
+  [
+    "client/app/common/popup/popup.service.js~popupservice#toast",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-toast",
+    "client/app/common/popup/popup.service.js~PopupService#toast",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#draftfound",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-draftFound",
-    "components/aframe/editor/editor_service.js~$aframeEditor#draftFound",
+    "client/app/common/popup/popup.service.js~popupservice#warning",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-warning",
+    "client/app/common/popup/popup.service.js~PopupService#warning",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#lastdraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-lastDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#lastDraft",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#lastpublished",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-lastPublished",
-    "components/aframe/editor/editor_service.js~$aframeEditor#lastPublished",
-    "member"
-  ],
-  [
-    "components/aframe/editor/editor_service.js~$aframeeditor#loaddraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-loadDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#loadDraft",
+    "client/app/common/popup/popup.service.js~popupservice#welcome",
+    "class/client/app/common/popup/popup.service.js~PopupService.html#instance-method-welcome",
+    "client/app/common/popup/popup.service.js~PopupService#welcome",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#publish",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-publish",
-    "components/aframe/editor/editor_service.js~$aframeEditor#publish",
+    "client/app/common/popup/welcome/welcome.controller.js",
+    "file/client/app/common/popup/welcome/welcome.controller.js.html",
+    "client/app/common/popup/welcome/welcome.controller.js",
+    "file"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#$mddialog",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-$mdDialog",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#$mdDialog",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#onboardtour",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-OnboardTour",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#OnboardTour",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#tour_steps",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-TOUR_STEPS",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#TOUR_STEPS",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#usersession",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-UserSession",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#UserSession",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#welcome_tips",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-WELCOME_TIPS",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#WELCOME_TIPS",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#activetip",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-activeTip",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#activeTip",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#answer",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-answer",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#answer",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#reverttodraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-revertToDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#revertToDraft",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#cancel",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-cancel",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#cancel",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#savedraft",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-method-saveDraft",
-    "components/aframe/editor/editor_service.js~$aframeEditor#saveDraft",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#constructor",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-constructor-constructor",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#constructor",
     "method"
   ],
   [
-    "components/aframe/editor/editor_service.js~$aframeeditor#toasts",
-    "class/components/aframe/editor/editor_service.js~$aframeEditor.html#instance-member-toasts",
-    "components/aframe/editor/editor_service.js~$aframeEditor#toasts",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#currenttips",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-currentTips",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#currentTips",
     "member"
   ],
   [
-    "components/aframe/entity/entity-controls_component.js",
-    "file/components/aframe/entity/entity-controls_component.js.html",
-    "components/aframe/entity/entity-controls_component.js",
-    "file"
-  ],
-  [
-    "components/aframe/entity/entity_component.js",
-    "file/components/aframe/entity/entity_component.js.html",
-    "components/aframe/entity/entity_component.js",
-    "file"
-  ],
-  [
-    "components/aframe/entity/entity_controller.js",
-    "file/components/aframe/entity/entity_controller.js.html",
-    "components/aframe/entity/entity_controller.js",
-    "file"
-  ],
-  [
-    "components/aframe/hotspot/hotspot_directive.js",
-    "file/components/aframe/hotspot/hotspot_directive.js.html",
-    "components/aframe/hotspot/hotspot_directive.js",
-    "file"
-  ],
-  [
-    "components/aframe/scene/scene_component.js",
-    "file/components/aframe/scene/scene_component.js.html",
-    "components/aframe/scene/scene_component.js",
-    "file"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js",
-    "file/components/aframe/scene/scene_controller.js.html",
-    "components/aframe/scene/scene_controller.js",
-    "file"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$aframescene",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$aframeScene",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$aframeScene",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$aframesky",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$aframeSky",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$aframeSky",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$assetsel",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$assetsEl",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$assetsEl",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$camerael",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$cameraEl",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$cameraEl",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$docheck",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$doCheck",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$doCheck",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#hide",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-hide",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#hide",
     "method"
   ],
   [
-    "components/aframe/scene/scene_controller.js~scenectrl#$element",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$element",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$element",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$onchanges",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$onChanges",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$onChanges",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#nexttip",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-nextTip",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#nextTip",
     "method"
   ],
   [
-    "components/aframe/scene/scene_controller.js~scenectrl#$oninit",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-$onInit",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$onInit",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#prevtip",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-prevTip",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#prevTip",
     "method"
   ],
   [
-    "components/aframe/scene/scene_controller.js~scenectrl#$sceneel",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$sceneEl",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$sceneEl",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#$scope",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-$scope",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#$scope",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#checkfordraft",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-checkForDraft",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#checkForDraft",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#constructor",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-constructor-constructor",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#constructor",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#starttour",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-startTour",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#startTour",
     "method"
   ],
   [
-    "components/aframe/scene/scene_controller.js~scenectrl#entities",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-entities",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#entities",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#hotspots",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-hotSpots",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#hotSpots",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#scenelinks",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-sceneLinks",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#sceneLinks",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_controller.js~scenectrl#setscene",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-method-setScene",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#setScene",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#syncsettings",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-syncSettings",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#syncSettings",
     "method"
   ],
   [
-    "components/aframe/scene/scene_controller.js~scenectrl#sky",
-    "class/components/aframe/scene/scene_controller.js~SceneCtrl.html#instance-member-sky",
-    "components/aframe/scene/scene_controller.js~SceneCtrl#sky",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_service.js",
-    "file/components/aframe/scene/scene_service.js.html",
-    "components/aframe/scene/scene_service.js",
-    "file"
-  ],
-  [
-    "components/aframe/scene/scene_service.js~$aframescene#$aframesky",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-member-$aframeSky",
-    "components/aframe/scene/scene_service.js~$aframeScene#$aframeSky",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_service.js~$aframescene#$mdtoast",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-member-$mdToast",
-    "components/aframe/scene/scene_service.js~$aframeScene#$mdToast",
-    "member"
-  ],
-  [
-    "components/aframe/scene/scene_service.js~$aframescene#additemto",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-method-addItemTo",
-    "components/aframe/scene/scene_service.js~$aframeScene#addItemTo",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#viewtip",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-method-viewTip",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#viewTip",
     "method"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#constructor",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-constructor-constructor",
-    "components/aframe/scene/scene_service.js~$aframeScene#constructor",
+    "client/app/common/popup/welcome/welcome.controller.js~welcomecontroller#welcometipslist",
+    "class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html#instance-member-welcomeTipsList",
+    "client/app/common/popup/welcome/welcome.controller.js~WelcomeController#welcomeTipsList",
+    "member"
+  ],
+  [
+    "client/app/common/popup/welcome/welcome.js",
+    "file/client/app/common/popup/welcome/welcome.js.html",
+    "client/app/common/popup/welcome/welcome.js",
+    "file"
+  ],
+  [
+    "client/app/common/titlebar/titlebar.component.js",
+    "file/client/app/common/titlebar/titlebar.component.js.html",
+    "client/app/common/titlebar/titlebar.component.js",
+    "file"
+  ],
+  [
+    "client/app/common/titlebar/titlebar.js",
+    "file/client/app/common/titlebar/titlebar.js.html",
+    "client/app/common/titlebar/titlebar.js",
+    "file"
+  ],
+  [
+    "client/app/common/titlebar/titlebarbutton.directive.js",
+    "file/client/app/common/titlebar/titlebarButton.directive.js.html",
+    "client/app/common/titlebar/titlebarButton.directive.js",
+    "file"
+  ],
+  [
+    "client/app/common/user/user.js",
+    "file/client/app/common/user/user.js.html",
+    "client/app/common/user/user.js",
+    "file"
+  ],
+  [
+    "client/app/common/user/userauth.factory.js",
+    "file/client/app/common/user/userAuth.factory.js.html",
+    "client/app/common/user/userAuth.factory.js",
+    "file"
+  ],
+  [
+    "client/app/common/user/userresolver.factory.js",
+    "file/client/app/common/user/userResolver.factory.js.html",
+    "client/app/common/user/userResolver.factory.js",
+    "file"
+  ],
+  [
+    "client/app/common/user/usersession.service.js",
+    "file/client/app/common/user/userSession.service.js.html",
+    "client/app/common/user/userSession.service.js",
+    "file"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#$http",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-$http",
+    "client/app/common/user/userSession.service.js~UserSessionService#$http",
+    "member"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#$popupwindow",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-$popupWindow",
+    "client/app/common/user/userSession.service.js~UserSessionService#$popupWindow",
+    "member"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#settingsfactory",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-SettingsFactory",
+    "client/app/common/user/userSession.service.js~UserSessionService#SettingsFactory",
+    "member"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#constructor",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-constructor-constructor",
+    "client/app/common/user/userSession.service.js~UserSessionService#constructor",
     "method"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#removeitemfrom",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-method-removeItemFrom",
-    "components/aframe/scene/scene_service.js~$aframeScene#removeItemFrom",
+    "client/app/common/user/usersession.service.js~usersessionservice#create",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-method-create",
+    "client/app/common/user/userSession.service.js~UserSessionService#create",
     "method"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#scene",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-set-scene",
-    "components/aframe/scene/scene_service.js~$aframeScene#scene",
+    "client/app/common/user/usersession.service.js~usersessionservice#destroy",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-method-destroy",
+    "client/app/common/user/userSession.service.js~UserSessionService#destroy",
+    "method"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#roles",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-roles",
+    "client/app/common/user/userSession.service.js~UserSessionService#roles",
     "member"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#scene",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-get-scene",
-    "components/aframe/scene/scene_service.js~$aframeScene#scene",
+    "client/app/common/user/usersession.service.js~usersessionservice#save",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-method-save",
+    "client/app/common/user/userSession.service.js~UserSessionService#save",
+    "method"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#settings",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-set-settings",
+    "client/app/common/user/userSession.service.js~UserSessionService#settings",
     "member"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#scenedata",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-member-sceneData",
-    "components/aframe/scene/scene_service.js~$aframeScene#sceneData",
+    "client/app/common/user/usersession.service.js~usersessionservice#settings",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-get-settings",
+    "client/app/common/user/userSession.service.js~UserSessionService#settings",
     "member"
   ],
   [
-    "components/aframe/scene/scene_service.js~$aframescene#toasts",
-    "class/components/aframe/scene/scene_service.js~$aframeScene.html#instance-member-toasts",
-    "components/aframe/scene/scene_service.js~$aframeScene#toasts",
+    "client/app/common/user/usersession.service.js~usersessionservice#usage",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-get-usage",
+    "client/app/common/user/userSession.service.js~UserSessionService#usage",
     "member"
   ],
   [
-    "components/aframe/scenelink/scenelink_directive.js",
-    "file/components/aframe/scenelink/scenelink_directive.js.html",
-    "components/aframe/scenelink/scenelink_directive.js",
+    "client/app/common/user/usersession.service.js~usersessionservice#usage",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-set-usage",
+    "client/app/common/user/userSession.service.js~UserSessionService#usage",
+    "member"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#user",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-user",
+    "client/app/common/user/userSession.service.js~UserSessionService#user",
+    "member"
+  ],
+  [
+    "client/app/common/user/usersession.service.js~usersessionservice#userid",
+    "class/client/app/common/user/userSession.service.js~UserSessionService.html#instance-member-userId",
+    "client/app/common/user/userSession.service.js~UserSessionService#userId",
+    "member"
+  ],
+  [
+    "client/app/common/util/dom/bindcompile.directive.js",
+    "file/client/app/common/util/dom/bindCompile.directive.js.html",
+    "client/app/common/util/dom/bindCompile.directive.js",
     "file"
   ],
   [
-    "components/aframe/sky/sky_component.js",
-    "file/components/aframe/sky/sky_component.js.html",
-    "components/aframe/sky/sky_component.js",
+    "client/app/common/util/dom/dom.js",
+    "file/client/app/common/util/dom/dom.js.html",
+    "client/app/common/util/dom/dom.js",
     "file"
   ],
   [
-    "components/aframe/sky/sky_controller.js",
-    "file/components/aframe/sky/sky_controller.js.html",
-    "components/aframe/sky/sky_controller.js",
+    "client/app/common/util/model/model.js",
+    "file/client/app/common/util/model/model.js.html",
+    "client/app/common/util/model/model.js",
     "file"
   ],
   [
-    "components/aframe/sky/sky_service.js",
-    "file/components/aframe/sky/sky_service.js.html",
-    "components/aframe/sky/sky_service.js",
+    "client/app/common/util/model/tonumber.directive.js",
+    "file/client/app/common/util/model/toNumber.directive.js.html",
+    "client/app/common/util/model/toNumber.directive.js",
     "file"
   ],
   [
-    "components/app_config.js",
-    "file/components/app_config.js.html",
-    "components/app_config.js",
+    "client/app/common/util/resource/draftresource.factory.js",
+    "file/client/app/common/util/resource/draftResource.factory.js.html",
+    "client/app/common/util/resource/draftResource.factory.js",
     "file"
   ],
   [
-    "components/app_run.js",
-    "file/components/app_run.js.html",
-    "components/app_run.js",
+    "client/app/common/util/resource/mapresource.factory.js",
+    "file/client/app/common/util/resource/mapResource.factory.js.html",
+    "client/app/common/util/resource/mapResource.factory.js",
     "file"
   ],
   [
-    "components/app_templates.js",
-    "file/components/app_templates.js.html",
-    "components/app_templates.js",
+    "client/app/common/util/resource/resource.js",
+    "file/client/app/common/util/resource/resource.js.html",
+    "client/app/common/util/resource/resource.js",
     "file"
   ],
   [
-    "components/buttonbar/buttonbar_component.js",
-    "file/components/buttonbar/buttonbar_component.js.html",
-    "components/buttonbar/buttonbar_component.js",
+    "client/app/common/util/resource/tourresource.factory.js",
+    "file/client/app/common/util/resource/tourResource.factory.js.html",
+    "client/app/common/util/resource/tourResource.factory.js",
     "file"
   ],
   [
-    "components/buttonbar/buttonbar_constant.js",
-    "file/components/buttonbar/buttonbar_constant.js.html",
-    "components/buttonbar/buttonbar_constant.js",
+    "client/app/common/util/util.js",
+    "file/client/app/common/util/util.js.html",
+    "client/app/common/util/util.js",
     "file"
   ],
   [
-    "components/buttonbar/buttonbar_controller.js",
-    "file/components/buttonbar/buttonbar_controller.js.html",
-    "components/buttonbar/buttonbar_controller.js",
+    "client/app/components/aframe/aframe.js",
+    "file/client/app/components/aframe/aframe.js.html",
+    "client/app/components/aframe/aframe.js",
     "file"
   ],
   [
-    "components/index.js",
-    "file/components/index.js.html",
-    "components/index.js",
+    "client/app/components/aframe/editor/editor.component.js",
+    "file/client/app/components/aframe/editor/editor.component.js.html",
+    "client/app/components/aframe/editor/editor.component.js",
     "file"
   ],
   [
-    "components/main/main_controller.js",
-    "file/components/main/main_controller.js.html",
-    "components/main/main_controller.js",
+    "client/app/components/aframe/editor/editor.controller.js",
+    "file/client/app/components/aframe/editor/editor.controller.js.html",
+    "client/app/components/aframe/editor/editor.controller.js",
     "file"
   ],
   [
-    "components/main/main_controller_spec.js",
-    "file/components/main/main_controller_spec.js.html",
-    "components/main/main_controller_spec.js",
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#$aframeeditor",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-member-$aframeEditor",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#$aframeEditor",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#$aframescene",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-member-$aframeScene",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#$aframeScene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#$mddialog",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-member-$mdDialog",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#$mdDialog",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#$mdpanel",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-member-$mdPanel",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#$mdPanel",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#$oninit",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-$onInit",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#additem",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-addItem",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#addItem",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#checkfordraft",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-checkForDraft",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#checkForDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#constructor",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-constructor-constructor",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#discarddraft",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-discardDraft",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#discardDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#draftlist",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-member-draftList",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#draftList",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#edititem",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-editItem",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#editItem",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#loaddraft",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-loadDraft",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#loadDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#newscene",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-newScene",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#newScene",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#openeditor",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-openEditor",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#openEditor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#publish",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-publish",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#publish",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#savedraft",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-saveDraft",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#saveDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.controller.js~editorcontroller#updatescenedata",
+    "class/client/app/components/aframe/editor/editor.controller.js~EditorController.html#instance-method-updateSceneData",
+    "client/app/components/aframe/editor/editor.controller.js~EditorController#updateSceneData",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.js",
+    "file/client/app/components/aframe/editor/editor.js.html",
+    "client/app/components/aframe/editor/editor.js",
     "file"
   ],
   [
-    "components/popup/error/error_constant.js",
-    "file/components/popup/error/error_constant.js.html",
-    "components/popup/error/error_constant.js",
+    "client/app/components/aframe/editor/editor.service.js",
+    "file/client/app/components/aframe/editor/editor.service.js.html",
+    "client/app/components/aframe/editor/editor.service.js",
     "file"
   ],
   [
-    "components/popup/error/error_controller.js",
-    "file/components/popup/error/error_controller.js.html",
-    "components/popup/error/error_controller.js",
+    "client/app/components/aframe/editor/editor.service.js~editorservice#$aframescene",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-$aframeScene",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#$aframeScene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#$mdtoast",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-$mdToast",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#$mdToast",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#draftresource",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-DraftResource",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#DraftResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#sceneresource",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-SceneResource",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#SceneResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#checkfordraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-checkForDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#checkForDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#constructor",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-constructor-constructor",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#discarddraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-discardDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#discardDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#draftfound",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-draftFound",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#draftFound",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#lastdraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-lastDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#lastDraft",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#lastpublished",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-lastPublished",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#lastPublished",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#loaddraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-loadDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#loadDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#publish",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-publish",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#publish",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#reverttodraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-revertToDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#revertToDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#savedraft",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-method-saveDraft",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#saveDraft",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editor.service.js~editorservice#toasts",
+    "class/client/app/components/aframe/editor/editor.service.js~EditorService.html#instance-member-toasts",
+    "client/app/components/aframe/editor/editor.service.js~EditorService#toasts",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js",
+    "file/client/app/components/aframe/editor/editorDialog.controller.js.html",
+    "client/app/components/aframe/editor/editorDialog.controller.js",
     "file"
   ],
   [
-    "components/popup/info/info_controller.js",
-    "file/components/popup/info/info_controller.js.html",
-    "components/popup/info/info_controller.js",
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#$filter",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-$filter",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#$filter",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#buildingresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-BuildingResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#BuildingResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#categoryresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-CategoryResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#CategoryResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#collectionresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-CollectionResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#CollectionResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#featureresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-FeatureResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#FeatureResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#locationresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-LocationResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#LocationResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#sceneresource",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-SceneResource",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#SceneResource",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#building",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-building",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#building",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#buildings",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-buildings",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#buildings",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#categories",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-categories",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#categories",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#category",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-category",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#category",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#constructor",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-constructor-constructor",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#feature",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-feature",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#feature",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#features",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-features",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#features",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#initcurrentbuilding",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-initCurrentBuilding",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#initCurrentBuilding",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#initcurrentcategory",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-initCurrentCategory",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#initCurrentCategory",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#initcurrentfeature",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-initCurrentFeature",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#initCurrentFeature",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#initcurrentlocation",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-initCurrentLocation",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#initCurrentLocation",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#initcurrentscene",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-initCurrentScene",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#initCurrentScene",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#loadbuildings",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-loadBuildings",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#loadBuildings",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#loadcategories",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-loadCategories",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#loadCategories",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#loadfeatures",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-loadFeatures",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#loadFeatures",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#loadlocations",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-loadLocations",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#loadLocations",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#loadscenes",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-loadScenes",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#loadScenes",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#location",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-location",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#location",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#locations",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-locations",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#locations",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#onchangebuilding",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-onChangeBuilding",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#onChangeBuilding",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#onchangecategory",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-onChangeCategory",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#onChangeCategory",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#onchangefeature",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-onChangeFeature",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#onChangeFeature",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#onchangelocation",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-onChangeLocation",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#onChangeLocation",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#onchangescene",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-method-onChangeScene",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#onChangeScene",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#scene",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-scene",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#scene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/editor/editordialog.controller.js~editordialogcontroller#scenes",
+    "class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html#instance-member-scenes",
+    "client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController#scenes",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.component.js",
+    "file/client/app/components/aframe/entity/entity.component.js.html",
+    "client/app/components/aframe/entity/entity.component.js",
     "file"
   ],
   [
-    "components/popup/login/login_controller.js",
-    "file/components/popup/login/login_controller.js.html",
-    "components/popup/login/login_controller.js",
+    "client/app/components/aframe/entity/entity.controller.js",
+    "file/client/app/components/aframe/entity/entity.controller.js.html",
+    "client/app/components/aframe/entity/entity.controller.js",
     "file"
   ],
   [
-    "components/popup/popup_config.js",
-    "file/components/popup/popup_config.js.html",
-    "components/popup/popup_config.js",
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#$compile",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-member-$compile",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#$compile",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#$element",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-member-$element",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#$element",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#$oninit",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-method-$onInit",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#$scope",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-member-$scope",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#$scope",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#compiletemplate",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-method-compileTemplate",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#compileTemplate",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#constructor",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-constructor-constructor",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#entityel",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-member-entityEl",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#entityEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.controller.js~entitycontroller#parseattrs",
+    "class/client/app/components/aframe/entity/entity.controller.js~EntityController.html#instance-method-parseAttrs",
+    "client/app/components/aframe/entity/entity.controller.js~EntityController#parseAttrs",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entity.js",
+    "file/client/app/components/aframe/entity/entity.js.html",
+    "client/app/components/aframe/entity/entity.js",
     "file"
   ],
   [
-    "components/popup/popup_service.js",
-    "file/components/popup/popup_service.js.html",
-    "components/popup/popup_service.js",
+    "client/app/components/aframe/entity/entitycontrols.component.js",
+    "file/client/app/components/aframe/entity/entityControls.component.js.html",
+    "client/app/components/aframe/entity/entityControls.component.js",
     "file"
   ],
   [
-    "components/popup/welcome/welcome-tips-list_constant.js",
-    "file/components/popup/welcome/welcome-tips-list_constant.js.html",
-    "components/popup/welcome/welcome-tips-list_constant.js",
+    "client/app/components/aframe/entity/entitycontrols.controller.js",
+    "file/client/app/components/aframe/entity/entityControls.controller.js.html",
+    "client/app/components/aframe/entity/entityControls.controller.js",
     "file"
   ],
   [
-    "components/popup/welcome/welcome-tips_constant.js",
-    "file/components/popup/welcome/welcome-tips_constant.js.html",
-    "components/popup/welcome/welcome-tips_constant.js",
+    "client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller#$oninit",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html#instance-method-$onInit",
+    "client/app/components/aframe/entity/entityControls.controller.js~EntityController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller#$scope",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html#instance-member-$scope",
+    "client/app/components/aframe/entity/entityControls.controller.js~EntityController#$scope",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller#addattr",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html#instance-method-addAttr",
+    "client/app/components/aframe/entity/entityControls.controller.js~EntityController#addAttr",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller#constructor",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html#instance-constructor-constructor",
+    "client/app/components/aframe/entity/entityControls.controller.js~EntityController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/entity/entitycontrols.controller.js~entitycontroller#removeattr",
+    "class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html#instance-method-removeAttr",
+    "client/app/components/aframe/entity/entityControls.controller.js~EntityController#removeAttr",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/hotspot/hotspot.directive.js",
+    "file/client/app/components/aframe/hotspot/hotspot.directive.js.html",
+    "client/app/components/aframe/hotspot/hotspot.directive.js",
     "file"
   ],
   [
-    "components/popup/welcome/welcome-tour_constant.js",
-    "file/components/popup/welcome/welcome-tour_constant.js.html",
-    "components/popup/welcome/welcome-tour_constant.js",
+    "client/app/components/aframe/hotspot/hotspot.js",
+    "file/client/app/components/aframe/hotspot/hotspot.js.html",
+    "client/app/components/aframe/hotspot/hotspot.js",
     "file"
   ],
   [
-    "components/popup/welcome/welcome_controller.js",
-    "file/components/popup/welcome/welcome_controller.js.html",
-    "components/popup/welcome/welcome_controller.js",
+    "client/app/components/aframe/scene/scene.component.js",
+    "file/client/app/components/aframe/scene/scene.component.js.html",
+    "client/app/components/aframe/scene/scene.component.js",
     "file"
   ],
   [
-    "components/sidebar/drilldown/drilldown_component.js",
-    "file/components/sidebar/drilldown/drilldown_component.js.html",
-    "components/sidebar/drilldown/drilldown_component.js",
+    "client/app/components/aframe/scene/scene.controller.js",
+    "file/client/app/components/aframe/scene/scene.controller.js.html",
+    "client/app/components/aframe/scene/scene.controller.js",
     "file"
   ],
   [
-    "components/sidebar/drilldown/drilldown_config.js",
-    "file/components/sidebar/drilldown/drilldown_config.js.html",
-    "components/sidebar/drilldown/drilldown_config.js",
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$aframescene",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$aframeScene",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$aframeScene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$aframesky",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$aframeSky",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$aframeSky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$assetsel",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$assetsEl",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$assetsEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$camerael",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$cameraEl",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$cameraEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$docheck",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-method-$doCheck",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$doCheck",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$element",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$element",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$element",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$onchanges",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-method-$onChanges",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$onChanges",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$oninit",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-method-$onInit",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$sceneel",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$sceneEl",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$sceneEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#$scope",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-$scope",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#$scope",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#checkfordraft",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-checkForDraft",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#checkForDraft",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#constructor",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-constructor-constructor",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#entities",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-entities",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#entities",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#hotspots",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-hotSpots",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#hotSpots",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#scenelinks",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-sceneLinks",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#sceneLinks",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#setscene",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-method-setScene",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#setScene",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.controller.js~scenecontroller#sky",
+    "class/client/app/components/aframe/scene/scene.controller.js~SceneController.html#instance-member-sky",
+    "client/app/components/aframe/scene/scene.controller.js~SceneController#sky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.js",
+    "file/client/app/components/aframe/scene/scene.js.html",
+    "client/app/components/aframe/scene/scene.js",
     "file"
   ],
   [
-    "components/sidebar/drilldown/drilldown_controller.js",
-    "file/components/sidebar/drilldown/drilldown_controller.js.html",
-    "components/sidebar/drilldown/drilldown_controller.js",
+    "client/app/components/aframe/scene/scene.service.js",
+    "file/client/app/components/aframe/scene/scene.service.js.html",
+    "client/app/components/aframe/scene/scene.service.js",
     "file"
   ],
   [
-    "components/sidebar/map/map_config.js",
-    "file/components/sidebar/map/map_config.js.html",
-    "components/sidebar/map/map_config.js",
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#$aframesky",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-member-$aframeSky",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#$aframeSky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#$mdtoast",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-member-$mdToast",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#$mdToast",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#additemto",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-method-addItemTo",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#addItemTo",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#constructor",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-constructor-constructor",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#removeitemfrom",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-method-removeItemFrom",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#removeItemFrom",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#scene",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-get-scene",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#scene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#scene",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-set-scene",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#scene",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#scenedata",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-member-sceneData",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#sceneData",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scene/scene.service.js~sceneservice#toasts",
+    "class/client/app/components/aframe/scene/scene.service.js~SceneService.html#instance-member-toasts",
+    "client/app/components/aframe/scene/scene.service.js~SceneService#toasts",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/scenelink/scenelink.directive.js",
+    "file/client/app/components/aframe/scenelink/scenelink.directive.js.html",
+    "client/app/components/aframe/scenelink/scenelink.directive.js",
     "file"
   ],
   [
-    "components/sidebar/search/search-filters_constant.js",
-    "file/components/sidebar/search/search-filters_constant.js.html",
-    "components/sidebar/search/search-filters_constant.js",
+    "client/app/components/aframe/scenelink/scenelink.js",
+    "file/client/app/components/aframe/scenelink/scenelink.js.html",
+    "client/app/components/aframe/scenelink/scenelink.js",
     "file"
   ],
   [
-    "components/sidebar/search/search_component.js",
-    "file/components/sidebar/search/search_component.js.html",
-    "components/sidebar/search/search_component.js",
+    "client/app/components/aframe/sky/sky.component.js",
+    "file/client/app/components/aframe/sky/sky.component.js.html",
+    "client/app/components/aframe/sky/sky.component.js",
     "file"
   ],
   [
-    "components/sidebar/search/search_config.js",
-    "file/components/sidebar/search/search_config.js.html",
-    "components/sidebar/search/search_config.js",
+    "client/app/components/aframe/sky/sky.controller.js",
+    "file/client/app/components/aframe/sky/sky.controller.js.html",
+    "client/app/components/aframe/sky/sky.controller.js",
     "file"
   ],
   [
-    "components/sidebar/search/search_controller.js",
-    "file/components/sidebar/search/search_controller.js.html",
-    "components/sidebar/search/search_controller.js",
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$aframesky",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-$aframeSky",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$aframeSky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$assetsel",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-$assetsEl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$assetsEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$onchanges",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-$onChanges",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$onChanges",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$oninit",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-$onInit",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$sceneel",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-$sceneEl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$sceneEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#$skyel",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-$skyEl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#$skyEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#assetidfromskyurl",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-assetIdFromSkyUrl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#assetIdFromSkyUrl",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#compileskyel",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-compileSkyEl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#compileSkyEl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#constructor",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-constructor-constructor",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#loadskyasset",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-loadSkyAsset",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#loadSkyAsset",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#loadskyel",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-loadSkyEl",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#loadSkyEl",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#loadedsky",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-member-loadedSky",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#loadedSky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#preload",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-preload",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#preload",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#setsky",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-setSky",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#setSky",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.controller.js~skycontroller#setskyid",
+    "class/client/app/components/aframe/sky/sky.controller.js~SkyController.html#instance-method-setSkyId",
+    "client/app/components/aframe/sky/sky.controller.js~SkyController#setSkyId",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.js",
+    "file/client/app/components/aframe/sky/sky.js.html",
+    "client/app/components/aframe/sky/sky.js",
     "file"
   ],
   [
-    "components/sidebar/settings/settings-network_service.js",
-    "file/components/sidebar/settings/settings-network_service.js.html",
-    "components/sidebar/settings/settings-network_service.js",
+    "client/app/components/aframe/sky/sky.service.js",
+    "file/client/app/components/aframe/sky/sky.service.js.html",
+    "client/app/components/aframe/sky/sky.service.js",
     "file"
   ],
   [
-    "components/sidebar/settings/settings_controller.js",
-    "file/components/sidebar/settings/settings_controller.js.html",
-    "components/sidebar/settings/settings_controller.js",
+    "client/app/components/aframe/sky/sky.service.js~skyservice#$q",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-member-$q",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#$q",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#preload",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-member-Preload",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#Preload",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#usersession",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-member-UserSession",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#UserSession",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#constructor",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-constructor-constructor",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#getpreloadlist",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-method-getPreloadList",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#getPreloadList",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#getsettings",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-method-getSettings",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#getSettings",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#getskydomnode",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-method-getSkyDomNode",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#getSkyDomNode",
+    "method"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#imageapiurl",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-member-imageApiUrl",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#imageApiUrl",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#panorama",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-member-panorama",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#panorama",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#sky",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-get-sky",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#sky",
+    "member"
+  ],
+  [
+    "client/app/components/aframe/sky/sky.service.js~skyservice#sky",
+    "class/client/app/components/aframe/sky/sky.service.js~SkyService.html#instance-set-sky",
+    "client/app/components/aframe/sky/sky.service.js~SkyService#sky",
+    "member"
+  ],
+  [
+    "client/app/components/components.js",
+    "file/client/app/components/components.js.html",
+    "client/app/components/components.js",
     "file"
   ],
   [
-    "components/sidebar/settings/settings_factory.js",
-    "file/components/sidebar/settings/settings_factory.js.html",
-    "components/sidebar/settings/settings_factory.js",
+    "client/app/components/drilldown/drilldown.component.js",
+    "file/client/app/components/drilldown/drilldown.component.js.html",
+    "client/app/components/drilldown/drilldown.component.js",
     "file"
   ],
   [
-    "components/titlebar/titlebar-button_directive.js",
-    "file/components/titlebar/titlebar-button_directive.js.html",
-    "components/titlebar/titlebar-button_directive.js",
+    "client/app/components/drilldown/drilldown.controller.js",
+    "file/client/app/components/drilldown/drilldown.controller.js.html",
+    "client/app/components/drilldown/drilldown.controller.js",
     "file"
   ],
   [
-    "components/titlebar/titlebar_component.js",
-    "file/components/titlebar/titlebar_component.js.html",
-    "components/titlebar/titlebar_component.js",
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$analytics",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-member-$analytics",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$analytics",
+    "member"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$compile",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-member-$compile",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$compile",
+    "member"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$element",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-member-$element",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$element",
+    "member"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$oninit",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-method-$onInit",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$scope",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-member-$scope",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$scope",
+    "member"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#$state",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-member-$state",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#$state",
+    "member"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.controller.js~drilldowncontroller#constructor",
+    "class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html#instance-constructor-constructor",
+    "client/app/components/drilldown/drilldown.controller.js~DrilldownController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/drilldown/drilldown.js",
+    "file/client/app/components/drilldown/drilldown.js.html",
+    "client/app/components/drilldown/drilldown.js",
     "file"
   ],
   [
-    "components/titlebar/titlebar_constant.js",
-    "file/components/titlebar/titlebar_constant.js.html",
-    "components/titlebar/titlebar_constant.js",
+    "client/app/components/map/map.component.js",
+    "file/client/app/components/map/map.component.js.html",
+    "client/app/components/map/map.component.js",
     "file"
   ],
   [
-    "components/user/user-auth_factory.js",
-    "file/components/user/user-auth_factory.js.html",
-    "components/user/user-auth_factory.js",
+    "client/app/components/map/map.controller.js",
+    "file/client/app/components/map/map.controller.js.html",
+    "client/app/components/map/map.controller.js",
     "file"
   ],
   [
-    "components/user/user-defaults_constant.js",
-    "file/components/user/user-defaults_constant.js.html",
-    "components/user/user-defaults_constant.js",
+    "client/app/components/map/map.controller.js~mapcontroller#constructor",
+    "class/client/app/components/map/map.controller.js~MapController.html#instance-constructor-constructor",
+    "client/app/components/map/map.controller.js~MapController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/map/map.controller.js~mapcontroller#ongotobldg",
+    "class/client/app/components/map/map.controller.js~MapController.html#instance-method-onGotoBldg",
+    "client/app/components/map/map.controller.js~MapController#onGotoBldg",
+    "method"
+  ],
+  [
+    "client/app/components/map/map.js",
+    "file/client/app/components/map/map.js.html",
+    "client/app/components/map/map.js",
     "file"
   ],
   [
-    "components/user/user-events_constant.js",
-    "file/components/user/user-events_constant.js.html",
-    "components/user/user-events_constant.js",
+    "client/app/components/search/search.component.js",
+    "file/client/app/components/search/search.component.js.html",
+    "client/app/components/search/search.component.js",
     "file"
   ],
   [
-    "components/user/user-resolver_factory.js",
-    "file/components/user/user-resolver_factory.js.html",
-    "components/user/user-resolver_factory.js",
+    "client/app/components/search/search.controller.js",
+    "file/client/app/components/search/search.controller.js.html",
+    "client/app/components/search/search.controller.js",
     "file"
   ],
   [
-    "components/user/user-roles_constant.js",
-    "file/components/user/user-roles_constant.js.html",
-    "components/user/user-roles_constant.js",
+    "client/app/components/search/search.controller.js~searchcontroller#$http",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-member-$http",
+    "client/app/components/search/search.controller.js~SearchController#$http",
+    "member"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#$log",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-member-$log",
+    "client/app/components/search/search.controller.js~SearchController#$log",
+    "member"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#$oninit",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-method-$onInit",
+    "client/app/components/search/search.controller.js~SearchController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#$timeout",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-member-$timeout",
+    "client/app/components/search/search.controller.js~SearchController#$timeout",
+    "member"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#constructor",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-constructor-constructor",
+    "client/app/components/search/search.controller.js~SearchController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#filters",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-member-filters",
+    "client/app/components/search/search.controller.js~SearchController#filters",
+    "member"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#querysearch",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-method-querySearch",
+    "client/app/components/search/search.controller.js~SearchController#querySearch",
+    "method"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#searchresults",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-member-searchResults",
+    "client/app/components/search/search.controller.js~SearchController#searchResults",
+    "member"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#searchtextchange",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-method-searchTextChange",
+    "client/app/components/search/search.controller.js~SearchController#searchTextChange",
+    "method"
+  ],
+  [
+    "client/app/components/search/search.controller.js~searchcontroller#selecteditemchange",
+    "class/client/app/components/search/search.controller.js~SearchController.html#instance-method-selectedItemChange",
+    "client/app/components/search/search.controller.js~SearchController#selectedItemChange",
+    "method"
+  ],
+  [
+    "client/app/components/search/search.js",
+    "file/client/app/components/search/search.js.html",
+    "client/app/components/search/search.js",
     "file"
   ],
   [
-    "components/user/user-session_service.js",
-    "file/components/user/user-session_service.js.html",
-    "components/user/user-session_service.js",
+    "client/app/components/settings/connectiondetails.service.js",
+    "file/client/app/components/settings/connectionDetails.service.js.html",
+    "client/app/components/settings/connectionDetails.service.js",
     "file"
   ],
   [
-    "components/utils/dom/bind-compile_directive.js",
-    "file/components/utils/dom/bind-compile_directive.js.html",
-    "components/utils/dom/bind-compile_directive.js",
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#$http",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-member-$http",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#$http",
+    "member"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#$q",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-member-$q",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#$q",
+    "member"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#$rootscope",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-member-$rootScope",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#$rootScope",
+    "member"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#calculateusagelevel",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-method-calculateUsageLevel",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#calculateUsageLevel",
+    "method"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#connection",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-member-connection",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#connection",
+    "member"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#constructor",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-constructor-constructor",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#detect",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-method-detect",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#detect",
+    "method"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#getlabelsfromtally",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-method-getLabelsFromTally",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#getLabelsFromTally",
+    "method"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#optimize",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-method-optimize",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#optimize",
+    "method"
+  ],
+  [
+    "client/app/components/settings/connectiondetails.service.js~connectiondetailsservice#profiles",
+    "class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html#instance-member-profiles",
+    "client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService#profiles",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.component.js",
+    "file/client/app/components/settings/settings.component.js.html",
+    "client/app/components/settings/settings.component.js",
     "file"
   ],
   [
-    "components/utils/filters/isarray_filter.js",
-    "file/components/utils/filters/isArray_filter.js.html",
-    "components/utils/filters/isArray_filter.js",
+    "client/app/components/settings/settings.controller.js",
+    "file/client/app/components/settings/settings.controller.js.html",
+    "client/app/components/settings/settings.controller.js",
     "file"
   ],
   [
-    "components/utils/filters/isstring_filter.js",
-    "file/components/utils/filters/isString_filter.js.html",
-    "components/utils/filters/isString_filter.js",
+    "client/app/components/settings/settings.controller.js~settingscontroller#$animate",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-$animate",
+    "client/app/components/settings/settings.controller.js~SettingsController#$animate",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#$mdutil",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-$mdUtil",
+    "client/app/components/settings/settings.controller.js~SettingsController#$mdUtil",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#$oninit",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-$onInit",
+    "client/app/components/settings/settings.controller.js~SettingsController#$onInit",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#$popupwindow",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-$popupWindow",
+    "client/app/components/settings/settings.controller.js~SettingsController#$popupWindow",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#$scope",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-$scope",
+    "client/app/components/settings/settings.controller.js~SettingsController#$scope",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#auth_events",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-AUTH_EVENTS",
+    "client/app/components/settings/settings.controller.js~SettingsController#AUTH_EVENTS",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#connectiondetails",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-ConnectionDetails",
+    "client/app/components/settings/settings.controller.js~SettingsController#ConnectionDetails",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#userauth",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-UserAuth",
+    "client/app/components/settings/settings.controller.js~SettingsController#UserAuth",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#usersession",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-UserSession",
+    "client/app/components/settings/settings.controller.js~SettingsController#UserSession",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#collapseall",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-collapseAll",
+    "client/app/components/settings/settings.controller.js~SettingsController#collapseAll",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#connection",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-connection",
+    "client/app/components/settings/settings.controller.js~SettingsController#connection",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#constructor",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-constructor-constructor",
+    "client/app/components/settings/settings.controller.js~SettingsController#constructor",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#detectconnection",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-detectConnection",
+    "client/app/components/settings/settings.controller.js~SettingsController#detectConnection",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#expandall",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-expandAll",
+    "client/app/components/settings/settings.controller.js~SettingsController#expandAll",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#getusagelevel",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-getUsageLevel",
+    "client/app/components/settings/settings.controller.js~SettingsController#getUsageLevel",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#isloggedin",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-isLoggedIn",
+    "client/app/components/settings/settings.controller.js~SettingsController#isLoggedIn",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#loaduserafterlogin",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-loadUserAfterLogin",
+    "client/app/components/settings/settings.controller.js~SettingsController#loadUserAfterLogin",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#logout",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-logout",
+    "client/app/components/settings/settings.controller.js~SettingsController#logout",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#promptlogin",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-promptLogin",
+    "client/app/components/settings/settings.controller.js~SettingsController#promptLogin",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#settings",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-settings",
+    "client/app/components/settings/settings.controller.js~SettingsController#settings",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#updatesettings",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-updateSettings",
+    "client/app/components/settings/settings.controller.js~SettingsController#updateSettings",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#updateusage",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-method-updateUsage",
+    "client/app/components/settings/settings.controller.js~SettingsController#updateUsage",
+    "method"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#usage",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-usage",
+    "client/app/components/settings/settings.controller.js~SettingsController#usage",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#usagelevel",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-usageLevel",
+    "client/app/components/settings/settings.controller.js~SettingsController#usageLevel",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.controller.js~settingscontroller#user",
+    "class/client/app/components/settings/settings.controller.js~SettingsController.html#instance-member-user",
+    "client/app/components/settings/settings.controller.js~SettingsController#user",
+    "member"
+  ],
+  [
+    "client/app/components/settings/settings.factory.js",
+    "file/client/app/components/settings/settings.factory.js.html",
+    "client/app/components/settings/settings.factory.js",
     "file"
   ],
   [
-    "components/utils/filters/shortcutkey_filter.js",
-    "file/components/utils/filters/shortcutKey_filter.js.html",
-    "components/utils/filters/shortcutKey_filter.js",
-    "file"
-  ],
-  [
-    "components/utils/model-transforms/tonumber_directive.js",
-    "file/components/utils/model-transforms/toNumber_directive.js.html",
-    "components/utils/model-transforms/toNumber_directive.js",
-    "file"
-  ],
-  [
-    "components/utils/resource-factories/api-settings_constant.js",
-    "file/components/utils/resource-factories/api-settings_constant.js.html",
-    "components/utils/resource-factories/api-settings_constant.js",
-    "file"
-  ],
-  [
-    "components/utils/resource-factories/draft-resource_factory.js",
-    "file/components/utils/resource-factories/draft-resource_factory.js.html",
-    "components/utils/resource-factories/draft-resource_factory.js",
-    "file"
-  ],
-  [
-    "components/utils/resource-factories/map-api_factory.js",
-    "file/components/utils/resource-factories/map-api_factory.js.html",
-    "components/utils/resource-factories/map-api_factory.js",
-    "file"
-  ],
-  [
-    "components/utils/resource-factories/tour-api_factory.js",
-    "file/components/utils/resource-factories/tour-api_factory.js.html",
-    "components/utils/resource-factories/tour-api_factory.js",
+    "client/app/components/settings/settings.js",
+    "file/client/app/components/settings/settings.js.html",
+    "client/app/components/settings/settings.js",
     "file"
   ]
 ]

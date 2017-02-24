@@ -1,0 +1,1360 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angular",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular",
+        "raw": "'angular'",
+        "range": [
+          20,
+          29
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ngMaterial",
+            "range": [
+              38,
+              48
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            38,
+            48
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular-material",
+        "raw": "'angular-material'",
+        "range": [
+          54,
+          72
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 23
+          },
+          "end": {
+            "line": 2,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        31,
+        73
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "PopupError",
+            "range": [
+              82,
+              92
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            82,
+            92
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./error/error",
+        "raw": "'./error/error'",
+        "range": [
+          98,
+          113
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 23
+          },
+          "end": {
+            "line": 4,
+            "column": 38
+          }
+        }
+      },
+      "range": [
+        75,
+        114
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "PopupInfo",
+            "range": [
+              122,
+              131
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            122,
+            131
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./info/info",
+        "raw": "'./info/info'",
+        "range": [
+          137,
+          150
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 22
+          },
+          "end": {
+            "line": 5,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        115,
+        151
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "PopupLogin",
+            "range": [
+              159,
+              169
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 7
+              },
+              "end": {
+                "line": 6,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            159,
+            169
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 7
+            },
+            "end": {
+              "line": 6,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./login/login",
+        "raw": "'./login/login'",
+        "range": [
+          175,
+          190
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 23
+          },
+          "end": {
+            "line": 6,
+            "column": 38
+          }
+        }
+      },
+      "range": [
+        152,
+        191
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "PopupWelcome",
+            "range": [
+              199,
+              211
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            199,
+            211
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./welcome/welcome",
+        "raw": "'./welcome/welcome'",
+        "range": [
+          217,
+          236
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 25
+          },
+          "end": {
+            "line": 7,
+            "column": 44
+          }
+        }
+      },
+      "range": [
+        192,
+        237
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "popupService",
+            "range": [
+              246,
+              258
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 7
+              },
+              "end": {
+                "line": 9,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            246,
+            258
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7
+            },
+            "end": {
+              "line": 9,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./popup.service",
+        "raw": "'./popup.service'",
+        "range": [
+          264,
+          281
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 25
+          },
+          "end": {
+            "line": 9,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        239,
+        282
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "popupModule",
+            "range": [
+              288,
+              299
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 4
+              },
+              "end": {
+                "line": 11,
+                "column": 15
+              }
+            }
+          },
+          "init": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "angular",
+                      "range": [
+                        302,
+                        309
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "module",
+                      "range": [
+                        310,
+                        316
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "range": [
+                      302,
+                      316
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "popup",
+                      "raw": "'popup'",
+                      "range": [
+                        317,
+                        324
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 33
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 40
+                        }
+                      }
+                    },
+                    {
+                      "type": "ArrayExpression",
+                      "elements": [
+                        {
+                          "type": "Identifier",
+                          "name": "ngMaterial",
+                          "range": [
+                            330,
+                            340
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 12
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "PopupError",
+                          "range": [
+                            344,
+                            354
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 13,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 12
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "PopupInfo",
+                          "range": [
+                            357,
+                            366
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 10
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "PopupLogin",
+                          "range": [
+                            369,
+                            379
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 11
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "PopupWelcome",
+                          "range": [
+                            382,
+                            394
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 13
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        326,
+                        396
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 42
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    302,
+                    397
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 2
+                    }
+                  }
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "service",
+                  "range": [
+                    400,
+                    407
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 8
+                    }
+                  }
+                },
+                "range": [
+                  302,
+                  407
+                ],
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 8
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "$popupWindow",
+                  "raw": "'$popupWindow'",
+                  "range": [
+                    408,
+                    422
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "Identifier",
+                  "name": "popupService",
+                  "range": [
+                    424,
+                    436
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 37
+                    }
+                  }
+                }
+              ],
+              "range": [
+                302,
+                437
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 18
+                },
+                "end": {
+                  "line": 19,
+                  "column": 38
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                440,
+                444
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 1
+                },
+                "end": {
+                  "line": 21,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              302,
+              444
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 18
+              },
+              "end": {
+                "line": 21,
+                "column": 5
+              }
+            }
+          },
+          "range": [
+            288,
+            444
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 4
+            },
+            "end": {
+              "line": 21,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "kind": "let",
+      "range": [
+        284,
+        445
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 6
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "popupModule",
+        "range": [
+          462,
+          473
+        ],
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 15
+          },
+          "end": {
+            "line": 23,
+            "column": 26
+          }
+        }
+      },
+      "range": [
+        447,
+        474
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 27
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "popupModule",
+              "range": [
+                288,
+                299
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 4
+                },
+                "end": {
+                  "line": 11,
+                  "column": 15
+                }
+              }
+            },
+            "init": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "angular",
+                        "range": [
+                          302,
+                          309
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 25
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "module",
+                        "range": [
+                          310,
+                          316
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 32
+                          }
+                        }
+                      },
+                      "range": [
+                        302,
+                        316
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "popup",
+                        "raw": "'popup'",
+                        "range": [
+                          317,
+                          324
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 33
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 40
+                          }
+                        }
+                      },
+                      {
+                        "type": "ArrayExpression",
+                        "elements": [
+                          {
+                            "type": "Identifier",
+                            "name": "ngMaterial",
+                            "range": [
+                              330,
+                              340
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 12,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 12
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "PopupError",
+                            "range": [
+                              344,
+                              354
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 13,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 13,
+                                "column": 12
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "PopupInfo",
+                            "range": [
+                              357,
+                              366
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 10
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "PopupLogin",
+                            "range": [
+                              369,
+                              379
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 11
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "PopupWelcome",
+                            "range": [
+                              382,
+                              394
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 16,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 13
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          326,
+                          396
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 42
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      302,
+                      397
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 2
+                      }
+                    }
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "service",
+                    "range": [
+                      400,
+                      407
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "range": [
+                    302,
+                    407
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 8
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": "$popupWindow",
+                    "raw": "'$popupWindow'",
+                    "range": [
+                      408,
+                      422
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 23
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "popupService",
+                    "range": [
+                      424,
+                      436
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 37
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  302,
+                  437
+                ],
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 38
+                  }
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "name",
+                "range": [
+                  440,
+                  444
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                302,
+                444
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 18
+                },
+                "end": {
+                  "line": 21,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              288,
+              444
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 4
+              },
+              "end": {
+                "line": 21,
+                "column": 5
+              }
+            }
+          }
+        ],
+        "kind": "let",
+        "range": [
+          284,
+          445
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 0
+          },
+          "end": {
+            "line": 21,
+            "column": 6
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        447,
+        474
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 27
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    474
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 23,
+      "column": 27
+    }
+  },
+  "comments": []
+}

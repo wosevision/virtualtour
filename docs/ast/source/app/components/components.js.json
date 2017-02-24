@@ -1,0 +1,1103 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angular",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular",
+        "raw": "'angular'",
+        "range": [
+          20,
+          29
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AFrame",
+            "range": [
+              39,
+              45
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            39,
+            45
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./aframe/aframe",
+        "raw": "'./aframe/aframe'",
+        "range": [
+          51,
+          68
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 19
+          },
+          "end": {
+            "line": 3,
+            "column": 36
+          }
+        }
+      },
+      "range": [
+        32,
+        69
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Drilldown",
+            "range": [
+              77,
+              86
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            77,
+            86
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./drilldown/drilldown",
+        "raw": "'./drilldown/drilldown'",
+        "range": [
+          92,
+          115
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 22
+          },
+          "end": {
+            "line": 4,
+            "column": 45
+          }
+        }
+      },
+      "range": [
+        70,
+        116
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "CampusMap",
+            "range": [
+              124,
+              133
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            124,
+            133
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./map/map",
+        "raw": "'./map/map'",
+        "range": [
+          139,
+          150
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 22
+          },
+          "end": {
+            "line": 5,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        117,
+        151
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Search",
+            "range": [
+              159,
+              165
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 7
+              },
+              "end": {
+                "line": 6,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            159,
+            165
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 7
+            },
+            "end": {
+              "line": 6,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./search/search",
+        "raw": "'./search/search'",
+        "range": [
+          171,
+          188
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 19
+          },
+          "end": {
+            "line": 6,
+            "column": 36
+          }
+        }
+      },
+      "range": [
+        152,
+        189
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Settings",
+            "range": [
+              197,
+              205
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            197,
+            205
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./settings/settings",
+        "raw": "'./settings/settings'",
+        "range": [
+          211,
+          232
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        190,
+        233
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "componentModule",
+            "range": [
+              241,
+              256
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 6
+              },
+              "end": {
+                "line": 9,
+                "column": 21
+              }
+            }
+          },
+          "init": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "angular",
+                  "range": [
+                    259,
+                    266
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 24
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 31
+                    }
+                  }
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "module",
+                  "range": [
+                    267,
+                    273
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 38
+                    }
+                  }
+                },
+                "range": [
+                  259,
+                  273
+                ],
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 38
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "app.components",
+                  "raw": "'app.components'",
+                  "range": [
+                    274,
+                    290
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 39
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 55
+                    }
+                  }
+                },
+                {
+                  "type": "ArrayExpression",
+                  "elements": [
+                    {
+                      "type": "Identifier",
+                      "name": "AFrame",
+                      "range": [
+                        296,
+                        302
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 8
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "Drilldown",
+                      "range": [
+                        306,
+                        315
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 11
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "CampusMap",
+                      "range": [
+                        319,
+                        328
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 12,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 11
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "Search",
+                      "range": [
+                        332,
+                        338
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 13,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 8
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "Settings",
+                      "range": [
+                        341,
+                        349
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 9
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    292,
+                    351
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 57
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 1
+                    }
+                  }
+                }
+              ],
+              "range": [
+                259,
+                352
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 24
+                },
+                "end": {
+                  "line": 15,
+                  "column": 2
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                355,
+                359
+              ],
+              "loc": {
+                "start": {
+                  "line": 17,
+                  "column": 1
+                },
+                "end": {
+                  "line": 17,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              259,
+              359
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 24
+              },
+              "end": {
+                "line": 17,
+                "column": 5
+              }
+            }
+          },
+          "range": [
+            241,
+            359
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 6
+            },
+            "end": {
+              "line": 17,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        235,
+        360
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 6
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "componentModule",
+        "range": [
+          377,
+          392
+        ],
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 15
+          },
+          "end": {
+            "line": 19,
+            "column": 30
+          }
+        }
+      },
+      "range": [
+        362,
+        393
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 31
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "componentModule",
+              "range": [
+                241,
+                256
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 6
+                },
+                "end": {
+                  "line": 9,
+                  "column": 21
+                }
+              }
+            },
+            "init": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "angular",
+                    "range": [
+                      259,
+                      266
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 31
+                      }
+                    }
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "module",
+                    "range": [
+                      267,
+                      273
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 32
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 38
+                      }
+                    }
+                  },
+                  "range": [
+                    259,
+                    273
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 24
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 38
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": "app.components",
+                    "raw": "'app.components'",
+                    "range": [
+                      274,
+                      290
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 39
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 55
+                      }
+                    }
+                  },
+                  {
+                    "type": "ArrayExpression",
+                    "elements": [
+                      {
+                        "type": "Identifier",
+                        "name": "AFrame",
+                        "range": [
+                          296,
+                          302
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 10,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 8
+                          }
+                        }
+                      },
+                      {
+                        "type": "Identifier",
+                        "name": "Drilldown",
+                        "range": [
+                          306,
+                          315
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 11
+                          }
+                        }
+                      },
+                      {
+                        "type": "Identifier",
+                        "name": "CampusMap",
+                        "range": [
+                          319,
+                          328
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 11
+                          }
+                        }
+                      },
+                      {
+                        "type": "Identifier",
+                        "name": "Search",
+                        "range": [
+                          332,
+                          338
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 13,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 13,
+                            "column": 8
+                          }
+                        }
+                      },
+                      {
+                        "type": "Identifier",
+                        "name": "Settings",
+                        "range": [
+                          341,
+                          349
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 9
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      292,
+                      351
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 57
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 1
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  259,
+                  352
+                ],
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 2
+                  }
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "name",
+                "range": [
+                  355,
+                  359
+                ],
+                "loc": {
+                  "start": {
+                    "line": 17,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                259,
+                359
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 24
+                },
+                "end": {
+                  "line": 17,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              241,
+              359
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 6
+              },
+              "end": {
+                "line": 17,
+                "column": 5
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          235,
+          360
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 17,
+            "column": 6
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        362,
+        393
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 31
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    393
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 19,
+      "column": 31
+    }
+  },
+  "comments": []
+}

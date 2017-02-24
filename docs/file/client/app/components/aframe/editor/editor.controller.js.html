@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../../">
+  <title data-ice="title">client/app/components/aframe/editor/editor.controller.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppController">AppController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-appComponent">appComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-commonModule">commonModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/buttonbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html">ButtonbarController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonbarComponent">buttonbarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonBarModule">buttonBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/popup.service.js~PopupService.html">PopupService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-popupModule">popupModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/error</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorController">ErrorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errorModule">errorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/info</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/info/info.controller.js~InfoController.html">InfoController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-infoModule">infoModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/login</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LoginController">LoginController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-loginModule">loginModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/welcome</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html">WelcomeController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-welcomeModule">welcomeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/titlebar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titleBarButtonDirective">titleBarButtonDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarComponent">titleBarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarModule">titleBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/user</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/user/userSession.service.js~UserSessionService.html">UserSessionService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserAuthFactory">UserAuthFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserResolverFactory">UserResolverFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-userModule">userModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utilModule">utilModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/dom</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bindCompileDirective">bindCompileDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-domModule">domModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/model</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNumberDirective">toNumberDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modelModule">modelModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/resource</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-DraftResourceFactory">DraftResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapResourceFactory">MapResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TourResourceFactory">TourResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-resourceModule">resourceModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeModule">aframeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.controller.js~EditorController.html">EditorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.service.js~EditorService.html">EditorService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html">EditorDialogController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorComponent">editorComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorModule">editorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/entity</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entity.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityModule">entityModule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/hotspot</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hotspotDirective">hotspotDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hotspotModule">hotspotModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.controller.js~SceneController.html">SceneController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.service.js~SceneService.html">SceneService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneComponent">sceneComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneModule">sceneModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scenelink</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scenelinkDirective">scenelinkDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-scenelinkModule">scenelinkModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/sky</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.controller.js~SkyController.html">SkyController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.service.js~SkyService.html">SkyService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyComponent">skyComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyModule">skyModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/drilldown</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html">DrilldownController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownComponent">drilldownComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownModule">drilldownModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/map</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/map/map.controller.js~MapController.html">MapController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapComponent">mapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapModule">mapModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/search</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/search/search.controller.js~SearchController.html">SearchController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchComponent">searchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchModule">searchModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/settings</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html">ConnectionDetailsService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/settings.controller.js~SettingsController.html">SettingsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsFactory">SettingsFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsComponent">settingsComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsModule">settingsModule</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">client/app/components/aframe/editor/editor.controller.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * This controller is only instantiated with the server-rendered
+ * editor component. It works by mounting a number of its
+ * behaviours onto the scene component&apos;s `SceneCtrl` directly
+ * and by proxying the `$aframeScene` service.
+ * 
+ * @param {Object} $mdPanel      ng-material&apos;s panel service
+ * @param {Object} $mdDialog     ng-material&apos;s dialog service
+ * @param {Object} $aframeScene  The scene service
+ * @param {Object} $aframeEditor The editor service
+ * @param {Object} DATA_MODELS	 Database schema representations
+ */
+class EditorController {
+	constructor($mdPanel, $mdDialog, $aframeScene, $aframeEditor, DATA_MODELS) {
+		&apos;ngInject&apos;;
+		this.$mdPanel = $mdPanel;
+		this.$mdDialog = $mdDialog;
+		this.$aframeScene = $aframeScene;
+		this.$aframeEditor = $aframeEditor;
+		/**
+		 * Property to store the state of the current scene with regard to
+		 * whether there are unsaved changes.
+		 * 
+		 * @memberof EditorCtrl
+		 * @type {Boolean}
+		 */
+		this._unpublishedChanges = false;
+		/**
+		 * Editor&apos;s reference to what the database&apos;s data schema&apos;s should look like.
+		 * 
+		 * @memberof EditorCtrl
+		 * @type {Object}
+		 */
+		this._schemas = DATA_MODELS;
+	}
+
+	/**
+	 * Utility method for keeping controller&apos;s model of scene data in
+	 * sync with `$aframeScene`&apos;s.
+	 * 
+	 * @param  {Object} data Scene data to update with
+	 */
+	updateSceneData(data) {
+		Object.assign(this.SceneCtrl, data);
+		this.$aframeScene.scene = data;
+		console.info(&apos;updated scene with data from editor:&apos;, data);
+	}
+
+	/**
+	 * Proxy method for `$aframeEditor.saveDraft()`.
+	 * 
+	 * @param  {Boolean}	notify	Whether to inform user of success.
+	 */
+	saveDraft(notify = true) {
+		this.$aframeEditor.saveDraft(notify);
+	}
+
+	/**
+	 * Proxy method for `$aframeEditor.loadDraft()`.
+	 * 
+	 * @param  {Object}   draft   Chosen draft from draftList
+	 * @param  {Boolean}	notify	Whether to inform user of success.
+	 */
+	loadDraft(draft, notify = true) {
+		this.$aframeEditor.loadDraft(draft._id, notify)
+			.then(draftContent =&gt; this.updateSceneData(draftContent));
+	}
+
+	/**
+	 * Calls `$aframeEditor.checkForDraft()` and sets the controller&apos;s
+	 * `draftList` property to an array of drafts resolved from promise.
+	 *
+	 * If drafts are found, notifies the user; offers to load the latest draft.
+	 * Loads draft if user confirms and updates the scene data accordingly.
+	 * 
+	 * @param {Boolean}	notify	Whether to inform the user with toast
+	 */
+	checkForDraft(notify = true) {
+		this.draftList = null;
+		this.$aframeEditor.checkForDraft(notify)
+			.then(drafts =&gt; {
+				this.draftList = drafts;
+				return drafts.length&amp;&amp;notify&amp;&amp;this.$aframeEditor.draftFound(drafts);
+			})
+			.then(foundDraftContent =&gt; foundDraftContent&amp;&amp;this.updateSceneData(foundDraftContent));
+	}
+
+	/**
+	 * Confirms with user that they would like to discard the draft
+	 * in question; calls `$aframeEditor.discardDraft()` if user confirms.
+	 * 
+	 * @param {Object}  draft   The draft to discard
+	 * @param {Boolean}	notify	Whether to inform user with toast
+	 */
+	discardDraft(draft, notify = true) {
+		const confirm = this.$mdDialog.confirm()
+      .title(&apos;Are you sure?&apos;)
+      .textContent(&apos;This action cannot be undone.&apos;)
+      .ok(&apos;Confirm&apos;)
+      .cancel(&apos;Cancel&apos;);
+    this.$mdDialog.show(confirm).then(() =&gt; {
+			this.$aframeEditor.discardDraft(draft._id, notify);
+    });
+	}
+
+	/**
+	 * Calls `$aframeEditor.publish()` directly (proxy method); updates
+	 * scene data immediately afterward to keep app and server in sync.
+	 * 
+	 * @param  {Object|Boolean}  newData Data to publish or false
+	 * @param  {Boolean}         notify  Whether to inform user with toast
+	 * @return {Promise} 								 Resolves to updated scene data
+	 */
+	publish(newData, notify = true) {
+		return this.$aframeEditor.publish(newData, notify)
+			.then(sceneData =&gt; this.updateSceneData(sceneData));
+	}
+
+	/**
+	 * The editor controller&apos;s `$onInit` hook takes care of attaching a few
+	 * editor methods and properties directly on the scene controller &#x2013; it&apos;s
+	 * strategy is to define and intialize all editor behaviour _separate_ from
+	 * the scene, so that non-admin users do not have any of its behaviours
+	 * attached (or included).
+	 *
+	 * The things it attaches are:
+	 * - A contextmenu listener: since a number of components have different actions
+	 * based on right clicks, a general &quot;flag&quot; needs to be set on the scene
+	 * controller (`_rightclick`) so components can just check for the flag on any scene click.
+	 *   - Also attaches `$onDestroy` for cleanup
+	 * - The editor&apos;s `checkForDraft()` and `openEditor()` methods
+	 * - An `_editable` flag that allows the scene controller to display the UI
+	 */
+	$onInit() {
+		const contextMenu = event =&gt; {
+		  event.stopPropagation();
+			if (!this.SceneCtrl._rightClick) {
+				this.SceneCtrl._rightClick = event;
+				event.preventDefault();
+				this.SceneCtrl.$sceneEl.on(&apos;mouseup&apos;, () =&gt; {
+					this.SceneCtrl._rightClick = false;
+					this.SceneCtrl.$sceneEl.off(&apos;mouseup&apos;)
+				});
+			}
+		};
+		this.SceneCtrl.$sceneEl.on(&apos;contextmenu&apos;, contextMenu);
+	  this.SceneCtrl.$onDestroy = () =&gt; {
+			this.$sceneEl.off(&apos;contextmenu&apos;, contextMenu);
+	  }
+
+		this.SceneCtrl.checkForDraft = () =&gt; this.checkForDraft();
+		this.SceneCtrl.editItem = (ev, item, collection) =&gt; this.editItem(ev, item, collection);
+
+		this.SceneCtrl._editable = true;
+	}
+
+	/**
+	 * Queues up a new item (hotSpot/sceneLink/entity/etc) for addition to the current
+	 * scene. Only collections that have their model explicitly defined in `DATA_MODELS`
+	 * **and** as an option in the editor &apos;add item&apos; selection (`_editor.html`) will be
+	 * available for use.
+	 * 
+	 * @param  {Event}   ev         The mouseEvent that called the method
+	 * @param  {Array}   collection Collection of scene elements to add item to
+	 * @return {Promise} 						Promise representing dialog reference
+	 */
+	addItem(ev, collection) {
+		const locals = { item: this._schemas[collection] };
+
+		locals.newItem = true;
+    locals.publish = () =&gt; this.$aframeScene.addItemTo(locals.item, this.SceneCtrl[collection], newData =&gt; {
+			this.$aframeScene.scene[collection] = newData;
+			this._panelRef&amp;&amp;this._panelRef.close();
+		});
+    locals.saveDraft = () =&gt; this.$aframeScene.addItemTo(locals.item, this.SceneCtrl[collection], newData =&gt; {
+			this.$aframeScene.scene[collection] = newData;
+			this.saveDraft();
+		});
+		locals.removeThis = () =&gt; this._panelRef&amp;&amp;this._panelRef.close();
+		locals.closeDialog = locals.removeThis;
+
+		return this.openEditor(ev, locals);
+	}
+
+	/**
+	 * Queues up a new scene for creation/publishing. WIP.
+	 *
+	 * @todo Panorama upload
+	 * @todo Go to scene after created
+	 * 
+	 * @param  {Event} ev The mouseEvent that called the method
+	 * @return {Promise}  Promise representing dialog reference
+	 */
+	newScene(ev) {
+		const locals = { item: this._schemas.scene };
+
+		locals.newItem = true;
+    locals.publish = () =&gt; {
+			this.$aframeEditor.publish(locals.item);
+			this._panelRef&amp;&amp;this._panelRef.close();
+		};
+    locals.saveDraft = () =&gt; {
+    	locals.item.state = &apos;draft&apos;;
+    	locals.publish();
+		};
+		locals.removeThis = () =&gt; this._panelRef&amp;&amp;this._panelRef.close();
+		locals.closeDialog = locals.removeThis;
+
+		return this.openEditor(ev, locals);
+	}
+
+	/**
+	 * Opens a generic context menu &apos;edit&apos; dialog for scene elements. Mostly
+	 * proxies this controller&apos;s method&apos;s directly inside the editor dialog.
+	 * Includes a horizontal offset that approximates the width of most average
+	 * scene elements to center the dialog&apos;s origin.
+	 * 	
+	 * @param  {Event} ev         				The mouseEvent that called the method
+	 * @param  {Object} item       				The item to edit
+	 * @param  {Array&lt;Object&gt;} collection The item&apos;s collection in the scene
+	 * @return {Promise}  								Promise representing dialog reference
+	 */
+	editItem(ev, item, collection) {
+
+		const locals = { item };
+    locals.publish = () =&gt; this.publish();
+    locals.saveDraft = () =&gt; this.saveDraft();
+		locals.removeThis = () =&gt; this.$aframeScene.removeItemFrom(item, collection, () =&gt; {
+			this._panelRef&amp;&amp;this._panelRef.close();
+		});
+		locals.closeDialog = () =&gt; this._panelRef&amp;&amp;this._panelRef.close();
+
+		return this.openEditor(ev, locals, { offsetY: -250 });
+	}
+
+	/**
+	 * Base method for layering other dialog types into. This method
+	 * handles the actual initialization of the editor dialog component
+	 * using the ng-material panel service&apos;s `$mdPanel.open()` method on
+	 * a panel preset built in `editor_config.js`.
+	 *
+	 * If the item loaded into the editor is considered &quot;new&quot;, the dialog
+	 * is readied for the center of the screen; otherwise, it is placed
+	 * in the bottom-left. The animate-to-and-from is calculated using
+	 * the original MouseEvent that opened the dialog.
+	 *
+	 * An `onDomRemoved()` method is added to clean up the dialog scope
+	 * when its elements are removed; the scope is provided by a promise
+	 * returned by this method.
+	 * 
+	 * @param  {Event} ev              	The mouseEvent that called the method
+	 * @param  {Object} locals          Local values to pass into dialog
+	 * @param  {Number} $2.offsetX 			Pixels to shift dialog along X
+	 * @param  {Number} $2.offsetY 			Pixels to shift dialog along Y
+	 * @return {Promise}  							Promise representing dialog scope
+	 */
+	openEditor(ev, locals, { offsetX = 0, offsetY = 0 } = {}) {
+		console.log((ev.clientY + offsetY))
+		const position = this.$mdPanel.newPanelPosition();
+		if (locals.newItem) {
+			position.absolute().center();
+		} else {
+			position.absolute().bottom(0).left(0);
+		}
+    const animation = this.$mdPanel.newPanelAnimation()
+      .openFrom({top: (ev.clientY + offsetY), left:( ev.clientX + offsetX) })
+      .withAnimation(this.$mdPanel.animation.SCALE)
+      .closeTo({top: (ev.clientY + offsetY), left:( ev.clientX + offsetX) });
+    const onDomRemoved = () =&gt; {
+			this._panelRef&amp;&amp;this._panelRef.destroy();
+		};
+
+		return this.$mdPanel.open(&apos;editorDialog&apos;, {
+			position, animation, onDomRemoved, locals
+		}).then(scope =&gt; {
+      this._panelRef = scope;
+    });
+	}
+}
+
+export default EditorController;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

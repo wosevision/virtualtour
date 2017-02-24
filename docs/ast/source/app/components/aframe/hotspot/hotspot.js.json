@@ -1,0 +1,1142 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angular",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular",
+        "raw": "'angular'",
+        "range": [
+          20,
+          29
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "uiRouter",
+            "range": [
+              38,
+              46
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            38,
+            46
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular-ui-router",
+        "raw": "'angular-ui-router'",
+        "range": [
+          52,
+          71
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 21
+          },
+          "end": {
+            "line": 2,
+            "column": 40
+          }
+        }
+      },
+      "range": [
+        31,
+        72
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angulartics",
+            "range": [
+              80,
+              91
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 18
+              }
+            }
+          },
+          "range": [
+            80,
+            91
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angulartics",
+        "raw": "'angulartics'",
+        "range": [
+          97,
+          110
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 24
+          },
+          "end": {
+            "line": 3,
+            "column": 37
+          }
+        }
+      },
+      "range": [
+        73,
+        111
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angularticsGa",
+            "range": [
+              119,
+              132
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            119,
+            132
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angulartics-google-analytics",
+        "raw": "'angulartics-google-analytics'",
+        "range": [
+          138,
+          168
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 26
+          },
+          "end": {
+            "line": 4,
+            "column": 56
+          }
+        }
+      },
+      "range": [
+        112,
+        169
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 57
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "hotspotDirective",
+            "range": [
+              177,
+              193
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            177,
+            193
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./hotspot.directive",
+        "raw": "'./hotspot.directive'",
+        "range": [
+          199,
+          220
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 29
+          },
+          "end": {
+            "line": 5,
+            "column": 50
+          }
+        }
+      },
+      "range": [
+        170,
+        221
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "hotspotModule",
+            "range": [
+              229,
+              242
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 6
+              },
+              "end": {
+                "line": 7,
+                "column": 19
+              }
+            }
+          },
+          "init": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "angular",
+                      "range": [
+                        245,
+                        252
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 29
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "module",
+                      "range": [
+                        253,
+                        259
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 30
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "range": [
+                      245,
+                      259
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 36
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "aframe.hotspot",
+                      "raw": "'aframe.hotspot'",
+                      "range": [
+                        260,
+                        276
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 37
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 53
+                        }
+                      }
+                    },
+                    {
+                      "type": "ArrayExpression",
+                      "elements": [
+                        {
+                          "type": "Identifier",
+                          "name": "uiRouter",
+                          "range": [
+                            282,
+                            290
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 8,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 10
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "angulartics",
+                          "range": [
+                            294,
+                            305
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 13
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "angularticsGa",
+                          "range": [
+                            308,
+                            321
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 14
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        278,
+                        323
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 55
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    245,
+                    324
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 2
+                    }
+                  }
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "directive",
+                  "range": [
+                    327,
+                    336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 10
+                    }
+                  }
+                },
+                "range": [
+                  245,
+                  336
+                ],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 10
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "hotSpot",
+                  "raw": "'hotSpot'",
+                  "range": [
+                    337,
+                    346
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "Identifier",
+                  "name": "hotspotDirective",
+                  "range": [
+                    348,
+                    364
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 38
+                    }
+                  }
+                }
+              ],
+              "range": [
+                245,
+                365
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 22
+                },
+                "end": {
+                  "line": 13,
+                  "column": 39
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                368,
+                372
+              ],
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 1
+                },
+                "end": {
+                  "line": 15,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              245,
+              372
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 22
+              },
+              "end": {
+                "line": 15,
+                "column": 5
+              }
+            }
+          },
+          "range": [
+            229,
+            372
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 6
+            },
+            "end": {
+              "line": 15,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        223,
+        373
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 6
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "hotspotModule",
+        "range": [
+          390,
+          403
+        ],
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 15
+          },
+          "end": {
+            "line": 17,
+            "column": 28
+          }
+        }
+      },
+      "range": [
+        375,
+        404
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 29
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "hotspotModule",
+              "range": [
+                229,
+                242
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 6
+                },
+                "end": {
+                  "line": 7,
+                  "column": 19
+                }
+              }
+            },
+            "init": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "angular",
+                        "range": [
+                          245,
+                          252
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 22
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 29
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "module",
+                        "range": [
+                          253,
+                          259
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 30
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 36
+                          }
+                        }
+                      },
+                      "range": [
+                        245,
+                        259
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "aframe.hotspot",
+                        "raw": "'aframe.hotspot'",
+                        "range": [
+                          260,
+                          276
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 37
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 53
+                          }
+                        }
+                      },
+                      {
+                        "type": "ArrayExpression",
+                        "elements": [
+                          {
+                            "type": "Identifier",
+                            "name": "uiRouter",
+                            "range": [
+                              282,
+                              290
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 8,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 8,
+                                "column": 10
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "angulartics",
+                            "range": [
+                              294,
+                              305
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 9,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 9,
+                                "column": 13
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "angularticsGa",
+                            "range": [
+                              308,
+                              321
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 10,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 14
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          278,
+                          323
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 7,
+                            "column": 55
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      245,
+                      324
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 2
+                      }
+                    }
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "directive",
+                    "range": [
+                      327,
+                      336
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 10
+                      }
+                    }
+                  },
+                  "range": [
+                    245,
+                    336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 10
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": "hotSpot",
+                    "raw": "'hotSpot'",
+                    "range": [
+                      337,
+                      346
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 20
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "hotspotDirective",
+                    "range": [
+                      348,
+                      364
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 38
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  245,
+                  365
+                ],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 39
+                  }
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "name",
+                "range": [
+                  368,
+                  372
+                ],
+                "loc": {
+                  "start": {
+                    "line": 15,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                245,
+                372
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 22
+                },
+                "end": {
+                  "line": 15,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              229,
+              372
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 6
+              },
+              "end": {
+                "line": 15,
+                "column": 5
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          223,
+          373
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 6
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        375,
+        404
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 29
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    404
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 17,
+      "column": 29
+    }
+  },
+  "comments": []
+}

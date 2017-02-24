@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">client/app/components/settings/connectionDetails.service.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppController">AppController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-appComponent">appComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-commonModule">commonModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/buttonbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html">ButtonbarController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonbarComponent">buttonbarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonBarModule">buttonBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/popup.service.js~PopupService.html">PopupService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-popupModule">popupModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/error</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorController">ErrorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errorModule">errorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/info</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/info/info.controller.js~InfoController.html">InfoController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-infoModule">infoModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/login</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LoginController">LoginController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-loginModule">loginModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/welcome</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html">WelcomeController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-welcomeModule">welcomeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/titlebar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titleBarButtonDirective">titleBarButtonDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarComponent">titleBarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarModule">titleBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/user</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/user/userSession.service.js~UserSessionService.html">UserSessionService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserAuthFactory">UserAuthFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserResolverFactory">UserResolverFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-userModule">userModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utilModule">utilModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/dom</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bindCompileDirective">bindCompileDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-domModule">domModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/model</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNumberDirective">toNumberDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modelModule">modelModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/resource</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-DraftResourceFactory">DraftResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapResourceFactory">MapResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TourResourceFactory">TourResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-resourceModule">resourceModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeModule">aframeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.controller.js~EditorController.html">EditorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.service.js~EditorService.html">EditorService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html">EditorDialogController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorComponent">editorComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorModule">editorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/entity</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entity.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityModule">entityModule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/hotspot</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hotspotDirective">hotspotDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hotspotModule">hotspotModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.controller.js~SceneController.html">SceneController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.service.js~SceneService.html">SceneService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneComponent">sceneComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneModule">sceneModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scenelink</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scenelinkDirective">scenelinkDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-scenelinkModule">scenelinkModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/sky</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.controller.js~SkyController.html">SkyController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.service.js~SkyService.html">SkyService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyComponent">skyComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyModule">skyModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/drilldown</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html">DrilldownController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownComponent">drilldownComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownModule">drilldownModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/map</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/map/map.controller.js~MapController.html">MapController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapComponent">mapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapModule">mapModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/search</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/search/search.controller.js~SearchController.html">SearchController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchComponent">searchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchModule">searchModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/settings</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html">ConnectionDetailsService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/settings.controller.js~SettingsController.html">SettingsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsFactory">SettingsFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsComponent">settingsComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsModule">settingsModule</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">client/app/components/settings/connectionDetails.service.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isNumber } from &apos;angular&apos;;
+
+/**
+ * Upper limit of &quot;high-speed&quot; connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
+const SPEED_HI = 50;
+
+/**
+ * Upper limit of &quot;wi-fi&quot; connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
+const SPEED_WF = 8;
+
+/**
+ * Upper limit of &quot;mobile/3G&quot; connection rating (in Mbps).
+ * @memberof ConnectionDetails
+ * @type {Number}
+ */
+const SPEED_3G = 2;
+
+/**
+ * This service is responsible for translating user network and device
+ * details into a usable format for application settings.
+ *
+ * It contains methods for detecting details, optimizing settings based
+ * on details, calculating general reports of setting levels, and
+ * providing human-readable versions of those reports.
+ * 
+ * @param  {Object} $rootScope    The root of the app scopes
+ * @param  {Object} $http         Angular&apos;s http service
+ * @param  {Object} $q            Angular&apos;s promise builder
+ * @param  {Object} USER_DEFAULTS Constant for default settings
+ */
+class ConnectionDetailsService {
+	/**
+	 * Initializes the service&apos;s dependencies. Extracts usage profiles
+	 * from the `USER_DEFAULTS.profiles` constant and discards other settings.
+	 */
+	constructor($rootScope, $http, $q, USER_DEFAULTS) {
+	  &apos;ngInject&apos;;
+	  this.$rootScope = $rootScope;
+		this.$http = $http;
+		this.$q = $q;
+
+		this.profiles = USER_DEFAULTS.profiles;
+	}
+
+	/**
+	 * Uses Angular&apos;s `$http` service to send a request to the server
+	 * for a connection test. Internally, the server API measures
+	 * connection speed in the background, and supplies this info back
+	 * to the app along with device details when it becomes available.
+	 * 
+	 * @return {Promise} Promise that will resolve to connection details
+	 */
+	detect() {
+	  return this.$http.get(&apos;/user/connection&apos;).then(connection =&gt; {
+	  	this.connection = connection;
+	  	return connection;
+	  });
+	}
+
+	/**
+	 * Determines the best usage profile (from `USER_DEFAULTS.profiles`)
+	 * to select based on a connection details object (e.g. the result of
+	 * calling `detect()`).
+	 * @param  {Object} connection Incoming connection details object
+	 * @return {Object}            The chosen optimal settings profile
+	 */
+	optimize(connection) {
+		const { network, useragent } = connection.data,
+					downloadSpeed = network.speeds.download,
+					deviceType = useragent.device.type;
+
+		if (downloadSpeed &gt;= SPEED_HI &amp;&amp; !deviceType)
+			return this.profiles.desktopFast;
+		if (downloadSpeed &gt;= SPEED_WF &amp;&amp; downloadSpeed &lt; SPEED_HI &amp;&amp; !deviceType)
+			return this.profiles.desktopSlow;
+		if (downloadSpeed &lt; SPEED_WF &amp;&amp; !deviceType)
+			return this.profiles.balanced;
+		if (downloadSpeed &gt;= SPEED_WF &amp;&amp; deviceType  === &apos;mobile&apos;)
+			return this.profiles.mobileWifi;
+		if (downloadSpeed &gt;= SPEED_3G &amp;&amp; deviceType  === &apos;mobile&apos;)
+			return this.profiles.mobile3g;
+		if (downloadSpeed &lt; SPEED_3G)
+			return this.profiles.conserve;
+		// default return
+		return this.profiles.balanced;
+	}
+
+	/**
+	 * Tallies up values of usage settings asynchronously
+	 * by using `$scope.$eval()` to match applicable usage
+	 * level values against their keys (which are keyed by
+	 * &quot;condition&quot;).
+	 * @example
+	 * {
+	 *   &apos;&lt;= 15&apos;: [0, 0, 5],
+	 *   &apos;== 0&apos;: [...]
+	 * }
+	 * @param	 {Object}	usage Incoming usage preference object
+	 * @return {Promise}			Promise representing final levels
+	 */
+	calculateUsageLevel(usage) {
+		const tally = [0, 0, 0], // [imageQual, loadTime, dataUse] / 0=low, 10=high
+	  			deferred = this.$q.defer(),
+	  			addToTally = values =&gt; {
+						tally.forEach((v, index) =&gt; {
+							tally[index] += values[index];
+						});
+					};
+		this.$rootScope.$applyAsync(() =&gt; {
+			Object.keys(usage).forEach(setting =&gt; {
+				if (setting !== &apos;auto&apos;) {
+					Object.keys(usage[setting].levels).forEach(expression =&gt; {
+						const inRange = this.$rootScope.$eval(`(${ usage[setting].val } ${expression})`);
+						if (inRange) addToTally(usage[setting].levels[expression]);
+						if (isNumber(inRange)) deferred.reject(&apos;Usage calculation error&apos;);
+					});
+				}
+			});
+			deferred.resolve(tally);
+		});
+		return deferred.promise;
+	}
+	// TODO(PERF): CLEAN UP THIS FUNCTION; TOO MANY NESTED CLOSURES
+
+	/**
+	 * Maps a tally array of numbers into a label
+	 * array of human-readable usage level strings.
+	 * @param  {Array&lt;Number&gt;}  tally Array of tallied usage values
+	 * @return {Array&lt;String&gt;}       	Usage descriptions
+	 */
+	getLabelsFromTally(tally) {
+		return tally.map(value =&gt; {
+			if (value &lt;= 5) return &apos;very low&apos;;
+			if (value &gt; 5 &amp;&amp; value &lt;= 10) return &apos;low&apos;;
+			if (value &gt; 10 &amp;&amp; value &lt;= 15) return &apos;moderate&apos;;
+			if (value &gt; 15 &amp;&amp; value &lt;= 20) return &apos;high&apos;;
+			if (value &gt; 20) return &apos;very high&apos;;
+		});
+	}
+}
+
+export default ConnectionDetailsService;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

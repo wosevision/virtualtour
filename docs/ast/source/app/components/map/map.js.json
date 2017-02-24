@@ -1,0 +1,2183 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "angular",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            7,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular",
+        "raw": "'angular'",
+        "range": [
+          20,
+          29
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "uiRouter",
+            "range": [
+              38,
+              46
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            38,
+            46
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "angular-ui-router",
+        "raw": "'angular-ui-router'",
+        "range": [
+          52,
+          71
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 21
+          },
+          "end": {
+            "line": 2,
+            "column": 40
+          }
+        }
+      },
+      "range": [
+        31,
+        72
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ngMap",
+            "range": [
+              80,
+              85
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 12
+              }
+            }
+          },
+          "range": [
+            80,
+            85
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "ngmap",
+        "raw": "'ngmap'",
+        "range": [
+          91,
+          98
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 18
+          },
+          "end": {
+            "line": 3,
+            "column": 25
+          }
+        }
+      },
+      "range": [
+        73,
+        99
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "uoitCampusMap",
+            "range": [
+              107,
+              120
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            107,
+            120
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "uoit-campus-map",
+        "raw": "'uoit-campus-map'",
+        "range": [
+          126,
+          143
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 26
+          },
+          "end": {
+            "line": 4,
+            "column": 43
+          }
+        }
+      },
+      "range": [
+        100,
+        144
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 44
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": " import mapComponent from './map.component';",
+          "range": [
+            146,
+            192
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 46
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "template",
+            "range": [
+              200,
+              208
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            200,
+            208
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./map.html",
+        "raw": "'./map.html'",
+        "range": [
+          214,
+          226
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        193,
+        227
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 34
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Line",
+          "value": " import mapComponent from './map.component';",
+          "range": [
+            146,
+            192
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 46
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "controller",
+            "range": [
+              235,
+              245
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            235,
+            245
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./map.controller",
+        "raw": "'./map.controller'",
+        "range": [
+          251,
+          269
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 23
+          },
+          "end": {
+            "line": 8,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        228,
+        270
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "value": "./map.scss",
+        "raw": "'./map.scss'",
+        "range": [
+          278,
+          290
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 7
+          },
+          "end": {
+            "line": 9,
+            "column": 19
+          }
+        }
+      },
+      "range": [
+        271,
+        291
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "mapModule",
+            "range": [
+              297,
+              306
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 4
+              },
+              "end": {
+                "line": 11,
+                "column": 13
+              }
+            }
+          },
+          "init": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "angular",
+                      "range": [
+                        309,
+                        316
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 23
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "module",
+                      "range": [
+                        317,
+                        323
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 24
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 30
+                        }
+                      }
+                    },
+                    "range": [
+                      309,
+                      323
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 30
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "map",
+                      "raw": "'map'",
+                      "range": [
+                        324,
+                        329
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 31
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 36
+                        }
+                      }
+                    },
+                    {
+                      "type": "ArrayExpression",
+                      "elements": [
+                        {
+                          "type": "Identifier",
+                          "name": "uiRouter",
+                          "range": [
+                            335,
+                            343
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 10
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "ngMap",
+                          "range": [
+                            347,
+                            352
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 13,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 7
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "uoitCampusMap",
+                          "range": [
+                            356,
+                            369
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 15
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        331,
+                        371
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 38
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    309,
+                    372
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 2
+                    }
+                  },
+                  "trailingComments": [
+                    {
+                      "type": "Line",
+                      "value": " .component('uoitMap', mapComponent)",
+                      "range": [
+                        374,
+                        412
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 0
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 38
+                        }
+                      }
+                    }
+                  ]
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "config",
+                  "range": [
+                    415,
+                    421
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 7
+                    }
+                  },
+                  "leadingComments": [
+                    {
+                      "type": "Line",
+                      "value": " .component('uoitMap', mapComponent)",
+                      "range": [
+                        374,
+                        412
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 0
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 38
+                        }
+                      }
+                    }
+                  ]
+                },
+                "range": [
+                  309,
+                  421
+                ],
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 16
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 7
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "ArrowFunctionExpression",
+                  "id": null,
+                  "params": [
+                    {
+                      "type": "Identifier",
+                      "name": "$stateProvider",
+                      "range": [
+                        423,
+                        437
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 9
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 23
+                        }
+                      }
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "body": [
+                      {
+                        "type": "ExpressionStatement",
+                        "expression": {
+                          "type": "Literal",
+                          "value": "ngInject",
+                          "raw": "'ngInject'",
+                          "range": [
+                            446,
+                            456
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 20,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 20,
+                              "column": 12
+                            }
+                          }
+                        },
+                        "range": [
+                          446,
+                          458
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 20,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 1
+                          }
+                        }
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "expression": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "$stateProvider",
+                              "range": [
+                                458,
+                                472
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 21,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 21,
+                                  "column": 15
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "state",
+                              "range": [
+                                478,
+                                483
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 22,
+                                  "column": 5
+                                },
+                                "end": {
+                                  "line": 22,
+                                  "column": 10
+                                }
+                              }
+                            },
+                            "range": [
+                              458,
+                              483
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 10
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "map",
+                              "raw": "'map'",
+                              "range": [
+                                484,
+                                489
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 22,
+                                  "column": 11
+                                },
+                                "end": {
+                                  "line": 22,
+                                  "column": 16
+                                }
+                              }
+                            },
+                            {
+                              "type": "ObjectExpression",
+                              "properties": [
+                                {
+                                  "type": "Property",
+                                  "key": {
+                                    "type": "Identifier",
+                                    "name": "parent",
+                                    "range": [
+                                      499,
+                                      505
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 23,
+                                        "column": 6
+                                      },
+                                      "end": {
+                                        "line": 23,
+                                        "column": 12
+                                      }
+                                    }
+                                  },
+                                  "value": {
+                                    "type": "Literal",
+                                    "value": "home",
+                                    "raw": "'home'",
+                                    "range": [
+                                      507,
+                                      513
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 23,
+                                        "column": 14
+                                      },
+                                      "end": {
+                                        "line": 23,
+                                        "column": 20
+                                      }
+                                    }
+                                  },
+                                  "kind": "init",
+                                  "method": false,
+                                  "shorthand": false,
+                                  "computed": false,
+                                  "range": [
+                                    499,
+                                    513
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 23,
+                                      "column": 6
+                                    },
+                                    "end": {
+                                      "line": 23,
+                                      "column": 20
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "Property",
+                                  "key": {
+                                    "type": "Identifier",
+                                    "name": "template",
+                                    "range": [
+                                      551,
+                                      559
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 6
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 14
+                                      }
+                                    }
+                                  },
+                                  "value": {
+                                    "type": "Identifier",
+                                    "name": "template",
+                                    "range": [
+                                      551,
+                                      559
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 6
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 14
+                                      }
+                                    }
+                                  },
+                                  "kind": "init",
+                                  "method": false,
+                                  "shorthand": true,
+                                  "computed": false,
+                                  "range": [
+                                    551,
+                                    559
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 25,
+                                      "column": 6
+                                    },
+                                    "end": {
+                                      "line": 25,
+                                      "column": 14
+                                    }
+                                  },
+                                  "leadingComments": [
+                                    {
+                                      "type": "Line",
+                                      "value": " component: 'uoitMap'",
+                                      "range": [
+                                        521,
+                                        544
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 24,
+                                          "column": 6
+                                        },
+                                        "end": {
+                                          "line": 24,
+                                          "column": 29
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Property",
+                                  "key": {
+                                    "type": "Identifier",
+                                    "name": "controller",
+                                    "range": [
+                                      564,
+                                      574
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 26,
+                                        "column": 3
+                                      },
+                                      "end": {
+                                        "line": 26,
+                                        "column": 13
+                                      }
+                                    }
+                                  },
+                                  "value": {
+                                    "type": "Identifier",
+                                    "name": "controller",
+                                    "range": [
+                                      564,
+                                      574
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 26,
+                                        "column": 3
+                                      },
+                                      "end": {
+                                        "line": 26,
+                                        "column": 13
+                                      }
+                                    }
+                                  },
+                                  "kind": "init",
+                                  "method": false,
+                                  "shorthand": true,
+                                  "computed": false,
+                                  "range": [
+                                    564,
+                                    574
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 26,
+                                      "column": 3
+                                    },
+                                    "end": {
+                                      "line": 26,
+                                      "column": 13
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+                                491,
+                                580
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 22,
+                                  "column": 18
+                                },
+                                "end": {
+                                  "line": 27,
+                                  "column": 5
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            458,
+                            581
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 27,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "range": [
+                          458,
+                          582
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 21,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 27,
+                            "column": 7
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      442,
+                      584
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 1
+                      }
+                    }
+                  },
+                  "generator": false,
+                  "expression": false,
+                  "range": [
+                    422,
+                    584
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 1
+                    }
+                  }
+                }
+              ],
+              "range": [
+                309,
+                585
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 16
+                },
+                "end": {
+                  "line": 28,
+                  "column": 2
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "name",
+              "range": [
+                588,
+                592
+              ],
+              "loc": {
+                "start": {
+                  "line": 30,
+                  "column": 1
+                },
+                "end": {
+                  "line": 30,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              309,
+              592
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 16
+              },
+              "end": {
+                "line": 30,
+                "column": 5
+              }
+            }
+          },
+          "range": [
+            297,
+            592
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 4
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "kind": "let",
+      "range": [
+        293,
+        593
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 30,
+          "column": 6
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "mapModule",
+        "range": [
+          610,
+          619
+        ],
+        "loc": {
+          "start": {
+            "line": 32,
+            "column": 15
+          },
+          "end": {
+            "line": 32,
+            "column": 24
+          }
+        }
+      },
+      "range": [
+        595,
+        620
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 25
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "mapModule",
+              "range": [
+                297,
+                306
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 4
+                },
+                "end": {
+                  "line": 11,
+                  "column": 13
+                }
+              }
+            },
+            "init": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "angular",
+                        "range": [
+                          309,
+                          316
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 23
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "module",
+                        "range": [
+                          317,
+                          323
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 24
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 30
+                          }
+                        }
+                      },
+                      "range": [
+                        309,
+                        323
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 30
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "map",
+                        "raw": "'map'",
+                        "range": [
+                          324,
+                          329
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 31
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 36
+                          }
+                        }
+                      },
+                      {
+                        "type": "ArrayExpression",
+                        "elements": [
+                          {
+                            "type": "Identifier",
+                            "name": "uiRouter",
+                            "range": [
+                              335,
+                              343
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 12,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 10
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "ngMap",
+                            "range": [
+                              347,
+                              352
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 13,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 13,
+                                "column": 7
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "uoitCampusMap",
+                            "range": [
+                              356,
+                              369
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 15
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          331,
+                          371
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 38
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      309,
+                      372
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 2
+                      }
+                    },
+                    "trailingComments": [
+                      {
+                        "type": "Line",
+                        "value": " .component('uoitMap', mapComponent)",
+                        "range": [
+                          374,
+                          412
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 0
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 38
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "config",
+                    "range": [
+                      415,
+                      421
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 7
+                      }
+                    },
+                    "leadingComments": [
+                      {
+                        "type": "Line",
+                        "value": " .component('uoitMap', mapComponent)",
+                        "range": [
+                          374,
+                          412
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 0
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 38
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "range": [
+                    309,
+                    421
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 7
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "ArrowFunctionExpression",
+                    "id": null,
+                    "params": [
+                      {
+                        "type": "Identifier",
+                        "name": "$stateProvider",
+                        "range": [
+                          423,
+                          437
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 23
+                          }
+                        }
+                      }
+                    ],
+                    "body": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "Literal",
+                            "value": "ngInject",
+                            "raw": "'ngInject'",
+                            "range": [
+                              446,
+                              456
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 20,
+                                "column": 2
+                              },
+                              "end": {
+                                "line": 20,
+                                "column": 12
+                              }
+                            }
+                          },
+                          "range": [
+                            446,
+                            458
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 20,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 1
+                            }
+                          }
+                        },
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "$stateProvider",
+                                "range": [
+                                  458,
+                                  472
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 21,
+                                    "column": 1
+                                  },
+                                  "end": {
+                                    "line": 21,
+                                    "column": 15
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "state",
+                                "range": [
+                                  478,
+                                  483
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 22,
+                                    "column": 5
+                                  },
+                                  "end": {
+                                    "line": 22,
+                                    "column": 10
+                                  }
+                                }
+                              },
+                              "range": [
+                                458,
+                                483
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 21,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 22,
+                                  "column": 10
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": "map",
+                                "raw": "'map'",
+                                "range": [
+                                  484,
+                                  489
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 22,
+                                    "column": 11
+                                  },
+                                  "end": {
+                                    "line": 22,
+                                    "column": 16
+                                  }
+                                }
+                              },
+                              {
+                                "type": "ObjectExpression",
+                                "properties": [
+                                  {
+                                    "type": "Property",
+                                    "key": {
+                                      "type": "Identifier",
+                                      "name": "parent",
+                                      "range": [
+                                        499,
+                                        505
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 23,
+                                          "column": 6
+                                        },
+                                        "end": {
+                                          "line": 23,
+                                          "column": 12
+                                        }
+                                      }
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "value": "home",
+                                      "raw": "'home'",
+                                      "range": [
+                                        507,
+                                        513
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 23,
+                                          "column": 14
+                                        },
+                                        "end": {
+                                          "line": 23,
+                                          "column": 20
+                                        }
+                                      }
+                                    },
+                                    "kind": "init",
+                                    "method": false,
+                                    "shorthand": false,
+                                    "computed": false,
+                                    "range": [
+                                      499,
+                                      513
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 23,
+                                        "column": 6
+                                      },
+                                      "end": {
+                                        "line": 23,
+                                        "column": 20
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Property",
+                                    "key": {
+                                      "type": "Identifier",
+                                      "name": "template",
+                                      "range": [
+                                        551,
+                                        559
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 25,
+                                          "column": 6
+                                        },
+                                        "end": {
+                                          "line": 25,
+                                          "column": 14
+                                        }
+                                      }
+                                    },
+                                    "value": {
+                                      "type": "Identifier",
+                                      "name": "template",
+                                      "range": [
+                                        551,
+                                        559
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 25,
+                                          "column": 6
+                                        },
+                                        "end": {
+                                          "line": 25,
+                                          "column": 14
+                                        }
+                                      }
+                                    },
+                                    "kind": "init",
+                                    "method": false,
+                                    "shorthand": true,
+                                    "computed": false,
+                                    "range": [
+                                      551,
+                                      559
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 6
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 14
+                                      }
+                                    },
+                                    "leadingComments": [
+                                      {
+                                        "type": "Line",
+                                        "value": " component: 'uoitMap'",
+                                        "range": [
+                                          521,
+                                          544
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 24,
+                                            "column": 6
+                                          },
+                                          "end": {
+                                            "line": 24,
+                                            "column": 29
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "Property",
+                                    "key": {
+                                      "type": "Identifier",
+                                      "name": "controller",
+                                      "range": [
+                                        564,
+                                        574
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 26,
+                                          "column": 3
+                                        },
+                                        "end": {
+                                          "line": 26,
+                                          "column": 13
+                                        }
+                                      }
+                                    },
+                                    "value": {
+                                      "type": "Identifier",
+                                      "name": "controller",
+                                      "range": [
+                                        564,
+                                        574
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 26,
+                                          "column": 3
+                                        },
+                                        "end": {
+                                          "line": 26,
+                                          "column": 13
+                                        }
+                                      }
+                                    },
+                                    "kind": "init",
+                                    "method": false,
+                                    "shorthand": true,
+                                    "computed": false,
+                                    "range": [
+                                      564,
+                                      574
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 26,
+                                        "column": 3
+                                      },
+                                      "end": {
+                                        "line": 26,
+                                        "column": 13
+                                      }
+                                    }
+                                  }
+                                ],
+                                "range": [
+                                  491,
+                                  580
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 22,
+                                    "column": 18
+                                  },
+                                  "end": {
+                                    "line": 27,
+                                    "column": 5
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              458,
+                              581
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 21,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "range": [
+                            458,
+                            582
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 27,
+                              "column": 7
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        442,
+                        584
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 28
+                        },
+                        "end": {
+                          "line": 28,
+                          "column": 1
+                        }
+                      }
+                    },
+                    "generator": false,
+                    "expression": false,
+                    "range": [
+                      422,
+                      584
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 1
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  309,
+                  585
+                ],
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 16
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 2
+                  }
+                }
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "name",
+                "range": [
+                  588,
+                  592
+                ],
+                "loc": {
+                  "start": {
+                    "line": 30,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                309,
+                592
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 16
+                },
+                "end": {
+                  "line": 30,
+                  "column": 5
+                }
+              }
+            },
+            "range": [
+              297,
+              592
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 4
+              },
+              "end": {
+                "line": 30,
+                "column": 5
+              }
+            }
+          }
+        ],
+        "kind": "let",
+        "range": [
+          293,
+          593
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 0
+          },
+          "end": {
+            "line": 30,
+            "column": 6
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        595,
+        620
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 25
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    620
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 32,
+      "column": 25
+    }
+  },
+  "comments": [
+    {
+      "type": "Line",
+      "value": " import mapComponent from './map.component';",
+      "range": [
+        146,
+        192
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " .component('uoitMap', mapComponent)",
+      "range": [
+        374,
+        412
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " component: 'uoitMap'",
+      "range": [
+        521,
+        544
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 6
+        },
+        "end": {
+          "line": 24,
+          "column": 29
+        }
+      }
+    }
+  ]
+}

@@ -1,288 +1,216 @@
 UOIT Virtual Tour
 =====================================
+> __*Version 0.2.0*__
 
-__*Version 0.0.1*__
+Welcome to the Github repository of the **UOIT Virtual Tour web application**, powered by the [MEAN](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) software stack! This is (only) the front-end component of the application; the server that powers the tour is currently hosted in a [separate repository](https://github.com/wosevision/virtualtour-cms). The Virtual Tour's complete documentation will be featured in this repository, with each folder containing docs for its respective contents and components documented inline.
 
-Welcome to the Github repository of the **UOIT Virtual Tour web application**, powered by the [MEAN](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) software stack! This is (only) the front-end component of the application; the server that powers the tour is currently hosted in a [separate repository](https://github.com/wosevision/virtualtour-server). The Virtual Tour's complete documentation will be featured in this repository, with each folder containing docs for its respective contents.
+This application includes:
+* Best practices for directory/file organization in Angular (allowing for infinite horizontal app scaling)
+* A suite of custom AFrame-to-Angular components
+* A full-featured [ES6](https://git.io/es6features) build system
+* Tasks for generating additional boilerplate Angular components
+* Testing system in place _(WIP)_
+* [Sass](http://sass-lang.com/) support via node-sass
 
-## Table of contents
+# Table of Contents
+* [Intro](#intro)
+    * [Build system](#build-system)
+        * [Dependency injection](#dependency-injection)
+        * [Test suite](#test-suite)
+    * [File structure](#file-structure)
+        * [Naming convention](#naming-convention)
+* [Development](#development)
+    * [Dependencies](#dependencies)
+    * [Installing](#installing)
+    * [Running the app](#running-the-app)
+        * [Available scripts](#available-scripts)
+    * [Testing](#testing)
+    * [Generating components](#generating-components)   
+* [Reference](#reference)
+    * [Libraries](#libraries)
+        * [AngularJS](#angularjs)
+        * [A-Frame](#a-frame)
+        * [Google Maps](#google-maps)
+    * [Build tools](#build-tools)
+        * [Webpack](#webpack)
+        * [Babel](#babel)
+        * [Sass](#sass)
+    * [Resources](#resources)
+* [Virtual Tour support and questions](#virtual-tour-support-and-questions)
 
-### Quick start
-1. [Getting up and running](#getting-up-and-running)
-2. [Libraries](#libraries)
-3. [Blog resources](#blog-resources)
+# Intro
+## Build system
+This app uses NPM scripts, Gulp, and Webpack together for its build system, and is supported by a wide range of other additional Angular helper modules and Gulp libraries (listed in `package.json`). Any documentation specific to those libraries should be sought from the library's official docs, and will only be included in these docs if special details exist.
 
-### Application
+Although Gulp isn't technically necessary for applications being bundled with Webpack, this app's build system performs more than basic file manipulation and therefore splits responsibilities between Gulp and Webpack.
 
-4. [AngularJS](#angularjs) – M-V-* framework
-	- [Naming convention](#naming-convention)
-	- [Module organization](#module-organization)
-	- [Dependency injection](#dependency-injection)
-	- [Angular Material](#angular-material) – UI library based on Material Design
-5. [A-Frame](#a-frame) – Web VR building blocks
-	- [Angular integration](#angular-integration)
-6. [Google Maps](#google-maps)
+**`webpack` handles all file-related concerns:**
+* Transpiling from ES6 to ES5 with `Babel`
+* Loading HTML files as modules
+* Transpiling stylesheets and appending them to the DOM
+* Refreshing the browser and rebuilding on file changes
+* Hot module replacement for transpiled stylesheets
+* Bundling the app
+* Loading all modules
+* All of the above for `*.spec.js` files, plus testing
 
-### Build process
+**`gulp` is the orchestrator:**
+* Starting and calling Webpack
+* Starting a development server
+* Generating boilerplate components
 
-7. [Sass](#sass) – CSS compiler
-	- [Stylesheet organization](#stylesheet-organization)
-8. [Browserify](#browserify) – Module requirer/bundler
-9. [Babel](#babel) – ES6-to-boring-JS transpiler
-10. [Gulp](#gulp) – Build system
-	- [Web Server](#web-server)
-	- [Scripts](#scripts)
-	- [Styles](#styles)
-	- [Images](#images)
-	- [Views](#views)
-	- [Watching files](#watching-files)
-	- [Production](#production)
-	- [Compression](#compression)
-	- [Tests](#tests)
-11. [Testing](#testing-still-heavily-under-development)
-	- [End-to-End (e2e) tests](#end-to-end-e2e-tests)
-	- [Unit tests](#unit-tests)
+### Dependency injection
+Angular dependency injection is automated using the `ng-annotate` library via the `ng-annotate-loader` Webpack loader. In order to take advantage of this, a simple directive prologue needs to be added at the very beginning of any Angular functions/modules, in the following format:
 
-Also ~~utilizes [these best AngularJS practices](https://github.com/toddmotto/angular-styleguide/tree/angular-old-es5)~~ (**NOW DEPRECATED**: architecture update to [this style](https://github.com/toddmotto/angular-styleguide) in progress) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
+```js
+angular.module('MyModule')
+  .controller('myController', function($http) {
+    'ngInject';
+    ...
+  });
 
-[View original boilerplate](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate/)
+// without ng-annotate (dependency string array with tail fn):
+angular.module('MyModule')
+  .controller('myController', ['$http', function($http) {
+    ...
+  }]);
+```
 
----
+Webpack will then take care of adding any dependency injection, requiring the developer to only specify the dependencies within the function parameters and nothing more.
 
-### Getting up and running
+### Test suite
+All tests are also written in ES6. Webpack takes care of the logistics of running files in the various browsers, similar to the client application files. The testing stack is as follows:
+* Karma
+* Webpack + Babel
+* Mocha
+* Chai
 
-1. Clone this repo from `https://github.com/wosevision/virtualtour.git`
-	- _**NOTE:** Server files will need to be added separately; more details in [server repository](https://github.com/wosevision/virtualtour-server)_
-2. Run `npm install` from the root directory
-3. Run `gulp dev` (may require installing Gulp globally `npm install gulp -g`)
-4. Your browser will automatically be opened and directed to the browser-sync proxy address
-	- _**NOTE:** The browser-sync server is loaded in tandem with a [nodemon](http://nodemon.io/) process with the `dev` flag, which provides the API/routing express server; **often, the timing between booting the two processes is less than ideal on first load and causes the page to hang**. This fixes itself after a page refresh for the rest of the Gulp process and does not occur in `prod`_
-5. To prepare assets for production, run the `gulp prod` task (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `gulp dev` during development. More information below)
+To run tests, run `npm test`. Read more about testing [below](#testing).
 
-Now that `gulp dev` is running, the server is up as well and serving files from the `/build` directory. Any changes in the `/app` directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
+## File structure
+This application uses a componentized approach to file organization, which will help ensure a smoother transition to Angular 2 when the time is ripe.
 
-#### Libraries
+A component is a self-contained concern – be it a feature, or a strictly-defined, ever-present element of the UI (such as a header, sidebar, or footer). Also characteristic of a component is that it harnesses its own stylesheets, templates, controllers, routes, services, and specs (test files). Each component folder contains all the requisite files for the use of that component – this encapsulation affords us the comfort of isolation and structural locality, and makes individual features easier to reason about regardless of the application's scale as a whole.
 
-This application uses the latest versions of Angular and A-Frame as its cornerstones, but is supported by a wide range of additional Angular modules and Gulp libraries (these can be seen in either `package.json`, or at the top of each task in `/gulp/tasks`). Any documentation specific to those libraries should be sought from the library's official docs, and will only be included in these docs if special details exist.
+The structure of a component boils down to the following layout:
+```
+client
+⋅⋅app/
+⋅⋅⋅⋅app.js /* app entry file */
+⋅⋅⋅⋅app.html /* app template */
+⋅⋅⋅⋅common/ /* functionality pertinent to several components propagate into this directory */
+⋅⋅⋅⋅components/ /* where components live */
+⋅⋅⋅⋅⋅⋅components.js /* components entry file */
+⋅⋅⋅⋅⋅⋅home/ /* home component */
+⋅⋅⋅⋅⋅⋅⋅⋅home.js /* home entry file (routes, configurations, and declarations occur here) */
+⋅⋅⋅⋅⋅⋅⋅⋅home.component.js /* home "directive" */
+⋅⋅⋅⋅⋅⋅⋅⋅home.controller.js /* home controller */
+⋅⋅⋅⋅⋅⋅⋅⋅homeDialog.controller.js /* "child" controller */
+⋅⋅⋅⋅⋅⋅⋅⋅home.service.js /* home service */
+⋅⋅⋅⋅⋅⋅⋅⋅home.scss /* home styles */
+⋅⋅⋅⋅⋅⋅⋅⋅home.html /* home template */
+⋅⋅⋅⋅⋅⋅⋅⋅home.spec.js /* home specs (for entry, component, and controller) */
+```
 
-#### Blog resources
+### Naming convention
+Component pieces follow the naming convention **`component`**`.`**`type`**`.`**`ext`**. This aids the "main" component scripts (i.e. "`component.js`") on how to properly declare the modules.
+
+# Development
+## Dependencies
+Bare minimum tools needed to run/build this app:
+* `node` and `npm` (>= 4.0.0 recommended)
+
+## Installing
+* `fork` this repo
+* `clone` your fork
+* `npm install` to install dependencies
+
+## Running the app
+This app uses Gulp to build and launch the development environment. After you have installed all dependencies, the app can be run using the provided npm scripts. Running `npm start` will bundle the app with `webpack`, launch a development server, and watch all files. The port will be displayed in the terminal.
+ 
+### Available scripts
+The list of available tasks is as follows:
+* `npm run build`
+  * runs Webpack, which will transpile, concatenate, and compress (collectively, "bundle") all assets and modules into `dist/bundle.js` (for scripts) and `dist/app.css` (for styles). It also prepares `index.html` to be used as application entry point by linking the injected assets on build.
+* `npm run serve`
+  * starts a dev server via `webpack-dev-server`, serving the client folder.
+* `npm run watch`
+  * alias of `serve`
+* `npm start` (which is the default task that runs when typing `gulp` without providing an argument)
+  * runs `serve`.
+* `npm run component`
+  * scaffolds a new Angular component. [Read below](#generating-components) for usage details.
+  
+## Testing
+`Mocha` is the testing suite and `Chai` is the assertion library. To run the tests, run `npm test`.
+
+`Karma` combined with Webpack runs all files matching `*.spec.js` inside the `app` folder. This allows the test files to remain local to the component. When developing new components, be sure to define `*.spec.js` files within their corresponding component directory so the loader can properly associate them. The file `spec.bundle.js` is the Webpack-generated bundle file for **all** spec files that Karma will run.
+
+## Generating components
+Following a consistent directory structure between components offers the certainty of predictability. The build process takes advantage of this certainty with a gulp task to automate the "instantiation" of new components. The component boilerplate task generates the following:
+```
+⋅⋅⋅⋅⋅⋅componentName/
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.js // entry file where all dependencies load
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.component.js // imports template and controller
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.controller.js // imported into the component directly
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.html // imported into the component directly
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.scss // scoped to affect only its own template
+⋅⋅⋅⋅⋅⋅⋅⋅componentName.spec.js // contains passing demonstration tests
+```
+To generate a component, run `npm run component -- --name componentName` (including the "blank" flag, `--`).
+
+The parameter following the `--name` flag is the name of the component to be created. Ensure that it is unique or it will overwrite the preexisting identically-named component.
+
+The component will be created, by default, inside `client/app/components`. To change this, apply the `--parent` flag, followed by a path relative to `client/app/components`.
+
+For example, running `npm run component -- --name signup --parent auth` will create a `signup` component at `client/app/components/auth/signup`. Running `npm run component -- --name footer --parent ../common` creates a `footer` component at `client/app/common/footer`.  
+
+Because the argument to `--name` applies to the folder name **and** the actual component name, make sure to camelcase the component names when using multi-word names.
+
+# Reference
+## Libraries
+### [AngularJS](http://angularjs.org/)
+AngularJS is a M-V-* (Model-View-Whatever) Javascript Framework for creating single-page web applications. In this project, it is used for all the application routing as well as all of the frontend views and logic.
+#### Angular Material
+[Angular Material](https://material.angularjs.org/latest/) is both a UI Component framework and a reference implementation of Google's [Material Design](https://material.google.com/) specification. Though most Google-specific styles have been overridden with UOIT branding, the core UI components provide the majority of user interactions, layout directives, polyfilled browser features, and accessibility additions.
+
+### [A-Frame](https://aframe.io)
+A-Frame is an open-source WebVR framework for creating virtual reality (VR) experiences with HTML. It is used to build VR scenes that work across smartphones, desktops, Oculus Rift, and consumer headsets like HTC Vive and Samsung Gear.
+#### Angular integration
+This project contains custom Angular directives for use with A-Frame, which include:
+- `<aframe-scene>` – proxies `<a-scene>` and provides a shared controller to all elements within the scene
+- `<aframe-entity>` – wraps the `<a-entity>` building block to provide Angular data-binding to entity attributes; also provides a base class that can be extended to write new A-Frame components (in line with their core philosophy)
+- `<scene-link>` and `<hot-spot>` – in-scene convenience components; `<a-entity>`s that are pre-configured for tour behaviours (such as moving between scenes or viewing informational popups).
+
+### [Google Maps](https://developers.google.com/maps/documentation/javascript/)
+The **Google Maps V3 Javascript API** provides the tour with cartographical navigation and geolocation features. It is wrapped in the **[ng-map](https://ngmap.github.io/)** Angular directive for data-binding, and uses tour API data in the [GeoJSON](http://geojson.org/) format.
+
+## Build tools
+
+### [Webpack](https://webpack.github.io/)
+Webpack is a module bundler for modern JavaScript applications, allowing developers to `require('module')` or `import * from 'module'` in the same manner they would with a module system (such as in a node.js environment or with ES6). Using "loaders", Webpack can also streamline the packaging of other non-JS assets, like CSS/Sass, HTML, and even images into an injected bundle. This application uses Webpack to componentize assets and deliver a highly optimized output.
+
+**TODO:** Needs Webpack code splitting for route-loaded script bundles (e.g. controllers loaded by `ui-router`).
+
+### [Babel](http://babeljs.io/)
+This application's JavaScript is written in _ECMAScript 2015_ and uses Babel during compilation. 
+
+Babel is an ES6-to-ES5 transpiler. _ECMAScript 2015_ (or **ES6**/**ES2015**) is an ECMAScript standard that was ratified in June 2015. ES6 is a significant update to the JavaScript language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is underway now, but this project uses Babel to maintain support for pre-ES6 engines. The transpiling step is handled by Webpack using the `babel-loader` Webpack loader (discussed above).
+
+### [Sass](http://sass-lang.com/)
+Sass is a CSS extension language adding things like extending, variables, and mixins to the language. This project places a good bulk of the common styles in the `/app/common/common.scss` file, which contains shared Sass elements, such as mixins, variables, and global styles, and libraries. This file also contains imported dependency library styles.
+
+## Resources
+
+This project utilizes [these best AngularJS practices](https://github.com/toddmotto/angular-styleguide) and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
 
 The following blogs are indispensable resources containing programming techniques and philosophies used in this project:
 
 - [Ben Nadel](http://www.bennadel.com/): advanced Angular techniques
 - [Dr. Axel Rauschmayer](http://www.2ality.com/): ES6 techniques and best practices
 
----
-
-### [AngularJS](http://angularjs.org/)
-
-AngularJS is a M-V-* (Model-View-Whatever) Javascript Framework for creating single-page web applications. In this project, it is used for all the application routing as well as all of the frontend views and logic.
-
-The AngularJS files are all located within `/app`, structured in the following manner:
-
-```
-.
-├── components
-│   ├── component
-│   │   ├── example_directive.js
-│   │   ├── example-part_factory.js
-│   │   ├── example_service.js
-│   │   ├── example_filter.js
-│   │   └── childcomponent
-│   │       ├── example_directive.js
-│   │       ├── example-part_factory.js
-│   │       ├── example_service.js
-│   │       └── example_filter.js
-│   ├── app_config.js 
-│   ├── app_run.js
-│   ├── app_templates.js
-│   ├── index.js
-└── main.js
-```
-
-Each folder in the `/app/components` directory represents a component and its child components. These folders contain all the files neccessary to power that component, including templates and Sass files.
-
-##### Naming convention
-
-Component pieces follow the naming convention **`component`**`-`**`part`****`_`****`type`**`.js`. This guides the 'main' component `index.js` on how to properly declare the modules.
-
-##### Module organization
-
-Controllers, services, directives, etc. should all be placed within their respective component folders, and will be automatically required and mounted via the main `index.js` using `bulk-require`. All modules must export an object of the format:
-
-```javascript
-const ExampleModule = function() {};
-
-export default {
-  name: 'ExampleModule',
-  fn: ExampleModule
-};
-
-```
-
-##### Dependency injection
-
-Dependency injection is carried out with the `ng-annotate` library. In order to take advantage of this, a simple directive prologue of the format:
-
-```js
-function MyService($http) {
-  'ngInject';
-  ...
-}
-```
-
-needs to be added at the very beginning of any Angular functions/modules. The Gulp tasks will then take care of adding any dependency injection, requiring you to only specify the dependencies within the function parameters and nothing more.
-
-##### [Angular Material](https://material.angularjs.org/latest/)
-
-Angular Material is both a UI Component framework and a reference implementation of Google's [Material Design](https://material.google.com/) specification. Though most Google-specific styles have been overridden with UOIT branding, the core UI components provide the majority of user interactions, layout directives, polyfilled browser features, and accessibility additions.
-
----
-
-### [A-Frame](https://aframe.io)
-
-A-Frame is an open-source WebVR framework for creating virtual reality (VR) experiences with HTML. It is used to build VR scenes that work across smartphones, desktops, Oculus Rift, and consumer headsets like HTC Vive and Samsung Gear.
-
-##### Angular integration
-
-This project contains some custom Angular directives for use with A-Frame, which include:
-- `<aframe-scene>` – proxies `<a-scene>` and provides a shared controller to all elements within the scene
-- `<aframe-entity>` – wraps the `<a-entity>` building block to provide Angular data-binding to entity attributes; also provides a base class that can be extended to write new A-Frame components (in line with their core philosophy)
-
----
-
-### [Google Maps](https://developers.google.com/maps/documentation/javascript/)
-
-The **Google Maps V3 Javascript API** provides the tour with cartographical navigation and geolocation features. It is wrapped in the **[ng-map](https://ngmap.github.io/)** Angular directive for data-binding, and uses tour API data in the [GeoJSON](http://geojson.org/) format.
-
----
-
-### [Sass](http://sass-lang.com/)
-
-Sass is a CSS extension language adding things like extending, variables, and mixins to the language. This project provides a `/app/styles` folder which contains common Sass elements, such as mixins, variables, global styles, and libraries. Explicit imports into `/app/main.scss` bootstrap the styles as well as module-specific `.scss` files. A Gulp task (discussed later) is provided for compilation and minification of the stylesheets based on this file.
-
----
-
-### [Browserify](http://browserify.org/)
-
-Browserify is a Javascript file and module loader, allowing you to `require('modules')` in all of your files in the same manner as you would on the backend in a node.js environment. The bundling and compilation is then taken care of by Gulp, discussed below.
-
----
-
-### [Babel](http://babeljs.io/)
-
-This application's JavaScript is written in _ECMAScript 2015_ and uses Babel during compilation. 
-
-Babel is an ES6-to-ES5 transpiler. _ECMAScript 2015_ (or **ES6**/**ES2015**) is an ECMAScript standard that was ratified in June 2015. ES6 is a significant update to the JavaScript language, and the first major update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is underway now, but this project uses Babel to maintain support for pre-ES6 engines. The transpiling step is handled by Gulp, discussed below.
-
----
-
-### [Gulp](http://gulpjs.com/)
-
-Gulp is a Node-based "streaming build system", which provides a very fast and efficient method for running build tasks.
-
-A `/gulp` folder is included in the project, and contains a configuration file, some utilities, and a directory of `/gulp/tasks` inside containing single modules for various build processes.
-
-```
-.
-├── config.js
-├── index.js
-├── tasks
-│   └── ...example-task.js
-└── util
-    ├── bundleLogger.js
-    ├── handleErrors.js
-    ├── scriptFilter.js
-    └── testServer.js
-```
-
-##### Web Server
-
-Gulp is used here to provide an Express web server for viewing and testing the application as you build. It serves static files from the `/build` directory, and leaves app-level routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes.
-
-The application is served to `localhost:8080` after running the `gulp` (`dev` only) task. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (which will be `localhost:4000` by default). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
-
-In a production environment, the Virtual Tour server and API replace the Gulp server.
-
-##### Scripts
-
-A number of build processes are automatically run on all of our JavaScript files, run in the following order:
-
-- **ESLint:** Gulp is currently configured to run an ESLint task before processing any Javascript files. This will show any errors in your code in the console, but will not prevent compilation or minification from occurring. You will be notified of parsing errors that prevent compilation.
-- **Browserify:** The main build process run on any Javascript files. This processes any of the `require('module')` statements, compiling the files as necessary.
-- **Babelify:** This transform uses [Babel](#babel) to provide support for ES6+ features.
-- ~~**Debowerify:** Parses `require()` statements in your code, mapping them to `bower_components` when necessary. This allows you to use and include bower components just as you would npm modules.~~ **Module removed due to lack of need for Bower**
-- **ngAnnotate:** This will automatically add the correct dependency injection to any AngularJS files, as [mentioned previously](#dependency-injection).
-- **Uglifyify:** Transform that uses UglifyJS to minify the file created by Browserify and ngAnnotate.
-
-The resulting file (`main.js`) is placed inside the directory `/build/js/`.
-
-##### Styles
-
-Just one plugin is necessary for processing our SASS files, and that is `gulp-sass`. This will read the `main.scss` file, processing and importing any dependencies and then minifying the result. This file (`main.css`) is placed inside the directory `/build/css/`.
-
-- **gulp-autoprefixer:** Gulp is currently configured to run autoprefixer after compiling the scss.  Autoprefixer will use the data based on current browser popularity and property support to apply prefixes (`-moz-`, `-webkit-`) in the final outputted CSS.
-
-##### Images
-
-Any images placed within `/app/images` will be automatically copied to the `build/images` directory. If running `gulp prod`, they will also be compressed via **gulp-imagemin**.
-
-##### Views
-
-When any changes are made to the `index.html` file, the new file is simply copied to the `/build` directory without any changes occurring.
-
-Files inside `/app/components`, on the other hand, go through a slightly more complex process. The `gulp-angular-templatecache` module is used in order to process all views/partials, creating the `app_templates.js` file shown in the directory tree above. This file will contain all the views, now in Javascript format inside Angular's `$templateCache` service, making them all available to Angular by their full path (starting at/excluding `/app/components`). This will allow us to include them in our Javascript minification process, as well as avoid extra HTTP requests for our views.
-
-##### Watching files
-
-All of the Gulp processes mentioned above are run automatically when any of the corresponding files in the `/app` directory are changed, and this is thanks to our Gulp watch tasks. Running `gulp dev` will begin watching all of these files, while also serving to `localhost:8080`, and with browser-sync proxy running at `localhost:4000` (by default).
-
-##### Production
-
-Just as there is the `gulp dev` task for development, there is also a `gulp prod` task for putting the Virtual Tour into a production-ready state. This will run each of the tasks, while also adding the image minification task discussed above. There is also `gulp deploy` task *(currently in development)* that is included when running the production task. This deploy task will automatically push a production-ready app to the host.
-
-**Reminder:** When running the production task, gulp will not fire up the express server and serve your index.html. This task is designed to be run before the `deploy` step that may copy the files from `/build` to a production web server.
-
-##### Compression
-
-When running with `gulp prod`, a pre-compressed file is generated in addition to uncompressed file (.html.gz, .js.gz, css.gz). This is done to enable web servers serve compressed content without having to compress it on the fly. Pre-compression is handled by `gzip` task.
-
-##### Tests
-
-A Gulp task also exists for running the test framework (discussed in detail below). Running `gulp test` will run any and all tests inside each `/app/components` directory and show the results (and any errors) in the terminal.
-
----
-
-### Testing *(still heavily under development)*
-
-This application also includes a framework for unit and end-to-end (e2e) testing via [Karma](http://karma-runner.github.io/) and [Jasmine](http://jasmine.github.io/). In order to test AngularJS modules, the [angular.mocks](https://docs.angularjs.org/api/ngMock/object/angular.mock) module is used.
-
-**NOTE: the test suite is currently in infancy and only includes a couple of examples.**
-
-All of the tests can be run at once with the command `gulp test`. However, the tests are broken up into two main categories:
-
-##### End-to-End (e2e) Tests
-
-e2e tests, as hinted at by the name, consist of tests that involve multiple modules or require interaction between modules, similar to integration tests. These tests are carried out using the Angular library [Protractor](https://github.com/angular/protractor), which also utilizes Jasmine. These tests ensure that the flow of the application is performing as designed from start to finish.
-
-Two examples were included in the project's boilerplate, located in `/tests`:
-
-- `routes_spec.js`, which tests the functionality of the AngularJS routing
-- `example_spec.js`, which tests the functionality of an example route, controller, and view
-
-More examples can be seen at the above link for Protractor.
-
-All e2e tests are run with `gulp protractor`.
-
-##### Unit Tests
-
-Unit tests are used to test a single module (or "unit") at a time in order to ensure that each module performs as intended individually. In AngularJS this could be thought of as a single controller, directive, filter, service, etc. **Each component should be accompanied by a test, which should be stored alongside the component itself for easy maintenance.**
-
-An example test in `/tests` is provided for the following types of AngularJS modules:
-
-- `unit/controllers/example_spec.js`
-- `unit/services/example_spec.js`
-- `unit/directives/example_spec.js`
-- `unit/constants_spec.js`
-
-All unit tests are run with `gulp unit`. When running unit tests, code coverage is simultaneously calculated and output as an HTML file to the `/coverage` directory.
+# Virtual Tour Support and Questions
+> Contact us, anytime, regarding anything about this project.
+
+* **Webteam:** [webteam@uoit.ca](mailto:webteam@uoit.ca)
+* **Jackson:** [jackson.teather@uoit.ca](mailto:jackson.teather@uoit.ca)

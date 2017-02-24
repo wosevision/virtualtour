@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">client/app/common/user/userSession.service.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppController">AppController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-appComponent">appComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-commonModule">commonModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/buttonbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html">ButtonbarController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonbarComponent">buttonbarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonBarModule">buttonBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/popup.service.js~PopupService.html">PopupService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-popupModule">popupModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/error</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorController">ErrorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errorModule">errorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/info</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/info/info.controller.js~InfoController.html">InfoController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-infoModule">infoModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/login</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LoginController">LoginController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-loginModule">loginModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/welcome</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html">WelcomeController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-welcomeModule">welcomeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/titlebar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titleBarButtonDirective">titleBarButtonDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarComponent">titleBarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarModule">titleBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/user</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/user/userSession.service.js~UserSessionService.html">UserSessionService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserAuthFactory">UserAuthFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserResolverFactory">UserResolverFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-userModule">userModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utilModule">utilModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/dom</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bindCompileDirective">bindCompileDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-domModule">domModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/model</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNumberDirective">toNumberDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modelModule">modelModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/resource</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-DraftResourceFactory">DraftResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapResourceFactory">MapResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TourResourceFactory">TourResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-resourceModule">resourceModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeModule">aframeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.controller.js~EditorController.html">EditorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.service.js~EditorService.html">EditorService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html">EditorDialogController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorComponent">editorComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorModule">editorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/entity</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entity.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityModule">entityModule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/hotspot</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hotspotDirective">hotspotDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hotspotModule">hotspotModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.controller.js~SceneController.html">SceneController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.service.js~SceneService.html">SceneService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneComponent">sceneComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneModule">sceneModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scenelink</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scenelinkDirective">scenelinkDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-scenelinkModule">scenelinkModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/sky</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.controller.js~SkyController.html">SkyController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.service.js~SkyService.html">SkyService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyComponent">skyComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyModule">skyModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/drilldown</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html">DrilldownController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownComponent">drilldownComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownModule">drilldownModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/map</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/map/map.controller.js~MapController.html">MapController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapComponent">mapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapModule">mapModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/search</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/search/search.controller.js~SearchController.html">SearchController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchComponent">searchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchModule">searchModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/settings</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html">ConnectionDetailsService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/settings.controller.js~SettingsController.html">SettingsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsFactory">SettingsFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsComponent">settingsComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsModule">settingsModule</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">client/app/common/user/userSession.service.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isDefined, equals } from &apos;angular&apos;;
+
+/**
+ * User session management service.
+ */
+class UserSessionService {
+	constructor($http, $popupWindow, SettingsFactory, USER_ROLES, USER_DEFAULTS) {
+	  &apos;ngInject&apos;;
+	  this.$http = $http;
+	  this.$popupWindow = $popupWindow;
+	  this.SettingsFactory = SettingsFactory;
+
+		this._roles = USER_ROLES;
+		this._settings = USER_DEFAULTS.settings;
+		this._usage = USER_DEFAULTS.usage;
+
+		this.user = {};
+	}
+	/**
+	 * This function creates a new user session, which is
+	 * necessary to store application settings regardless of
+	 * whether there is a &quot;real&quot; user logged in. If there is
+	 * a user, the UserSession service will:
+	 * 
+	 * - set the `userId` property to indicate an active user
+	 * - read user roles based on their boolean values on user
+	 * - push role strings into a `roles` property on UserSession
+	 * 
+	 * If not, the service checks for local settings and inits
+	 * a &quot;blank&quot; user with those settings (or the app defaults).
+	 * 
+	 * @param  {Object} user DB user object to use for session
+	 * @return {Object}      Fully-formed user object after settings
+	 */
+	create(user) {
+		this.roles = [];
+		if (user) {
+			this.userId = user._id;
+			this.user = user;
+	
+			const { isAdmin, isEditor, isContributor } = user;
+			(isAdmin) &amp;&amp; this.roles.push(this._roles.admin);
+			(isEditor) &amp;&amp; this.roles.push(this._roles.editor);
+			(isContributor) &amp;&amp; this.roles.push(this._roles.Contributor);
+
+	  	console.log(&apos;created session from user&apos;);
+		} else {
+			/**
+			 * Looks inside SettingsFactory for user data matching the pattern
+			 * defined in USER_DEFAULTS; store in temporary vars.
+			 *
+			 * @alias _settings/_usage
+			 * @memberof UserSession
+			 */
+			const _settings = this.SettingsFactory.get(&apos;settings&apos;),
+						_usage = this.SettingsFactory.get(&apos;usage&apos;);
+
+			/**
+			 * Init a &apos;blank&apos; user with the required settings properties to
+			 * avoid assignment errors (i.e. `this.user.settings[key] = ...`)
+			 * 
+			 * @memberof UserSession
+			 * @type {Object}
+			 * @prop {Object} settings The user&apos;s unparsed settings
+			 * @prop {Object} usage 	 The user&apos;s unparsed usage prefs
+			 */
+			this.user = {
+				settings: {},
+				usage: {}
+			}
+
+			// Use the UserSession&apos;s getter/setters to merge the found setting
+			// values into USER_DEFAULTS via the user model.
+			this.settings = _settings &amp;&amp; !equals(_settings, {}) ? _settings : this._settings;
+			this.usage = _usage &amp;&amp; !equals(_usage, {}) ? _usage : this._usage;
+
+	  	console.log(&apos;created session from local defaults&apos;, _settings);
+		}
+		return this.user;
+	}
+	/**
+	 * Checks the `userId` property to verify whether settings should
+	 * save to a logged in user; if not, saves them to localStorage using
+	 * the `SettingsFactory`.
+	 */
+	save() {
+  	console.log(&apos;saving settings to user...&apos;);
+		if (this.userId) {
+			this.$http.post(&apos;/user/save&apos;, this.user).then(user =&gt; {
+				this.$popupWindow.toast(&apos;primary&apos;, {
+		    	message: &apos;User settings updated!&apos;,
+		    	action: &apos;Dismiss&apos;
+		    });
+		  	console.log(&apos;saved settings to user!&apos;);
+			});
+		} else {
+			this.SettingsFactory.set(&apos;settings&apos;, this.settings);
+			this.SettingsFactory.set(&apos;usage&apos;, this.usage);
+
+	  	console.log(&apos;saved settings to local!&apos;, this.user);
+		}
+	}
+	/**
+	 * Removes user session data and nulls out roles/ID.
+	 */
+	destroy() {
+		this.user = {
+			settings: {},
+			usage: {}
+		};
+		this.roles = null;
+		this.userId = null;
+
+  	console.log(&apos;user session destroyed&apos;);
+	}
+	/**
+	 * Getter/setter pairs for merging user setting objects from
+	 * the DB the form of:
+	 * 
+	 * `{ toolbarOpen: false }`
+	 * 
+	 * into fully-qualified app-level settings objects that look like:
+	 * 
+	 * ```
+	 * {
+	 *   toolbarOpen: {
+	 *     val: false,
+	 *     label: &apos;Toolbar open&apos;,
+	 *     ...
+	 *   }
+	 * }
+	 * ```
+	 *
+	 * or vice-versa for setting the user object based on app prefs.
+	 *
+	 * @alias settings/usage
+	 * @param  {Object} [settings/usage] Incoming app settings to merge into user
+	 * @return {Object} 								 Merged app settings built from user
+	 */
+	get settings() {
+		if (this.user.settings) {
+	  	Object.keys(this.user.settings).map(key =&gt; {
+	  		if (this._settings[key]) this._settings[key].val = this.user.settings[key];
+		  });
+		  return this._settings;
+		}
+	}
+	set settings(settings) {
+	  if (isDefined(settings)) {
+	  	Object.keys(settings).map(key =&gt; {
+	  		if (this._settings[key]) this.user.settings[key] = settings[key].val;
+		  });
+		  this.save();
+		}
+	}
+	get usage() {
+		if (this.user.usage) {
+	  	Object.keys(this.user.usage).map(key =&gt; {
+	  		if (this._usage[key]) this._usage[key].val = this.user.usage[key];
+		  });
+		  return this._usage;
+		}
+	}
+	set usage(usage) {
+	  if (isDefined(usage)) {
+	  	Object.keys(usage).map(key =&gt; {
+	  		if (this._usage[key]) this.user.usage[key] = usage[key].val;
+		  });
+		  this.save();
+		}
+	}
+}
+
+export default UserSessionService;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

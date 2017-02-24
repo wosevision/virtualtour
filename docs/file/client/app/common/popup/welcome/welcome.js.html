@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../../">
+  <title data-ice="title">client/app/common/popup/welcome/welcome.js | UOIT Virtual Tour API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/wosevision/virtualtour.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppController">AppController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-appComponent">appComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-commonModule">commonModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/buttonbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/buttonbar/buttonbar.controller.js~ButtonbarController.html">ButtonbarController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonbarComponent">buttonbarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-buttonBarModule">buttonBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/popup.service.js~PopupService.html">PopupService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-popupModule">popupModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/error</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorController">ErrorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errorModule">errorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/info</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/info/info.controller.js~InfoController.html">InfoController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-infoModule">infoModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/login</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LoginController">LoginController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-loginModule">loginModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/popup/welcome</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/popup/welcome/welcome.controller.js~WelcomeController.html">WelcomeController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-welcomeModule">welcomeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/titlebar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titleBarButtonDirective">titleBarButtonDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarComponent">titleBarComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titleBarModule">titleBarModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/user</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/common/user/userSession.service.js~UserSessionService.html">UserSessionService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserAuthFactory">UserAuthFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UserResolverFactory">UserResolverFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-userModule">userModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utilModule">utilModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/dom</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bindCompileDirective">bindCompileDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-domModule">domModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/model</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNumberDirective">toNumberDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modelModule">modelModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/common/util/resource</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-DraftResourceFactory">DraftResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapResourceFactory">MapResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TourResourceFactory">TourResourceFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-resourceModule">resourceModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-componentModule">componentModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aframeModule">aframeModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/editor</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.controller.js~EditorController.html">EditorController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editor.service.js~EditorService.html">EditorService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/editor/editorDialog.controller.js~EditorDialogController.html">EditorDialogController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorComponent">editorComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-editorModule">editorModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/entity</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entity.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/entity/entityControls.controller.js~EntityController.html">EntityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityModule">entityModule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entityComponent">entityComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/hotspot</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hotspotDirective">hotspotDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hotspotModule">hotspotModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scene</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.controller.js~SceneController.html">SceneController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/scene/scene.service.js~SceneService.html">SceneService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneComponent">sceneComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sceneModule">sceneModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/scenelink</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-scenelinkDirective">scenelinkDirective</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-scenelinkModule">scenelinkModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/aframe/sky</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.controller.js~SkyController.html">SkyController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/aframe/sky/sky.service.js~SkyService.html">SkyService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyComponent">skyComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-skyModule">skyModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/drilldown</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/drilldown/drilldown.controller.js~DrilldownController.html">DrilldownController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownComponent">drilldownComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-drilldownModule">drilldownModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/map</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/map/map.controller.js~MapController.html">MapController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapComponent">mapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapModule">mapModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/search</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/search/search.controller.js~SearchController.html">SearchController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchComponent">searchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchModule">searchModule</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">app/components/settings</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/connectionDetails.service.js~ConnectionDetailsService.html">ConnectionDetailsService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/client/app/components/settings/settings.controller.js~SettingsController.html">SettingsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsFactory">SettingsFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsComponent">settingsComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsModule">settingsModule</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">client/app/common/popup/welcome/welcome.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import angular from &apos;angular&apos;;
+import ngMaterial from &apos;angular-material&apos;;
+// import nzTour from &apos;nz-tour&apos;;
+
+import template from &apos;./welcome.html&apos;;
+import controller from &apos;./welcome.controller&apos;;
+import &apos;./welcome.scss&apos;;
+
+let welcomeModule = angular.module(&apos;popup.welcome&apos;, [
+  ngMaterial,
+  // nzTour
+])
+
+.config(($mdDialogProvider) =&gt; {
+  &apos;ngInject&apos;;
+	
+	$mdDialogProvider.addPreset(&apos;welcome&apos;, {
+	  options() {
+	    return {
+	    	template,
+	    	controller,
+	    	parent: angular.element(document.body),
+	      controllerAs: &apos;$ctrl&apos;,
+	      bindToController: true,
+	      // targetEvent: ev,
+	      clickOutsideToClose: true,
+	      openFrom: {
+	      	top: 18,
+	      	left: 18,
+	      	width: 36,
+	      	height: 60
+	      },
+	      closeTo: {
+	      	top: 18,
+	      	left: 18,
+	      	width: 36,
+	      	height: 60
+	      }
+	    }
+	  }
+	});
+})
+
+.constant(&apos;TOUR_STEPS&apos;, {
+  config: {
+    mask: {
+      visible: true,
+      clickThrough: false, 
+      clickExit: true,
+      scrollThrough: false,
+      color: &apos;rgba(0,60,113,.7)&apos;
+    },
+    container: &apos;body&apos;,
+    scrollBox: &apos;body&apos;,
+    previousText: &apos;Previous&apos;,
+    nextText: &apos;Next&apos;,
+    finishText: &apos;Finish&apos;,
+    animationDuration: 400,
+    dark: true
+  },
+  steps: [{
+      target: &apos;#locations&apos;,
+      placementPriority: [ &apos;top&apos;, &apos;left&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;This is the location menu.&lt;/h3&gt;UOIT locations can be explored manually using an expanding location menu. &lt;strong&gt;Click this button to open it!&lt;/strong&gt;&apos;
+  }, {
+      target: &apos;#map&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;Explore locations on the campus map!&lt;/h3&gt;The same locations featured above are layed out on an &lt;strong&gt;interactive map, available in this menu&lt;/strong&gt;.&apos;
+  }, {
+      target: &apos;#search&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;&lt;h3&gt;Not sure where to start?&lt;/h3&gt;If you have an idea of something you\&apos;re looking for, &lt;strong&gt;try searching for it&lt;/strong&gt;.&apos;
+  }, {
+      target: &apos;#toolbar-controls&apos;,
+      placementPriority: [ &apos;bottom&apos;, &apos;left&apos;, &apos;right&apos;, &apos;top&apos; ],
+      content: &apos;The button toolbar below and to the right can be &lt;strong&gt;expanded, condensed, or hidden entirely&lt;/strong&gt; with the buttons to the right-hand side here.&lt;br/&gt;&lt;br/&gt;Don\&apos; forget to &lt;strong&gt;register your user account&lt;/strong&gt; for future visits or &lt;strong&gt;book a real tour&lt;/strong&gt; at the university!&apos;
+  }, {
+      target: &apos;#settings&apos;,
+      placementPriority: [ &apos;left&apos;, &apos;top&apos;, &apos;bottom&apos;, &apos;right&apos; ],
+      content: &apos;If you want your preferences saved for future visits, you can &lt;strong&gt;configure your own personal settings&lt;/strong&gt; for the Virtual Tour experience here!&apos;
+  }, {
+      // target: &apos;#aframe-scene&apos;,
+      placementPriority: [ &apos;bottom&apos;, &apos;top&apos;, &apos;left&apos;, &apos;right&apos; ],
+      content: &apos;Would you like to learn how to navigate through &lt;strong&gt;scenes&lt;/strong&gt;?&lt;br/&gt;&lt;div class=&quot;text-center&quot; layout-margin&gt;&lt;md-button class=&quot;md-raised md-primary&quot;&gt;Show me how&lt;/md-button&gt;&lt;md-button&gt;No thanks&lt;/md-button&gt;&lt;/div&gt;&apos;
+  }]
+})
+
+.constant(&apos;WELCOME_TIPS&apos;, {
+	navigation: {
+		title: [&apos;Learn how to&apos;, &apos;Navigate the Tour!&apos;],
+		tips: [{
+			label: &apos;Scene links&apos;,
+			image: &apos;images/tip-scene_link.gif&apos;,
+			content: `&lt;p class=&quot;md-body-1&quot;&gt;Around the Tour, you will find many &lt;strong&gt;blue arrows&lt;/strong&gt; &lt;ng-md-icon icon=&quot;near_me&quot; size=&quot;14&quot; style=&quot;fill:#0077CA&quot;&gt;&lt;/ng-md-icon&gt;
+				pointing to different areas. They are called &lt;strong&gt;scene links&lt;/strong&gt;; use them to travel.
+				&lt;p class=&quot;md-body-1&quot;&gt;Move your cursor over a scene link to highlight it, and click it to travel in the
+				direction it&apos;s pointing.`
+		},{
+			label: &apos;Location menu&apos;,
+			image: &apos;images/tip-location_menu.gif&apos;,
+			content: `&lt;p class=&quot;md-body-1&quot;&gt;The &lt;ng-md-icon icon=&quot;pin_drop&quot; size=&quot;14&quot; style=&quot;fill:#666&quot;&gt;&lt;/ng-md-icon&gt; button 
+				on the far-right bar opens the &lt;strong&gt;location menu&lt;/strong&gt;.&lt;/p&gt;
+				&lt;p class=&quot;md-body-1&quot;&gt;Navigate by picking a location; choose a building to list scenes
+				from; click a scene to view it.&lt;/p&gt;
+				&lt;p class=&quot;md-body-1&quot;&gt;Use this menu to jump to a scene or between far-away scenes. Close
+				the menu by clicking the &lt;ng-md-icon icon=&quot;pin_drop&quot; size=&quot;14&quot; style=&quot;fill:#666&quot;&gt;&lt;/ng-md-icon&gt; button again.&lt;/p&gt;`
+		},{
+			label: &apos;Campus map&apos;,
+			image: &apos;images/tip-campus_map.gif&apos;,
+			content: `&lt;p class=&quot;md-body-1&quot;&gt;The Tour&apos;s built-in &lt;strong&gt;Campus Map&lt;/strong&gt; can be used to navigate the Tour.&lt;/p&gt;
+				&lt;p class=&quot;md-body-1&quot;&gt;The &lt;ng-md-icon icon=&quot;map&quot; size=&quot;14&quot; style=&quot;fill:#666&quot;&gt;&lt;/ng-md-icon&gt; button 
+				on the far-right bar opens the Map.
+				&lt;p class=&quot;md-body-1&quot;&gt;Choose a building on the map by clicking it; click the &lt;strong&gt;Take a tour &#xBB;&lt;/strong&gt; button
+				in the building info to go to that building&apos;s first scene.`
+		}]
+	},
+	poi: {
+		title: &apos;&apos;
+	}
+})
+
+.constant(&apos;WELCOME_TIP_LIST&apos;, [
+	[{
+		title: &apos;Tour navigation&apos;,
+		icon: &apos;my_location&apos;,
+		link: &apos;navigation&apos;,
+		desc: &apos;Learn how to use warp arrows, map view and the location menu to move from scene to scene.&apos;,
+	},{
+		title: &apos;Points of interest&apos;,
+		icon: &apos;place&apos;,
+		link: &apos;&apos;,
+		desc: &apos;See which tour elements offer interactivity and how to use them.&apos;,
+	}],[{
+		title: &apos;Virtual reality&apos;,
+		icon: &apos;3d_rotation&apos;,
+		link: &apos;&apos;,
+		desc: &apos;Experience the UOIT virtual tour immersively with an Oculus&#xA9; Rift.&apos;,
+	},{
+		title: &apos;Mobile VR&apos;,
+		icon: &apos;screen_rotation&apos;,
+		link: &apos;&apos;,
+		desc: &apos;Turn your smartphone into a portal to UOIT with a mobile VR peripheral like HTC Vive, Samsung Gear or Google Cardboard.&apos;,
+	},{
+		title: &apos;Customization&apos;,
+		icon: &apos;settings&apos;,
+		link: &apos;&apos;,
+		desc: &apos;Learn about the options available for fine-tuning the virtual tour interface.&apos;
+	}]
+])
+
+.name;
+export default welcomeModule;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
