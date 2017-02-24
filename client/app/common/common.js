@@ -6,6 +6,9 @@ import TitleBar from './titlebar/titlebar';
 import User from './user/user';
 import Util from './util/util';
 
+import AframeModule from './aframe/aframe';
+AframeModule.registerAll();
+
 let commonModule = angular.module('app.common', [
   ButtonBar,
   Popup,

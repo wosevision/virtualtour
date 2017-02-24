@@ -1,15 +1,5 @@
 import angular from 'angular';
 
-import 'aframe';
-import 'aframe-event-set-component';
-import 'aframe-reverse-look-controls-component';
-import 'aframe-look-at-component';
-import 'aframe-text-component';
-import 'aframe-mouse-cursor-component';
-import { primitives, loaders } from 'aframe-extras';
-loaders.registerAll();
-primitives.registerAll();
-
 import AframeScene from './scene/scene';
 import AframeSky from './sky/sky';
 import AframeSceneLink from './scenelink/scenelink';
