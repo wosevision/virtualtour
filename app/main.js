@@ -23,7 +23,7 @@ import 'ngmap';
 import 'ng-wig';
 import 'nz-tour';
 import 'v-accordion';
-import '../../uoit-campus-map/dist/uoit-campus-map';
+import 'uoit-campus-map';
 
 // aframe modules
 import 'aframe';
@@ -33,6 +33,7 @@ import 'aframe-look-at-component';
 import 'aframe-text-component';
 import 'aframe-mouse-cursor-component';
 import { primitives } from 'aframe-extras';
+// loaders.registerAll();
 primitives.registerAll();
 
 // app modules
@@ -62,7 +63,7 @@ const requires = [
   'ngWig',
   'nzTour',
   'vAccordion',
-  'campusMap',
+  // 'campusMap',
   'app.templates',
   'app.components'
 ];

@@ -129,7 +129,7 @@
   }
 }
 
-&.is-active > drilldown-content .open-indicator {
+.is-active > drilldown-content .open-indicator {
   &::after {
     transform: rotate(90deg);
     opacity: 0;
