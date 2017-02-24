@@ -57,9 +57,14 @@ let drilldownModule = angular.module('drilldown', [
       				}
       			}).$promise;
           },
-          children($stateParams, $aframeScene, currentLocation, Tour) {
-          	if (!$stateParams.building && !$stateParams.scene && currentLocation[0].default) {
-	          	$aframeScene.scene = currentLocation[0].default;
+          sceneData(currentLocation, Tour) {
+        		if (currentLocation[0] && currentLocation[0].default) {
+      				return Tour.scene.get({ id: currentLocation[0].default }).$promise;
+        		}
+          },
+          children($stateParams, $aframeScene, currentLocation, sceneData, Tour) {
+          	if (!$stateParams.building && !$stateParams.scene && sceneData) {
+	          	$aframeScene.scene = sceneData;
 	          }
       			return Tour.building.query({
       				filter: {
@@ -85,11 +90,15 @@ let drilldownModule = angular.module('drilldown', [
       					}
       				}).$promise;
 	          },
-            children($stateParams, $aframeScene, currentLocation, currentBuilding, Tour) {
-	          	if (!$stateParams.scene && currentBuilding[0].default) {
-		          	$aframeScene.scene = currentBuilding[0].default;
+            sceneData(currentBuilding, Tour) {
+          		if (currentBuilding[0] && currentBuilding[0].default) {
+	      				return Tour.scene.get({ id: currentBuilding[0].default }).$promise;
+          		}
+            },
+            children($stateParams, $aframeScene, currentLocation, currentBuilding, sceneData, Tour) {
+	          	if (!$stateParams.scene && sceneData) {
+		          	$aframeScene.scene = sceneData;
 	            }
-
       				return Tour.scene.query({
       					filter: {
       						parent: currentBuilding[0]._id
@@ -112,14 +121,18 @@ let drilldownModule = angular.module('drilldown', [
       						code: $stateParams.scene,
       						parent: currentBuilding[0]._id
       					}
-      				});
+      				}).$promise;
             },
-            item($aframeScene, currentScene) {
-            	return currentScene.$promise.then((data) => {
-            		if (data.length === 1 && data[0].panorama) {
-			          	$aframeScene.scene = data[0];
-            		}
-            	});
+            sceneData(currentScene, Tour) {
+          		if (currentScene.length === 1 && currentScene[0]._id) {
+	      				return Tour.scene.get({ id: currentScene[0]._id }).$promise;
+          		}
+            },
+            item($aframeScene, sceneData) {
+          		if (sceneData && sceneData.panorama) {
+		          	$aframeScene.scene = sceneData;
+          		}
+	          	return sceneData;
             }
           }
         });
