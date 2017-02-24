@@ -50,7 +50,7 @@ class SkyService {
 	 * @return {string} Formatted Cloudinary setting string (`c_scale,f_auto,etc`)
 	 */
 	getSettings() {
-		const mobile = (utils.isMobile || utils.device.isMobile)(),
+		const mobile = utils.device.isMobile(),
 					lowRes = !this.UserSession.usage.resolution.val;
 		const settings = {
 			w: mobile||lowRes ? 2048 : 4096,

@@ -2,10 +2,11 @@
 					ng-attr-rotation="{{ sceneLink.rotation.join(' ') }}">
   <scene-link ng-attr-id="link_{{ ::sceneLink.scene }}"
               color="#0077CA"
+              opacity="0.85"
               href="#box_object"
               hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7"
 							ng-click="elemClick()">
+	  <!-- <a-animation attribute="rotation" begin="goto" dur="500" to="360 0 90"></a-animation> -->
   </scene-link>
-  <!-- <a-animation attribute="rotation" begin="click" dur="500" fill="backwards" to="360 0 90"></a-animation> -->
 	<a-animation attribute="scale" begin="goto" dur="100" to="0 0 0"></a-animation>
 </a-entity>

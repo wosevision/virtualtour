@@ -17,7 +17,7 @@ function AppController(
     () => ({
     	screen: !$mdMedia('gt-sm'),
     	landscape: $mdMedia('landscape'),
-    	device: (utils.isMobile || utils.device.isMobile)()
+    	device: utils.device.isMobile()
     }),
     m => {
       this.mobile = m; //console.log(m);

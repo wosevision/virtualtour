@@ -7,7 +7,7 @@ module.exports = {
   entry: {},
   module: {
     noParse: [
-      /node_modules\/aframe\/dist\/aframe.js/, // for aframe from NPM
+      /node_modules\/aframe\/dist\/aframe(-master)*.js/, // for aframe from NPM
       /node_modules\/cannon\/build\/cannon.js/, // for aframe-extras from NPM
     ],
     loaders: [

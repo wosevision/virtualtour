@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "aframe": "^0.5.0",
+    "aframe": "git+https://github.com/wosevision/aframe.git",
     "aframe-animation-component": "^3.2.1",
     "aframe-drag-look-controls-component": "git+https://github.com/wosevision/aframe-drag-look-controls-component.git",
     "aframe-event-set-component": "^3.0.1",
