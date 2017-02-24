@@ -1,0 +1,93 @@
+@import '../../common/common';
+@import '~v-accordion/src/vAccordion/styles/vAccordion';
+
+.md-sidenav-backdrop {
+  background-color: #003C71;
+  top: 69px;
+}
+
+.main-menu {
+	background-color: transparent;
+	max-width: none;
+	min-width: auto;
+	width: auto;
+  transition: left 0.8s ease;
+  overflow: visible;
+  &.md-sidenav-right,
+	&.md-sidenav-left {
+		top: 69px;
+	}
+	.toolbar-open & {	
+		// width: calc(30% - 7.25rem);
+    left: calc(100% - 123px);
+		&.blur-active {
+			width: calc(100% - 123px);
+		}
+	}
+	.toolbar-condensed & {
+		// width: calc(30% - 60px);
+    left: calc(100% - 60px);
+  	transition: left 0.6s cubic-bezier(1,-1,.5,1);
+		&.blur-active {
+			width: calc(100% - 60px);
+		}
+	}
+	&.is-mobile {
+	  top: 0;
+		left: 100%;
+		&:not(.is-landscape) {
+			padding-top: 56px;
+			width: 100%;
+		}
+		ui-view {
+			max-width: none;
+		}
+	}
+	&.blur-active {
+		> ui-view {
+			max-width: none !important;
+			width: 100% !important;
+		}
+	}
+	ui-view {
+		height: 100%;
+		min-width: 300px;
+	}
+}
+
+.vAccordion--default {
+	background-color: rgba(white, 0.95);
+}
+
+.vAccordion--default v-pane-header {
+	color: #003C71;
+	position: relative;
+	margin: 0;
+  line-height: 1em;
+  text-transform: uppercase;
+  font-weight: 700;
+	padding: 16px;
+	&::after, &::before {
+		right: 16px;
+	}
+}
+
+.user-dashboard {
+	background: $sidebar_bg_radial_hard;
+	md-card-header {
+		position: relative;
+		&:not(.signin-msg) {
+			background: linear-gradient(to top, hsla(0,0%,100%,1) 65%,hsla(0,0%,100%,0) 100%);
+	    position: relative;
+	    transform: translateY(-50%);
+	    margin-bottom: -44px;
+	  }
+    &-text {
+    	max-height: none;
+    	padding-left: 16px;
+    }
+	}
+	.md-card-image {
+		height: 60px;
+	}
+}

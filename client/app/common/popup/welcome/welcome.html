@@ -1,0 +1,149 @@
+<md-dialog aria-label="Welcome to the UOIT Virtual Tour" class="welcome-dialog">
+	<form>
+		<!-- TOOLBAR / TITLE / CLOSE BUTTON -->
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>UOIT Virtual Tour</h2>
+				<span flex></span>
+				<md-button ng-if="!$ctrl.currentTips" class="md-icon-button" ng-click="$ctrl.cancel()" aria-label="Close this window">
+					<ng-md-icon
+						icon="close"
+						style="fill: white;">
+					</ng-md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- STANDARD: WELCOME TABS DISPLAY -->
+		<md-dialog-content ng-if="!$ctrl.currentTips">
+			<md-tabs
+				md-dynamic-height
+				md-border-bottom
+				md-center-tabs>
+				<!-- WELCOME -->
+				<md-tab label="Welcome">
+					<md-content class="md-padding" layout="column" layout-align="start center">
+<!-- 						<ng-md-icon
+							class="dialog-icon compass-icon"
+							icon="explore"
+							size="90"
+							style="fill: #0077CA;">
+						</ng-md-icon> -->
+						<div class="dialog-icon compass-icon">
+							<!-- <img src="images/uoit-shield.svg"> -->
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 84.86">
+							  <path d="M43.82,82.91c-17.6,0-25.67-15.73-25.67-31.62s8.07-31.62,25.67-31.62c13.27,0,21.11,8.93,24.18,20.15L67.94,0H0L0,51C.71,70.93,15.27,84.86,34,84.86a28.57,28.57,0,0,0,10-2Z" style="fill: #0077ca"/>
+							  <path d="M43.89,22.17c-14.13,0-15.16,19.16-15.16,29.2s1,29.21,15.16,29.21S59,61.42,59,51.37,58,22.17,43.89,22.17Z" style="fill: #0077ca"/>
+							</svg>
+						</div>
+						<h2 class="md-display-2">Welcome to the Virtual Tour!</h2>
+						<p class="md-headline">Experience an immersive 3D visit to the University of Ontario Institute of Technology.</p>
+						<p class="md-headline">Use the tabs above to learn more about how to use the Virtual Tour, or just dive in!<br/>You'll learn quickly.</p>
+					</md-content>
+				</md-tab>
+				<!-- USAGE TIPS -->
+				<md-tab label="Usage tips">
+					<md-content class="md-padding" layout="column">
+						<div>
+							<ng-md-icon
+								class="dialog-icon tips-icon"
+								icon="live_help"
+								size="90"
+								style="fill: #0077CA;">
+							</ng-md-icon>
+							<h2><span class="md-display-2">Tips</span><br/><span class="md-headline">for better usage</span></h2>
+						</div>
+						<div layout="row">
+							<md-list flex>
+								<md-subheader class="md-no-sticky">First steps</md-subheader>
+								<md-divider ></md-divider>
+								<md-list-item class="md-2-line md-long-text" ng-repeat="tips in ::$ctrl.welcomeTipsList[0]" ng-click="$ctrl.viewTip(tips.link)" layout="row">
+									<ng-md-icon icon="{{ ::tips.icon }}" size="24" style="fill: #0077CA;"></ng-md-icon>
+									<div class="md-list-item-text" layout="column">
+										<h3>{{ ::tips.title }}</h3>
+										<p>{{ ::tips.desc }}</p>
+									</div>
+								</md-list-item>
+							</md-list>
+							<md-list flex>
+								<md-subheader class="md-no-sticky">Digging deeper</md-subheader>
+								<md-divider ></md-divider>
+								<md-list-item class="md-2-line md-long-text" ng-repeat="tips in ::$ctrl.welcomeTipsList[1]" ng-click="$ctrl.viewTip(tips.link)" layout="row">
+									<ng-md-icon icon="{{ ::tips.icon }}" size="24" style="fill: #0077CA;"></ng-md-icon>
+									<div class="md-list-item-text" layout="column">
+										<h3>{{ ::tips.title }}</h3>
+										<p>{{ ::tips.desc }}</p>
+									</div>
+								</md-list-item>
+							</md-list>
+						</div>
+					</md-content>
+				</md-tab>
+				<!-- ACCESSIBILITY -->
+				<md-tab label="Accessibility">
+					<md-content class="md-padding" layout="column">
+						<div>
+							<ng-md-icon
+								class="dialog-icon access-icon"
+								icon="accessibility"
+								size="90"
+								style="fill: #0077CA;">
+							</ng-md-icon>
+							<h2><span class="md-display-2">Accessibility</span><br/><span class="md-headline">information</span></h2>
+						</div>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-dialog-content>
+
+		<!-- INCLUDE: ACTIVE TIP DISPLAY -->
+		<md-dialog-content ng-if="$ctrl.currentTips">
+			<div layout layout-align="center center">
+				<md-button class="md-primary" ng-click="$ctrl.currentTips = false">« Go back</md-button>
+			</div>
+			<div>
+				<h2 layout-padding>
+					<span class="md-headline">{{ ::$ctrl.currentTips.title[0] }}</span><br/>
+					<span class="md-display-2">{{ ::$ctrl.currentTips.title[1] }}</span>
+				</h2>
+			</div>
+			<md-tabs
+				md-dynamic-height
+				md-border-bottom
+				md-center-tabs
+				md-selected="$ctrl.activeTip">
+				<!-- md-stretch-tabs="always" -->
+
+			  <md-tab ng-repeat="tip in ::$ctrl.currentTips.tips" label="{{ ::tip.label }}">
+			    <md-content layout="column"> 
+				    <div layout="row" layout-padding> 
+					  	<div bind-html-compile compile="::tip.content" layout="column" layout-align="center center" flex>
+					  	</div>
+					  	<img ng-src="{{ ::tip.image }}" flex>
+				  	</div>
+			    </md-content>
+			  </md-tab>
+			</md-tabs>
+		</md-dialog-content>
+
+		<!-- TIP DISPLAY PREV/NEXT BUTTONS -->
+		<md-dialog-actions ng-if="$ctrl.currentTips" layout layout-align="space-between center">
+			<md-button class="md-primary" ng-click="$ctrl.prevTip()">« Previous</md-button>
+			<md-button class="md-primary" ng-click="$ctrl.nextTip()">Next »</md-button>
+		</md-dialog-actions>
+		
+		<!-- WELCOME TOUR/DISMISSAL -->
+		<md-dialog-actions layout="row" class="footer-pane" ng-if="!$ctrl.currentTips">
+			<md-checkbox class="md-primary" aria-label="Permanently dismiss this dialog" md-autofocus ng-model="$ctrl.showWelcome" ng-true-value="false" ng-false-value="true" ng-change="$ctrl.syncSettings()">
+				<strong>Don't show me this again</strong>
+			</md-checkbox>
+			<span flex></span>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.startTour()">
+				Take an interactive tour
+			</md-button>
+			<md-button class="md-primary" ng-click="$ctrl.hide()" style="margin-right:20px;" >
+				No thanks
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

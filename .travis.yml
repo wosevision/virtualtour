@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - "4.2"
+  - "6.9.2"
 sudo: false
 
 script:
-  - ./node_modules/.bin/gulp eslint
-  - ./node_modules/.bin/gulp test
+  - ./node_modules/.bin/karma start
 
 cache:
   directories:

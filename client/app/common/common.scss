@@ -1,0 +1,327 @@
+/* - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  TABLE OF CONTENTS
+  
+  1. Global colours
+  2. Fonts (includes icons)
+  3. Sidebar
+  4. Mixins and functions
+
+- - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+// 1. Global colours
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+$uoitlightblue : #0077ca;
+$uoitdarkblue  : #003c71;
+$uoitgrey      : #53565a;
+$uoitgreylight : scale-color($uoitgrey, $lightness: 95%);
+$uoitgreymedium: scale-color($uoitgrey, $lightness: 90%);
+$uoitgreydark  : scale-color($uoitgrey, $lightness: -40%);
+
+$uoitpink			 : #c71566;
+$uoitgreen		 : #1a875c;
+$uoitorange		 : #ce4825;
+
+$uoitdcgrey		 : #414042;
+
+// Faculty colours also need to be set in individual faculty main scss file for global overrides
+$fbit          : #00558C;
+$fed           : #4F758B;
+$fesns         : #6F263D;
+$feas          : #5F259F;
+$fhs           : #AF272F;
+$fsci          : #007749;
+$fssh          : #BE4D00;
+$grad				 	 : #000000;
+$red					 : #a40b0b;
+$emergency     : #a40b0b;
+
+.uoitlightblue, .uoit-blue-light { color: $uoitlightblue; }
+.uoitdarkblue, .uoit-blue-dark { color: $uoitdarkblue; }
+.uoitgrey { color: $uoitgrey; }
+.fbit		{ color: $fbit; }
+.fed 		{ color: $fed; }
+.fesns	{ color: $fesns; }
+.feas		{ color: $feas; }
+.fhs		{ color: $fhs; }
+.fsci		{ color: $fsci; }
+.fssh		{ color: $fssh; }
+.grad		{ color: $grad; }
+
+
+
+// 2. Fonts
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Franklin Gothic Book
+@font-face {
+  font-family: 'Franklin Gothic';
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.eot');
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.woff2') format('woff2'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.woff') format('woff'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.ttf') format('truetype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_book_macroman/FranklinGothic-Book-webfont.svg#franklin_gothic_fsbook') format('svg');  
+  font-weight: 400;
+  font-style: normal;     
+}
+// $franklin_gothic_fsbook: "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
+
+
+// Franklin Gothic Medium
+@font-face {
+    font-family: 'Franklin Gothic';
+    src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.eot');
+    src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.woff2') format('woff2'),
+         url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.woff') format('woff'),
+         url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.ttf') format('truetype'),
+         url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_medium_macroman/FranklinGothic-Med-webfont.svg#franklin_gothic_fsmedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+// Franklin Gothic Demi
+@font-face {
+  font-family: 'Franklin Gothic';
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.eot');
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.woff2') format('woff2'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.woff') format('woff'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.ttf') format('truetype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_demi_macroman/FranklinGothic-Demi-webfont.svg#franklin_gothic_fsdemi') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+// $franklin_gothic_fsdemi: "franklin_gothic_fsdemi", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
+
+
+// Franklin Gothic Condensed
+@font-face {
+  font-family: 'Franklin Gothic Condensed';
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.eot');
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.woff2') format('woff2'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.woff') format('woff'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.ttf') format('truetype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_condensed_macroman/FranklinGothic-Cd-webfont.svg#franklin_gothic_fscondensed') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+// $franklin_gothic_fscondensed: "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
+
+
+// Franklin Gothic Medium Condensed
+@font-face {
+  font-family: 'Franklin Gothic Condensed';
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.eot');
+  src: url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.woff2') format('woff2'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.woff') format('woff'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.ttf') format('truetype'),
+       url('https://shared.uoit.ca/global/files/fonts/franklingothicfs_mediumcondensed_macroman/FranklinGothic-MedCd-webfont.svg#franklin_gothic_fsMdCn') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+// $franklin_gothic_fsMdCn: "franklin_gothic_fsMdCn", "franklin_gothic_fscondensed", "franklin_gothic_fsbook", Arial, Helvetica, sans-serif;
+
+
+// Icon font - generated on uoit_icons
+@font-face {
+  font-family: 'uoit_icons';
+  src: url('https://shared.uoit.ca/global/files/fonts/uoit_icons/uoit_icons.eot'); //55309185
+  src: url('https://shared.uoit.ca/global/files/fonts/uoit_icons/uoit_icons.eot#iefix') format('embedded-opentype'),
+       url('https://shared.uoit.ca/global/files/fonts/uoit_icons/uoit_icons.woff') format('woff'),
+       url('https://shared.uoit.ca/global/files/fonts/uoit_icons/uoit_icons.ttf') format('truetype'),
+       url('https://shared.uoit.ca/global/files/fonts/uoit_icons/uoit_icons.svg#uoit_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$franklin_gothic: "Franklin Gothic", Arial, Helvetica, sans-serif;
+$franklin_gothic_demi: "Franklin Gothic Demi", 'Franklin Gothic', Arial, Helvetica, sans-serif;
+$franklin_gothic_condensed: "Franklin Gothic Condensed", 'Franklin Gothic', Arial, Helvetica, sans-serif;
+$uoit_icons: "uoit_icons";
+
+$font-family: $franklin_gothic;
+$font-family-display: $franklin_gothic_condensed;
+$font-family-bold: $franklin_gothic_demi;
+
+.md-display-4,
+.md-display-3,
+.md-display-2,
+.md-display-1,
+.md-title {
+	font-weight: normal !important;
+	text-transform: uppercase;
+	font-family: $font-family-display;
+}
+
+.demi {
+	font-weight: 700 !important;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-right {
+	text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+// 3. Sidebar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$sidebar_nav_top_level_color: $uoitdarkblue;
+$sidebar_nav_secondary_level_color: #757575;
+$sidebar_nav_active_color: $uoitlightblue;
+$sidebar_border_color: scale-color($uoitgrey, $lightness: 90%);
+//$sidebar_border_color: scale-color($uoitgrey, $alpha: -90%);
+$sidebar_bg_radial_hard: radial-gradient(ellipse at center, hsla(0,0%,100%,0.4) 0%,hsla(0,0%,100%,0.8) 100%);
+$sidebar_bg_radial_soft: radial-gradient(ellipse at center, hsla(0,0%,100%,0) 0%,hsla(0,0%,100%,0.7) 100%);
+
+
+// 4. Mixins and functions
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@mixin cover($position, $height: true) {
+	position: $position;
+	display: flex;
+	flex: 1;
+	width: 100%;
+	@if $height == true {
+		height: 100%;
+	}
+	top: 0;
+	left: 0;
+}
+
+@mixin button($padding: 0, $margin: 0) {
+  padding: $padding;
+  margin: $margin;
+
+  box-sizing: border-box;
+  user-select: none;
+  position: relative; //for child absolute-positioned <canvas>
+  outline: none;
+  border: 0;
+  align-items: center;
+  background: transparent;
+  white-space: nowrap;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: $body-font-size-base;
+  font-style: inherit;
+  font-variant: inherit;
+  font-family: $franklin_gothic;
+  text-decoration: none;
+
+  cursor: pointer;
+  overflow: hidden;   // for ink containment
+
+  transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
+              background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+@mixin triangle($size, $color, $direction) {
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size / 2;
+
+    @if $direction == up {
+      border-bottom-color: $color;
+    } @else if $direction == right {
+      border-left-color:   $color;
+
+    } @else if $direction == down {
+      border-top-color:    $color;
+
+    } @else if $direction == left {
+      border-right-color:  $color;
+    }
+}
+
+@mixin bordered-triangle($size, $border-width, $color, $border-color, $direction, $alt: false) { 
+  $back-size: $size + ($border-width * 2);
+  position: relative;
+  
+  min-width: $size;
+  min-height: $size;
+  
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  &:after {
+     @include triangle($size, $color, $direction);
+  }
+  
+  &:before {
+    @include triangle($back-size, $border-color, $direction);
+    $mid-border-width: ($border-width / 2);
+    $border-width-and-mid: $border-width + $mid-border-width; 
+    
+    @if ($alt == true) {
+      $mid-border-width: 0;
+      $border-width-and-mid: $border-width * 2;
+    }
+    
+    @if ($direction == up) or ($direction == down) {
+      margin-left: - $border-width;
+      
+      @if ($direction == down) {
+        margin-top: -$mid-border-width;
+      } @else {
+        margin-top: - $border-width-and-mid;
+      }  
+    
+    } @else if ($direction == right) or ($direction == left) {
+      margin-top: - $border-width;
+      
+      @if ($direction == right) {
+        margin-left: - $mid-border-width;
+      } @else {
+        margin-left: - $border-width-and-mid;
+      }
+    }
+  }
+}
+
+@import '~angular-material/modules/scss/angular-material';
+@import '~angular-resizable/src/angular-resizable';
+@import '~angular-loading-bar/src/loading-bar';
+@import '~nz-tour/dist/nz-tour';
+@import '~ng-wig/src/css/ng-wig';
+
+@import 'icons';

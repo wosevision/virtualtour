@@ -1,0 +1,207 @@
+$icon-delay: 0.15s;
+
+md-autocomplete {
+	button {
+		ng-md-icon {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate3d(-50%, -50%, 0) scale(0.9);
+		  path {
+		    stroke-width: 0;
+		  }
+		}
+	}
+}
+
+md-card {
+  md-card-header {
+  	md-card-avatar {
+      ng-md-icon {
+        border-radius: 50%;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+md-checkbox {
+	ng-md-icon {
+    box-sizing: border-box;
+    transition: 240ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $checkbox-width;
+    height: $checkbox-height;
+    border-width: $checkbox-border-width;
+    border-style: solid;
+    border-radius: $checkbox-border-radius;
+  }
+  &.md-checked ng-md-icon {
+    border: none;
+  }
+  &.md-checked ng-md-icon:after {
+    box-sizing: border-box;
+    transform: rotate(45deg);
+    position: absolute;
+    left: $checkbox-width / 3;
+    top: $checkbox-width / 9;
+    display: table;
+    width: $checkbox-width / 3;
+    height: $checkbox-width * 2 / 3;
+    border-width: $checkbox-border-width;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    content: '';
+  }
+}
+
+.md-chips {
+  .md-chip {
+    .md-chip-remove {
+      ng-md-icon {
+        height: $chip-delete-icon-size;
+        width: $chip-delete-icon-size;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    }
+  }
+}
+
+md-fab-toolbar {
+  md-fab-trigger {
+    ng-md-icon {
+      position: relative;
+      z-index: $z-index-fab + 2;
+      opacity: 1;
+      transition: all $icon-delay ease-in;
+    }
+  }
+  &.md-is-open {
+    md-fab-trigger > button {
+      ng-md-icon {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+ng-md-icon {
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: $icon-size;
+  width: $icon-size;
+  svg {
+    pointer-events: none;
+    display: block;
+  }
+  &[md-font-icon] {
+    line-height: 1;
+    width: auto;
+  }
+}
+
+md-input-container {
+  > ng-md-icon {
+    position: absolute;
+    top: 5px;
+    @include rtl(left, 2px, auto);
+    @include rtl(right, auto, 2px);
+  }
+	&.md-icon-float {
+	  > ng-md-icon {
+	    top: 2px;
+	    @include rtl(left, 2px, auto);
+	    @include rtl(right, auto, 2px);
+	  }
+  }
+}
+
+md-input-container.md-icon-right {
+  .md-errors-spacer {
+    + ng-md-icon {
+      margin: 0;
+      @include rtl(right, 2px, auto);
+      @include rtl(left, auto, 2px);
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-input-container.md-default-theme > ng-md-icon {
+    fill: #fff;
+  }
+}
+
+md-menu-item {
+  > .md-button {
+    ng-md-icon {
+      margin: auto 2*$baseline-grid auto 0;
+    }
+  }
+}
+
+md-list-item, md-list-item .md-list-item-inner {
+  & > div.md-primary > ng-md-icon:not(.md-avatar-icon),
+  & > div.md-secondary > ng-md-icon:not(.md-avatar-icon),
+  & > ng-md-icon:first-child:not(.md-avatar-icon),
+  > ng-md-icon.md-secondary:not(.md-avatar-icon) {
+    width: $list-item-primary-icon-width;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    box-sizing: content-box;
+  }
+  & > ng-md-icon:first-child:not(.md-avatar-icon) {
+    margin-right: $list-item-primary-width - $list-item-primary-icon-width;
+  }
+}
+
+md-list-item.md-2-line,
+md-list-item.md-2-line > .md-no-style {
+  > ng-md-icon:first-child {
+    align-self: flex-start;
+  }
+}
+
+md-list-item.md-3-line,
+md-list-item.md-3-line > .md-no-style {
+  > ng-md-icon:first-child {
+    margin-top: $baseline-grid * 2;
+  }
+}
+
+md-menu-content.md-menu-bar-menu.md-dense {
+  md-menu-item.md-indent {
+    > ng-md-icon {
+      position: absolute;
+      padding: 0;
+      width: 24px;
+      top: 0.75 * $baseline-grid;
+      left: 3 * $baseline-grid;
+    }
+  }
+}
+
+md-tabs-wrapper {
+  md-prev-button, md-next-button {
+  	ng-md-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+  md-next-button {
+  	ng-md-icon {
+      transform: translate3d(-50%, -50%, 0) rotate(180deg);
+    }
+  }
+}

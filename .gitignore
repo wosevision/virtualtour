@@ -1,8 +1,7 @@
 .DS_Store
+.tmp
+.git
 node_modules
-npm-debug.log
-bower_components
-build
-.sass-cache
-server
-temp
+.settings
+*.log
+dist/
