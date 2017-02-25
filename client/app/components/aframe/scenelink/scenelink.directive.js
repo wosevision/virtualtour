@@ -12,7 +12,6 @@ function scenelinkDirective($state, $popupWindow, $tourApi, $analytics) {
 		link(scope, elem, attrs, SceneCtrl) {
 			const SceneResource = $tourApi.scene,
 						LocationResource = $tourApi.location;
-			const sceneId = scope.sceneLink.scene;
 			//  and handlers: success...
 			const gotoSceneHandler = data => {
 				$analytics.eventTrack('click', { category: 'scenelink', label: [data.scene.parent.code, data.scene.code].join('_') });
@@ -36,9 +35,9 @@ function scenelinkDirective($state, $popupWindow, $tourApi, $analytics) {
 					SceneCtrl.editItem(SceneCtrl._rightClick, scope.sceneLink, SceneCtrl.sceneLinks);
 				} else {
 					// ...otherwise just use the default scene link behavior
-					document.getElementById(`link_${sceneId}`).emit('goto');
+					document.getElementById(`link_${scope.sceneLink._id}`).emit('goto');
 					let scene;
-					SceneResource.get({ id: sceneId }).$promise
+					SceneResource.get({ id: scope.sceneLink.scene._id }).$promise
 						.then(data => {
 							scene = data;
 							return LocationResource.get({ id: scene.parent.parent }).$promise;

@@ -8,6 +8,7 @@ import { primitives, loaders } from 'aframe-extras';
 
 import sceneLink from './scenelink';
 import hoverAnimation from './hover';
+import levelScaleTo from './scale';
 
 export default {
 	sceneLink,
@@ -15,6 +16,7 @@ export default {
 		loaders.registerAll();
 		primitives.registerAll();
 
+		levelScaleTo.register();
 		hoverAnimation.register();
 		sceneLink.register();
 	}
