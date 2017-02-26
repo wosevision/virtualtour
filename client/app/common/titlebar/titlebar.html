@@ -9,7 +9,7 @@
   </md-toolbar-filler>
 
   <div class="md-toolbar-tools" ng-if="!$ctrl.mobile.screen">
-    <h1 ui-sref="locations">{{::$ctrl.title}}</h1>
+    <h1 ui-sref="locations">{{::$ctrl.title}} <small class="beta-label">BETA</small></h1>
     <span flex></span>
     <ng-transclude id="toolbar-controls" layout layout-align="center center"></ng-transclude>
   </div>
