@@ -36,20 +36,20 @@
 	<a-entity ng-repeat="sceneLink in $ctrl.sceneLinks track by sceneLink._id"
 						ng-attr-position="{{ sceneLink.position.join(' ') }}"
 						ng-attr-rotation="{{ sceneLink.rotation.join(' ') }}">
-	  <scene-link ng-attr-id="link_{{ ::sceneLink._id }}"
-	              color="#0077CA"
-	              hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7"
-	              ui-sref="scene({ location: sceneLink.scene.parent.parent.code, building: sceneLink.scene.parent.code, scene: sceneLink.scene.code })">
-		  <a-animation attribute="rotation" begin="click" dur="500" to="360 0 0"></a-animation>
-			<a-animation attribute="scale" begin="click" dur="500" to="0 0 0"></a-animation>
-			<a-entity geometry="primitive: plane; width: 2; height: 1"
-							  rotation="90 90 0"
-							  position="5.25 0 0"
-							  material="color:black;opacity:0.6;transparent:true;"
-							  text="value: GO TO\n{{sceneLink.scene.parent.name}},\n{{sceneLink.scene.name}} ; align: center;"
-		            hover-animation="scaleFactor:10;colorFactor:#000000;opacityFactor:1;"
-							  scale="0.1 1 0.1"></a-entity>
-	  </scene-link>
+		<scene-link ng-attr-id="link_{{ ::sceneLink._id }}"
+								color="#0077CA"
+								hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7;"
+								ng-attr-delegate-event="events: mouseenter,focus,mouseleave,blur; elements: #link_{{ ::sceneLink._id }} .text-panel;"
+								ui-sref="scene({ location: sceneLink.scene.parent.parent.code, building: sceneLink.scene.parent.code, scene: sceneLink.scene.code })"
+								animation__click="property: scale; dur: 1000; easing: easeOutElastic; to: 0 0 0; startEvents: click;">
+			<text-panel content="GO TO\n{{sceneLink.scene.parent.name}},\n{{sceneLink.scene.name}}"
+									rotation="90 90 0"
+									position="5.25 0 0"
+									scale="0.001 0.001 0.001"
+									look-at="[camera]"
+									class="text-panel">
+			</text-panel>
+		</scene-link>
 	</a-entity>
 
 	<!-- HOTSPOTS -->
