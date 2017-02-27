@@ -6,10 +6,12 @@
 	<a-assets>
 		<a-mixin id="mixin-blue" material="color: #0077CA;opacity: 0.85; transparent: true;"></a-mixin>
 		<a-mixin id="mixin-glow" material="color:white;shader:flat;opacity:0.1;transparent: true;"></a-mixin>
+		<img src="app/images/plnsk_bg_default.jpg" id="default_sky_bg" />
 	</a-assets>
 
 	<!-- SKY -->
 	<aframe-sky sky="$ctrl.sky"></aframe-sky>
+	<a-sky src="#default_sky_bg" ng-if="!$ctrl.sky" animation__sky-rotate="property: rotation; dur: 90000; easing: linear; to: 0 360 0; loop: true;"></a-sky>
 
 	<!-- LIGHT -->
 	<a-light type="ambient" color="#BBB""></a-light>
@@ -37,16 +39,16 @@
 						ng-attr-position="{{ sceneLink.position.join(' ') }}"
 						ng-attr-rotation="{{ sceneLink.rotation.join(' ') }}">
 		<scene-link ng-attr-id="link_{{ ::sceneLink._id }}"
-								color="#0077CA"
-								hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7;"
 								ng-attr-delegate-event="events: mouseenter,focus,mouseleave,blur; elements: #link_{{ ::sceneLink._id }} .text-panel;"
 								ui-sref="scene({ location: sceneLink.scene.parent.parent.code, building: sceneLink.scene.parent.code, scene: sceneLink.scene.code })"
-								animation__click="property: scale; dur: 1000; easing: easeOutElastic; to: 0 0 0; startEvents: click;">
-			<text-panel content="GO TO\n{{sceneLink.scene.parent.name}},\n{{sceneLink.scene.name}}"
+								animation__click="property: scale; dur: 1000; easing: easeOutElastic; to: 0 0 0; startEvents: click;"
+								hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7;"
+								color="#0077CA">
+			<text-panel ng-if="sceneLink.scene.parent._id !== $ctrl.parent._id"
+									content="GO TO\n{{sceneLink.scene.parent.name}},\n{{sceneLink.scene.name}}"
 									rotation="90 90 0"
 									position="5.25 0 0"
-									scale="0.001 0.001 0.001"
-									look-at="[camera]"
+									scale="0.001 0.01 0.001"
 									class="text-panel">
 			</text-panel>
 		</scene-link>

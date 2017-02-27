@@ -83,11 +83,12 @@ class SceneController {
    */
 	setScene(scene) {
 		
-		const { sceneLinks, hotSpots, entities, _id } = scene;
+		const { sceneLinks, hotSpots, entities, parent, _id } = scene;
 
   	this.sceneLinks = sceneLinks;
   	this.hotSpots = hotSpots;
   	this.entities = entities;
+  	this.parent = parent;
   	this._currentSceneId = _id;
 
     this.checkForDraft&&this.checkForDraft();
