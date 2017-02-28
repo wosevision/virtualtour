@@ -30,7 +30,7 @@ const hoverAnimationComponent = {
 	  },
 	  
 	  setScaleAnimation() {
-	    var originalScale = this.el.getAttribute('scale') || this.defaultScale,
+	    const originalScale = this.el.getAttribute('scale') || this.defaultScale,
 	        factoredScale = {
 	          x: (originalScale.x * this.data.scaleFactor),
 	          y: (originalScale.y * this.data.scaleFactor),
@@ -59,7 +59,7 @@ const hoverAnimationComponent = {
 	  },
 	  
 	  setOpacityAnimation() {
-	  	var originalOpacity = this.el.getAttribute('material').opacity || this.defaultOpacity,
+	  	const originalOpacity = this.el.getAttribute('material').opacity || this.defaultOpacity,
 	    		factoredOpacity = originalOpacity * this.data.opacityFactor;
 	    this.el.setAttribute('animation__opacity-mouseenter', {
 	      property: 'opacity',
@@ -82,7 +82,7 @@ const hoverAnimationComponent = {
 	  },
 	  
 	  setColorAnimation() {
-	  	var originalColor = this.el.getAttribute('material').color || this.defaultColor;
+	  	const originalColor = this.el.getAttribute('material').color || this.defaultColor;
 	    this.el.setAttribute('animation__color-mouseenter', {
 	      property: 'color',
 	      from: originalColor,

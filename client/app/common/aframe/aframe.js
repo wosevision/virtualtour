@@ -7,6 +7,7 @@ import 'aframe-mouse-cursor-component';
 import { primitives, loaders } from 'aframe-extras';
 
 import sceneLink from './scenelink';
+import hotSpot from './hotspot';
 import textPanel from './textpanel';
 import hoverAnimation from './hover';
 import levelScaleTo from './scale';
@@ -24,6 +25,7 @@ export default {
 		levelScaleTo.register();
 		hoverAnimation.register();
 		textPanel.register();
+		hotSpot.register();
 		sceneLink.register();
 	}
 }

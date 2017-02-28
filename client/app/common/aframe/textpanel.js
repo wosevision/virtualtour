@@ -5,7 +5,7 @@ const textPanelPrimitive = {
 	  defaultComponents: {
 	    geometry: {
 	      primitive: 'plane',
-	      height: 1,
+	      height: 0.75,
 	      width: 2
 	    },
 	    material: {
@@ -15,12 +15,8 @@ const textPanelPrimitive = {
 	    },
 	    text: {
 	    	value: 'Insert text here\nSecond line\nThird, somewhat longer line',
-	    	align: 'center'
-	    },
-	    'hover-animation': {
-	      scaleFactor: 1000,
-	      colorFactor: '#000000',
-	      opacityFactor: 1
+	    	align: 'center',
+	    	wrapCount: 25
 	    }
 	  },
 	  mappings: {
