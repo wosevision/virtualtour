@@ -3,8 +3,10 @@
 	ng-class="{'collapsed': $ctrl.condensed || $ctrl.mobile.screen}"
 	ng-if="$ctrl.open&&!($ctrl.mobile.landscape&&$ctrl.mobile.screen)"
 	md-whiteframe="2"
-	layout="column"
-	layout-align="end end"
+	layout="row"
+	layout-gt-sm="column"
+	layout-align="start stretch"
+	layout-align-gt-sm="end end"
 	flex="grow">
 	<div ng-repeat="(state, stateInfo) in ::$ctrl.items"
 		class="button-bar-btn"
@@ -17,7 +19,7 @@
   	id="{{::v}}">
   	<ng-md-icon icon="{{ :: stateInfo.icon }}" style="fill: #ffffff;"></ng-md-icon>
     <span ng-bind=":: stateInfo.label"></span>
-    <md-tooltip md-direction="left" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!$ctrl.mobile.device&&$ctrl.showHints()" md-z-index="10000">
+    <md-tooltip md-direction="{{ $ctrl.mobile.screen ? 'top' : 'left' }}" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!$ctrl.mobile.device&&$ctrl.showHints()" md-z-index="10000">
       {{ $ctrl.condensed ?  stateInfo.label :  stateInfo.desc }}
     </md-tooltip>
   </div>

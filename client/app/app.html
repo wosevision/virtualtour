@@ -3,18 +3,36 @@
     <fegaussianblur stddeviation="10"></fegaussianblur>
   </filter>
 </svg>
+
 <div flex="" layout="column" layout-fill="">
   <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
-    <title-bar-button ng-repeat="(o, option) in mc.titlebar.options" on-click="mc.titlebar.clickHandlers[o]()" label="{{ ::option.label }}" active="option.active" icon="option.icon" tooltip="option.tooltip" class="{{ ::option.class }}"></title-bar-button>
+    <title-bar-button ng-repeat="(o, option) in mc.titlebar.options" on-click="mc.titlebar.clickHandlers[o]()" label="{{ ::option.label }}" active="option.active" icon="option.icon" tooltip="option.tooltip" class="{{ ::option.class }}">
+    </title-bar-button>
   </title-bar>
-  <div ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }" layout="row" layout-align="end start" flex="" class="scene-container">
+
+  <div layout="column"
+  		 layout-gt-sm="row"
+  		 layout-align="end stretch"
+  		 layout-align-gt-sm="end start"
+  		 flex
+  		 class="scene-container"
+  		 ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }">
     <section id="scene-view" flex="grow" layout="column" layout-fill="" ng-class="{ 'blur-active' : mc.sidebar.hasBlur() }" class="scene-view">
       <aframe-scene mobile="mc.mobile ">
       </aframe-scene>
     </section>
-    <button-bar layout="column" flex="nogrow" items="mc.toolbar.views" open="mc.toolbar.isOpen" condensed="mc.toolbar.isCondensed" mobile="mc.mobile"></button-bar>
+
+    <button-bar layout="row"
+    						layout-gt-sm="column"
+    						flex="nogrow"
+    						items="mc.toolbar.views"
+    						open="mc.toolbar.isOpen"
+    						condensed="mc.toolbar.isCondensed"
+    						mobile="mc.mobile">
+    </button-bar>
   </div>
 </div>
+
 <div ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }" layout="row" flex="">
   <md-sidenav ng-class="{ 'blur-active' : mc.sidebar.hasBlur(), 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu">
     <ui-view flex="" layout="column" layout-fill="" resizable="" r-directions="[&quot;left&quot;]" ng-style="{ maxWidth: ('map' | isState) ? 'none' : '600px' }"></ui-view>

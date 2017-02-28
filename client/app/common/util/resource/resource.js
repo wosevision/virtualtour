@@ -16,7 +16,7 @@ let resourceModule = angular.module('util.resource', [
 .factory('$tourApi', TourResourceFactory)
 
 .constant('GLOBAL_SETTINGS', {
-	apiUrl: 'http://localhost:3000/api/v1',
+	apiUrl: '/api/v1',
 	imageApiUrl: '//res.cloudinary.com/uoit-virtual-tour/image/upload'
   // KEYSTONE HEROKU
   // https://virtualtour-cms.herokuapp.com

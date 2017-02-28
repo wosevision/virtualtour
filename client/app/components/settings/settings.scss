@@ -13,10 +13,12 @@
 	width: auto;
   transition: left 0.8s ease;
   overflow: visible;
-  &.md-sidenav-right,
-	&.md-sidenav-left {
-		top: 69px;
-	}
+  @media (min-width: 960px) {
+	  &.md-sidenav-right,
+		&.md-sidenav-left {
+			top: 69px;
+		}
+  }
 	.toolbar-open & {	
 		// width: calc(30% - 7.25rem);
     left: calc(100% - 123px);
@@ -36,7 +38,7 @@
 	  top: 0;
 		left: 100%;
 		&:not(.is-landscape) {
-			padding-top: 56px;
+			padding-bottom: 80px;
 			width: 100%;
 		}
 		ui-view {
