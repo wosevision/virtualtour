@@ -12,7 +12,7 @@
 	</md-card>
 
 	<md-card id="user_dashboard" flex="none" ng-if="$ctrl.isLoggedIn()">
-		<img ng-src="images/north_bg.jpg" alt="" class="md-card-image" />
+		<img src="assets/images/north_bg.jpg" alt="" class="md-card-image" />
 	  <md-card-header layout-align="space-around center">
 	    <md-card-avatar><img ng-src="{{ $ctrl.user.avatar.secure_url }}" class="md-user-avatar"/></md-card-avatar>
 	    <md-card-header-text><span class="md-headline">{{ [$ctrl.user.name.first, $ctrl.user.name.last].join(' ') }}</span><span class="md-subhead">{{ $ctrl.user.bannerId }}</span></md-card-header-text>

@@ -3,7 +3,6 @@
     <fegaussianblur stddeviation="10"></fegaussianblur>
   </filter>
 </svg>
-<div class="loading-spinner"></div>
 <div flex="" layout="column" layout-fill="">
   <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
     <title-bar-button ng-repeat="(o, option) in mc.titlebar.options" on-click="mc.titlebar.clickHandlers[o]()" label="{{ ::option.label }}" active="option.active" icon="option.icon" tooltip="option.tooltip" class="{{ ::option.class }}"></title-bar-button>
