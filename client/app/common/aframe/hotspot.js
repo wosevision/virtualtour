@@ -23,6 +23,14 @@ const hotSpotPrimitive = {
 	    	wrapCount: 4,
 	    	align: 'center',
 	    	color: '#0077CA'
+	    },
+	    animation: {
+	      property: 'rotation',
+	      easing: 'easeInOutSine',
+	      dur: 2000,
+	      from: '0 0 0',
+	      to: '0 360 0',
+	      loop: true
 	    }
 	  }
 	},
