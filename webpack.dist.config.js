@@ -1,13 +1,15 @@
-var webpack = require('webpack');
-var path    = require('path');
-var config  = require('./webpack.config');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require('webpack');
+const path    = require('path');
+const config  = require('./webpack.config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 config.output = {
   filename: '[name].bundle.js',
   publicPath: '',
-  path: path.resolve(__dirname, 'dist')
+  // path: path.resolve(__dirname, 'dist')
+  path: path.resolve(__dirname, '../virtualtour-ks/public')
 };
 
 config.module.loaders = config.module.loaders.concat([
@@ -20,6 +22,24 @@ config.postcss = () => [
 ];
 
 config.plugins = config.plugins.concat([
+
+  /**
+   * Auto-generates favicon, MS tile, Apple touch icon, Twitter card image, etc
+   */
+  new FaviconsWebpackPlugin({
+  	logo: path.resolve(__dirname, 'client/favicon.png'),
+    background: '#fff',
+    title: 'UOIT Virtual Tour',
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: true,
+      favicons: true,
+      firefox: true,
+      twitter: true,
+      windows: true
+    }
+  }),
 
 	/**
 	 * Provides an exit pipe and injectable file reference for the final

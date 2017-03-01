@@ -15,6 +15,7 @@ module.exports = {
 			{ test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate-loader!babel-loader' },
 			{ test: /\.html$/, loader: 'raw-loader' },
       { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader' }
+      // { test: /\.(png|jpe?g|gif|svg|woff|woff2|eot|ttf|otf)$/, loader: 'file-loader?name=[name].[ext]' } 
     ]
   },
   plugins: [
@@ -23,7 +24,8 @@ module.exports = {
     // with cache purging during deployment.
     new HtmlWebpackPlugin({
       template: 'client/index.html',
-      inject: 'body',
+      inject: 'head',
+	    title: 'UOIT Virtual Tour',
       hash: true
     }),
 

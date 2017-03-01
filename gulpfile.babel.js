@@ -45,7 +45,8 @@ let paths = {
   output: APP_ROOT,
   docs: DOCS_ROOT,
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
-  dest: path.join(__dirname, 'dist')
+  // dest: path.join(__dirname, 'dist')
+  dest: path.join(__dirname, '../virtualtour-ks/public')
 };
 
 // use webpack.config.js to build modules
@@ -80,9 +81,10 @@ gulp.task('serve', () => {
   var compiler = webpack(config);
 
   serve({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 3002,
     open: false,
-    server: {baseDir: APP_ROOT},
+    // server: {baseDir: APP_ROOT},
+    proxy: 'localhost:3000',
     middleware: [
       historyApiFallback(),
       webpackDevMiddleware(compiler, {
@@ -140,14 +142,18 @@ gulp.task('component', () => {
 });
 
 gulp.task('clean', cb => {
-  del([paths.dest]).then(function (paths) {
+  del([paths.dest], {
+  	force: true
+  }).then(function (paths) {
     gutil.log("[clean]", paths);
     cb();
   })
 });
 
 gulp.task('cleandocs', cb => {
-  del([paths.docs]).then(function (paths) {
+  del([paths.docs], {
+  	force: true
+  }).then(function (paths) {
     gutil.log("[clean]", paths);
     cb();
   })

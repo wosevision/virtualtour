@@ -1,25 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>UOIT Virtual Tour</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="application-name" content="UOIT Virtual Tour">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <title><%= htmlWebpackPlugin.options.title || 'UOIT Virtual Tour' %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Take an immersive 3D tour around the University of Ontario Institute of Technology from the comfort of your computer chair, or leap into the scene with a compatible virtual reality headset! The UOIT Virtual Tour runs right out of your browser, and is compatible with mobile VR headsets like Google cardboard and consumer VR headsets like the Oculus or HTC Vive.">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
-    <meta name="msapplication-TileColor" content="#0077CA">
-    <meta name="msapplication-TileImage" content="mstile-144x144.png">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Z_tA7YdsRXkHdThiC-VA0dvwX6a4Kto"></script>
     <script>
       (function(/***/u,o,i,t,e,c,h/***/){u['GoogleAnalyticsObject']=e;u[e]=u[e]||function(){
