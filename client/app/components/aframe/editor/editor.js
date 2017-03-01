@@ -1,15 +1,18 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 
+import editorDirective from './editor.directive';
 import editorComponent from './editor.component';
 import editorService from './editor.service';
 
-import editorDialogTemplate from './editorDialog.html';
-import editorDialogController from './editorDialog.controller';
+import template from './editorDialog.html';
+import controller from './editorDialog.controller';
 
 let editorModule = angular.module('aframe.editor', [
   ngMaterial
 ])
+
+.directive('editable', editorDirective)
 
 .component('sceneEditor', editorComponent)
 
@@ -18,8 +21,8 @@ let editorModule = angular.module('aframe.editor', [
 .config(($mdPanelProvider) => {
   'ngInject';
 	$mdPanelProvider.definePreset('editorDialog', {
-		editorDialogTemplate,
-		editorDialogController,
+		template,
+		controller,
     attachTo: angular.element(document.body),
     controllerAs: '$ctrl',
 	  bindToController: true,

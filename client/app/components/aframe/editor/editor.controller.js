@@ -11,8 +11,9 @@
  * @param {Object} DATA_MODELS	 Database schema representations
  */
 class EditorController {
-	constructor($mdPanel, $mdDialog, $aframeScene, $aframeEditor, DATA_MODELS) {
+	constructor($timeout, $mdPanel, $mdDialog, $aframeScene, $aframeEditor, DATA_MODELS) {
 		'ngInject';
+		this.$timeout = $timeout;
 		this.$mdPanel = $mdPanel;
 		this.$mdDialog = $mdDialog;
 		this.$aframeScene = $aframeScene;
@@ -138,8 +139,10 @@ class EditorController {
 				this.SceneCtrl._rightClick = event;
 				event.preventDefault();
 				this.SceneCtrl.$sceneEl.on('mouseup', () => {
-					this.SceneCtrl._rightClick = false;
-					this.SceneCtrl.$sceneEl.off('mouseup')
+					this.SceneCtrl.$sceneEl.off('mouseup');
+					this.$timeout(() => {
+						this.SceneCtrl._rightClick = false;
+					})
 				});
 			}
 		};
