@@ -50,7 +50,7 @@ angular.module('app', [
 
 .component('app', AppComponent)
 
-.config(($provide, $locationProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider) => { //, $mdIconProvider
+.config(($provide, $locationProvider, $stateProvider, $urlRouterProvider, $mdGestureProvider, $mdThemingProvider, cfpLoadingBarProvider) => { //, $mdIconProvider
   'ngInject';
   
   // cfpLoadingBarProvider.includeSpinner = false;
@@ -59,6 +59,12 @@ angular.module('app', [
   	<md-progress-circular md-mode="indeterminate" class="md-primary">
   	</md-progress-circular>
   </div>`;
+
+  // THIS IS VERY IMPORTANT, ngMaterial's clickjacking behaviour
+  // tampers with the capture phase in a way that is incompatible
+  // with A-Frame's mobile click capturing. It must be disabled
+  // for in-scene clicks to work on mobile.
+  $mdGestureProvider.skipClickHijack();
 
   $mdThemingProvider.definePalette('UOITprimary', {
     '50': '0086FC',

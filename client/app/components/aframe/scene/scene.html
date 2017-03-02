@@ -18,16 +18,15 @@
 	<a-light type="directional" color="#FFF" intensity="0.6" position="-0.5 1 1"></a-light>
 
 	<!-- CAMERA ENTITY -->
-	<a-entity position="0 1.8 0">
-		<a-entity
-			camera
+	<!-- <a-entity position="0 1.8 0"> -->
+		<a-camera
 			id="aframe-camera"
 			mouse-cursor
-			drag-look-controls
 			wasd-controls="enabled: false;"
-			look-controls="enabled: false;">
+			look-controls="reverseMouseDrag: true;">
 			<!-- VR CURSOR -->
-		  <a-entity cursor="fuse: true; fuseTimeout: 2000"
+		  <a-entity ng-if="$ctrl.mobile.device && $ctrl.mobile.landscape"
+		  					cursor="fuse: true; fuseTimeout: 2000"
 		            position="0 0 -1"
 		            geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01; thetaLength: 360;"
 		            material="color: white; opacity: 0.8; shader: flat"
@@ -39,8 +38,8 @@
   			<a-animation begin="cursor-fusing" dur="1600" delay="400" easing="ease-in" attribute="geometry.thetaLength" fill="both" from="360" to="0"></a-animation>
   			<a-animation begin="mouseleave" dur="600" attribute="geometry.thetaLength" to="360"></a-animation>
 		  </a-entity>
-		</a-entity>
-	</a-entity>
+		</a-camera>
+	<!-- </a-entity> -->
 	
 	<!-- GENERIC ENTITIES -->
 	<aframe-entity ng-model="entity" ng-repeat="entity in $ctrl.entities track by entity._id"></aframe-entity>

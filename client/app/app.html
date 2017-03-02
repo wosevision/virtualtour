@@ -16,15 +16,15 @@
   		 layout-align-gt-sm="end start"
   		 flex
   		 class="scene-container"
-  		 ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }">
+  		 ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!mc.mobile.landscape, 'toolbar-condensed': mc.toolbar.isCondensed }">
     <section id="scene-view"
 				     flex="grow"
 				     layout="column"
 				     layout-fill=""
 				     ng-class="{ 'blur-active' : mc.sidebar.hasBlur() }"
 				     class="scene-view">
-      <aframe-scene mobile="mc.mobile ">
-	      <scene-editor></scene-editor>
+      <aframe-scene mobile="mc.mobile">
+	      <scene-editor ng-if="!(mc.mobile.device &amp;&amp; mc.mobile.landscape)"></scene-editor>
       </aframe-scene>
     </section>
 

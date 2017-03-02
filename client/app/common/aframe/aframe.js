@@ -1,9 +1,8 @@
 import 'aframe';
 import 'aframe-animation-component';
-import 'aframe-event-set-component';
-import 'aframe-drag-look-controls-component';
 import 'aframe-look-at-component';
 import 'aframe-mouse-cursor-component';
+
 import { primitives, loaders } from 'aframe-extras';
 
 import sceneLink from './scenelink';
@@ -15,8 +14,11 @@ import delegateEvent from './delegate';
 
 export default {
 	sceneLink,
+	hotSpot,
+	textPanel,
 	hoverAnimation,
 	levelScaleTo,
+	delegateEvent,
 	registerAll() {
 		loaders.registerAll();
 		primitives.registerAll();
