@@ -3,3 +3,12 @@
 	max-width: 30%;
 	background-color: rgba(white, 0.75);
 }
+
+.md-fab-action-item .fab-divider {
+	display: block;
+	width: 1px;
+	height: 40px;
+	content: '';
+	background-color: rgba(white, 0.4);
+	margin: 0 16px;
+}

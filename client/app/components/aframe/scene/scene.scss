@@ -16,11 +16,24 @@
   }
   ng-transclude {	
   	position: absolute;
-  	top: 68px;
   	left: 0;
+  	z-index: 150;
   	width: 100%;
-  	z-index: 50
   }
+  @media (min-width: 960px) {
+	  ng-transclude {	
+	  	top: 68px;
+	  	right: 60px;
+	  	md-fab-toolbar {
+	  		.md-fab-toolbar-wrapper {
+		  		padding-right: 60px;
+		  	}
+		  	.md-fab-toolbar-content {
+		  		position: relative;
+		  	}
+		  }
+	  }
+	}
   &.blur-active{
   	// transform: scale(1.1);
   	filter: blur(10px);
@@ -36,13 +49,4 @@
 
 .md-virtual-repeat-container.md-autocomplete-suggestions-container {
 	z-index: 1000;
-}
-
-.md-fab-action-item .fab-divider {
-	display: block;
-	width: 1px;
-	height: 40px;
-	content: '';
-	background-color: rgba(white, 0.4);
-	margin: 0 16px;
 }
