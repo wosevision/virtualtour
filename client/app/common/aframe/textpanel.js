@@ -1,11 +1,13 @@
 import { registerPrimitive, primitives, utils } from 'aframe';
 
+const COMPONENT_NAME = 'text-panel';
+
 const textPanelPrimitive = {
 	config: {
 	  defaultComponents: {
 	    geometry: {
 	      primitive: 'plane',
-	      height: 0.75,
+	      height: 'auto',
 	      width: 2
 	    },
 	    material: {
@@ -20,11 +22,12 @@ const textPanelPrimitive = {
 	    }
 	  },
 	  mappings: {
-	  	content: 'text.value'
+	  	content: 'text.value',
+	  	height: 'geometry.height'
 	  }
 	},
 	register() {
-		registerPrimitive('text-panel', utils.extendDeep(primitives.getMeshMixin(), this.config));
+		registerPrimitive(COMPONENT_NAME, utils.extendDeep(primitives.getMeshMixin(), this.config));
 	}
 };
 

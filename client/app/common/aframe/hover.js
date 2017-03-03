@@ -1,5 +1,12 @@
 import { registerComponent } from 'aframe';
 
+const COMPONENT_NAME 			= 'hover-animation',
+			START_EVENTS 				= 'mouseenter,focus',
+			PAUSE_EVENTS 				= 'mouseleave,blur',
+			DEFAULT_EASING			= 'linear',
+			DEFAULT_ELASTICITY	= 600,
+			DEFAULT_DURATION		= 600;
+
 const hoverAnimationComponent = {
 	config: {
 	  schema: {
@@ -9,9 +16,13 @@ const hoverAnimationComponent = {
 	    opacityFactor: {
 	      default: 0.9
 	    },
-	    colorFactor: {
+	    fillColor: {
 	      type: 'color',
-	      default: '#FFFFFF'
+	      default: false
+	    },
+	    textColor: {
+	      type: 'color',
+	      default: false
 	    }
 	  },
 	  
@@ -24,10 +35,43 @@ const hoverAnimationComponent = {
 	      this.el.setAttribute('tabindex', 0);
 	    }
 	    
-	    this.setColorAnimation();
 	    this.setOpacityAnimation();
 	    this.setScaleAnimation();
+	    if (this.data.fillColor) this.setFillColorAnimation();
+	    if (this.data.textColor) this.setTextColorAnimation();
 	  },
+
+	  setAnimation({
+      property,
+      from,
+      to,
+      dur = DEFAULT_DURATION,
+      easing = DEFAULT_EASING,
+      elasticity = DEFAULT_ELASTICITY,
+      startEvents = START_EVENTS,
+      pauseEvents = PAUSE_EVENTS
+    }) {
+	  	this.el.setAttribute(`animation__${property}-enter`, {
+	      property,
+	      from,
+	      to,
+	      dur,
+	      easing,
+	      elasticity,
+	      startEvents,
+	      pauseEvents
+	    });
+	  	this.el.setAttribute(`animation__${property}-leave`, {
+	      property,
+	      from: to,
+	      to: from,
+	      dur,
+	      easing,
+	      elasticity,
+	      startEvents: pauseEvents,
+	      pauseEvents: startEvents
+	    });
+    },
 	  
 	  setScaleAnimation() {
 	    const originalScale = this.el.getAttribute('scale') || this.defaultScale,
@@ -36,75 +80,46 @@ const hoverAnimationComponent = {
 	          y: (originalScale.y * this.data.scaleFactor),
 	          z: (originalScale.z * this.data.scaleFactor)
 	        };
-	    this.el.setAttribute('animation__scale-mouseenter', {
-	      property: 'scale',
+	    this.setAnimation({
+	    	property: 'scale',
 	      from: originalScale,
 	      to: factoredScale,
-	      dur: 600,
-	      easing: 'easeOutElastic',
-	      elasticity: 600,
-	      startEvents: 'mouseenter,focus',
-	      pauseEvents: 'mouseleave,blur'
-	    });
-	    this.el.setAttribute('animation__scale-mouseleave', {
-	      property: 'scale',
-	      from: factoredScale,
-	      to: originalScale,
-	      dur: 600,
-	      easing: 'easeOutElastic',
-	      elasticity: 600,
-	      startEvents: 'mouseleave,blur',
-	      pauseEvents: 'mouseenter,focus'
+	      easing: 'easeOutElastic'
 	    });
 	  },
 	  
 	  setOpacityAnimation() {
 	  	const originalOpacity = this.el.getAttribute('material').opacity || this.defaultOpacity,
 	    		factoredOpacity = originalOpacity * this.data.opacityFactor;
-	    this.el.setAttribute('animation__opacity-mouseenter', {
-	      property: 'opacity',
+	    this.setAnimation({
+	    	property: 'opacity',
 	      from: originalOpacity,
-	      to: factoredOpacity,
-	      dur: 300,
-	      easing: 'linear',
-	      startEvents: 'mouseenter,focus',
-	      pauseEvents: 'mouseleave,blur'
-	    });
-	    this.el.setAttribute('animation__opacity-mouseleave', {
-	      property: 'opacity',
-	      from: factoredOpacity,
-	      to: originalOpacity,
-	      dur: 300,
-	      easing: 'linear',
-	      startEvents: 'mouseleave,blur',
-	      pauseEvents: 'mouseenter,focus'
+	      to: factoredOpacity
 	    });
 	  },
 	  
-	  setColorAnimation() {
+	  setFillColorAnimation() {
 	  	const originalColor = this.el.getAttribute('material').color || this.defaultColor;
-	    this.el.setAttribute('animation__color-mouseenter', {
-	      property: 'color',
+	    this.setAnimation({
+	    	property: 'color',
 	      from: originalColor,
-	      to: this.data.colorFactor,
-	      dur: 100,
-	      easing: 'linear',
-	      startEvents: 'mouseenter,focus',
-	      pauseEvents: 'mouseleave,blur'
+	      to: this.data.fillColor,
+	      dur: DEFAULT_DURATION / 2,
 	    });
-	    this.el.setAttribute('animation__color-mouseleave', {
-	      property: 'color',
-	      from: this.data.colorFactor,
-	      to: originalColor,
-	      dur: 100,
-	      easing: 'linear',
-	      startEvents: 'mouseleave,blur',
-	      pauseEvents: 'mouseenter,focus'
+	  },
+
+	  setTextColorAnimation() {
+	  	const originalColor = this.el.components.text.data.color || this.defaultColor;
+	    this.setAnimation({
+	    	property: 'text.color',
+	      from: originalColor,
+	      to: this.data.textColor,
+	      dur: DEFAULT_DURATION / 2,
 	    });
 	  }
 	},
 	register() {
-		registerComponent('hover-animation', this.config);
+		registerComponent(COMPONENT_NAME, this.config);
 	}
 }
 

@@ -1,5 +1,7 @@
 import { registerPrimitive, primitives, utils } from 'aframe';
 
+const COMPONENT_NAME = 'scene-link';
+
 const sceneLinkPrimitive = {
 	config: {
 	  defaultComponents: {
@@ -28,7 +30,7 @@ const sceneLinkPrimitive = {
 	  }
 	},
 	register() {
-		registerPrimitive('scene-link', utils.extendDeep(primitives.getMeshMixin(), this.config));
+		registerPrimitive(COMPONENT_NAME, utils.extendDeep(primitives.getMeshMixin(), this.config));
 	}
 };
 

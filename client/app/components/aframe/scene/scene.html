@@ -34,9 +34,20 @@
 		            animation__cursor-mouseenter-inner="property: geometry.radiusInner; dur: 600; easing: easeOutBounce; elasticity: 500; to: 0.02; startEvents: mouseenter;"
 		            animation__cursor-mouseleave-outer="property: geometry.radiusOuter; dur: 600; to: 0.01; startEvents: mouseleave;"
 		            animation__cursor-mouseleave-inner="property: geometry.radiusInner; dur: 600; to: 0.007; startEvents: mouseleave;">
-		            <!-- animation__cursor-fusing="property: geometry.thetaLength; dur: 2000; delay: 1000; easing: easeInQuart; elasticity: 600; to: 0; startEvents: fusing;" -->
-  			<a-animation begin="cursor-fusing" dur="1600" delay="400" easing="ease-in" attribute="geometry.thetaLength" fill="both" from="360" to="0"></a-animation>
-  			<a-animation begin="mouseleave" dur="600" attribute="geometry.thetaLength" to="360"></a-animation>
+  			<a-animation attribute="geometry.thetaLength"
+  									 begin="cursor-fusing"
+  									 dur="1600"
+  									 delay="400"
+  									 easing="ease-in"
+  									 fill="both"
+  									 from="360"
+  									 to="0">
+  			</a-animation>
+  			<a-animation attribute="geometry.thetaLength"
+  									 begin="mouseleave"
+  									 dur="600"
+  									 to="360">
+  			</a-animation>
 		  </a-entity>
 		</a-camera>
 	<!-- </a-entity> -->
@@ -45,40 +56,42 @@
 	<aframe-entity ng-model="entity" ng-repeat="entity in $ctrl.entities track by entity._id"></aframe-entity>
 
 	<!-- SCENE LINKS -->
-	<a-entity ng-repeat="sceneLink in $ctrl.sceneLinks track by sceneLink._id"
-						ng-attr-position="{{ sceneLink.position.join(' ') }}"
-						ng-attr-rotation="{{ sceneLink.rotation.join(' ') }}"
-						editable="sceneLink">
+	<hit-box ng-repeat="sceneLink in $ctrl.sceneLinks track by sceneLink._id"
+					 ng-attr-position="{{ sceneLink.position.join(' ') }}"
+					 ng-attr-rotation="{{ sceneLink.rotation.join(' ') }}"
+					 ng-attr-hit="#link_{{ ::sceneLink._id }}, #link_{{ ::sceneLink._id }} .text-panel"
+					 ui-sref="scene({ location: sceneLink.scene.parent.parent.code, building: sceneLink.scene.parent.code, scene: sceneLink.scene.code })"
+					 editable="sceneLink">
 		<scene-link ng-attr-id="link_{{ ::sceneLink._id }}"
-								ng-attr-delegate-event="events: mouseenter,focus,mouseleave,blur; elements: #link_{{ ::sceneLink._id }} .text-panel;"
-								ui-sref="scene({ location: sceneLink.scene.parent.parent.code, building: sceneLink.scene.parent.code, scene: sceneLink.scene.code })"
-								hover-animation="scaleFactor:1.1;colorFactor:#c71566;opacityFactor:0.7;"
+								hover-animation="scaleFactor:1.1;fillColor:#c71566;opacityFactor:0.7;"
 								color="#0077CA">
-			<a-animation begin="click" dur="600" easing="ease-out" attribute="scale" fill="backwards" to="0 0 0"></a-animation>
+			<a-animation attribute="scale"
+									 begin="click"
+									 dur="600"
+									 easing="ease-out"
+									 fill="backwards"
+									 to="0 0 0">
+			</a-animation>
 			<text-panel ng-if="sceneLink.scene.parent._id !== $ctrl.parent._id"
-									hover-animation="scaleFactor:1000;colorFactor:#000000;opacityFactor:1;"
 									content="GO TO:\n\n{{sceneLink.scene.parent.name}}"
 									rotation="90 90 0"
 									position="5.25 0 0"
 									scale="0.001 0.01 0.001"
+									height="0.75"
+									hover-animation="scaleFactor:1000;fillColor:#000000;opacityFactor:1;"
 									class="text-panel">
 			</text-panel>
 		</scene-link>
-	</a-entity>
+	</hit-box>
 
 	<!-- HOTSPOTS -->
-<!-- 	<a-entity
-		ng-repeat="hotSpot in $ctrl.hotSpots track by hotSpot._id"
-		class="hot-spot"
-		hot-spot="hotSpot">
-	</a-entity> -->
-
-	<a-entity ng-repeat="hotSpot in $ctrl.hotSpots track by hotSpot._id"
+	<hit-box ng-repeat="hotSpot in $ctrl.hotSpots track by hotSpot._id"
 						ng-attr-position="{{ hotSpot.position.join(' ') }}"
 						ng-attr-id="hotSpot_{{ ::hotSpot._id }}"
-						look-at="[camera]" editable="hotSpot">
-		<hot-spot hover-animation="scaleFactor:1;colorFactor:#c71566;opacityFactor:0.7;"
-							ng-attr-delegate-event="events: mouseenter,focus,mouseleave,blur,click; elements: #hotSpot_{{ ::hotSpot._id }} .text-panel;"></hot-spot>
+						ng-attr-hit="#hotSpot_{{ ::hotSpot._id }} .text-panel, #hotSpot_{{ ::hotSpot._id }} hot-spot"
+						look-at="[camera]"
+						editable="hotSpot">
+		<hot-spot hover-animation="scaleFactor:1.1;fillColor:#c71566;textColor:#c71566;opacityFactor:0.7;"></hot-spot>
 		<text-panel content="{{ ['More about ', hotSpot.name.toUpperCase(), '\n\n', hotSpot.desc].join('') }}"
 		animation="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: click"
 								scale="0.001 0.001 0.001"
@@ -86,6 +99,6 @@
 								rotation="0 0 0"
 								class="text-panel">
 		</text-panel>
-	</a-entity>
+	</hit-box>
 
 </a-scene>

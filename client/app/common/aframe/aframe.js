@@ -10,6 +10,7 @@ import hotSpot from './hotspot';
 import textPanel from './textpanel';
 import hoverAnimation from './hover';
 import levelScaleTo from './scale';
+import hitBox from './hitbox';
 import delegateEvent from './delegate';
 
 export default {
@@ -18,12 +19,14 @@ export default {
 	textPanel,
 	hoverAnimation,
 	levelScaleTo,
+	hitBox,
 	delegateEvent,
 	registerAll() {
 		loaders.registerAll();
 		primitives.registerAll();
 
 		delegateEvent.register();
+		hitBox.register();
 		levelScaleTo.register();
 		hoverAnimation.register();
 		textPanel.register();
