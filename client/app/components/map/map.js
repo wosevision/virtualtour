@@ -23,7 +23,9 @@ let mapModule = angular.module('map', [
       parent: 'home',
       // component: 'uoitMap'
       template,
-			controller
+			controller,
+			bindToController: true,
+			controllerAs: '$ctrl'
     });
 })
 
