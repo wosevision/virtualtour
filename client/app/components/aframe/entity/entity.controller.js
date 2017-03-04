@@ -19,13 +19,17 @@
  * @param {element} $element  Component wrapper element
  * @param {object}  $compile  Angular's compile service
  * @param {object}  SceneCtrl The parent controller
+ *
+ * @todo Clean up `$watch` statements (move handlers into methods)
+ * @todo Make better use of `ng-model` parsers/formatters
+ * @todo Switch applicable array/object-combo nastiness to proper ES6 maps
  */
 class EntityController {
   constructor($scope, $element, $compile) {
   	'ngInject';
-    this.$scope = $scope;
-    this.$element = $element;
-    this.$compile = $compile;
+    this._$scope = $scope;
+    this._$element = $element;
+    this._$compile = $compile;
     /**
      * Property to hold the `<a-…></a-…>` element after it has been
      * compiled by `compileTemplate()`. Remains false until loaded
@@ -44,7 +48,7 @@ class EntityController {
    * TODO: REMOVE DEEP-WATCH FOR PERFORMANCE
    */
   $onInit() {
-    this.$scope.$watch(
+    this._$scope.$watch(
       () => this.$ngModel.$modelValue.type,
       (type, lastType) => {
         if (type && this.$ngModel.$valid) {
@@ -62,7 +66,7 @@ class EntityController {
         }
       });
 
-    this.$scope.$watch(
+    this._$scope.$watch(
       () => this.$ngModel.$modelValue.attrs,
       (attrs) => {
         if (this.entityEl && attrs && angular.isArray(attrs) && this.$ngModel.$valid) {
@@ -72,9 +76,9 @@ class EntityController {
       }, true
     );
 
-    this.$scope.$parent.$on('$destroy', () => {
+    this._$scope.$parent.$on('$destroy', () => {
     	this.entityEl.remove();
-    	this.$scope.$destroy();
+    	this._$scope.$destroy();
     });
   }
 
@@ -85,10 +89,10 @@ class EntityController {
    * @return {element}     The compiled element
    */
   compileTemplate(type) {
-    return this.$compile(`<a-${type}></a-${type}>`)
+    return this._$compile(`<a-${type}></a-${type}>`)
     (this, (clone, cloneScope) => {
-      	this.$element.after(clone);
-      	this.$element.remove();
+      	this._$element.after(clone);
+      	this._$element.remove();
         console.info('entity recompiled', clone);
         return clone;
       }
