@@ -83,10 +83,13 @@
 			</div>
 		</div>
 	</div>
-	<md-content layout="column" layout-align="start center" layout-margin layout-padding class="search-results" flex>
-		<span class="md-headline" ng-show="!$ctrl.searchResults.length">No results found<span ng-show="$ctrl.searchText"> matching "<em>{{ $ctrl.searchText }}</em>"</span>!</span>
+	<md-content layout="column" layout-align="start center" layout-margin layout-padding class="search-results" flex="60">
+	
+		<span class="md-headline" ng-show="!$ctrl.searchResults">No results found<span ng-show="$ctrl.searchText"> matching "<em>{{ $ctrl.searchText }}</em>"</span>!</span>
+
 		<md-list>
-      <md-list-item class="md-3-line" ng-repeat-start="item in $ctrl.searchResults" ng-click="null">
+			<md-subheader class="md-no-sticky" ng-repeat-start="(type, results) in $ctrl.searchResults"><ng-md-icon class="search-icon" icon="chevron_right" size="14" style="width: 16px; height: 16px;"></ng-md-icon> {{ ::type }}</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat-start="item in results" ng-click="$ctrl.goToResult(type, item)">
         <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
         <div class="md-list-item-text" layout="column">
           <h3><strong>{{ ::item.name }}</strong><span ng-if="::item.parent.parent.name">, {{::item.parent.name}}</span></h3>
@@ -95,7 +98,9 @@
         </div>
       </md-list-item>
 			<md-divider ng-repeat-end></md-divider>
+			<span ng-repeat-end></span>
 		</md-list>
+
 	</md-content>
 	
 </div>

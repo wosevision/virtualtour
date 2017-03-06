@@ -1,11 +1,11 @@
 import { lowercase } from 'angular';
 
 class SearchController {
-	constructor($timeout, $log, $http, SEARCH_FILTERS) {
+	constructor($log, $http, $state, SEARCH_FILTERS) {
 		'ngInject';
-		this.$timeout = $timeout;
 		this.$log = $log;
 		this.$http = $http;
+		this.$state = $state;
 
 		const { typeFilters, modelFilters, fieldFilters } = SEARCH_FILTERS;
 		Object.assign(this, { typeFilters, modelFilters, fieldFilters });
@@ -24,12 +24,13 @@ class SearchController {
 		const params = { q };
 		if (this.filters.for.length) params.filter = this.filters.for;
 		if (this.filters.by.length) params.fields = this.filters.by;
-		console.log(params);
+
 		return this.$http.get('/api/v1/search', { params }).then(result => {
 			const output = [];
 			Object.keys(result.data.results).forEach(type => output.push(...result.data.results[type]));
-			this.searchResults = output;
-			// return output;
+			// this.searchResults = output;
+			this.searchResults = Object.keys(result.data.results).length ? result.data.results : false;
+			console.log(result.data);
 			return result.data.overview;
 		});
 	}
@@ -40,6 +41,26 @@ class SearchController {
 
 	selectedItemChange(item) {
 		this.$log.info('Item changed to ' + JSON.stringify(item));
+	}
+
+	goToResult(type, item) {
+		const params = {};
+		switch(type) {
+			case 'location':
+				params.location = item.code;
+				break;
+			case 'building':
+				params.location = item.parent.code;
+				params.building = item.code;
+				break;
+			case 'scene':
+				params.location = item.parent.parent.code;
+				params.building = item.parent.code;
+				params.scene = item.code;
+				break;
+		}
+		console.log(params);
+		this.$state.go(type, params);
 	}
 }
 

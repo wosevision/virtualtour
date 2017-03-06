@@ -12,6 +12,7 @@ import hoverAnimation from './hover';
 import levelScaleTo from './scale';
 import hitBox from './hitbox';
 import delegateEvent from './delegate';
+import anchorLook from './anchorlook';
 
 export default {
 	sceneLink,
@@ -21,10 +22,12 @@ export default {
 	levelScaleTo,
 	hitBox,
 	delegateEvent,
+	anchorLook,
 	registerAll() {
 		loaders.registerAll();
 		primitives.registerAll();
 
+		anchorLook.register();
 		delegateEvent.register();
 		hitBox.register();
 		levelScaleTo.register();

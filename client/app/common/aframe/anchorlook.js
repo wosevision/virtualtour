@@ -4,30 +4,11 @@ const warn = AFRAME.utils.debug('components:anchor-look:warn');
 
 const anchorLookComponent = {
 	config: {
-	  // schema: {
-	  //   type: 'selector'
-	  // },
 	  init() {
 	    this.target3D = null;
 	    this.targetAnchor = null;
 	    this.vector = new THREE.Vector3();
-	  }
-	  // update() {
-	    // var self = this;
-	    // var target = self.data;
-	    // var object3D = self.el.object3D;
-	    // var targetEl;
-
-	    // // No longer looking at anything (i.e., look-at="").
-	    // if (!target || (typeof target === 'object' && !Object.keys(target).length)) {
-	    //   return self.remove();
-	    // }
-
-	    // // Look at a position.
-	    // if (typeof target === 'object') {
-	    //   return object3D.lookAt(new THREE.Vector3(target.x, target.y, target.z));
-	    // }
-	  // },
+	  },
 
 	  tick(t) {
 	  	const newHash = this.getUpdatedHash();
@@ -38,6 +19,7 @@ const anchorLookComponent = {
 	    if (target3D) {
 	      this.targetAnchor = newHash;
 	      const vector = this.el.object3D.parent.worldToLocal(target3D.getWorldPosition());
+	      console.log(target3D, vector);
 	      return this.el.object3D.lookAt(vector);
 	    }
 	  },
@@ -47,9 +29,9 @@ const anchorLookComponent = {
 	  },
 
 	  target3DFromHash(hash) {
-	    targetEl = self.el.sceneEl.querySelector(hash);
+	    const targetEl = this.el.sceneEl.querySelector(hash);
 	    if (!targetEl) {
-	      warn(`The anchor "${ target }" does not point to a valid entity!`);
+	      warn(`The anchor "${ hash }" does not point to a valid entity!`);
 	      return;
 	    }
 	    return targetEl.object3D;

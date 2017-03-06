@@ -22,6 +22,7 @@
 		<a-camera
 			id="aframe-camera"
 			mouse-cursor
+			anchor-look
 			wasd-controls="enabled: false;"
 			look-controls="reverseMouseDrag: true;">
 			<!-- VR CURSOR -->
@@ -92,8 +93,8 @@
 						look-at="[camera]"
 						editable="hotSpot">
 		<hot-spot hover-animation="scaleFactor:1.1;fillColor:#c71566;textColor:#c71566;opacityFactor:0.7;"></hot-spot>
-		<text-panel content="{{ ['More about ', hotSpot.name.toUpperCase(), '\n\n', hotSpot.desc].join('') }}"
-		animation="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: click"
+    <text-panel content="{{ ['More about ', (hotSpot.feature.properties.name || hotSpot.name).toUpperCase(), '\n\n', (hotSpot.feature.properties.desc || hotSpot.desc)].join('') }}"
+								animation="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: click"
 								scale="0.001 0.001 0.001"
 								position="0 0 1"
 								rotation="0 0 0"
@@ -102,3 +103,6 @@
 	</hit-box>
 
 </a-scene>
+<!-- <div class="test-links">
+	<a ng-href="#hotSpot_{{ ::hotSpot._id }}" ng-repeat="hotSpot in $ctrl.hotSpots track by hotSpot._id">{{ ::(hotSpot.feature.properties.name || hotSpot.name) }}</a>
+</div> -->
