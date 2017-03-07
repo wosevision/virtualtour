@@ -59,6 +59,7 @@ const delegateEventComponent = {
 		},
 
 		delegateEvent(originalEv) {
+			originalEv.stopPropagation();
 			this.emit(originalEv.type, { originalEv }, false);
 		},
 

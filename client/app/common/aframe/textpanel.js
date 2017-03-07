@@ -23,7 +23,9 @@ const textPanelPrimitive = {
 	  },
 	  mappings: {
 	  	content: 'text.value',
-	  	height: 'geometry.height'
+	  	height: 'geometry.height',
+	  	width: 'geometry.width',
+	  	'wrap-count': 'text.wrapCount'
 	  }
 	},
 	register() {

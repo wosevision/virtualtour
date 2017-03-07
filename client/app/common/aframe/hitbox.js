@@ -9,7 +9,7 @@ const HIT_EVENTS = [
 	'click'
 ];
 
-const sceneLinkPrimitive = {
+const hitBoxPrimitive = {
 	config: {
 	  defaultComponents: {
 	    geometry: {
@@ -36,4 +36,4 @@ const sceneLinkPrimitive = {
 	}
 };
 
-export default sceneLinkPrimitive;
+export default hitBoxPrimitive;
