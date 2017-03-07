@@ -12,6 +12,7 @@ import hoverAnimation from './hover';
 import levelScaleTo from './scale';
 import hitBox from './hitbox';
 import delegateEvent from './delegate';
+import clickToggle from './clicktoggle';
 import anchorLook from './anchorlook';
 
 export default {
@@ -22,12 +23,14 @@ export default {
 	levelScaleTo,
 	hitBox,
 	delegateEvent,
+	clickToggle,
 	anchorLook,
 	registerAll() {
 		loaders.registerAll();
 		primitives.registerAll();
 
 		anchorLook.register();
+		clickToggle.register();
 		delegateEvent.register();
 		hitBox.register();
 		levelScaleTo.register();

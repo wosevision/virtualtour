@@ -92,10 +92,14 @@
 						editable="hotSpot">
 		<hot-spot hover-animation="scaleFactor:1.1;fillColor:#c71566;textColor:#c71566;opacityFactor:0.7;"></hot-spot>
     <text-panel content="{{ ['More about ', (hotSpot.feature.properties.name || hotSpot.name).toUpperCase(), '\n\n', (hotSpot.feature.properties.desc || hotSpot.desc)].join('') }}"
-								animation="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: click"
-								scale="0.001 0.001 0.001"
+								animation__open="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: toggle-on"
+								animation__close="property: scale; from: 1 1 1; to: 0 0 0; dur: 600; easing: easeOutQuint; startEvents: toggle-off"
+								scale="0 0 0"
 								position="0 0 1"
 								rotation="0 0 0"
+								width="4"
+								wrap-count="50"
+    						click-toggle
 								class="text-panel">
 		</text-panel>
 	</hit-box>
