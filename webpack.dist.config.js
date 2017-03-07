@@ -3,6 +3,7 @@ const path    = require('path');
 const config  = require('./webpack.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 config.output = {
@@ -24,7 +25,7 @@ config.postcss = () => [
 config.plugins = config.plugins.concat([
 
   /**
-   * Auto-generates favicon, MS tile, Apple touch icon, Twitter card image, etc
+   * Auto-generates favicon, MS tile, Apple touch icon, Twitter card image, etc.
    */
   new FaviconsWebpackPlugin({
   	logo: path.resolve(__dirname, 'client/favicon.png'),
@@ -40,6 +41,15 @@ config.plugins = config.plugins.concat([
       windows: true
     }
   }),
+
+  /**
+   * Copies static assets from `client/assets` to the server's `public`
+   * directory (keeps directory structure from `/assets` inwards).
+   */
+  new CopyWebpackPlugin([{
+  	from: 'assets/**/*',
+  	context: 'client'
+  }]),
 
 	/**
 	 * Provides an exit pipe and injectable file reference for the final
