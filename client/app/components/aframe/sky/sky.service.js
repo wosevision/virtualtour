@@ -59,11 +59,7 @@ class SkyService {
 			f: 'auto',
 			q: COMPRESS_MAX - (COMPRESS_FACTOR * this.UserSession.usage.compression.val)
 		}
-		const output = [];
-		Object.keys(settings).forEach(key => {
-			output.push(`${key}_${settings[key]}`)
-		})
-		return output.join(',');
+		return Object.keys(settings).map(key => `${key}_${settings[key]}`).join(',');
 	}
 
 	/**

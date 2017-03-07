@@ -18,40 +18,38 @@
 	<a-light type="directional" color="#FFF" intensity="0.6" position="-0.5 1 1"></a-light>
 
 	<!-- CAMERA ENTITY -->
-	<!-- <a-entity position="0 1.8 0"> -->
-		<a-camera
-			id="aframe-camera"
-			mouse-cursor
-			anchor-look
-			wasd-controls="enabled: false;"
-			look-controls="reverseMouseDrag: true;">
-			<!-- VR CURSOR -->
-		  <a-entity ng-if="$ctrl.mobile.device && $ctrl.mobile.landscape"
-		  					cursor="fuse: true; fuseTimeout: 2000"
-		            position="0 0 -1"
-		            geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01; thetaLength: 360;"
-		            material="color: white; opacity: 0.8; shader: flat"
-		            animation__cursor-mouseenter-outer="property: geometry.radiusOuter; dur: 600; easing: easeOutBounce; elasticity: 500; to: 0.025; startEvents: mouseenter;"
-		            animation__cursor-mouseenter-inner="property: geometry.radiusInner; dur: 600; easing: easeOutBounce; elasticity: 500; to: 0.02; startEvents: mouseenter;"
-		            animation__cursor-mouseleave-outer="property: geometry.radiusOuter; dur: 600; to: 0.01; startEvents: mouseleave;"
-		            animation__cursor-mouseleave-inner="property: geometry.radiusInner; dur: 600; to: 0.007; startEvents: mouseleave;">
-  			<a-animation attribute="geometry.thetaLength"
-  									 begin="cursor-fusing"
-  									 dur="1600"
-  									 delay="400"
-  									 easing="ease-in"
-  									 fill="both"
-  									 from="360"
-  									 to="0">
-  			</a-animation>
-  			<a-animation attribute="geometry.thetaLength"
-  									 begin="mouseleave"
-  									 dur="600"
-  									 to="360">
-  			</a-animation>
-		  </a-entity>
-		</a-camera>
-	<!-- </a-entity> -->
+	<a-camera
+		id="aframe-camera"
+		mouse-cursor
+		anchor-look
+		wasd-controls="enabled: false;"
+		look-controls="reverseMouseDrag: true;">
+		<!-- VR CURSOR -->
+	  <a-entity ng-if="$ctrl.mobile.device && $ctrl.mobile.landscape"
+	  					cursor="fuse: true; fuseTimeout: 2000"
+	            position="0 0 -1"
+	            geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01; thetaLength: 360;"
+	            material="color: white; opacity: 0.8; shader: flat"
+	            animation__cursor-mouseenter-outer="property: geometry.radiusOuter; dur: 600; easing: easeOutBounce; elasticity: 500; to: 0.025; startEvents: mouseenter;"
+	            animation__cursor-mouseenter-inner="property: geometry.radiusInner; dur: 600; easing: easeOutBounce; elasticity: 500; to: 0.02; startEvents: mouseenter;"
+	            animation__cursor-mouseleave-outer="property: geometry.radiusOuter; dur: 600; to: 0.01; startEvents: mouseleave;"
+	            animation__cursor-mouseleave-inner="property: geometry.radiusInner; dur: 600; to: 0.007; startEvents: mouseleave;">
+			<a-animation attribute="geometry.thetaLength"
+									 begin="cursor-fusing"
+									 dur="1600"
+									 delay="400"
+									 easing="ease-in"
+									 fill="both"
+									 from="360"
+									 to="0">
+			</a-animation>
+			<a-animation attribute="geometry.thetaLength"
+									 begin="mouseleave"
+									 dur="600"
+									 to="360">
+			</a-animation>
+	  </a-entity>
+	</a-camera>
 	
 	<!-- GENERIC ENTITIES -->
 	<aframe-entity ng-model="entity" ng-repeat="entity in $ctrl.entities track by entity._id"></aframe-entity>
