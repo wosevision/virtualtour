@@ -1,6 +1,7 @@
-var path    = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 
 module.exports = {
   devtool: 'source-map',
@@ -19,15 +20,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // Injects bundles in your index.html instead of wiring all manually.
-    // It also adds hash to all injected assets so we don't have problems
-    // with cache purging during deployment.
-    new HtmlWebpackPlugin({
-      template: 'client/index.html',
-      inject: 'head',
-	    title: 'UOIT Virtual Tour',
-      hash: true
-    }),
 
     // Automatically move all modules defined outside of application directory to vendor bundle.
     // If you are using more complicated project structure, consider to specify common chunks manually.
@@ -36,6 +28,19 @@ module.exports = {
       minChunks: function (module, count) {
         return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
       }
-    })
+    }),
+    
+    // Injects bundles in your index.html instead of wiring all manually.
+    // It also adds hash to all injected assets so we don't have problems
+    // with cache purging during deployment.
+    new HtmlWebpackPlugin({
+      template: 'client/index.pug',
+      filename: 'index.pug',
+      filetype: 'pug',
+      // inject: 'head',
+	    title: 'UOIT Virtual Tour',
+      hash: true
+    }),
+    new HtmlWebpackPugPlugin(),
   ]
 };

@@ -4,10 +4,10 @@ const warn = AFRAME.utils.debug('components:anchor-look:warn');
 
 const anchorLookComponent = {
 	config: {
+		dependencies: ['camera'],
 	  init() {
-	    this.target3D = null;
+	  	this.camera = this.el.components.camera.camera;
 	    this.targetAnchor = null;
-	    this.vector = new THREE.Vector3();
 	  },
 
 	  tick(t) {
@@ -18,9 +18,11 @@ const anchorLookComponent = {
 	    const target3D = this.target3DFromHash(newHash);
 	    if (target3D) {
 	      this.targetAnchor = newHash;
-	      const vector = this.el.object3D.parent.worldToLocal(target3D.getWorldPosition());
-	      console.log(target3D, vector);
-	      return this.el.object3D.lookAt(vector);
+	      const vector = this.el.object3D.worldToLocal(target3D.getWorldPosition());
+	      console.log(this);
+
+	      this.camera.lookAt(vector);
+	      this.camera.updateProjectionMatrix();
 	    }
 	  },
 

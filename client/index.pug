@@ -1,0 +1,48 @@
+// © 2017 UOIT 
+// 
+  /++++++++++++++++++++:     /y`  .y: +yo   s/ -y: ss   .y-.yyyyyy`-yyyss:  .oyyy+` +y.+yyyyyy-y+   oo
+  oyyyyyyyyyyyyyyyyyyyy+     sm.  .m/ yddo  do :m+ +m:  sd .ms     /m/  om: dh` .y: sm. `:mo   +m+ sd.
+  oyyyyyyyyyyyyyyyyyyyy+     sm.  .m/ yh-m/ do :m+ `dh `m/ .my///` /m+.-ym- omho:`  sm.  -mo    omyd. 
+  oyyyyyyyyyo//////oyyy+     sm.  .m/ yy -m/do :m+  +m:oh  .my:::  /ms+hm.   `:+ymo sm.  -mo     ym-  
+  oyyyyyyy/`.oyyyyo.`/y+     om:  /m: yy  :mmo :m+  `dhm:  .ms     /m/ .dy .h/  `dd sm.  -mo     sm`  
+  oyyyyyy. `syyyyyyy` ./     `ohyyy+  os   /h+ -h/   /hy   .hhyyyy.:h:  :h/ :yhyho. +h.  -h+     oh`  
+  oyyyyy:  /yyyyyyyy/  `                                                                              
+  oyyyyy   +yyyyyyyy+          .::.   `-----.     `::-   `--   `- .------  `-.   `----.   `-`   -::.  
+  oyyyys   +yyyyyyyyo        .hd++hd. +ms+++:   `ym+/yd: :mm+  +m /osmho+  ydm.  -mh++hd- +m: -dh++dh`
+  :yyyyy`  +yyyyyyyy+        ym.  `mh +m:       +m/   hm`:m/m/ +m   -m+   :m-ms  -mo  :mo +m: dm`  -ms
+   oyyyy/  :yyyyyyyy:        dm    dm +mhyy+    sm-   sm-:m.:m:+m   -m+   hs om. -mdyymo` +m:`mh   `mh
+    +yyyy/  oyyyyyyo         ym.  `mh +m:       +m/   hm`:m. /mym   -m+  +myyymy -mo :m+  +m: dm   -ms
+     .+yyyo-`/oyys/          .dh//yd- +m:       `yd+:sm/ :m.  /mm   -m+ `ms   om--mo  om: +m: :dy//dh.
+        .:/++:-`               -//-   .:`         .:/:`  `:`   -:   `:. `:`   `:.`:.   :- .:`  `-/:-  
+                                                                                                      
+  / -:  : :-:.-:/-`:.-/-`/  :`-/-.::--   ---: ::--  -::-.:--`.:-: :  ..`+` -``:-:` /   ---: `:-:.-. `-
+  o /-/ +`+-`` ./ `+ `+  o  +  +` +-``  .+  :-+-``   :- -/`` o  .`o../-./+`/`o` `o s  .+  :-+.  . /-/ 
+  o /`-:+``.:+ ./ `+ `+  o  +  +` +-.`  .+  :-+-.`   :- -/.``o  ` o.`/-./`++`o  `o s  .+  ::+.`-o  s  
+  / :` -/`/-:: .: `: `/  /--/  /` ::--   ::-/ :`     -. ./--`-:-/ /  -.`: `+`.:-/. +--`:--/ `/-:+  /  
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title UOIT Virtual Tour
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    meta(name='description', content='Take an immersive 3D tour around the University of Ontario Institute of Technology from the comfort of your computer chair, or leap into the scene with a compatible virtual reality headset! The UOIT Virtual Tour runs right out of your browser, and is compatible with mobile VR headsets like Google cardboard and consumer VR headsets like the Oculus or HTC Vive.')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Z_tA7YdsRXkHdThiC-VA0dvwX6a4Kto')
+    script.
+      (function(/***/u,o,i,t,e,c,h/***/){u['GoogleAnalyticsObject']=e;u[e]=u[e]||function(){(u[e].q=u[e].q||[]).push(arguments)},u[e].l=1*new Date();c=o.createElement(i),h=o.getElementsByTagName(i)[0];c.async=1;c.src=t;h.parentNode.insertBefore(c,h)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-89097401-1', {'cookieDomain': 'none'});
+    style.
+      @-webkit-keyframes loadSpin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+      @keyframes loadSpin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: -webkit-box !important; display: -webkit-flex !important; display: -ms-flexbox !important; display: flex !important; position: fixed; display: flex; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; width: 100%; height: 100%; top: 0; left: 0; background: #003c71; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; }
+      [ng\:cloak] div:not(.loading-spinner), [ng-cloak] div:not(.loading-spinner), [data-ng-cloak] div:not(.loading-spinner), [x-ng-cloak] div:not(.loading-spinner), .ng-cloak div:not(.loading-spinner), .x-ng-cloak div:not(.loading-spinner) { display: none !important; }
+      [ng\:cloak] .loading-spinner, [ng-cloak] .loading-spinner, [data-ng-cloak] .loading-spinner, [x-ng-cloak] .loading-spinner, .ng-cloak .loading-spinner, .x-ng-cloak .loading-spinner { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; color: rgba(255, 255, 255, 0.6); font-size: 5px; text-indent: -99999em; margin: 55px auto; position: relative; width: 10em; height: 10em; box-shadow: inset 0 0 0 1em; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-animation: loadSpin 6s infinite linear; animation: loadSpin 6s infinite linear; }
+      [ng\:cloak] .loading-spinner, [ng\:cloak] .loading-spinner:before, [ng\:cloak] .loading-spinner:after, [ng-cloak] .loading-spinner, [ng-cloak] .loading-spinner:before, [ng-cloak] .loading-spinner:after, [data-ng-cloak] .loading-spinner, [data-ng-cloak] .loading-spinner:before, [data-ng-cloak] .loading-spinner:after, [x-ng-cloak] .loading-spinner, [x-ng-cloak] .loading-spinner:before, [x-ng-cloak] .loading-spinner:after, .ng-cloak .loading-spinner, .ng-cloak .loading-spinner:before, .ng-cloak .loading-spinner:after, .x-ng-cloak .loading-spinner, .x-ng-cloak .loading-spinner:before, .x-ng-cloak .loading-spinner:after { border-radius: 50%; }
+      [ng\:cloak] .loading-spinner:before, [ng\:cloak] .loading-spinner:after, [ng-cloak] .loading-spinner:before, [ng-cloak] .loading-spinner:after, [data-ng-cloak] .loading-spinner:before, [data-ng-cloak] .loading-spinner:after, [x-ng-cloak] .loading-spinner:before, [x-ng-cloak] .loading-spinner:after, .ng-cloak .loading-spinner:before, .ng-cloak .loading-spinner:after, .x-ng-cloak .loading-spinner:before, .x-ng-cloak .loading-spinner:after { position: absolute; content: ''; }
+      [ng\:cloak] .loading-spinner:before, [ng-cloak] .loading-spinner:before, [data-ng-cloak] .loading-spinner:before, [x-ng-cloak] .loading-spinner:before, .ng-cloak .loading-spinner:before, .x-ng-cloak .loading-spinner:before { width: 5.2em; height: 10.2em; background: #003c71; border-radius: 10.2em 0 0 10.2em; top: -0.1em; left: -0.1em; -webkit-transform-origin: 5.2em 5.1em; -ms-transform-origin: 5.2em 5.1em; transform-origin: 5.2em 5.1em; -webkit-animation: loadSpin 2s infinite ease 1.5s; animation: loadSpin 2s infinite ease 1.5s; }
+      [ng\:cloak] .loading-spinner:after, [ng-cloak] .loading-spinner:after, [data-ng-cloak] .loading-spinner:after, [x-ng-cloak] .loading-spinner:after, .ng-cloak .loading-spinner:after, .x-ng-cloak .loading-spinner:after { width: 5.2em; height: 10.2em; background: #003c71; border-radius: 0 10.2em 10.2em 0; top: -0.1em; left: 5.1em; -webkit-transform-origin: 0px 5.1em; -ms-transform-origin: 0px 5.1em; transform-origin: 0px 5.1em; -webkit-animation: loadSpin 2s infinite ease; animation: loadSpin 2s infinite ease; }
+    base(href='/')
+  body(ng-app='app', ng-strict-di='', ng-cloak='')
+    app.loading-spinner
