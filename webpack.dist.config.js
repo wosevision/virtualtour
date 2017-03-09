@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 config.output = {
-  filename: '[name].bundle.js',
+  filename: '[name].[chunkhash].js',
   publicPath: '',
   // path: path.resolve(__dirname, 'dist')
   path: path.resolve(__dirname, '../virtualtour-ks/public')
