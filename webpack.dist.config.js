@@ -14,15 +14,13 @@ config.output = {
 };
 
 config.module.loaders = config.module.loaders.concat([
-	{ test: /\.(scss|sass)$/, loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader!sass-loader') },
-	{ test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'postcss-loader!css-loader') }
+	{ test: /\.(scss|sass)$/, loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader!postcss-loader!sass-loader'}) },
+	{ test: /\.css$/, loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'postcss-loader!css-loader'}) }
 ]);
 
-config.postcss = () => [
-	require('autoprefixer')
-];
-
 config.plugins = config.plugins.concat([
+   
+  new webpack.LoaderOptionsPlugin({ options: { postcss: [ require('autoprefixer') ] } }),
 
   /**
    * Auto-generates favicon, MS tile, Apple touch icon, Twitter card image, etc.
