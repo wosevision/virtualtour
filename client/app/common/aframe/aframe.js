@@ -2,6 +2,7 @@ import 'aframe';
 import 'aframe-animation-component';
 import 'aframe-look-at-component';
 import 'aframe-mouse-cursor-component';
+import 'aframe-html-shader';
 
 import { primitives, loaders } from 'aframe-extras';
 
