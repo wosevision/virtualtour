@@ -19,7 +19,8 @@ import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
 
 const APP_ROOT = 'client',
-			DOCS_ROOT = 'docs';
+			DOCS_ROOT = 'docs',
+			API_ROOT = 'http://localhost:3000';
 
 // helper method for resolving paths
 let resolveToApp = (glob = '') => {
@@ -45,8 +46,8 @@ let paths = {
   output: APP_ROOT,
   docs: DOCS_ROOT,
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
-  dest: path.join(__dirname, 'dist'),
-  deploy: path.join(__dirname, '../virtualtour-ks/public')
+  // dest: path.join(__dirname, 'dist'),
+  dest: path.join(__dirname, '../virtualtour-ks/public')
 };
 
 // use webpack.config.js to build modules
@@ -83,8 +84,8 @@ gulp.task('serve', () => {
   serve({
     port: process.env.PORT || 3002,
     open: false,
-    // server: {baseDir: APP_ROOT},
     proxy: 'localhost:3000',
+    server: {baseDir: APP_ROOT},
     middleware: [
       historyApiFallback(),
       webpackDevMiddleware(compiler, {
@@ -142,7 +143,7 @@ gulp.task('component', () => {
 });
 
 gulp.task('clean', cb => {
-  del([paths.deploy], {
+  del([paths.dest], {
   	force: true
   }).then(function (paths) {
     gutil.log("[clean]", paths);
