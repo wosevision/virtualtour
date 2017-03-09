@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
+// import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 
 module.exports = {
   devtool: 'source-map',
@@ -34,13 +34,14 @@ module.exports = {
     // It also adds hash to all injected assets so we don't have problems
     // with cache purging during deployment.
     new HtmlWebpackPlugin({
-      template: 'client/index.pug',
-      filename: 'index.pug',
-      filetype: 'pug',
-      // inject: 'head',
+      // template: 'client/index.pug',
+      // filename: 'index.pug',
+      // filetype: 'pug',
+      template: 'client/index.html',
+      inject: 'head',
 	    title: 'UOIT Virtual Tour',
       hash: true
     }),
-    new HtmlWebpackPugPlugin(),
+    // new HtmlWebpackPugPlugin(),
   ]
 };
