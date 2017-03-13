@@ -16,11 +16,23 @@ class WelcomeController {
 	/**
 	 * Initializes dialog's dependencies.
 	 */
-	constructor($mdDialog, UserSession, TOUR_STEPS, WELCOME_TIP_LIST, WELCOME_TIPS) {  //nzTour, 
+	constructor(
+		$state,
+		$mdDialog,
+		$mdSidenav,
+		UserSession,
+		nzTour,
+		TOUR_STEPS,
+		WELCOME_TIP_LIST,
+		WELCOME_TIPS,
+	) {
 	  'ngInject';
-		this.$mdDialog = $mdDialog;
+	  this._$state = $state;
+		this._$mdDialog = $mdDialog;
+		this._$mdSidenav = $mdSidenav;
+
 		this.UserSession = UserSession;
-		this.OnboardTour = () => alert('fix me!');//nzTour
+		this.OnboardTour = nzTour;
 		this.TOUR_STEPS = TOUR_STEPS;
 		this.WELCOME_TIPS = WELCOME_TIPS;
 
@@ -33,7 +45,7 @@ class WelcomeController {
 	 * @return {Promise} Promise that will be fulfilled on hide
 	 */
   hide() {
-    return this.$mdDialog.hide();
+    return this._$mdDialog.hide();
   }
 
 	/**
@@ -41,7 +53,7 @@ class WelcomeController {
 	 * @return {Promise} Promise that will be rejected on cancel
 	 */
   cancel() {
-    return this.$mdDialog.cancel();
+    return this._$mdDialog.cancel();
   }
 
   /**
@@ -50,7 +62,7 @@ class WelcomeController {
    * @return {Promise}       Promise containing the resolved answer
    */
   answer(answer) {
-    return this.$mdDialog.hide(answer);
+    return this._$mdDialog.hide(answer);
   }
 
   /**
@@ -75,7 +87,7 @@ class WelcomeController {
    * @return {Promise} Promise representing tour completion
    */
   startTour() {
-    this.$mdDialog.hide('tour');
+    this._$mdDialog.hide('tour');
   	return this.OnboardTour.start(this.TOUR_STEPS);
   }
 
@@ -89,6 +101,12 @@ class WelcomeController {
   	currentSettings.showWelcome.val = this.showWelcome;
   	this.UserSession.settings = currentSettings;
   }
+
+	goToSettings() {
+    this._$state.go('settings');
+    this._$mdSidenav('right').open();
+    // this.answer('tour');
+	}
 }
 
 export default WelcomeController;

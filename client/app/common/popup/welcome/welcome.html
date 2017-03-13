@@ -1,9 +1,10 @@
 <md-dialog aria-label="Welcome to the UOIT Virtual Tour" class="welcome-dialog">
 	<form>
-		<!-- TOOLBAR / TITLE / CLOSE BUTTON -->
+	<!-- TOOLBAR / TITLE / CLOSE BUTTON -->
+<!--
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>UOIT Virtual Tour</h2>
+				<h2>Welcome</h2>
 				<span flex></span>
 				<md-button ng-if="!$ctrl.currentTips" class="md-icon-button" ng-click="$ctrl.cancel()" aria-label="Close this window">
 					<ng-md-icon
@@ -13,7 +14,7 @@
 				</md-button>
 			</div>
 		</md-toolbar>
-
+-->
 		<!-- STANDARD: WELCOME TABS DISPLAY -->
 		<md-dialog-content ng-if="!$ctrl.currentTips">
 			<md-tabs
@@ -23,22 +24,18 @@
 				<!-- WELCOME -->
 				<md-tab label="Welcome">
 					<md-content class="md-padding" layout="column" layout-align="start center">
-<!-- 						<ng-md-icon
-							class="dialog-icon compass-icon"
-							icon="explore"
-							size="90"
-							style="fill: #0077CA;">
-						</ng-md-icon> -->
 						<div class="dialog-icon compass-icon">
-							<!-- <img src="images/uoit-shield.svg"> -->
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 84.86">
 							  <path d="M43.82,82.91c-17.6,0-25.67-15.73-25.67-31.62s8.07-31.62,25.67-31.62c13.27,0,21.11,8.93,24.18,20.15L67.94,0H0L0,51C.71,70.93,15.27,84.86,34,84.86a28.57,28.57,0,0,0,10-2Z" style="fill: #0077ca"/>
 							  <path d="M43.89,22.17c-14.13,0-15.16,19.16-15.16,29.2s1,29.21,15.16,29.21S59,61.42,59,51.37,58,22.17,43.89,22.17Z" style="fill: #0077ca"/>
 							</svg>
 						</div>
-						<h2 class="md-display-2">Welcome to the Virtual Tour!</h2>
-						<p class="md-headline">Experience an immersive 3D visit to the University of Ontario Institute of Technology.</p>
-						<p class="md-headline">Use the tabs above to learn more about how to use the Virtual Tour, or just dive in!<br/>You'll learn quickly.</p>
+						<h2>
+							<span class="md-title">Welcome to the </span><br/>
+							<span class="md-display-1"><strong>UOIT Virtual Tour</strong> beta!</span>
+						</h2>
+						<p class="md-subhead">Experience an immersive 3D visit to the University of Ontario Institute of Technology with your <strong>computer</strong>, <strong>smartphone</strong> or <strong>VR-enabled device</strong>.</p>
+						<p class="md-subhead">Use the tabs above to learn more about how to use the Virtual Tour, or just dive in!<br/>You'll learn quickly.</p>
 					</md-content>
 				</md-tab>
 				<!-- USAGE TIPS -->
@@ -51,7 +48,10 @@
 								size="90"
 								style="fill: #0077CA;">
 							</ng-md-icon>
-							<h2><span class="md-display-2">Tips</span><br/><span class="md-headline">for better usage</span></h2>
+							<h2>
+								<span class="md-display-1"><strong>Tips</strong></span><br/>
+								<span class="md-title">for better usage</span>
+							</h2>
 						</div>
 						<div layout="row">
 							<md-list flex>
@@ -89,7 +89,13 @@
 								size="90"
 								style="fill: #0077CA;">
 							</ng-md-icon>
-							<h2><span class="md-display-2">Accessibility</span><br/><span class="md-headline">information</span></h2>
+							<h2>
+								<span class="md-display-1"><strong>Accessibility</strong></span><br/>
+								<span class="md-title">information</span>
+							</h2>
+							<p class="md-subhead"><strong>Building an inclusive environment is of utmost importance to UOIT</strong>.<br/>We believe a Virtual Tour should be no less inclusive than the real thing!</p>
+							<p class="md-subhead">To provide an equally rich and enjoyable experience for everybody, this app includes a number of built-in accessibility features; these features can be used by anyone, but may be particularly useful as aids for persons with disabilities.</p>
+							<md-button class="md-primary" ng-click="$ctrl.viewTip('accessibility')">Learn more about accessibility</md-button>
 						</div>
 					</md-content>
 				</md-tab>
@@ -102,10 +108,7 @@
 				<md-button class="md-primary" ng-click="$ctrl.currentTips = false">« Go back</md-button>
 			</div>
 			<div>
-				<h2 layout-padding>
-					<span class="md-headline">{{ ::$ctrl.currentTips.title[0] }}</span><br/>
-					<span class="md-display-2">{{ ::$ctrl.currentTips.title[1] }}</span>
-				</h2>
+				<h2><span class="md-title">{{ ::$ctrl.currentTips.title[0] }}</span><br/><span class="md-display-1"><strong>{{ ::$ctrl.currentTips.title[1] }}</strong></span></h2>
 			</div>
 			<md-tabs
 				md-dynamic-height
@@ -119,7 +122,7 @@
 				    <div layout="row" layout-padding> 
 					  	<div bind-html-compile compile="::tip.content" layout="column" layout-align="center center" flex>
 					  	</div>
-					  	<img ng-src="{{ ::tip.image }}" flex>
+					  	<img ng-if="::tip.image" ng-src="{{ ::tip.image }}" flex>
 				  	</div>
 			    </md-content>
 			  </md-tab>

@@ -33,7 +33,7 @@
     "angulartics-google-analytics": "^0.4.0",
     "ng-wig": "^3.0.7",
     "ngmap": "^1.17.6",
-    "nz-tour": "^1.2.1",
+    "nz-tour": "git+https://github.com/semos/nzTour.git",
     "uoit-campus-map": "github:wosevision/uoit-campus-map",
     "v-accordion": "^1.6.0"
   },

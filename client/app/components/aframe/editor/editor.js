@@ -1,5 +1,6 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
+import 'ng-wig';
 
 import editorDirective from './editor.directive';
 import editorComponent from './editor.component';
@@ -9,7 +10,7 @@ import template from './editorDialog.html';
 import controller from './editorDialog.controller';
 
 let editorModule = angular.module('aframe.editor', [
-  ngMaterial
+  ngMaterial, 'ngWig'
 ])
 
 .directive('editable', editorDirective)

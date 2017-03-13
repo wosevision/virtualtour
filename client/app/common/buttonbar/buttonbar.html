@@ -16,7 +16,7 @@
 		flex="grow"
   	ng-click="$ctrl.select(state)"
   	md-ink-ripple="#0077CA"
-  	id="{{::v}}">
+  	id="{{ ::state }}">
   	<ng-md-icon icon="{{ :: stateInfo.icon }}" style="fill: #ffffff;"></ng-md-icon>
     <span ng-bind=":: stateInfo.label"></span>
     <md-tooltip md-direction="{{ $ctrl.mobile.screen ? 'top' : 'left' }}" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!$ctrl.mobile.device&&$ctrl.showHints()" md-z-index="10000">

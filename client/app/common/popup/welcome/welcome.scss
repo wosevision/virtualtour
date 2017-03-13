@@ -42,13 +42,19 @@
   }
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }	
+	50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 .md-dialog-container {
 	// padding-top: 69px;
 	// height: calc(100% - 69px);
 }
 
 .welcome-dialog {
-	max-width:960px;
+	max-width: 720px;
 	max-height: calc(95% - 69px);
 	margin-top: 69px;
 	text-align: center;
@@ -58,6 +64,7 @@
 		margin: 2rem 0 0.5rem 0;
 		opacity: 0.5;
 		&.compass-icon {
+			padding: 0.5rem;
 	    perspective: 200px;
 	    svg, img {
 		    animation-name: spinner;
@@ -77,21 +84,33 @@
 		    animation-name: pulse;
 	  }
 	}
-	.md-body-1 ng-md-icon {
+	p ng-md-icon {
 		min-height: 0;
-		height: 16px;
 		min-width: 0;
+		height: 16px;
 		width: 16px;
-		padding: 1px;
+		vertical-align: text-top;
 	}
-	md-content h1, md-content h2 {
+	md-dialog-content h1, md-dialog-content h2 {
 		color: $uoitdarkblue;
 	}
 	.footer-pane {
-		padding-top: 3rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		md-checkbox {
+			margin-bottom: 0;
+		}
 	}
-	md-list {
+	md-list, ul {
 		text-align: left;
+		width: 100%;
+	}
+	li {
+		margin-bottom: 1rem;
+		.md-button {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 }
 
