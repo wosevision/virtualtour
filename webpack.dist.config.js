@@ -1,10 +1,11 @@
-const webpack = require('webpack');
-const path    = require('path');
-const config  = require('./webpack.config');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+import webpack from 'webpack';
+import path    from 'path';
+import config  from './webpack.config';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
 config.output = {
   filename: '[name].[chunkhash].js',
@@ -65,16 +66,26 @@ config.plugins = config.plugins.concat([
 
   /**
    * Reduces JS bundle's total size by minifying and mangling.
+	 * Exempts certain global variables from mangling – necessary for
+	 * certain vendor dependencies (like Angular and A-Frame).
    */
   new webpack.optimize.UglifyJsPlugin({
     mangle: {
-    	/**
-    	 * Exempts certain global variables from mangling – necessary for
-    	 * certain vendor dependencies (like Angular and A-Frame).
-    	 * @type {Array}
-    	 */
       except: ['$super', '$', 'exports', 'require', 'angular', 'AFRAME']
     }
+  }),
+
+  /**
+   * Injects bundles in your index.html instead of wiring all manually.
+   * It also adds hash to all injected assets so we don't have problems
+   * with cache purging during deployment.
+   */
+  new HtmlWebpackPlugin({
+    template: 'client/index.ejs',
+    filename: '../templates/views/index.ejs',
+    title: 'UOIT Virtual Tour',
+    inject: false,
+    hash: true
   })
 ]);
 

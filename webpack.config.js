@@ -1,7 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 
 module.exports = {
   devtool: 'source-map',
@@ -20,20 +18,6 @@ module.exports = {
     ]
   },
   plugins: [
-
-    // Injects bundles in your index.html instead of wiring all manually.
-    // It also adds hash to all injected assets so we don't have problems
-    // with cache purging during deployment.
-    new HtmlWebpackPlugin({
-      // template: 'client/index.pug',
-      // filename: 'index.pug',
-      // filetype: 'pug',
-      template: 'client/index.html',
-      inject: 'head',
-	    title: 'UOIT Virtual Tour',
-      hash: true
-    }),
-    // new HtmlWebpackPugPlugin(),
 
     // Automatically move all modules defined outside of application directory to
     // `vendor` bundle and place Webpack bootstrap into `manifest`

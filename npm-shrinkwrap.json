@@ -4449,12 +4449,6 @@
       "resolved": "git+https://github.com/jantimon/html-webpack-plugin.git#b8fd1427bc7714f0b37e1ef8ed9e4477a7bbafcd",
       "dev": true
     },
-    "html-webpack-pug-plugin": {
-      "version": "0.0.3",
-      "from": "html-webpack-pug-plugin@0.0.3",
-      "resolved": "https://registry.npmjs.org/html-webpack-pug-plugin/-/html-webpack-pug-plugin-0.0.3.tgz",
-      "dev": true
-    },
     "htmlparser2": {
       "version": "3.8.3",
       "from": "htmlparser2@>=3.8.0 <3.9.0",

@@ -341,3 +341,47 @@ kbd {
 @import '~ng-wig/src/css/ng-wig';
 
 @import 'icons';
+
+// LOADING BAR AND SPINNER
+#loading-bar {
+	.peg {
+	  height: 5px;
+	  box-shadow: #0077CA 4px 0 8px 1px;
+	}
+	.bar {
+		background: #0077CA;
+	  height: 5px;
+	}
+}
+
+#loading-spinner {
+	position: fixed;
+  z-index: 100;
+}
+
+.float-right {
+	float: right;
+}
+
+.badge {
+	font-size: 10px;
+}
+
+.md-track-ticks canvas {
+	left: 0;
+}
+
+.md-button, .md-tab {
+  font-weight: 700;
+}
+
+.md-input-invalid::after {
+	position: absolute;
+	color: rgb(221,44,0);
+	content: 'Invalid!';
+	font-family: $font-family;
+	font-weight: 700;
+	font-size: 12px;
+	text-transform: uppercase;
+	bottom: 18px;
+}
