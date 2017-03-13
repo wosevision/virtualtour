@@ -7,8 +7,8 @@ $em-ratio: 60 / 36;
 }
 
 .scene-view {
-	transition: filter 0.15s;//, transform 0.15s;
   @include cover(absolute);
+	transition: filter 0.15s;
   aframe-scene {
   	position: relative;
   }
@@ -38,7 +38,6 @@ $em-ratio: 60 / 36;
 	  }
 	}
   &.blur-active{
-  	// transform: scale(1.1);
   	filter: blur(10px);
   	filter: url(#blur);
   }

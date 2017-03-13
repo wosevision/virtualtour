@@ -18,17 +18,17 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
 
-const APP_ROOT = 'client',
+const CLIENT_ROOT = 'client',
 			DOCS_ROOT = 'docs',
 			API_ROOT = 'http://localhost:3000';
 
 // helper method for resolving paths
 let resolveToApp = (glob = '') => {
-  return path.join(APP_ROOT, 'app', glob); // app/{glob}
+  return path.join(CLIENT_ROOT, 'app', glob); // app/{glob}
 };
 
 let resolveToComponents = (glob = '') => {
-  return path.join(APP_ROOT, 'app/components', glob); // app/components/{glob}
+  return path.join(CLIENT_ROOT, 'app/components', glob); // app/components/{glob}
 };
 
 // map of all paths
@@ -37,13 +37,13 @@ let paths = {
   scss: resolveToApp('**/*.scss'), // stylesheets
   html: [
     resolveToApp('**/*.html'),
-    path.join(APP_ROOT, 'index.html')
+    path.join(CLIENT_ROOT, 'index.html')
   ],
   entry: [
     'babel-polyfill',
-    path.join(__dirname, APP_ROOT, 'app/app.js')
+    path.join(__dirname, CLIENT_ROOT, 'app/app.js')
   ],
-  output: APP_ROOT,
+  output: CLIENT_ROOT,
   docs: DOCS_ROOT,
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
   // dest: path.join(__dirname, 'dist'),
@@ -85,7 +85,7 @@ gulp.task('serve', () => {
     port: process.env.PORT || 3002,
     open: false,
     proxy: 'localhost:3000',
-    // server: {baseDir: APP_ROOT},
+    // server: {baseDir: CLIENT_ROOT},
     middleware: [
       historyApiFallback(),
       webpackDevMiddleware(compiler, {
@@ -104,7 +104,7 @@ gulp.task('serve', () => {
 gulp.task('watch', ['serve']);
 
 gulp.task('docs', ['cleandocs'], cb => {
-	return gulp.src(path.join(__dirname, APP_ROOT)).pipe(
+	return gulp.src(path.join(__dirname, CLIENT_ROOT)).pipe(
 		esdoc({
 			title: 'UOIT Virtual Tour',
 			destination: paths.docs,
