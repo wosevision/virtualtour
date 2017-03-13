@@ -91,7 +91,8 @@
 						look-at="[camera]"
 						editable="hotSpot">
 		<hot-spot hover-animation="scaleFactor:1.1;fillColor:#c71566;textColor:#c71566;opacityFactor:0.7;"></hot-spot>
-    <text-panel content="{{ ['More about ', (hotSpot.feature.properties.name || hotSpot.name).toUpperCase(), '\n\n', (hotSpot.feature.properties.desc || hotSpot.desc)].join('') }}"
+<!--
+		<text-panel content="{{ ['More about ', (hotSpot.feature.properties.name || hotSpot.name).toUpperCase(), '\n\n', (hotSpot.feature.properties.desc || hotSpot.desc)].join('') }}"
 								animation__open="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: toggle-on"
 								animation__close="property: scale; from: 1 1 1; to: 0 0 0; dur: 600; easing: easeOutQuint; startEvents: toggle-off"
 								scale="0 0 0"
@@ -102,6 +103,23 @@
     						click-toggle
 								class="text-panel">
 		</text-panel>
+-->
+		<a-entity
+			geometry="primitive:plane;width:4;height:2;"
+			ng-attr-material="shader: html; target: #hotSpot_{{ ::hotSpot._id }} .aframe-html-content; transparent: true; ratio: width; fps: 1.5;"
+			animation__open="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: toggle-on"
+			animation__close="property: scale; from: 1 1 1; to: 0 0 0; dur: 600; easing: easeOutQuint; startEvents: toggle-off"
+			rotation="0 0 0"
+			position="0 0 1"
+			scale="0 0 0"
+    	click-toggle
+			class="text-panel">
+    </a-entity>
+		<div class="aframe-html-content">
+      <h1>{{ (hotSpot.feature.properties.name || hotSpot.name).toUpperCase() }}</h1>
+      <img src="assets/images/north_bg.jpg" />
+      <span ng-bind-html="[(hotSpot.feature.properties.desc || hotSpot.desc)].join('')"></span>
+    </div>
 	</hit-box>
 
 </a-scene>
