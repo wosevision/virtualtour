@@ -1,5 +1,7 @@
 @import '../../../common/common';
 
+$em-ratio: 60 / 36;
+
 .scene-container {
 	height: 100%;
 }
@@ -39,6 +41,27 @@
   	// transform: scale(1.1);
   	filter: blur(10px);
   	filter: url(#blur);
+  }
+  .aframe-html-content {
+  	max-width: 1200px;
+  	position: absolute;
+  	padding: 0 #{$em-ratio}em 0 #{$em-ratio}em;
+  	background: rgba(black, 0.6);
+  	color: white;
+  	font-size: 2.5vw;
+  	line-height: 1.175;
+  	h1, h2, h3, {
+			font-size: 4.2vw;
+		}
+		p {
+			margin-bottom: 1.175em;
+		}
+		img {
+	  	max-width: 33vw;
+			display: block;
+			margin: 0 #{$em-ratio}em #{$em-ratio}em 0;
+			float: left;
+		}
   }
 }
 
