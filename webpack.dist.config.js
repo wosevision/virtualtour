@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path    from 'path';
-import config  from './webpack.config';
+import { config, toEJS }  from './webpack.config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
@@ -84,10 +84,13 @@ config.plugins = config.plugins.concat([
     template: 'client/index.ejs',
     filename: '../templates/views/index.ejs',
     title: 'UOIT Virtual Tour',
-    delimiters: [ '<%', '%>' ],
-    includeAuth: true,
+    googleAnalytics: {
+      trackingId: 'UA-89097401-1'
+    },
+    auth: true,
     inject: false,
-    hash: true
+    hash: true,
+    toEJS
   })
 ]);
 

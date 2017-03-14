@@ -39,10 +39,16 @@ let paths = {
     resolveToApp('**/*.html'),
     path.join(CLIENT_ROOT, 'index.html')
   ],
-  entry: [
-    'babel-polyfill',
-    path.join(__dirname, CLIENT_ROOT, 'app/app.js')
-  ],
+  entry: {
+  	app: [
+      'babel-polyfill',
+      path.join(__dirname, CLIENT_ROOT, 'app/app.js')
+    ],
+	  editor: [
+	    'babel-polyfill',
+	    path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor.js')
+	  ]
+	},
   output: CLIENT_ROOT,
   docs: DOCS_ROOT,
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
@@ -53,7 +59,8 @@ let paths = {
 // use webpack.config.js to build modules
 gulp.task('webpack', ['clean'], (cb) => {
   const config = require('./webpack.dist.config');
-  config.entry.app = paths.entry;
+  config.entry.app = paths.entry.app;
+  config.entry.editor = paths.entry.editor;
 
   webpack(config, (err, stats) => {
     if(err)  {
@@ -77,7 +84,8 @@ gulp.task('serve', () => {
     // it responsible for all this webpack magic
     'webpack-hot-middleware/client?reload=true',
     // application entry point
-  ].concat(paths.entry);
+  ].concat(paths.entry.app);
+  config.entry.editor = paths.entry.editor;
 
   var compiler = webpack(config);
 

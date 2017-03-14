@@ -1,4 +1,4 @@
-<ng-transclude ng-transclude-slot="editor"></ng-transclude>
+<ng-transclude ng-transclude-slot="editor" ng-if="!($ctrl.mobile.device &amp;&amp; $ctrl.mobile.landscape)"></ng-transclude>
 
 <a-scene id="aframe-scene" ng-transclude-slot="sky"> <!-- stats -->
 	

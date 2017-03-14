@@ -1,10 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
-import ejs from 'ejs';
 
-ejs.delimiter = '$';
-
-module.exports = {
+exports.config = {
   devtool: 'source-map',
   entry: {},
   module: {
@@ -36,3 +33,5 @@ module.exports = {
 	  })
   ]
 };
+
+exports.toEJS = (string, print) => `<%${ (print && '=') || '' } ${ string } %>`;

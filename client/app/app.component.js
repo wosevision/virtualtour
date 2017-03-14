@@ -6,6 +6,7 @@ let appComponent = {
   template,
   controller,
   controllerAs: 'mc',
+  transclude: true,
   restrict: 'E'
 };
 

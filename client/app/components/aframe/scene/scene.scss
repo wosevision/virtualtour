@@ -11,65 +11,57 @@ $em-ratio: 60 / 36;
 	transition: filter 0.15s;
   aframe-scene {
   	position: relative;
+	  > ng-transclude {	
+	  	position: absolute;
+	  	left: 0;
+	  	z-index: 50;
+	  	width: 100%;
+	  }
+	  @media (min-width: 960px) {
+		  > ng-transclude {	
+		  	top: 68px;
+		  	right: 60px;
+		  	md-fab-toolbar {
+		  		.md-fab-toolbar-wrapper {
+			  		padding-right: 123px;
+			  		transition: padding-right 0.6s ease;
+			  	}
+			  	.md-fab-toolbar-content {
+			  		position: relative;
+			  	}
+			  }
+		  }
+		}
+	  .aframe-html-content {
+	  	max-width: 1200px;
+	  	position: absolute;
+	  	padding: 0 #{$em-ratio}em 0 #{$em-ratio}em;
+	  	background: rgba(black, 0.6);
+	  	color: white;
+	  	font-size: 2.5vw;
+	  	line-height: 1.175;
+	  	h1, h2, h3, {
+				font-size: 4.2vw;
+			}
+			p {
+				margin-bottom: 1.175em;
+			}
+			img {
+		  	max-width: 33vw;
+				display: block;
+				margin: 0 #{$em-ratio}em #{$em-ratio}em 0;
+				float: left;
+			}
+	  }
   }
   a-scene, aframe-scene {	
     width: 100%;
     height: 100%;
   }
-  ng-transclude {	
-  	position: absolute;
-  	left: 0;
-  	z-index: 50;
-  	width: 100%;
-  }
-  @media (min-width: 960px) {
-	  ng-transclude {	
-	  	top: 68px;
-	  	right: 60px;
-	  	md-fab-toolbar {
-	  		.md-fab-toolbar-wrapper {
-		  		padding-right: 123px;
-		  		transition: padding-right 0.6s ease;
-		  	}
-		  	.md-fab-toolbar-content {
-		  		position: relative;
-		  	}
-		  }
-	  }
-	}
   &.blur-active{
   	filter: blur(10px);
   	filter: url(#blur);
   }
-  .aframe-html-content {
-  	max-width: 1200px;
-  	position: absolute;
-  	padding: 0 #{$em-ratio}em 0 #{$em-ratio}em;
-  	background: rgba(black, 0.6);
-  	color: white;
-  	font-size: 2.5vw;
-  	line-height: 1.175;
-  	h1, h2, h3, {
-			font-size: 4.2vw;
-		}
-		p {
-			margin-bottom: 1.175em;
-		}
-		img {
-	  	max-width: 33vw;
-			display: block;
-			margin: 0 #{$em-ratio}em #{$em-ratio}em 0;
-			float: left;
-		}
-  }
-}
-
-.test-links {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	background: pink;
-	z-index: 100000000;
 }
 
 .toolbar-condensed ng-transclude md-fab-toolbar .md-fab-toolbar-wrapper {

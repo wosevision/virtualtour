@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path    from 'path';
-import config  from './webpack.config';
+import { config, toEJS }  from './webpack.config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 config.output = {
@@ -22,8 +22,12 @@ config.plugins = config.plugins.concat([
   new HtmlWebpackPlugin({
     template: 'client/index.ejs',
     title: '*dev* UOIT Virtual Tour',
+    googleAnalytics: {
+      trackingId: 'UA-89097401-1'
+    },
     inject: false,
-    hash: true
+    hash: true,
+    toEJS
   }),
 
   // Adds webpack HMR support. It acts like livereload,

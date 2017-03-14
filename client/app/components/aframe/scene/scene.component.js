@@ -32,7 +32,7 @@ const sceneComponent = {
     mobile: '<?'
   },
   transclude: {
-    'editor': '?sceneEditor'
+    'editor': '?ngTransclude'
   }
 };
 

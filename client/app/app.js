@@ -45,7 +45,8 @@ angular.module('app', [
   cfpLoadingBar,
   vAccordion,
   Common,
-  Components
+  Components,
+  ...(window.REQUIRED_MODULES || [])
 ])
 
 .component('app', AppComponent)
