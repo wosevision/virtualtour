@@ -1,5 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
+import ejs from 'ejs';
+
+ejs.delimiter = '$';
 
 module.exports = {
   devtool: 'source-map',

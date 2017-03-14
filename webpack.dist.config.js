@@ -84,6 +84,8 @@ config.plugins = config.plugins.concat([
     template: 'client/index.ejs',
     filename: '../templates/views/index.ejs',
     title: 'UOIT Virtual Tour',
+    delimiters: [ '<%', '%>' ],
+    includeAuth: true,
     inject: false,
     hash: true
   })

@@ -53,6 +53,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.19.0",
     "del": "^2.2.0",
+    "ejs": "^2.5.6",
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^0.10.0",

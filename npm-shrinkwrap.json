@@ -2261,6 +2261,12 @@
       "resolved": "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz",
       "dev": true
     },
+    "ejs": {
+      "version": "2.5.6",
+      "from": "ejs@latest",
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.5.6.tgz",
+      "dev": true
+    },
     "electron-to-chromium": {
       "version": "1.2.6",
       "from": "electron-to-chromium@>=1.2.5 <2.0.0",
