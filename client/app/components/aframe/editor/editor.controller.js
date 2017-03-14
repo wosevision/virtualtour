@@ -171,11 +171,11 @@ class EditorController {
 		const locals = { item: this._schemas[collection] };
 
 		locals.newItem = true;
-    locals.publish = () => this.$aframeScene.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
+    locals.publish = () => this.$aframeEditor.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
 			this.$aframeScene.scene[collection] = newData;
 			this._panelRef&&this._panelRef.close();
 		});
-    locals.saveDraft = () => this.$aframeScene.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
+    locals.saveDraft = () => this.$aframeEditor.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
 			this.$aframeScene.scene[collection] = newData;
 			this.saveDraft();
 		});
@@ -228,7 +228,7 @@ class EditorController {
 		const locals = { item };
     locals.publish = () => this.publish();
     locals.saveDraft = () => this.saveDraft();
-		locals.removeThis = () => this.$aframeScene.removeItemFrom(item, collection, () => {
+		locals.removeThis = () => this.$aframeEditor.removeItemFrom(item, collection, () => {
 			this._panelRef&&this._panelRef.close();
 		});
 		locals.closeDialog = () => this._panelRef&&this._panelRef.close();

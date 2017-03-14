@@ -187,6 +187,71 @@ class EditorService {
   	return this.DraftResource.remove({ id }).$promise
 	  	.then( discardedDraft => notify && this.$mdToast.show(this.toasts.discardDraft) );
 	}
+
+	/**
+	 * Method for `Array.splice()`ing items out of scene elements (`sceneLinks`,
+	 * `hotSpots`) for removal from the active scene (what is being viewed, not
+	 * necessarily what is saved on the server).
+	 *
+	 * Confirms with the user before deleting, saves a draft after, and
+	 * offers to publish once removed (which will commit the changes).
+	 *
+	 * @example
+	 * $aframeScene.removeItemFrom(
+	 *   { name: 'thing' },
+	 *   [{ name: 'thing' }, { name: 'thung' }, { name: 'thong' }],
+	 *   () => this.updateView()
+	 * );
+	 * // ...results in:
+	 * // >> [{ name: 'thung' }, { name: 'thong' }]
+	 * 
+	 * @param  {object}   		 item       The item being removed
+	 * @param  {Array<Object>} collection The array it will be removed from
+	 * @param  {Function} 		 cb         Callback to run when item removed
+	 * @return {Promise}									Promise resolves to result of toast
+	 */
+  removeItemFrom(item, collection, cb) {
+    this.$mdToast.show(this.toasts.confirm).then(response => {
+      if ( response == 'ok' ) {
+			  const index = collection.indexOf(item);
+			  if (index !== -1) {
+			  	collection.splice(index, 1);
+	      	cb&&cb();
+	      	return this.$mdToast.show(this.toasts.itemRemoved);
+			  } 
+      }
+    }).then(response => {
+      if ( response == 'ok' ) {
+      	this.publish();
+      }
+    });
+	}
+
+	/**
+	 * Method for `Array.push()`ing items onto the list of current scene
+	 * elements (`sceneLinks`, `hotSpots`) for display in the scene.
+	 *
+	 * Checks validity of collection and item; adds item and informs user
+	 * of the newly added item's default position. Offers to publish changes.
+	 * 
+	 * @param {Object}   			item       The item being added
+	 * @param {Array<Object>} collection The array it will be added to
+	 * @param {Function}			cb         Callback to run when item added
+	 */
+	addItemTo(item, collection, cb) {
+	  if (isObject(item) && isArray(collection)) {
+	  	collection.push(item)
+    	cb&&cb(collection);
+    	if (item.position && item.position.length) {
+    		this.toasts.itemAdded.textContent(`Item added at ${ item.position.join(', ') }!`);
+    	}
+	    this.$mdToast.show(this.toasts.itemAdded).then(response => {
+	      if ( response == 'ok' ) {
+			  	this.publish();
+	      }
+	    });
+	  }
+	}
 }
 
 export default EditorService;
