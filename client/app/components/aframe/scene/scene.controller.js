@@ -1,4 +1,4 @@
-import { isDefined, equals, element } from 'angular';
+import { isDefined, element } from 'angular';
 
 /**
  * The scene controller manages all top-level functionality
@@ -7,19 +7,11 @@ import { isDefined, equals, element } from 'angular';
  * $aframeScene service changes.
  */
 class SceneController {
-	/**
-	 * Initializes the SceneCtrl's dependencies
-	 * @param  {object} $scope       The current scope
-	 * @param  {jqlite} $element     The component's <aframe-scene> element
-	 * @param  {object} $aframeScene The scene service
-	 * @param  {object} $aframeSky   The sky service
-	 */
-	constructor($scope, $element, $aframeScene, $aframeSky) {
+	constructor($element, $aframeScene, $aframeSky) {
 		'ngInject';
-		this.$scope = $scope;
-		this.$element = $element;
-		this.$aframeScene = $aframeScene;
-		this.$aframeSky = $aframeSky;
+		this._$element = $element;
+		this._$aframeScene = $aframeScene;
+		this._$aframeSky = $aframeSky;
 	}
 
   /**
@@ -33,41 +25,12 @@ class SceneController {
    */
   $onInit() {
 		this._rightClick = false;
-		this._isMobile = false;
 		this._currentSceneId = '';
 
-		this.$sceneEl = this.$element.find('a-scene');
+		this.$sceneEl = this._$element.find('a-scene');
 		this.$assetsEl = this.$sceneEl.find('a-assets');
 		this.$cameraEl = element(document.getElementById('aframe-camera'));
   }
-
-	$onChanges(changes) {
-		console.log(changes);
-		if (changes.mobile.isFirstChange()) return;
-		if (!this._isMobile && changes.mobile.currentValue.screen) {
-			// this.$cursorEl = element(document.createElement('a-cursor'));
-			// this.$cursorEl.attr({
-			// 	fuse: true,
-			// 	fuseTimeout: 1000,
-			// 	maxDistance: 100,
-			// 	material: 'color:white;'
-			// });
-			// this.$cameraEl
-			// 	.attr({ 'look-controls': 'enabled: true;', 'reverse-look-controls': 'enabled: false;' });
-			// this.$cameraEl.append(this.$cursorEl);
-			this._isMobile = true;
-			// console.log('mobile detected; scene adapted', this.$cameraEl, this.$cursorEl)
-		}
-		if (this._isMobile && !changes.mobile.currentValue.screen) {
-			// this.$cursorEl.remove();
-			// this.$cameraEl
-			// 	.attr({
-			// 		'look-controls': 'enabled: false;',
-			// 		'reverse-look-controls': 'enabled: true;'
-			// 	});
-			this._isMobile = false;
-		}
-	}
 
   /**
    * Extracts an incoming scene object's relevant data (`id`, `sceneLinks`,
@@ -106,16 +69,14 @@ class SceneController {
    * 
    */
   $doCheck() {
-  	if (isDefined(this.$aframeScene.scene)) {
-  		if (this.$aframeScene.scene._id && this.$aframeScene.scene._id !== this._currentSceneId) {
-			// if (!this.sky || this.$aframeScene.sky !== this.sky) {
-				// this.sky = this.$aframeScene.sky;
-	  		this.setScene(this.$aframeScene.scene);
+  	if (isDefined(this._$aframeScene.scene)) {
+  		if (this._$aframeScene.scene._id && this._$aframeScene.scene._id !== this._currentSceneId) {
+	  		this.setScene(this._$aframeScene.scene);
 	  	}
   	} else return;
-  	if (this.$aframeSky.sky) {
-			if (!this.sky || this.$aframeSky.sky !== this.sky) {
-				this.sky = this.$aframeSky.sky;
+  	if (this._$aframeSky.sky) {
+			if (!this.sky || this._$aframeSky.sky !== this.sky) {
+				this.sky = this._$aframeSky.sky;
 				console.log('scene controller detects change in sky service', this.sky);
 	  	}
   	}
