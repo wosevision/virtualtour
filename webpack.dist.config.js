@@ -14,7 +14,7 @@ config.output = {
   path: path.resolve(__dirname, '../virtualtour-ks/public')
 };
 
-config.module.loaders = config.module.loaders.concat([
+config.module.rules = config.module.rules.concat([
 	{ test: /\.(scss|sass)$/, loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader!postcss-loader!sass-loader'}) },
 	{ test: /\.css$/, loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'postcss-loader!css-loader'}) }
 ]);

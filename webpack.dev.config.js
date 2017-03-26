@@ -9,7 +9,7 @@ config.output = {
   path: path.resolve(__dirname, 'client')
 };
 
-config.module.loaders = config.module.loaders.concat([
+config.module.rules = config.module.rules.concat([
 	{ test: /\.(scss|sass)$/, loader: 'style-loader!css-loader!sass-loader?sourceMap' },
 	{ test: /\.css$/, loader: 'style-loader!css-loader' }
 ]);
