@@ -92,7 +92,14 @@ config.plugins = config.plugins.concat([
     inject: false,
     hash: true,
     toEJS
-  })
+  }),
+
+  new OfflinePlugin({
+	  ServiceWorker: {
+	    events: true
+	  }
+	}),
+	
 ]);
 
 module.exports = config;

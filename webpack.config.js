@@ -45,12 +45,6 @@ exports.config = {
 	    name: "manifest",
 	    minChunks: Infinity
 	  }),
-
-	  new OfflinePlugin({
-		  ServiceWorker: {
-		    events: true
-		  }
-		})
   ]
 };
 
