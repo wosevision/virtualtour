@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import OfflinePlugin from 'offline-plugin';
 
 exports.config = {
   devtool: 'source-map',
@@ -43,7 +44,13 @@ exports.config = {
 	  new webpack.optimize.CommonsChunkPlugin({
 	    name: "manifest",
 	    minChunks: Infinity
-	  })
+	  }),
+
+	  new OfflinePlugin({
+		  ServiceWorker: {
+		    events: true
+		  }
+		})
   ]
 };
 
