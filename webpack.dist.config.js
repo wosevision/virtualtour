@@ -5,6 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
+import OfflinePlugin from 'offline-plugin';
 
 import { config, toEJS }  from './webpack.config';
 
@@ -95,6 +96,11 @@ config.plugins = config.plugins.concat([
   }),
 
   new OfflinePlugin({
+  	caches: {
+		  main: [':rest:'],
+		  additional: [':externals:'],
+		  optional: ['*.chunk.js']
+		},
 	  ServiceWorker: {
 	    events: true
 	  }

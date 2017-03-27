@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import OfflinePlugin from 'offline-plugin';
 
 exports.config = {
   devtool: 'source-map',
@@ -45,6 +44,7 @@ exports.config = {
 	    name: "manifest",
 	    minChunks: Infinity
 	  }),
+	  
   ]
 };
 

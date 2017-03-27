@@ -99,14 +99,14 @@ let welcomeModule = angular.module('popup.welcome', [
 		title: ['Learn how to', 'Navigate the Tour!'],
 		tips: [{
 			label: 'Scene links',
-			image: 'assets/images/tutorials/tip-scene_link.gif',
+			image: 'assets/images/tutorial/tip-scene_link.gif',
 			content: `<p class="md-subhead">Around the Tour, you will find many <strong>blue arrows</strong> <ng-md-icon icon="near_me" size="16" style="fill:#0077CA"></ng-md-icon>
 				pointing to different areas. They are called <strong>scene links</strong>; use them to travel.
 				<p class="md-subhead">Move your cursor over a scene link to highlight it, and click it to travel in the
 				direction it's pointing.`
 		},{
 			label: 'Location menu',
-			image: 'assets/images/tutorials/tip-location_menu.gif',
+			image: 'assets/images/tutorial/tip-location_menu.gif',
 			content: `<p class="md-subhead">The <ng-md-icon icon="pin_drop" size="16" style="fill:#666"></ng-md-icon> button 
 				on the far-right bar opens the <strong>location menu</strong>.</p>
 				<p class="md-subhead">Navigate by picking a location; choose a building to list scenes
@@ -115,7 +115,7 @@ let welcomeModule = angular.module('popup.welcome', [
 				the menu by clicking the <ng-md-icon icon="pin_drop" size="16" style="fill:#666"></ng-md-icon> button again.</p>`
 		},{
 			label: 'Campus map',
-			image: 'assets/images/tutorials/tip-campus_map.gif',
+			image: 'assets/images/tutorial/tip-campus_map.gif',
 			content: `<p class="md-subhead">The Tour's built-in <strong>Campus Map</strong> can be used to navigate the Tour.</p>
 				<p class="md-subhead">The <ng-md-icon icon="map" size="16" style="fill:#666"></ng-md-icon> button 
 				on the far-right bar opens the Map.
