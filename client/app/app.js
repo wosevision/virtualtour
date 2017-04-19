@@ -6,7 +6,7 @@ OfflinePluginRuntime.install({
   onUpdateReady: () => {
     console.log('SW Event:', 'onUpdateReady');
     // Tells to new SW to take control immediately
-    runtime.applyUpdate();
+    OfflinePluginRuntime.applyUpdate();
   },
   onUpdated: () => {
     console.log('SW Event:', 'onUpdated');
