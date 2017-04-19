@@ -1,4 +1,5 @@
 import { pick } from 'lodash';
+import { isObject, isArray } from 'angular';
 /**
  * Service for handling all CRUD operations pertaining to scenes.
  *
