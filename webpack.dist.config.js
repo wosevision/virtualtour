@@ -1,11 +1,13 @@
 import webpack from 'webpack';
 import path    from 'path';
-import { config, toEJS }  from './webpack.config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
+import OfflinePlugin from 'offline-plugin';
+
+import { config, toEJS }  from './webpack.config';
 
 config.output = {
   filename: '[name].[chunkhash].js',
@@ -91,7 +93,19 @@ config.plugins = config.plugins.concat([
     inject: false,
     hash: true,
     toEJS
-  })
+  }),
+
+  new OfflinePlugin({
+  	caches: {
+		  main: [':rest:'],
+		  additional: [':externals:'],
+		  optional: ['*.chunk.js']
+		},
+	  ServiceWorker: {
+	    events: true
+	  }
+	}),
+	
 ]);
 
 module.exports = config;

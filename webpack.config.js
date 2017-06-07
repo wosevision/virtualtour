@@ -43,7 +43,8 @@ exports.config = {
 	  new webpack.optimize.CommonsChunkPlugin({
 	    name: "manifest",
 	    minChunks: Infinity
-	  })
+	  }),
+	  
   ]
 };
 
