@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path    from 'path';
 import { config, toEJS }  from './webpack.config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 config.output = {
   filename: '[name].bundle.js',
@@ -34,7 +35,12 @@ config.plugins = config.plugins.concat([
   // reloading page after webpack rebuilt modules.
   // It also updates stylesheets and inline assets without page reloading.
   new webpack.HotModuleReplacementPlugin(),
-  
+
+  new BundleAnalyzerPlugin({
+	  analyzerMode: 'static',
+	  reportFilename: 'bundle-report.html'
+	}),
+	
 ]);
 
 module.exports = config;
