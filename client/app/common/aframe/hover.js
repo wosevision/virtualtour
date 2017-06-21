@@ -18,11 +18,11 @@ const hoverAnimationComponent = {
 	    },
 	    fillColor: {
 	      type: 'color',
-	      default: false
+	      default: ''
 	    },
 	    textColor: {
 	      type: 'color',
-	      default: false
+	      default: ''
 	    }
 	  },
 	  

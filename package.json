@@ -11,6 +11,8 @@
   "dependencies": {
     "aframe": "git+https://github.com/wosevision/aframe.git",
     "aframe-animation-component": "^3.2.0",
+    "aframe": "https://github.com/wosevision/aframe.git",
+    "aframe-animation-component": "^3.2.5",
     "aframe-event-set-component": "^3.0.1",
     "aframe-extras": "^3.2.7",
     "aframe-html-shader": "git+https://github.com/wosevision/aframe-html-shader.git",

@@ -36,10 +36,10 @@ config.plugins = config.plugins.concat([
   // It also updates stylesheets and inline assets without page reloading.
   new webpack.HotModuleReplacementPlugin(),
 
-  new BundleAnalyzerPlugin({
-	  analyzerMode: 'static',
-	  reportFilename: 'bundle-report.html'
-	}),
+ //  new BundleAnalyzerPlugin({
+	//   analyzerMode: 'static',
+	//   reportFilename: 'bundle-report.html'
+	// }),
 	
 ]);
 
