@@ -26,9 +26,6 @@ class SearchController {
 		if (this.filters.by.length) params.fields = this.filters.by;
 
 		return this.$http.get('/api/v1/search', { params }).then(result => {
-			const output = [];
-			Object.keys(result.data.results).forEach(type => output.push(...result.data.results[type]));
-			// this.searchResults = output;
 			this.searchResults = Object.keys(result.data.results).length ? result.data.results : false;
 			console.log(result.data);
 			return result.data.overview;
