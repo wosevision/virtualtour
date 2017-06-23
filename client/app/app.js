@@ -35,6 +35,8 @@ import Components from './components/components';
 
 import AppComponent from './app.component';
 
+import './app.scss';
+
 /**
  * Disables all `console.x()` calls for production by replacing
  * their methods with `angular.noop`.
