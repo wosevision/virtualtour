@@ -4,8 +4,10 @@ import ngMaterial from 'angular-material';
 import angulartics from 'angulartics';
 import angularticsGa from 'angulartics-google-analytics';
 
-import drilldownComponent from './drilldown.component';
+import { DrilldownService } from './drilldown.service';
+import { DrilldownComponent } from './drilldown.component';
 
+import './drilldown.scss';
 
 let drilldownModule = angular.module('drilldown', [
   uiRouter,
@@ -14,128 +16,93 @@ let drilldownModule = angular.module('drilldown', [
 	angularticsGa
 ])
 
-.component('drilldownMenu', drilldownComponent)
+.component('drilldownMenu', DrilldownComponent)
+.service('DrilldownService', DrilldownService)
 
 .config(($stateProvider) => {
   'ngInject'
 
-  function alphaGroupReducer(output, name) {
-    let lCase = name.name.toUpperCase();
-    if (output[lCase[0]]) //if lCase is a key
-      output[lCase[0]].push(name); //Add name to its list
-    else
-      output[lCase[0]] = [name]; // Else add a key
-    return output;
-  }
-
-	$stateProvider
-    .state('locations', {
-      parent: 'home',
-      url: '/',
-      component: 'drilldownMenu',
-      resolve: {
-      	Tour: '$tourApi',
-      	children(Tour) {
-      		return Tour.location.query({
-  					sort: 'name'
-  				}).$promise;
-      	},
-      	nextLevel() {
-      		return 'location';
-      	}
-      }
-    })
-      .state('location', {
-      	parent: 'locations',
-        url: ':location',
-        component: 'drilldownMenu',
-        resolve: {
-          currentLocation($stateParams, Tour) {
-      			return Tour.location.query({ 
-      				filter: {
-      					code: $stateParams.location 
-      				}
-      			}).$promise;
-          },
-          sceneData(currentLocation, Tour) {
-        		if (currentLocation[0] && currentLocation[0].default) {
-      				return Tour.scene.get({ id: currentLocation[0].default }).$promise;
-        		}
-          },
-          children($stateParams, $aframeScene, currentLocation, sceneData, Tour) {
-          	if (!$stateParams.building && !$stateParams.scene && sceneData) {
-	          	$aframeScene.scene = sceneData;
-	          }
-      			return Tour.building.query({
-      				filter: {
-      					parent: currentLocation[0]._id
-      				},
-      				sort: 'name'
-      			}).$promise;
-          },
-	      	nextLevel(children) {
-	      		return 'building';
-	      	}
-        }
-      })
-        .state('building', {
-          parent: 'location',
-          url: '/:building',
-        	component: 'drilldownMenu',
-          resolve: {
-	          currentBuilding($stateParams, Tour) {
-      				return Tour.building.query({
-      					filter: {
-      						code: $stateParams.building
-      					}
-      				}).$promise;
-	          },
-            sceneData(currentBuilding, Tour) {
-          		if (currentBuilding[0] && currentBuilding[0].default) {
-	      				return Tour.scene.get({ id: currentBuilding[0].default }).$promise;
-          		}
-            },
-            children($stateParams, $aframeScene, currentLocation, currentBuilding, sceneData, Tour) {
-	          	if (!$stateParams.scene && sceneData) {
-		          	$aframeScene.scene = sceneData;
-	            }
-      				return Tour.scene.query({
-      					filter: {
-      						parent: currentBuilding[0]._id
-      					},
-      					sort: 'name'
-      				}).$promise;
-            },
-		      	nextLevel() {
-		      		return 'scene';
-		      	}
-          }
-        })
-        .state('scene', {
-          parent: 'building',
-          url: '/:scene',
-          resolve: {
-            currentScene($stateParams, currentBuilding, Tour) {
-      				return Tour.scene.query({
-      					filter: {
-      						code: $stateParams.scene,
-      						parent: currentBuilding[0]._id
-      					}
-      				}).$promise;
-            },
-            sceneData(currentScene, Tour) {
-          		if (currentScene.length === 1 && currentScene[0]._id) {
-	      				return Tour.scene.get({ id: currentScene[0]._id }).$promise;
-          		}
-            },
-            item($aframeScene, sceneData) {
-          		if (sceneData && sceneData.panorama) {
-		          	$aframeScene.scene = sceneData;
-          		}
-	          	return sceneData;
-            }
-          }
-        });
+	$stateProvider.state('locations', {
+    // parent: 'home',
+	  component: 'drilldownMenu',
+    // url: '/',
+    resolve: {
+    	params: ['$transition$', ($transition$) => $transition$.params()],
+    	children(DrilldownService) {
+    		return DrilldownService.getDrilldown();
+    	}
+    }
+  })
+	.state('location', {
+		parent: 'locations',
+	  url: '/:location',
+	  resolve: {
+	    currentLocation: ['params', '$tourApi', (params, $tourApi) => {
+				return $tourApi.location.query({ 
+					filter: {
+						code: params.location 
+					}
+				}).$promise;
+	    }],
+	    sceneData: ['params', '$aframeScene', '$tourApi', 'currentLocation', (params, $aframeScene, $tourApi, currentLocation) => {
+	  		if (currentLocation[0] && currentLocation[0].default) {
+					return $tourApi.scene.get({ id: currentLocation[0].default })
+						.$promise
+						.then(scene => {
+							if (!params.building) {
+								$aframeScene.scene = scene
+							}
+						});
+	  		}
+	    }]
+	  }
+	})
+  .state('location.building', {
+    // parent: 'location',
+    url: '/:building',
+    resolve: {
+	    currentBuilding: ['$transition$', '$tourApi', ($transition$, $tourApi) => {
+				return $tourApi.building.query({ 
+					filter: {
+						code: $transition$.params().building 
+					}
+				}).$promise;
+	    }],
+	    sceneData: ['params', '$aframeScene', '$tourApi', 'currentBuilding', (params, $aframeScene, $tourApi, currentBuilding) => {
+	  		if (currentBuilding[0] && currentBuilding[0].default) {
+					return $tourApi.scene.get({ id: currentBuilding[0].default })
+						.$promise
+						.then(scene => {
+							if (!params.scene) {
+								$aframeScene.scene = scene
+							}
+						});
+	  		}
+	    }]
+    }
+  })
+  .state('location.building.scene', {
+    // parent: 'building',
+    url: '/:scene',
+    resolve: {
+	    currentScene: ['$transition$', '$tourApi', 'currentBuilding', ($transition$, $tourApi, currentBuilding) => {
+				return $tourApi.scene.query({ 
+					filter: {
+						code: $transition$.params().scene,
+						parent: currentBuilding[0]._id
+					}
+				}).$promise;
+	    }],
+	    sceneData: ['params', '$aframeScene', '$tourApi', 'currentScene', (params, $aframeScene, $tourApi, currentScene) => {
+	    	console.log(currentScene[0]);
+	  		if (currentScene[0] && currentScene[0]._id) {
+					return $tourApi.scene.get({ id: currentScene[0]._id })
+						.$promise
+						.then(scene => $aframeScene.scene = scene);
+	  		}
+	    }]
+    }
+  });
 })
 
 .name;
