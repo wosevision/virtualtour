@@ -64,16 +64,6 @@ drilldown-menu {
 	&.is-hidden {
     flex: 0;
 	}
-	ui-view {
-		width: 100%;
-		overflow: hidden;
-		.ng-leave {
-			position: absolute;
-			height: 0;
-		  flex: 0 0 auto;
-	    transition: 0.6s;
-		}
-	}
 
 	&.selected > .drilldown-content {
 		color: $uoitlightblue;
@@ -88,8 +78,11 @@ drilldown-menu {
 	text-align: left;
 	padding: 0.75rem 1rem;
 	user-select: none;
-	&.ng-enter {
-		animation: fadeInUp;
+	&.ng-leave {
+		position: absolute;
+		height: 0;
+	  flex: 0 0 auto;
+    transition: 0.6s;
 	}
 	&:hover, &:focus {
 		color: $uoitlightblue;
