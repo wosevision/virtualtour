@@ -91,27 +91,35 @@ function AppController(
 			  }
 
 			  this.toolbar = {
+			  	sidebar: $mdSidenav('right'),
 			  	views: BUTTONBAR_VIEWS,
-			    isOpen: toolbarOpen.val,
-			    isCondensed: toolbarCondensed.val,
+			  	currentView: '',
+			    open: toolbarOpen.val,
+			    condensed: toolbarCondensed.val,
 			    toggle() {
-			  		this.isOpen = !this.isOpen;
-			  		this.isOpen&&$mdSidenav('right').close();
+			  		this.open = !this.open;
+			  		this.open && this.sidebar.close();
 			    },
 			    condense() {
-			      !this.isOpen&&this.toggle();
-			      this.isCondensed = !this.isCondensed;
-			      return this.isCondensed;
+			      !this.open&&this.toggle();
+			      this.condensed = !this.condensed;
+			      return this.condensed;
+			    },
+			    onSelect(state) {
+				    if (this.sidebar.isOpen() && this.currentView === state) {
+				      this.sidebar.close();
+				    } else {
+					    this.sidebar.open();
+				    }
+			    	this.currentView = state;
+			    	console.log('[app.controller] toolbar.onSelect', this.currentView)
+			    },
+			    hasState(state) {
+			    	return (this.currentView === state);
+			    },
+			    get hasBlur() {
+			  		return BLURRED_VIEWS.some(this.hasState.bind(this));
 			    }
-			  }
-			  
-			  this.sidebar = {
-			  	hasState(view) {
-			  		return $state.includes(view);
-			  	},
-			  	hasBlur() {
-			  		return BLURRED_VIEWS.some(this.hasState);
-			  	}
 			  }
 
 			  settingsLoaded();

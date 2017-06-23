@@ -9,7 +9,8 @@ const buttonbarComponent = {
   	items: '<',
   	open: '<?',
   	condensed: '<?',
-  	mobile: '<?'
+  	mobile: '<?',
+  	onSelect: '&'
   }
 }
 

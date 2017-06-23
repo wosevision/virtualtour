@@ -1,6 +1,10 @@
 @import '../../common/common';
 @import '~v-accordion/src/vAccordion/styles/vAccordion';
 
+user-settings {
+	height: 100%;
+}
+
 .md-sidenav-backdrop {
   background-color: #003C71;
   top: 69px;

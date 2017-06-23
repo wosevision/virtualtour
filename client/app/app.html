@@ -21,7 +21,7 @@
 				     flex="grow"
 				     layout="column"
 				     layout-fill=""
-				     ng-class="{ 'blur-active' : mc.sidebar.hasBlur() }"
+				     ng-class="{ 'blur-active' : mc.toolbar.hasBlur }"
 				     class="scene-view">
       <aframe-scene mobile="mc.mobile">
       	<ng-transclude></ng-transclude>
@@ -32,15 +32,20 @@
     						layout-gt-sm="column"
     						flex="nogrow"
     						items="mc.toolbar.views"
-    						open="mc.toolbar.isOpen"
-    						condensed="mc.toolbar.isCondensed"
-    						mobile="mc.mobile">
+    						open="mc.toolbar.open"
+    						condensed="mc.toolbar.condensed"
+    						mobile="mc.mobile"
+    						on-select="mc.toolbar.onSelect($event)">
     </button-bar>
   </div>
 </div>
 
-<div ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!landscapeMobile, 'toolbar-condensed': mc.toolbar.isCondensed }" layout="row" flex="">
-  <md-sidenav ng-class="{ 'blur-active' : mc.sidebar.hasBlur(), 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu">
-    <ui-view flex="" layout="column" layout-fill="" resizable="" r-directions="[&quot;left&quot;]" ng-style="{ maxWidth: ('map' | isState) ? 'none' : '600px' }"></ui-view>
+<div ng-class="{ 'toolbar-open' : (mc.toolbar.open && !landscapeMobile), 'toolbar-condensed': mc.toolbar.condensed }" layout="row" flex="">
+  <md-sidenav ng-class="{ 'blur-active' : mc.toolbar.hasBlur, 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu" ng-switch on="mc.toolbar.currentView">
+    <!-- <ui-view flex="" layout="column" layout-fill="" resizable="" r-directions="[&quot;left&quot;]" ng-style="{ maxWidth: ('map' | isState) ? 'none' : '600px' }"></ui-view> -->
+    <drilldown-menu ng-switch-when="locations"></drilldown-menu>
+    <uoit-map ng-switch-when="map"></uoit-map>
+    <search-menu ng-switch-when="search"></search-menu>
+    <user-settings ng-switch-when="settings"></user-settings>
   </md-sidenav>
 </div>

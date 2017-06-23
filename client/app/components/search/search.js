@@ -11,17 +11,6 @@ let searchModule = angular.module('search', [
 
 .component('searchMenu', searchComponent)
 
-.config(($stateProvider) => {
-  'ngInject'
-
-	$stateProvider
-    .state('search', {
-      parent: 'home',
-      url: '/',
-      component: 'searchMenu'
-    });
-})
-
 .constant('SEARCH_FILTERS', {
 	typeFilters: [{
 		label:'Virtual Tour',

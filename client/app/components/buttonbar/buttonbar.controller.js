@@ -40,15 +40,10 @@ class ButtonbarController {
 	 * @return {Promise}      Represents the state of the transition
 	 */
   select(state) {
-    if (this.menuOpen && this._$state.includes(state)) {
-      return this._$mdSidenav('right').close().then(() => {
-	      return this._$state.transitionTo('home');
-      });
-    } else { 
-	  	return this._$state.transitionTo(state).then(() => {
-	      this._$mdSidenav('right').open();
-      });
-    }
+    this.activeState = state;
+    this.onSelect({
+    	$event: state
+    });
   }
 
   enterVR() {

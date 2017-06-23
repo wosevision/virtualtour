@@ -23,16 +23,6 @@ let settingsModule = angular.module('settings', [
 
 .service('ConnectionDetails', connectionDetailsService)
 
-.config(($stateProvider) => {
-  'ngInject'
-	$stateProvider
-    .state('settings', {
-      parent: 'home',
-      url: '/',
-      component: 'userSettings'
-    });
-})
-
 .name;
 
 export default settingsModule;

@@ -10,7 +10,7 @@
 	flex="grow">
 	<div ng-repeat="(state, stateInfo) in ::$ctrl.items"
 		class="button-bar-btn"
-		ng-class="{ 'is-active': $ctrl.menuOpen && (state | isState)}"
+		ng-class="{ 'is-active': $ctrl.menuOpen && ($ctrl.activeState === state) }"
 		layout="column"
 		layout-align="center center"
 		flex="grow"

@@ -1,5 +1,9 @@
 @import '../../common/common';
 
+search-menu {
+	height: 100%;
+}
+
 .search {
 	&-bar {
 		background: $sidebar_bg_radial_hard;
