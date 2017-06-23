@@ -64,7 +64,7 @@ function AppController(
   	() => UserSession.settings, 
   	userSettings => {
 	  	if (!isUndefined(userSettings)) {
-	  		console.log('main controller applying settings')
+	  		console.info('[app.controller] $watch.userSettings', userSettings)
 			  const { showWelcome, toolbarOpen, toolbarCondensed } = UserSession.settings;
 
 				if (showWelcome.val) {
@@ -106,13 +106,13 @@ function AppController(
 			      return this.condensed;
 			    },
 			    onSelect(state) {
+			    	console.info('[app.controller] toolbar.onSelect', state);
 				    if (this.sidebar.isOpen() && this.currentView === state) {
 				      this.sidebar.close();
 				    } else {
 					    this.sidebar.open();
 				    }
 			    	this.currentView = state;
-			    	console.log('[app.controller] toolbar.onSelect', this.currentView)
 			    },
 			    hasState(state) {
 			    	return (this.currentView === state);
