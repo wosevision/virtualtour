@@ -201,7 +201,7 @@ angular.module('app', [
     console.log('[$state] onInvalid', error);
     const locals = {
       type: 'Page not found!',
-      message: `The page associated with "${trans.$to()}" cannot be located.`,
+      message: `The page you were looking for could not be located.`,
       suggest: [3]
     }
     $popupWindow.error({locals});
