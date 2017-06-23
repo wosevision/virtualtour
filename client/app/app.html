@@ -42,10 +42,10 @@
 
 <div ng-class="{ 'toolbar-open' : (mc.toolbar.open && !landscapeMobile), 'toolbar-condensed': mc.toolbar.condensed }" layout="row" flex="">
   <md-sidenav ng-class="{ 'blur-active' : mc.toolbar.hasBlur, 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu" ng-switch on="mc.toolbar.currentView">
-    <!-- <ui-view flex="" layout="column" layout-fill="" resizable="" r-directions="[&quot;left&quot;]" ng-style="{ maxWidth: ('map' | isState) ? 'none' : '600px' }"></ui-view> -->
-    <drilldown-menu ng-switch-when="locations"></drilldown-menu>
+    <drilldown-menu ng-switch-when="locations" children="mc.drilldown.structure"></drilldown-menu>
     <uoit-map ng-switch-when="map"></uoit-map>
     <search-menu ng-switch-when="search"></search-menu>
     <user-settings ng-switch-when="settings"></user-settings>
   </md-sidenav>
 </div>
+<ui-view />

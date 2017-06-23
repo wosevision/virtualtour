@@ -1,6 +1,10 @@
 @import '../../common/common';
 @import '~v-accordion/src/vAccordion/styles/vAccordion';
 
+drilldown-menu {
+	min-width: 400px;
+}
+
 .drilldown-menu, drilldown-menu {
 	background: $sidebar_bg_radial_soft;
   min-height: 100%;
@@ -9,7 +13,7 @@
   }
 }
 
-.drilldown-menu, drilldown-menu, drilldown-menu ui-view {
+.drilldown-menu, drilldown-menu {
   height: 100%;
   display: flex;
   flex: 1 0 auto;
@@ -60,6 +64,11 @@
 	    transition: 0.6s;
 		}
 	}
+
+	&.selected > .drilldown-content {
+		color: $uoitlightblue;
+		text-shadow: 0 0 25px rgba(0, 119, 202, 0.5);
+	}
 }
 
 .drilldown-content {
@@ -74,10 +83,6 @@
 	}
 	&:hover, &:focus {
 		color: $uoitlightblue;
-	}
-	&.selected {
-		color: $uoitlightblue;
-		text-shadow: 0 0 25px rgba(0, 119, 202, 0.5);
 	}
 	// .image-box {
 	// 	display: block;
