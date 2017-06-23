@@ -51,6 +51,15 @@ drilldown-menu {
 	}
 	&.is-active {
     flex: 1 0 auto;
+     > .drilldown-content .open-indicator {
+		  &::after {
+		    transform: rotate(90deg);
+		    opacity: 0;
+		  }
+		  &::before {
+		    transform: rotate(0deg);
+		  }
+		}
 	}
 	&.is-hidden {
     flex: 0;
@@ -114,15 +123,5 @@ drilldown-menu {
   }
   &::before {
     transform: rotate(-90deg);
-  }
-}
-
-.is-active > drilldown-content .open-indicator {
-  &::after {
-    transform: rotate(90deg);
-    opacity: 0;
-  }
-  &::before {
-    transform: rotate(0deg);
   }
 }
