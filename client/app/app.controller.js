@@ -73,22 +73,23 @@ function AppController(
 				  $timeout(showSettingsMsg, SETTINGS_MSG_DELAY);
 				}
 
-			  this.titlebar = {
-					options: TITLEBAR_OPTS,
-					clickHandlers: {
-						config: () => {
-			      	$mdSidenav('config').toggle();
-						},
-						right: () => {
-					    this.toolbar.toggle();
-			      	this.titlebar.options.right.active = this.toolbar.isOpen;
-						},
-						condense: () => {
-					    this.toolbar.condense();
-			      	this.titlebar.options.condense.active = this.toolbar.isCondensed;
-						}
-					} 
-			  }
+			  this.titlebar = TITLEBAR_OPTS.map(option => {
+					switch (option.id) {
+						case 'right':
+							option.onClick = () => {
+						    this.toolbar.toggle();
+				      	option.active = this.toolbar.open;
+							};
+							break;
+						case 'condense':
+							option.onClick = () => {
+						    this.toolbar.condense();
+				      	option.active = this.toolbar.condensed;
+							};
+							break;
+					}
+					return option;
+				});
 
 			  this.toolbar = {
 			  	sidebar: $mdSidenav('right'),
