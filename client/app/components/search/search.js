@@ -2,14 +2,16 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 
-import searchComponent from './search.component';
+import { SearchComponent } from './search.component';
+
+import './search.scss';
 
 let searchModule = angular.module('search', [
   uiRouter,
   ngMaterial
 ])
 
-.component('searchMenu', searchComponent)
+.component('searchMenu', SearchComponent)
 
 .constant('SEARCH_FILTERS', {
 	typeFilters: [{
