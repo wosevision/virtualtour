@@ -77,12 +77,9 @@ angular.module('app', [
 .config(($provide, $locationProvider, $stateProvider, $urlRouterProvider, $mdGestureProvider, $mdThemingProvider, cfpLoadingBarProvider) => { //, $mdIconProvider
   'ngInject';
   
-  // cfpLoadingBarProvider.includeSpinner = false;
   // cfpLoadingBarProvider.latencyThreshold = 300;
-  cfpLoadingBarProvider.spinnerTemplate = `<div id="loading-spinner" class="loading-spinner-container" layout layout-fill layout-align="center center">
-  	<md-progress-circular md-mode="indeterminate" class="md-primary">
-  	</md-progress-circular>
-  </div>`;
+  // cfpLoadingBarProvider.includeSpinner = false;
+  cfpLoadingBarProvider.parentSelector = '#title-bar';
 
   // THIS IS VERY IMPORTANT, ngMaterial's clickjacking behaviour
   // tampers with the capture phase in a way that is incompatible
@@ -220,9 +217,6 @@ angular.module('app', [
 .run(($rootScope, $state, $transitions, $compile, $mdUtil, $popupWindow, UserAuth, AUTH_EVENTS) => {
   'ngInject';
 
-  $rootScope.$on('cfpLoadingBar:started', event => $mdUtil.nextTick( tick => $compile(
-    angular.element(document.getElementById('loading-spinner'))
-  )($rootScope)));
   /**
    * Report on exceptions. The `handler:exception` event is fired
    * anywhere an exception is caught, and if uncaught, the AppConfig

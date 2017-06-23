@@ -50,6 +50,25 @@
 			padding-right: 18px;
 		}
 	}
+
+	// LOADING BAR AND SPINNER
+	#loading-bar {
+		.peg {
+		  height: 5px;
+		  box-shadow: #0077CA 4px 0 8px 1px;
+		}
+		.bar {
+			background: #0077CA;
+		  height: 5px;
+		}
+	}
+
+	#loading-bar-spinner {
+		position: fixed;
+		left: 220px;
+		top: 30px;
+	  z-index: 100;
+	}
 }
 
 title-bar-button {

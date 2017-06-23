@@ -1,4 +1,4 @@
-<md-toolbar class="md-accent md-hue-1 title-bar" layout="row" ng-class="{'is-mobile' : $ctrl.mobile.screen}">
+<md-toolbar id="title-bar" class="md-accent md-hue-1 title-bar" layout="row" ng-class="{'is-mobile' : $ctrl.mobile.screen}">
 
   <md-toolbar-filler flex="nogrow" layout layout-align="start center" layout-align-gt-sm="center center">
 <!--     <img ui-sref="home" src="images/uoit-shield.svg" alt="University of Ontario Institute of Technology" class="logo-shield" id="uoit_logo"> -->
@@ -9,7 +9,7 @@
   </md-toolbar-filler>
 
   <div class="md-toolbar-tools" ng-if="!$ctrl.mobile.screen">
-    <h1 ui-sref="locations">{{::$ctrl.title}} <small class="beta-label">BETA</small></h1>
+    <h1 ui-sref="home">{{::$ctrl.title}} <small class="beta-label">BETA</small></h1>
     <span flex></span>
     <ng-transclude id="toolbar-controls" layout layout-align="center center"></ng-transclude>
   </div>
