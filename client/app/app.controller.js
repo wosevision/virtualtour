@@ -4,7 +4,7 @@ import { element, isUndefined } from 'angular';
 function AppController(
 	$scope, $state, $timeout, // ng deps
 	$mdSidenav, $mdMedia, // md deps
-	$popupWindow, UserSession, // my libs
+	$popupWindow, UserSession, DrilldownService, // my libs
 	BUTTONBAR_VIEWS, TITLEBAR_OPTS // consts
 ) {
   'ngInject';
@@ -121,6 +121,11 @@ function AppController(
 			  		return BLURRED_VIEWS.some(this.hasState.bind(this));
 			    }
 			  }
+			  DrilldownService.getDrilldown().then(structure => {
+				  this.drilldown = {
+				  	structure
+				  };
+			  })
 
 			  settingsLoaded();
 	  	}

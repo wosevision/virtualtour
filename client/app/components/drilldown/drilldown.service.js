@@ -32,12 +32,12 @@ export class DrilldownService {
 			location.children.forEach(async building => {
 
 				building._params = { location: location.code, building: building.code };
-				building._level = 'location.building';
+				building._level = 'building';
 				building.children = await this.getScenes(building._id);
 				building.children.forEach(async scene => {
 
 					scene._params = { location: location.code, building: building.code, scene: scene.code };
-					scene._level = 'location.building.scene';
+					scene._level = 'scene';
 				});
 			});
 		});
