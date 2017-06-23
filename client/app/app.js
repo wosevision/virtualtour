@@ -186,23 +186,35 @@ angular.module('app', [
 
   $state.defaultErrorHandler(error => {
     console.log('[$state] defaultErrorHandler', error);
+
+    if (error.type !== 2) {
+	    const locals = {
+	      type: 'Navigation issue!',
+	      message: error.message || error.msg || 'The view you requested hit a snag while loading.',
+	      suggest: [4, 3]
+	    }
+	    $popupWindow.error({locals});
+	  }
+  });
+
+  $state.onInvalid(error => {
+    console.log('[$state] onInvalid', error);
     const locals = {
-      type: 'Navigation issue!',
-      message: error.message || error.msg || 'The view you requested hit a snag while loading.',
-      suggest: [4, 3]
+      type: 'Page not found!',
+      message: `The page associated with "${trans.$to()}" cannot be located.`,
+      suggest: [3]
     }
     $popupWindow.error({locals});
   });
 
   $transitions.onError({}, function(trans) {
     const Popup = trans.injector().get('$popupWindow');
-    console.log('[$transitions] onError', trans.error);
-    const locals = {
-      type: 'Page not found!',
-      message: `The page associated with "${trans.$to()}" cannot be located.`,
-      suggest: [3]
+    const error = trans.error();
+    console.log('[$transitions] onError', error);
+    if (error.type !== 5 && error.type !== 2) {
+      const locals = { message: `Navigation error!` }
+      Popup.warning({locals});
     }
-    Popup.error({locals});
   });
 
   console.log('starting auth init...')
