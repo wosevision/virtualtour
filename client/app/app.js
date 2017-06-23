@@ -123,15 +123,13 @@ angular.module('app', [
 
   $stateProvider
   .state('home', {
-    url: '',
-    resolve: {
-    	params: ['$transition$', ($transition$) => $transition$.params()]
-    }
+    url: ''
   })
 	.state('location', {
 		parent: 'home',
 	  url: '/:location',
 	  resolve: {
+    	params: ['$transition$', ($transition$) => $transition$.params()],
 	    currentLocation: ['params', '$tourApi', (params, $tourApi) => {
 				return $tourApi.location.query({ 
 					filter: {
@@ -156,10 +154,11 @@ angular.module('app', [
     parent: 'location',
     url: '/:building',
     resolve: {
-	    currentBuilding: ['$transition$', '$tourApi', ($transition$, $tourApi) => {
+    	params: ['$transition$', ($transition$) => $transition$.params()],
+	    currentBuilding: ['params', '$tourApi', (params, $tourApi) => {
 				return $tourApi.building.query({ 
 					filter: {
-						code: $transition$.params().building 
+						code: params.building 
 					}
 				}).$promise;
 	    }],
@@ -180,16 +179,16 @@ angular.module('app', [
     parent: 'building',
     url: '/:scene',
     resolve: {
-	    currentScene: ['$transition$', '$tourApi', 'currentBuilding', ($transition$, $tourApi, currentBuilding) => {
+    	params: ['$transition$', ($transition$) => $transition$.params()],
+	    currentScene: ['params', '$tourApi', 'currentBuilding', (params, $tourApi, currentBuilding) => {
 				return $tourApi.scene.query({ 
 					filter: {
-						code: $transition$.params().scene,
+						code: params.scene,
 						parent: currentBuilding[0]._id
 					}
 				}).$promise;
 	    }],
 	    sceneData: ['params', '$aframeScene', '$tourApi', 'currentScene', (params, $aframeScene, $tourApi, currentScene) => {
-	    	console.log(currentScene[0]);
 	  		if (currentScene[0] && currentScene[0]._id) {
 					return $tourApi.scene.get({ id: currentScene[0]._id })
 						.$promise
