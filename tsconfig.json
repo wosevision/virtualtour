@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+  	"allowJs": true,
+    "lib": [ "es2015" ],
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "experimentalDecorators": true
+  }
+}

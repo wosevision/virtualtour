@@ -1,5 +1,11 @@
 import path from 'path';
 import webpack from 'webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+
+const BABEL_OPTIONS = {
+  presets: [['es2015', { modules: false }], 'es2016'],
+  plugins: ['syntax-dynamic-import']
+};
 
 exports.config = {
   devtool: 'source-map',
@@ -13,17 +19,28 @@ exports.config = {
 			{ test: /\.json$/, loader: 'json-loader' },
 			{
 				test: /\.js$/,
-				exclude: [/app\/lib/, /node_modules/],
+				exclude: /node_modules/,
 				use: [{
 					loader: 'ng-annotate-loader'
 				},{
 					loader: 'babel-loader',
-	        options: {
-	          presets: [['es2015', { modules: false }]],
-	          plugins: ['syntax-dynamic-import']
-	        }
+	        options: BABEL_OPTIONS
 				}]
-			},
+			},{
+	      test: /\.ts$/,
+	      exclude: /node_modules/,
+	      use: [{
+					loader: 'ng-annotate-loader'
+				},{
+          loader: 'babel-loader',
+          options: BABEL_OPTIONS
+        },{
+          loader: 'ts-loader',
+          options: {
+		        transpileOnly: true // disable type checker; forked by plugin
+		      }
+        }]
+	    },
 			{ test: /\.html$/, loader: 'raw-loader' },
       { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader' }
       // { test: /\.(png|jpe?g|gif|svg|woff|woff2|eot|ttf|otf)$/, loader: 'file-loader?name=[name].[ext]' } 
@@ -45,7 +62,11 @@ exports.config = {
 	    minChunks: Infinity
 	  }),
 	  
-  ]
+	  new ForkTsCheckerWebpackPlugin(),
+  ],
+  resolve: {
+    extensions: ['.ts', '.js']
+  }
 };
 
 exports.toEJS = (string, print) => `<%${ (print && '=') || '' } ${ string } %>`;
