@@ -1,9 +1,15 @@
+import { $analytics } from 'angulartics';
+
 export const DrilldownComponent = {
 	bindings: {
 		children: '<'
 	},
   controller: class DrilldownController {
-  	constructor($analytics) {
+  	$analytics: $analytics;
+
+  	children;
+  	
+  	constructor($analytics: $analytics) {
   		'ngInject';
   		this.$analytics = $analytics;
   	}

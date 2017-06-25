@@ -1,30 +1,34 @@
 export class DrilldownService {
+	$tourApi;
+	structure;
+
 	constructor($tourApi) {
 		'ngInject';
 		this.$tourApi = $tourApi;
 	}
 
-	getLocations() {
+	getLocations(): Promise<any> {
 		return this.$tourApi.location.query().$promise;
 	}
 
-	getBuildings(parent) {
+	getBuildings(parent): Promise<any> {
 		return this.$tourApi.building.query({
 			filter: { parent }
 		}).$promise;
 	}
 
-	getScenes(parent) {
+	getScenes(parent): Promise<any> {
 		return this.$tourApi.scene.query({
 			filter: { parent }
 		}).$promise;
 	}
 
 	async getDrilldown() {
-		let structure;
 
-		structure = await this.getLocations();
-		structure.forEach(async location => {
+		if (this.structure) return this.structure;
+
+		this.structure = await this.getLocations();
+		this.structure.forEach(async location => {
 
 			location._params = { location: location.code };
 			location._level = 'location';
@@ -42,6 +46,6 @@ export class DrilldownService {
 			});
 		});
 
-		return structure;
+		return this.structure;
 	}
 }

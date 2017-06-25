@@ -1,24 +1,22 @@
-import angular from 'angular';
+import * as angular from 'angular';
+import * as ngMaterial from 'angular-material';
+import * as angulartics from 'angulartics';
+import * as angularticsGa from 'angulartics-google-analytics';
 import uiRouter from 'angular-ui-router';
-import ngMaterial from 'angular-material';
-import angulartics from 'angulartics';
-import angularticsGa from 'angulartics-google-analytics';
 
 import { DrilldownService } from './drilldown.service';
 import { DrilldownComponent } from './drilldown.component';
 
 import './drilldown.scss';
 
-let drilldownModule = angular.module('drilldown', [
-  uiRouter,
+export const DrilldownModule = angular.module('drilldown', [
   ngMaterial,
   angulartics,
-	angularticsGa
+	angularticsGa,
+  uiRouter,
 ])
 
 .component('drilldownMenu', DrilldownComponent)
 .service('DrilldownService', DrilldownService)
 
 .name;
-
-export default drilldownModule;
