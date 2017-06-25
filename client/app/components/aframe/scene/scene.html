@@ -6,7 +6,7 @@
 	<a-assets>
 		<a-mixin id="mixin-blue" material="color: #0077CA;opacity: 0.85; transparent: true;"></a-mixin>
 		<a-mixin id="mixin-glow" material="color:white;shader:flat;opacity:0.1;transparent: true;"></a-mixin>
-		<img src="assets/images/plnsk_bg_default.jpg" id="default_sky_bg" />
+		<img src="../../../../assets/images/plnsk_bg_default.jpg" id="default_sky_bg" />
 	</a-assets>
 
 	<!-- SKY -->
@@ -117,7 +117,7 @@
     </a-entity>
 		<div class="aframe-html-content">
       <h1>{{ (hotSpot.feature.properties.name || hotSpot.name).toUpperCase() }}</h1>
-      <img src="assets/images/north_bg.jpg" />
+      <img src="../../../../assets/images/north_bg.jpg" />
       <span ng-bind-html="[(hotSpot.feature.properties.desc || hotSpot.desc)].join('')"></span>
     </div>
 	</hit-box>

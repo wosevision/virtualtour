@@ -41,7 +41,17 @@ exports.config = {
 		      }
         }]
 	    },
-			{ test: /\.html$/, loader: 'raw-loader' },
+			// { test: /\.html$/, loader: 'raw-loader' },
+			{
+		    test: /\.html$/,
+		    use: [{
+		      loader: 'html-loader',
+		      options: {
+		        minimize: true,
+		        exportAsEs6Default: true
+		      }
+		    }],
+		  },
       { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'file-loader' }
       // { test: /\.(png|jpe?g|gif|svg|woff|woff2|eot|ttf|otf)$/, loader: 'file-loader?name=[name].[ext]' } 
     ]
