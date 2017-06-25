@@ -1,15 +1,17 @@
-import angular from 'angular';
+import * as angular from 'angular';
+import * as ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
-import ngMaterial from 'angular-material';
 
-import buttonbarComponent from './buttonbar.component';
+import { ButtonbarComponent } from './buttonbar.component';
+
+import './buttonbar.scss';
 
 const buttonBarModule = angular.module('buttonbar', [
   uiRouter,
   ngMaterial
 ])
 
-.component('buttonBar', buttonbarComponent)
+.component('buttonBar', ButtonbarComponent)
 
 .constant('BUTTONBAR_VIEWS', {
   locations: {
