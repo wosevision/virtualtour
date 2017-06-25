@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/angular@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.6.21.tgz#010c15954cbfe875b144b095b88b93a7293e8f12"
+  dependencies:
+    "@types/jquery" "*"
+
+"@types/jquery@*":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.4.tgz#52d19aecb6237a9407701fc127cf69d204576e04"
+
 "@uirouter/core@5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.3.tgz#e2b5b1e45190e20c67ba4e15c013de5d4e0ccab3"

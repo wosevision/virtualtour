@@ -38,6 +38,7 @@
     "v-accordion": "^1.6.0"
   },
   "devDependencies": {
+    "@types/angular": "^1.6.21",
     "angular-mocks": "1.5.9",
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",

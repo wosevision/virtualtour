@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
   	"allowJs": true,
-    "lib": [ "es2015" ],
+  	"allowUnreachableCode": true,
+    "lib": [ "es2015", "dom" ],
     "target": "es5",
     "module": "commonjs",
     "declaration": false,
     "noImplicitAny": false,
+    "allowUnusedLabels": true,
     "removeComments": false,
     "sourceMap": true,
     "outDir": "dist",
     "experimentalDecorators": true
-  }
+  },
+  "exclude": [
+		"node_modules"
+  ],
+  "compileOnSave": false
 }
