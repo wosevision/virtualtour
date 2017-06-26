@@ -2,7 +2,13 @@
 # yarn lockfile v1
 
 
-"@types/angular@^1.6.21":
+"@types/angular-ui-router@^1.1.37":
+  version "1.1.37"
+  resolved "https://registry.yarnpkg.com/@types/angular-ui-router/-/angular-ui-router-1.1.37.tgz#1e67926083f5e78d28d7c7e83d01c9929e70b6cb"
+  dependencies:
+    "@types/angular" "*"
+
+"@types/angular@*", "@types/angular@^1.6.21":
   version "1.6.21"
   resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.6.21.tgz#010c15954cbfe875b144b095b88b93a7293e8f12"
   dependencies:
