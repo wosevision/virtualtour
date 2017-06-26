@@ -3,6 +3,7 @@ import path    from 'path';
 import { config, toEJS }  from './webpack.config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { CheckerPlugin } from 'awesome-typescript-loader';
 
 config.output = {
   filename: '[name].bundle.js',
@@ -40,6 +41,8 @@ config.plugins = config.plugins.concat([
 	//   analyzerMode: 'static',
 	//   reportFilename: 'bundle-report.html'
 	// }),
+	  
+  new CheckerPlugin(),
 	
 ]);
 

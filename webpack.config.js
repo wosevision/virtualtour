@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import { CheckerPlugin } from 'awesome-typescript-loader';
 
 const babelOptions = {
   presets: [['es2015', { modules: false }], 'es2016'],
@@ -73,8 +72,6 @@ exports.config = {
 	    name: "manifest",
 	    minChunks: Infinity
 	  }),
-	  
-	  new CheckerPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.js']
