@@ -1,8 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { CheckerPlugin } from 'awesome-typescript-loader';
 
-const BABEL_OPTIONS = {
+const babelOptions = {
   presets: [['es2015', { modules: false }], 'es2016'],
   plugins: ['syntax-dynamic-import']
 };
@@ -24,22 +24,24 @@ exports.config = {
 					loader: 'ng-annotate-loader'
 				},{
 					loader: 'babel-loader',
-	        options: BABEL_OPTIONS
+	        options: babelOptions
 				}]
 			},{
 	      test: /\.ts$/,
 	      exclude: /node_modules/,
-	      use: [{
-					loader: 'ng-annotate-loader'
-				},{
-          loader: 'babel-loader',
-          options: BABEL_OPTIONS
-        },{
-          loader: 'ts-loader',
-          options: {
-		        transpileOnly: true // disable type checker; forked by plugin
-		      }
-        }]
+	      use: [
+		      {
+						loader: 'ng-annotate-loader'
+					},
+	        {
+	          loader: 'awesome-typescript-loader',
+	          options: {
+	          	useBabel: true,
+	          	useCache: true,
+	          	babelOptions
+			      }
+	        }
+        ]
 	    },
 			// { test: /\.html$/, loader: 'raw-loader' },
 			{
@@ -72,7 +74,7 @@ exports.config = {
 	    minChunks: Infinity
 	  }),
 	  
-	  new ForkTsCheckerWebpackPlugin(),
+	  new CheckerPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.js']

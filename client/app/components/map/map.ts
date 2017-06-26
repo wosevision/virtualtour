@@ -1,7 +1,7 @@
 import * as angular from 'angular';
-import * as ngMap from 'ngmap';
-import uoitCampusMap from 'uoit-campus-map';
+import ngMap from 'ngmap';
 import uiRouter from 'angular-ui-router';
+import uoitCampusMap from 'uoit-campus-map';
 
 import { MapComponent } from './map.component';
 

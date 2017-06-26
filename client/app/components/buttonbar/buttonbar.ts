@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import * as ngMaterial from 'angular-material';
+import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
 import { ButtonbarComponent } from './buttonbar.component';

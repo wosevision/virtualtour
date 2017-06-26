@@ -1,8 +1,20 @@
-export class DrilldownService {
-	$tourApi;
-	structure;
+interface DrilldownItem {
+	_params: object;
+	_level: string;
+	_id: string;
+	default: string;
+	children: DrilldownItem[];
+	label: string;
+	name: string;
+	code: string;
+}
 
-	constructor($tourApi) {
+export class DrilldownService {
+	structure: DrilldownItem[];
+
+	constructor(
+		private $tourApi,
+	) {
 		'ngInject';
 		this.$tourApi = $tourApi;
 	}
