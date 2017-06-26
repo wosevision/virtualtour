@@ -1,17 +1,28 @@
 import template from './search.html';
 
-export const SearchComponent = {
+interface SearchParams {
+	q: string;
+	filter?: string[];
+	fields?: string[];
+};
+
+export const SearchComponent: ng.IComponentOptions = {
   template,
 	bindings: {
 		query: '@',
 		filters: '<'
 	},
-  controller: class SearchController {
-		constructor($log, $http, $state, SEARCH_FILTERS) {
+  controller: class SearchController implements ng.IController {
+  	searchResults;
+  	filters;
+
+		constructor(
+			private $log: ng.ILogService, 
+			private $http: ng.IHttpService, 
+			private $state: ng.ui.IStateService, 
+			private SEARCH_FILTERS
+		) {
 			'ngInject';
-			this.$log = $log;
-			this.$http = $http;
-			this.$state = $state;
 
 			const { typeFilters, modelFilters, fieldFilters } = SEARCH_FILTERS;
 			Object.assign(this, { typeFilters, modelFilters, fieldFilters });
@@ -25,29 +36,33 @@ export const SearchComponent = {
 				by: []
 			};
 		}
-		querySearch (q) {
+
+		querySearch (q): ng.IPromise<any> | any[] {
 			if (!q) return [];
-			const params = { q };
+
+			const params: SearchParams = { q };
+
 			if (this.filters.for.length) params.filter = this.filters.for;
 			if (this.filters.by.length) params.fields = this.filters.by;
 
-			return this.$http.get('/api/v1/search', { params }).then(result => {
-				this.searchResults = Object.keys(result.data.results).length ? result.data.results : false;
-				console.log(result.data);
-				return result.data.overview;
-			});
+			return this.$http.get('/api/v1/search', { params })
+				.then((result: any) => {
+					this.searchResults = Object.keys(result.data.results).length ? result.data.results : false;
+					console.log(result.data);
+					return result.data.overview;
+				});
 		}
 
 		searchTextChange(text) {
-			this.$log.info('Text changed to ' + text);
+			this.$log.info('[search.controller] searchTextChange', text);
 		}
 
 		selectedItemChange(item) {
-			this.$log.info('Item changed to ' + JSON.stringify(item));
+			this.$log.info('[search.controller] selectedItemChange', item);
 		}
 
 		goToResult(type, item) {
-			const params = {};
+			const params: TourState = {};
 			switch(type) {
 				case 'location':
 					params.location = item.code;
@@ -62,7 +77,7 @@ export const SearchComponent = {
 					params.scene = item.code;
 					break;
 			}
-			console.log(params);
+			console.info('[search.controller] goToResult', params);
 			this.$state.go(type, params);
 		}
 	}
