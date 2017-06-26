@@ -1,4 +1,4 @@
-export const TitleBarComponent = {
+export const TitleBarComponent: ng.IComponentOptions = {
   transclude: true,
   bindings: {
   	title: '@',

@@ -6,7 +6,7 @@ import { DrilldownModule } from './drilldown/drilldown';
 import { MapModule } from './map/map';
 import { SearchModule } from './search/search';
 import { SettingsModule } from './settings/settings';
-import TitleBar from './titlebar/titlebar';
+import { TitleBarModule } from './titlebar/titlebar';
 
 const componentModule = angular.module('app.components', [
   AFrame,
@@ -15,7 +15,7 @@ const componentModule = angular.module('app.components', [
   MapModule,
   SearchModule,
 	SettingsModule,
-  TitleBar,
+  TitleBarModule,
 ])
 
 .name;

@@ -1,19 +1,13 @@
-import angular from 'angular';
-import ngMaterial from 'angular-material';
+type TitlebarOption = {
+	id: string;
+	active: boolean;
+	label: string;
+	tooltip: boolean | string[];
+	icon: string[];
+	class?: string;
+};
 
-import { TitleBarComponent } from './titlebar.component';
-import { TitleBarButtonComponent } from './titlebar-button.component';
-
-import './titlebar.scss';
-
-const titleBarModule = angular.module('titlebar', [
-	ngMaterial
-])
-
-.component('titleBar', TitleBarComponent)
-.component('titleBarButton', TitleBarButtonComponent)
-
-.constant('TITLEBAR_OPTS', [{
+export const TITLEBAR_OPTS: TitlebarOption[] = [{
 	id: 'register',
 	active: true,
 	label: 'Register now',
@@ -46,8 +40,4 @@ const titleBarModule = angular.module('titlebar', [
 	label: 'Toolbar visibility',
 	tooltip: [ 'Hide toolbar', 'Show toolbar' ],
 	icon: [ 'last_page', 'first_page' ]
-}])
-
-.name;
-
-export default titleBarModule;
+}]

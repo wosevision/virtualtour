@@ -1,5 +1,4 @@
-export const TitleBarButtonComponent = {
-  require: '^titleBar',
+export const TitleBarButtonComponent: ng.IComponentOptions = {
   bindings: {
   	onClick: '&',
   	label: '@',
