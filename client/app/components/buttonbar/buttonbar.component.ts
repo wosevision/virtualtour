@@ -40,9 +40,8 @@ export const ButtonbarComponent: ng.IComponentOptions = {
 			this.$mdSidenav = $mdSidenav;
 			/**
 			 * Getter property for whether user settings permit hint tooltips.
-			 * @return {Boolean} Tooltips on (true) or off (false)
 			 */
-	  	this.showHints = () => UserSession.settings.showHints.val;
+	  	this.showHints = (): boolean => UserSession.settings.showHints.val;
 		}
 
 		/**

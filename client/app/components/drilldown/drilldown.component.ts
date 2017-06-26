@@ -1,17 +1,14 @@
-import { $analytics } from 'angulartics';
-
-export const DrilldownComponent = {
+export const DrilldownComponent: ng.IComponentOptions = {
 	bindings: {
 		children: '<'
 	},
-  controller: class DrilldownController {
-  	$analytics: $analytics;
-
+  controller: class DrilldownController implements ng.IController {
   	children;
   	
-  	constructor($analytics: $analytics) {
+  	constructor(
+  		private $analytics,
+  	) {
   		'ngInject';
-  		this.$analytics = $analytics;
   	}
 
   	toggleAll(except) {

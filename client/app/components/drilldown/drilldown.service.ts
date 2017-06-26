@@ -16,7 +16,6 @@ export class DrilldownService {
 		private $tourApi,
 	) {
 		'ngInject';
-		this.$tourApi = $tourApi;
 	}
 
 	getLocations(): Promise<any> {
