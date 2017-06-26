@@ -4,13 +4,15 @@ export const MapComponent: ng.IComponentOptions = {
   bindings: {},
   template,
   controller: class MapController implements ng.IController {
-  	$state;
-		constructor($state) {
+		constructor(
+			private $state: ng.ui.IStateService,
+		) {
 			'ngInject';
 			this.$state = $state;
 		}
-		onGotoBldg() {
-			return data => {
+
+		onGotoBldg(): Function {
+			return (data: object) => {
 				this.$state.go('building', data);
 			}
 		}

@@ -6,7 +6,7 @@ import { ButtonbarComponent } from './buttonbar.component';
 
 import './buttonbar.scss';
 
-const buttonBarModule = angular.module('buttonbar', [
+export const ButtonbarModule = angular.module('buttonbar', [
   uiRouter,
   ngMaterial
 ])
@@ -42,5 +42,3 @@ const buttonBarModule = angular.module('buttonbar', [
 })
 
 .name;
-
-export default buttonBarModule;

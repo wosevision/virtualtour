@@ -3,7 +3,7 @@ import ngResource from 'angular-resource';
 
 import DraftResourceFactory from './draftResource.factory';
 import MapResourceFactory from './mapResource.factory';
-import TourResourceFactory from './tourResource.factory';
+import { TourResourceFactory } from './tour-resource.factory';
 
 let resourceModule = angular.module('util.resource', [
   ngResource

@@ -19,19 +19,20 @@ export const ButtonbarComponent: ng.IComponentOptions = {
 	 * The exception is the "Enter VR" button, which is always present at the bottom of
 	 * the buttonbar and has its method stored on this controller.
 	 */
-  controller: class ButtonbarController {
-		$scope;
-		$document;
-		$state;
-		$mdSidenav;
-
+  controller: class ButtonbarController implements ng.IController {
 		activeState: string;
 		menuOpen: boolean;
 
 		showHints: Function;
 		onSelect: Function;
 
-		constructor($scope, $document, $state, $mdSidenav, UserSession) {
+		constructor(
+			private $scope, 
+			private $document, 
+			private $state, 
+			private $mdSidenav, 
+			private UserSession
+		) {
 			'ngInject';
 			this.$scope = $scope;
 			this.$document = $document;
@@ -56,11 +57,8 @@ export const ButtonbarComponent: ng.IComponentOptions = {
 		 * the **sidebar should close and return to the "home" state**.
 		 * - If the **sidebar is open** and the **clicked button's state is different from the
 		 * active state**, the **sidebar should remain open and transition to the new state**.
-		 * 
-		 * @param  {String} state Name of the state to transition to
-		 * @return {Promise}      Represents the state of the transition
 		 */
-	  select(state) {
+	  select(state: string) {
 	    this.activeState = state;
 	    this.onSelect({
 	    	$event: state
@@ -74,7 +72,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
 	  $onInit() {
 			this.$scope.$watch(
 				() => this.$mdSidenav('right').isOpen(),
-				(newVal) => {
+				(newVal: boolean) => {
 					this.menuOpen = newVal;
 				}
 			);

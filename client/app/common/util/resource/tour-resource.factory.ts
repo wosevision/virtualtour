@@ -1,4 +1,4 @@
-function TourResourceFactory($resource, GLOBAL_SETTINGS) {
+export const TourResourceFactory = ($resource, GLOBAL_SETTINGS) => {
   'ngInject';
   return {
   	location: $resource(GLOBAL_SETTINGS.apiUrl + '/locations/:id'),
@@ -12,5 +12,3 @@ function TourResourceFactory($resource, GLOBAL_SETTINGS) {
   	entity: $resource(GLOBAL_SETTINGS.apiUrl + '/entities/:id')
   }
 }
-
-export default TourResourceFactory;

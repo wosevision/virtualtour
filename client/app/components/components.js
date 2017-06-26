@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
 import AFrame from './aframe/aframe';
-import ButtonBar from './buttonbar/buttonbar';
+import { ButtonbarModule } from './buttonbar/buttonbar';
 import { DrilldownModule } from './drilldown/drilldown';
 import { MapModule } from './map/map';
 import Search from './search/search';
@@ -10,7 +10,7 @@ import TitleBar from './titlebar/titlebar';
 
 const componentModule = angular.module('app.components', [
   AFrame,
-  ButtonBar,
+  ButtonbarModule,
   DrilldownModule,
   MapModule,
   Search,
