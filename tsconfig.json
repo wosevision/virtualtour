@@ -6,7 +6,8 @@
     "lib": [ "es2016", "dom" ],
     "target": "es5",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "client/typings.d.ts"
     ],
     "module": "es2015",
     "moduleResolution": "node",

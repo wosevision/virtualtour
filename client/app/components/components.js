@@ -5,7 +5,7 @@ import { ButtonbarModule } from './buttonbar/buttonbar';
 import { DrilldownModule } from './drilldown/drilldown';
 import { MapModule } from './map/map';
 import { SearchModule } from './search/search';
-import Settings from './settings/settings';
+import { SettingsModule } from './settings/settings';
 import TitleBar from './titlebar/titlebar';
 
 const componentModule = angular.module('app.components', [
@@ -14,7 +14,7 @@ const componentModule = angular.module('app.components', [
   DrilldownModule,
   MapModule,
   SearchModule,
-	Settings,
+	SettingsModule,
   TitleBar,
 ])
 

@@ -93,44 +93,6 @@ let userModule = angular.module('user', [
   			'== 1': [10, 5, 10], //high-res
   		}
   	}
-  },
-  profiles: {
-  	conserve: {
-  		auto: { val: true },
-  		compression: { val: 5 },
-  		preloading: { val: 0 },
-  		resolution: { val: 0 }
-  	},
-  	balanced: {
-  		auto: { val: true },
-  		compression: { val: 3 },
-  		preloading: { val: 1 },
-  		resolution: { val: 1 }
-  	},
-  	mobile3g: {
-  		auto: { val: true },
-  		compression: { val: 4 },
-  		preloading: { val: 1 },
-  		resolution: { val: 0 }
-  	},
-  	mobileWifi: {
-  		auto: { val: true },
-  		compression: { val: 2 },
-  		preloading: { val: 1 },
-  		resolution: { val: 0 }
-  	},
-  	desktopSlow: {
-  		auto: { val: true },
-  		compression: { val: 5 },
-  		preloading: { val: 2 },
-  		resolution: { val: 1 }
-  	},
-  	desktopFast: {
-  		auto: { val: true },
-  		compression: { val: 1 },
-  		preloading: { val: 2 },
-  		resolution: { val: 1 }
-  	}
   }
 })
 
