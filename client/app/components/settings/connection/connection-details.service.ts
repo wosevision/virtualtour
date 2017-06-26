@@ -27,7 +27,7 @@ const SPEED_3G = 2;
  */
 export class ConnectionDetailsService {
 	profiles;
-	connection: Connection;
+	connection: vt.cnx.IConnection;
 	/**
 	 * Initializes the service's dependencies. Extracts usage profiles
 	 * from the `USER_DEFAULTS.profiles` constant and discards other settings.
@@ -48,7 +48,7 @@ export class ConnectionDetailsService {
 	 * connection speed in the background, and supplies this info back
 	 * to the app along with device details when it becomes available.
 	 */
-	detect(): ng.IPromise<Connection> {
+	detect(): ng.IPromise<vt.cnx.IConnection> {
 	  return this.$http.get('/user/connection').then(({ data }) => {
 	  	const { network, useragent } = data;
 	  	this.connection = { network, useragent };
@@ -61,7 +61,7 @@ export class ConnectionDetailsService {
 	 * to select based on a connection details object (e.g. the result of
 	 * calling `detect()`).
 	 */
-	optimize(connection: Connection): ConnectionProfile  {
+	optimize(connection: vt.cnx.IConnection): ConnectionProfile  {
 		const { network, useragent } = connection,
 					downloadSpeed = network.speeds.download,
 					deviceType = useragent.device.type;

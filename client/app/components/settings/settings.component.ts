@@ -2,7 +2,7 @@ import { element } from 'angular';
 
 import template from './settings.html';
 
-export const SettingsComponent = {
+export const SettingsComponent: ng.IComponentOptions = {
   bindings: {},
   template,
 	/**
@@ -10,12 +10,12 @@ export const SettingsComponent = {
 	 * the app's user preferences and data usage settings, login/logout
 	 * functions, and a set of automatic usage detection functions.
 	 */
-  controller: class SettingsController {
+  controller: class SettingsController implements ng.IController {
   	isLoggedIn: Function;
-		user: User;
+		user: vt.ITourUser;
 		settings;
 		usage;
-		connection: boolean | { loading: boolean } | Connection;
+		connection: boolean | { loading: boolean } | vt.cnx.IConnection;
 		usageLevel: string[];
 		constructor(
 			private $scope, 
@@ -120,11 +120,8 @@ export const SettingsComponent = {
 
 		/**
 		 * Stores user info and opens accordion sections when login is detected.
-		 * 
-		 * @param  {Event} event  The originating event object
-		 * @param  {Object} user  The newly logged-in user
 		 */
-		loadUserAfterLogin(event: Event, user: User) {
+		loadUserAfterLogin(event: Event, user: vt.ITourUser) {
 			this.user = this.UserSession.user;
 			this.settings = this.UserSession.settings;
 			this.usage = this.UserSession.usage;
@@ -170,10 +167,10 @@ export const SettingsComponent = {
 		 * - Stores returned connection information
 		 * - Sets optimized usage settings with `optimize()`
 		 */
-		detectConnection(): ng.IPromise<Connection> {
+		detectConnection(): ng.IPromise<vt.cnx.IConnection> {
 			if (this.usage.auto.val) {
 				this.connection = { loading: true };
-				return this.ConnectionDetails.detect().then((connection: Connection) => {
+				return this.ConnectionDetails.detect().then((connection: vt.cnx.IConnection) => {
 					this.connection = connection;
 					this.usage = this.ConnectionDetails.optimize(connection);
 					this.updateUsage();

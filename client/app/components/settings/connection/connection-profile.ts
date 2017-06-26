@@ -1,12 +1,8 @@
-export interface ConnectionValue {
-	val: boolean | number;
-}
-
 export class ConnectionProfile {
-	public auto: ConnectionValue;
-	public compression: ConnectionValue;
-	public preloading: ConnectionValue;
-	public resolution: ConnectionValue;
+	public auto: vt.cnx.IConnectionValue;
+	public compression: vt.cnx.IConnectionValue;
+	public preloading: vt.cnx.IConnectionValue;
+	public resolution: vt.cnx.IConnectionValue;
 	constructor(
 		auto,
 		compression,

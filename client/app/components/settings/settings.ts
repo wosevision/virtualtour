@@ -7,8 +7,8 @@ import ngStorage from 'angular-storage';
 
 import { SettingsComponent } from './settings.component';
 import { SettingsFactory } from './settings.factory';
-import { ConnectionDetailsService } from './connection-details.service';
-import { CONNECTION_PROFILES } from './connection-profiles.constant';
+import { ConnectionDetailsService } from './connection/connection-details.service';
+import { CONNECTION_PROFILES } from './connection/connection-profiles.constant';
 
 import './settings.scss';
 

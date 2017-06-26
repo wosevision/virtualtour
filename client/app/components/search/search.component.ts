@@ -62,7 +62,7 @@ export const SearchComponent: ng.IComponentOptions = {
 		}
 
 		goToResult(type, item) {
-			const params: TourState = {};
+			const params: vt.ITourState = {};
 			switch(type) {
 				case 'location':
 					params.location = item.code;
