@@ -106,7 +106,7 @@
 -->
 		<a-entity
 			geometry="primitive:plane;width:4;height:2;"
-			ng-attr-material="shader: html; target: #hotSpot_{{ ::hotSpot._id }} .aframe-html-content; transparent: true; ratio: width; fps: 1.5;"
+			ng-attr-material="shader: html; target: #hotSpot_{{ ::hotSpot._id }} .aframe-html-content; transparent: true; ratio: width; fps: {{ $ctrl._editable ? '1.5' : 0 }};"
 			animation__open="property: scale; from: 0 0 0; to: 1 1 1; dur: 600; easing: easeOutElastic; elasticity: 600; startEvents: toggle-on"
 			animation__close="property: scale; from: 1 1 1; to: 0 0 0; dur: 600; easing: easeOutQuint; startEvents: toggle-off"
 			rotation="0 0 0"
