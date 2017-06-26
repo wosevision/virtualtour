@@ -1,4 +1,4 @@
-import angular from 'angular';
+import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 
@@ -7,7 +7,7 @@ import { SEARCH_FILTERS } from './search-filters.constant';
 
 import './search.scss';
 
-let searchModule = angular.module('search', [
+export const SearchModule = angular.module('search', [
   uiRouter,
   ngMaterial
 ])
@@ -17,5 +17,3 @@ let searchModule = angular.module('search', [
 .constant('SEARCH_FILTERS', SEARCH_FILTERS)
 
 .name;
-
-export default searchModule;

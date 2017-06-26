@@ -48,7 +48,7 @@ export const SearchComponent: ng.IComponentOptions = {
 			return this.$http.get('/api/v1/search', { params })
 				.then((result: any) => {
 					this.searchResults = Object.keys(result.data.results).length ? result.data.results : false;
-					console.log(result.data);
+					console.info('[search.controller] $http.get', result.data);
 					return result.data.overview;
 				});
 		}
