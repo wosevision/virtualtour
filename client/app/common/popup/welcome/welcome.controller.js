@@ -70,8 +70,9 @@ class WelcomeController {
    * @param  {string} view The view to transition to
    */
   viewTip(tip) {
-  	console.log(this.WELCOME_TIPS[tip]);
-  	this.currentTips = this.WELCOME_TIPS[tip];
+  	if (this.WELCOME_TIPS[tip]) {
+	  	this.currentTips = this.WELCOME_TIPS[tip];
+  	}
   }
 
   nextTip() {
