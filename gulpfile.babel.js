@@ -42,7 +42,7 @@ let paths = {
   entry: {
   	app: [
       'babel-polyfill',
-      path.join(__dirname, CLIENT_ROOT, 'app/app.js')
+      path.join(__dirname, CLIENT_ROOT, 'main.ts')
     ],
 	  editor: [
 	    path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor.js')

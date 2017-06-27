@@ -18,7 +18,9 @@
 //   }
 // });
 
-import angular from 'angular';
+import { NgModule } from 'ng-metadata/core';
+
+// import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angulartics from 'angulartics';
 import angularticsGa from 'angulartics-google-analytics';
@@ -58,23 +60,45 @@ import './app.scss';
 //  }
 // }
 
-angular.module('app', [
-  uiRouter,
-  angulartics,
-  angularticsGa,
-  ngAnimate,
-  ngAria,
-  ngMaterial,
-  ngMdIcons,
-  cfpLoadingBar,
-  vAccordion,
-  Common,
-  Components,
-  ...(window.REQUIRED_MODULES || [])
-])
+// export const AppModule = angular.module('app', [
+//   uiRouter,
+//   angulartics,
+//   angularticsGa,
+//   ngAnimate,
+//   ngAria,
+//   ngMaterial,
+//   ngMdIcons,
+//   cfpLoadingBar,
+//   vAccordion,
+//   Common,
+//   Components,
+//   ...(window.REQUIRED_MODULES || [])
+// ])
 
-.component('app', AppComponent)
+// .component('app', AppComponent)
 
-.config(AppConfig)
+// .config(AppConfig)
 
-.run(AppRun);
+// .run(AppRun);
+
+@NgModule({
+  // You can pass either Angular 1 `angular.module` names,
+  // or other ng-metadata @NgModule classes to `imports`,
+  // it will automatically figure out how to bundle them!
+  imports: [
+    uiRouter,
+    angulartics,
+    angularticsGa,
+    ngAnimate,
+    ngAria,
+    ngMaterial,
+    ngMdIcons,
+    cfpLoadingBar,
+    vAccordion,
+    Common,
+    Components,
+    ...(window.REQUIRED_MODULES || [])
+  ],
+  declarations: [AppComponent]
+})
+export class AppModule {}
