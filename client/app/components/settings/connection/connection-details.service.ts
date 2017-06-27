@@ -26,8 +26,10 @@ const SPEED_3G = 2;
  * providing human-readable versions of those reports.
  */
 export class ConnectionDetailsService {
-	profiles;
-	connection: vt.cnx.IConnection;
+	profiles: {
+		[key: string]: ConnectionProfile
+	};
+	connection: vt.INetworkConnection;
 	/**
 	 * Initializes the service's dependencies. Extracts usage profiles
 	 * from the `USER_DEFAULTS.profiles` constant and discards other settings.
@@ -48,7 +50,7 @@ export class ConnectionDetailsService {
 	 * connection speed in the background, and supplies this info back
 	 * to the app along with device details when it becomes available.
 	 */
-	detect(): ng.IPromise<vt.cnx.IConnection> {
+	detect(): ng.IPromise<vt.INetworkConnection> {
 	  return this.$http.get('/user/connection').then(({ data }) => {
 	  	const { network, useragent } = data;
 	  	this.connection = { network, useragent };
@@ -61,25 +63,26 @@ export class ConnectionDetailsService {
 	 * to select based on a connection details object (e.g. the result of
 	 * calling `detect()`).
 	 */
-	optimize(connection: vt.cnx.IConnection): ConnectionProfile  {
+	optimize(connection: vt.INetworkConnection): ConnectionProfile  {
 		const { network, useragent } = connection,
 					downloadSpeed = network.speeds.download,
 					deviceType = useragent.device.type;
 
-		if (downloadSpeed >= SPEED_HI && !deviceType)
+		if (downloadSpeed >= SPEED_HI && !deviceType){
 			return this.profiles.desktopFast;
-		if (downloadSpeed >= SPEED_WF && downloadSpeed < SPEED_HI && !deviceType)
+		} else if (downloadSpeed >= SPEED_WF && downloadSpeed < SPEED_HI && !deviceType){
 			return this.profiles.desktopSlow;
-		if (downloadSpeed < SPEED_WF && !deviceType)
+		} else if (downloadSpeed < SPEED_WF && !deviceType){
 			return this.profiles.balanced;
-		if (downloadSpeed >= SPEED_WF && deviceType  === 'mobile')
+		} else if (downloadSpeed >= SPEED_WF && deviceType  === 'mobile'){
 			return this.profiles.mobileWifi;
-		if (downloadSpeed >= SPEED_3G && deviceType  === 'mobile')
+		} else if (downloadSpeed >= SPEED_3G && deviceType  === 'mobile'){
 			return this.profiles.mobile3g;
-		if (downloadSpeed < SPEED_3G)
+		} else if (downloadSpeed < SPEED_3G){
 			return this.profiles.conserve;
-		// default return
-		return this.profiles.balanced;
+		} else {
+			return this.profiles.balanced;
+		}
 	}
 
 	/**
@@ -94,21 +97,19 @@ export class ConnectionDetailsService {
 	 * }
 	 */
 	calculateUsageLevel(usage: object): ng.IPromise<number[]> {
-		const tally = [0, 0, 0], // [imageQual, loadTime, dataUse] / 0=low, 10=high
-	  			deferred = this.$q.defer(),
-	  			addToTally = values => {
-						tally.forEach((v, index) => {
-							tally[index] += values[index];
-						});
-					};
+		let tally: number[] = [0, 0, 0]; // [imageQual, loadTime, dataUse] / 0=low, 10=high
+		const deferred = this.$q.defer(),
+	  			addValuesToTally = values => tally.map((v, i) =>  v += values[i]);
+
 		this.$rootScope.$applyAsync(() => {
 			Object.keys(usage).forEach(setting => {
 				if (setting !== 'auto') {
-					Object.keys(usage[setting].levels).forEach(expression => {
+					tally = Object.keys(usage[setting].levels).reduce((tally, expression) => {
 						const inRange = this.$rootScope.$eval(`(${ usage[setting].val } ${expression})`);
-						if (inRange) addToTally(usage[setting].levels[expression]);
+						if (inRange) tally = addValuesToTally(usage[setting].levels[expression]);
 						if (isNumber(inRange)) deferred.reject('Usage calculation error');
-					});
+						return tally;
+					}, tally);
 				}
 			});
 			deferred.resolve(tally);

@@ -1,8 +1,8 @@
 export class ConnectionProfile {
-	public auto: vt.cnx.IConnectionValue;
-	public compression: vt.cnx.IConnectionValue;
-	public preloading: vt.cnx.IConnectionValue;
-	public resolution: vt.cnx.IConnectionValue;
+	public auto: vt.INetworkConnectionVal;
+	public compression: vt.INetworkConnectionVal;
+	public preloading: vt.INetworkConnectionVal;
+	public resolution: vt.INetworkConnectionVal;
 	constructor(
 		auto,
 		compression,

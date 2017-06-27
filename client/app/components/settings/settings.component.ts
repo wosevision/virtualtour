@@ -15,7 +15,7 @@ export const SettingsComponent: ng.IComponentOptions = {
 		user: vt.ITourUser;
 		settings;
 		usage;
-		connection: boolean | { loading: boolean } | vt.cnx.IConnection;
+		connection: boolean | { loading: boolean } | vt.INetworkConnection;
 		usageLevel: string[];
 		constructor(
 			private $scope, 
@@ -167,10 +167,10 @@ export const SettingsComponent: ng.IComponentOptions = {
 		 * - Stores returned connection information
 		 * - Sets optimized usage settings with `optimize()`
 		 */
-		detectConnection(): ng.IPromise<vt.cnx.IConnection> {
+		detectConnection(): ng.IPromise<vt.INetworkConnection> {
 			if (this.usage.auto.val) {
 				this.connection = { loading: true };
-				return this.ConnectionDetails.detect().then((connection: vt.cnx.IConnection) => {
+				return this.ConnectionDetails.detect().then((connection: vt.INetworkConnection) => {
 					this.connection = connection;
 					this.usage = this.ConnectionDetails.optimize(connection);
 					this.updateUsage();
