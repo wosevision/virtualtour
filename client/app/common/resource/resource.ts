@@ -1,19 +1,19 @@
 import angular from 'angular';
 import ngResource from 'angular-resource';
 
-import DraftResourceFactory from './draftResource.factory';
-import MapResourceFactory from './mapResource.factory';
-import { TourResourceFactory } from './tour-resource.factory';
+import { DraftResourceFactory } from './draft-resource.service';
+import { MapResourceFactory } from './map-resource.service';
+import { TourResourceFactory } from './tour-resource.service';
 
-let resourceModule = angular.module('util.resource', [
+export const ResourceModule = angular.module('util.resource', [
   ngResource
 ])
 
-.factory('DraftResource', DraftResourceFactory)
+.service('DraftResource', DraftResourceFactory)
 
-.factory('$mapApi', MapResourceFactory)
+.service('$mapApi', MapResourceFactory)
 
-.factory('$tourApi', TourResourceFactory)
+.service('$tourApi', TourResourceFactory)
 
 .constant('GLOBAL_SETTINGS', {
 	apiUrl: '/api/v1',
@@ -32,5 +32,3 @@ let resourceModule = angular.module('util.resource', [
 })
 
 .name;
-
-export default resourceModule;
