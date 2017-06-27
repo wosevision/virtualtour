@@ -6,7 +6,7 @@ import PopupInfo from './info/info';
 import PopupLogin from './login/login';
 import PopupWelcome from './welcome/welcome';
 
-import popupService from './popup.service';
+import { PopupService } from './popup.service';
 
 let popupModule = angular.module('popup', [
   ngMaterial,
@@ -16,7 +16,7 @@ let popupModule = angular.module('popup', [
 	PopupWelcome
 ])
 
-.service('$popupWindow', popupService)
+.service('$popupWindow', PopupService)
 
 .name;
 
