@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@types/aframe@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@types/aframe/-/aframe-0.5.0.tgz#8bf5917794b085980dd19514791b636766012cd5"
+  dependencies:
+    "@types/three" "*"
+    "@types/tween.js" "*"
+
 "@types/angular-ui-router@^1.1.37":
   version "1.1.37"
   resolved "https://registry.yarnpkg.com/@types/angular-ui-router/-/angular-ui-router-1.1.37.tgz#1e67926083f5e78d28d7c7e83d01c9929e70b6cb"
@@ -17,6 +24,20 @@
 "@types/jquery@*":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.4.tgz#52d19aecb6237a9407701fc127cf69d204576e04"
+
+"@types/three@*":
+  version "0.84.14"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.84.14.tgz#b43d53f2032db8d059d24446eb03e25ff7b3c9d6"
+  dependencies:
+    "@types/webvr-api" "*"
+
+"@types/tween.js@*":
+  version "16.6.1"
+  resolved "https://registry.yarnpkg.com/@types/tween.js/-/tween.js-16.6.1.tgz#829bc0007c72fe3fe2aa06f782dcb4c19dc3443f"
+
+"@types/webvr-api@*":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/webvr-api/-/webvr-api-0.0.31.tgz#f6061fe88a035d34a8b6a0c55f8758901ec8a08e"
 
 "@uirouter/core@5.0.3":
   version "5.0.3"
@@ -6824,15 +6845,9 @@ source-list-map@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-1.0.1.tgz#cc1fc17122ae0a51978024c2cc0f8c35659026b8"
 
-source-map-support@^0.4.15:
+source-map-support@^0.4.15, source-map-support@^0.4.2:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.15.tgz#03202df65c06d2bd8c7ec2362a193056fef8d3b1"
-  dependencies:
-    source-map "^0.5.6"
-
-source-map-support@^0.4.2:
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.14.tgz#9d4463772598b86271b4f523f6c1f4e02a7d6aef"
   dependencies:
     source-map "^0.5.6"
 

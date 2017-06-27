@@ -1,4 +1,4 @@
-import { utils } from 'aframe';
+import aframe from 'aframe';
 import { isUndefined } from 'angular';
 
 import template from './app.html';
@@ -24,7 +24,7 @@ export const AppComponent = {
       () => ({
         screen: !$mdMedia('gt-sm'),
         landscape: $mdMedia('landscape'),
-        device: utils.device.isMobile()
+        device: aframe.utils.device.isMobile()
       }),
       m => {
         this.mobile = m; //console.log(m);
