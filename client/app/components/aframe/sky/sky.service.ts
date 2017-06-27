@@ -1,5 +1,5 @@
 import { element } from 'angular';
-import { utils } from 'aframe';
+import aframe from 'aframe';
 
 const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 
@@ -55,7 +55,7 @@ export class SkyService {
    * @return {string} Formatted Cloudinary setting string (`c_scale,f_auto,etc`)
    */
   getSettings() {
-    const mobile = utils.device.isMobile(),
+    const mobile = aframe.utils.device.isMobile(),
           lowRes = !this.UserSession.usage.resolution.val;
     const settings = {
       w: mobile||lowRes ? 2048 : 4096,
