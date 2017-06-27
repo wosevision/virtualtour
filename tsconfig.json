@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "aframe": ["node_modules/aframe/dist/aframe-master.js"] // This mapping is relative to "baseUrl"
+    },
   	"allowJs": true,
   	"allowSyntheticDefaultImports": true,
   	"allowUnreachableCode": true,

@@ -1,4 +1,4 @@
-import { utils } from 'aframe';
+import aframe from 'aframe';
 import { isUndefined } from 'angular';
 
 import template from './app.html';

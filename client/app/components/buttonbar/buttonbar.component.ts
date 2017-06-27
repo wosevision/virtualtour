@@ -23,25 +23,25 @@ export const ButtonbarComponent: ng.IComponentOptions = {
     activeState: string;
     menuOpen: boolean;
 
-    showHints: Function;
     onSelect: Function;
 
+    sceneEl: AFrame.Scene = document.querySelector('a-scene');
+
     constructor(
-      private $scope, 
-      private $document, 
-      private $state, 
+      private $scope: ng.IScope, 
+      private $document: ng.IDocumentService, 
+      private $state: ng.ui.IStateService, 
       private $mdSidenav, 
       private UserSession
     ) {
       'ngInject';
-      this.$scope = $scope;
-      this.$document = $document;
-      this.$state = $state;
-      this.$mdSidenav = $mdSidenav;
-      /**
-       * Getter property for whether user settings permit hint tooltips.
-       */
-      this.showHints = (): boolean => UserSession.settings.showHints.val;
+    }
+
+    /**
+     * Getter property for whether user settings permit hint tooltips.
+     */
+    get showHints(): boolean {
+      return this.UserSession.settings && this.UserSession.settings.showHints.val;
     }
 
     /**
@@ -65,7 +65,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
     }
 
     enterVR() {
-      this.$document[0].getElementById('aframe-scene').enterVR();
+      this.sceneEl.enterVR();
     }
 
     $onInit() {
