@@ -14,7 +14,7 @@ const componentModule = angular.module('app.components', [
   DrilldownModule,
   MapModule,
   SearchModule,
-	SettingsModule,
+  SettingsModule,
   TitleBarModule,
 ])
 

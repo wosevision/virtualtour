@@ -17,7 +17,7 @@ export const SettingsModule = angular.module('settings', [
   ngAnimate,
   ngMaterial,
   ngCookies,
-	ngStorage
+  ngStorage
 ])
 
 .component('userSettings', SettingsComponent)

@@ -43,27 +43,27 @@ import './app.scss';
  * their methods with `angular.noop`.
  */
 // {
-// 	const CONSOLE_METHODS = [
-// 			'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-// 			'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-// 			'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-// 			'timeStamp', 'trace', 'warn'
-// 		],
-// 		CONSOLE_OBJ = (window.console = window.console || {});
-// 	let method,
-// 			length = CONSOLE_METHODS.length;
-// 	while (length--) {
-// 	    method = CONSOLE_METHODS[length];
-// 	    CONSOLE_OBJ[method] = angular.noop;
-// 	}
+//  const CONSOLE_METHODS = [
+//      'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+//      'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+//      'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+//      'timeStamp', 'trace', 'warn'
+//    ],
+//    CONSOLE_OBJ = (window.console = window.console || {});
+//  let method,
+//      length = CONSOLE_METHODS.length;
+//  while (length--) {
+//      method = CONSOLE_METHODS[length];
+//      CONSOLE_OBJ[method] = angular.noop;
+//  }
 // }
 
 angular.module('app', [
   uiRouter,
   angulartics,
-	angularticsGa,
+  angularticsGa,
   ngAnimate,
-	ngAria,
+  ngAria,
   ngMaterial,
   ngMdIcons,
   cfpLoadingBar,

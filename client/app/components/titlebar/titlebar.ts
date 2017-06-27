@@ -8,7 +8,7 @@ import { TITLEBAR_OPTS } from './titlebar-options.constant';
 import './titlebar.scss';
 
 export const TitleBarModule = angular.module('titlebar', [
-	ngMaterial
+  ngMaterial
 ])
 
 .component('titleBar', TitleBarComponent)

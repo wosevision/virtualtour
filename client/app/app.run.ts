@@ -18,29 +18,29 @@ export const AppRun = ($rootScope, $state, $transitions, $compile, $mdUtil, $pop
   $transitions.onStart({}, function(trans) {
     const auth = trans.injector().get('UserAuth');
     let toState = trans.$to(),
-    		fromState = trans.$from();
+        fromState = trans.$from();
     console.log('[$transitions] onStart', trans, toState, fromState);
 
     if (toState.data && toState.data.roles && !auth.isAuthorized(toState.data.roles)) {
-	    if (auth.isAuthenticated()) {
-	      $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-	    } else {
-	      $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-	    }
-	  }
+      if (auth.isAuthenticated()) {
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+      } else {
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      }
+    }
   });
 
   $state.defaultErrorHandler(error => {
     console.log('[$state] defaultErrorHandler', error);
 
     if (error.type !== 2) {
-	    const locals = {
-	      type: 'Navigation issue!',
-	      message: error.message || error.msg || 'The view you requested hit a snag while loading.',
-	      suggest: [4, 3]
-	    }
-	    $popupWindow.error({locals});
-	  }
+      const locals = {
+        type: 'Navigation issue!',
+        message: error.message || error.msg || 'The view you requested hit a snag while loading.',
+        suggest: [4, 3]
+      }
+      $popupWindow.error({locals});
+    }
   });
 
   $state.onInvalid(error => {
