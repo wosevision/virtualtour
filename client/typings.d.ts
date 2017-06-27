@@ -3,6 +3,10 @@ declare module '*.html' {
   export default content;
 }
 
+declare interface Window {
+  REQUIRED_MODULES: string[];
+}
+
 declare namespace vt {
   export interface ITourState {
     location?: string;
