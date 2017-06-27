@@ -1,4 +1,4 @@
-function bindCompileDirective($compile) {
+export const BindCompileDirective = ($compile) => {
 	'ngInject';
   return function(scope, element, attrs) {
     const ensureCompileRunsOnce = scope.$watch(
@@ -12,6 +12,4 @@ function bindCompileDirective($compile) {
       }
     );
   };
-}
-
-export default bindCompileDirective;
+};
