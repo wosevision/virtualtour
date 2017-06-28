@@ -8,13 +8,14 @@
  * and syncing user settings (e.g. when user dismisses welcome dialog).
  */
 export class WelcomeController implements ng.IController {
+  welcomeTour: nztour.ITourConfig;
+
   welcomeTipsList: vt.IWelcomeTip[];
   currentTips: vt.IWelcomeTipGroup;
   activeTip: number;
 
   showWelcome: boolean;
-
-  onButtonClick: ({ $event }: { $event: ng.IAngularEvent }) => ng.IPromise<any>;
+  onButtonClick: ({ $event }: { $event: ng.IAngularEvent }) => Promise<any>;
 
 	constructor(
 		private $state: ng.ui.IStateService,
@@ -22,7 +23,8 @@ export class WelcomeController implements ng.IController {
 		private $mdSidenav,
 		private UserSession,
 		private nzTour,
-		private TOUR_STEPS,
+    private TOUR_CONFIG: nztour.ITourStepConfig,
+		private TOUR_STEPS: nztour.ITourStepConfig[],
 		private WELCOME_TIP_LIST: vt.IWelcomeTip[],
 		private WELCOME_TIPS: {
       [key: string]: vt.IWelcomeTipGroup
@@ -30,6 +32,10 @@ export class WelcomeController implements ng.IController {
 	) {
 	  'ngInject';
 		this.welcomeTipsList = WELCOME_TIP_LIST;
+    this.welcomeTour = {
+      config: TOUR_CONFIG,
+      steps: TOUR_STEPS
+    };
 	}
 
 	/**
@@ -54,8 +60,7 @@ export class WelcomeController implements ng.IController {
   }
 
   /**
-   * Changes the active view of the dialog, e.g. "user tips" detail panels. 
-   * @param  {string} view The view to transition to
+   * Changes the active view of the dialog, e.g. "user tips" detail panels.
    */
   viewTip(tip: string): vt.IWelcomeTipGroup {
   	if (this.WELCOME_TIPS[tip]) {
@@ -78,7 +83,7 @@ export class WelcomeController implements ng.IController {
    */
   startTour(): Promise<any> {
     this.$mdDialog.hide('tour');
-  	return this.nzTour.start(this.TOUR_STEPS);
+  	return this.nzTour.start(this.welcomeTour);
   }
 
   /**
@@ -92,8 +97,8 @@ export class WelcomeController implements ng.IController {
   	this.UserSession.settings = currentSettings;
   }
 
-	buttonClick($event) {
+	buttonClick($event): Promise<any> {
     console.log('[welcome.controller] buttonClick', $event);
-    this.onButtonClick({ $event });
+    return this.onButtonClick({ $event });
 	}
 }

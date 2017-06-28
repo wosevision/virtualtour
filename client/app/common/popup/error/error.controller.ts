@@ -1,4 +1,4 @@
-export class ErrorController {
+export class ErrorController implements ng.IController {
   suggest: number[];
   suggestions: vt.IErrorSuggestion[] = this.suggest.map(i => this.ERROR_SUGGESTIONS[i]);
 
@@ -13,15 +13,15 @@ export class ErrorController {
   	'ngInject';
   }
 
-	closeDialog() {
+	closeDialog(): Promise<any> {
 		this.$state.reload();
-		this.$mdDialog.hide();
+		return this.$mdDialog.hide();
 	}
 
-	goToSettings() {
+	goToSettings(): Promise<any> {
 		this.$mdDialog.hide();
 		this.$state.go('settings');
-		this.$mdSidenav('right').open();
+		return this.$mdSidenav('right').open();
 	}
 
 	refreshApp() {

@@ -7,6 +7,61 @@ declare interface Window {
   REQUIRED_MODULES: string[];
 }
 
+declare namespace nztour {
+  export interface ITourService {
+    // props
+    config: ITourStepConfig,
+    body: HTMLElement,
+    current: boolean,
+    box: boolean,
+    // utils
+    throttle: (callback: () => any, limit: number) => () => void,
+    debounce: (func: (...args) => any, wait: number, immediate: boolean) => () => void,
+    // methods            
+    start: (tour: ITourConfig) => Promise<any>,
+    stop: () => void,
+    pause: () => void,
+    next: () => Promise<any>,
+    previous: () => Promise<any>,
+    gotoStep: () => Promise<any>,
+  }
+
+  export interface ITourConfig {
+    config: ITourStepConfig,
+    steps: ITourStepConfig,
+  }
+
+  export interface ITourStepConfig {
+    mask?: {
+      visible?: boolean, // Shows the element mask
+      visibleOnNoTarget?: boolean, // Shows a full page mask if no target element has been specified
+      clickThrough?: boolean, // Allows the user to interact with elements beneath the mask
+      clickExit?: boolean, // Exit the tour when the user clicks on the mask
+      scrollThrough?: boolean // Allows the user to scroll the scrollbox or window through the mask
+      color?: string // The mask color
+    },
+    scrollBox?: string, // The container to scroll when searching for elements
+    previousText?: string,
+    nextText?: string,
+    finishText?: string,
+    showPrevious?: boolean, // Setting to false hides the previous button
+    showNext?: boolean // Setting to false hides the next button
+    animationDuration?: number, // Animation Duration for the box and mask
+    placementPriority?: string[],
+    dark?: boolean, // Dark mode (Works great with `mask.visible = false`)
+    disableInteraction?: boolean, // Disable interaction with the highlighted elements
+    highlightMargin?: number, // Margin of the highglighted area
+    disableEscExit?: boolean, // Disable end of tour when pressing ESC,
+    onClose?: () => any, //Function called when the tour is closed
+    onComplete?: () => any, //Function called when the tour is completed
+  }
+
+  export interface ITourStep extends ITourStepConfig {
+    target?: string,
+    content: string,
+  }
+}
+
 declare namespace vt {
   export interface IErrorSuggestion {
     title: string,
@@ -17,16 +72,16 @@ declare namespace vt {
   }
 
   export interface IWelcomeTip {
-    title: string,
-    icon: string,
-    link: string,
-    desc: string,
+    title?: string,
+    icon?: string,
+    link?: string,
+    desc?: string,
   }
 
   export interface IWelcomeTipContent {
-    label: string,
-    image: string,
-    content: string
+    label?: string,
+    image?: string,
+    content?: string
   }
 
   export interface IWelcomeTipGroup {
