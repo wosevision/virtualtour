@@ -99,8 +99,9 @@ export const AppComponent = {
       const settingsLoaded = this.$scope.$watch(
         () => this.UserSession.settings, 
         userSettings => {
+          console.info('[app.controller] $watch.userSettings');
+
           if (!isUndefined(userSettings)) {
-            console.info('[app.controller] $watch.userSettings', userSettings)
 
             const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSession.settings;
 
@@ -110,9 +111,11 @@ export const AppComponent = {
               this.$timeout(this.showSettingsMsg.bind(this), this.SETTINGS_MSG_DELAY);
             }
 
-            this.toolbar.open = toolbarOpen;
-            this.toolbar.condensed = toolbarCondensed;
+            this.toolbar.open = toolbarOpen.val;
+            this.toolbar.condensed = toolbarCondensed.val;
             this.toolbar.sidebar = this.$mdSidenav('right');
+
+            console.info('[app.controller] $watch.userSettings settingsLoaded', this.UserSession.settings);
 
             settingsLoaded();
           }

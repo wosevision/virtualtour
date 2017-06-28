@@ -95,9 +95,54 @@ declare namespace vt {
     scene?: string;
   }
 
+  export interface ITourUserName {
+    last: string;
+    first: string;
+  }
+
+  export interface ITourUserUsage {
+    cache: number;
+    resolution: number;
+    preloading: number;
+    compression: number;
+    auto: boolean
+  }
+
+  export interface ITourUserSettings {
+    showWelcome: boolean;
+    showHints: boolean;
+    toolbarCondensed: boolean;
+    toolbarOpen: boolean;
+  }
+
+  export interface ITourUserAvatar {
+    public_id: string;
+    version: number;
+    signature: string;
+    width: number;
+    height: number;
+    format: string;
+    resource_type: string;
+    url: string;
+    secure_url: string;
+  }
+
   export interface ITourUser {
-    settings: object;
-    usage: object;
+    _id: string;
+    __v: number;
+    name: Partial<ITourUserName>;
+    password: string;
+    email: string;
+    userId: string;
+    bannerId: number;
+    isContributor: boolean;
+    isEditor: boolean;
+    isAdmin: boolean;
+    usage: Partial<ITourUserUsage>;
+    settings: Partial<ITourUserSettings>,
+    avatar: Partial<ITourUserAvatar>,
+    updatedAt: Date;
+    updatedBy: string;
   }
 
   export interface IPanorama {
