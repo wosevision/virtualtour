@@ -1,3 +1,10 @@
+import {
+  TOUR_CONFIG,
+  TOUR_STEPS,
+  WELCOME_TIPS,
+  WELCOME_TIP_LIST
+} from './welcome-tour.constant';
+
 /**
  * This controller manages a welcome dialog created by the `$mdDialog`
  * service, which the user is presented with when the application first
@@ -8,9 +15,15 @@
  * and syncing user settings (e.g. when user dismisses welcome dialog).
  */
 export class WelcomeController implements ng.IController {
-  welcomeTour: nztour.ITourConfig;
+  welcomeTour: nztour.ITourConfig = {
+    config: TOUR_CONFIG,
+    steps: TOUR_STEPS
+  };
 
-  welcomeTipsList: vt.IWelcomeTip[];
+  welcomeTipsList: vt.IWelcomeTip[] = WELCOME_TIP_LIST;
+  welcomeTips: {
+    [key: string]: vt.IWelcomeTipGroup
+  };
   currentTips: vt.IWelcomeTipGroup;
   activeTip: number;
 
@@ -23,19 +36,10 @@ export class WelcomeController implements ng.IController {
 		private $mdSidenav,
 		private UserSession,
 		private nzTour,
-    private TOUR_CONFIG: nztour.ITourStepConfig,
-		private TOUR_STEPS: nztour.ITourStepConfig[],
-		private WELCOME_TIP_LIST: vt.IWelcomeTip[],
-		private WELCOME_TIPS: {
-      [key: string]: vt.IWelcomeTipGroup
-    },
 	) {
 	  'ngInject';
-		this.welcomeTipsList = WELCOME_TIP_LIST;
-    this.welcomeTour = {
-      config: TOUR_CONFIG,
-      steps: TOUR_STEPS
-    };
+		this.welcomeTipsList;
+    this.welcomeTour
 	}
 
 	/**
@@ -63,8 +67,8 @@ export class WelcomeController implements ng.IController {
    * Changes the active view of the dialog, e.g. "user tips" detail panels.
    */
   viewTip(tip: string): vt.IWelcomeTipGroup {
-  	if (this.WELCOME_TIPS[tip]) {
-	  	this.currentTips = this.WELCOME_TIPS[tip];
+  	if (this.welcomeTips[tip]) {
+	  	this.currentTips = this.welcomeTips[tip];
       console.log('[welcome.controller] viewTip', this.currentTips);
       return this.currentTips;
   	}
