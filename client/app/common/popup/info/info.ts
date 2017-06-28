@@ -3,10 +3,10 @@ import uiRouter from 'angular-ui-router';
 import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 
+import { InfoController as controller } from './info.controller';
 import template from './info.html';
-import controller from './info.controller';
 
-let infoModule = angular.module('popup.info', [
+export const InfoModule = angular.module('popup.info', [
   uiRouter,
   ngSanitize,
 	ngMaterial
@@ -14,13 +14,14 @@ let infoModule = angular.module('popup.info', [
 
 .config(($mdDialogProvider) => {
   'ngInject';
+  const parent = angular.element(document.body);
 
 	$mdDialogProvider.addPreset('info', {
 	  options() {
 	    return {
 	    	template,
 	    	controller,
-	    	parent: angular.element(document.body),
+	    	parent,
 	      controllerAs: '$ctrl',
 	      bindToController: true,
 	      clickOutsideToClose: true,
@@ -31,5 +32,3 @@ let infoModule = angular.module('popup.info', [
 })
 
 .name;
-
-export default infoModule;
