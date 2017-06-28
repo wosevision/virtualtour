@@ -1,5 +1,7 @@
 import { isArray, isObject } from 'angular';
 
+import { SkyService } from '../sky/sky.service';
+
 /**
  * The scene service class is the lead orchestrator of the `<aframe-scene/>`
  * component's business logic. It is the application and component's main
@@ -12,14 +14,17 @@ import { isArray, isObject } from 'angular';
  * back again. The setter also sets the `$aframeSky.sky` property, thus kicking
  * off a sky change from its respective service.
  *
- * @param {object} $mdToast        ng-material's toast service
  * @param {object} $aframeSky			 The sky service
- * @param {object} EDITOR_MESSAGES Constant to define toast configs
  */
-class SceneService {
-	constructor($aframeSky) {
+export class SceneService {
+  private sceneData;
+
+  public lastPublished;
+
+	constructor(
+    private $aframeSky: SkyService
+  ) {
 		'ngInject';
-		this.$aframeSky = $aframeSky;
 	}
 	/**
 	 * Getter and setter pair for internal scene data.
@@ -49,5 +54,3 @@ class SceneService {
 		}
 	}
 }
-
-export default SceneService;

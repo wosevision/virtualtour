@@ -20,7 +20,6 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    private $q,
     private $tourApi,
     private UserSession,
     private GLOBAL_SETTINGS
@@ -39,7 +38,7 @@ export class SkyService {
     return this.panorama ? [ this.panorama.version, this.panorama.public_id].join('/') : null;
   }
   set sky(panorama: any) {
-    console.log('sky service set to:', panorama)
+    console.log('[sky.service] set sky', panorama)
     this.panorama = panorama;
   }
 
@@ -78,8 +77,8 @@ export class SkyService {
    * manipulation; otherwise, it returns an empty array
    * (0/no preload).
    */
-  getPreloadList(id: string): ng.IPromise<any[]> {
-    return this.$q((resolve, reject) => {
+  getPreloadList(id: string): Promise<any[]> {
+    return new Promise((resolve, reject) => {
       switch(this.UserSession.usage.preloading.val) {
         case 0:
           resolve([]);
@@ -106,8 +105,8 @@ export class SkyService {
    * @param  {string} id  An asset ID, e.g. the panorama's `public_id`
    * @return {Promise}    A promise that will resolve to the loaded `<img>`
    */
-  getSkyDomNode(url: string, id: string): ng.IPromise<ng.IAugmentedJQuery> {
-    return this.$q((resolve, reject) => {
+  getSkyDomNode(url: string, id: string): Promise<ng.IAugmentedJQuery> {
+    return new Promise((resolve, reject) => {
       const img = element(`<img src="${ this.imageApiUrl }/${ this.getSettings() }/v${ url }" id="${ id }" crossOrigin="anonymous" />`);
       img.on('load', () => resolve(img));
       img.on('error', () => reject('Image load error'));

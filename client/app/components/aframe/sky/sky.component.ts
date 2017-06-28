@@ -1,3 +1,5 @@
+import { SkyService } from './sky.service';
+
 export const SkyComponent: ng.IComponentOptions = {
   bindings: {
     sky: '<',
@@ -16,7 +18,7 @@ export const SkyComponent: ng.IComponentOptions = {
    * preload bucket based on the `$aframeSky` service's instructions.
    */
   controller: class SkyController implements ng.IController {
-    compileSkyEl: (callback: Function) => any;
+    compileSkyEl: (callback: ng.ICloneAttachFunction) => ng.IAugmentedJQuery;
 
     $sceneEl: ng.IAugmentedJQuery;
     $assetsEl: ng.IAugmentedJQuery;
@@ -35,13 +37,12 @@ export const SkyComponent: ng.IComponentOptions = {
      * - Attaches the $aframeSky service directly
      */
     constructor(
-      private $scope,
-      private $compile,
-      private $aframeSky
+      private $scope: ng.IScope,
+      private $compile: ng.ICompileService,
+      private $aframeSky: SkyService
     ) {
       'ngInject';
-      this.compileSkyEl = callback => $compile('<a-sky ng-src="{{ \'#\' + $ctrl.loadedSky }}" />')($scope, callback);
-      this.$aframeSky = $aframeSky;
+      this.compileSkyEl = (callback) => $compile('<a-sky ng-src="{{ \'#\' + $ctrl.loadedSky }}" />')($scope, callback);
     }
 
     /**
@@ -93,7 +94,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * 
      * @return {Promise} Promise that holds an array of skyUrls from server
      */
-    preload(): ng.IPromise<string[]> {
+    preload(): Promise<any> {
       return this.$aframeSky.getPreloadList(this.SceneCtrl._currentSceneId)
         .then((toPreload: string[]) => {
           toPreload.forEach(skyUrl => {
@@ -154,7 +155,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * Compiles a new image asset with requested URL and ID;
      * adds element to assets and ID to list to prevent reload.
      */
-    loadSkyAsset(skyUrl: string, assetId: string): ng.IPromise<string> {
+    loadSkyAsset(skyUrl: string, assetId: string): Promise<string> {
       return this.$aframeSky.getSkyDomNode(skyUrl, assetId)
         .then(imgNode => {
           this.$assetsEl.append(imgNode);
@@ -172,7 +173,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * @param  {string} sky ID for asset reference
      * @return {Element}    JQLite-wrapped <a-sky> element
      */
-    loadSkyEl() {
+    loadSkyEl(): ng.IAugmentedJQuery {
       return this.compileSkyEl(clone => {
         this.$sceneEl.append(clone);
         this._skyElLoaded = true;

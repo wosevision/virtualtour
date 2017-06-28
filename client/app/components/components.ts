@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 
-import AFrame from './aframe/aframe';
+import { AFrameModule } from './aframe/aframe';
 import { ButtonbarModule } from './buttonbar/buttonbar';
 import { DrilldownModule } from './drilldown/drilldown';
 import { MapModule } from './map/map';
@@ -9,7 +9,7 @@ import { SettingsModule } from './settings/settings';
 import { TitleBarModule } from './titlebar/titlebar';
 
 const componentModule = angular.module('app.components', [
-  AFrame,
+  AFrameModule,
   ButtonbarModule,
   DrilldownModule,
   MapModule,
