@@ -100,19 +100,42 @@ declare namespace vt {
     first: string;
   }
 
+  export interface ITourUserSetting {
+    val: number | boolean;
+    min: number;
+    max: number;
+    step: number;
+    label: string;
+    labels: string[],
+    icon: string,
+    levels: {
+      /**
+       * `comparator` is a string representing conditional evaluation,
+       * values are represented as an array of three numbers.
+       * 
+       * @example
+       * [5, 2, 8] // [imageQual, loadTime, dataUse]
+       *           // 0=low, 10=high
+       */
+      [comparator: string]: number[]
+    }
+  }
+
+  type ITourUserPreference = Partial<ITourUserSetting> | number | boolean;
+
   export interface ITourUserUsage {
-    cache: number;
-    resolution: number;
-    preloading: number;
-    compression: number;
-    auto: boolean
+    cache: ITourUserPreference; 
+    resolution: ITourUserPreference; 
+    preloading: ITourUserPreference; 
+    compression: ITourUserPreference; 
+    auto: ITourUserPreference; 
   }
 
   export interface ITourUserSettings {
-    showWelcome: boolean;
-    showHints: boolean;
-    toolbarCondensed: boolean;
-    toolbarOpen: boolean;
+    showWelcome: ITourUserPreference;
+    showHints: ITourUserPreference;
+    toolbarCondensed: ITourUserPreference;
+    toolbarOpen: ITourUserPreference;
   }
 
   export interface ITourUserAvatar {

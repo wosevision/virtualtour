@@ -16,7 +16,7 @@ import delegateEvent from './delegate';
 import clickToggle from './clicktoggle';
 import anchorLook from './anchorlook';
 
-export default {
+export const AFrameModule = {
 	sceneLink,
 	hotSpot,
 	textPanel,

@@ -29,7 +29,7 @@ import ngMdIcons from 'angular-material-icons';
 import cfpLoadingBar from 'angular-loading-bar';
 import vAccordion from 'v-accordion';
 
-import Common from './common/common';
+import { CommonModule } from './common/common';
 import Components from './components/components';
 
 import { AppComponent } from './app.component';

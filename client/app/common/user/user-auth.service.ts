@@ -8,22 +8,24 @@ import { isArray } from 'angular';
  * at initialization to determine if the server already
  * has an active user session. It also has utility methods
  * for determining the status of authorization.
- * 
- * @param {object} $http       Angular's $http service
- * @param {object} UserSession The user session object/factory
  */
-function UserAuthFactory($http, UserSession) {
-  'ngInject';
+export class UserAuthService {
+  constructor(
+    private $http, 
+    private UserSession
+  ) {
+    'ngInject';
+  }
 
   /**
-   * Wrapper function for the `UserSession.create()`.
+   * Wrapper function for `UserSession.create()`.
    * 
    * @param  {object} user User object from db
    * @return {object}      User stored into session
    */
-  this.createSession = user => {
-  	console.log('starting session creation...');
-    return UserSession.create(user);
+  createSession(authenticated: vt.ITourUser | boolean = false): vt.ITourUser {
+  	console.log('[user-auth.service] createSession', authenticated);
+    return this.UserSession.create(authenticated);
   }
 
   /**
@@ -36,16 +38,16 @@ function UserAuthFactory($http, UserSession) {
    * 
    * @return {Promise} Promise that will resolve to a user session
    */
-  this.initAuth = () => {
-  	console.log('checking for user...');
-    return $http
+  initAuth(): Promise<vt.ITourUser> {
+    console.log('[user-auth.service] initAuth');
+    return this.$http
       .get('/user/me')
       .then(res => {
         console.log('[user-auth.service] initAuth.then', res);
         return this.createSession(res.data.user);
       }).catch(err => {
-        return this.createSession(false);
         console.log('[user-auth.service] initAuth.catch', err);
+        return this.createSession();
       });
   }
   // TODO: RETURN A BETTER VERSION OF THIS PROMISE? PROMISE FROM CREATESESSION?
@@ -56,13 +58,13 @@ function UserAuthFactory($http, UserSession) {
    * @param  {string} $0.password User's keystone password
    * @return {Promise}            Promise that will resolve to a user session
    */
-  this.login = ({ username, password }) => {
-    return $http
+  login({ username, password }: { username: string, password: string }): Promise<vt.ITourUser> {
+    return this.$http
       .post('/user/signin', { username, password })
       .then(res => {
         return this.createSession(res.data.user);
       });
-  };
+  }
   // TODO: REJECTION HANDLING
 
   /**
@@ -70,11 +72,11 @@ function UserAuthFactory($http, UserSession) {
    * 
    * @return {Promise} Promise that destroys session when resolved
    */
-  this.logout = () => {
-		return $http
+  logout(): Promise<any> {
+		return this.$http
 			.post('/user/signout')
 			.then(res =>{
-				UserSession.destroy();
+				this.UserSession.destroy();
 		  	console.log('user logged out');
 			}, error => {
 		  	console.log('error, user not logged out');
@@ -86,12 +88,10 @@ function UserAuthFactory($http, UserSession) {
    * Utility method to tell whether a user is authenticated
    * with a username and password (only authenticated sessions)
    * have a userId.
-   * 
-   * @return {string} User _id field
    */
-  this.isAuthenticated = () => {
-    return !!UserSession.userId;
-  };
+  isAuthenticated(): boolean {
+    return !!this.UserSession.userId;
+  }
 
   /**
    * Utility method to check the current authorized user's
@@ -111,7 +111,7 @@ function UserAuthFactory($http, UserSession) {
    * @param  {[Array<String>]|[String]} authorizedRoles A list of roles allowed
    * @return {Boolean}                 									Whether user is allowed
    */
-  this.isAuthorized = authorizedRoles => {
+  isAuthorized(authorizedRoles) {
     if (!authorizedRoles || authorizedRoles.length === 0) return true;
 
     if (!isArray(authorizedRoles)) {
@@ -119,15 +119,11 @@ function UserAuthFactory($http, UserSession) {
     }
 
     let isAuthorized = false;
-    for (const role of UserSession.roles) {
+    for (const role of this.UserSession.roles) {
     	if (authorizedRoles.indexOf(role) !== -1) {
     		isAuthorized = true;
     	}
     }
     return (this.isAuthenticated() && isAuthorized);
-  };
-
-  return this;
+  }
 }
-
-export default UserAuthFactory;

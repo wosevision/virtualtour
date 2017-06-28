@@ -1,22 +1,20 @@
 import angular from 'angular';
 
 import { PopupModule } from './popup/popup';
-import User from './user/user';
+import { UserModule } from './user/user';
 import { UtilModule } from './util/util';
 import { ResourceModule } from './resource/resource';
 
 import './common.scss';
 
-import AframeModule from './aframe/aframe';
-AframeModule.registerAll();
+import { AFrameModule } from './aframe/aframe';
+AFrameModule.registerAll();
 
-let commonModule = angular.module('app.common', [
+export const CommonModule = angular.module('app.common', [
   PopupModule,
-  User,
+  UserModule,
   UtilModule,
   ResourceModule,
 ])
   
 .name;
-
-export default commonModule;
