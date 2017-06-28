@@ -68,7 +68,7 @@ angular.module('app', [
   ngMdIcons,
   cfpLoadingBar,
   vAccordion,
-  Common,
+  CommonModule,
   Components,
   ...(window.REQUIRED_MODULES || [])
 ])

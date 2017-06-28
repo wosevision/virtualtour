@@ -1,5 +1,9 @@
-export class DraftResourceFactory {
-  constructor($resource, GLOBAL_SETTINGS) {
+import { GLOBAL_SETTINGS } from '../global.constant';
+
+export class DraftResourceService {
+  constructor(
+    private $resource
+  ) {
     'ngInject';
     return $resource(GLOBAL_SETTINGS.apiUrl + '/drafts/:id', null, {
   		'update': { method: 'PATCH' }

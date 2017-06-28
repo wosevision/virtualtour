@@ -140,6 +140,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * @param {string} assetId Panorama's public_id
      */
     setSky(skyUrl: string, assetId: string) {
+      console.info('[sky.component] setSky');
       return this._skyLoadedList.includes(assetId) ?
         this.setSkyId(assetId) :
         this.loadSkyAsset(skyUrl, assetId)
@@ -156,11 +157,12 @@ export const SkyComponent: ng.IComponentOptions = {
      * adds element to assets and ID to list to prevent reload.
      */
     loadSkyAsset(skyUrl: string, assetId: string): Promise<string> {
+      console.info('[sky.component] loadSkyAsset');
       return this.$aframeSky.getSkyDomNode(skyUrl, assetId)
         .then(imgNode => {
           this.$assetsEl.append(imgNode);
           this._skyLoadedList.push(assetId);
-          console.log('sky asset preloaded: ', skyUrl)
+          console.info('[sky.component] loadSkyAsset', skyUrl, imgNode);
           return assetId;
         })
     }
@@ -174,9 +176,11 @@ export const SkyComponent: ng.IComponentOptions = {
      * @return {Element}    JQLite-wrapped <a-sky> element
      */
     loadSkyEl(): ng.IAugmentedJQuery {
+      console.info('[sky.component] loadSkyEl');
       return this.compileSkyEl(clone => {
         this.$sceneEl.append(clone);
         this._skyElLoaded = true;
+        console.info('[sky.component] loadSkyEl', clone)
         return clone;
       });
     }

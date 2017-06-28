@@ -1,6 +1,11 @@
 import { element } from 'angular';
 import aframe from 'aframe';
 
+import { TourResourceService } from '../../../common/resource/tour-resource.service';
+import { UserSessionService } from '../../../common/user/user-session.service';
+
+import { GLOBAL_SETTINGS } from '../../../common/global.constant';
+
 const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 
 /**
@@ -20,9 +25,8 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    private $tourApi,
-    private UserSession,
-    private GLOBAL_SETTINGS
+    private $tourApi: TourResourceService,
+    private UserSession: UserSessionService
   ) {
     'ngInject';
     this.imageApiUrl = GLOBAL_SETTINGS.imageApiUrl;

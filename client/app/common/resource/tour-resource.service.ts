@@ -1,10 +1,14 @@
-export class TourResourceFactory {
+import { GLOBAL_SETTINGS } from '../global.constant';
+
+export class TourResourceService {
   location: ng.resource.IResourceService;
   building: ng.resource.IResourceService;
   scene: ng.resource.IResourceService;
   preload: ng.resource.IResourceService;
   entity: ng.resource.IResourceService;
-  constructor($resource, GLOBAL_SETTINGS) {
+  constructor(
+    private $resource
+  ) {
     'ngInject';
     this.location = $resource(GLOBAL_SETTINGS.apiUrl + '/locations/:id'),
     this.building = $resource(GLOBAL_SETTINGS.apiUrl + '/buildings/:id'),
