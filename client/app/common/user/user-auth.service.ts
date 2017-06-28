@@ -41,11 +41,11 @@ function UserAuthFactory($http, UserSession) {
     return $http
       .get('/user/me')
       .then(res => {
-		  	console.log('user found');
+        console.log('[user-auth.service] initAuth.then', res);
         return this.createSession(res.data.user);
       }).catch(err => {
-		  	console.log('user not found');
         return this.createSession(false);
+        console.log('[user-auth.service] initAuth.catch', err);
       });
   }
   // TODO: RETURN A BETTER VERSION OF THIS PROMISE? PROMISE FROM CREATESESSION?

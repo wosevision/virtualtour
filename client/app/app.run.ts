@@ -19,7 +19,7 @@ export const AppRun = ($rootScope, $state, $transitions, $compile, $mdUtil, $pop
     const auth = trans.injector().get('UserAuth');
     let toState = trans.$to(),
         fromState = trans.$from();
-    console.log('[$transitions] onStart', trans, toState, fromState);
+    console.log('[app.run] $transitions.onStart', trans, toState, fromState);
 
     if (toState.data && toState.data.roles && !auth.isAuthorized(toState.data.roles)) {
       if (auth.isAuthenticated()) {
@@ -31,7 +31,7 @@ export const AppRun = ($rootScope, $state, $transitions, $compile, $mdUtil, $pop
   });
 
   $state.defaultErrorHandler(error => {
-    console.log('[$state] defaultErrorHandler', error);
+    console.log('[app.run] $state.defaultErrorHandler', error);
 
     if (error.type !== 2) {
       const locals = {
@@ -44,7 +44,7 @@ export const AppRun = ($rootScope, $state, $transitions, $compile, $mdUtil, $pop
   });
 
   $state.onInvalid(error => {
-    console.log('[$state] onInvalid', error);
+    console.log('[app.run] $state.onInvalid', error);
     const locals = {
       type: 'Page not found!',
       message: `The page you were looking for could not be located.`,
@@ -56,16 +56,16 @@ export const AppRun = ($rootScope, $state, $transitions, $compile, $mdUtil, $pop
   $transitions.onError({}, function(trans) {
     const Popup = trans.injector().get('$popupWindow');
     const error = trans.error();
-    console.log('[$transitions] onError', error);
+    console.log('[app.run] $transitions.onError', error);
     if (error.type !== 5 && error.type !== 2) {
       const locals = { message: `Navigation error!` }
       Popup.warning({locals});
     }
   });
 
-  console.log('starting auth init...')
+  console.log('[app.run] UserAuth.initAuth');
   UserAuth.initAuth().then(user => {
     $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
-    console.log('auth init complete!')
+    console.log('[app.run] UserAuth.initAuth', user);
   });
 }

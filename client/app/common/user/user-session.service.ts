@@ -91,13 +91,12 @@ class UserSessionService {
 		    	message: 'User settings updated!',
 		    	action: 'Dismiss'
 		    });
-		  	console.log('saved settings to user!');
+        console.log('[user-session.service] save', user);
 			});
 		} else {
 			this.SettingsFactory.set('settings', this.settings);
 			this.SettingsFactory.set('usage', this.usage);
-
-	  	console.log('saved settings to local!', this.user);
+      console.log('[user-session.service] save', this.user);
 		}
 	}
 	/**
@@ -111,7 +110,7 @@ class UserSessionService {
 		this.roles = null;
 		this.userId = null;
 
-  	console.log('user session destroyed');
+      console.log('[user-session.service] destroy', this.user);
 	}
 	/**
 	 * Getter/setter pairs for merging user setting objects from
