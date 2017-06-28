@@ -1,8 +1,8 @@
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 
-import template from './login.html';
 import { LoginController as controller } from './login.controller';
+import template from './login.html';
 
 import './login.scss';
 

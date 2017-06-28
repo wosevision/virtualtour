@@ -2,11 +2,12 @@ import angular from 'angular';
 import ngMaterial from 'angular-material';
 import 'nz-tour';
 
-import template from './welcome.html';
 import { WelcomeController as controller } from './welcome.controller';
+import template from './welcome.html';
+
 import './welcome.scss';
 
-let welcomeModule = angular.module('popup.welcome', [
+export const WelcomeModule = angular.module('popup.welcome', [
   ngMaterial,
   'nzTour'
 ])
@@ -179,4 +180,3 @@ let welcomeModule = angular.module('popup.welcome', [
 ])
 
 .name;
-export default welcomeModule;

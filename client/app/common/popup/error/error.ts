@@ -3,8 +3,9 @@ import uiRouter from 'angular-ui-router';
 import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 
+import { ErrorController as controller} from './error.controller';
 import template from './error.html';
-import controller from './error.controller';
+
 import './error.scss';
 
 const errorModule = angular.module('popup.error', [

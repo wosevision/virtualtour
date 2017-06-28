@@ -8,6 +8,32 @@ declare interface Window {
 }
 
 declare namespace vt {
+  export interface IErrorSuggestion {
+    title: string,
+    desc: string,
+    icon: string,
+    goToSettings?: boolean;
+    action?: (option) => void;
+  }
+
+  export interface IWelcomeTip {
+    title: string,
+    icon: string,
+    link: string,
+    desc: string,
+  }
+
+  export interface IWelcomeTipContent {
+    label: string,
+    image: string,
+    content: string
+  }
+
+  export interface IWelcomeTipGroup {
+    title: string | string[],
+    tips: IWelcomeTipContent[]
+  }
+
   export interface ITourState {
     location?: string;
     building?: string;

@@ -7,61 +7,49 @@
  * (hide/cancel), as well as methods for initializing the onboard tutorial
  * and syncing user settings (e.g. when user dismisses welcome dialog).
  */
-export class WelcomeController {
-  welcomeTipsList: any[];
-  currentTips: any;
-  activeTip;
+export class WelcomeController implements ng.IController {
+  welcomeTipsList: vt.IWelcomeTip[];
+  currentTips: vt.IWelcomeTipGroup;
+  activeTip: number;
 
   showWelcome: boolean;
 
-  onButtonClick: ({ $event }) => ng.IPromise<any>;
+  onButtonClick: ({ $event }: { $event: ng.IAngularEvent }) => ng.IPromise<any>;
 
 	constructor(
-		private $state,
+		private $state: ng.ui.IStateService,
 		private $mdDialog,
 		private $mdSidenav,
 		private UserSession,
 		private nzTour,
 		private TOUR_STEPS,
-		private WELCOME_TIP_LIST,
-		private WELCOME_TIPS,
+		private WELCOME_TIP_LIST: vt.IWelcomeTip[],
+		private WELCOME_TIPS: {
+      [key: string]: vt.IWelcomeTipGroup
+    },
 	) {
 	  'ngInject';
-	  this.$state = $state;
-		this.$mdDialog = $mdDialog;
-		this.$mdSidenav = $mdSidenav;
-
-		this.UserSession = UserSession;
-		this.nzTour = nzTour;
-		this.TOUR_STEPS = TOUR_STEPS;
-		this.WELCOME_TIPS = WELCOME_TIPS;
-
 		this.welcomeTipsList = WELCOME_TIP_LIST;
-		this.currentTips = false;
 	}
 
 	/**
 	 * Hides the dialog; fulfills promise.
-	 * @return {Promise} Promise that will be fulfilled on hide
 	 */
-  hide() {
+  hide(): Promise<any> {
     return this.$mdDialog.hide();
   }
 
 	/**
 	 * Cancels the dialog; rejects promise.
-	 * @return {Promise} Promise that will be rejected on cancel
 	 */
-  cancel() {
+  cancel(): Promise<any> {
     return this.$mdDialog.cancel();
   }
 
   /**
    * Hides the dialog, providing an answer to resolve its promise with.
-   * @param  {string} answer The result of the dialog upon hide
-   * @return {Promise}       Promise containing the resolved answer
    */
-  answer(answer) {
+  answer(answer: string): Promise<any> {
     return this.$mdDialog.hide(answer);
   }
 
@@ -69,9 +57,11 @@ export class WelcomeController {
    * Changes the active view of the dialog, e.g. "user tips" detail panels. 
    * @param  {string} view The view to transition to
    */
-  viewTip(tip) {
+  viewTip(tip: string): vt.IWelcomeTipGroup {
   	if (this.WELCOME_TIPS[tip]) {
 	  	this.currentTips = this.WELCOME_TIPS[tip];
+      console.log('[welcome.controller] viewTip', this.currentTips);
+      return this.currentTips;
   	}
   }
 
@@ -85,9 +75,8 @@ export class WelcomeController {
   /**
    * Hides the dialog with the answer `'tour'` and begins the onboard tour
    * using the `TOUR_STEPS` as a config object.
-   * @return {Promise} Promise representing tour completion
    */
-  startTour() {
+  startTour(): Promise<any> {
     this.$mdDialog.hide('tour');
   	return this.nzTour.start(this.TOUR_STEPS);
   }
@@ -104,6 +93,7 @@ export class WelcomeController {
   }
 
 	buttonClick($event) {
+    console.log('[welcome.controller] buttonClick', $event);
     this.onButtonClick({ $event });
 	}
 }
