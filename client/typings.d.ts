@@ -88,4 +88,18 @@ declare namespace vt {
       cpu: any
     }
   }
+
+  export interface IToolbar {
+    sidebar?,
+    views,
+    blurredViews: string[],
+    currentView: string,
+    open: boolean,
+    condensed: boolean,
+    toggle: () => void,
+    condense: () => boolean,
+    onSelect: (state) => void,
+    hasState: (state) => boolean,
+    hasBlur: any
+  }
 }

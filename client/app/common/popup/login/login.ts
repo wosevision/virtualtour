@@ -2,23 +2,25 @@ import angular from 'angular';
 import ngMaterial from 'angular-material';
 
 import template from './login.html';
-import controller from './login.controller';
+import { LoginController as controller } from './login.controller';
 
 import './login.scss';
 
-let loginModule = angular.module('popup.login', [
+export const LoginModule = angular.module('popup.login', [
   ngMaterial
 ])
 
 .config(($mdDialogProvider) => {
   'ngInject';
 
+  const parent = angular.element(document.body);
+
 	$mdDialogProvider.addPreset('login', {
 	  options() {
 	    return {
+        parent,
 	    	template,
 	    	controller,
-	    	parent: angular.element(document.body),
 	      controllerAs: '$ctrl',
 	      bindToController: true,
 	      clickOutsideToClose: true,
@@ -29,5 +31,3 @@ let loginModule = angular.module('popup.login', [
 })
 
 .name;
-
-export default loginModule;

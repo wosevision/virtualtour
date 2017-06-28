@@ -1,5 +1,9 @@
-class PopupService {
-	constructor($mdDialog, $mdToast) {
+export class PopupService {
+  standardToast;
+	constructor(
+    private $mdDialog, 
+    private $mdToast
+  ) {
 		'ngInject';
 		this.$mdDialog = $mdDialog;
 		this.$mdToast = $mdToast
@@ -10,34 +14,34 @@ class PopupService {
       .highlightClass(`md-warn`)
       .position('bottom left');
 	}
-	welcome() {
+	welcome(options): ng.IPromise<any> {
 	  return this.$mdDialog.show(
-			this.$mdDialog.welcome()
+			this.$mdDialog.welcome(options)
 		);
 	}
-	login() {
+	login(): ng.IPromise<any> {
 	  return this.$mdDialog.show(
 			this.$mdDialog.login()
 		);
 	}
-	info({locals = null} = {}) {
+	info({locals = null} = {}): ng.IPromise<any> {
 		return this.$mdDialog.show(
 			this.$mdDialog.info({ locals })
 		);
 	}
-	toast(type = 'primary', { message, action = 'Dismiss' }) {
+	toast(type = 'primary', { message, action = 'Dismiss' }): ng.IPromise<any> {
 		const toast = this.standardToast
       .textContent(message)
       .action(action)
       .highlightClass(`md-${type}`);
 		return this.$mdToast.show(toast);
 	}
-	error({locals = null} = {}) {
+	error({locals = null} = {}): ng.IPromise<any> {
 		return this.$mdDialog.show(
 			this.$mdDialog.error({ locals })
 		);
 	}
-	warning({ locals = { message: 'An unknown error occurred!', action: 'Dismiss'} } = {}) {
+	warning({ locals = { message: 'An unknown error occurred!', action: 'Dismiss'} } = {}): ng.IPromise<any> {
 		const toast = this.standardToast
       .textContent(locals.message || 'An unknown error occurred!')
       .action(locals.action || 'Dismiss')
@@ -45,5 +49,3 @@ class PopupService {
 		return this.$mdToast.show(toast);
 	}
 }
-
-export default PopupService;

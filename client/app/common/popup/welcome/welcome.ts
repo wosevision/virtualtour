@@ -3,7 +3,7 @@ import ngMaterial from 'angular-material';
 import 'nz-tour';
 
 import template from './welcome.html';
-import controller from './welcome.controller';
+import { WelcomeController as controller } from './welcome.controller';
 import './welcome.scss';
 
 let welcomeModule = angular.module('popup.welcome', [
@@ -144,7 +144,7 @@ let welcomeModule = angular.module('popup.welcome', [
 				<p class="md-subhead">Non-sighted users can enjoy the tour using its labelling and descriptions to replace visual cues. The Tour includes non-visual aids for:</p>
 				<ul><li><strong>Buttons and menus:</strong> non-text button uses are described</li>
 				<li><strong>Hot spots and scene links:</strong> include screen-reader-accessible text</li>
-				<li><strong>Scenes:</strong> <em class="uoit-blue-light"><small>(coming soon)</small></em> audio description of the current scene being viewed can be announced (requires preference to be enabled in user settings) <md-button class="md-primary" ng-click="$ctrl.goToSettings()">Where's that?</md-button></ul>`
+				<li><strong>Scenes:</strong> <em class="uoit-blue-light"><small>(coming soon)</small></em> audio description of the current scene being viewed can be announced (requires preference to be enabled in user settings) <md-button class="md-primary" ng-click="$ctrl.buttonClick('settings')">Where's that?</md-button></ul>`
 		}]
 	}
 })

@@ -6,33 +6,33 @@
  * It contains wrapper methods for `$mdDialog`'s injected utility methods
  * (hide/cancel), as well as methods for initializing the onboard tutorial
  * and syncing user settings (e.g. when user dismisses welcome dialog).
- *
- * @param  {object} $mdDialog   ng-material's dialog service
- * @param  {object} UserSession The current user session/settings
- * @param  {object} nzTour      Onboard tour service
- * @param  {object} TOUR_STEPS  Configuration of onboard tour
  */
-class WelcomeController {
-	/**
-	 * Initializes dialog's dependencies.
-	 */
+export class WelcomeController {
+  welcomeTipsList: any[];
+  currentTips: any;
+  activeTip;
+
+  showWelcome: boolean;
+
+  onButtonClick: ({ $event }) => ng.IPromise<any>;
+
 	constructor(
-		$state,
-		$mdDialog,
-		$mdSidenav,
-		UserSession,
-		nzTour,
-		TOUR_STEPS,
-		WELCOME_TIP_LIST,
-		WELCOME_TIPS,
+		private $state,
+		private $mdDialog,
+		private $mdSidenav,
+		private UserSession,
+		private nzTour,
+		private TOUR_STEPS,
+		private WELCOME_TIP_LIST,
+		private WELCOME_TIPS,
 	) {
 	  'ngInject';
-	  this._$state = $state;
-		this._$mdDialog = $mdDialog;
-		this._$mdSidenav = $mdSidenav;
+	  this.$state = $state;
+		this.$mdDialog = $mdDialog;
+		this.$mdSidenav = $mdSidenav;
 
 		this.UserSession = UserSession;
-		this.OnboardTour = nzTour;
+		this.nzTour = nzTour;
 		this.TOUR_STEPS = TOUR_STEPS;
 		this.WELCOME_TIPS = WELCOME_TIPS;
 
@@ -45,7 +45,7 @@ class WelcomeController {
 	 * @return {Promise} Promise that will be fulfilled on hide
 	 */
   hide() {
-    return this._$mdDialog.hide();
+    return this.$mdDialog.hide();
   }
 
 	/**
@@ -53,7 +53,7 @@ class WelcomeController {
 	 * @return {Promise} Promise that will be rejected on cancel
 	 */
   cancel() {
-    return this._$mdDialog.cancel();
+    return this.$mdDialog.cancel();
   }
 
   /**
@@ -62,7 +62,7 @@ class WelcomeController {
    * @return {Promise}       Promise containing the resolved answer
    */
   answer(answer) {
-    return this._$mdDialog.hide(answer);
+    return this.$mdDialog.hide(answer);
   }
 
   /**
@@ -88,8 +88,8 @@ class WelcomeController {
    * @return {Promise} Promise representing tour completion
    */
   startTour() {
-    this._$mdDialog.hide('tour');
-  	return this.OnboardTour.start(this.TOUR_STEPS);
+    this.$mdDialog.hide('tour');
+  	return this.nzTour.start(this.TOUR_STEPS);
   }
 
   /**
@@ -103,11 +103,7 @@ class WelcomeController {
   	this.UserSession.settings = currentSettings;
   }
 
-	goToSettings() {
-    this._$state.go('settings');
-    this._$mdSidenav('right').open();
-    // this.answer('tour');
+	buttonClick($event) {
+    this.onButtonClick({ $event });
 	}
 }
-
-export default WelcomeController;
