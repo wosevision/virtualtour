@@ -121,7 +121,7 @@ declare namespace vt {
     }
   }
 
-  type ITourUserPreference = Partial<ITourUserSetting> | number | boolean;
+  type ITourUserPreference = Partial<ITourUserSetting>;
 
   export interface ITourUserUsage {
     cache: ITourUserPreference; 
@@ -178,6 +178,51 @@ declare namespace vt {
     resource_type: string;
     url: string;
     secure_url: string;
+  }
+
+  export interface ISceneLink {
+    scene: string;
+    _id: string;
+    rotation: number[];
+    position: number[];
+  }
+
+  export interface IHotSpot {
+    _id: string;
+    name: string;
+    desc: string;
+    position: number[];
+    linked: boolean;
+    feature: string;
+  }
+
+  export interface IEntityAttribute {
+    _id: string;
+    val: string | number,
+    prop: string;
+  }
+
+  export interface IEntity {
+    _id: string;
+    __v: number;
+    updatedBy: string;
+    updatedAt: Date;
+    createdBy: string;
+    createdAt: Date;
+    type: string;
+    entities: IEntity[],
+    attrs: IEntityAttribute[]
+  }
+
+  export interface IScene {
+    _id: string;
+    parent: string;
+    code: string;
+    name: string;
+    entities: IEntity[],
+    hotSpots: IHotSpot[],
+    sceneLinks: ISceneLink[],
+    panorama: IPanorama
   }
 
   export interface INetworkConnectionVal {
