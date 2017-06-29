@@ -2,22 +2,24 @@ import angular from 'angular';
 import ngMaterial from 'angular-material';
 import 'ng-wig';
 
-import editorDirective from './editor.directive';
-import editorComponent from './editor.component';
-import editorService from './editor.service';
+import { EditorDirective } from './editor.directive';
+import { EditorComponent } from './editor.component';
+import { EditorService } from './editor.service';
 
-import template from './editorDialog.html';
-import controller from './editorDialog.controller';
+import { EditorDialogController as controller} from './editor-dialog.controller';
+import template from './editor-dialog.html';
 
-let editorModule = angular.module('aframe.editor', [
+import './editor.scss';
+
+export const EditorModule = angular.module('aframe.editor', [
   ngMaterial, 'ngWig'
 ])
 
-.directive('editable', editorDirective)
+.directive('editable', EditorDirective)
 
-.component('sceneEditor', editorComponent)
+.component('sceneEditor', EditorComponent)
 
-.service('$aframeEditor', editorService)
+.service('$aframeEditor', EditorService)
 
 .config(($mdPanelProvider) => {
   'ngInject';
@@ -144,5 +146,3 @@ let editorModule = angular.module('aframe.editor', [
 })
 
 .name;
-
-export default editorModule;

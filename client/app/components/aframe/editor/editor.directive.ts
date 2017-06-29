@@ -1,4 +1,4 @@
-function editorDirective($analytics) {
+export const EditorDirective: ng.IDirectiveFactory = ($analytics) => {
   'ngInject';
   return {
     restrict: 'A',
@@ -6,7 +6,16 @@ function editorDirective($analytics) {
     	editable: '@'
     },
     require: '^aframeScene',
-		link(scope, elem, attrs, SceneCtrl) {
+		link(
+      scope: ng.IScope,
+      elem: JQuery,
+      attrs: ng.IAttributes,
+      SceneCtrl: {
+        _editable,
+        _rightClick,
+        editItem(rightClick: boolean, viewItem, modelItem): void
+      }
+    ) {
 			const openEditor = event => {
 				// If there's a right click active...
 				console.log(scope.$parent)
@@ -24,5 +33,3 @@ function editorDirective($analytics) {
     }
   };
 }
-
-export default editorDirective;

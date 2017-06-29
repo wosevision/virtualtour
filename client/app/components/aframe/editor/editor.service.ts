@@ -1,5 +1,9 @@
 import { pick } from 'lodash';
 import { isObject, isArray } from 'angular';
+
+import { SceneService } from '../scene/scene.service';
+import { TourResourceService } from '../../../common/resource/tour-resource.service';
+import { DraftResourceService } from '../../../common/resource/draft-resource.service';
 /**
  * Service for handling all CRUD operations pertaining to scenes.
  *
@@ -16,22 +20,28 @@ import { isObject, isArray } from 'angular';
  * @param  {object} DraftResource   Draft $resource factory
  * @param  {object} EDITOR_MESSAGES Constant to define toast configs
  */
-class EditorService {
-	constructor($mdToast, $aframeScene, $tourApi, DraftResource, EDITOR_MESSAGES) {
+export class EditorService {
+  lastPublished: vt.IScene;
+  lastDraft: vt.IScene;
+  toasts: {
+    [type: string]: any
+  };
+
+	constructor(
+    private $mdToast, 
+    private $aframeScene: SceneService, 
+    private $tourApi: TourResourceService, 
+    private DraftResource: DraftResourceService, 
+    private EDITOR_MESSAGES: {
+      [type: string]: vt.ISceneEditorMessage
+    }
+  ) {
 		'ngInject';
-		this.$mdToast = $mdToast;
-		this.$aframeScene = $aframeScene;
-		this.DraftResource = DraftResource;
-		this.SceneResource = $tourApi.scene;
 		/**
 		 * Property to hold an array of fully initialized toast config objects; loops
 		 * through `EDITOR_MESSAGES` and sets properties using the methods provided
 		 * by `$mdToast.simple()`'s return.
-		 *
-		 * @memberof EditorService
-		 * @type {Object}
 		 */
-		this.toasts = {};
 		Object.keys( EDITOR_MESSAGES ).forEach(type => {
 			const toast = $mdToast.simple();
 			const toastConfig = EDITOR_MESSAGES[type];
@@ -62,7 +72,10 @@ class EditorService {
 	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 						Resolves to latest scene data
 	 */
-	publish(_newData = false, notify = true) {
+	publish(
+    _newData: vt.IScene | boolean = false,
+    notify: boolean = true
+  ): Promise<vt.IScene> {
 		let action = 'update';
 		const newData = _newData || pick(this.$aframeScene.scene, [
 			'_id',
@@ -82,7 +95,7 @@ class EditorService {
 			action = 'save';
 		}
 
-  	return this.SceneResource[action](_newData ? null : { 
+  	return this.$tourApi.scene[action](_newData ? null : { 
   		id: newData._id
   	}, newData)
   	.$promise.then(scene => {
@@ -100,7 +113,7 @@ class EditorService {
 	 * @param  {Boolean} notify 	Whether to notify the user (toast)
 	 * @return {Promise} 					Resolves to saved draft
 	 */
-	saveDraft(notify = true) {
+	saveDraft(notify: boolean = true): Promise<{ content: vt.IScene }> {
   	return this.DraftResource.save({
   		content: this.$aframeScene.scene,
   		kind: 'Scene',
@@ -142,7 +155,7 @@ class EditorService {
 	 * @param  {Array}   drafts A list of available drafts
 	 * @return {Promise}      	Resolves to toast result » loadDraft promise
 	 */
-	draftFound(drafts) {
+	draftFound(drafts): Promise<vt.IScene | boolean> {
 		return this.$mdToast.show(this.toasts.draftFound)
 			.then( response => (response === 'ok') && this.loadDraft(drafts[0]._id) );
 	}
@@ -156,7 +169,7 @@ class EditorService {
 	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 					  Resolves to content of the loaded draft
 	 */
-	loadDraft(id, notify = true) {
+	loadDraft(id: string, notify: boolean = true): Promise<vt.IScene> {
   	return this.DraftResource.get({ id }).$promise.then(draft => {
 	  	this.lastDraft = draft.content;
 	    notify && this.$mdToast.show(this.toasts.draftLoaded)
@@ -170,7 +183,7 @@ class EditorService {
 	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 					  Resolves to state of confirm toast
 	 */
-	revertToDraft(notify = true) {
+	revertToDraft(notify: boolean = true): Promise<vt.IScene | boolean> {
 		return this.checkForDraft(false)
 			.then( drafts => this.loadDraft(drafts[0]._id, false) )
 	  	.then( draftContent => notify && this.$mdToast.show(this.toasts.revertToDraft) );	
@@ -184,7 +197,7 @@ class EditorService {
 	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise} 					  Resolves to state of confirm toast
 	 */
-	discardDraft(id, notify = true) {
+	discardDraft(id:string, notify: boolean = true): Promise<any> {
   	return this.DraftResource.remove({ id }).$promise
 	  	.then( discardedDraft => notify && this.$mdToast.show(this.toasts.discardDraft) );
 	}
@@ -209,9 +222,8 @@ class EditorService {
 	 * @param  {object}   		 item       The item being removed
 	 * @param  {Array<Object>} collection The array it will be removed from
 	 * @param  {Function} 		 cb         Callback to run when item removed
-	 * @return {Promise}									Promise resolves to result of toast
 	 */
-  removeItemFrom(item, collection, cb) {
+  removeItemFrom(item, collection, cb: () => void) {
     this.$mdToast.show(this.toasts.confirm).then(response => {
       if ( response == 'ok' ) {
 			  const index = collection.indexOf(item);
@@ -239,7 +251,7 @@ class EditorService {
 	 * @param {Array<Object>} collection The array it will be added to
 	 * @param {Function}			cb         Callback to run when item added
 	 */
-	addItemTo(item, collection, cb) {
+	addItemTo(item, collection, cb: (collection) => void) {
 	  if (isObject(item) && isArray(collection)) {
 	  	collection.push(item)
     	cb&&cb(collection);
@@ -254,5 +266,3 @@ class EditorService {
 	  }
 	}
 }
-
-export default EditorService;

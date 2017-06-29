@@ -214,15 +214,26 @@ declare namespace vt {
     attrs: IEntityAttribute[]
   }
 
+
+  type SceneOrId = IScene | string;
   export interface IScene {
     _id: string;
-    parent: string;
+    parent: SceneOrId;
     code: string;
     name: string;
     entities: IEntity[],
     hotSpots: IHotSpot[],
     sceneLinks: ISceneLink[],
     panorama: IPanorama
+  }
+
+  export interface ISceneEditorMessage {
+    textContent: string;
+    action: string;
+    highlightAction: boolean;
+    highlightClass: string;
+    position: string;
+    hideDelay: number;
   }
 
   export interface INetworkConnectionVal {

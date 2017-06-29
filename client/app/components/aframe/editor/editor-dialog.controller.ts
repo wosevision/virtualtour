@@ -1,15 +1,24 @@
-class EditorDialogController {
+export class EditorDialogController {
+  locations;
+  location;
+  buildings;
+  building;
+  categories;
+  category;
+  features;
+  feature;
+  scenes: vt.IScene[];
+  scene: vt.IScene;
+
+  item;
+
 	constructor(
-		$scope, $filter,
-		$tourApi, $mapApi) {
+		private $scope,
+    private $filter,
+		private $tourApi,
+    private $mapApi
+  ) {
 		'ngInject';
-		this.$filter = $filter;
-		this.LocationResource = $tourApi.location;
-		this.BuildingResource = $tourApi.building;
-		this.SceneResource = $tourApi.scene;
-		this.CategoryResource = $mapApi.category;
-		this.FeatureResource = $mapApi.feature;
-		this.CollectionResource = $mapApi.collection;
 		if (this.item.scene) {
 			$scope.$applyAsync(() => {
 				this.initCurrentScene();
@@ -70,13 +79,16 @@ class EditorDialogController {
 		});
 	}
 	loadLocations(cb) {
-		return this.LocationResource.query().$promise.then(locations => {
-			this.locations = locations;
-			cb&&cb(locations);
-		});
+		return this.$tourApi.location
+      .query()
+      .$promise
+      .then(locations => {
+  			this.locations = locations;
+  			cb&&cb(locations);
+  		});
 	}
 	loadBuildings(cb) {
-		return this.BuildingResource.query(this.location ? {
+		return this.$tourApi.building.query(this.location ? {
 			filter: {
 				parent: this.location._id
 			}
@@ -86,7 +98,7 @@ class EditorDialogController {
 		});
 	}
 	loadScenes(cb) {
-		return this.SceneResource.query(this.building ? {
+		return this.$tourApi.scene.query(this.building ? {
 			filter: {
 				parent: this.building._id
 			}
@@ -96,13 +108,13 @@ class EditorDialogController {
 		});
 	}
 	loadCategories(cb) {
-		return this.CategoryResource.query().$promise.then(categories => {
+		return this.$mapApi.category.query().$promise.then(categories => {
 			this.categories = categories;
 			cb&&cb(categories);
 		});
 	}
 	loadFeatures(cb) {
-		return this.FeatureResource.query(this.category ? {
+		return this.$mapApi.feature.query(this.category ? {
 			filter: {
 				"properties.category": this.category._id
 			}
@@ -131,6 +143,3 @@ class EditorDialogController {
 	}
 	//
 }
-
-
-export default EditorDialogController;
