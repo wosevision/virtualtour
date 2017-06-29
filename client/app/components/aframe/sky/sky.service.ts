@@ -65,7 +65,7 @@ export class SkyService {
       h: mobile||lowRes ? 1024 : 2048,
       c: 'scale',
       f: 'auto',
-      q: COMPRESS_MAX - (COMPRESS_FACTOR * this.UserSession.usage.compression.val)
+      q: COMPRESS_MAX - (COMPRESS_FACTOR * <number>this.UserSession.usage.compression.val)
     }
     return Object.keys(settings).map(key => `${key}_${settings[key]}`).join(',');
   }
@@ -109,7 +109,7 @@ export class SkyService {
    * @param  {string} id  An asset ID, e.g. the panorama's `public_id`
    * @return {Promise}    A promise that will resolve to the loaded `<img>`
    */
-  getSkyDomNode(url: string, id: string): Promise<ng.IAugmentedJQuery> {
+  getSkyDomNode(url: string, id: string): Promise<JQuery> {
     return new Promise((resolve, reject) => {
       const img = element(`<img src="${ this.imageApiUrl }/${ this.getSettings() }/v${ url }" id="${ id }" crossOrigin="anonymous" />`);
       img.on('load', () => resolve(img));

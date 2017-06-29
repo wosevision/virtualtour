@@ -18,11 +18,11 @@ export const SkyComponent: ng.IComponentOptions = {
    * preload bucket based on the `$aframeSky` service's instructions.
    */
   controller: class SkyController implements ng.IController {
-    compileSkyEl: (callback: ng.ICloneAttachFunction) => ng.IAugmentedJQuery;
+    compileSkyEl: (callback: ng.ICloneAttachFunction) => JQuery;
 
-    $sceneEl: ng.IAugmentedJQuery;
-    $assetsEl: ng.IAugmentedJQuery;
-    $skyEl: ng.IAugmentedJQuery;
+    $sceneEl: JQuery;
+    $assetsEl: JQuery;
+    $skyEl: JQuery;
 
     _skyElLoaded: boolean;
     _skyLoadedList: string[];
@@ -159,7 +159,7 @@ export const SkyComponent: ng.IComponentOptions = {
     loadSkyAsset(skyUrl: string, assetId: string): Promise<string> {
       console.info('[sky.component] loadSkyAsset');
       return this.$aframeSky.getSkyDomNode(skyUrl, assetId)
-        .then(imgNode => {
+        .then((imgNode: JQuery) => {
           this.$assetsEl.append(imgNode);
           this._skyLoadedList.push(assetId);
           console.info('[sky.component] loadSkyAsset', skyUrl, imgNode);
@@ -175,7 +175,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * @param  {string} sky ID for asset reference
      * @return {Element}    JQLite-wrapped <a-sky> element
      */
-    loadSkyEl(): ng.IAugmentedJQuery {
+    loadSkyEl(): JQuery {
       console.info('[sky.component] loadSkyEl');
       return this.compileSkyEl(clone => {
         this.$sceneEl.append(clone);
