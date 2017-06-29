@@ -1,11 +1,11 @@
 import { GLOBAL_SETTINGS } from '../global.constant';
 
 export class TourResourceService {
-  location: ng.resource.IResourceService;
-  building: ng.resource.IResourceService;
-  scene: ng.resource.IResourceService;
-  preload: ng.resource.IResourceService;
-  entity: ng.resource.IResourceService;
+  location: ng.resource.IResourceClass<any[]>;
+  building: ng.resource.IResourceClass<any[]>;
+  scene: ng.resource.IResourceClass<any[]>;
+  preload: ng.resource.IResourceClass<any[]>;
+  entity: ng.resource.IResourceClass<any[]>;
   constructor(
     private $resource
   ) {

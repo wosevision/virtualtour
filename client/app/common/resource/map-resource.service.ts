@@ -1,9 +1,9 @@
 import { GLOBAL_SETTINGS } from '../global.constant';
 
 export class MapResourceService {
-  category: ng.resource.IResourceService;
-  feature: ng.resource.IResourceService;
-  collection: ng.resource.IResourceService;
+  category: ng.resource.IResourceClass<any[]>;
+  feature: ng.resource.IResourceClass<any[]>;
+  collection: ng.resource.IResourceClass<any[]>;
   constructor(
     private $resource
   ) {
