@@ -45,7 +45,7 @@ let paths = {
       path.join(__dirname, CLIENT_ROOT, 'main.ts')
     ],
 	  editor: [
-	    path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor.js')
+	    path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor')
 	  ]
 	},
   output: CLIENT_ROOT,

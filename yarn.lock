@@ -9,6 +9,12 @@
     "@types/three" "*"
     "@types/tween.js" "*"
 
+"@types/angular-resource@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@types/angular-resource/-/angular-resource-1.5.9.tgz#54af443836e495cd3ddd1827319bd9cd4d1f4625"
+  dependencies:
+    "@types/angular" "*"
+
 "@types/angular-ui-router@^1.1.37":
   version "1.1.37"
   resolved "https://registry.yarnpkg.com/@types/angular-ui-router/-/angular-ui-router-1.1.37.tgz#1e67926083f5e78d28d7c7e83d01c9929e70b6cb"
@@ -24,6 +30,10 @@
 "@types/jquery@*":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.4.tgz#52d19aecb6237a9407701fc127cf69d204576e04"
+
+"@types/jquery@^2.0.47":
+  version "2.0.48"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.48.tgz#3e90d8cde2d29015e5583017f7830cb3975b2eef"
 
 "@types/three@*":
   version "0.84.14"
@@ -5339,9 +5349,9 @@ nyc@^7.1.0:
     yargs "^4.8.1"
     yargs-parser "^2.4.1"
 
-"nz-tour@git+https://github.com/semos/nzTour.git":
+"nz-tour@https://github.com/wosevision/nzTour.git":
   version "1.2.1"
-  resolved "git+https://github.com/semos/nzTour.git#3c7d2e68ec0aea89e29ae5c619053344d110ab96"
+  resolved "https://github.com/wosevision/nzTour.git#3d1ebeee9e2d53208fbe92e7f4841ebabd3baa53"
   dependencies:
     gulp "^3.8.11"
     gulp-ng-annotate "^2.0.0"

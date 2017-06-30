@@ -105,7 +105,7 @@
 		<!-- INCLUDE: ACTIVE TIP DISPLAY -->
 		<md-dialog-content ng-if="$ctrl.currentTips">
 			<div layout layout-align="center center">
-				<md-button class="md-primary" ng-click="$ctrl.currentTips = false">« Go back</md-button>
+				<md-button class="md-primary" ng-click="$ctrl.currentTips = null">« Go back</md-button>
 			</div>
 			<div>
 				<h2><span class="md-title">{{ ::$ctrl.currentTips.title[0] }}</span><br/><span class="md-display-1"><strong>{{ ::$ctrl.currentTips.title[1] }}</strong></span></h2>

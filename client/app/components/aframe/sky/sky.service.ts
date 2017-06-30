@@ -1,6 +1,11 @@
 import { element } from 'angular';
 import aframe from 'aframe';
 
+import { TourResourceService } from '../../../common/resource/tour-resource.service';
+import { UserSessionService } from '../../../common/user/user-session.service';
+
+import { GLOBAL_SETTINGS } from '../../../common/global.constant';
+
 const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 
 /**
@@ -20,10 +25,8 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    private $q,
-    private $tourApi,
-    private UserSession,
-    private GLOBAL_SETTINGS
+    private $tourApi: TourResourceService,
+    private UserSession: UserSessionService
   ) {
     'ngInject';
     this.imageApiUrl = GLOBAL_SETTINGS.imageApiUrl;
@@ -39,7 +42,7 @@ export class SkyService {
     return this.panorama ? [ this.panorama.version, this.panorama.public_id].join('/') : null;
   }
   set sky(panorama: any) {
-    console.log('sky service set to:', panorama)
+    console.log('[sky.service] set sky', panorama)
     this.panorama = panorama;
   }
 
@@ -62,7 +65,7 @@ export class SkyService {
       h: mobile||lowRes ? 1024 : 2048,
       c: 'scale',
       f: 'auto',
-      q: COMPRESS_MAX - (COMPRESS_FACTOR * this.UserSession.usage.compression.val)
+      q: COMPRESS_MAX - (COMPRESS_FACTOR * <number>this.UserSession.usage.compression.val)
     }
     return Object.keys(settings).map(key => `${key}_${settings[key]}`).join(',');
   }
@@ -78,8 +81,8 @@ export class SkyService {
    * manipulation; otherwise, it returns an empty array
    * (0/no preload).
    */
-  getPreloadList(id: string): ng.IPromise<any[]> {
-    return this.$q((resolve, reject) => {
+  getPreloadList(id: string): Promise<any[]> {
+    return new Promise((resolve, reject) => {
       switch(this.UserSession.usage.preloading.val) {
         case 0:
           resolve([]);
@@ -106,8 +109,8 @@ export class SkyService {
    * @param  {string} id  An asset ID, e.g. the panorama's `public_id`
    * @return {Promise}    A promise that will resolve to the loaded `<img>`
    */
-  getSkyDomNode(url: string, id: string): ng.IPromise<ng.IAugmentedJQuery> {
-    return this.$q((resolve, reject) => {
+  getSkyDomNode(url: string, id: string): Promise<JQuery> {
+    return new Promise((resolve, reject) => {
       const img = element(`<img src="${ this.imageApiUrl }/${ this.getSettings() }/v${ url }" id="${ id }" crossOrigin="anonymous" />`);
       img.on('load', () => resolve(img));
       img.on('error', () => reject('Image load error'));

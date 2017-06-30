@@ -16,7 +16,7 @@
   		 layout-align-gt-sm="end start"
   		 flex
   		 class="scene-container"
-  		 ng-class="{ 'toolbar-open' : mc.toolbar.isOpen&amp;&amp;!mc.mobile.landscape, 'toolbar-condensed': mc.toolbar.isCondensed }">
+  		 ng-class="{ 'toolbar-open' : mc.toolbar.open && !mc.mobile.landscape, 'toolbar-condensed': mc.toolbar.condensed }">
     <section id="scene-view"
 				     flex="grow"
 				     layout="column"
