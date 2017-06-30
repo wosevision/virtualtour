@@ -20,7 +20,7 @@ export class WelcomeController implements ng.IController {
     steps: TOUR_STEPS
   };
 
-  welcomeTipsList: vt.IWelcomeTip[] = WELCOME_TIP_LIST;
+  welcomeTipsList: vt.IWelcomeTip[][] = WELCOME_TIP_LIST;
   welcomeTips: {
     [key: string]: vt.IWelcomeTipGroup
   };

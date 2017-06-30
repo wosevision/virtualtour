@@ -105,7 +105,7 @@ export const WELCOME_TIPS: { [key: string]: vt.IWelcomeTipGroup } = {
   }
 };
 
-export const WELCOME_TIP_LIST: vt.IWelcomeTip[] = [
+export const WELCOME_TIP_LIST: vt.IWelcomeTip[][] = [
   [{
     title: 'Tour navigation',
     icon: 'my_location',

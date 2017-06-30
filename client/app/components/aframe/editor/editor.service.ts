@@ -25,7 +25,7 @@ export class EditorService {
   lastDraft: vt.IScene;
   toasts: {
     [type: string]: any
-  };
+  } = {};
 
 	constructor(
     private $mdToast, 
