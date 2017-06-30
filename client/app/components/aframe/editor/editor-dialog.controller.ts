@@ -31,7 +31,7 @@ export class EditorDialogController {
 		}
 	}
 	initCurrentCategory() {
-		let _id;
+		let _id: MongoId;
 		this.loadCategories(categories => {
 			_id = this.feature.properties.category&&this.feature.properties.category.hasOwnProperty('_id') 
 				? this.feature.properties.category._id
@@ -40,7 +40,7 @@ export class EditorDialogController {
 		});
 	}
 	initCurrentFeature() {
-		let _id;
+		let _id: MongoId;
 		this.loadFeatures(features => {
 			_id = this.item.feature&&this.item.feature.hasOwnProperty('_id')
 				? this.item.feature._id
@@ -50,7 +50,7 @@ export class EditorDialogController {
 		});
 	}
 	initCurrentScene() {
-		let _id;
+		let _id: MongoId;
 		this.loadScenes(scenes => {
 			_id = this.item.scene.hasOwnProperty('_id')
 				? this.item.scene._id
@@ -60,17 +60,17 @@ export class EditorDialogController {
 		});
 	}
 	initCurrentBuilding() {
-		let _id;
+		let _id: MongoId;
 		this.loadBuildings(buildings => {
 			_id = this.scene.parent.hasOwnProperty('_id')
-				? this.scene.parent._id
-				: this.scene.parent;
+				? (<vt.IScene>this.scene.parent)._id
+				: <MongoId>this.scene.parent;
 			this.building = this.$filter('filter')(buildings, { _id }, true)[0];
 			this.initCurrentLocation();
 		});
 	}
 	initCurrentLocation() {
-		let _id;
+		let _id: MongoId;
 		this.loadLocations(locations => {
 			_id = this.building.parent.hasOwnProperty('_id')
 				? this.building.parent._id

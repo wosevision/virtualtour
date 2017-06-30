@@ -7,6 +7,11 @@ declare interface Window {
   REQUIRED_MODULES: string[];
 }
 
+declare type MongoId = string;
+
+/**
+ * nz-tour namespace
+ */
 declare namespace nztour {
   export interface ITourService {
     // props
@@ -62,21 +67,33 @@ declare namespace nztour {
   }
 }
 
+/**
+ * Virtual tour namespace
+ */
 declare namespace vt {
-  export interface IErrorSuggestion {
+
+  export interface ICMSMetadata {
+    _id: MongoId;
+    __v: number;
+    updatedBy?: string;
+    updatedAt?: Date;
+    createdBy?: string;
+    createdAt?: Date;
+  }
+
+  export interface ISuggestion {
     title: string,
     desc: string,
     icon: string,
-    goToSettings?: boolean;
+    link?: string,
     action?: (option) => void;
   }
 
-  export interface IWelcomeTip {
-    title?: string,
-    icon?: string,
-    link?: string,
-    desc?: string,
+  export interface IErrorSuggestion extends ISuggestion {
+    goToSettings?: boolean;
   }
+
+  export type IWelcomeTip = ISuggestion;
 
   export interface IWelcomeTipContent {
     label?: string,
@@ -89,10 +106,27 @@ declare namespace vt {
     tips: IWelcomeTipContent[]
   }
 
+  export interface ICloudinaryImage {
+    public_id: string;
+    version: number;
+    signature: string;
+    width: number;
+    height: number;
+    format: string;
+    resource_type: string;
+    url: string;
+    secure_url: string;
+  }
+
+  type QueryParam = any;
+  export interface IQueryParams {
+    [key: string]: QueryParam;
+  }
+
   export interface ITourState {
     location?: string;
     building?: string;
-    scene?: string;
+    scene?: IScene;
   }
 
   export interface ITourUserName {
@@ -100,6 +134,7 @@ declare namespace vt {
     first: string;
   }
 
+  export type IUsageLevel = [number, number, number]; // [imageQual, loadTime, dataUse]
   export interface ITourUserSetting {
     val: number | boolean;
     min: number;
@@ -112,12 +147,8 @@ declare namespace vt {
       /**
        * `comparator` is a string representing conditional evaluation,
        * values are represented as an array of three numbers.
-       * 
-       * @example
-       * [5, 2, 8] // [imageQual, loadTime, dataUse]
-       *           // 0=low, 10=high
        */
-      [comparator: string]: number[]
+      [comparator: string]: IUsageLevel
     }
   }
 
@@ -138,21 +169,10 @@ declare namespace vt {
     toolbarOpen: ITourUserPreference;
   }
 
-  export interface ITourUserAvatar {
-    public_id: string;
-    version: number;
-    signature: string;
-    width: number;
-    height: number;
-    format: string;
-    resource_type: string;
-    url: string;
-    secure_url: string;
-  }
+  export type IPanorama = ICloudinaryImage;
+  export type ITourUserAvatar = ICloudinaryImage;
 
-  export interface ITourUser {
-    _id: string;
-    __v: number;
+  export interface ITourUser extends ICMSMetadata {
     name: Partial<ITourUserName>;
     password: string;
     email: string;
@@ -164,31 +184,15 @@ declare namespace vt {
     usage: Partial<ITourUserUsage>;
     settings: Partial<ITourUserSettings>,
     avatar: Partial<ITourUserAvatar>,
-    updatedAt: Date;
-    updatedBy: string;
   }
 
-  export interface IPanorama {
-    public_id: string;
-    version: number;
-    signature: string;
-    width: number;
-    height: number;
-    format: string;
-    resource_type: string;
-    url: string;
-    secure_url: string;
-  }
-
-  export interface ISceneLink {
+  export interface ISceneLink extends ICMSMetadata {
     scene: string;
-    _id: string;
     rotation: number[];
     position: number[];
   }
 
-  export interface IHotSpot {
-    _id: string;
+  export interface IHotSpot extends ICMSMetadata {
     name: string;
     desc: string;
     position: number[];
@@ -196,31 +200,23 @@ declare namespace vt {
     feature: string;
   }
 
-  export interface IEntityAttribute {
-    _id: string;
+  export interface IEntityAttribute extends ICMSMetadata {
     val: string | number,
     prop: string;
   }
 
-  export interface IEntity {
-    _id: string;
-    __v: number;
-    updatedBy: string;
-    updatedAt: Date;
-    createdBy: string;
-    createdAt: Date;
+  export interface IEntity extends ICMSMetadata {
     type: string;
     entities: IEntity[],
     attrs: IEntityAttribute[]
   }
 
-
-  type SceneOrId = IScene | string;
-  export interface IScene {
-    _id: string;
-    parent: SceneOrId;
-    code: string;
+  type SceneOrId = IScene | MongoId;
+  type SceneCode = string;
+  export interface IScene extends ICMSMetadata {
     name: string;
+    code: SceneCode;
+    parent: SceneOrId;
     entities: IEntity[],
     hotSpots: IHotSpot[],
     sceneLinks: ISceneLink[],

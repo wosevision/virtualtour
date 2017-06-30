@@ -78,8 +78,8 @@ export const EditorComponent: ng.IComponentOptions = {
      * 
      * @param  {Boolean}  notify  Whether to inform user of success.
      */
-    saveDraft(notify = true) {
-      this.$aframeEditor.saveDraft(notify);
+    saveDraft(notify = true): Promise<any> {
+      return this.$aframeEditor.saveDraft(notify);
     }
 
     /**
@@ -88,8 +88,8 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param  {Object}   draft   Chosen draft from draftList
      * @param  {Boolean}  notify  Whether to inform user of success.
      */
-    loadDraft(draft, notify = true) {
-      this.$aframeEditor.loadDraft(draft._id, notify)
+    loadDraft(draft, notify = true): Promise<any> {
+      return this.$aframeEditor.loadDraft(draft._id, notify)
         .then(draftContent => this.updateSceneData(draftContent));
     }
 
@@ -102,9 +102,9 @@ export const EditorComponent: ng.IComponentOptions = {
      * 
      * @param {Boolean} notify  Whether to inform the user with toast
      */
-    checkForDraft(notify = true) {
+    checkForDraft(notify = true): Promise<any> {
       this.draftList = null;
-      this.$aframeEditor.checkForDraft(notify)
+      return this.$aframeEditor.checkForDraft(notify)
         .then(drafts => {
           this.draftList = drafts;
           return drafts.length&&notify&&this.$aframeEditor.draftFound(drafts);
@@ -119,14 +119,14 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param {Object}  draft   The draft to discard
      * @param {Boolean} notify  Whether to inform user with toast
      */
-    discardDraft(draft, notify = true) {
+    discardDraft(draft, notify = true): Promise<any> {
       const confirm = this.$mdDialog.confirm()
         .title('Are you sure?')
         .textContent('This action cannot be undone.')
         .ok('Confirm')
         .cancel('Cancel');
-      this.$mdDialog.show(confirm).then(() => {
-        this.$aframeEditor.discardDraft(draft._id, notify);
+      return this.$mdDialog.show(confirm).then(() => {
+        return this.$aframeEditor.discardDraft(draft._id, notify);
       });
     }
 
@@ -193,7 +193,7 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param  {Array}   collection Collection of scene elements to add item to
      * @return {Promise}            Promise representing dialog reference
      */
-    addItem(ev: Event, collection) {
+    addItem(ev: MouseEvent, collection) {
       const locals: IEditorLocals = { item: this._schemas[collection] };
 
       locals.newItem = true;
@@ -220,7 +220,7 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param  {Event} ev The mouseEvent that called the method
      * @return {Promise}  Promise representing dialog reference
      */
-    newScene(ev: Event) {
+    newScene(ev: MouseEvent) {
       const locals: IEditorLocals = { item: this._schemas.scene };
 
       locals.newItem = true;
@@ -249,7 +249,7 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param  {Array<Object>} collection The item's collection in the scene
      * @return {Promise}                  Promise representing dialog reference
      */
-    editItem(ev: Event, item, collection) {
+    editItem(ev: MouseEvent, item, collection) {
 
       const locals: IEditorLocals = { item };
       locals.publish = () => this.publish();
@@ -283,7 +283,7 @@ export const EditorComponent: ng.IComponentOptions = {
      * @param  {Number} $2.offsetY      Pixels to shift dialog along Y
      * @return {Promise}                Promise representing dialog scope
      */
-    openEditor(ev: Event, locals, { offsetX = 0, offsetY = 0 } = {}) {
+    openEditor(ev: MouseEvent, locals, { offsetX = 0, offsetY = 0 } = {}) {
       console.log('editor.component] openEditor', (ev.clientY + offsetY))
       const position = this.$mdPanel.newPanelPosition();
       if (locals.newItem) {
@@ -307,5 +307,3 @@ export const EditorComponent: ng.IComponentOptions = {
     }
   }
 };
-
-export default editorComponent;
