@@ -1,5 +1,5 @@
-export const AppConfig = ($provide, $locationProvider, $stateProvider, $urlRouterProvider, $mdGestureProvider, $mdThemingProvider, cfpLoadingBarProvider) => { //, $mdIconProvider
-  'ngInject';
+AppConfig.$inject = ['$provide', '$locationProvider', '$stateProvider', '$urlRouterProvider', '$mdGestureProvider', '$mdThemingProvider', 'cfpLoadingBarProvider']
+export function AppConfig($provide, $locationProvider, $stateProvider, $urlRouterProvider, $mdGestureProvider, $mdThemingProvider, cfpLoadingBarProvider) { //, $mdIconProvider
   
   // cfpLoadingBarProvider.latencyThreshold = 300;
   // cfpLoadingBarProvider.includeSpinner = false;

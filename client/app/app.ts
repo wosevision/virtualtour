@@ -31,12 +31,12 @@ import ngMdIcons from 'angular-material-icons';
 import cfpLoadingBar from 'angular-loading-bar';
 import vAccordion from 'v-accordion';
 
-import Common from './common/common';
-import Components from './components/components';
+import { CommonModule } from './common/common';
+import { ComponentsModule } from './components/components';
 
+import { AppStateService } from './app-state.service';
 import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
-import { AppRun } from './app.run';
 
 import './app.scss';
 
@@ -60,27 +60,6 @@ import './app.scss';
 //  }
 // }
 
-// export const AppModule = angular.module('app', [
-//   uiRouter,
-//   angulartics,
-//   angularticsGa,
-//   ngAnimate,
-//   ngAria,
-//   ngMaterial,
-//   ngMdIcons,
-//   cfpLoadingBar,
-//   vAccordion,
-//   Common,
-//   Components,
-//   ...(window.REQUIRED_MODULES || [])
-// ])
-
-// .component('app', AppComponent)
-
-// .config(AppConfig)
-
-// .run(AppRun);
-
 @NgModule({
   // You can pass either Angular 1 `angular.module` names,
   // or other ng-metadata @NgModule classes to `imports`,
@@ -99,6 +78,8 @@ import './app.scss';
     ComponentsModule,
     ...(window.REQUIRED_MODULES || [])
   ],
+  providers: [AppConfig, AppStateService],
   declarations: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
