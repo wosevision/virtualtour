@@ -8,7 +8,7 @@ import { SearchModule } from './search/search';
 import { SettingsModule } from './settings/settings';
 import { TitleBarModule } from './titlebar/titlebar';
 
-const componentModule = angular.module('app.components', [
+export const ComponentsModule = angular.module('app.components', [
   AFrameModule,
   ButtonbarModule,
   DrilldownModule,
@@ -19,5 +19,3 @@ const componentModule = angular.module('app.components', [
 ])
 
 .name;
-
-export default componentModule;

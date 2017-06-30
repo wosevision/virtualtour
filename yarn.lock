@@ -27,13 +27,13 @@
   dependencies:
     "@types/jquery" "*"
 
-"@types/jquery@*":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.4.tgz#52d19aecb6237a9407701fc127cf69d204576e04"
-
-"@types/jquery@^2.0.47":
+"@types/jquery@*", "@types/jquery@^2.0.47":
   version "2.0.48"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.48.tgz#3e90d8cde2d29015e5583017f7830cb3975b2eef"
+
+"@types/node@^8.0.3":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.6.tgz#ed2c3e011cb51ccd3cf874989130f1b9ffe06069"
 
 "@types/three@*":
   version "0.84.14"

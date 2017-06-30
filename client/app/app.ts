@@ -95,8 +95,8 @@ import './app.scss';
     ngMdIcons,
     cfpLoadingBar,
     vAccordion,
-    Common,
-    Components,
+    CommonModule,
+    ComponentsModule,
     ...(window.REQUIRED_MODULES || [])
   ],
   declarations: [AppComponent]
