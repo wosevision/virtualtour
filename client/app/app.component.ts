@@ -2,7 +2,6 @@ import {
   Component,
   Inject,
 } from 'ng-metadata/core';
-import { isUndefined } from 'angular';
 import aframe from 'aframe';
 
 import { AppStateService } from './app-state.service';
@@ -93,27 +92,25 @@ export class AppComponent {
       true
     );
 
-    this.AppStateService.init()
-      .then(userSettings => {
-        console.info('[app.controller] $watch.userSettings');
+    await this.AppStateService.init();
 
-        if (!isUndefined(this.UserSession.settings)) {
+    console.info('[app.controller] $onInit AppStateService.init()');
 
-          const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSession.settings;
+    if (this.UserSession.settings) {
+      const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSession.settings;
 
-          if (showWelcome.val) {
-            this.$timeout(this.showWelcomeMsg.bind(this), this.WELCOME_MSG_DELAY);
-          } else {
-            this.$timeout(this.showSettingsMsg.bind(this), this.SETTINGS_MSG_DELAY);
-          }
+      if (showWelcome.val) {
+        this.$timeout(this.showWelcomeMsg.bind(this), this.WELCOME_MSG_DELAY);
+      } else {
+        this.$timeout(this.showSettingsMsg.bind(this), this.SETTINGS_MSG_DELAY);
+      }
 
-          this.toolbar.open = toolbarOpen.val;
-          this.toolbar.condensed = toolbarCondensed.val;
-          this.toolbar.sidebar = this.$mdSidenav('right');
+      this.toolbar.open = toolbarOpen.val;
+      this.toolbar.condensed = toolbarCondensed.val;
+      this.toolbar.sidebar = this.$mdSidenav('right');
 
-          console.info('[app.controller] $watch.userSettings settingsLoaded', this.UserSession.settings);
-        }
-      });
+      console.info('[app.controller] $onInit AppStateService.init()', this.UserSession.settings);
+    }
 
     this.drilldown = { structure: await this.getDrilldownStructure() };
   }
