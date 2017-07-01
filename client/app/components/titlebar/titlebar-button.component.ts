@@ -1,12 +1,12 @@
-export const TitleBarButtonComponent: ng.IComponentOptions = {
-  bindings: {
-    onClick: '&',
-    label: '@',
-    class: '@',
-    active: '<',
-    tooltip: '<',
-    icon: '<'
-  },
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter
+} from 'ng-metadata/core';
+
+@Component({
+  selector: 'title-bar-button',
   template: `<md-button
     class="icon-button {{ ::$ctrl.class }}"
     ng-click="$ctrl.onClick()"
@@ -21,4 +21,20 @@ export const TitleBarButtonComponent: ng.IComponentOptions = {
     </md-tooltip>
     <span ng-if="::(!$ctrl.tooltip)">{{ ::$ctrl.label }}</span>
   </md-button>`
+})
+export class TitleBarButtonComponent {
+  @Input() id: string;
+  @Input() label: string;
+  @Input() class: string;
+  @Input() active: boolean;
+  @Input() tooltip: boolean | string[];
+  @Input() icon: string[];
+
+  @Output() click = new EventEmitter<void>();
+
+  constructor() {}
+
+  onClick() {
+    this.click.emit(this.id);
+  }
 };

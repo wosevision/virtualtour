@@ -1,9 +1,7 @@
-export const TitleBarComponent: ng.IComponentOptions = {
-  transclude: true,
-  bindings: {
-    title: '@',
-    mobile: '<'
-  },
+import { Component, Input } from 'ng-metadata/core';
+
+@Component({
+  selector: 'title-bar',
   template: `<md-toolbar id="title-bar" class="md-accent md-hue-1 title-bar" layout="row" ng-class="{'is-mobile' : $ctrl.mobile.screen}">
     <md-toolbar-filler flex="nogrow" layout layout-align="start center" layout-align-gt-sm="center center">
       <svg ui-sref="home" alt="University of Ontario Institute of Technology" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 84.86" class="logo-shield" id="uoit_logo" preserveAspectRatio="xMaxYMax meet">
@@ -16,5 +14,12 @@ export const TitleBarComponent: ng.IComponentOptions = {
       <span flex></span>
       <ng-transclude id="toolbar-controls" layout layout-align="center center"></ng-transclude>
     </div>
-  </md-toolbar>`
+  </md-toolbar>`,
+  legacy: {
+    transclude: true
+  }
+})
+export class TitleBarComponent {
+  @Input() title: string;
+  @Input() mobile;
 };

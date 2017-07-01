@@ -35,9 +35,9 @@ export const TITLEBAR_OPTS: TitlebarOption[] = [{
   tooltip: [ 'Expand toolbar', 'Condense toolbar' ],
   icon: [ 'flip_to_front', 'flip_to_back' ]
 },{
-  id: 'right',
+  id: 'toggle',
   active: true,
   label: 'Toolbar visibility',
   tooltip: [ 'Hide toolbar', 'Show toolbar' ],
   icon: [ 'last_page', 'first_page' ]
-}]
+}];

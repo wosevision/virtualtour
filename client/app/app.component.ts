@@ -1,14 +1,12 @@
 import {
   Component,
   Inject,
-  Input,
-  Output,
-  EventEmitter
 } from 'ng-metadata/core';
 import { isUndefined } from 'angular';
 import aframe from 'aframe';
 
 import { AppStateService } from './app-state.service';
+import { TITLEBAR_OPTS } from './components/titlebar/titlebar-options.constant';
 
 import template from './app.html';
 
@@ -29,23 +27,7 @@ export class AppComponent {
 
   mobile: object = {};
 
-  titlebar = this.TITLEBAR_OPTS.map(option => {
-    switch (option.id) {
-      case 'right':
-        option.onClick = () => {
-          this.toolbar.toggle();
-          option.active = this.toolbar.open;
-        };
-        break;
-      case 'condense':
-        option.onClick = () => {
-          this.toolbar.condense();
-          option.active = this.toolbar.condensed;
-        };
-        break;
-    }
-    return option;
-  });
+  titlebar = TITLEBAR_OPTS;
 
   toolbar: vt.IToolbar = {
     views: this.BUTTONBAR_VIEWS,
@@ -56,6 +38,7 @@ export class AppComponent {
     toggle() {
       this.open = !this.open;
       this.open && this.sidebar.close();
+      return this.open;
     },
     condense() {
       !this.open&&this.toggle();
@@ -88,11 +71,9 @@ export class AppComponent {
     @Inject('$mdSidenav') private $mdSidenav, 
     @Inject('$mdMedia') private $mdMedia, 
     @Inject('$popupWindow') private $popupWindow, 
-    @Inject('UserSession') private UserSession
+    @Inject('UserSession') private UserSession,
     @Inject('DrilldownService') private DrilldownService, 
     @Inject('BUTTONBAR_VIEWS') private BUTTONBAR_VIEWS,
-    @Inject('TITLEBAR_OPTS') private TITLEBAR_OPTS,
-
     private AppStateService: AppStateService
   ) {}
 
@@ -139,6 +120,11 @@ export class AppComponent {
 
   async getDrilldownStructure() {
     return this.DrilldownService.getDrilldown();
+  }
+
+  buttonClicked(action, option) {
+    console.info('[app.component] buttonClicked', action)
+    option.active = this.toolbar[action]();
   }
 
   showWelcomeMsg() {

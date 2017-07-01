@@ -5,8 +5,16 @@
 </svg>
 
 <div flex="" layout="column" layout-fill="">
-  <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
-    <title-bar-button ng-repeat="option in mc.titlebar" on-click="option.onClick()" label="{{ ::option.label }}" active="option.active" icon="option.icon" tooltip="option.tooltip" class="{{ ::option.class }}" id="titlebar-btn-{{::id}}">
+  <title-bar title="Virtual Tour" [mobile]="mc.mobile" flex="nogrow">
+    <title-bar-button
+      ng-repeat="option in mc.titlebar"
+      (click)="mc.buttonClicked($event, option)"
+      [class]="::option.class"
+      [label]="::option.label"
+      [active]="option.active"
+      [icon]="option.icon"
+      [tooltip]="option.tooltip"
+      [id]="option.id">
     </title-bar-button>
   </title-bar>
 

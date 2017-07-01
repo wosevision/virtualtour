@@ -1,4 +1,4 @@
-import * as angular from 'angular';
+import { NgModule } from 'ng-metadata/core';
 
 import { AFrameModule } from './aframe/aframe';
 import { ButtonbarModule } from './buttonbar/buttonbar';
@@ -8,14 +8,15 @@ import { SearchModule } from './search/search';
 import { SettingsModule } from './settings/settings';
 import { TitleBarModule } from './titlebar/titlebar';
 
-export const ComponentsModule = angular.module('app.components', [
-  AFrameModule,
-  ButtonbarModule,
-  DrilldownModule,
-  MapModule,
-  SearchModule,
-  SettingsModule,
-  TitleBarModule,
-])
-
-.name;
+@NgModule({
+  imports: [
+    AFrameModule,
+    ButtonbarModule,
+    DrilldownModule,
+    MapModule,
+    SearchModule,
+    SettingsModule,
+    TitleBarModule,
+  ]
+})
+export class ComponentsModule {}
