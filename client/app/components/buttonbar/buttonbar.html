@@ -14,11 +14,11 @@
 		layout="column"
 		layout-align="center center"
 		flex="grow"
-  	ng-click="$ctrl.select(state)"
+  	ng-click="$ctrl.onSelect(state)"
   	md-ink-ripple="#0077CA"
   	id="{{ ::state }}">
   	<ng-md-icon icon="{{ :: stateInfo.icon }}" style="fill: #ffffff;"></ng-md-icon>
-    <span ng-bind=":: stateInfo.label"></span>
+    <span ng-bind="::stateInfo.label"></span>
     <md-tooltip md-direction="{{ $ctrl.mobile.screen ? 'top' : 'left' }}" md-autohide md-delay="$ctrl.condensed ? 0 : 750" ng-if="!$ctrl.mobile.device&&$ctrl.showHints" md-z-index="10000">
       {{ $ctrl.condensed ?  stateInfo.label :  stateInfo.desc }}
     </md-tooltip>

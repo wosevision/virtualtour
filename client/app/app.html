@@ -39,11 +39,11 @@
     <button-bar layout="row"
     						layout-gt-sm="column"
     						flex="nogrow"
-    						items="mc.toolbar.views"
-    						open="mc.toolbar.open"
-    						condensed="mc.toolbar.condensed"
-    						mobile="mc.mobile"
-    						on-select="mc.toolbar.onSelect($event)">
+    						[items]="mc.toolbar.views"
+    						[open]="mc.toolbar.open"
+    						[condensed]="mc.toolbar.condensed"
+    						[mobile]="mc.mobile"
+    						(select)="mc.toolbar.onSelect($event)">
     </button-bar>
   </div>
 </div>

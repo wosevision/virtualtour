@@ -6,6 +6,7 @@ import aframe from 'aframe';
 
 import { AppStateService } from './app-state.service';
 import { TITLEBAR_OPTS } from './components/titlebar/titlebar-options.constant';
+import { BUTTONBAR_VIEWS } from './components/buttonbar/buttonbar-views.constant';
 
 import template from './app.html';
 
@@ -24,12 +25,17 @@ export class AppComponent {
   SETTINGS_MSG_DELAY = 1000; //ms
   BLURRED_VIEWS = [ 'search', 'map' ];
 
-  mobile: object = {};
+  mobile: {
+    screen: boolean,
+    landscape: boolean,
+    device: boolean
+  };
 
   titlebar = TITLEBAR_OPTS;
+  buttonbar = BUTTONBAR_VIEWS;
 
   toolbar: vt.IToolbar = {
-    views: this.BUTTONBAR_VIEWS,
+    views: this.buttonbar,
     blurredViews: this.BLURRED_VIEWS,
     currentView: '',
     open: true,
@@ -72,7 +78,6 @@ export class AppComponent {
     @Inject('$popupWindow') private $popupWindow, 
     @Inject('UserSession') private UserSession,
     @Inject('DrilldownService') private DrilldownService, 
-    @Inject('BUTTONBAR_VIEWS') private BUTTONBAR_VIEWS,
     private AppStateService: AppStateService
   ) {}
 
