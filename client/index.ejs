@@ -85,7 +85,7 @@
     </script>
     <% } %>
   </head>
-  <body ng-app="app" ng-strict-di ng-cloak>
+  <body ng-cloak>
 
     <app class="loading-spinner">
       <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('if (user && user.canAccessKeystone) {') : '' %>

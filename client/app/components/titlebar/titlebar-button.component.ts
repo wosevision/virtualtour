@@ -30,7 +30,7 @@ export class TitleBarButtonComponent {
   @Input() tooltip: boolean | string[];
   @Input() icon: string[];
 
-  @Output() click = new EventEmitter<void>();
+  @Output() click = new EventEmitter<string>();
 
   constructor() {}
 
