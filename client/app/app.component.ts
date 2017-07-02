@@ -5,6 +5,7 @@ import {
 import aframe from 'aframe';
 
 import { AppStateService } from './app-state.service';
+import { DrilldownService } from './components/drilldown/drilldown.service';
 import { TITLEBAR_OPTS } from './components/titlebar/titlebar-options.constant';
 import { BUTTONBAR_VIEWS } from './components/buttonbar/buttonbar-views.constant';
 
@@ -77,7 +78,7 @@ export class AppComponent {
     @Inject('$mdMedia') private $mdMedia, 
     @Inject('$popupWindow') private $popupWindow, 
     @Inject('UserSession') private UserSession,
-    @Inject('DrilldownService') private DrilldownService, 
+    private DrilldownService: DrilldownService,
     private AppStateService: AppStateService
   ) {}
 

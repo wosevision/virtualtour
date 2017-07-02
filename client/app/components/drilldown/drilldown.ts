@@ -1,4 +1,4 @@
-import * as angular from 'angular';
+import { NgModule } from 'ng-metadata/core';
 import ngMaterial from 'angular-material';
 import angulartics from 'angulartics';
 import angularticsGa from 'angulartics-google-analytics';
@@ -9,14 +9,14 @@ import { DrilldownComponent } from './drilldown.component';
 
 import './drilldown.scss';
 
-export const DrilldownModule = angular.module('drilldown', [
-  ngMaterial,
-  angulartics,
-	angularticsGa,
-  uiRouter,
-])
-
-.component('drilldownMenu', DrilldownComponent)
-.service('DrilldownService', DrilldownService)
-
-.name;
+@NgModule({
+  imports: [
+    ngMaterial,
+    angulartics,
+    angularticsGa,
+    uiRouter,
+  ],
+  declarations: [DrilldownComponent],
+  providers: [DrilldownService]
+})
+export class DrilldownModule {}

@@ -74,7 +74,7 @@ declare namespace vt {
 
   export interface ICMSMetadata {
     _id: MongoId;
-    __v: number;
+    __v?: number;
     updatedBy?: string;
     updatedAt?: Date;
     createdBy?: string;
@@ -302,5 +302,17 @@ declare namespace vt {
     onSelect: (state) => void,
     hasState: (state) => boolean,
     hasBlur: any
+  }
+
+  export interface IDrilldownItem extends ICMSMetadata {
+    _params: object;
+    _level: string;
+    _hidden: boolean;
+    _active: boolean;
+    default: string;
+    children?: IDrilldownItem[];
+    label: string;
+    name: string;
+    code: string;
   }
 }
