@@ -20,7 +20,6 @@
 
 import { NgModule } from 'ng-metadata/core';
 
-// import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angulartics from 'angulartics';
 import angularticsGa from 'angulartics-google-analytics';

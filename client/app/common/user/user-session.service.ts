@@ -1,34 +1,29 @@
 import { isDefined, equals } from 'angular';
+import { Inject, Injectable } from 'ng-metadata/core';
 
+import { SettingsService } from '../../components/settings/settings.service';
+import { USER_DEFAULTS, USER_ROLES, AUTH_EVENTS } from './user-defaults.constant';
+
+@Injectable()
 /**
  * User session management service.
  */
 export class UserSessionService {
-  _roles;
-  _settings;
-  _usage;
+  _roles = USER_ROLES;
+  _settings = USER_DEFAULTS.settings;
+  _usage = USER_DEFAULTS.usage;
 
   roles: string[];
 
   userId: string;
-  user: Partial<vt.ITourUser>;
+  user: Partial<vt.ITourUser> = {};
 
 	constructor(
-    private $http: ng.IHttpService, 
-    private $rootScope: ng.IRootScopeService, 
-    private $popupWindow, 
-    private SettingsFactory, 
-    private USER_ROLES, 
-    private USER_DEFAULTS: vt.ITourUser
-  ) {
-	  'ngInject';
-
-		this._roles = USER_ROLES;
-		this._settings = USER_DEFAULTS.settings;
-		this._usage = USER_DEFAULTS.usage;
-
-		this.user = {};
-	}
+    @Inject('$http') private $http: ng.IHttpService, 
+    @Inject('$rootScope') private $rootScope: ng.IRootScopeService, 
+    @Inject('$popupWindow') private $popupWindow,
+    private SettingsService: SettingsService, 
+  ) { }
 	/**
 	 * This function creates a new user session, which is
 	 * necessary to store application settings regardless of
@@ -59,11 +54,11 @@ export class UserSessionService {
   			(isContributor) && this.roles.push(this._roles.Contributor);''
   		} else {
   			/**
-  			 * Looks inside SettingsFactory for user data matching the pattern
+  			 * Looks inside SettingsService for user data matching the pattern
   			 * defined in USER_DEFAULTS; store in temporary vars.
   			 */
-  			const _settings = this.SettingsFactory.get('settings'),
-  						_usage = this.SettingsFactory.get('usage');
+  			const _settings = this.SettingsService.get('settings'),
+  						_usage = this.SettingsService.get('usage');
 
   			/**
   			 * Init a 'blank' user with the required settings properties to
@@ -90,7 +85,7 @@ export class UserSessionService {
 	/**
 	 * Checks the `userId` property to verify whether settings should
 	 * save to a logged in user; if not, saves them to localStorage using
-	 * the `SettingsFactory`.
+	 * the `SettingsService`.
 	 */
 	save() {
 		if (this.userId) {
@@ -102,8 +97,8 @@ export class UserSessionService {
         console.log('[user-session.service] save', user);
 			});
 		} else {
-			this.SettingsFactory.set('settings', this.settings);
-			this.SettingsFactory.set('usage', this.usage);
+			this.SettingsService.set('settings', this.settings);
+			this.SettingsService.set('usage', this.usage);
       console.log('[user-session.service] save', this.user);
 		}
 	}

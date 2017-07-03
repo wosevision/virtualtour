@@ -1,5 +1,9 @@
 import { isArray } from 'angular';
+import { Inject, Injectable } from 'ng-metadata/core';
 
+import { UserSessionService } from './user-session.service';
+
+@Injectable()
 /**
  * Factory constructor function to provide authentication
  * details to app on runtime.
@@ -11,21 +15,19 @@ import { isArray } from 'angular';
  */
 export class UserAuthService {
   constructor(
-    private $http, 
-    private UserSession
-  ) {
-    'ngInject';
-  }
+    @Inject('$http') private $http, 
+    private UserSessionService: UserSessionService
+  ) { }
 
   /**
-   * Wrapper function for `UserSession.create()`.
+   * Wrapper function for `UserSessionService.create()`.
    * 
    * @param  {object} user User object from db
    * @return {object}      User stored into session
    */
   createSession(authenticated: vt.ITourUser | boolean = false): vt.ITourUser {
   	console.log('[user-auth.service] createSession', authenticated);
-    return this.UserSession.create(authenticated);
+    return this.UserSessionService.create(authenticated);
   }
 
   /**
@@ -76,7 +78,7 @@ export class UserAuthService {
 		return this.$http
 			.post('/user/signout')
 			.then(res =>{
-				this.UserSession.destroy();
+				this.UserSessionService.destroy();
 		  	console.log('user logged out');
 			}, error => {
 		  	console.log('error, user not logged out');
@@ -90,7 +92,7 @@ export class UserAuthService {
    * have a userId.
    */
   isAuthenticated(): boolean {
-    return !!this.UserSession.userId;
+    return !!this.UserSessionService.userId;
   }
 
   /**
@@ -119,7 +121,7 @@ export class UserAuthService {
     }
 
     let isAuthorized = false;
-    for (const role of this.UserSession.roles) {
+    for (const role of this.UserSessionService.roles) {
     	if (authorizedRoles.indexOf(role) !== -1) {
     		isAuthorized = true;
     	}

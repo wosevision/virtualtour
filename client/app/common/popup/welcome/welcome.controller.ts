@@ -34,7 +34,7 @@ export class WelcomeController implements ng.IController {
 		private $state: ng.ui.IStateService,
 		private $mdDialog,
 		private $mdSidenav,
-		private UserSession,
+		private UserSessionService,
 		private nzTour,
 	) {
 	  'ngInject';

@@ -1,4 +1,4 @@
-import * as angular from 'angular';
+import { NgModule } from 'ng-metadata/core';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import ngMaterial from 'angular-material';
@@ -6,26 +6,20 @@ import ngCookies from 'angular-cookies';
 import ngStorage from 'angular-storage';
 
 import { SettingsComponent } from './settings.component';
-import { SettingsFactory } from './settings.factory';
+import { SettingsService } from './settings.service';
 import { ConnectionDetailsService } from './connection/connection-details.service';
-import { CONNECTION_PROFILES } from './connection/connection-profiles.constant';
 
 import './settings.scss';
 
-export const SettingsModule = angular.module('settings', [
-  uiRouter,
-  ngAnimate,
-  ngMaterial,
-  ngCookies,
-  ngStorage
-])
-
-.component('userSettings', SettingsComponent)
-
-.factory('SettingsFactory', SettingsFactory)
-
-.service('ConnectionDetails', ConnectionDetailsService)
-
-.constant('CONNECTION_PROFILES', CONNECTION_PROFILES)
-
-.name;
+@NgModule({
+  imports: [
+    uiRouter,
+    ngAnimate,
+    ngMaterial,
+    ngCookies,
+    ngStorage
+  ],
+  declarations: [SettingsComponent],
+  providers: [SettingsService, ConnectionDetailsService]
+})
+export class SettingsModule {}

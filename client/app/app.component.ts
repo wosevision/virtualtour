@@ -5,9 +5,12 @@ import {
 import aframe from 'aframe';
 
 import { AppStateService } from './app-state.service';
+import { UserSessionService } from './common/user/user-session.service';
 import { DrilldownService } from './components/drilldown/drilldown.service';
+
 import { TITLEBAR_OPTS } from './components/titlebar/titlebar-options.constant';
 import { BUTTONBAR_VIEWS } from './components/buttonbar/buttonbar-views.constant';
+
 
 import template from './app.html';
 
@@ -77,7 +80,7 @@ export class AppComponent {
     @Inject('$mdSidenav') private $mdSidenav, 
     @Inject('$mdMedia') private $mdMedia, 
     @Inject('$popupWindow') private $popupWindow, 
-    @Inject('UserSession') private UserSession,
+    private UserSessionService: UserSessionService,
     private DrilldownService: DrilldownService,
     private AppStateService: AppStateService
   ) {}
@@ -102,8 +105,8 @@ export class AppComponent {
 
     console.info('[app.controller] $onInit AppStateService.init()');
 
-    if (this.UserSession.settings) {
-      const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSession.settings;
+    if (this.UserSessionService.settings) {
+      const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSessionService.settings;
 
       if (showWelcome.val) {
         this.$timeout(this.showWelcomeMsg.bind(this), this.WELCOME_MSG_DELAY);
@@ -115,7 +118,7 @@ export class AppComponent {
       this.toolbar.condensed = toolbarCondensed.val;
       this.toolbar.sidebar = this.$mdSidenav('right');
 
-      console.info('[app.controller] $onInit AppStateService.init()', this.UserSession.settings);
+      console.info('[app.controller] $onInit AppStateService.init()', this.UserSessionService.settings);
     }
 
     this.drilldown = { structure: await this.getDrilldownStructure() };
@@ -146,7 +149,7 @@ export class AppComponent {
   }
 
   showSettingsMsg() {
-    const autoconfig = this.UserSession.usage.auto;
+    const autoconfig = this.UserSessionService.usage.auto;
     if (autoconfig && autoconfig.val) {
       this.$popupWindow.toast('primary', {
         message: 'Data usage settings auto-configured to your device!',

@@ -26,7 +26,7 @@ export class SkyService {
 
   constructor (
     private $tourApi: TourResourceService,
-    private UserSession: UserSessionService
+    private UserSessionService: UserSessionService
   ) {
     'ngInject';
     this.imageApiUrl = GLOBAL_SETTINGS.imageApiUrl;
