@@ -1,3 +1,4 @@
+import { Inject, Injectable } from 'ng-metadata/core';
 import { element } from 'angular';
 import aframe from 'aframe';
 
@@ -8,6 +9,7 @@ import { GLOBAL_SETTINGS } from '../../../common/global.constant';
 
 const COMPRESS_MAX = 100, COMPRESS_FACTOR = 12;
 
+@Injectable()
 /**
  * The $aframeSky class is a service responsible for
  * the business logic of the aframeSky component.
@@ -25,10 +27,9 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    private $tourApi: TourResourceService,
+    @Inject('$tourApi') private $tourApi: TourResourceService,
     private UserSessionService: UserSessionService
   ) {
-    'ngInject';
     this.imageApiUrl = GLOBAL_SETTINGS.imageApiUrl;
   }
   /**
