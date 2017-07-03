@@ -1,3 +1,4 @@
+import { UserSessionService } from '../../user/user-session.service';
 import {
   TOUR_CONFIG,
   TOUR_STEPS,
@@ -34,8 +35,8 @@ export class WelcomeController implements ng.IController {
 		private $state: ng.ui.IStateService,
 		private $mdDialog,
 		private $mdSidenav,
-		private UserSessionService,
 		private nzTour,
+    private UserSessionService: UserSessionService,
 	) {
 	  'ngInject';
 		this.welcomeTipsList;

@@ -22,7 +22,7 @@ import template from './settings.html';
  */
 export class SettingsComponent implements ng.IController {
   isLoggedIn: Function;
-  user: vt.ITourUser;
+  user: Partial<vt.ITourUser>;
   settings;
   usage;
   connection: boolean | { loading: boolean } | vt.INetworkConnection;
@@ -51,7 +51,7 @@ export class SettingsComponent implements ng.IController {
    * view elements; opens accordion to expose settings to user.
    */
   $onInit() {
-    this.isLoggedIn = this.UserAuth.isAuthenticated;
+    this.isLoggedIn = this.UserAuthService.isAuthenticated;
     this.user = this.UserSessionService.user;
     this.settings = this.UserSessionService.settings;
     this.usage = this.UserSessionService.usage;
@@ -89,7 +89,7 @@ export class SettingsComponent implements ng.IController {
       }
     });
 
-    this.$scope.$on(this.AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
+    this.$scope.$on(AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
     
     this.getUsageLevel();
   }
@@ -110,17 +110,17 @@ export class SettingsComponent implements ng.IController {
   /**
    * Prompts user for login using `$popupWindow` service's `login()` dialog.
    */
-  promptLogin(): ng.IPromise<any> {
+  promptLogin(): Promise<any> {
     return this.$popupWindow.login();
   }
   /**
-   * Logs user out directly with `UserAuth.logout()`.
+   * Logs user out directly with `UserAuthService.logout()`.
    */
   logout() {
     const backdrop = this.$mdUtil.createBackdrop(this.$scope, "md-dialog-backdrop md-opaque");
     backdrop[0].tabIndex = -1;
     this.$animate.enter(backdrop, element(document.body), null);
-    this.UserAuth.logout().then(() => {
+    this.UserAuthService.logout().then(() => {
       this.$animate.leave(backdrop);
       this.collapseAll();
     });

@@ -2,7 +2,11 @@ import { isDefined, equals } from 'angular';
 import { Inject, Injectable } from 'ng-metadata/core';
 
 import { SettingsService } from '../../components/settings/settings.service';
-import { USER_DEFAULTS, USER_ROLES, AUTH_EVENTS } from './user-defaults.constant';
+import {
+  USER_DEFAULTS,
+  USER_ROLES,
+  AUTH_EVENTS
+} from './user-defaults.constant';
 
 @Injectable()
 /**
@@ -51,7 +55,7 @@ export class UserSessionService {
   			const { isAdmin, isEditor, isContributor } = user;
   			(isAdmin) && this.roles.push(this._roles.admin);
   			(isEditor) && this.roles.push(this._roles.editor);
-  			(isContributor) && this.roles.push(this._roles.Contributor);''
+  			(isContributor) && this.roles.push(this._roles.contributor);''
   		} else {
   			/**
   			 * Looks inside SettingsService for user data matching the pattern
@@ -65,14 +69,14 @@ export class UserSessionService {
   			 * avoid assignment errors (i.e. `this.user.settings[key] = ...`)
   			 */
   			this.user = {
-  				settings: {},
-  				usage: {}
+  				settings: <vt.ITourUserSettings>{},
+  				usage: <vt.ITourUserUsage>{}
   			}
 
   			// Use the UserSession's getter/setters to merge the found setting
   			// values into USER_DEFAULTS via the user model.
-  			this.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
-  			this.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
+  			this.user.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
+  			this.user.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
 
   		}
       if (!this.user || !this.user.settings || !this.user.usage) {
@@ -108,8 +112,8 @@ export class UserSessionService {
 	destroy(): Promise<vt.ITourUser> {
     return new Promise(resolve => {
       this.user = {
-        settings: {},
-        usage: {}
+        settings: <vt.ITourUserSettings>{},
+        usage: <vt.ITourUserUsage>{}
       };
       this.roles = null;
       this.userId = null;

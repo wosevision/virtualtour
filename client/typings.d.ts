@@ -181,9 +181,9 @@ declare namespace vt {
     isContributor: boolean;
     isEditor: boolean;
     isAdmin: boolean;
-    usage: Partial<ITourUserUsage>;
-    settings: Partial<ITourUserSettings>,
-    avatar: Partial<ITourUserAvatar>,
+    usage: ITourUserUsage;
+    settings: ITourUserSettings,
+    avatar: ITourUserAvatar,
   }
 
   export interface ISceneLink extends ICMSMetadata {

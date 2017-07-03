@@ -25,7 +25,7 @@ export class UserAuthService {
    * @param  {object} user User object from db
    * @return {object}      User stored into session
    */
-  createSession(authenticated: vt.ITourUser | boolean = false): vt.ITourUser {
+  createSession(authenticated: vt.ITourUser | boolean = false): Promise<vt.ITourUser> {
   	console.log('[user-auth.service] createSession', authenticated);
     return this.UserSessionService.create(authenticated);
   }

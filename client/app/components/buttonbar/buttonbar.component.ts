@@ -6,6 +6,8 @@ import {
   EventEmitter
 } from 'ng-metadata/core';
 
+import { UserSessionService } from '../../common/user/user-session.service';
+
 import template from './buttonbar.html';
 
 @Component({
@@ -40,14 +42,14 @@ export class ButtonbarComponent implements ng.IController {
     @Inject('$document') private $document: ng.IDocumentService, 
     @Inject('$state') private $state: ng.ui.IStateService, 
     @Inject('$mdSidenav') private $mdSidenav, 
-    @Inject('UserSession') private UserSession
+    private UserSessionService: UserSessionService,
   ) { }
 
   /**
    * Getter property for whether user settings permit hint tooltips.
    */
   get showHints(): boolean {
-    return this.UserSession.settings && this.UserSession.settings.showHints.val;
+    return this.UserSessionService.settings && this.UserSessionService.settings.showHints.val;
   }
 
   /**
