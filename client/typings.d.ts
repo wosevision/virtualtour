@@ -136,7 +136,7 @@ declare namespace vt {
 
   export type IUsageLevel = [number, number, number]; // [imageQual, loadTime, dataUse]
   export interface ITourUserSetting {
-    val: number | boolean;
+    val: any;
     min: number;
     max: number;
     step: number;
@@ -291,7 +291,7 @@ declare namespace vt {
   }
 
   export interface IToolbar {
-    sidebar?,
+    sidebar?: any,
     views,
     blurredViews: string[],
     currentView: string,

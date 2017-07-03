@@ -96,9 +96,9 @@ export class WelcomeController implements ng.IController {
    * checkbox affects the user's settings.
    */
   syncSettings() {
-  	const currentSettings = this.UserSession.settings;
+  	const currentSettings = this.UserSessionService.settings;
   	currentSettings.showWelcome.val = this.showWelcome;
-  	this.UserSession.settings = currentSettings;
+  	this.UserSessionService.settings = currentSettings;
   }
 
 	buttonClick($event): Promise<any> {

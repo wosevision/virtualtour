@@ -48,7 +48,7 @@ export class SkyService {
 
   /**
    * Utility function for reading and parsing user settings
-   * based on aframe's isMobile() method and the UserSession
+   * based on aframe's isMobile() method and the UserSessionService
    * service's usage settings; parses into an object that
    * eventually becomes a Cloudinary URL component string.
    * 
@@ -59,13 +59,13 @@ export class SkyService {
    */
   getSettings() {
     const mobile = aframe.utils.device.isMobile(),
-          lowRes = !this.UserSession.usage.resolution.val;
+          lowRes = !this.UserSessionService.usage.resolution.val;
     const settings = {
       w: mobile||lowRes ? 2048 : 4096,
       h: mobile||lowRes ? 1024 : 2048,
       c: 'scale',
       f: 'auto',
-      q: COMPRESS_MAX - (COMPRESS_FACTOR * <number>this.UserSession.usage.compression.val)
+      q: COMPRESS_MAX - (COMPRESS_FACTOR * <number>this.UserSessionService.usage.compression.val)
     }
     return Object.keys(settings).map(key => `${key}_${settings[key]}`).join(',');
   }
@@ -76,14 +76,14 @@ export class SkyService {
    * potential candidates for preloading from the scene's
    * scenelinks.
    *
-   * If the `UserSession` service's preloading settings are
+   * If the `UserSessionService` service's preloading settings are
    * set to 1 or 2, it returns the full list for further
    * manipulation; otherwise, it returns an empty array
    * (0/no preload).
    */
   getPreloadList(id: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      switch(this.UserSession.usage.preloading.val) {
+      switch(this.UserSessionService.usage.preloading.val) {
         case 0:
           resolve([]);
           break;
