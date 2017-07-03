@@ -16,10 +16,8 @@ import template from './app.html';
 
 @Component({
   selector: 'app',
-  // moduleId: module.id,
   template,
   legacy: {
-    controllerAs: 'mc',
     transclude: true,
   }
 })

@@ -80,5 +80,4 @@ import './app.scss';
   providers: [AppConfig, AppStateService],
   declarations: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
