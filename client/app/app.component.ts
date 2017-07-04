@@ -72,20 +72,20 @@ export class AppComponent {
   drilldown: { structure: any };
 
   constructor(
+    private UserSessionService: UserSessionService,
+    private DrilldownService: DrilldownService,
+    private AppStateService: AppStateService,
     @Inject('$scope') private $scope, 
     @Inject('$state') private $state, 
     @Inject('$timeout') private $timeout, 
     @Inject('$mdSidenav') private $mdSidenav, 
     @Inject('$mdMedia') private $mdMedia, 
-    @Inject('$popupWindow') private $popupWindow, 
-    private UserSessionService: UserSessionService,
-    private DrilldownService: DrilldownService,
-    private AppStateService: AppStateService
+    @Inject('$popupWindow') private $popupWindow,
   ) {}
 
   async $onInit() {
 
-    console.log('App state', this.AppStateService);
+    console.log('[app.component] $onInit AppStateService', this.AppStateService);
 
     this.$scope.$watch(
       () => ({

@@ -27,8 +27,8 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    @Inject('$tourApi') private $tourApi: TourResourceService,
-    private UserSessionService: UserSessionService
+    private UserSessionService: UserSessionService,
+    private TourResourceService: TourResourceService,
   ) {
     this.imageApiUrl = GLOBAL_SETTINGS.imageApiUrl;
   }
@@ -90,7 +90,7 @@ export class SkyService {
           break;
         case 1:
         case 2:
-          this.$tourApi.preload.get({ id }).$promise.then(data => resolve(data));
+          this.TourResourceService.preload.get({ id }).$promise.then(data => resolve(data));
           break;
         default: 
           reject('Can\'t determine preload settings')

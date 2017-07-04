@@ -23,10 +23,10 @@ export class UserSessionService {
   user: Partial<vt.ITourUser> = {};
 
 	constructor(
+    private SettingsService: SettingsService, 
     @Inject('$http') private $http: ng.IHttpService, 
     @Inject('$rootScope') private $rootScope: ng.IRootScopeService, 
     @Inject('$popupWindow') private $popupWindow,
-    private SettingsService: SettingsService, 
   ) { }
 	/**
 	 * This function creates a new user session, which is

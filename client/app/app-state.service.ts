@@ -1,14 +1,16 @@
 import { Inject, Injectable } from 'ng-metadata/core';
 
+import { UserAuthService } from './common/user/user-auth.service';
+import { AUTH_EVENTS } from './common/user/user-defaults.constant';
+
 @Injectable()
 export class AppStateService {
   constructor(
+    private UserAuthService: UserAuthService,
     @Inject('$rootScope') private $rootScope, 
     @Inject('$state') private $state, 
     @Inject('$transitions') private $transitions, 
-    @Inject('$popupWindow') private $popupWindow, 
-    @Inject('UserAuth') private UserAuth,
-    @Inject('AUTH_EVENTS') private AUTH_EVENTS
+    @Inject('$popupWindow') private $popupWindow,
   ) {
     /**
      * Report on exceptions. The `handler:exception` event is fired
@@ -25,7 +27,7 @@ export class AppStateService {
     });
 
     $transitions.onStart({}, function(trans) {
-      const auth = trans.injector().get('UserAuth');
+      const auth = trans.injector().get('UserAuthService');
       let toState = trans.$to(),
           fromState = trans.$from();
       console.log('[app.run] $transitions.onStart', trans, toState, fromState);
@@ -75,8 +77,8 @@ export class AppStateService {
 
   init() {
     console.log('[app-state.service] init');
-    return this.UserAuth.initAuth().then(user => {
-      this.$rootScope.$broadcast(this.AUTH_EVENTS.loginSuccess, user);
+    return this.UserAuthService.initAuth().then(user => {
+      this.$rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
       console.log('[app-state.service] init.UserAuth.initAuth()', user);
       return user;
     });

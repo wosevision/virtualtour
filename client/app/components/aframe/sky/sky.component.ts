@@ -22,7 +22,7 @@ import { SkyService } from './sky.service';
  */
 export class SkyComponent implements ng.IController {
 
-  @Input() sky;
+  @Input() sky: string;
   // @Input() preload;
 
   compileSkyEl: (callback: ng.ICloneAttachFunction) => JQuery;
@@ -42,10 +42,10 @@ export class SkyComponent implements ng.IController {
    * - Attaches the SkyService service directly
    */
   constructor(
+    private SkyService: SkyService,
+    @Host() private SceneComponent: SceneComponent,
     @Inject('$scope') private $scope: ng.IScope,
     @Inject('$compile') private $compile: ng.ICompileService,
-    @Host() private SceneComponent: SceneComponent,
-    private SkyService: SkyService,
   ) {
     this.compileSkyEl = (callback) => $compile('<a-sky ng-src="{{ \'#\' + $ctrl.loadedSky }}" />')($scope, callback);
   }

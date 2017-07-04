@@ -1,13 +1,13 @@
 import { Inject, Injectable } from 'ng-metadata/core';
 
-// import { TourResourceService } from '../../common/resource/tour-resource.service';
+import { TourResourceService } from '../../common/resource/tour-resource.service';
 
 @Injectable()
 export class DrilldownService {
-	structure: vt.IDrilldownItem[];
+	structure: vt.IDrilldownItem[] | Promise<vt.IDrilldownItem[]>;
 
 	constructor(
-		@Inject('$tourApi') private TourResourceService//: TourResourceService,
+		private TourResourceService: TourResourceService,
 	) { }
 
 	getLocations(): Promise<vt.IDrilldownItem[]> {

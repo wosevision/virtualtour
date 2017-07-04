@@ -29,13 +29,13 @@ export class SettingsComponent implements ng.IController {
   usageLevel: string[];
   
   constructor(
+    private UserAuthService: UserAuthService, 
+    private UserSessionService: UserSessionService, 
+    private ConnectionDetailsService: ConnectionDetailsService,
     @Inject('$scope') private $scope, 
     @Inject('$animate') private $animate, 
     @Inject('$mdUtil') private $mdUtil, 
     @Inject('$popupWindow') private $popupWindow,
-    private UserAuthService: UserAuthService, 
-    private UserSessionService: UserSessionService, 
-    private ConnectionDetailsService: ConnectionDetailsService
   ) { }
   /**
    * Lifecycle hook to initialize dependencies when component

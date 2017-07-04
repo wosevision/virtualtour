@@ -38,11 +38,11 @@ export class ButtonbarComponent implements ng.IController {
   sceneEl: AFrame.Scene = document.querySelector('a-scene');
 
   constructor(
+    private UserSessionService: UserSessionService,
     @Inject('$scope') private $scope: ng.IScope, 
     @Inject('$document') private $document: ng.IDocumentService, 
     @Inject('$state') private $state: ng.ui.IStateService, 
     @Inject('$mdSidenav') private $mdSidenav, 
-    private UserSessionService: UserSessionService,
   ) { }
 
   /**

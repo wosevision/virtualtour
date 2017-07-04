@@ -15,8 +15,8 @@ import { UserSessionService } from './user-session.service';
  */
 export class UserAuthService {
   constructor(
+    private UserSessionService: UserSessionService,
     @Inject('$http') private $http, 
-    private UserSessionService: UserSessionService
   ) { }
 
   /**

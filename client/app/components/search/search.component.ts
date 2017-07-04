@@ -1,3 +1,5 @@
+import { SEARCH_FILTERS } from './search-filters.constant';
+
 import template from './search.html';
 
 interface SearchParams {
@@ -19,8 +21,7 @@ export const SearchComponent: ng.IComponentOptions = {
     constructor(
       private $log: ng.ILogService, 
       private $http: ng.IHttpService, 
-      private $state: ng.ui.IStateService, 
-      private SEARCH_FILTERS
+      private $state: ng.ui.IStateService
     ) {
       'ngInject';
 
