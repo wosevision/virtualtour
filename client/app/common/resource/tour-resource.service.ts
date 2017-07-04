@@ -1,5 +1,8 @@
+import { Inject, Injectable } from 'ng-metadata/core';
+
 import { GLOBAL_SETTINGS } from '../global.constant';
 
+@Injectable()
 export class TourResourceService {
   location: ng.resource.IResourceClass<any[]>;
   building: ng.resource.IResourceClass<any[]>;
@@ -7,17 +10,17 @@ export class TourResourceService {
   preload: ng.resource.IResourceClass<any[]>;
   entity: ng.resource.IResourceClass<any[]>;
   constructor(
-    private $resource
+    @Inject('$resource') private $resource,
   ) {
     'ngInject';
-    this.location = $resource(GLOBAL_SETTINGS.apiUrl + '/locations/:id'),
-    this.building = $resource(GLOBAL_SETTINGS.apiUrl + '/buildings/:id'),
-    this.scene = $resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id', null, {
+    this.location = this.$resource(GLOBAL_SETTINGS.apiUrl + '/locations/:id'),
+    this.building = this.$resource(GLOBAL_SETTINGS.apiUrl + '/buildings/:id'),
+    this.scene = this.$resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id', null, {
       'update': { method: 'PATCH' }
     });
-    this.preload = $resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id/preload', null, {
+    this.preload = this.$resource(GLOBAL_SETTINGS.apiUrl + '/scenes/:id/preload', null, {
       'get': {method:'GET', isArray:true}
     });
-    this.entity = $resource(GLOBAL_SETTINGS.apiUrl + '/entities/:id')
+    this.entity = this.$resource(GLOBAL_SETTINGS.apiUrl + '/entities/:id')
   }
 }
