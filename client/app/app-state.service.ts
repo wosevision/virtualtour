@@ -1,11 +1,13 @@
+import { UserAuthService } from './common/user/user-auth.service';
+import { AUTH_EVENTS } from './common/user/user-defaults.constant';
+
 export class AppStateService {
   constructor(
     private $rootScope, 
     private $state, 
     private $transitions, 
     private $popupWindow, 
-    private UserAuth,
-    private AUTH_EVENTS
+    private UserAuth: UserAuthService,
   ) {
     'ngInject';
     /**
@@ -74,7 +76,7 @@ export class AppStateService {
   init() {
     console.log('[app-state.service] init');
     return this.UserAuth.initAuth().then(user => {
-      this.$rootScope.$broadcast(this.AUTH_EVENTS.loginSuccess, user);
+      this.$rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
       console.log('[app-state.service] init.UserAuth.initAuth()', user);
       return user;
     });

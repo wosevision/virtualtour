@@ -1,6 +1,8 @@
+import { ERROR_SUGGESTIONS } from './error-suggestions.constant';
+
 export class ErrorController implements ng.IController {
   suggest: number[];
-  suggestions: vt.IErrorSuggestion[] = this.suggest.map(i => this.ERROR_SUGGESTIONS[i]);
+  suggestions: vt.IErrorSuggestion[] = this.suggest.map(i => ERROR_SUGGESTIONS[i]);
 
   constructor(
     private $sce: ng.ISCEService,
@@ -8,7 +10,6 @@ export class ErrorController implements ng.IController {
     private $state: ng.ui.IStateService,
     private $mdSidenav,
     private $mdDialog,
-    private ERROR_SUGGESTIONS: vt.IErrorSuggestion[],
   ) {
   	'ngInject';
   }
