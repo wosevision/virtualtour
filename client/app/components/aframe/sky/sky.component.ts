@@ -1,8 +1,9 @@
 import {
   Component,
+  OnInit,
   Inject,
   Input,
-  Host
+  Host,
 } from 'ng-metadata/core';
 
 import { SceneComponent } from '../scene/scene.component';
@@ -20,7 +21,7 @@ import { SkyService } from './sky.service';
  * loaded, and attaches `<img/>`s to the scenes assets
  * preload bucket based on the `SkyService` service's instructions.
  */
-export class SkyComponent implements ng.IController {
+export class SkyComponent implements ng.IController, OnInit {
 
   @Input() sky: string;
   // @Input() preload;
@@ -54,7 +55,8 @@ export class SkyComponent implements ng.IController {
    * Store JQLite-wrapped `<a-scene>` and `<a-assets>`;
    * init internal check for right click event.
    */
-  $onInit() {
+  ngOnInit() {
+    console.log('[sky.component] ngOnInit', this.SceneComponent)
     /**
      * Cache vars to store JQLite <img> and <a-sky>
      * Flag for init sky load and array of loaded skies
@@ -71,7 +73,7 @@ export class SkyComponent implements ng.IController {
    * always return `null` or `undefined`.
    */
   $onChanges(newData: ng.IOnChangesObject) {
-    if (newData.sky.isFirstChange()) return;
+    if (!newData.sky || newData.sky.isFirstChange()) return;
     let skyUrl = newData.sky.currentValue;
     if (skyUrl) this.setSky(skyUrl, this.assetIdFromSkyUrl(skyUrl));
   }
