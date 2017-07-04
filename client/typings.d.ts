@@ -231,6 +231,16 @@ declare namespace vt {
     position: string;
     hideDelay: number;
   }
+  
+  type PromiseOrVoid = void | Promise<any>;
+  interface IEditorLocals {
+    item;
+    newItem?: boolean;
+    publish?(): PromiseOrVoid;
+    saveDraft?(): PromiseOrVoid;
+    removeThis?(): PromiseOrVoid;
+    closeDialog?(): PromiseOrVoid;
+  }
 
   export interface INetworkConnectionVal {
     val: boolean | number;

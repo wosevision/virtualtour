@@ -4,23 +4,23 @@ export class DrilldownService {
 	structure: vt.IDrilldownItem[];
 
 	constructor(
-		private $tourApi: TourResourceService,
+		private TourResourceService: TourResourceService,
 	) {
 		'ngInject';
 	}
 
 	getLocations(): Promise<vt.IDrilldownItem[]> {
-		return this.$tourApi.location.query().$promise;
+		return this.TourResourceService.location.query().$promise;
 	}
 
 	getBuildings(parent): Promise<vt.IDrilldownItem[]> {
-		return this.$tourApi.building.query({
+		return this.TourResourceService.building.query({
 			filter: { parent }
 		}).$promise;
 	}
 
 	getScenes(parent): Promise<vt.IDrilldownItem[]> {
-		return this.$tourApi.scene.query({
+		return this.TourResourceService.scene.query({
 			filter: { parent }
 		}).$promise;
 	}

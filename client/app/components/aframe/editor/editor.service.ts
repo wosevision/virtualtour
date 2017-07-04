@@ -8,16 +8,16 @@ import { DraftResourceService } from '../../../common/resource/draft-resource.se
  * Service for handling all CRUD operations pertaining to scenes.
  *
  * Contains methods for drafting and publishing; interfaces directly
- * with the `$aframeScene` service for a reference to the current
+ * with the `SceneService` service for a reference to the current
  * scene object. Uses:
  * 
  * - ng-material's `$mdToast` service to display UI messages to user
- * - the `$tourApi`'s scene resource and the `DraftResource` for CRUD ops
+ * - the `TourResourceService`'s scene resource and the `DraftResourceService` for CRUD ops
  * - the 'EDITOR_MESSAGES' constant to provide prebuilt dialogs and toasts
  * 
  * @param  {object} $mdToast        ng-material's toast service
- * @param  {object} $tourApi        Tour $resource factory service
- * @param  {object} DraftResource   Draft $resource factory
+ * @param  {object} TourResourceService        Tour $resource factory service
+ * @param  {object} DraftResourceService   Draft $resource factory
  * @param  {object} EDITOR_MESSAGES Constant to define toast configs
  */
 export class EditorService {
@@ -29,9 +29,9 @@ export class EditorService {
 
 	constructor(
     private $mdToast, 
-    private $aframeScene: SceneService, 
-    private $tourApi: TourResourceService, 
-    private DraftResource: DraftResourceService, 
+    private SceneService: SceneService, 
+    private TourResourceService: TourResourceService, 
+    private DraftResourceService: DraftResourceService, 
     private EDITOR_MESSAGES: {
       [type: string]: vt.ISceneEditorMessage
     }
@@ -53,7 +53,7 @@ export class EditorService {
 	}
 
 	/**
-	 * Sends an HTTP `POST` or `PATCH` request via the `$tourApi`'s
+	 * Sends an HTTP `POST` or `PATCH` request via the `TourResourceService`'s
 	 * scene resource to publish (save) the current scene.
 	 *
 	 * If the scene is new, the first parameter of this method can be
@@ -63,7 +63,7 @@ export class EditorService {
 	 * the scene already exists and is being updated.
 	 * 
 	 * In the case of an update, Lodash's `pick()` method is used to grab
-	 * applicable properties from the current `$aframeScene.scene` _without_
+	 * applicable properties from the current `SceneService.scene` _without_
 	 * creating ones that don't exist. A new `updatedAt` property is assigned
 	 * a date for every action; if the data was new, the same date is given
 	 * to a `createdAt` property.
@@ -77,7 +77,7 @@ export class EditorService {
     notify: boolean = true
   ): Promise<vt.IScene> {
 		let action = 'update';
-		const newData = _newData || pick(this.$aframeScene.scene, [
+		const newData = _newData || pick(this.SceneService.scene, [
 			'_id',
 			'code',
 			'name',
@@ -95,11 +95,11 @@ export class EditorService {
 			action = 'save';
 		}
 
-  	return this.$tourApi.scene[action](_newData ? null : { 
+  	return this.TourResourceService.scene[action](_newData ? null : { 
   		id: newData._id
   	}, newData)
   	.$promise.then(scene => {
-			this.lastPublished = this.$aframeScene.scene || scene;
+			this.lastPublished = this.SceneService.scene || scene;
   		notify&&this.$mdToast.show(this.toasts.publish);
   		return scene;
   	});
@@ -114,10 +114,10 @@ export class EditorService {
 	 * @return {Promise} 					Resolves to saved draft
 	 */
 	saveDraft(notify: boolean = true): Promise<{ content: vt.IScene }> {
-  	return this.DraftResource.save({
-  		content: this.$aframeScene.scene,
+  	return this.DraftResourceService.save({
+  		content: this.SceneService.scene,
   		kind: 'Scene',
-  		original: this.$aframeScene.scene._id
+  		original: this.SceneService.scene._id
   	}).$promise.then(draft => {
 	  	this.lastDraft = draft.content;
 	    notify&&this.$mdToast.show(this.toasts.saveDraft).then(response => {
@@ -131,17 +131,17 @@ export class EditorService {
 
 	/**
 	 * If there is scene data available, queries the database by the current
-	 * scene ID via the `DraftResource` factory to check for active drafts
+	 * scene ID via the `DraftResourceService` factory to check for active drafts
 	 * held by the current logged in user.
 	 * 
 	 * @param  {Boolean}  notify 		Whether to notify the user (toast)
 	 * @return {Promise}            Promise that will resolve to draft list
 	 */
 	checkForDraft(notify = true) {
-		return (this.$aframeScene.scene)&&this.DraftResource.query({
+		return (this.SceneService.scene)&&this.DraftResourceService.query({
 			sort: '-updatedAt',
 			filter: {
-				original: this.$aframeScene.scene._id
+				original: this.SceneService.scene._id
 			}
 		}).$promise;
 	}
@@ -170,7 +170,7 @@ export class EditorService {
 	 * @return {Promise} 					  Resolves to content of the loaded draft
 	 */
 	loadDraft(id: string, notify: boolean = true): Promise<vt.IScene> {
-  	return this.DraftResource.get({ id }).$promise.then(draft => {
+  	return this.DraftResourceService.get({ id }).$promise.then(draft => {
 	  	this.lastDraft = draft.content;
 	    notify && this.$mdToast.show(this.toasts.draftLoaded)
 		    .then( response => ( response === 'ok' ) && this.publish() );
@@ -198,7 +198,7 @@ export class EditorService {
 	 * @return {Promise} 					  Resolves to state of confirm toast
 	 */
 	discardDraft(id:string, notify: boolean = true): Promise<any> {
-  	return this.DraftResource.remove({ id }).$promise
+  	return this.DraftResourceService.remove({ id }).$promise
 	  	.then( discardedDraft => notify && this.$mdToast.show(this.toasts.discardDraft) );
 	}
 
@@ -211,7 +211,7 @@ export class EditorService {
 	 * offers to publish once removed (which will commit the changes).
 	 *
 	 * @example
-	 * $aframeScene.removeItemFrom(
+	 * SceneService.removeItemFrom(
 	 *   { name: 'thing' },
 	 *   [{ name: 'thing' }, { name: 'thung' }, { name: 'thong' }],
 	 *   () => this.updateView()

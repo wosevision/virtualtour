@@ -7,6 +7,6 @@ export const SkyModule = angular.module('aframe.sky', [])
 
 .component('aframeSky', SkyComponent)
 
-.service('$aframeSky', SkyService)
+.service('SkyService', SkyService)
 
 .name;

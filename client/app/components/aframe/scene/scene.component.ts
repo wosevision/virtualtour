@@ -24,8 +24,8 @@ export class SceneController implements ng.IController {
 
   constructor(
     private $element: ng.IRootElementService, 
-    private $aframeScene: SceneService, 
-    private $aframeSky: SkyService
+    private SceneService: SceneService, 
+    private SkyService: SkyService
   ) {
     'ngInject';
   }
@@ -76,23 +76,23 @@ export class SceneController implements ng.IController {
   /**
    * Lifecycle hook to run a check on every digest loop cycle.
    * 
-   * Checks $aframeScene's current scene object; proceeds if
+   * Checks SceneService's current scene object; proceeds if
    * scene is defined and calls `setScene()` on the incoming data.
    *
-   * Checks if there is a sky active on $aframeSky, and if so, if
+   * Checks if there is a sky active on SkyService, and if so, if
    * it is different from the current active sky. Sets the conroller's
    * sky if they differ or if the controller has no sky.
    */
   $doCheck() {
-    if (isDefined(this.$aframeScene.scene)) {
-      if (this.$aframeScene.scene._id && this.$aframeScene.scene._id !== this._currentSceneId) {
-        this.setScene(this.$aframeScene.scene);
-        console.log('[scene.component] $doCheck scene', this.$aframeScene.scene);
+    if (isDefined(this.SceneService.scene)) {
+      if (this.SceneService.scene._id && this.SceneService.scene._id !== this._currentSceneId) {
+        this.setScene(this.SceneService.scene);
+        console.log('[scene.component] $doCheck scene', this.SceneService.scene);
       }
     } else return;
-    if (this.$aframeSky.sky) {
-      if (!this.sky || this.$aframeSky.sky !== this.sky) {
-        this.sky = this.$aframeSky.sky;
+    if (this.SkyService.sky) {
+      if (!this.sky || this.SkyService.sky !== this.sky) {
+        this.sky = this.SkyService.sky;
         console.log('[scene.component] $doCheck sky', this.sky);
       }
     }

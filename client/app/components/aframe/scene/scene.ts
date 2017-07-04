@@ -9,6 +9,6 @@ export const SceneModule = angular.module('aframe.scene', [])
 
 .component('aframeScene', SceneComponent)
 
-.service('$aframeScene', SceneService)
+.service('SceneService', SceneService)
 
 .name;
