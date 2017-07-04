@@ -10,7 +10,6 @@ export class ErrorController implements ng.IController {
     private $state: ng.ui.IStateService,
     private $mdSidenav,
     private $mdDialog,
-    private ERROR_SUGGESTIONS: vt.IErrorSuggestion[],
   ) {
   	'ngInject';
   }
