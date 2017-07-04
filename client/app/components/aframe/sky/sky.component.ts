@@ -1,4 +1,5 @@
 import { SkyService } from './sky.service';
+import { SceneController } from '../scene/scene.component';
 
 export const SkyComponent: ng.IComponentOptions = {
   bindings: {
@@ -28,7 +29,7 @@ export const SkyComponent: ng.IComponentOptions = {
     _skyLoadedList: string[];
     loadedSky: string;
 
-    SceneCtrl: ng.IController;
+    SceneCtrl: SceneController;
 
     /**
      * Initializes the controller's dependencies:

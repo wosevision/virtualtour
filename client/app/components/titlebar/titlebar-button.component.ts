@@ -1,15 +1,16 @@
 export const TitleBarButtonComponent: ng.IComponentOptions = {
   bindings: {
     onClick: '&',
+    active: '<',
+    id: '@',
     label: '@',
     class: '@',
-    active: '<',
     tooltip: '<',
     icon: '<'
   },
   template: `<md-button
     class="icon-button {{ ::$ctrl.class }}"
-    ng-click="$ctrl.onClick()"
+    ng-click="$ctrl.buttonClick()"
     ng-class="{ 'active': $ctrl.active }"
     aria-label="{{ ::label }}">
     <ng-md-icon
@@ -20,5 +21,20 @@ export const TitleBarButtonComponent: ng.IComponentOptions = {
       {{ $ctrl.active ? ($ctrl.tooltip[0] || $ctrl.tooltip) : ($ctrl.tooltip[1] || $ctrl.tooltip) }}
     </md-tooltip>
     <span ng-if="::(!$ctrl.tooltip)">{{ ::$ctrl.label }}</span>
-  </md-button>`
+  </md-button>`,
+  controller: class TitleBarButtonController implements ng.IController {
+    onClick: (event) => void;
+    active: boolean;
+    id: string;
+    label: string;
+    class: string;
+    tooltip: string;
+    icon: string;
+
+    buttonClick() { 
+      this.onClick({
+        $event: this.id
+      }); 
+    }
+  }
 };

@@ -8,7 +8,7 @@ import template from './error.html';
 
 import './error.scss';
 
-const errorModule = angular.module('popup.error', [
+export const ErrorModule = angular.module('popup.error', [
   uiRouter,
   ngSanitize,
   ngMaterial
@@ -90,5 +90,3 @@ const errorModule = angular.module('popup.error', [
 }])
 
 .name;
-
-export default errorModule;

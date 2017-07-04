@@ -1,34 +1,31 @@
 import { isDefined, equals } from 'angular';
 
+import { SettingsService } from '../../components/settings/settings.service';import { 
+  USER_DEFAULTS, 
+  USER_ROLES, 
+  AUTH_EVENTS 
+} from './user-defaults.constant'; 
 /**
  * User session management service.
  */
 export class UserSessionService {
-  _roles;
-  _settings;
-  _usage;
+  _roles = USER_ROLES;
+  _settings = USER_DEFAULTS.settings;
+  _usage = USER_DEFAULTS.usage;
 
   roles: string[];
 
   userId: string;
-  user: Partial<vt.ITourUser>;
+  user: Partial<vt.ITourUser> = {};
 
 	constructor(
     private $http: ng.IHttpService, 
     private $rootScope: ng.IRootScopeService, 
     private $popupWindow, 
-    private SettingsFactory, 
-    private USER_ROLES, 
-    private USER_DEFAULTS: vt.ITourUser
+    private SettingsService: SettingsService,
   ) {
 	  'ngInject';
-
-		this._roles = USER_ROLES;
-		this._settings = USER_DEFAULTS.settings;
-		this._usage = USER_DEFAULTS.usage;
-
-		this.user = {};
-	}
+  }
 	/**
 	 * This function creates a new user session, which is
 	 * necessary to store application settings regardless of
@@ -56,28 +53,28 @@ export class UserSessionService {
   			const { isAdmin, isEditor, isContributor } = user;
   			(isAdmin) && this.roles.push(this._roles.admin);
   			(isEditor) && this.roles.push(this._roles.editor);
-  			(isContributor) && this.roles.push(this._roles.Contributor);''
+  			(isContributor) && this.roles.push(this._roles.contributor);''
   		} else {
   			/**
-  			 * Looks inside SettingsFactory for user data matching the pattern
+  			 * Looks inside SettingsService for user data matching the pattern
   			 * defined in USER_DEFAULTS; store in temporary vars.
   			 */
-  			const _settings = this.SettingsFactory.get('settings'),
-  						_usage = this.SettingsFactory.get('usage');
+  			const _settings = this.SettingsService.get('settings'),
+  						_usage = this.SettingsService.get('usage');
 
   			/**
   			 * Init a 'blank' user with the required settings properties to
   			 * avoid assignment errors (i.e. `this.user.settings[key] = ...`)
   			 */
   			this.user = {
-  				settings: {},
-  				usage: {}
+  				settings: <vt.ITourUserSettings>{},
+  				usage: <vt.ITourUserUsage>{}
   			}
 
   			// Use the UserSession's getter/setters to merge the found setting
   			// values into USER_DEFAULTS via the user model.
-  			this.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
-  			this.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
+  			this.user.settings = _settings && !equals(_settings, {}) ? _settings : this._settings;
+  			this.user.usage = _usage && !equals(_usage, {}) ? _usage : this._usage;
 
   		}
       if (!this.user || !this.user.settings || !this.user.usage) {
@@ -90,7 +87,7 @@ export class UserSessionService {
 	/**
 	 * Checks the `userId` property to verify whether settings should
 	 * save to a logged in user; if not, saves them to localStorage using
-	 * the `SettingsFactory`.
+	 * the `SettingsService`.
 	 */
 	save() {
 		if (this.userId) {
@@ -102,8 +99,8 @@ export class UserSessionService {
         console.log('[user-session.service] save', user);
 			});
 		} else {
-			this.SettingsFactory.set('settings', this.settings);
-			this.SettingsFactory.set('usage', this.usage);
+			this.SettingsService.set('settings', this.settings);
+			this.SettingsService.set('usage', this.usage);
       console.log('[user-session.service] save', this.user);
 		}
 	}
@@ -113,8 +110,8 @@ export class UserSessionService {
 	destroy(): Promise<vt.ITourUser> {
     return new Promise(resolve => {
       this.user = {
-        settings: {},
-        usage: {}
+        settings: <vt.ITourUserSettings>{},
+        usage: <vt.ITourUserUsage>{}
       };
       this.roles = null;
       this.userId = null;
@@ -145,7 +142,7 @@ export class UserSessionService {
 	 * @param  {Object} [settings/usage] Incoming app settings to merge into user
 	 * @return {Object} 								 Merged app settings built from user
 	 */
-	get settings(): vt.ITourUserSettings {
+	get settings(): Partial<vt.ITourUserSettings> {
 		if (this.user.settings) {
 	  	Object.keys(this.user.settings).map(key => {
 	  		if (this._settings[key]) this._settings[key].val = this.user.settings[key];
@@ -153,7 +150,7 @@ export class UserSessionService {
 		  return this._settings;
 		}
 	}
-	set settings(settings: vt.ITourUserSettings) {
+	set settings(settings: Partial<vt.ITourUserSettings>) {
 	  if (isDefined(settings)) {
 	  	Object.keys(settings).map(key => {
 	  		if (this._settings[key]) this.user.settings[key] = settings[key].val;
@@ -161,7 +158,7 @@ export class UserSessionService {
 		  this.save();
 		}
 	}
-	get usage(): vt.ITourUserUsage {
+	get usage(): Partial<vt.ITourUserUsage> {
 		if (this.user.usage) {
 	  	Object.keys(this.user.usage).map(key => {
 	  		if (this._usage[key]) this._usage[key].val = this.user.usage[key];
@@ -169,7 +166,7 @@ export class UserSessionService {
 		  return this._usage;
 		}
 	}
-	set usage(usage: vt.ITourUserUsage) {
+	set usage(usage: Partial<vt.ITourUserUsage>) {
 	  if (isDefined(usage)) {
 	  	Object.keys(usage).map(key => {
 	  		if (this._usage[key]) this.user.usage[key] = usage[key].val;

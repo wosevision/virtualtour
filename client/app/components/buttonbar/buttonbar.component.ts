@@ -1,12 +1,14 @@
+import { UserSessionService } from '../../common/user/user-session.service'; 
+
 import template from './buttonbar.html';
 
 export const ButtonbarComponent: ng.IComponentOptions = {
   bindings: {
+    onSelect: '&',
     items: '<',
     open: '<?',
     condensed: '<?',
     mobile: '<?',
-    onSelect: '&'
   },
   /**
    * The buttonbar controller is responsible for managing when the sidebar
@@ -32,7 +34,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
       private $document: ng.IDocumentService, 
       private $state: ng.ui.IStateService, 
       private $mdSidenav, 
-      private UserSession
+      private UserSession: UserSessionService
     ) {
       'ngInject';
     }
@@ -41,7 +43,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
      * Getter property for whether user settings permit hint tooltips.
      */
     get showHints(): boolean {
-      return this.UserSession.settings && this.UserSession.settings.showHints.val;
+      return this.UserSession.settings && <boolean>this.UserSession.settings.showHints.val;
     }
 
     /**
@@ -57,7 +59,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
      * - If the **sidebar is open** and the **clicked button's state is different from the
      * active state**, the **sidebar should remain open and transition to the new state**.
      */
-    select(state: string) {
+    buttonSelect(state: string) {
       this.activeState = state;
       this.onSelect({
         $event: state

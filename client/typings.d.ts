@@ -74,7 +74,7 @@ declare namespace vt {
 
   export interface ICMSMetadata {
     _id: MongoId;
-    __v: number;
+    __v?: number;
     updatedBy?: string;
     updatedAt?: Date;
     createdBy?: string;
@@ -290,7 +290,19 @@ declare namespace vt {
     }
   }
 
-  export interface IToolbar {
+  export interface IDrilldownItem extends ICMSMetadata { 
+    _params: object; 
+    _level: string; 
+    _hidden: boolean; 
+    _active: boolean; 
+    default: string; 
+    children?: IDrilldownItem[]; 
+    label: string; 
+    name: string; 
+    code: string; 
+  }
+
+  export interface IButtonbar {
     sidebar?,
     views,
     blurredViews: string[],
@@ -299,7 +311,6 @@ declare namespace vt {
     condensed: boolean,
     toggle: () => void,
     condense: () => boolean,
-    onSelect: (state) => void,
     hasState: (state) => boolean,
     hasBlur: any
   }

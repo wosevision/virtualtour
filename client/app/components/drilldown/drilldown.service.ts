@@ -1,40 +1,31 @@
-interface DrilldownItem {
-	_params: object;
-	_level: string;
-	_id: string;
-	default: string;
-	children: DrilldownItem[];
-	label: string;
-	name: string;
-	code: string;
-}
+import { TourResourceService } from '../../common/resource/tour-resource.service'; 
 
 export class DrilldownService {
-	structure: DrilldownItem[];
+	structure: vt.IDrilldownItem[];
 
 	constructor(
-		private $tourApi,
+		private $tourApi: TourResourceService,
 	) {
 		'ngInject';
 	}
 
-	getLocations(): Promise<any> {
+	getLocations(): Promise<vt.IDrilldownItem[]> {
 		return this.$tourApi.location.query().$promise;
 	}
 
-	getBuildings(parent): Promise<any> {
+	getBuildings(parent): Promise<vt.IDrilldownItem[]> {
 		return this.$tourApi.building.query({
 			filter: { parent }
 		}).$promise;
 	}
 
-	getScenes(parent): Promise<any> {
+	getScenes(parent): Promise<vt.IDrilldownItem[]> {
 		return this.$tourApi.scene.query({
 			filter: { parent }
 		}).$promise;
 	}
 
-	async getDrilldown() {
+	async getDrilldown(): Promise<vt.IDrilldownItem[]> {
 
 		if (this.structure) return this.structure;
 
