@@ -10,7 +10,7 @@
 	</a-assets>
 
 	<!-- SKY -->
-	<aframe-sky sky="$ctrl.sky"></aframe-sky>
+	<aframe-sky [sky]="$ctrl.sky"></aframe-sky>
 	<a-sky src="#default_sky_bg" ng-if="!$ctrl.sky" animation__sky-rotate="property: rotation; dur: 90000; easing: linear; to: 0 360 0; loop: true;"></a-sky>
 
 	<!-- LIGHT -->
