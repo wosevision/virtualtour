@@ -4,6 +4,7 @@ import { isObject, isArray } from 'angular';
 import { SceneService } from '../scene/scene.service';
 import { TourResourceService } from '../../../common/resource/tour-resource.service';
 import { DraftResourceService } from '../../../common/resource/draft-resource.service';
+import { EDITOR_MESSAGES } from './editor-messages.constant';
 /**
  * Service for handling all CRUD operations pertaining to scenes.
  *
@@ -31,10 +32,7 @@ export class EditorService {
     private $mdToast, 
     private SceneService: SceneService, 
     private TourResourceService: TourResourceService, 
-    private DraftResourceService: DraftResourceService, 
-    private EDITOR_MESSAGES: {
-      [type: string]: vt.ISceneEditorMessage
-    }
+    private DraftResourceService: DraftResourceService,
   ) {
 		'ngInject';
 		/**

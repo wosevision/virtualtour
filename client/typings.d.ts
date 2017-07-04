@@ -222,6 +222,8 @@ declare namespace vt {
     sceneLinks: ISceneLink[],
     panorama: IPanorama
   }
+  type ISceneResource = ng.resource.IResource<IScene> | IScene;
+  type ISceneResourceArray = ng.resource.IResourceArray<IScene[]> | IScene[];
 
   export interface ISceneEditorMessage {
     textContent: string;

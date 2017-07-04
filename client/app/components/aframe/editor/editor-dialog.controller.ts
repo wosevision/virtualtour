@@ -10,8 +10,8 @@ export class EditorDialogController {
   category;
   features;
   feature;
-  scenes: vt.IScene[];
-  scene: vt.IScene;
+  scenes: vt.ISceneResourceArray;
+  scene: vt.ISceneResource;
 
   item;
 
@@ -65,9 +65,9 @@ export class EditorDialogController {
 	initCurrentBuilding() {
 		let _id: MongoId;
 		this.loadBuildings(buildings => {
-			_id = this.scene.parent.hasOwnProperty('_id')
-				? (<vt.IScene>this.scene.parent)._id
-				: <MongoId>this.scene.parent;
+			_id = (<vt.IScene>this.scene).parent.hasOwnProperty('_id')
+				? (<vt.IScene>(<vt.IScene>this.scene).parent)._id
+				: <MongoId>(<vt.IScene>this.scene).parent;
 			this.building = this.$filter('filter')(buildings, { _id }, true)[0];
 			this.initCurrentLocation();
 		});
@@ -105,7 +105,7 @@ export class EditorDialogController {
 			filter: {
 				parent: this.building._id
 			}
-		} : null).$promise.then(scenes => {
+		} : null).$promise.then((scenes: vt.ISceneResourceArray) => {
 			this.scenes = scenes;
 			cb&&cb(scenes);
 		});
@@ -133,7 +133,7 @@ export class EditorDialogController {
 		this.item.feature = this.feature;
 	}
 	onChangeScene() {
-		this.item.scene = this.scene._id;
+		this.item.scene = (<vt.IScene>this.scene)._id;
 	}
 	onChangeBuilding() {
 		this.item.building = this.building._id;
