@@ -53,20 +53,20 @@ export function AppConfig($provide, $locationProvider, $stateProvider, $urlRoute
     url: '/:location',
     resolve: {
       params: ['$transition$', ($transition$) => $transition$.params()],
-      currentLocation: ['params', '$tourApi', (params, $tourApi) => {
-        return $tourApi.location.query({ 
+      currentLocation: ['params', 'TourResourceService', (params, TourResourceService) => {
+        return TourResourceService.location.query({ 
           filter: {
             code: params.location 
           }
         }).$promise;
       }],
-      sceneData: ['params', '$aframeScene', '$tourApi', 'currentLocation', (params, $aframeScene, $tourApi, currentLocation) => {
+      sceneData: ['params', 'SceneService', 'TourResourceService', 'currentLocation', (params, SceneService, TourResourceService, currentLocation) => {
         if (currentLocation[0] && currentLocation[0].default) {
-          return $tourApi.scene.get({ id: currentLocation[0].default })
+          return TourResourceService.scene.get({ id: currentLocation[0].default })
             .$promise
             .then(scene => {
               if (!params.building) {
-                $aframeScene.scene = scene
+                SceneService.scene = scene
               }
             });
         }
@@ -78,20 +78,20 @@ export function AppConfig($provide, $locationProvider, $stateProvider, $urlRoute
     url: '/:building',
     resolve: {
       params: ['$transition$', ($transition$) => $transition$.params()],
-      currentBuilding: ['params', '$tourApi', (params, $tourApi) => {
-        return $tourApi.building.query({ 
+      currentBuilding: ['params', 'TourResourceService', (params, TourResourceService) => {
+        return TourResourceService.building.query({ 
           filter: {
             code: params.building 
           }
         }).$promise;
       }],
-      sceneData: ['params', '$aframeScene', '$tourApi', 'currentBuilding', (params, $aframeScene, $tourApi, currentBuilding) => {
+      sceneData: ['params', 'SceneService', 'TourResourceService', 'currentBuilding', (params, SceneService, TourResourceService, currentBuilding) => {
         if (currentBuilding[0] && currentBuilding[0].default) {
-          return $tourApi.scene.get({ id: currentBuilding[0].default })
+          return TourResourceService.scene.get({ id: currentBuilding[0].default })
             .$promise
             .then(scene => {
               if (!params.scene) {
-                $aframeScene.scene = scene
+                SceneService.scene = scene
               }
             });
         }
@@ -103,19 +103,19 @@ export function AppConfig($provide, $locationProvider, $stateProvider, $urlRoute
     url: '/:scene',
     resolve: {
       params: ['$transition$', ($transition$) => $transition$.params()],
-      currentScene: ['params', '$tourApi', 'currentBuilding', (params, $tourApi, currentBuilding) => {
-        return $tourApi.scene.query({ 
+      currentScene: ['params', 'TourResourceService', 'currentBuilding', (params, TourResourceService, currentBuilding) => {
+        return TourResourceService.scene.query({ 
           filter: {
             code: params.scene,
             parent: currentBuilding[0]._id
           }
         }).$promise;
       }],
-      sceneData: ['params', '$aframeScene', '$tourApi', 'currentScene', (params, $aframeScene, $tourApi, currentScene) => {
+      sceneData: ['params', 'SceneService', 'TourResourceService', 'currentScene', (params, SceneService, TourResourceService, currentScene) => {
         if (currentScene[0] && currentScene[0]._id) {
-          return $tourApi.scene.get({ id: currentScene[0]._id })
+          return TourResourceService.scene.get({ id: currentScene[0]._id })
             .$promise
-            .then(scene => $aframeScene.scene = scene);
+            .then(scene => SceneService.scene = scene);
         }
       }]
     }

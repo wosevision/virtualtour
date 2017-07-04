@@ -29,7 +29,7 @@ export const EditorComponent: ng.IComponentOptions = {
    * This controller is only instantiated with the server-rendered
    * editor component. It works by mounting a number of its
    * behaviours onto the scene component's `SceneCtrl` directly
-   * and by proxying the `$aframeScene` service.
+   * and by proxying the `SceneService` service.
    */
   controller: class EditorController implements ng.IController {
     _unpublishedChanges: boolean;
@@ -45,7 +45,7 @@ export const EditorComponent: ng.IComponentOptions = {
       private $timeout, 
       private $mdPanel, 
       private $mdDialog, 
-      private $aframeScene, 
+      private SceneService, 
       private $aframeEditor, 
       private DATA_MODELS
     ) {
@@ -63,13 +63,13 @@ export const EditorComponent: ng.IComponentOptions = {
 
     /**
      * Utility method for keeping controller's model of scene data in
-     * sync with `$aframeScene`'s.
+     * sync with `SceneService`'s.
      * 
      * @param  {Object} data Scene data to update with
      */
     updateSceneData(data: vt.IScene) {
       Object.assign(this.SceneCtrl, data);
-      this.$aframeScene.scene = data;
+      this.SceneService.scene = data;
       console.info('updated scene with data from editor:', data);
     }
 
@@ -198,11 +198,11 @@ export const EditorComponent: ng.IComponentOptions = {
 
       locals.newItem = true;
       locals.publish = () => this.$aframeEditor.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
-        this.$aframeScene.scene[collection] = newData;
+        this.SceneService.scene[collection] = newData;
         this._panelRef&&this._panelRef.close();
       });
       locals.saveDraft = () => this.$aframeEditor.addItemTo(locals.item, this.SceneCtrl[collection], newData => {
-        this.$aframeScene.scene[collection] = newData;
+        this.SceneService.scene[collection] = newData;
         this.saveDraft();
       });
       locals.removeThis = () => this._panelRef&&this._panelRef.close();

@@ -1,7 +1,9 @@
 import { isArray, isObject } from 'angular';
+import { Inject, Injectable } from 'ng-metadata/core';
 
 import { SkyService } from '../sky/sky.service';
 
+@Injectable()
 /**
  * The scene service class is the lead orchestrator of the `<aframe-scene/>`
  * component's business logic. It is the application and component's main
@@ -11,10 +13,10 @@ import { SkyService } from '../sky/sky.service';
  * and setter property; internally, the scene data is stored in the service
  * "raw" under the property `sceneData`. The getter and setter are
  * responsible for transliterating changes into the "raw" data object and
- * back again. The setter also sets the `$aframeSky.sky` property, thus kicking
+ * back again. The setter also sets the `SkyService.sky` property, thus kicking
  * off a sky change from its respective service.
  *
- * @param {object} $aframeSky			 The sky service
+ * @param {object} SkyService			 The sky service
  */
 export class SceneService {
   private sceneData;
@@ -22,10 +24,8 @@ export class SceneService {
   public lastPublished;
 
 	constructor(
-    private $aframeSky: SkyService
-  ) {
-		'ngInject';
-	}
+    private SkyService: SkyService
+  ) { }
 	/**
 	 * Getter and setter pair for internal scene data.
 	 * 
@@ -49,7 +49,7 @@ export class SceneService {
 	}
 	set scene(sceneData) {
 		if (sceneData && isObject(sceneData)) {
-			this.$aframeSky.sky = sceneData.panorama;
+			this.SkyService.sky = sceneData.panorama;
 			this.sceneData = this.lastPublished = sceneData; // { _id, sceneLinks, hotSpots, sky };
 		}
 	}

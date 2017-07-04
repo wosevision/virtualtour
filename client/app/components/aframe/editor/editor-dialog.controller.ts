@@ -1,3 +1,6 @@
+import { TourResourceService } from '../../../common/resource/tour-resource.service';
+import { MapResourceService } from '../../../common/resource/map-resource.service';
+
 export class EditorDialogController {
   locations;
   location;
@@ -15,8 +18,8 @@ export class EditorDialogController {
 	constructor(
 		private $scope,
     private $filter,
-		private $tourApi,
-    private $mapApi
+		private TourResourceService: TourResourceService,
+    private MapResourceService: MapResourceService
   ) {
 		'ngInject';
 		if (this.item.scene) {
@@ -79,7 +82,7 @@ export class EditorDialogController {
 		});
 	}
 	loadLocations(cb) {
-		return this.$tourApi.location
+		return this.TourResourceService.location
       .query()
       .$promise
       .then(locations => {
@@ -88,7 +91,7 @@ export class EditorDialogController {
   		});
 	}
 	loadBuildings(cb) {
-		return this.$tourApi.building.query(this.location ? {
+		return this.TourResourceService.building.query(this.location ? {
 			filter: {
 				parent: this.location._id
 			}
@@ -98,7 +101,7 @@ export class EditorDialogController {
 		});
 	}
 	loadScenes(cb) {
-		return this.$tourApi.scene.query(this.building ? {
+		return this.TourResourceService.scene.query(this.building ? {
 			filter: {
 				parent: this.building._id
 			}
@@ -108,13 +111,13 @@ export class EditorDialogController {
 		});
 	}
 	loadCategories(cb) {
-		return this.$mapApi.category.query().$promise.then(categories => {
+		return this.MapResourceService.category.query().$promise.then(categories => {
 			this.categories = categories;
 			cb&&cb(categories);
 		});
 	}
 	loadFeatures(cb) {
-		return this.$mapApi.feature.query(this.category ? {
+		return this.MapResourceService.feature.query(this.category ? {
 			filter: {
 				"properties.category": this.category._id
 			}

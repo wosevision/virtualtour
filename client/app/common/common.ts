@@ -1,4 +1,5 @@
-import angular from 'angular';
+import { NgModule } from 'ng-metadata/core';
+import uiRouter from 'angular-ui-router';
 
 import { PopupModule } from './popup/popup';
 import { UserModule } from './user/user';
@@ -10,11 +11,13 @@ import './common.scss';
 import { AFrameModule } from './aframe/aframe';
 AFrameModule.registerAll();
 
-export const CommonModule = angular.module('app.common', [
-  PopupModule,
-  UserModule,
-  UtilModule,
-  ResourceModule,
-])
-  
-.name;
+@NgModule({
+  imports: [
+    uiRouter,
+    PopupModule,
+    UserModule,
+    UtilModule,
+    ResourceModule,
+  ]
+})
+export class CommonModule { }
