@@ -1,5 +1,4 @@
 import { NgModule } from 'ng-metadata/core';
-import uiRouter from 'angular-ui-router';
 
 import { PopupModule } from './popup/popup';
 import { UserModule } from './user/user';
@@ -13,7 +12,6 @@ AFrameModule.registerAll();
 
 @NgModule({
   imports: [
-    uiRouter,
     PopupModule,
     UserModule,
     UtilModule,
