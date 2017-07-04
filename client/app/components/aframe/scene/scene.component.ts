@@ -1,6 +1,7 @@
 import { element, isDefined } from 'angular';
 import {
   Component,
+  OnInit,
   Inject,
   Input,
 } from 'ng-metadata/core';
@@ -33,7 +34,7 @@ import template from './scene.html';
  *   mobile="$ctrl.mobile">
  * </aframe-scene>
  */
-export class SceneComponent implements ng.IController {
+export class SceneComponent implements ng.IController, OnInit {
 
   @Input() sky: string;
   @Input() sceneLinks: any[];
@@ -67,7 +68,7 @@ export class SceneComponent implements ng.IController {
    * Also stores JQLite-wrapped <a-scene> and <a-assets> for
    * appending child elements into the scene from inner components.
    */
-  $onInit() {
+  ngOnInit() {
     this._rightClick = false;
     this._currentSceneId = '';
 

@@ -1,6 +1,7 @@
 import { element } from 'angular';
 import {
   Component,
+  OnInit,
   Inject
 } from 'ng-metadata/core';
 
@@ -20,7 +21,7 @@ import template from './settings.html';
  * the app's user preferences and data usage settings, login/logout
  * functions, and a set of automatic usage detection functions.
  */
-export class SettingsComponent implements ng.IController {
+export class SettingsComponent implements ng.IController, OnInit {
   isLoggedIn: Function;
   user: Partial<vt.ITourUser>;
   settings;
@@ -50,7 +51,7 @@ export class SettingsComponent implements ng.IController {
    * user data from event into controller and syncs applicable
    * view elements; opens accordion to expose settings to user.
    */
-  $onInit() {
+  ngOnInit() {
     this.isLoggedIn = this.UserAuthService.isAuthenticated;
     this.user = this.UserSessionService.user;
     this.settings = this.UserSessionService.settings;
@@ -92,6 +93,8 @@ export class SettingsComponent implements ng.IController {
     this.$scope.$on(AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
     
     this.getUsageLevel();
+
+    console.info('[settings.component] ngOnInit', this)
   }
 
   /**

@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   Inject,
   Input,
   Output,
@@ -25,7 +26,7 @@ import template from './buttonbar.html';
  * The exception is the "Enter VR" button, which is always present at the bottom of
  * the buttonbar and has its method stored on this controller.
  */
-export class ButtonbarComponent implements ng.IController {
+export class ButtonbarComponent implements ng.IController, OnInit {
   @Input() items;
   @Input() open;
   @Input() condensed;
@@ -52,6 +53,16 @@ export class ButtonbarComponent implements ng.IController {
     return this.UserSessionService.settings && this.UserSessionService.settings.showHints.val;
   }
 
+  ngOnInit() {
+    this.$scope.$watch(
+      () => this.$mdSidenav('right').isOpen(),
+      (newVal: boolean) => {
+        this.menuOpen = newVal;
+      }
+    );
+    console.info('[buttonbar.component] ngOnInit', this)
+  }
+
   /**
    * Activate the state associated with a button.
    *
@@ -72,14 +83,5 @@ export class ButtonbarComponent implements ng.IController {
 
   enterVR() {
     this.sceneEl.enterVR();
-  }
-
-  $onInit() {
-    this.$scope.$watch(
-      () => this.$mdSidenav('right').isOpen(),
-      (newVal: boolean) => {
-        this.menuOpen = newVal;
-      }
-    );
   }
 }

@@ -56,7 +56,6 @@ export class SkyComponent implements ng.IController, OnInit {
    * init internal check for right click event.
    */
   ngOnInit() {
-    console.log('[sky.component] ngOnInit', this.SceneComponent)
     /**
      * Cache vars to store JQLite <img> and <a-sky>
      * Flag for init sky load and array of loaded skies
@@ -64,7 +63,9 @@ export class SkyComponent implements ng.IController, OnInit {
     this.$sceneEl = this.SceneComponent.$sceneEl;
     this.$assetsEl = this.SceneComponent.$assetsEl;
     this._skyElLoaded = false;
-    this._skyLoadedList = []; //this.SkyService.CircularBuffer(10);
+    this._skyLoadedList = [];
+
+    console.info('[sky.component] ngOnInit', this)
   }
 
   /**

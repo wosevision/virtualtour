@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   Inject,
   Input,
 } from 'ng-metadata/core';
@@ -33,12 +34,16 @@ import {
     </div>
   </md-content>`
 })
-export class DrilldownComponent implements ng.IController {
+export class DrilldownComponent implements ng.IController, OnInit {
 	@Input() children: vt.IDrilldownItem[];
 	
 	constructor(
 		@Inject('$analytics') private $analytics,
 	) { }
+
+  ngOnInit() {
+    console.info('[drilldown.component] ngOnInit', this)
+  }
 
 	toggleAll(except) {
 		this.children.forEach(child => {

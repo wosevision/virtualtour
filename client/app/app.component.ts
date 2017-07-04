@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   Inject,
 } from 'ng-metadata/core';
 import aframe from 'aframe';
@@ -21,7 +22,7 @@ import template from './app.html';
     transclude: true,
   }
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   WELCOME_MSG_DELAY = 500; //ms
   SETTINGS_MSG_DELAY = 1000; //ms
@@ -83,9 +84,9 @@ export class AppComponent {
     @Inject('$popupWindow') private $popupWindow,
   ) {}
 
-  async $onInit() {
+  async ngOnInit() {
 
-    console.log('[app.component] $onInit AppStateService', this.AppStateService);
+    console.log('[sky.component] ngOnInit BEGIN', this);
 
     this.$scope.$watch(
       () => ({
@@ -101,8 +102,6 @@ export class AppComponent {
 
     await this.AppStateService.init();
 
-    console.info('[app.controller] $onInit AppStateService.init()');
-
     if (this.UserSessionService.settings) {
       const { showWelcome, toolbarOpen, toolbarCondensed } = this.UserSessionService.settings;
 
@@ -115,11 +114,11 @@ export class AppComponent {
       this.toolbar.open = toolbarOpen.val;
       this.toolbar.condensed = toolbarCondensed.val;
       this.toolbar.sidebar = this.$mdSidenav('right');
-
-      console.info('[app.controller] $onInit AppStateService.init()', this.UserSessionService.settings);
     }
 
     this.drilldown = { structure: await this.getDrilldownStructure() };
+
+    console.info('[app.component] ngOnInit END', this);
   }
 
   async getDrilldownStructure() {

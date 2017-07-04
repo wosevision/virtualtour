@@ -1,4 +1,8 @@
-import { Component, Input } from 'ng-metadata/core';
+import {
+  Component,
+  OnInit,
+  Input,
+} from 'ng-metadata/core';
 
 @Component({
   selector: 'title-bar',
@@ -19,7 +23,11 @@ import { Component, Input } from 'ng-metadata/core';
     transclude: true
   }
 })
-export class TitleBarComponent {
+export class TitleBarComponent implements OnInit {
   @Input() title: string;
   @Input() mobile;
+
+  ngOnInit() {
+    console.info('[titlebar.component] ngOnInit', this)
+  }
 };
