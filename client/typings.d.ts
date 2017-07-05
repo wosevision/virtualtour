@@ -302,16 +302,18 @@ declare namespace vt {
     }
   }
 
-  export interface IDrilldownItem extends ICMSMetadata { 
-    _params: object; 
-    _level: string; 
-    _hidden: boolean; 
-    _active: boolean; 
-    default: string; 
-    children?: IDrilldownItem[]; 
-    label: string; 
-    name: string; 
-    code: string; 
+  export interface IDrilldownItem extends ICMSMetadata {
+    _params: object;
+    _level: string;
+    _hidden: boolean;
+    _active: boolean;
+
+    default: string;
+    label: string;
+    name: string;
+    code: string;
+    
+    children?: IDrilldownItem[];
   }
 
   export interface IButtonbar {

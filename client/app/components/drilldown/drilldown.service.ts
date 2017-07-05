@@ -1,3 +1,4 @@
+import { DrilldownItem } from './drilldown';
 import { TourResourceService } from '../../common/resource/tour-resource.service'; 
 
 export class DrilldownService {
@@ -9,20 +10,23 @@ export class DrilldownService {
 		'ngInject';
 	}
 
-	getLocations(): Promise<vt.IDrilldownItem[]> {
-		return this.TourResourceService.location.query().$promise;
+	getLocations(): ng.IPromise<vt.IDrilldownItem[]> {
+		return this.TourResourceService.location.query().$promise
+      .then(data => data.map(item => new DrilldownItem(item)));
 	}
 
-	getBuildings(parent): Promise<vt.IDrilldownItem[]> {
+	getBuildings(parent): ng.IPromise<vt.IDrilldownItem[]> {
 		return this.TourResourceService.building.query({
 			filter: { parent }
-		}).$promise;
+		}).$promise
+      .then(data => data.map(item => new DrilldownItem(item)));
 	}
 
-	getScenes(parent): Promise<vt.IDrilldownItem[]> {
+	getScenes(parent): ng.IPromise<vt.IDrilldownItem[]> {
 		return this.TourResourceService.scene.query({
 			filter: { parent }
-		}).$promise;
+		}).$promise
+      .then(data => data.map(item => new DrilldownItem(item)));
 	}
 
 	async getDrilldown(): Promise<vt.IDrilldownItem[]> {
