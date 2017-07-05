@@ -11,7 +11,7 @@ export const ResourceModule = angular.module('util.resource', [
 
 .service('DraftResourceService', DraftResourceService)
 
-.service('$mapApi', MapResourceService)
+.service('MapResourceService', MapResourceService)
 
 .service('TourResourceService', TourResourceService)
 
