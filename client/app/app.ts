@@ -18,8 +18,6 @@
 //   }
 // });
 
-import { NgModule } from 'ng-metadata/core';
-
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angulartics from 'angulartics';

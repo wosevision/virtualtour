@@ -44,9 +44,8 @@ let paths = {
       'babel-polyfill',
       path.join(__dirname, CLIENT_ROOT, 'app/app')
     ],
-	  editor: [
-	    path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor')
-	  ]
+	  editor: path.join(__dirname, CLIENT_ROOT, 'app/components/aframe/editor/editor'),
+    bootstrap: path.join(__dirname, CLIENT_ROOT, 'bootstrap'),
 	},
   output: CLIENT_ROOT,
   docs: DOCS_ROOT,
@@ -58,8 +57,7 @@ let paths = {
 // use webpack.config.js to build modules
 gulp.task('webpack', ['clean'], (cb) => {
   const config = require('./webpack.dist.config');
-  config.entry.app = paths.entry.app;
-  config.entry.editor = paths.entry.editor;
+  config.entry = { ...config.entry, ...paths.entry};
 
   webpack(config, (err, stats) => {
     if(err)  {
@@ -78,13 +76,13 @@ gulp.task('webpack', ['clean'], (cb) => {
 
 gulp.task('serve', () => {
   const config = require('./webpack.dev.config');
+  config.entry = { ...config.entry, ...paths.entry};
   config.entry.app = [
     // this modules required to make HRM working
     // it responsible for all this webpack magic
     'webpack-hot-middleware/client?reload=true',
     // application entry point
   ].concat(paths.entry.app);
-  config.entry.editor = paths.entry.editor;
 
   var compiler = webpack(config);
 

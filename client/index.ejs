@@ -55,19 +55,15 @@
     </script>
     <% } %>
 
-    <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('if (user && user.canAccessKeystone) {') : '' %>
-    <script>window.REQUIRED_MODULES = ['aframe.editor'];</script>
-    <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('}') : '' %>
-
-    <% for (var chunk in htmlWebpackPlugin.files.chunks) {
-      if (chunk !== 'editor') { %>
-    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-      <% }
-    } %>
+    <script src="<%= htmlWebpackPlugin.files.chunks.manifest.entry %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
 
     <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('if (user && user.canAccessKeystone) {') : '' %>
     <script src="<%= htmlWebpackPlugin.files.chunks.editor.entry %>"></script>
+    <script>window.REQUIRED_MODULES = ['aframe.editor'];</script>
     <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('}') : '' %>
+
+    <script src="<%= htmlWebpackPlugin.files.chunks.app.entry %>"></script>
 
     <% if (htmlWebpackPlugin.options.googleAnalytics) { %>
     <script>
@@ -85,7 +81,7 @@
     </script>
     <% } %>
   </head>
-  <body ng-app="app" ng-strict-di ng-cloak>
+  <body ng-cloak>
 
     <app class="loading-spinner">
       <%= htmlWebpackPlugin.options.auth ? htmlWebpackPlugin.options.toEJS('if (user && user.canAccessKeystone) {') : '' %>
@@ -96,6 +92,7 @@
     <% if (htmlWebpackPlugin.options.devServer) { %>
     <script src="<%= htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
     <% } %>
+    <script src="<%= htmlWebpackPlugin.files.chunks.bootstrap.entry %>"></script>
   </body>
 </html>
 
