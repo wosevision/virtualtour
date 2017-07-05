@@ -24,7 +24,7 @@
   		 layout-align-gt-sm="end start"
   		 flex
   		 class="scene-container"
-  		 ng-class="{ 'toolbar-open' : $ctrl.buttonbar.open && !$ctrl.mobile.landscape, 'toolbar-condensed': $ctrl.buttonbar.condensed }">
+  		 ng-class="{ 'toolbar-open' : $ctrl.buttonbar.visible && !$ctrl.mobile.landscape, 'toolbar-condensed': $ctrl.buttonbar.condensed }">
     <section id="scene-view"
 				     flex="grow"
 				     layout="column"
@@ -40,7 +40,7 @@
     						layout-gt-sm="column"
     						flex="nogrow"
     						items="$ctrl.buttonbar.views"
-    						open="$ctrl.buttonbar.open"
+    						visible="$ctrl.buttonbar.visible"
     						condensed="$ctrl.buttonbar.condensed"
     						mobile="$ctrl.mobile"
     						on-select="$ctrl.onButtonbarSelect($event)">

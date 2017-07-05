@@ -27,15 +27,15 @@ export const AppComponent = {
       views: BUTTONBAR_VIEWS,
       blurredViews: BLURRED_VIEWS,
       currentView: '',
-      open: true,
+      visible: true,
       condensed: false,
       toggle() {
-        this.open = !this.open;
-        this.open && this.sidebar.close();
-        return this.open;
+        this.visible = !this.visible;
+        this.visible && this.sidebar.close();
+        return this.visible;
       },
       condense() {
-        !this.open&&this.toggle();
+        !this.visible&&this.toggle();
         this.condensed = !this.condensed;
         return this.condensed;
       },
@@ -89,7 +89,7 @@ export const AppComponent = {
           this.$timeout(this.showSettingsMsg.bind(this), SETTINGS_MSG_DELAY);
         }
 
-        this.buttonbar.open = <boolean>toolbarOpen.val;
+        this.buttonbar.visible = <boolean>toolbarOpen.val;
         this.buttonbar.condensed = <boolean>toolbarCondensed.val;
         this.buttonbar.sidebar = this.$mdSidenav('right');
         this.drilldown = { structure: await this.getDrilldownStructure() };

@@ -319,7 +319,7 @@ declare namespace vt {
     views,
     blurredViews: string[],
     currentView: string,
-    open: boolean,
+    visible: boolean,
     condensed: boolean,
     toggle: () => void,
     condense: () => boolean,

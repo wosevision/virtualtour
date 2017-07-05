@@ -6,7 +6,7 @@ export const ButtonbarComponent: ng.IComponentOptions = {
   bindings: {
     onSelect: '&',
     items: '<',
-    open: '<?',
+    visible: '<?',
     condensed: '<?',
     mobile: '<?',
   },
