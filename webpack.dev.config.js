@@ -29,6 +29,7 @@ config.plugins = config.plugins.concat([
     },
     inject: false,
     hash: true,
+    cache: false,
     toEJS
   }),
 

@@ -76,7 +76,7 @@
         'cookieDomain': 'none'
       });
       <% } else {
-        throw new Error("Please supply a Google Analytics tracking ID!");
+        throw new Error("Please supply a Google Analytics tracking ID in Webpack configuration!");
       } %>
     </script>
     <% } %>
@@ -92,7 +92,11 @@
     <% if (htmlWebpackPlugin.options.devServer) { %>
     <script src="<%= htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
     <% } %>
-    <script src="<%= htmlWebpackPlugin.files.chunks.bootstrap.entry %>"></script>
+    <script type="text/javascript">
+    <%= 
+      (compilation.assets[htmlWebpackPlugin.files.chunks.bootstrap.entry] || compilation.assets['bootstrap.bundle.js']).source() 
+    %>
+    </script>
   </body>
 </html>
 
