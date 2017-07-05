@@ -1,7 +1,7 @@
 <aside
 	class="button-bar"
 	ng-class="{'collapsed': $ctrl.condensed || $ctrl.mobile.screen}"
-	ng-if="$ctrl.open&&!($ctrl.mobile.landscape&&$ctrl.mobile.screen)"
+	ng-if="$ctrl.visible&&!($ctrl.mobile.landscape&&$ctrl.mobile.screen)"
 	md-whiteframe="2"
 	layout="row"
 	layout-gt-sm="column"
@@ -14,7 +14,7 @@
 		layout="column"
 		layout-align="center center"
 		flex="grow"
-  	ng-click="$ctrl.select(state)"
+  	ng-click="$ctrl.buttonSelect(state)"
   	md-ink-ripple="#0077CA"
   	id="{{ ::state }}">
   	<ng-md-icon icon="{{ :: stateInfo.icon }}" style="fill: #ffffff;"></ng-md-icon>

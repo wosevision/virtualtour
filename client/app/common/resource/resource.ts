@@ -9,10 +9,10 @@ export const ResourceModule = angular.module('util.resource', [
   ngResource
 ])
 
-.service('DraftResource', DraftResourceService)
+.service('DraftResourceService', DraftResourceService)
 
 .service('$mapApi', MapResourceService)
 
-.service('$tourApi', TourResourceService)
+.service('TourResourceService', TourResourceService)
 
 .name;

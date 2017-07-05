@@ -1,4 +1,5 @@
 import { SkyService } from './sky.service';
+import { SceneController } from '../scene/scene.component';
 
 export const SkyComponent: ng.IComponentOptions = {
   bindings: {
@@ -15,7 +16,7 @@ export const SkyComponent: ng.IComponentOptions = {
    *
    * It attaches a single `<a-sky/>` the first time a sky is
    * loaded, and attaches `<img/>`s to the scenes assets
-   * preload bucket based on the `$aframeSky` service's instructions.
+   * preload bucket based on the `SkyService` service's instructions.
    */
   controller: class SkyController implements ng.IController {
     compileSkyEl: (callback: ng.ICloneAttachFunction) => JQuery;
@@ -28,18 +29,18 @@ export const SkyComponent: ng.IComponentOptions = {
     _skyLoadedList: string[];
     loadedSky: string;
 
-    SceneCtrl: ng.IController;
+    SceneCtrl: SceneController;
 
     /**
      * Initializes the controller's dependencies:
      * - Binds a special one-off $compile function for when
      *   the scene's `<a-sky />` needs to be compiled
-     * - Attaches the $aframeSky service directly
+     * - Attaches the SkyService service directly
      */
     constructor(
       private $scope: ng.IScope,
       private $compile: ng.ICompileService,
-      private $aframeSky: SkyService
+      private SkyService: SkyService
     ) {
       'ngInject';
       this.compileSkyEl = (callback) => $compile('<a-sky ng-src="{{ \'#\' + $ctrl.loadedSky }}" />')($scope, callback);
@@ -57,7 +58,7 @@ export const SkyComponent: ng.IComponentOptions = {
       this.$sceneEl = this.SceneCtrl.$sceneEl;
       this.$assetsEl = this.SceneCtrl.$assetsEl;
       this._skyElLoaded = false;
-      this._skyLoadedList = []; //this.$aframeSky.CircularBuffer(10);
+      this._skyLoadedList = []; //this.SkyService.CircularBuffer(10);
     }
 
     /**
@@ -81,10 +82,10 @@ export const SkyComponent: ng.IComponentOptions = {
     }
 
     /**
-     * Uses the $aframeSky service to fetch a server-generated
+     * Uses the SkyService service to fetch a server-generated
      * list of `skyUrl`s for asset preloading. It grabs the `_id`
      * of the current active scene from `SceneCtrl` and sends it
-     * through `$aframeSky.getPreloadList()` to generate the list
+     * through `SkyService.getPreloadList()` to generate the list
      * based on scenelinks in the current active scene.
      *
      * `assetIdFromSkyUrl()` turns each `skyUrl` into an `assetId`,
@@ -95,7 +96,7 @@ export const SkyComponent: ng.IComponentOptions = {
      * @return {Promise} Promise that holds an array of skyUrls from server
      */
     preload(): Promise<any> {
-      return this.$aframeSky.getPreloadList(this.SceneCtrl._currentSceneId)
+      return this.SkyService.getPreloadList(this.SceneCtrl._currentSceneId)
         .then((toPreload: string[]) => {
           toPreload.forEach(skyUrl => {
             const newAssetId = this.assetIdFromSkyUrl(skyUrl)
@@ -158,7 +159,7 @@ export const SkyComponent: ng.IComponentOptions = {
      */
     loadSkyAsset(skyUrl: string, assetId: string): Promise<string> {
       console.info('[sky.component] loadSkyAsset');
-      return this.$aframeSky.getSkyDomNode(skyUrl, assetId)
+      return this.SkyService.getSkyDomNode(skyUrl, assetId)
         .then((imgNode: JQuery) => {
           this.$assetsEl.append(imgNode);
           this._skyLoadedList.push(assetId);

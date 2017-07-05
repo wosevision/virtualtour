@@ -18,6 +18,8 @@
 //   }
 // });
 
+import { NgModule } from 'ng-metadata/core';
+
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angulartics from 'angulartics';
@@ -30,11 +32,11 @@ import cfpLoadingBar from 'angular-loading-bar';
 import vAccordion from 'v-accordion';
 
 import { CommonModule } from './common/common';
-import Components from './components/components';
+import { ComponentsModule } from './components/components';
 
+import { AppStateService } from './app-state.service';
 import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
-import { AppRun } from './app.run';
 
 import './app.scss';
 
@@ -58,7 +60,7 @@ import './app.scss';
 //  }
 // }
 
-angular.module('app', [
+export const AppModule = angular.module('app', [
   uiRouter,
   angulartics,
   angularticsGa,
@@ -69,12 +71,14 @@ angular.module('app', [
   cfpLoadingBar,
   vAccordion,
   CommonModule,
-  Components,
+  ComponentsModule,
   ...(window.REQUIRED_MODULES || [])
 ])
 
 .component('app', AppComponent)
 
+.service('AppStateService', AppStateService)
+
 .config(AppConfig)
 
-.run(AppRun);
+.name;

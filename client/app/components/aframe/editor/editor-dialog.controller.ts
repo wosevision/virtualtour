@@ -1,3 +1,6 @@
+import { TourResourceService } from '../../../common/resource/tour-resource.service';
+import { MapResourceService } from '../../../common/resource/map-resource.service';
+
 export class EditorDialogController {
   locations;
   location;
@@ -7,16 +10,16 @@ export class EditorDialogController {
   category;
   features;
   feature;
-  scenes: vt.IScene[];
-  scene: vt.IScene;
+  scenes: vt.ISceneResourceArray;
+  scene: vt.ISceneResource;
 
   item;
 
 	constructor(
 		private $scope,
     private $filter,
-		private $tourApi,
-    private $mapApi
+		private TourResourceService: TourResourceService,
+    private MapResourceService: MapResourceService
   ) {
 		'ngInject';
 		if (this.item.scene) {
@@ -62,9 +65,9 @@ export class EditorDialogController {
 	initCurrentBuilding() {
 		let _id: MongoId;
 		this.loadBuildings(buildings => {
-			_id = this.scene.parent.hasOwnProperty('_id')
-				? (<vt.IScene>this.scene.parent)._id
-				: <MongoId>this.scene.parent;
+			_id = (<vt.IScene>this.scene).parent.hasOwnProperty('_id')
+				? (<vt.IScene>(<vt.IScene>this.scene).parent)._id
+				: <MongoId>(<vt.IScene>this.scene).parent;
 			this.building = this.$filter('filter')(buildings, { _id }, true)[0];
 			this.initCurrentLocation();
 		});
@@ -79,7 +82,7 @@ export class EditorDialogController {
 		});
 	}
 	loadLocations(cb) {
-		return this.$tourApi.location
+		return this.TourResourceService.location
       .query()
       .$promise
       .then(locations => {
@@ -88,7 +91,7 @@ export class EditorDialogController {
   		});
 	}
 	loadBuildings(cb) {
-		return this.$tourApi.building.query(this.location ? {
+		return this.TourResourceService.building.query(this.location ? {
 			filter: {
 				parent: this.location._id
 			}
@@ -98,23 +101,23 @@ export class EditorDialogController {
 		});
 	}
 	loadScenes(cb) {
-		return this.$tourApi.scene.query(this.building ? {
+		return this.TourResourceService.scene.query(this.building ? {
 			filter: {
 				parent: this.building._id
 			}
-		} : null).$promise.then(scenes => {
+		} : null).$promise.then((scenes: vt.ISceneResourceArray) => {
 			this.scenes = scenes;
 			cb&&cb(scenes);
 		});
 	}
 	loadCategories(cb) {
-		return this.$mapApi.category.query().$promise.then(categories => {
+		return this.MapResourceService.category.query().$promise.then(categories => {
 			this.categories = categories;
 			cb&&cb(categories);
 		});
 	}
 	loadFeatures(cb) {
-		return this.$mapApi.feature.query(this.category ? {
+		return this.MapResourceService.feature.query(this.category ? {
 			filter: {
 				"properties.category": this.category._id
 			}
@@ -130,7 +133,7 @@ export class EditorDialogController {
 		this.item.feature = this.feature;
 	}
 	onChangeScene() {
-		this.item.scene = this.scene._id;
+		this.item.scene = (<vt.IScene>this.scene)._id;
 	}
 	onChangeBuilding() {
 		this.item.building = this.building._id;

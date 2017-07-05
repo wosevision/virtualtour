@@ -74,7 +74,7 @@ declare namespace vt {
 
   export interface ICMSMetadata {
     _id: MongoId;
-    __v: number;
+    __v?: number;
     updatedBy?: string;
     updatedAt?: Date;
     createdBy?: string;
@@ -222,6 +222,8 @@ declare namespace vt {
     sceneLinks: ISceneLink[],
     panorama: IPanorama
   }
+  type ISceneResource = ng.resource.IResource<IScene> | IScene;
+  type ISceneResourceArray = ng.resource.IResourceArray<IScene[]> | IScene[];
 
   export interface ISceneEditorMessage {
     textContent: string;
@@ -230,6 +232,16 @@ declare namespace vt {
     highlightClass: string;
     position: string;
     hideDelay: number;
+  }
+  
+  type PromiseOrVoid = void | Promise<any>;
+  interface IEditorLocals {
+    item;
+    newItem?: boolean;
+    publish?(): PromiseOrVoid;
+    saveDraft?(): PromiseOrVoid;
+    removeThis?(): PromiseOrVoid;
+    closeDialog?(): PromiseOrVoid;
   }
 
   export interface INetworkConnectionVal {
@@ -290,16 +302,27 @@ declare namespace vt {
     }
   }
 
-  export interface IToolbar {
+  export interface IDrilldownItem extends ICMSMetadata { 
+    _params: object; 
+    _level: string; 
+    _hidden: boolean; 
+    _active: boolean; 
+    default: string; 
+    children?: IDrilldownItem[]; 
+    label: string; 
+    name: string; 
+    code: string; 
+  }
+
+  export interface IButtonbar {
     sidebar?,
     views,
     blurredViews: string[],
     currentView: string,
-    open: boolean,
+    visible: boolean,
     condensed: boolean,
     toggle: () => void,
     condense: () => boolean,
-    onSelect: (state) => void,
     hasState: (state) => boolean,
     hasBlur: any
   }

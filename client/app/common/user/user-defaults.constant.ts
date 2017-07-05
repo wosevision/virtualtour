@@ -75,3 +75,18 @@ export const USER_DEFAULTS: Partial<vt.ITourUser> = {
     }
   }
 };
+
+export const USER_ROLES = {
+  admin: 'admin',
+  editor: 'editor',
+  contributor: 'contributor'
+};
+
+export const AUTH_EVENTS = {
+  loginSuccess: 'auth-login-success',
+  loginFailed: 'auth-login-failed',
+  logoutSuccess: 'auth-logout-success',
+  sessionTimeout: 'auth-session-timeout',
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+};

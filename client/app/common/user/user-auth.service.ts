@@ -1,5 +1,6 @@
 import { isArray } from 'angular';
 
+import { UserSessionService } from './user-session.service';
 /**
  * Factory constructor function to provide authentication
  * details to app on runtime.
@@ -11,8 +12,8 @@ import { isArray } from 'angular';
  */
 export class UserAuthService {
   constructor(
-    private $http, 
-    private UserSession
+    private $http,
+    private UserSession: UserSessionService
   ) {
     'ngInject';
   }
@@ -23,7 +24,7 @@ export class UserAuthService {
    * @param  {object} user User object from db
    * @return {object}      User stored into session
    */
-  createSession(authenticated: vt.ITourUser | boolean = false): vt.ITourUser {
+  createSession(authenticated: vt.ITourUser | boolean = false): Promise<vt.ITourUser> {
   	console.log('[user-auth.service] createSession', authenticated);
     return this.UserSession.create(authenticated);
   }

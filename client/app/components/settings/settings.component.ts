@@ -1,5 +1,10 @@
 import { element } from 'angular';
 
+import { ConnectionDetailsService } from './connection/connection-details.service'; 
+import { UserSessionService } from '../../common/user/user-session.service'; 
+import { UserAuthService } from '../../common/user/user-auth.service'; 
+import { AUTH_EVENTS } from '../../common/user/user-defaults.constant'; 
+
 import template from './settings.html';
 
 export const SettingsComponent: ng.IComponentOptions = {
@@ -12,7 +17,7 @@ export const SettingsComponent: ng.IComponentOptions = {
    */
   controller: class SettingsController implements ng.IController {
     isLoggedIn: Function;
-    user: vt.ITourUser;
+    user: Partial<vt.ITourUser>;
     settings;
     usage;
     connection: boolean | { loading: boolean } | vt.INetworkConnection;
@@ -22,10 +27,9 @@ export const SettingsComponent: ng.IComponentOptions = {
       private $animate, 
       private $mdUtil, 
       private $popupWindow,
-      private UserAuth, 
-      private UserSession, 
-      private ConnectionDetails,
-      private AUTH_EVENTS,
+      private UserAuth: UserAuthService, 
+      private UserSession: UserSessionService, 
+      private ConnectionDetails: ConnectionDetailsService,
     ) {
       'ngInject';
     }
@@ -81,7 +85,7 @@ export const SettingsComponent: ng.IComponentOptions = {
         }
       });
 
-      this.$scope.$on(this.AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
+      this.$scope.$on(AUTH_EVENTS.loginSuccess, this.loadUserAfterLogin.bind(this) );
       
       this.getUsageLevel();
     }
@@ -102,7 +106,7 @@ export const SettingsComponent: ng.IComponentOptions = {
     /**
      * Prompts user for login using `$popupWindow` service's `login()` dialog.
      */
-    promptLogin(): ng.IPromise<any> {
+    promptLogin(): Promise<any> {
       return this.$popupWindow.login();
     }
     /**
@@ -167,13 +171,14 @@ export const SettingsComponent: ng.IComponentOptions = {
      * - Stores returned connection information
      * - Sets optimized usage settings with `optimize()`
      */
-    detectConnection(): ng.IPromise<vt.INetworkConnection> {
+    detectConnection(): Promise<vt.INetworkConnection> {
       if (this.usage.auto.val) {
         this.connection = { loading: true };
         return this.ConnectionDetails.detect().then((connection: vt.INetworkConnection) => {
           this.connection = connection;
           this.usage = this.ConnectionDetails.optimize(connection);
           this.updateUsage();
+          return connection;
         });
       }
     }

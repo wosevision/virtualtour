@@ -25,7 +25,7 @@ export class SkyService {
   panorama: vt.IPanorama;
 
   constructor (
-    private $tourApi: TourResourceService,
+    private TourResourceService: TourResourceService,
     private UserSession: UserSessionService
   ) {
     'ngInject';
@@ -89,7 +89,7 @@ export class SkyService {
           break;
         case 1:
         case 2:
-          this.$tourApi.preload.get({ id }).$promise.then(data => resolve(data));
+          this.TourResourceService.preload.get({ id }).$promise.then(data => resolve(data));
           break;
         default: 
           reject('Can\'t determine preload settings')

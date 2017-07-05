@@ -3,7 +3,7 @@ export const DrilldownComponent: ng.IComponentOptions = {
 		children: '<'
 	},
   controller: class DrilldownController implements ng.IController {
-  	children;
+  	children: vt.IDrilldownItem[];
   	
   	constructor(
   		private $analytics,

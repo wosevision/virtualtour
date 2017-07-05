@@ -5,8 +5,16 @@
 </svg>
 
 <div flex="" layout="column" layout-fill="">
-  <title-bar title="Virtual Tour" mobile="mc.mobile" flex="nogrow">
-    <title-bar-button ng-repeat="option in mc.titlebar" on-click="option.onClick()" label="{{ ::option.label }}" active="option.active" icon="option.icon" tooltip="option.tooltip" class="{{ ::option.class }}" id="titlebar-btn-{{::id}}">
+  <title-bar title="Virtual Tour" mobile="$ctrl.mobile" flex="nogrow">
+    <title-bar-button
+      ng-repeat="option in $ctrl.titlebar"
+      on-click="$ctrl.onTitlebarClick($event, option)"
+      label="{{ ::option.label }}"
+      active="option.active"
+      icon="option.icon"
+      tooltip="option.tooltip"
+      class="{{ ::option.class }}"
+      id="{{::option.id}}">
     </title-bar-button>
   </title-bar>
 
@@ -16,14 +24,14 @@
   		 layout-align-gt-sm="end start"
   		 flex
   		 class="scene-container"
-  		 ng-class="{ 'toolbar-open' : mc.toolbar.open && !mc.mobile.landscape, 'toolbar-condensed': mc.toolbar.condensed }">
+  		 ng-class="{ 'toolbar-open' : $ctrl.buttonbar.visible && !$ctrl.mobile.landscape, 'toolbar-condensed': $ctrl.buttonbar.condensed }">
     <section id="scene-view"
 				     flex="grow"
 				     layout="column"
 				     layout-fill=""
-				     ng-class="{ 'blur-active' : mc.toolbar.hasBlur }"
+				     ng-class="{ 'blur-active' : $ctrl.buttonbar.hasBlur }"
 				     class="scene-view">
-      <aframe-scene mobile="mc.mobile">
+      <aframe-scene mobile="$ctrl.mobile">
       	<ng-transclude></ng-transclude>
       </aframe-scene>
     </section>
@@ -31,18 +39,18 @@
     <button-bar layout="row"
     						layout-gt-sm="column"
     						flex="nogrow"
-    						items="mc.toolbar.views"
-    						open="mc.toolbar.open"
-    						condensed="mc.toolbar.condensed"
-    						mobile="mc.mobile"
-    						on-select="mc.toolbar.onSelect($event)">
+    						items="$ctrl.buttonbar.views"
+    						visible="$ctrl.buttonbar.visible"
+    						condensed="$ctrl.buttonbar.condensed"
+    						mobile="$ctrl.mobile"
+    						on-select="$ctrl.onButtonbarSelect($event)">
     </button-bar>
   </div>
 </div>
 
-<div ng-class="{ 'toolbar-open' : (mc.toolbar.open && !landscapeMobile), 'toolbar-condensed': mc.toolbar.condensed }" layout="row" flex="">
-  <md-sidenav ng-class="{ 'blur-active' : mc.toolbar.hasBlur, 'is-mobile': mc.mobile.screen, 'is-landscape': mc.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu" ng-switch on="mc.toolbar.currentView">
-    <drilldown-menu ng-switch-when="locations" children="mc.drilldown.structure"></drilldown-menu>
+<div ng-class="{ 'toolbar-open' : ($ctrl.buttonbar.open && !landscapeMobile), 'toolbar-condensed': $ctrl.buttonbar.condensed }" layout="row" flex="">
+  <md-sidenav ng-class="{ 'blur-active' : $ctrl.buttonbar.hasBlur, 'is-mobile': $ctrl.mobile.screen, 'is-landscape': $ctrl.mobile.landscape }" md-component-id="right" md-disable-backdrop="" md-whiteframe="4" flex="" class="md-sidenav-right main-menu" ng-switch on="$ctrl.buttonbar.currentView">
+    <drilldown-menu ng-switch-when="locations" children="$ctrl.drilldown.structure"></drilldown-menu>
     <uoit-map ng-switch-when="map"></uoit-map>
     <search-menu ng-switch-when="search"></search-menu>
     <user-settings ng-switch-when="settings"></user-settings>

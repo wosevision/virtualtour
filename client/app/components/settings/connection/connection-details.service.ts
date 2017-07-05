@@ -1,5 +1,6 @@
 import { isNumber } from 'angular';
 
+import { CONNECTION_PROFILES } from './connection-profiles.constant';
 import { ConnectionProfile } from './connection-profile';
 
 /**
@@ -28,7 +29,7 @@ const SPEED_3G = 2;
 export class ConnectionDetailsService {
   profiles: {
     [key: string]: ConnectionProfile
-  };
+  } = CONNECTION_PROFILES;
   connection: vt.INetworkConnection;
   /**
    * Initializes the service's dependencies. Extracts usage profiles
@@ -38,10 +39,8 @@ export class ConnectionDetailsService {
     private $rootScope, 
     private $http, 
     private $q, 
-    private CONNECTION_PROFILES,
   ) {
     'ngInject';
-    this.profiles = CONNECTION_PROFILES;
   }
 
   /**
@@ -50,7 +49,7 @@ export class ConnectionDetailsService {
    * connection speed in the background, and supplies this info back
    * to the app along with device details when it becomes available.
    */
-  detect(): ng.IPromise<vt.INetworkConnection> {
+  detect(): Promise<vt.INetworkConnection> {
     return this.$http.get('/user/connection').then(({ data }) => {
       const { network, useragent } = data;
       this.connection = { network, useragent };
@@ -96,7 +95,7 @@ export class ConnectionDetailsService {
    *   '== 0': [...]
    * }
    */
-  calculateUsageLevel(usage: object): ng.IPromise<number[]> {
+  calculateUsageLevel(usage: object): Promise<number[]> {
     let tally: number[] = [0, 0, 0]; // [imageQual, loadTime, dataUse] / 0=low, 10=high
     const deferred = this.$q.defer(),
           addValuesToTally = values => tally.map((v, i) =>  v += values[i]);
